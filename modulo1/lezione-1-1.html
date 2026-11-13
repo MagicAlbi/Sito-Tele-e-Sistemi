@@ -1,0 +1,653 @@
+<!DOCTYPE html>
+<html lang="it" data-theme="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>M1.1 · Introduzione alle WLAN | Telecomunicazioni 5A</title>
+  <link rel="stylesheet" href="../assets/css/style.css">
+  <style>
+    :root { --m-color: var(--m1); }
+
+    /* Stili personalizzati per l'interattivo */
+    .interactive-controls {
+      display: flex; gap: 0.5rem; flex-wrap: wrap; margin-bottom: 1rem;
+    }
+    .badge-live {
+      display: inline-flex; align-items: center; gap: 0.35rem;
+      background: rgba(52, 211, 153, 0.15); border: 1px solid rgba(52, 211, 153, 0.4);
+      color: var(--success); font-size: 0.72rem; font-weight: 700;
+      padding: 0.2rem 0.6rem; border-radius: 99px; text-transform: uppercase;
+    }
+    .badge-live::before {
+      content: ''; width: 6px; height: 6px; border-radius: 50%;
+      background: var(--success); box-shadow: 0 0 8px var(--success);
+      animation: pulseDot 1.5s infinite;
+    }
+    @keyframes pulseDot { 0%, 100% { opacity: 1; transform: scale(1); } 50% { opacity: 0.4; transform: scale(0.8); } }
+
+    /* Step card cliccabile per l'associazione */
+    .step-tracker {
+      display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 1rem; margin: 1.5rem 0;
+    }
+    .step-card {
+      background: var(--surface-2); border: 1px solid var(--border);
+      border-radius: var(--r-lg); padding: 1.25rem; cursor: pointer;
+      transition: all var(--t-base); position: relative;
+    }
+    .step-card:hover { border-color: var(--primary); transform: translateY(-2px); }
+    .step-card.active {
+      border-color: var(--primary); background: var(--primary-subtle);
+      box-shadow: 0 0 20px var(--primary-glow);
+    }
+    .step-badge {
+      display: inline-block; font-family: var(--font-mono); font-size: 0.72rem;
+      font-weight: 700; color: var(--primary); margin-bottom: 0.5rem;
+    }
+    .step-title { font-weight: 700; font-size: 0.95rem; margin-bottom: 0.35rem; }
+    .step-desc { font-size: 0.82rem; color: var(--text-muted); line-height: 1.4; }
+
+    /* Animazione pacchetto che viaggia nel diagramma */
+    @keyframes packetFly {
+      0% { offset-distance: 0%; opacity: 0; }
+      15% { opacity: 1; }
+      85% { opacity: 1; }
+      100% { offset-distance: 100%; opacity: 0; }
+    }
+    .data-packet {
+      fill: var(--primary); filter: drop-shadow(0 0 6px var(--primary));
+    }
+  </style>
+</head>
+<body data-lesson-id="m1-1">
+
+<div class="app-layout">
+
+  <!-- HEADER -->
+  <header class="site-header">
+    <a href="../index.html" class="logo-link">
+      <div class="logo-icon">⚡</div>
+      <div class="logo-text">
+        <span class="logo-title text-gradient">Telecomunicazioni 5A</span>
+        <span class="logo-sub">IIS J.C. Maxwell</span>
+      </div>
+    </a>
+
+    <nav class="header-breadcrumb">
+      <a href="../index.html">Home</a>
+      <span>›</span>
+      <a href="index.html">Modulo 1</a>
+      <span>›</span>
+      <span class="current">Lezione 1.1 — Introduzione WLAN</span>
+    </nav>
+
+    <div class="header-actions">
+      <button class="btn btn-present" data-present aria-label="Modalità presentazione">
+        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg>
+        Presenta in Classe
+      </button>
+      <button class="btn btn-icon btn-ghost" data-theme-toggle aria-label="Cambia tema"></button>
+      <button class="btn btn-icon btn-ghost btn-hamburger" aria-label="Menu">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+      </button>
+    </div>
+  </header>
+
+  <!-- SIDEBAR -->
+  <nav class="sidebar">
+    <div class="sidebar-module-badge">
+      <div class="module-dot" style="background:var(--m1); box-shadow: 0 0 10px var(--m1);"></div>
+      <span class="module-label" style="color:var(--m1)">Modulo 1 · WLAN</span>
+    </div>
+
+    <span class="sidebar-section-title">Percorso Guidato</span>
+    <ul class="sidebar-nav">
+      <li class="active" data-lesson="m1-1">
+        <a href="lezione-1-1.html">
+          <span class="lesson-num">1.1</span>
+          <span class="lesson-title">Introduzione alle WLAN</span>
+          <span class="lesson-check"></span>
+        </a>
+      </li>
+      <li data-lesson="m1-2">
+        <a href="lezione-1-2.html">
+          <span class="lesson-num">1.2</span>
+          <span class="lesson-title">Standard IEEE 802.11</span>
+          <span class="lesson-check"></span>
+        </a>
+      </li>
+      <li data-lesson="m1-3">
+        <a href="lezione-1-3.html">
+          <span class="lesson-num">1.3</span>
+          <span class="lesson-title">Canali Radio & Spettro</span>
+          <span class="lesson-check"></span>
+        </a>
+      </li>
+      <li data-lesson="m1-4">
+        <a href="lezione-1-4.html">
+          <span class="lesson-num">1.4</span>
+          <span class="lesson-title">CSMA/CA & Collisioni</span>
+          <span class="lesson-check"></span>
+        </a>
+      </li>
+      <li data-lesson="m1-5">
+        <a href="lezione-1-5.html">
+          <span class="lesson-num">1.5</span>
+          <span class="lesson-title">Strato Fisico & Modulazioni</span>
+          <span class="lesson-check"></span>
+        </a>
+      </li>
+      <li data-lesson="m1-6">
+        <a href="lezione-1-6.html">
+          <span class="lesson-num">1.6</span>
+          <span class="lesson-title">Progettazione & Site Survey</span>
+          <span class="lesson-check"></span>
+        </a>
+      </li>
+    </ul>
+
+    <span class="sidebar-section-title">Pratica & Verifiche</span>
+    <ul class="sidebar-nav">
+      <li>
+        <a href="lab-copertura.html">
+          <span class="lesson-num">🔬</span>
+          <span class="lesson-title">Simulatore Copertura RF</span>
+        </a>
+      </li>
+      <li>
+        <a href="verifica.html">
+          <span class="lesson-num">📋</span>
+          <span class="lesson-title">Compito & Verifica M1</span>
+        </a>
+      </li>
+    </ul>
+
+    <div class="sidebar-progress" data-module-progress="m1" data-total="6">
+      <div class="progress-label">
+        <span>Progresso Modulo</span>
+        <span><span data-progress-done>0</span>/6 (<span data-progress-pct>0</span>%)</span>
+      </div>
+      <div class="progress-bar">
+        <div class="progress-fill" style="width:0%"></div>
+      </div>
+    </div>
+  </nav>
+
+  <!-- CONTENUTO LEZIONE -->
+  <main class="main-content">
+    <div class="content-wrap">
+
+      <!-- HERO LEZIONE -->
+      <header class="lesson-hero reveal">
+        <div class="lesson-hero-bg-num">01</div>
+        <div class="lesson-hero-content">
+          <div class="lesson-meta">
+            <span class="lesson-badge lesson-badge-module">Modulo 1 · Wireless LAN</span>
+            <span class="lesson-badge lesson-badge-num">Lezione 1.1</span>
+            <span class="lesson-time">
+              <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+              ~30 min studio interattivo
+            </span>
+          </div>
+
+          <h1 class="lesson-title-h1">Dalla Rete Cablata al Segnale nell'Aria: Introduzione alle WLAN</h1>
+          
+          <p class="lesson-subtitle">
+            Cosa succede fisicamente quando il tuo smartphone si associa all'Access Point della scuola? Come si colloca il Wi-Fi nello stack ISO/OSI e perché non abbiamo bisogno di un nuovo protocollo IP?
+          </p>
+
+          <div class="lesson-prereq">
+            <span class="lesson-prereq-icon">🧠</span>
+            <div>
+              <strong>Cosa diamo già per scontato da Sistemi e Reti:</strong>
+              Architettura LAN cablata (Ethernet 802.3), stack a 7 livelli ISO/OSI, indirizzamento MAC di livello 2 e assegnazione IP locale.
+            </div>
+          </div>
+        </div>
+      </header>
+
+      <!-- TL;DR IN EVIDENZA -->
+      <div class="tldr reveal">
+        <span class="tldr-icon">⚡</span>
+        <div>
+          <strong>TL;DR in 15 secondi:</strong> Una WLAN è a tutti gli effetti una LAN in cui il cavo di rame è sostituito da onde radio. A livello 3 (IP) e superiori non cambia <em>assolutamente nulla</em>. Le uniche vere rivoluzioni avvengono al Livello 1 (Fisico RF) e nel sotto-livello MAC (Livello 2), che deve orchestrare il traffico in un mezzo broadcast condiviso senza far collidere i segnali.
+        </div>
+      </div>
+
+      <!-- ======================================
+           SLIDE 1 — LO STACK ISO/OSI
+           ====================================== -->
+      <section class="slide reveal" id="slide-1" data-num="01">
+        <h2>1. Lo Stack ISO/OSI: Dove cambia il Wi-Fi?</h2>
+
+        <p>
+          Immagina di inviare un messaggio WhatsApp. L'applicazione non ha idea se tu sia connesso tramite un cavo Ethernet CAT 6, una rete Wi-Fi 6 o una fibra ottica. Questo è il principio cardine dell'<strong>incapsulamento</strong>.
+        </p>
+
+        <p>
+          Confrontiamo punto per punto cosa accade tra una rete Ethernet cablata e una rete wireless:
+        </p>
+
+        <table class="osi-table">
+          <thead>
+            <tr>
+              <th>Livello OSI</th>
+              <th>Nome Livello</th>
+              <th>LAN Cablata (IEEE 802.3)</th>
+              <th>WLAN Wireless (IEEE 802.11)</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><strong>7–3</strong></td>
+              <td>Applicazione, Trasporto, Rete</td>
+              <td colspan="2" style="text-align:center; color:var(--text-muted); font-size:0.82rem;">
+                <mark>IDENTICI</mark> — HTTP, TCP, UDP, IP (v4/v6), Routing. Nessuna modifica richiesta.
+              </td>
+            </tr>
+            <tr class="row-mac">
+              <td><strong>2</strong></td>
+              <td><strong>Data Link (LLC / MAC)</strong></td>
+              <td>802.3 MAC (CSMA/CD con rilevamento collisioni su filo)</td>
+              <td class="cell-highlight">
+                <strong>802.11 MAC</strong> (CSMA/CA con prevenzione collisioni via radio, frame ACK e gestione beacon)
+              </td>
+            </tr>
+            <tr class="row-phy">
+              <td><strong>1</strong></td>
+              <td><strong>Fisico (PHY)</strong></td>
+              <td>Segnali elettrici su doppino in rame o impulsi luminosi su fibra</td>
+              <td class="cell-highlight">
+                <strong>Onde elettromagnetiche</strong> a radiofrequenza (2.4 GHz, 5 GHz o 6 GHz)
+              </td>
+            </tr>
+          </tbody>
+        </table>
+
+        <div class="box box-info">
+          <div class="box-label">🔍 Perché il Livello 2 deve essere diverso?</div>
+          <p style="margin:0">
+            Su un cavo di rame, una scheda di rete può trasmettere e contemporaneamente "ascoltare" per accorgersi se un altro host sta parlando (<strong>CSMA/CD</strong>). Nell'aria questo è <strong>impossibile</strong>: la potenza del trasmettitore locale acceca completamente il proprio ricevitore! Per questo in Wi-Fi si adotta una tecnica di <em>prevenzione</em> (<strong>CSMA/CA</strong>), che esploreremo nel dettaglio nella Lezione 1.4.
+          </p>
+        </div>
+      </section>
+
+      <hr>
+
+      <!-- ======================================
+           SLIDE 2 — TOPOLOGIE INTERATTIVE
+           ====================================== -->
+      <section class="slide reveal" id="slide-2" data-num="02">
+        <h2>2. Laboratorio Interattivo: Topologie WLAN</h2>
+        <p>
+          Nelle specifiche IEEE 802.11 esistono due modalità operative fondamentali per far comunicare le stazioni wireless. Seleziona una topologia per vedere la configurazione in tempo reale e clicca sui nodi per ispezionarli:
+        </p>
+
+        <div class="interactive-wrap">
+          <div class="interactive-title">
+            <span class="badge-live">Live Simulator</span>
+            <span>Ispezione Topologie & Flusso Dati</span>
+          </div>
+
+          <div class="topology-tabs">
+            <button class="tab-btn active" id="btnInfra" onclick="TopoDiagram.show('infra')">
+              🏗️ Modalità Infrastructure (BSS / ESS)
+            </button>
+            <button class="tab-btn" id="btnAdhoc" onclick="TopoDiagram.show('adhoc')">
+              🔗 Modalità Ad-Hoc (IBSS Peer-to-Peer)
+            </button>
+          </div>
+
+          <div class="interactive-controls">
+            <button class="btn btn-sm btn-ghost" onclick="TopoDiagram.pulseData()">
+              ⚡ Trasmetti Pacchetto Dati
+            </button>
+          </div>
+
+          <div class="topology-canvas">
+            <svg id="topology-svg" viewBox="0 0 520 300" width="520" height="300">
+              
+              <!-- ===== INFRASTRUCTURE ===== -->
+              <g id="g-infra">
+                <!-- Raggio d'azione antenna -->
+                <circle cx="260" cy="115" r="130" fill="none" stroke="var(--primary)" stroke-width="1" stroke-dasharray="4 4" opacity="0.25"/>
+                <circle class="ripple-anim" cx="260" cy="115" r="30"/>
+                <circle class="ripple-anim d2" cx="260" cy="115" r="30"/>
+                <circle class="ripple-anim d3" cx="260" cy="115" r="30"/>
+
+                <!-- Linee connessione verso AP -->
+                <line x1="260" y1="115" x2="260" y2="35" class="topo-active-line animated-dash"/>
+                <line x1="260" y1="115" x2="100" y2="225" class="topo-active-line animated-dash"/>
+                <line x1="260" y1="115" x2="260" y2="235" class="topo-active-line animated-dash"/>
+                <line x1="260" y1="115" x2="420" y2="225" class="topo-active-line animated-dash"/>
+
+                <!-- Router & Uplink Internet -->
+                <g class="topo-node" onclick="TopoDiagram.info('router')">
+                  <rect x="220" y="15" width="80" height="28" rx="6" fill="var(--surface-2)" stroke="var(--border-2)" stroke-width="1.5"/>
+                  <text x="260" y="33" text-anchor="middle" font-size="11" font-weight="700" fill="var(--text)">🌐 Gateway IP</text>
+                </g>
+
+                <!-- Access Point Centrale -->
+                <g class="topo-node" onclick="TopoDiagram.info('ap')">
+                  <circle cx="260" cy="115" r="28" fill="var(--surface-3)" stroke="var(--primary)" stroke-width="2"/>
+                  <text x="260" y="112" text-anchor="middle" font-size="20">📡</text>
+                  <text x="260" y="128" text-anchor="middle" font-size="10" font-weight="800" fill="var(--primary)">AP ROOT</text>
+                </g>
+
+                <!-- Client 1 -->
+                <g class="topo-node" onclick="TopoDiagram.info('client1')">
+                  <circle cx="100" cy="225" r="24" fill="var(--surface-2)" stroke="var(--border-2)" stroke-width="1.5"/>
+                  <text x="100" y="231" text-anchor="middle" font-size="18">💻</text>
+                  <text x="100" y="265" text-anchor="middle" font-size="10" font-weight="600" fill="var(--text)">STA-01</text>
+                </g>
+
+                <!-- Client 2 -->
+                <g class="topo-node" onclick="TopoDiagram.info('client2')">
+                  <circle cx="260" cy="235" r="24" fill="var(--surface-2)" stroke="var(--border-2)" stroke-width="1.5"/>
+                  <text x="260" y="241" text-anchor="middle" font-size="18">📱</text>
+                  <text x="260" y="275" text-anchor="middle" font-size="10" font-weight="600" fill="var(--text)">STA-02</text>
+                </g>
+
+                <!-- Client 3 -->
+                <g class="topo-node" onclick="TopoDiagram.info('client3')">
+                  <circle cx="420" cy="225" r="24" fill="var(--surface-2)" stroke="var(--border-2)" stroke-width="1.5"/>
+                  <text x="420" y="231" text-anchor="middle" font-size="18">🖥️</text>
+                  <text x="420" y="265" text-anchor="middle" font-size="10" font-weight="600" fill="var(--text)">STA-03</text>
+                </g>
+              </g>
+
+              <!-- ===== AD-HOC (IBSS) ===== -->
+              <g id="g-adhoc" display="none">
+                <line x1="150" y1="120" x2="370" y2="120" class="topo-active-line-2 animated-dash"/>
+                <line x1="150" y1="120" x2="160" y2="230" class="topo-active-line-2 animated-dash"/>
+                <line x1="370" y1="120" x2="360" y2="230" class="topo-active-line-2 animated-dash"/>
+                <line x1="150" y1="120" x2="360" y2="230" class="topo-active-line-2 animated-dash"/>
+                <line x1="370" y1="120" x2="160" y2="230" class="topo-active-line-2 animated-dash"/>
+                <line x1="160" y1="230" x2="360" y2="230" class="topo-active-line-2 animated-dash"/>
+
+                <g class="topo-node" onclick="TopoDiagram.info('adhoc')">
+                  <circle cx="150" cy="120" r="26" fill="var(--surface-2)" stroke="var(--secondary)" stroke-width="2"/>
+                  <text x="150" y="126" text-anchor="middle" font-size="18">💻</text>
+                  <text x="150" y="160" text-anchor="middle" font-size="10" font-weight="600" fill="var(--text)">Node Alpha</text>
+                </g>
+                <g class="topo-node" onclick="TopoDiagram.info('adhoc')">
+                  <circle cx="370" cy="120" r="26" fill="var(--surface-2)" stroke="var(--secondary)" stroke-width="2"/>
+                  <text x="370" y="126" text-anchor="middle" font-size="18">💻</text>
+                  <text x="370" y="160" text-anchor="middle" font-size="10" font-weight="600" fill="var(--text)">Node Beta</text>
+                </g>
+                <g class="topo-node" onclick="TopoDiagram.info('adhoc')">
+                  <circle cx="160" cy="230" r="26" fill="var(--surface-2)" stroke="var(--secondary)" stroke-width="2"/>
+                  <text x="160" y="236" text-anchor="middle" font-size="18">📱</text>
+                  <text x="160" y="270" text-anchor="middle" font-size="10" font-weight="600" fill="var(--text)">Node Gamma</text>
+                </g>
+                <g class="topo-node" onclick="TopoDiagram.info('adhoc')">
+                  <circle cx="360" cy="230" r="26" fill="var(--surface-2)" stroke="var(--secondary)" stroke-width="2"/>
+                  <text x="360" y="236" text-anchor="middle" font-size="18">🖥️</text>
+                  <text x="360" y="270" text-anchor="middle" font-size="10" font-weight="600" fill="var(--text)">Node Delta</text>
+                </g>
+              </g>
+
+            </svg>
+          </div>
+
+          <div class="topology-info-panel" id="topoInfo">
+            💡 <strong>Tocca uno qualsiasi dei nodi sopra</strong> per visualizzare i parametri di rete e la modalità operativa.
+          </div>
+        </div>
+
+        <!-- BOX GLOSSARIO CONCETTI CHIAVE -->
+        <h3>Terminologia Chiave per la Verifica</h3>
+        <div class="def-grid">
+          <div class="def-item">
+            <span class="def-term">STA (Station)</span>
+            <span class="def-full">Station Wireless</span>
+            <span class="def-desc">Qualsiasi apparato terminale munito di scheda radio conforme a IEEE 802.11 (smartphone, portatili, stampanti Wi-Fi, sensori IoT).</span>
+          </div>
+          <div class="def-item">
+            <span class="def-term">AP (Access Point)</span>
+            <span class="def-full">Punto di Accesso</span>
+            <span class="def-desc">Dispositivo centrale di Livello 2 che effettua il bridging tra il mezzo radio condiviso e il segmento cablato (Distribution System).</span>
+          </div>
+          <div class="def-item">
+            <span class="def-term">BSS & BSSID</span>
+            <span class="def-full">Basic Service Set</span>
+            <span class="def-desc">La cella elementare formata da un AP e dai terminali associati. Il <strong>BSSID</strong> è l'indirizzo MAC a 48 bit dell'interfaccia radio dell'AP.</span>
+          </div>
+          <div class="def-item">
+            <span class="def-term">ESS & Roaming</span>
+            <span class="def-full">Extended Service Set</span>
+            <span class="def-desc">Unione di più BSS interconnessi tramite dorsale cablata che condividono lo stesso SSID. Permette a un alunno o docente di camminare tra le aule senza disconnettersi.</span>
+          </div>
+        </div>
+      </section>
+
+      <hr>
+
+      <!-- ======================================
+           SLIDE 3 — IL PROCESSO DI ASSOCIAZIONE
+           ====================================== -->
+      <section class="slide reveal" id="slide-3" data-num="03">
+        <h2>3. L'Associazione in 3 Fasi: Dietro le Quinte</h2>
+
+        <p>
+          Quando attivi il Wi-Fi sullo smartphone, non ti colleghi istantaneamente. Viene eseguito un handshake rigido a stati finiti. Clicca su ciascuna fase per analizzarne i pacchetti scambiati:
+        </p>
+
+        <div class="step-tracker">
+          <div class="step-card active" onclick="StepViewer.select(0)">
+            <span class="step-badge">FASE 1</span>
+            <div class="step-title">Scansione & Probe</div>
+            <div class="step-desc">Passive Beacon vs Active Probe Request su tutti i canali radio.</div>
+          </div>
+          <div class="step-card" onclick="StepViewer.select(1)">
+            <span class="step-badge">FASE 2</span>
+            <div class="step-title">Autenticazione 802.11</div>
+            <div class="step-desc">Verifica formale di livello 2 (Open System o WPA Pre-Shared Key).</div>
+          </div>
+          <div class="step-card" onclick="StepViewer.select(2)">
+            <span class="step-badge">FASE 3</span>
+            <div class="step-title">Associazione al BSS</div>
+            <div class="step-desc">Assegnazione Association ID (AID), allocazione risorse e bridging attivo.</div>
+          </div>
+        </div>
+
+        <div class="box box-sintesi" id="stepDetailBox">
+          <h4 id="stepDetailTitle" style="color:var(--primary); margin-bottom:0.5rem;">Fase 1: Scansione (Scanning)</h4>
+          <p id="stepDetailContent" style="margin:0; font-size:0.9rem;">
+            Il dispositivo wireless scansiona le frequenze disponibili. Può farlo in modo <strong>Passivo</strong> (rimanendo in ascolto dei <em>Beacon Frame</em> che gli AP trasmettono periodicamente a intervalli di ~100ms) oppure <strong>Attivo</strong> (inviando una <em>Probe Request</em> su ciascun canale e attendendo la <em>Probe Response</em> degli AP nell'area).
+          </p>
+        <!-- BOX CURIOSITA' CYBERPUNK / HACKER FACT -->
+        <div class="box-curiosity">
+          <div class="box-curiosity-title">
+            <span>🕵️‍♂️</span>
+            <span>Come i centri commerciali sanno in quale negozio sei andato (anche senza connetterti al Wi-Fi!)</span>
+          </div>
+          <div class="box-curiosity-content">
+            <p>
+              Hai presente quando entri in un centro commerciale e hai il Wi-Fi acceso ma non ti connetti a nessuna rete? Ebbene, il tuo smartphone urla costantemente nell'etere attraverso i <strong>Probe Request</strong>: <em>"C'è il router di casa mia qui? C'è il Wi-Fi della scuola?"</em>.
+            </p>
+            <p style="margin-bottom:0">
+              Negli anni passati, i negozianti installavano antenne nascoste che registravano l'indirizzo MAC univoco del tuo telefono e la potenza del segnale (RSSI): in questo modo <strong>triangolavano la tua posizione al millimetro</strong>, calcolavano quanto tempo passavi davanti alle vetrine di Zara o GameStop e ti profilavano! Per fermare questo spionaggio di massa, iOS e Android hanno dovuto inventare il <strong>MAC Address Randomization</strong>: ogni volta che cerchi una rete, il telefono inventa un indirizzo MAC falso e lo cambia periodicamente. Controlla subito nelle impostazioni Wi-Fi del tuo telefono: vedrai la voce <em>"Usa MAC privato / casuale"</em>!
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <hr>
+
+      <!-- ======================================
+           SLIDE 4 — VERIFICA RAPIDA INTERATTIVA
+           ====================================== -->
+      <section class="slide reveal" id="slide-4" data-num="04">
+        <h2>4. Checkpoint di Autovalutazione</h2>
+        <p>
+          Mettiti alla prova su questi 5 quesiti. Ti aiuteranno a capire se hai memorizzato i punti focali della lezione prima del laboratorio pratico.
+        </p>
+
+        <div class="quiz-wrap">
+          <div id="quizContainer">
+            <!-- Rendered by QuizEngine -->
+          </div>
+        </div>
+      </section>
+
+      <!-- COMPLETAMENTO & NAVIGAZIONE -->
+      <div class="mark-done-wrap reveal">
+        <button class="mark-done-btn">
+          ✓ Segna Lezione come Studiata
+        </button>
+        <div class="lesson-nav-btns">
+          <a href="index.html" class="btn btn-ghost">
+            ← Indice Modulo 1
+          </a>
+          <a href="lezione-1-2.html" class="btn btn-primary">
+            Prossima: 1.2 Standard 802.11b/g/n/ac/ax →
+          </a>
+        </div>
+      </div>
+
+    </div>
+  </main>
+</div>
+
+<script src="../assets/js/app.js"></script>
+<script>
+/* Logica interattivo topologia */
+const TopoDiagram = (() => {
+  const infoPanel = document.getElementById('topoInfo');
+  const gInfra = document.getElementById('g-infra');
+  const gAdhoc = document.getElementById('g-adhoc');
+  const btnInfra = document.getElementById('btnInfra');
+  const btnAdhoc = document.getElementById('btnAdhoc');
+
+  const nodeDetails = {
+    router: `<strong>🌐 Gateway IP (Router Scolastico)</strong><br>Apparato di Livello 3 (Rete). Connesso all'AP tramite cavo Ethernet su porta Trunk/Access. Esegue NAT, routing verso il server e assegna gli indirizzi IP tramite DHCP.`,
+    ap: `<strong>📡 Access Point Wi-Fi (BSSID: 00:1A:2B:3C:4D:5E)</strong><br>Punto focale di Livello 2. Trasmette il Beacon con SSID <code>Maxwell-WiFi</code>. Riceve i frame 802.11 via etere e li incapsula in frame Ethernet 802.3 per la rete cablata.`,
+    client1: `<strong>💻 STA-01 (Laptop Studente)</strong><br>Indirizzo IP: <code>192.168.10.45/24</code> · Segnale RSSI: <code>-52 dBm</code> (Eccellente). Associato con successo tramite autenticazione WPA2-Enterprise.`,
+    client2: `<strong>📱 STA-02 (Smartphone)</strong><br>Indirizzo IP: <code>192.168.10.60/24</code> · Segnale RSSI: <code>-68 dBm</code> (Buono). Gestisce power-save sleeping per non esaurire la batteria.`,
+    client3: `<strong>🖥️ STA-03 (Postazione Laboratorio)</strong><br>Indirizzo IP: <code>192.168.10.82/24</code> · Segnale RSSI: <code>-48 dBm</code>. Connessione fissa stabile con antenna direzionale.`,
+    adhoc: `<strong>🔗 Nodo Rete IBSS (Peer-to-Peer)</strong><br>In questa modalità non esiste un AP master. Le stazioni sincronizzano i clock tra loro e comunicano direttamente. Ottimo per emergenze o scambio rapido (es. AirDrop), ma inefficiente per più di 4-5 terminali.`
+  };
+
+  function show(mode) {
+    if (mode === 'infra') {
+      gInfra.setAttribute('display', '');
+      gAdhoc.setAttribute('display', 'none');
+      btnInfra.classList.add('active');
+      btnAdhoc.classList.remove('active');
+      infoPanel.innerHTML = `Modalità <strong>Infrastructure (BSS)</strong>: I client comunicano sempre attraverso l'Access Point. Tutta la sicurezza e il traffico verso Internet sono centralizzati.`;
+    } else {
+      gInfra.setAttribute('display', 'none');
+      gAdhoc.setAttribute('display', '');
+      btnInfra.classList.remove('active');
+      btnAdhoc.classList.add('active');
+      infoPanel.innerHTML = `Modalità <strong>Ad-Hoc (IBSS)</strong>: I dispositivi dialogano da pari a pari senza Access Point né gateway Internet configurato centralmente.`;
+    }
+  }
+
+  function info(id) {
+    if (nodeDetails[id]) {
+      infoPanel.innerHTML = nodeDetails[id];
+    }
+  }
+
+  function pulseData() {
+    infoPanel.innerHTML = `🚀 <strong>Trasmissione Frame Dati:</strong> La stazione STA-01 invia una richiesta HTTP; l'AP riceve via radio su frequenza 2.4GHz, verifica l'indirizzo MAC di destinazione e inoltra il pacchetto sul cavo verso il Gateway!`;
+  }
+
+  return { show, info, pulseData };
+})();
+
+/* Viewer per le 3 fasi dell'associazione */
+const StepViewer = (() => {
+  const steps = [
+    {
+      title: "Fase 1: Scansione Radio (Scanning)",
+      desc: "Il dispositivo cerca le reti disponibili. Può usare la <strong>Scansione Passiva</strong> (ascolta i <em>Beacon Frame</em> periodici dell'AP con SSID e rate supportati) o la <strong>Scansione Attiva</strong> (invia <em>Probe Request</em> su tutti i canali e riceve <em>Probe Response</em> con i parametri operativi)."
+    },
+    {
+      title: "Fase 2: Autenticazione 802.11 (Authentication)",
+      desc: "Prima di qualsiasi associazione, la stazione deve autenticarsi all'AP a livello 2. Negli standard storici era 'Open' o 'Shared Key'. Oggi questo passaggio prepara il terreno per l'autenticazione sicura <strong>WPA2/WPA3</strong> con 4-way handshake crittografico."
+    },
+    {
+      title: "Fase 3: Associazione al BSS (Association)",
+      desc: "La stazione invia un <em>Association Request</em> dichiarando le proprie capacità hardware (es. MIMO, velocità massime). L'AP risponde con un <em>Association Response</em> contenente l'<strong>AID (Association Identifier)</strong> numerico: da questo istante la stazione è membro ufficiale del BSS."
+    }
+  ];
+
+  function select(index) {
+    document.querySelectorAll('.step-card').forEach((card, i) => {
+      card.classList.toggle('active', i === index);
+    });
+    document.getElementById('stepDetailTitle').innerHTML = steps[index].title;
+    document.getElementById('stepDetailContent').innerHTML = steps[index].desc;
+  }
+
+  return { select };
+})();
+
+/* Setup Quiz */
+document.addEventListener('DOMContentLoaded', () => {
+  const quizQuestions = [
+    {
+      question: "Quali livelli della pila ISO/OSI vengono effettivamente modificati quando si passa da Ethernet a Wi-Fi?",
+      answers: [
+        { text: "Solo il Livello 3 (Rete/IP)", correct: false },
+        { text: "Il Livello 1 (Fisico) e il sotto-livello MAC del Livello 2", correct: true },
+        { text: "Tutti i livelli dal Livello 1 al Livello 7", correct: false },
+        { text: "Esclusivamente il Livello 4 (Trasporto TCP/UDP)", correct: false }
+      ],
+      explain_correct: "Esatto! La bellezza dell'architettura a livelli sta proprio nel fatto che i protocolli superiori (IP, TCP, HTTP) rimangono del tutto ignari del mezzo trasmissivo.",
+      explain_wrong: "Ricorda: né IP né TCP vengono modificati per il Wi-Fi. Cambia il mezzo trasmissivo (Livello 1: onde radio) e il controllo di accesso al mezzo (Livello 2 MAC: gestione collisioni e frame 802.11)."
+    },
+    {
+      question: "Cos'è il BSSID in una rete wireless?",
+      answers: [
+        { text: "Il nome testuale visibile della rete (es. 'Wi-Fi Scuola')", correct: false },
+        { text: "La password cifrata dell'Access Point", correct: false },
+        { text: "L'indirizzo MAC a 48 bit dell'interfaccia radio dell'Access Point", correct: true },
+        { text: "L'indirizzo IP pubblico assegnato dal provider", correct: false }
+      ],
+      explain_correct: "Perfetto! Il SSID è il nome mnemonico (max 32 caratteri), mentre il BSSID è il MAC address univoco dell'antenna dell'AP.",
+      explain_wrong: "Non confondere SSID e BSSID! Il nome visibile è il SSID, mentre il BSSID è l'indirizzo fisico (MAC address) dell'Access Point."
+    },
+    {
+      question: "In quale scenario si configura una topologia Ad-Hoc (IBSS)?",
+      answers: [
+        { text: "Quando due o più stazioni comunicano direttamente senza alcun Access Point", correct: true },
+        { text: "In un campus universitario con centinaia di Access Point distribuiti", correct: false },
+        { text: "Quando l'Access Point è collegato a un modem fibra ottica", correct: false },
+        { text: "Quando tutti i terminali sono collegati con cavo di rete", correct: false }
+      ],
+      explain_correct: "Corretto! IBSS (Independent Basic Service Set) è una rete peer-to-peer priva di coordinatore centrale.",
+      explain_wrong: "Ad-hoc (IBSS) significa proprio 'senza infrastruttura'. Se c'è un Access Point, siamo in modalità Infrastructure (BSS)."
+    },
+    {
+      question: "Cosa accade durante la scansione PASSIVA da parte di uno smartphone?",
+      answers: [
+        { text: "Il telefono trasmette costantemente Probe Request ad alta potenza", correct: false },
+        { text: "Il telefono ascolta i Beacon Frame trasmessi periodicamente dagli AP", correct: true },
+        { text: "Il telefono tenta di violare la password di rete", correct: false },
+        { text: "Il telefono richiede direttamente l'indirizzo IP al DHCP", correct: false }
+      ],
+      explain_correct: "Esatto! Gli AP trasmettono 'fari' (Beacon) ogni ~100ms. Nella scansione passiva il client si limita ad ascoltare senza trasmettere.",
+      explain_wrong: "La trasmissione di Probe Request è tipica della scansione ATTIVA. Nella scansione PASSIVA il terminale rimane in silenzio e ascolta i Beacon Frame."
+    },
+    {
+      question: "A cosa serve definire un ESS (Extended Service Set)?",
+      answers: [
+        { text: "A permettere la modalità ad-hoc su lunghe distanze", correct: false },
+        { text: "A unire più AP sotto lo stesso SSID per consentire il roaming senza disconnessioni", correct: true },
+        { text: "A raddoppiare la velocità massima di ogni singolo dispositivo", correct: false },
+        { text: "A vietare l'accesso agli smartphone non autorizzati", correct: false }
+      ],
+      explain_correct: "Grandioso! Un ESS interconnette diversi BSS con una dorsale comune, consentendo agli utenti di spostarsi (roaming) senza perdere la sessione di rete.",
+      explain_wrong: "L'ESS (Extended Service Set) è l'architettura tipica di scuole o aziende: tanti AP, stesso SSID, medesima sottorete, per supportare la mobilità dell'utente."
+    }
+  ];
+
+  QuizEngine.init('quizContainer', quizQuestions);
+});
+</script>
+</body>
+</html>

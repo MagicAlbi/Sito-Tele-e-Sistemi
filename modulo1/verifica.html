@@ -1,0 +1,423 @@
+<!DOCTYPE html>
+<html lang="it" data-theme="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Verifica Sommativa · Modulo 1 (WLAN) | Telecomunicazioni 5A</title>
+  <link rel="stylesheet" href="../assets/css/style.css">
+  <style>
+    :root { --m-color: var(--m1); }
+    .exam-header-card {
+      background: var(--surface); border: 1.5px solid var(--border-2);
+      border-radius: var(--r-xl); padding: 1.5rem 2rem; margin-bottom: 2rem;
+      box-shadow: var(--shadow-card);
+    }
+    .exam-input-grid {
+      display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 1rem; margin-top: 1rem;
+    }
+    .exam-input-group label {
+      display: block; font-size: 0.75rem; text-transform: uppercase; font-weight: 700;
+      color: var(--text-muted); margin-bottom: 0.3rem;
+    }
+    .exam-input-group input {
+      width: 100%; background: var(--surface-2); border: 1px solid var(--border);
+      padding: 0.55rem 0.8rem; border-radius: var(--r-sm); color: var(--text);
+      font-family: var(--font-sans); font-size: 0.9rem; outline: none;
+    }
+    .exam-input-group input:focus { border-color: var(--primary); }
+    .exam-timer-box {
+      display: inline-flex; align-items: center; gap: 0.6rem;
+      background: var(--surface-2); border: 1px solid var(--border);
+      padding: 0.4rem 0.9rem; border-radius: 99px; font-family: var(--font-mono);
+      font-size: 0.95rem; font-weight: 700; color: var(--primary);
+    }
+    .open-q-card {
+      background: var(--surface); border: 1px solid var(--border);
+      border-radius: var(--r-lg); padding: 1.5rem; margin-bottom: 1.5rem;
+    }
+    .open-q-textarea {
+      width: 100%; min-height: 110px; background: var(--surface-2);
+      border: 1px solid var(--border); border-radius: var(--r-md);
+      padding: 0.75rem 1rem; color: var(--text); font-family: var(--font-sans);
+      font-size: 0.92rem; line-height: 1.5; resize: vertical; outline: none;
+      margin-top: 0.75rem;
+    }
+    .open-q-textarea:focus { border-color: var(--primary); box-shadow: 0 0 12px var(--primary-glow); }
+
+    @media print {
+      .site-header, .sidebar, .btn, .header-actions, .mark-done-wrap { display: none !important; }
+      .app-layout { display: block !important; }
+      .main-content { padding: 0 !important; }
+      body { background: #fff !important; color: #000 !important; }
+      .exam-header-card, .open-q-card, .box { border-color: #ccc !important; background: #fff !important; color: #000 !important; }
+    }
+  </style>
+</head>
+<body data-lesson-id="m1-exam">
+
+<div class="app-layout">
+
+  <!-- HEADER -->
+  <header class="site-header">
+    <a href="../index.html" class="logo-link">
+      <div class="logo-icon">⚡</div>
+      <div class="logo-text">
+        <span class="logo-title text-gradient">Telecomunicazioni 5A</span>
+        <span class="logo-sub">IIS J.C. Maxwell</span>
+      </div>
+    </a>
+
+    <nav class="header-breadcrumb">
+      <a href="../index.html">Home</a>
+      <span>›</span>
+      <a href="index.html">Modulo 1</a>
+      <span>›</span>
+      <span class="current">Verifica Sommativa Modulo 1</span>
+    </nav>
+
+    <div class="header-actions">
+      <button class="btn btn-icon btn-ghost" data-theme-toggle aria-label="Cambia tema"></button>
+    </div>
+  </header>
+
+  <!-- SIDEBAR -->
+  <nav class="sidebar">
+    <div class="sidebar-module-badge">
+      <div class="module-dot" style="background:var(--m1); box-shadow: 0 0 10px var(--m1);"></div>
+      <span class="module-label" style="color:var(--m1)">Modulo 1 · WLAN</span>
+    </div>
+
+    <span class="sidebar-section-title">Percorso Guidato</span>
+    <ul class="sidebar-nav">
+      <li data-lesson="m1-1"><a href="lezione-1-1.html"><span class="lesson-num">1.1</span><span class="lesson-title">Introduzione alle WLAN</span></a></li>
+      <li data-lesson="m1-2"><a href="lezione-1-2.html"><span class="lesson-num">1.2</span><span class="lesson-title">Standard IEEE 802.11</span></a></li>
+      <li data-lesson="m1-3"><a href="lezione-1-3.html"><span class="lesson-num">1.3</span><span class="lesson-title">Canali Radio & Spettro</span></a></li>
+      <li data-lesson="m1-4"><a href="lezione-1-4.html"><span class="lesson-num">1.4</span><span class="lesson-title">CSMA/CA & Collisioni</span></a></li>
+      <li data-lesson="m1-5"><a href="lezione-1-5.html"><span class="lesson-num">1.5</span><span class="lesson-title">Strato Fisico & Modulazioni</span></a></li>
+      <li data-lesson="m1-6"><a href="lezione-1-6.html"><span class="lesson-num">1.6</span><span class="lesson-title">Progettazione & Site Survey</span></a></li>
+    </ul>
+
+    <span class="sidebar-section-title">Pratica & Verifiche</span>
+    <ul class="sidebar-nav">
+      <li><a href="lab-copertura.html"><span class="lesson-num">🔬</span><span class="lesson-title">Simulatore Copertura RF</span></a></li>
+      <li class="active"><a href="verifica.html"><span class="lesson-num">📋</span><span class="lesson-title">Compito & Verifica M1</span></a></li>
+    </ul>
+  </nav>
+
+  <!-- CONTENUTO PRINCIPALE -->
+  <main class="main-content">
+    <div class="content-wrap" style="max-width:900px;">
+
+      <!-- SCHEDA INTESTAZIONE COMPITO -->
+      <section class="exam-header-card reveal">
+        <div style="display:flex; justify-content:space-between; align-items:flex-start; flex-wrap:wrap; gap:1rem;">
+          <div>
+            <span class="lesson-badge lesson-badge-module">Verifica Sommativa Scritta</span>
+            <h1 style="font-size:1.6rem; margin-top:0.4rem; margin-bottom:0.2rem;">Telecomunicazioni · Modulo 1: Wireless LAN</h1>
+            <p style="font-size:0.85rem; color:var(--text-muted); margin:0;">IIS J.C. Maxwell — Articolazione Telecomunicazioni — Classe 5A</p>
+          </div>
+
+          <div style="text-align:right;">
+            <div class="exam-timer-box" id="timerBox">
+              <span>⏱️ Timer:</span>
+              <span id="dispTimer">45:00</span>
+            </div>
+            <div style="margin-top:0.4rem;">
+              <button class="btn btn-sm btn-ghost" onclick="ExamTimer.toggle()">Avvia / Pausa Timer</button>
+            </div>
+          </div>
+        </div>
+
+        <div class="exam-input-grid">
+          <div class="exam-input-group">
+            <label>Cognome e Nome Studente</label>
+            <input type="text" id="studName" placeholder="Es. Rossi Mario">
+          </div>
+          <div class="exam-input-group">
+            <label>Data di Consegna</label>
+            <input type="date" id="examDate">
+          </div>
+          <div class="exam-input-group">
+            <label>Postazione / Laboratorio</label>
+            <input type="text" id="studSeat" placeholder="Es. PC-LAB-12">
+          </div>
+        </div>
+      </section>
+
+      <!-- ======================================
+           SEZIONE 1 — TEST A RISPOSTA MULTIPLA
+           ====================================== -->
+      <div class="section-heading reveal">
+        <span>Parte 1 · Test Scritto Autocorretto (10 Quesiti — Max 6/10)</span>
+      </div>
+
+      <div class="quiz-wrap reveal" style="margin-bottom:2.5rem;">
+        <div id="examQuizContainer">
+          <!-- Rendered by QuizEngine -->
+        </div>
+      </div>
+
+      <!-- ======================================
+           SEZIONE 2 — DOMANDE APERTE
+           ====================================== -->
+      <div class="section-heading reveal">
+        <span>Parte 2 · Quesiti a Risposta Aperta e Rielaborazione (Max 2.5/10)</span>
+      </div>
+
+      <div class="open-q-card reveal">
+        <h4 style="color:var(--primary); font-size:1rem; margin-bottom:0.3rem;">Quesito Aperto 1 · Architettura e Canali Radio</h4>
+        <p style="font-size:0.88rem; color:var(--text-muted); margin:0;">
+          Spiega per quale motivo fisico nella banda a 2.4 GHz solo i canali 1, 6 e 11 sono considerati non sovrapposti. Cosa accade a livello di prestazioni se l'Access Point dell'aula adiacente viene configurato sul Canale 3?
+        </p>
+        <textarea class="open-q-textarea" id="openAns1" placeholder="Scrivi la tua argomentazione tecnica qui..."></textarea>
+      </div>
+
+      <div class="open-q-card reveal">
+        <h4 style="color:var(--primary); font-size:1rem; margin-bottom:0.3rem;">Quesito Aperto 2 · Protocollo CSMA/CA e Nodo Nascosto</h4>
+        <p style="font-size:0.88rem; color:var(--text-muted); margin:0;">
+          Descrivi il dilemma del "Nodo Nascosto" (Hidden Node Problem). Delinea l'handshake completo a quattro vie con cui il meccanismo RTS/CTS risolve tale problema e definisci la funzione del timer NAV (Network Allocation Vector).
+        </p>
+        <textarea class="open-q-textarea" id="openAns2" placeholder="Scrivi la tua spiegazione del meccanismo RTS/CTS e del timer NAV..."></textarea>
+      </div>
+
+      <!-- ======================================
+           SEZIONE 3 — ESERCIZIO NUMERICO SU FOGLIO
+           ====================================== -->
+      <div class="section-heading reveal">
+        <span>Parte 3 · Esercizio di Calcolo di Link Budget (Da Svolgere su Foglio — Max 1.5/10)</span>
+      </div>
+
+      <div class="box box-info reveal" style="margin-bottom:2rem;">
+        <div class="box-label">📐 Traccia Esercizio Numerico di Laboratorio</div>
+        <p style="font-size:0.92rem; line-height:1.6;">
+          Un Access Point Wi-Fi 5 situato nel corridoio della scuola trasmette a una frequenza di <strong>5 GHz</strong> con una potenza $P_{tx} = +20\text{ dBm}$ e un'antenna di guadagno $G_{tx} = +3\text{ dBi}$.
+          Uno studente nell'Aula 5 si trova a una distanza di <strong>15 metri</strong> in linea d'aria, separato da:
+        </p>
+        <ul style="font-size:0.88rem; margin-bottom:0.75rem;">
+          <li>Una parete in cartongesso (attenuazione $L_1 = 3\text{ dB}$)</li>
+          <li>Un muro portante in cemento armato (attenuazione $L_2 = 12\text{ dB}$)</li>
+        </ul>
+        <p style="font-size:0.92rem; line-height:1.6; margin-bottom:0;">
+          Sapendo che l'antenna dello smartphone ha guadagno $G_{rx} = 0\text{ dBi}$ e che la sensibilità di soglia minima richiesta per sostenere una videochiamata VoIP è di <strong>-67 dBm</strong>:
+          <br><strong>1.</strong> Calcola l'attenuazione nello spazio libero $FSPL$ a 15 metri (formula di Friis).
+          <br><strong>2.</strong> Calcola la potenza ricevuta $P_{rx}$ in dBm.
+          <br><strong>3.</strong> Determina se il collegamento supporta la chiamata VoIP o se subisce disconnessioni.
+        </p>
+
+        <div style="margin-top:1rem; padding-top:0.75rem; border-top:1px solid var(--border);">
+          <label style="display:flex; align-items:center; gap:0.5rem; font-size:0.85rem; cursor:pointer;">
+            <input type="checkbox" id="chkPaperSheet" style="accent-color:var(--primary); width:16px; height:16px;">
+            <span><strong>Ho svolto i calcoli su foglio protocollo</strong> e ho allegato i passaggi matematici al professore.</span>
+          </label>
+        </div>
+      </div>
+
+      <!-- BOTTONI AZIONE E CONSEGNA -->
+      <div class="mark-done-wrap reveal" style="margin-top:2rem;">
+        <div style="display:flex; gap:0.75rem; flex-wrap:wrap;">
+          <button class="btn btn-primary" onclick="window.print()">
+            🖨️ Stampa / Salva in PDF per Consegna
+          </button>
+          <button class="btn btn-ghost" onclick="ExamManager.saveLocalDraft()">
+            💾 Salva Bozza nel Browser
+          </button>
+        </div>
+
+        <div class="lesson-nav-btns">
+          <a href="index.html" class="btn btn-ghost">← Torna all'Indice Modulo 1</a>
+        </div>
+      </div>
+
+    </div>
+  </main>
+</div>
+
+<script src="../assets/js/app.js"></script>
+<script>
+/* Gestione Timer Compito */
+const ExamTimer = (() => {
+  let seconds = 45 * 60;
+  let timerId = null;
+
+  function toggle() {
+    if (timerId) {
+      clearInterval(timerId);
+      timerId = null;
+    } else {
+      timerId = setInterval(tick, 1000);
+    }
+  }
+
+  function tick() {
+    if (seconds > 0) {
+      seconds--;
+      const m = Math.floor(seconds / 60);
+      const s = seconds % 60;
+      document.getElementById('dispTimer').innerText = 
+        `${String(m).padStart(2, '0')}:${String(s).padStart(2, '0')}`;
+    } else {
+      clearInterval(timerId);
+      alert("Tempo scaduto per la verifica!");
+    }
+  }
+
+  return { toggle };
+})();
+
+/* Gestione Bozza Locale */
+const ExamManager = (() => {
+  function saveLocalDraft() {
+    const data = {
+      name: document.getElementById('studName').value,
+      date: document.getElementById('examDate').value,
+      seat: document.getElementById('studSeat').value,
+      ans1: document.getElementById('openAns1').value,
+      ans2: document.getElementById('openAns2').value,
+      paper: document.getElementById('chkPaperSheet').checked
+    };
+    localStorage.setItem('tele5a-exam-m1', JSON.stringify(data));
+    alert("Bozza salvata con successo sul browser!");
+  }
+
+  function loadLocalDraft() {
+    const saved = localStorage.getItem('tele5a-exam-m1');
+    if (!saved) return;
+    try {
+      const data = JSON.parse(saved);
+      if (data.name) document.getElementById('studName').value = data.name;
+      if (data.date) document.getElementById('examDate').value = data.date;
+      if (data.seat) document.getElementById('studSeat').value = data.seat;
+      if (data.ans1) document.getElementById('openAns1').value = data.ans1;
+      if (data.ans2) document.getElementById('openAns2').value = data.ans2;
+      if (data.paper) document.getElementById('chkPaperSheet').checked = data.paper;
+    } catch(e){}
+  }
+
+  return { saveLocalDraft, loadLocalDraft };
+})();
+
+document.addEventListener('DOMContentLoaded', () => {
+  // Imposta data odierna
+  document.getElementById('examDate').valueAsDate = new Date();
+  ExamManager.loadLocalDraft();
+
+  // 10 Domande sommative complete per il Modulo 1
+  const examQuestions = [
+    {
+      question: "1. Quale livello della pila ISO/OSI gestisce il controllo di accesso al mezzo (MAC) in una rete Wi-Fi 802.11?",
+      answers: [
+        { text: "Livello 1 (Fisico)", correct: false },
+        { text: "Sotto-livello del Livello 2 (Data Link)", correct: true },
+        { text: "Livello 3 (Rete)", correct: false },
+        { text: "Livello 4 (Trasporto)", correct: false }
+      ],
+      explain_correct: "Esatto! Il livello Data Link (2) è suddiviso in LLC e MAC.",
+      explain_wrong: "Il controllo di accesso al mezzo è gestito dal sotto-livello MAC del Livello 2 (Data Link)."
+    },
+    {
+      question: "2. Che differenza c'è tra SSID e BSSID?",
+      answers: [
+        { text: "SSID è il nome mnemonico della rete, BSSID è l'indirizzo MAC a 48 bit dell'interfaccia radio dell'AP", correct: true },
+        { text: "SSID è la password, BSSID è il nome dell'utente", correct: false },
+        { text: "SSID è l'IP pubblico, BSSID è l'IP privato", correct: false },
+        { text: "Sono due sigle che indicano esattamente la stessa cosa", correct: false }
+      ],
+      explain_correct: "Perfetto! SSID = nome testuale; BSSID = MAC address dell'antenna.",
+      explain_wrong: "SSID è il nome della rete (Service Set Identifier); BSSID è il MAC fisico dell'Access Point."
+    },
+    {
+      question: "3. Quale standard IEEE ha introdotto per la prima volta la tecnologia MIMO e i canali a 40 MHz (Wi-Fi 4)?",
+      answers: [
+        { text: "802.11b", correct: false },
+        { text: "802.11g", correct: false },
+        { text: "802.11n", correct: true },
+        { text: "802.11ac", correct: false }
+      ],
+      explain_correct: "Corretto! L'802.11n ha introdotto il MIMO e il channel bonding fino a 600 Mbps.",
+      explain_wrong: "Wi-Fi 4 (802.11n) nel 2009 ha rivoluzionato il wireless introducendo antenne multiple MIMO."
+    },
+    {
+      question: "4. Perché a 2.4 GHz si raccomanda di utilizzare rigorosamente solo i canali 1, 6 e 11?",
+      answers: [
+        { text: "Perché sono gli unici tre canali con separazione $\ge 25\\text{ MHz}$ totalmente privi di sovrapposizione spettrale a 20 MHz", correct: true },
+        { text: "Perché gli altri canali sono a pagamento", correct: false },
+        { text: "Perché i numeri pari sono vietati dalla polizia postale", correct: false },
+        { text: "Perché trasmettono a voltaggio più basso", correct: false }
+      ],
+      explain_correct: "Bravissimo! Evitano l'interferenza a canali adiacenti distruttiva.",
+      explain_wrong: "A 2.4 GHz i canali distano 5 MHz ma sono larghi 20 MHz: solo 1, 6 e 11 non si toccano mai."
+    },
+    {
+      question: "5. In che cosa consiste la tecnologia OFDMA del Wi-Fi 6 (802.11ax)?",
+      answers: [
+        { text: "Nella suddivisione del canale in sotto-canali (Resource Units) per servire più client contemporaneamente nello stesso frame", correct: true },
+        { text: "In un cavo sottomarino ad alta velocità", correct: false },
+        { text: "Nell'eliminazione completa delle antenne", correct: false },
+        { text: "Nel raddoppio della frequenza della corrente alternata", correct: false }
+      ],
+      explain_correct: "Esatto! OFDMA risolve la congestione dividendo il canale radio tra più utenti simultanei.",
+      explain_wrong: "OFDMA divide il canale in Resource Units (RU) assegnate simultaneamente a più client."
+    },
+    {
+      question: "6. Quale problema del mezzo wireless viene risolto dall'uso dei frame di controllo RTS/CTS?",
+      answers: [
+        { text: "Il problema del nodo nascosto (Hidden Node Problem)", correct: true },
+        { text: "Il furto di corrente elettrica", correct: false },
+        { text: "L'interferenza dei forni a microonde", correct: false },
+        { text: "La perdita di password del router", correct: false }
+      ],
+      explain_correct: "Perfetto! RTS/CTS riserva l'etere e imposta il NAV anche sui nodi che non si sentono reciprocamente.",
+      explain_wrong: "RTS/CTS risolve l'Hidden Node Problem zittendo i nodi nascosti tramite il CTS dell'AP."
+    },
+    {
+      question: "7. Che cos'è il Beamforming adattativo (TxBF)?",
+      answers: [
+        { text: "Il controllo dinamico della fase su antenne multiple per concentrare l'energia in un fascio focalizzato verso il client", correct: true },
+        { text: "Un laser che illumina il dispositivo", correct: false },
+        { text: "La rotazione del pannello solare dell'antenna", correct: false },
+        { text: "L'aumento forzato della temperatura dei circuiti", correct: false }
+      ],
+      explain_correct: "Grandioso! Aumenta il guadagno di segnale (RSSI) e consente modulazioni QAM più dense.",
+      explain_wrong: "Il Beamforming usa l'interferenza costruttiva tra antenne per orientare un fascio radio verso il client."
+    },
+    {
+      question: "8. Quanti bit per simbolo trasporta una costellazione 256-QAM (Wi-Fi 5)?",
+      answers: [
+        { text: "4 bit", correct: false },
+        { text: "6 bit", correct: false },
+        { text: "8 bit ($2^8 = 256$)", correct: true },
+        { text: "10 bit", correct: false }
+      ],
+      explain_correct: "Esatto! $k = \\log_2(256) = 8$ bit/simbolo.",
+      explain_wrong: "Dato che $2^8 = 256$, ogni punto della costellazione 256-QAM trasporta esattamente 8 bit."
+    },
+    {
+      question: "9. Qual è il principale difetto che ha portato alla dismissione totale della crittografia WEP?",
+      answers: [
+        { text: "Lo spazio ridotto degli Initialization Vector (IV a 24 bit) e le debolezze di RC4 consentono di forzare la chiave in pochi minuti", correct: true },
+        { text: "La password doveva essere lunga minimo 64 caratteri", correct: false },
+        { text: "Funzionava solo con computer Apple", correct: false },
+        { text: "Il costo della licenza software annuale", correct: false }
+      ],
+      explain_correct: "Corretto! La ripetizione degli IV rende banale il calcolo della chiave con aircrack-ng.",
+      explain_wrong: "Il WEP usa IV a 24 bit ripetuti con RC4: la collisione di vettori permette il recupero istantaneo della password."
+    },
+    {
+      question: "10. In che modo WPA3 protegge le reti dalle violazioni di password deboli rispetto a WPA2?",
+      answers: [
+        { text: "Implementa il protocollo di scambio chiavi Dragonfly (SAE), rendendo vani gli attacchi a dizionario offline", correct: true },
+        { text: "Blocca l'accesso dopo 1 tentativo errato per sempre", correct: false },
+        { text: "Non permette l'uso di lettere minuscole", correct: false },
+        { text: "Sostituisce il Wi-Fi con la fibra ottica", correct: false }
+      ],
+      explain_correct: "Bravissimo! WPA3 SAE Dragonfly impedisce di catturare l'handshake e provare dizionari offline.",
+      explain_wrong: "WPA3 usa l'algoritmo Simultaneous Authentication of Equals (Dragonfly), immune agli attacchi a dizionario offline."
+    }
+  ];
+
+  QuizEngine.init('examQuizContainer', examQuestions);
+});
+</script>
+</body>
+</html>

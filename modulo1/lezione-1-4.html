@@ -1,0 +1,507 @@
+<!DOCTYPE html>
+<html lang="it" data-theme="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>M1.4 · CSMA/CA & Il Problema del Nodo Nascosto | Telecomunicazioni 5A</title>
+  <link rel="stylesheet" href="../assets/css/style.css">
+  <style>
+    :root { --m-color: var(--m1); }
+    .hidden-node-canvas-wrap {
+      background: var(--surface-2); border: 1px solid var(--border);
+      border-radius: var(--r-xl); padding: 1.5rem; margin: 1.5rem 0;
+    }
+    .node-range-circle {
+      fill-opacity: 0.08; stroke-dasharray: 4 4; stroke-width: 1.5;
+    }
+    .packet-bubble {
+      font-size: 11px; font-weight: 700; font-family: var(--font-mono);
+      padding: 2px 6px; border-radius: 4px;
+    }
+    @keyframes collidePulse {
+      0% { r: 10; opacity: 1; fill: #ef4444; }
+      100% { r: 50; opacity: 0; fill: #ef4444; }
+    }
+    .boom-effect { animation: collidePulse 0.8s ease-out infinite; }
+  </style>
+</head>
+<body data-lesson-id="m1-4">
+
+<div class="app-layout">
+
+  <!-- HEADER -->
+  <header class="site-header">
+    <a href="../index.html" class="logo-link">
+      <div class="logo-icon">⚡</div>
+      <div class="logo-text">
+        <span class="logo-title text-gradient">Telecomunicazioni 5A</span>
+        <span class="logo-sub">IIS J.C. Maxwell</span>
+      </div>
+    </a>
+
+    <nav class="header-breadcrumb">
+      <a href="../index.html">Home</a>
+      <span>›</span>
+      <a href="index.html">Modulo 1</a>
+      <span>›</span>
+      <span class="current">Lezione 1.4 — CSMA/CA</span>
+    </nav>
+
+    <div class="header-actions">
+      <button class="btn btn-present" data-present aria-label="Modalità presentazione">
+        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg>
+        Presenta in Classe
+      </button>
+      <button class="btn btn-icon btn-ghost" data-theme-toggle aria-label="Cambia tema"></button>
+      <button class="btn btn-icon btn-ghost btn-hamburger" aria-label="Menu">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+      </button>
+    </div>
+  </header>
+
+  <!-- SIDEBAR -->
+  <nav class="sidebar">
+    <div class="sidebar-module-badge">
+      <div class="module-dot" style="background:var(--m1); box-shadow: 0 0 10px var(--m1);"></div>
+      <span class="module-label" style="color:var(--m1)">Modulo 1 · WLAN</span>
+    </div>
+
+    <span class="sidebar-section-title">Percorso Guidato</span>
+    <ul class="sidebar-nav">
+      <li data-lesson="m1-1">
+        <a href="lezione-1-1.html">
+          <span class="lesson-num">1.1</span>
+          <span class="lesson-title">Introduzione alle WLAN</span>
+          <span class="lesson-check"></span>
+        </a>
+      </li>
+      <li data-lesson="m1-2">
+        <a href="lezione-1-2.html">
+          <span class="lesson-num">1.2</span>
+          <span class="lesson-title">Standard IEEE 802.11</span>
+          <span class="lesson-check"></span>
+        </a>
+      </li>
+      <li data-lesson="m1-3">
+        <a href="lezione-1-3.html">
+          <span class="lesson-num">1.3</span>
+          <span class="lesson-title">Canali Radio & Spettro</span>
+          <span class="lesson-check"></span>
+        </a>
+      </li>
+      <li class="active" data-lesson="m1-4">
+        <a href="lezione-1-4.html">
+          <span class="lesson-num">1.4</span>
+          <span class="lesson-title">CSMA/CA & Collisioni</span>
+          <span class="lesson-check"></span>
+        </a>
+      </li>
+      <li data-lesson="m1-5">
+        <a href="lezione-1-5.html">
+          <span class="lesson-num">1.5</span>
+          <span class="lesson-title">Strato Fisico & Modulazioni</span>
+          <span class="lesson-check"></span>
+        </a>
+      </li>
+      <li data-lesson="m1-6">
+        <a href="lezione-1-6.html">
+          <span class="lesson-num">1.6</span>
+          <span class="lesson-title">Progettazione & Site Survey</span>
+          <span class="lesson-check"></span>
+        </a>
+      </li>
+    </ul>
+
+    <span class="sidebar-section-title">Pratica & Verifiche</span>
+    <ul class="sidebar-nav">
+      <li>
+        <a href="lab-copertura.html">
+          <span class="lesson-num">🔬</span>
+          <span class="lesson-title">Simulatore Copertura RF</span>
+        </a>
+      </li>
+      <li>
+        <a href="verifica.html">
+          <span class="lesson-num">📋</span>
+          <span class="lesson-title">Compito & Verifica M1</span>
+        </a>
+      </li>
+    </ul>
+
+    <div class="sidebar-progress" data-module-progress="m1" data-total="6">
+      <div class="progress-label">
+        <span>Progresso Modulo</span>
+        <span><span data-progress-done>0</span>/6 (<span data-progress-pct>0</span>%)</span>
+      </div>
+      <div class="progress-bar">
+        <div class="progress-fill" style="width:0%"></div>
+      </div>
+    </div>
+  </nav>
+
+  <!-- CONTENUTO PRINCIPALE -->
+  <main class="main-content">
+    <div class="content-wrap">
+
+      <!-- HERO LEZIONE -->
+      <header class="lesson-hero reveal">
+        <div class="lesson-hero-bg-num">04</div>
+        <div class="lesson-hero-content">
+          <div class="lesson-meta">
+            <span class="lesson-badge lesson-badge-module">Modulo 1 · Wireless LAN</span>
+            <span class="lesson-badge lesson-badge-num">Lezione 1.4</span>
+            <span class="lesson-time">
+              <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+              ~40 min studio interattivo
+            </span>
+          </div>
+
+          <h1 class="lesson-title-h1">Accesso al Mezzo Radio: CSMA/CA e il Dilemma del Nodo Nascosto</h1>
+          
+          <p class="lesson-subtitle">
+            Nell'aria non puoi accorgerti se qualcuno sta trasmettendo mentre parli tu. Come fa il Wi-Fi a evitare il caos totale? Scopri l'algoritmo di Collision Avoidance, il meccanismo RTS/CTS e perché uno studente con segnale scarso rallenta tutta la classe!
+          </p>
+
+          <div class="lesson-prereq">
+            <span class="lesson-prereq-icon">🧠</span>
+            <div>
+              <strong>Confronto con Sistemi e Reti:</strong>
+              In Ethernet cablato si usava CSMA/CD (Collision Detection: trasmetto e ascolto contemporaneamente sul filo di rame). Nel wireless questo principio fisico decade: scopriamo perché.
+            </div>
+          </div>
+        </div>
+      </header>
+
+      <!-- TL;DR -->
+      <div class="tldr reveal">
+        <span class="tldr-icon">⚡</span>
+        <div>
+          <strong>TL;DR in 15 secondi:</strong> Le schede radio Wi-Fi sono <em>Half-Duplex</em>: trasmettere acceca il proprio ricevitore, quindi è impossibile rilevare collisioni in tempo reale (no CD). La soluzione è il <strong>CSMA/CA (Collision Avoidance)</strong>: prima di trasmettere si ascolta (Carrier Sense), si attende un tempo di silenzio casuale (Backoff esponenziale) e si richiede un frame di conferma <strong>ACK</strong> per ogni pacchetto. Per i nodi che non si vedono tra loro (Hidden Node), si usa l'handshake <strong>RTS/CTS</strong>.
+        </div>
+      </div>
+
+      <!-- ======================================
+           SLIDE 1 — PERCHÉ CSMA/CD FALLISCE NEL WIRELESS
+           ====================================== -->
+      <section class="slide reveal" id="slide-1" data-num="01">
+        <h2>1. Perché Non Possiamo Rilevare Collisioni via Radio?</h2>
+
+        <p>
+          Immagina di trovarti a un concerto metal e urlare a squarciagola con un megafono contro il muro: riusciresti a sentire il sussurro di un amico che parla da 20 metri di distanza nello stesso secondo? Assolutamente no.
+        </p>
+
+        <p>
+          In una scheda radio Wi-Fi accade esattamente la stessa cosa:
+        </p>
+        <ul>
+          <li>La potenza di trasmissione locale del tuo cellulare è di circa <strong>+15 / +20 dBm (30-100 mW)</strong>.</li>
+          <li>Il segnale che ricevi da un'altra stazione remota è attenuato a circa <strong>-70 / -85 dBm (pochi picowatt!)</strong>.</li>
+        </ul>
+        <p>
+          La differenza è di oltre <strong>un milione di volte</strong>! Quando l'antenna locale trasmette, è "sorda" a qualsiasi segnale esterno. Per questo il Wi-Fi non può usare <em>Detection</em> (rilevare lo scontro), ma deve investire tutto sulla <strong>Prevention / Avoidance</strong> (evitare accuratamente di trasmettere insieme).
+        </p>
+
+        <div class="box box-info">
+          <div class="box-label">📐 La Regola dei Timer: DIFS, SIFS e Backoff</div>
+          <p style="margin:0">
+            Prima di trasmettere un frame dati, ogni stazione deve sentire l'etere libero per un tempo fisso chiamato <strong>DIFS (DCF Inter-Frame Space)</strong>. Se l'etere è libero, non parte subito! Estrae un numero casuale da una finestra di contesa (<strong>Backoff Timer</strong>) e fa il conto alla rovescia. Chi finisce per primo il timer vince l'etere. Se due stazioni estraggono lo stesso numero e collidono, non ricevendo l'<strong>ACK</strong> raddoppiano la finestra di attesa (Backoff Esponenziale).
+          </p>
+        </div>
+      </section>
+
+      <hr>
+
+      <!-- ======================================
+           SLIDE 2 — IL PROBLEMA DEL NODO NASCOSTO (INTERATTIVO)
+           ====================================== -->
+      <section class="slide reveal" id="slide-2" data-num="02">
+        <h2>2. Il Problema del Nodo Nascosto (Hidden Node Problem)</h2>
+
+        <p>
+          C'è un'insidia ancora peggiore: supponi che due smartphone (<strong>STA-A</strong> e <strong>STA-C</strong>) siano collegati allo stesso Access Point centrale <strong>AP-B</strong>, ma siano posti ai due lati opposti di un grande corridoio o separati da un grosso muro portante.
+        </p>
+        <p>
+          STA-A vuole trasmettere e ascolta l'etere: <em>"Silenzio perfetto, vado!"</em>. Nello stesso identico momento STA-C ascolta l'etere: non sente STA-A (perché è troppo lontano), crede che l'aria sia libera e trasmette anche lui! <strong>Entrambi i pacchetti arrivano all'AP-B nello stesso microsecondo: COLLISIONE TOTALE!</strong>
+        </p>
+
+        <!-- SIMULATORE NODO NASCOSTO -->
+        <div class="hidden-node-canvas-wrap">
+          <div class="interactive-title">
+            <span class="badge-live">Interactive Simulation</span>
+            <span>Simulatore Dinamico: Senza RTS/CTS vs Con RTS/CTS</span>
+          </div>
+
+          <div style="display:flex; gap:0.6rem; flex-wrap:wrap; margin-bottom:1rem;">
+            <button class="btn btn-sm btn-ghost" id="btnSimNoRts" onclick="HiddenNodeSim.runWithoutRts()">
+              💥 1. Simula Senza RTS/CTS (Collisione)
+            </button>
+            <button class="btn btn-sm btn-primary" id="btnSimRts" onclick="HiddenNodeSim.runWithRts()">
+              🛡️ 2. Risolvi con Handshake RTS/CTS
+            </button>
+          </div>
+
+          <!-- CANVAS SVG -->
+          <svg id="hiddenNodeSvg" viewBox="0 0 600 240" width="100%" height="240" style="background:var(--surface); border-radius:var(--r-md); border:1px solid var(--border);">
+            
+            <!-- Raggio copertura Nodo A -->
+            <circle cx="110" cy="120" r="170" class="node-range-circle" stroke="#38bdf8" fill="#38bdf8"/>
+            <!-- Raggio copertura Nodo C (non raggiunge A!) -->
+            <circle cx="490" cy="120" r="170" class="node-range-circle" stroke="#a78bfa" fill="#a78bfa"/>
+
+            <!-- Linee di trasmissione -->
+            <line id="lineA" x1="110" y1="120" x2="300" y2="120" stroke="var(--primary)" stroke-width="2" stroke-dasharray="6 4" opacity="0"/>
+            <line id="lineC" x1="490" y1="120" x2="300" y2="120" stroke="var(--secondary)" stroke-width="2" stroke-dasharray="6 4" opacity="0"/>
+
+            <!-- Animazione esplosione collisione -->
+            <circle id="boomCircle" cx="300" cy="120" r="0" fill="#ef4444" opacity="0"/>
+
+            <!-- NODO A -->
+            <g transform="translate(110, 120)">
+              <circle cx="0" cy="0" r="24" fill="var(--surface-2)" stroke="var(--primary)" stroke-width="2"/>
+              <text x="0" y="5" text-anchor="middle" font-size="18">💻</text>
+              <text x="0" y="38" text-anchor="middle" font-size="11" font-weight="700" fill="var(--text)">Host A</text>
+              <text id="badgeA" x="0" y="-30" text-anchor="middle" font-size="10" fill="var(--primary)"></text>
+            </g>
+
+            <!-- AP B (CENTRALE) -->
+            <g transform="translate(300, 120)">
+              <circle cx="0" cy="0" r="30" fill="var(--surface-3)" stroke="var(--border-2)" stroke-width="2"/>
+              <text x="0" y="6" text-anchor="middle" font-size="22">📡</text>
+              <text x="0" y="45" text-anchor="middle" font-size="11" font-weight="800" fill="var(--success)">AP Root (B)</text>
+              <text id="badgeB" x="0" y="-36" text-anchor="middle" font-size="11" font-weight="700" fill="var(--text)"></text>
+            </g>
+
+            <!-- NODO C (NASCOSTO AD A) -->
+            <g transform="translate(490, 120)">
+              <circle cx="0" cy="0" r="24" fill="var(--surface-2)" stroke="var(--secondary)" stroke-width="2"/>
+              <text x="0" y="5" text-anchor="middle" font-size="18">📱</text>
+              <text x="0" y="38" text-anchor="middle" font-size="11" font-weight="700" fill="var(--text)">Host C (Nascosto)</text>
+              <text id="badgeC" x="0" y="-30" text-anchor="middle" font-size="10" fill="var(--secondary)"></text>
+            </g>
+
+            <text x="300" y="215" text-anchor="middle" font-size="10" fill="var(--text-muted)" font-family="var(--font-mono)">
+              Raggio di A e C non si toccano: Host A e Host C sono reciprocamente invisibili!
+            </text>
+          </svg>
+
+          <!-- Status box -->
+          <div id="simStatusBox" class="box box-info" style="margin-top:1.25rem; margin-bottom:0;">
+            <div class="box-label" id="simStatusTitle">💡 Istruzioni Simulatore</div>
+            <p id="simStatusDesc" style="margin:0; font-size:0.9rem;">
+              Clicca su <strong>"1. Simula Senza RTS/CTS"</strong> per vedere il fallimento della trasmissione causato dal nodo nascosto. Poi attiva <strong>"2. Risolvi con Handshake RTS/CTS"</strong> per capire la soluzione ufficiale dello standard IEEE 802.11!
+            </p>
+          </div>
+        </div>
+
+        <h3>La Soluzione Elegante: RTS / CTS (Request to Send / Clear to Send)</h3>
+        <p>
+          Per superare il problema del nodo nascosto, l'802.11 introduce una riserva preventiva dell'etere:
+        </p>
+        <ol>
+          <li><strong>Host A</strong> invia un piccolo frame di controllo <code>RTS</code> (Request to Send) all'Access Point, dichiarando: <em>"Voglio trasmettere per 1.5 millisecondi"</em>.</li>
+          <li>L'Access Point risponde in broadcast con un <code>CTS</code> (Clear to Send): <em>"Autorizzato! L'etere è riservato per 1.5 millisecondi"</em>.</li>
+          <li>Poiché il CTS dell'Access Point è potente e copre tutta la stanza, <strong>anche Host C lo riceve!</strong> Host C legge il valore di tempo e imposta il proprio <strong>NAV (Network Allocation Vector)</strong>, congelando qualsiasi trasmissione radio fino al termine dello scambio di Host A.</li>
+          <li>Host A invia i dati reali in totale tranquillità. L'AP chiude con un <code>ACK</code>.</li>
+        </ol>
+      </section>
+
+      <hr>
+
+      <!-- ======================================
+           SLIDE 3 — CURIOSITÀ REAL-LIFE
+           ====================================== -->
+      <section class="slide reveal" id="slide-3" data-num="03">
+        <h2>3. Perché il Wi-Fi a Scuola Diventa Lentissimo con Tanti Utenti?</h2>
+
+        <div class="box-curiosity">
+          <div class="box-curiosity-title">
+            <span>🐌</span>
+            <span>La Maledizione del "Peggiore della Classe": L'Airtime Fairness</span>
+          </div>
+          <div class="box-curiosity-content">
+            <p>
+              Immagina un'aula con 25 studenti connessi allo stesso Access Point con una linea Internet da 1 Gigabit in fibra. Perché a volte non si apre nemmeno la pagina di Google?
+            </p>
+            <p>
+              La colpa è di come funziona il CSMA/CA di base: l'Access Point concede l'accesso all'etere a turno <strong>in base al numero di pacchetti, non in base al tempo di occupazione dell'aria</strong>!
+            </p>
+            <p style="margin-bottom:0">
+              Se uno studente siede all'ultimo banco dietro a un armadio di ferro con una tacca di segnale (-85 dBm), la sua scheda Wi-Fi scala sulla modulazione più lenta e protetta (es. BPSK a 1 Mbps anziché 64-QAM a 54 Mbps). Per trasmettere una foto da 5 MB, quel telefono <strong>occuperà l'etere radio per oltre 40 secondi consecutivi</strong>, obbligando tutti gli altri 24 compagni di classe (che hanno segnale perfetto) ad aspettare in silenzio il proprio turno! I router enterprise risolvono questo paradosso con l'<strong>Airtime Fairness</strong>: danno a ciascun utente la stessa frazione di millisecondi d'aria, impedendo ai dispositivi lenti di sequestrare la banda a tutta l'aula.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <hr>
+
+      <!-- ======================================
+           SLIDE 4 — CHECKPOINT AUTOVALUTAZIONE
+           ====================================== -->
+      <section class="slide reveal" id="slide-4" data-num="04">
+        <h2>4. Checkpoint di Autovalutazione</h2>
+        <p>
+          Verifica di aver compreso la gestione delle collisioni e il protocollo di contesa MAC:
+        </p>
+
+        <div class="quiz-wrap">
+          <div id="quizContainer">
+            <!-- Rendered by QuizEngine -->
+          </div>
+        </div>
+      </section>
+
+      <!-- COMPLETAMENTO & NAVIGAZIONE -->
+      <div class="mark-done-wrap reveal">
+        <button class="mark-done-btn">
+          ✓ Segna Lezione come Studiata
+        </button>
+        <div class="lesson-nav-btns">
+          <a href="lezione-1-3.html" class="btn btn-ghost">
+            ← 1.3 Canali Radio & Spettro
+          </a>
+          <a href="lezione-1-5.html" class="btn btn-primary">
+            Prossima: 1.5 Strato Fisico & Modulazioni →
+          </a>
+        </div>
+      </div>
+
+    </div>
+  </main>
+</div>
+
+<script src="../assets/js/app.js"></script>
+<script>
+/* Logica simulazione nodo nascosto */
+const HiddenNodeSim = (() => {
+  const lineA = document.getElementById('lineA');
+  const lineC = document.getElementById('lineC');
+  const boom = document.getElementById('boomCircle');
+  const badgeA = document.getElementById('badgeA');
+  const badgeB = document.getElementById('badgeB');
+  const badgeC = document.getElementById('badgeC');
+  const box = document.getElementById('simStatusBox');
+  const title = document.getElementById('simStatusTitle');
+  const desc = document.getElementById('simStatusDesc');
+
+  function reset() {
+    lineA.style.opacity = '0';
+    lineC.style.opacity = '0';
+    boom.setAttribute('r', '0');
+    boom.style.opacity = '0';
+    badgeA.innerText = '';
+    badgeB.innerText = '';
+    badgeC.innerText = '';
+  }
+
+  function runWithoutRts() {
+    reset();
+    badgeA.innerText = "Sente libero -> INVIA DATI";
+    badgeC.innerText = "Sente libero -> INVIA DATI";
+    lineA.style.opacity = '1';
+    lineC.style.opacity = '1';
+
+    setTimeout(() => {
+      boom.setAttribute('r', '35');
+      boom.style.opacity = '0.9';
+      badgeB.innerText = "💥 COLLISIONE!";
+      badgeB.style.fill = "#ef4444";
+
+      box.className = "box box-warning";
+      box.style.borderColor = "var(--error)";
+      title.innerText = "💥 Collisione Distruttiva all'Access Point!";
+      desc.innerHTML = `Host A e Host C non si sentivano tra loro, quindi entrambi hanno iniziato a trasmettere credendo che l'etere fosse libero. All'AP B i segnali si sono sovrapposti: <strong>nessun pacchetto è stato decodificato</strong>. Entrambi dovranno ritrasmettere aumentando il Backoff.`;
+    }, 600);
+  }
+
+  function runWithRts() {
+    reset();
+    badgeA.innerText = "1. Invia RTS (Richiesta)";
+    lineA.style.opacity = '1';
+
+    setTimeout(() => {
+      badgeB.innerText = "2. Risponde CTS (Autorizzato)";
+      badgeB.style.fill = "var(--success)";
+      lineA.style.opacity = '0';
+      lineC.style.opacity = '1'; // Il CTS arriva anche a C!
+
+      setTimeout(() => {
+        badgeC.innerText = "3. Riceve CTS -> Silenzio NAV 🔒";
+        badgeA.innerText = "4. Trasmette DATI in Sicurezza";
+        lineA.style.opacity = '1';
+        lineC.style.opacity = '0';
+
+        box.className = "box box-success";
+        box.style.borderColor = "";
+        title.innerText = "🛡️ Successo Garantito con RTS/CTS!";
+        desc.innerHTML = `Anche se C non sentiva A, ha ricevuto il <strong>CTS</strong> trasmesso dall'Access Point B! C ha bloccato le proprie trasmissioni impostando il timer NAV. Host A ha completato la trasmissione al 100% senza alcuna collisione.`;
+      }, 900);
+    }, 800);
+  }
+
+  return { runWithoutRts, runWithRts };
+})();
+
+document.addEventListener('DOMContentLoaded', () => {
+  const quizQuestions = [
+    {
+      question: "Per quale motivo fisico fondamentale le schede Wi-Fi non possono usare il meccanismo CSMA/CD di Ethernet?",
+      answers: [
+        { text: "Perché le schede radio Wi-Fi sono Half-Duplex: la forte potenza di trasmissione acceca il proprio ricevitore", correct: true },
+        { text: "Perché la velocità della luce nell'aria è inferiore a quella nel rame", correct: false },
+        { text: "Perché il protocollo IP vieta il rilevamento delle collisioni", correct: false },
+        { text: "Perché l'Access Point spegne l'alimentazione durante la trasmissione", correct: false }
+      ],
+      explain_correct: "Esatto! La potenza del trasmettitore locale supera di milioni di volte il debole segnale che giunge da una stazione remota: è fisicamente impossibile sentire un'altra stazione mentre si trasmette.",
+      explain_wrong: "Nel mezzo radio la disparità di potenza tra trasmissione locale e ricezione remota rende impossibile accorgersi di collisioni durante la trasmissione (Half-Duplex)."
+    },
+    {
+      question: "In che cosa consiste il problema del 'Nodo Nascosto' (Hidden Node Problem)?",
+      answers: [
+        { text: "In un hacker che si connette nascondendo il proprio indirizzo MAC", correct: false },
+        { text: "Due stazioni distanti non si sentono a vicenda, ma entrambe trasmettono allo stesso AP provocando collisioni", correct: true },
+        { text: "In un cavo di rete tagliato dietro a una parete in cartongesso", correct: false },
+        { text: "In un Access Point con l'antenna svitata", correct: false }
+      ],
+      explain_correct: "Perfetto! Le stazioni A e C non sono nel rispettivo raggio radio, quindi credono che il canale sia libero: quando parlano insieme distruggono i frame all'AP.",
+      explain_wrong: "Il problema del nodo nascosto si verifica quando due client sono fuori dal rispettivo raggio di copertura ma associati allo stesso AP: credendosi soli, trasmettono simultaneamente causando collisioni."
+    },
+    {
+      question: "Quale sequenza di frame risolve il problema del nodo nascosto nell'802.11?",
+      answers: [
+        { text: "PING -> PONG -> ECHO", correct: false },
+        { text: "SYN -> SYN-ACK -> ACK", correct: false },
+        { text: "RTS (Request to Send) -> CTS (Clear to Send) -> DATA -> ACK", correct: true },
+        { text: "BEACON -> PROBE -> ASSOC", correct: false }
+      ],
+      explain_correct: "Grandioso! L'handshake a 4 vie RTS/CTS riserva virtualmente il canale: il CTS dell'AP informa tutti i nodi nascosti di congelarsi (NAV attivo) durante lo scambio.",
+      explain_wrong: "La sequenza corretta per la riserva preventiva del mezzo radio è: RTS dal client, CTS dall'AP (che zittisce i nodi nascosti), trasmissione dei dati DATA e conferma finale ACK."
+    },
+    {
+      question: "Che cos'è il NAV (Network Allocation Vector)?",
+      answers: [
+        { text: "Un timer software che indica per quanti microsecondi il mezzo radio rimarrà occupato da un'altra stazione", correct: true },
+        { text: "Il sistema GPS integrato nelle antenne direzionali", correct: false },
+        { text: "La velocità massima della scheda di rete", correct: false },
+        { text: "Un comando per navigare su Internet in incognito", correct: false }
+      ],
+      explain_correct: "Corretto! Il NAV è il meccanismo di 'Carrier Sensing Virtuale': leggendo la durata dichiarata nei frame, la stazione sa esattamente fino a quando deve rimanere in silenzio.",
+      explain_wrong: "Il NAV è il timer di Carrier Sensing Virtuale: una stazione legge la durata dichiarata nell'intestazione dei frame altrui e imposta il proprio conto alla rovescia di silenzio."
+    },
+    {
+      question: "Perché nei sistemi Wi-Fi è obbligatorio che il ricevente invii un frame di ACK per ogni pacchetto dati ricevuto correttamente?",
+      answers: [
+        { text: "Perché non potendo rilevare le collisioni durante l'invio, l'ACK è l'unico modo per il mittente di sapere che il frame è arrivato sano", correct: true },
+        { text: "Per calcolare il costo in bolletta della connessione", correct: false },
+        { text: "Per impedire il download di file torrent", correct: false },
+        { text: "Perché è richiesto dal provider telefonico per attivare la fibra", correct: false }
+      ],
+      explain_correct: "Bravissimo! Senza Collision Detection, chi trasmette non ha alcuna certezza: solo la ricezione dell'ACK conferma il successo. Se l'ACK non torna, la stazione ritrasmette.",
+      explain_wrong: "Poiché il mittente non può accorgersi se c'è stata una collisione nell'aria (Collision Avoidance, non Detection), l'ACK positivo è l'unica garanzia di avvenuta consegna."
+    }
+  ];
+
+  QuizEngine.init('quizContainer', quizQuestions);
+});
+</script>
+</body>
+</html>

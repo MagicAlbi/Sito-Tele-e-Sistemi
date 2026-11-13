@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="it" data-theme="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Modulo 1 · Wireless LAN | Telecomunicazioni 5A</title>
+  <link rel="stylesheet" href="../assets/css/style.css">
+  <style> :root { --m-color: var(--m1); } </style>
+</head>
+<body>
+<div class="app-layout">
+
+  <!-- HEADER -->
+  <header class="site-header">
+    <a href="../index.html" class="logo-link">
+      <div class="logo-icon">⚡</div>
+      <div class="logo-text">
+        <span class="logo-title text-gradient">Telecomunicazioni 5A</span>
+        <span class="logo-sub">IIS J.C. Maxwell</span>
+      </div>
+    </a>
+    <nav class="header-breadcrumb">
+      <a href="../index.html">Home</a>
+      <span>›</span>
+      <span class="current">Modulo 1 · Wireless LAN</span>
+    </nav>
+    <div class="header-actions">
+      <button class="btn btn-icon btn-ghost" data-theme-toggle aria-label="Cambia tema"></button>
+    </div>
+  </header>
+
+  <main class="main-content" style="grid-column:1/-1">
+    <div class="content-wrap" style="max-width:980px">
+
+      <!-- HERO MODULO -->
+      <section class="lesson-hero reveal">
+        <div class="lesson-hero-bg-num">01</div>
+        <div class="lesson-hero-content">
+          <div class="lesson-meta">
+            <span class="lesson-badge lesson-badge-module">Modulo 1 · Reti Locali Senza Fili</span>
+            <span class="lesson-badge lesson-badge-num">20 Ore Totali · 1° Quadrimestre</span>
+          </div>
+
+          <h1 class="lesson-title-h1" style="color:var(--m1)">📶 Wireless LAN & IEEE 802.11</h1>
+          <p class="lesson-subtitle">
+            Dalla propagazione del segnale radio nei corridoi scolastici alle modulazioni 4096-QAM del Wi-Fi 7. Modelli 3D esplorabili, simulatori di canale in tempo reale, laboratori di copertura e checkpoint autocorretti.
+          </p>
+
+          <div style="display:flex; gap:0.75rem; flex-wrap:wrap; margin-top:1.25rem;">
+            <a href="lezione-1-1.html" class="btn btn-primary">Avvia da Lezione 1.1 →</a>
+            <a href="lab-copertura.html" class="btn btn-ghost">🔬 Laboratorio Heatmap</a>
+            <a href="verifica.html" class="btn btn-ghost">📋 Prova Sommativa M1</a>
+          </div>
+        </div>
+      </section>
+
+      <!-- GRIGLIA LEZIONI -->
+      <div class="section-heading reveal">
+        <span>Percorso Didattico Completo</span>
+      </div>
+
+      <div class="modules-grid" style="grid-template-columns:repeat(auto-fill, minmax(280px, 1fr))">
+
+        <!-- 1.1 -->
+        <a href="lezione-1-1.html" class="module-card reveal reveal-delay-1" style="--m-color:var(--m1)">
+          <div class="module-card-header">
+            <div class="module-number">1.1</div>
+            <div class="module-card-title">
+              <div class="module-tag">Fondamenti</div>
+              <h3>Introduzione alle WLAN</h3>
+            </div>
+          </div>
+          <p style="font-size:0.84rem; color:var(--text-muted); margin:0;">
+            Topologie Infrastructure vs Ad-hoc, architetture BSS/ESS, SSID, associazione a 3 stadi e tracciamento radio reale.
+          </p>
+          <div class="module-card-footer" style="margin-top:0.75rem;">
+            <span class="module-start-btn">Inizia Lezione →</span>
+          </div>
+        </a>
+
+        <!-- 1.2 -->
+        <a href="lezione-1-2.html" class="module-card reveal reveal-delay-2" style="--m-color:var(--m1)">
+          <div class="module-card-header">
+            <div class="module-number">1.2</div>
+            <div class="module-card-title">
+              <div class="module-tag">Evoluzione</div>
+              <h3>Standard IEEE 802.11</h3>
+            </div>
+          </div>
+          <p style="font-size:0.84rem; color:var(--text-muted); margin:0;">
+            Da 802.11b al Wi-Fi 7. Calcolatore di velocità nominale vs Speedtest reale, video esplicativo OFDMA e la storia di Hedy Lamarr.
+          </p>
+          <div class="module-card-footer" style="margin-top:0.75rem;">
+            <span class="module-start-btn">Inizia Lezione →</span>
+          </div>
+        </a>
+
+        <!-- 1.3 -->
+        <a href="lezione-1-3.html" class="module-card reveal reveal-delay-3" style="--m-color:var(--m1)">
+          <div class="module-card-header">
+            <div class="module-number">1.3</div>
+            <div class="module-card-title">
+              <div class="module-tag">Radiofrequenza</div>
+              <h3>Canali Radio & Spettro</h3>
+            </div>
+          </div>
+          <p style="font-size:0.84rem; color:var(--text-muted); margin:0;">
+            Spettro 2.4 / 5 / 6 GHz, simulatore di interferenza co-canale, il forno a microonde che fa laggare la console e i radar DFS.
+          </p>
+          <div class="module-card-footer" style="margin-top:0.75rem;">
+            <span class="module-start-btn">Inizia Lezione →</span>
+          </div>
+        </a>
+
+        <!-- 1.4 -->
+        <a href="lezione-1-4.html" class="module-card reveal reveal-delay-1" style="--m-color:var(--m1)">
+          <div class="module-card-header">
+            <div class="module-number">1.4</div>
+            <div class="module-card-title">
+              <div class="module-tag">Protocollo MAC</div>
+              <h3>CSMA/CA & Hidden Node</h3>
+            </div>
+          </div>
+          <p style="font-size:0.84rem; color:var(--text-muted); margin:0;">
+            Simulatore dinamico del nodo nascosto, contesa RTS/CTS, timer NAV e perché un telefono con segnale debole rallenta tutta l'aula.
+          </p>
+          <div class="module-card-footer" style="margin-top:0.75rem;">
+            <span class="module-start-btn">Inizia Lezione →</span>
+          </div>
+        </a>
+
+        <!-- 1.5 -->
+        <a href="lezione-1-5.html" class="module-card reveal reveal-delay-2" style="--m-color:var(--m1)">
+          <div class="module-card-header">
+            <div class="module-number">1.5</div>
+            <div class="module-card-title">
+              <div class="module-tag">Strato Fisico 3D</div>
+              <h3>MIMO & Beamforming 3D</h3>
+            </div>
+          </div>
+          <p style="font-size:0.84rem; color:var(--text-muted); margin:0;">
+            Modello 3D esplorabile con Three.js del fascio di Beamforming, ortogonalità OFDM, rimbalzi multipath sfruttati dal MIMO e modulazioni QAM.
+          </p>
+          <div class="module-card-footer" style="margin-top:0.75rem;">
+            <span class="module-start-btn">Inizia Lezione →</span>
+          </div>
+        </a>
+
+        <!-- 1.6 -->
+        <a href="lezione-1-6.html" class="module-card reveal reveal-delay-3" style="--m-color:var(--m1)">
+          <div class="module-card-header">
+            <div class="module-number">1.6</div>
+            <div class="module-card-title">
+              <div class="module-tag">Progettazione</div>
+              <h3>Site Survey & Sicurezza</h3>
+            </div>
+          </div>
+          <p style="font-size:0.84rem; color:var(--text-muted); margin:0;">
+            Calcolatore di Link Budget e attenuazione pareti, come si bucava il WEP in 60 secondi e perché WPA3 Dragonfly è a prova di attacco.
+          </p>
+          <div class="module-card-footer" style="margin-top:0.75rem;">
+            <span class="module-start-btn">Inizia Lezione →</span>
+          </div>
+        </a>
+
+        <!-- LAB COPERTURA -->
+        <a href="lab-copertura.html" class="module-card reveal reveal-delay-1" style="--m-color:var(--success)">
+          <div class="module-card-header">
+            <div class="module-number">🔬</div>
+            <div class="module-card-title">
+              <div class="module-tag" style="color:var(--success)">Esperienza Pratica</div>
+              <h3>Simulatore Heatmap RF</h3>
+            </div>
+          </div>
+          <p style="font-size:0.84rem; color:var(--text-muted); margin:0;">
+            Trascina l'Access Point sulla planimetria scolastica e misura l'attenuazione delle onde radio attraverso le pareti dell'edificio.
+          </p>
+          <div class="module-card-footer" style="margin-top:0.75rem;">
+            <span class="module-start-btn" style="color:var(--success)">Apri Laboratorio →</span>
+          </div>
+        </a>
+
+        <!-- VERIFICA COMPLETA -->
+        <a href="verifica.html" class="module-card reveal reveal-delay-2" style="--m-color:var(--warning)">
+          <div class="module-card-header">
+            <div class="module-number">📋</div>
+            <div class="module-card-title">
+              <div class="module-tag" style="color:var(--warning)">Valutazione</div>
+              <h3>Compito Sommativo M1</h3>
+            </div>
+          </div>
+          <p style="font-size:0.84rem; color:var(--text-muted); margin:0;">
+            10 quesiti a risposta multipla con voto in decimi, 2 quesiti aperti ed esercizio di Link Budget da allegare su foglio con timer d'aula.
+          </p>
+          <div class="module-card-footer" style="margin-top:0.75rem;">
+            <span class="module-start-btn" style="color:var(--warning)">Inizia Verifica →</span>
+          </div>
+        </a>
+
+      </div>
+
+      <div style="margin-top:2.5rem; display:flex; gap:0.75rem; flex-wrap:wrap;">
+        <a href="../index.html" class="btn btn-ghost">← Torna alla Dashboard Generale</a>
+      </div>
+
+    </div>
+  </main>
+</div>
+<script src="../assets/js/app.js"></script>
+</body>
+</html>

@@ -1,0 +1,320 @@
+<!DOCTYPE html>
+<html lang="it" data-theme="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Laboratorio Virtuale: Simulatore di Copertura RF & Heatmap | Telecomunicazioni 5A</title>
+  <link rel="stylesheet" href="../assets/css/style.css">
+  <style>
+    :root { --m-color: var(--m1); }
+    .lab-canvas-container {
+      position: relative; width: 100%; height: 420px;
+      background: #040814; border: 1px solid var(--border-2);
+      border-radius: var(--r-xl); overflow: hidden; margin: 1.5rem 0;
+      box-shadow: inset 0 0 30px rgba(0,0,0,0.8);
+      cursor: crosshair;
+    }
+    #heatmapCanvas { width: 100%; height: 100%; display: block; }
+    .heatmap-legend {
+      display: flex; align-items: center; justify-content: center; gap: 0.5rem;
+      font-size: 0.75rem; font-family: var(--font-mono); color: var(--text-muted);
+      margin-top: 0.5rem;
+    }
+    .legend-gradient {
+      width: 220px; height: 10px; border-radius: 99px;
+      background: linear-gradient(90deg, #10b981 0%, #38bdf8 35%, #fbbf24 70%, #ef4444 100%);
+    }
+  </style>
+</head>
+<body data-lesson-id="m1-lab">
+
+<div class="app-layout">
+
+  <!-- HEADER -->
+  <header class="site-header">
+    <a href="../index.html" class="logo-link">
+      <div class="logo-icon">⚡</div>
+      <div class="logo-text">
+        <span class="logo-title text-gradient">Telecomunicazioni 5A</span>
+        <span class="logo-sub">IIS J.C. Maxwell</span>
+      </div>
+    </a>
+
+    <nav class="header-breadcrumb">
+      <a href="../index.html">Home</a>
+      <span>›</span>
+      <a href="index.html">Modulo 1</a>
+      <span>›</span>
+      <span class="current">Laboratorio Copertura RF</span>
+    </nav>
+
+    <div class="header-actions">
+      <button class="btn btn-icon btn-ghost" data-theme-toggle aria-label="Cambia tema"></button>
+    </div>
+  </header>
+
+  <!-- SIDEBAR -->
+  <nav class="sidebar">
+    <div class="sidebar-module-badge">
+      <div class="module-dot" style="background:var(--m1); box-shadow: 0 0 10px var(--m1);"></div>
+      <span class="module-label" style="color:var(--m1)">Modulo 1 · WLAN</span>
+    </div>
+
+    <span class="sidebar-section-title">Percorso Guidato</span>
+    <ul class="sidebar-nav">
+      <li data-lesson="m1-1"><a href="lezione-1-1.html"><span class="lesson-num">1.1</span><span class="lesson-title">Introduzione alle WLAN</span></a></li>
+      <li data-lesson="m1-2"><a href="lezione-1-2.html"><span class="lesson-num">1.2</span><span class="lesson-title">Standard IEEE 802.11</span></a></li>
+      <li data-lesson="m1-3"><a href="lezione-1-3.html"><span class="lesson-num">1.3</span><span class="lesson-title">Canali Radio & Spettro</span></a></li>
+      <li data-lesson="m1-4"><a href="lezione-1-4.html"><span class="lesson-num">1.4</span><span class="lesson-title">CSMA/CA & Collisioni</span></a></li>
+      <li data-lesson="m1-5"><a href="lezione-1-5.html"><span class="lesson-num">1.5</span><span class="lesson-title">Strato Fisico & Modulazioni</span></a></li>
+      <li data-lesson="m1-6"><a href="lezione-1-6.html"><span class="lesson-num">1.6</span><span class="lesson-title">Progettazione & Site Survey</span></a></li>
+    </ul>
+
+    <span class="sidebar-section-title">Pratica & Verifiche</span>
+    <ul class="sidebar-nav">
+      <li class="active"><a href="lab-copertura.html"><span class="lesson-num">🔬</span><span class="lesson-title">Simulatore Copertura RF</span></a></li>
+      <li><a href="verifica.html"><span class="lesson-num">📋</span><span class="lesson-title">Compito & Verifica M1</span></a></li>
+    </ul>
+  </nav>
+
+  <!-- CONTENUTO PRINCIPALE -->
+  <main class="main-content">
+    <div class="content-wrap">
+
+      <header class="lesson-hero reveal">
+        <div class="lesson-hero-bg-num">LAB</div>
+        <div class="lesson-hero-content">
+          <div class="lesson-meta">
+            <span class="lesson-badge lesson-badge-module">Attività Pratica di Laboratorio</span>
+            <span class="lesson-badge lesson-badge-num">Site Survey Tool</span>
+          </div>
+
+          <h1 class="lesson-title-h1">Simulatore di Copertura Radioelettrica (Heatmap RF)</h1>
+          <p class="lesson-subtitle">
+            Trascina l'Access Point sulla planimetria scolastica e osserva la propagazione delle onde radio attraverso pareti in cartongesso e muri in cemento armato.
+          </p>
+        </div>
+      </header>
+
+      <!-- COMANDI SIMULATORE -->
+      <div style="display:flex; gap:1rem; flex-wrap:wrap; align-items:center; margin-bottom:1rem;">
+        <div>
+          <span style="font-size:0.8rem; color:var(--text-muted); text-transform:uppercase; font-weight:700;">Frequenza di Trasmissione:</span>
+          <div style="display:inline-flex; gap:0.4rem; margin-left:0.5rem;">
+            <button class="btn btn-sm btn-primary" id="btnFreq24" onclick="HeatmapLab.setFreq(2.4)">2.4 GHz</button>
+            <button class="btn btn-sm btn-ghost" id="btnFreq5" onclick="HeatmapLab.setFreq(5.0)">5.0 GHz</button>
+          </div>
+        </div>
+
+        <div style="margin-left:auto; font-size:0.82rem; color:var(--text-muted);">
+          📍 <strong>Clicca o trascina</strong> sulla mappa per riposizionare l'Access Point.
+        </div>
+      </div>
+
+      <!-- CANVAS HEATMAP -->
+      <div class="lab-canvas-container" id="canvasBox">
+        <canvas id="heatmapCanvas"></canvas>
+      </div>
+
+      <div class="heatmap-legend">
+        <span>Segnale Eccellente (-40 dBm)</span>
+        <div class="legend-gradient"></div>
+        <span>Limite Disconnessione (-85 dBm)</span>
+      </div>
+
+      <!-- REPORT DIAGNOSTICO -->
+      <div class="box box-info" style="margin-top:2rem;">
+        <div class="box-label">📊 Relazione di Misura in Tempo Reale</div>
+        <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(200px, 1fr)); gap:1rem; margin-top:0.5rem;">
+          <div>
+            <span style="font-size:0.75rem; color:var(--text-muted); text-transform:uppercase;">Posizione AP:</span><br>
+            <strong id="diagCoord" style="font-family:var(--font-mono); color:var(--text);">X: 250m, Y: 150m</strong>
+          </div>
+          <div>
+            <span style="font-size:0.75rem; color:var(--text-muted); text-transform:uppercase;">Frequenza Attiva:</span><br>
+            <strong id="diagFreq" style="font-family:var(--font-mono); color:var(--primary);">2.4 GHz (Maggiore Penetrazione)</strong>
+          </div>
+          <div>
+            <span style="font-size:0.75rem; color:var(--text-muted); text-transform:uppercase;">Copertura Aula 3:</span><br>
+            <strong id="diagCoverage" style="color:var(--success);">Garantita (> -65 dBm)</strong>
+          </div>
+        </div>
+      </div>
+
+      <div style="margin-top:2.5rem; display:flex; justify-content:space-between; align-items:center;">
+        <a href="lezione-1-6.html" class="btn btn-ghost">← Torna a Lezione 1.6</a>
+        <a href="verifica.html" class="btn btn-primary">Procedi alla Verifica del Modulo 1 →</a>
+      </div>
+
+    </div>
+  </main>
+</div>
+
+<script src="../assets/js/app.js"></script>
+<script>
+const HeatmapLab = (() => {
+  let canvas, ctx;
+  let apX = 260, apY = 160;
+  let freq = 2.4;
+  let isDragging = false;
+
+  // Pareti nella planimetria [x1, y1, x2, y2, tipo, perdita_dB]
+  const walls = [
+    { x1: 50,  y1: 40,  x2: 550, y2: 40,  type: 'conc', loss: 12 }, // Perimetro sup
+    { x1: 50,  y1: 360, x2: 550, y2: 360, type: 'conc', loss: 12 }, // Perimetro inf
+    { x1: 50,  y1: 40,  x2: 50,  y2: 360, type: 'conc', loss: 12 }, // Perimetro sx
+    { x1: 550, y1: 40,  x2: 550, y2: 360, type: 'conc', loss: 12 }, // Perimetro dx
+    { x1: 220, y1: 40,  x2: 220, y2: 240, type: 'conc', loss: 12 }, // Muro divisorio aula 1
+    { x1: 380, y1: 160, x2: 380, y2: 360, type: 'dry',  loss: 4  }, // Tramezza cartongesso
+    { x1: 50,  y1: 200, x2: 220, y2: 200, type: 'dry',  loss: 4  }  // Tramezza lab
+  ];
+
+  function init() {
+    canvas = document.getElementById('heatmapCanvas');
+    ctx = canvas.getContext('2d');
+    resize();
+
+    window.addEventListener('resize', resize);
+
+    canvas.addEventListener('mousedown', onDown);
+    canvas.addEventListener('mousemove', onMove);
+    window.addEventListener('mouseup', onUp);
+
+    canvas.addEventListener('touchstart', (e) => {
+      const touch = e.touches[0];
+      const rect = canvas.getBoundingClientRect();
+      apX = touch.clientX - rect.left;
+      apY = touch.clientY - rect.top;
+      draw();
+    });
+
+    draw();
+  }
+
+  function resize() {
+    const box = document.getElementById('canvasBox');
+    canvas.width = box.clientWidth;
+    canvas.height = box.clientHeight;
+    draw();
+  }
+
+  function setFreq(f) {
+    freq = f;
+    document.getElementById('btnFreq24').className = freq === 2.4 ? 'btn btn-sm btn-primary' : 'btn btn-sm btn-ghost';
+    document.getElementById('btnFreq5').className = freq === 5.0 ? 'btn btn-sm btn-primary' : 'btn btn-sm btn-ghost';
+    document.getElementById('diagFreq').innerText = freq === 2.4 ? '2.4 GHz (Maggiore Portata)' : '5.0 GHz (Minore Penetrazione)';
+    draw();
+  }
+
+  function onDown(e) {
+    isDragging = true;
+    updateApPos(e);
+  }
+
+  function onMove(e) {
+    if (isDragging) updateApPos(e);
+  }
+
+  function onUp() {
+    isDragging = false;
+  }
+
+  function updateApPos(e) {
+    const rect = canvas.getBoundingClientRect();
+    apX = e.clientX - rect.left;
+    apY = e.clientY - rect.top;
+    document.getElementById('diagCoord').innerText = `X: ${Math.round(apX)}px, Y: ${Math.round(apY)}px`;
+    draw();
+  }
+
+  function draw() {
+    if (!ctx) return;
+    const w = canvas.width;
+    const h = canvas.height;
+
+    ctx.clearRect(0, 0, w, h);
+
+    // 1. RENDER HEATMAP A BASSA RISOLUZIONE
+    const step = 10;
+    const baseLoss = freq === 2.4 ? 0.045 : 0.075;
+
+    for (let x = 0; x < w; x += step) {
+      for (let y = 0; y < h; y += step) {
+        const dx = x - apX;
+        const dy = y - apY;
+        const dist = Math.sqrt(dx * dx + dy * dy);
+
+        // Calcolo muri attraversati
+        let wallLoss = 0;
+        walls.forEach(wall => {
+          if (lineIntersects(apX, apY, x, y, wall.x1, wall.y1, wall.x2, wall.y2)) {
+            wallLoss += (freq === 5.0 ? wall.loss * 1.4 : wall.loss);
+          }
+        });
+
+        // Stima RSSI: da -35 a -90 dBm
+        const rssi = -35 - (dist * baseLoss * 4) - wallLoss;
+
+        if (rssi > -85) {
+          ctx.fillStyle = getRssiColor(rssi);
+          ctx.fillRect(x, y, step, step);
+        }
+      }
+    }
+
+    // 2. DISEGNA PLANIMETRIA AULE
+    ctx.lineWidth = 4;
+    walls.forEach(wall => {
+      ctx.strokeStyle = wall.type === 'conc' ? '#475569' : '#0ea5e9';
+      ctx.beginPath();
+      ctx.moveTo(wall.x1, wall.y1);
+      ctx.lineTo(wall.x2, wall.y2);
+      ctx.stroke();
+    });
+
+    // Etichette stanze
+    ctx.fillStyle = '#94a3b8';
+    ctx.font = '11px JetBrains Mono';
+    ctx.fillText('AULA 1 (MATEMATICA)', 70, 70);
+    ctx.fillText('LABORATORIO TELECOM', 70, 230);
+    ctx.fillText('AULA MAGNA (5 GHz TARGET)', 240, 70);
+    ctx.fillText('CORRIDOIO CENTRALE', 400, 340);
+
+    // 3. DISEGNA ICONA ACCESS POINT
+    ctx.beginPath();
+    ctx.arc(apX, apY, 14, 0, Math.PI * 2);
+    ctx.fillStyle = '#0ea5e9';
+    ctx.fill();
+    ctx.strokeStyle = '#ffffff';
+    ctx.lineWidth = 2;
+    ctx.stroke();
+
+    ctx.fillStyle = '#000000';
+    ctx.font = 'bold 11px Inter';
+    ctx.textAlign = 'center';
+    ctx.textBaseline = 'middle';
+    ctx.fillText('AP', apX, apY);
+  }
+
+  function getRssiColor(rssi) {
+    if (rssi > -55) return 'rgba(16, 185, 129, 0.45)'; // Verde
+    if (rssi > -67) return 'rgba(56, 189, 248, 0.35)'; // Blu ciano
+    if (rssi > -78) return 'rgba(251, 191, 36, 0.28)'; // Giallo
+    return 'rgba(239, 68, 68, 0.22)';                  // Rosso
+  }
+
+  function lineIntersects(p0_x, p0_y, p1_x, p1_y, p2_x, p2_y, p3_x, p3_y) {
+    let s1_x = p1_x - p0_x, s1_y = p1_y - p0_y;
+    let s2_x = p3_x - p2_x, s2_y = p3_y - p2_y;
+    let s = (-s1_y * (p0_x - p2_x) + s1_x * (p0_y - p2_y)) / (-s2_x * s1_y + s1_x * s2_y);
+    let t = ( s2_x * (p0_y - p2_y) - s2_y * (p0_x - p2_x)) / (-s2_x * s1_y + s1_x * s2_y);
+    return (s >= 0 && s <= 1 && t >= 0 && t <= 1);
+  }
+
+  return { init, setFreq };
+})();
+
+document.addEventListener('DOMContentLoaded', HeatmapLab.init);
+</script>
+</body>
+</html>
