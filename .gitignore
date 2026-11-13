@@ -1,0 +1,7 @@
+.local/
+.env
+.env.*
+!.env.example
+*.log
+Thumbs.db
+Desktop.ini
