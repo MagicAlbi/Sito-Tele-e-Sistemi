@@ -1,0 +1,104 @@
+/* Modulo 1: esperimenti e presentazione; tema originale del sito. */
+.module-one .main-content, .module-one .content-wrap { min-width: 0; }
+.module-one .content-wrap { width: 100%; }
+.module-one .reveal { opacity: 1; transform: none; transition: none; }
+/* La grafica delle pagine resta quella blu originale di style.css. */
+.module-one .lab-panel { border-radius: 10px; overflow: hidden; }
+.module-one .lab-heading { border-left: 3px solid var(--primary); padding-left: .8rem; }
+.module-one .lab-panel [data-drawing] { overflow-x: auto; }
+.module-one .lab-panel .lab-diagram { border-radius: 6px; }
+.module-one .lab-readout { background: var(--primary-subtle); padding: 1rem; border-left: 2px solid var(--primary); border-radius: 0 6px 6px 0; }
+.module-one .table-scroll { width: 100%; max-width: 100%; }
+.module-one .btn:focus-visible, .module-one select:focus-visible, .module-one input:focus-visible { outline: 2px solid var(--primary); outline-offset: 3px; }
+.module-one .lab-panel { background: var(--surface); border: 1px solid var(--border-2); padding: clamp(1rem, 3vw, 2rem); margin: 1.5rem 0; }
+.module-one .lab-heading { display: flex; gap: 1rem; align-items: baseline; padding-bottom: .8rem; border-bottom: 1px solid var(--border); margin-bottom: 1rem; }
+.module-one .lab-heading span { font: .7rem var(--font-mono); color: var(--primary); text-transform: uppercase; letter-spacing: .1em; }
+.module-one .lab-heading h3 { margin: 0; }
+.module-one .lab-controls { display: flex; gap: .7rem 1.3rem; align-items: end; flex-wrap: wrap; margin: 1rem 0; }
+.module-one .lab-controls label { display: grid; gap: .35rem; flex: 1 1 150px; font-size: .85rem; color: var(--text-muted); }
+.module-one input[type="range"] { width: 100%; accent-color: var(--primary); cursor: pointer; }
+.module-one select, .module-one input[type="number"] { min-height: 42px; background: var(--bg); border: 1px solid var(--border-2); border-radius: 2px; color: var(--text); padding: .5rem; width: 100%; font: inherit; }
+.module-one .lab-readout { border-top: 1px solid var(--border); padding-top: 1rem; margin-top: 1rem; min-height: 5rem; }
+.module-one .lab-readout strong { color: var(--primary); }
+.module-one .lab-note { color: var(--text-muted); font-size: .8rem; margin: .8rem 0 0; }
+.module-one .lab-diagram { width: 100%; height: auto; display: block; background: var(--bg); border: 1px solid var(--border); }
+.module-one .lab-diagram text { font-family: var(--font-mono); fill: var(--text); font-size: 13px; }
+.module-one .lab-diagram .accent { fill: var(--primary); }
+.module-one .lab-diagram .wire { stroke: var(--primary); stroke-width: 3; fill: none; }
+.module-one .lab-diagram .device { fill: var(--surface-2); stroke: var(--border-2); stroke-width: 2; }
+.module-one .lab-diagram .faint { stroke: var(--border-2); stroke-width: 1; fill: none; }
+.module-one .lab-diagram .signal { fill: var(--primary); opacity: .2; }
+.module-one .lab-diagram .warning { fill: var(--error); }
+.module-one .lab-diagram .packet { fill: var(--primary); }
+.module-one .lab-diagram .packet-b { fill: var(--warning); }
+.module-one .lab-diagram .caption { font-size: 11px; fill: var(--text-muted); }
+.module-one .key-idea { display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; margin: 1.5rem 0; }
+.module-one .key-idea > div { border-top: 2px solid var(--primary); padding-top: .7rem; }
+.module-one .key-idea p { font-size: .95rem; }
+.module-one .formula { font-family: var(--font-mono); padding: 1rem; background: var(--surface-2); border-left: 3px solid var(--primary); overflow-wrap: anywhere; }
+.module-one .table-scroll { overflow-x: auto; }
+.module-one .timeline { display: grid; grid-template-columns: repeat(4,1fr); gap: 2px; margin: 1rem 0; }
+.module-one .timeline > div { padding: .8rem; border: 1px solid var(--border); background: var(--bg); }
+.module-one .timeline .current { border: 2px solid var(--primary); background: var(--primary-subtle); }
+.module-one .timeline small { display: block; color: var(--text-muted); }
+.module-one .meter { height: 13px; background: var(--surface-2); margin: .8rem 0; }
+.module-one .meter > span { height: 100%; display: block; background: var(--primary); }
+.module-one .sources { font-size: .8rem; color: var(--text-muted); margin: 1.5rem 0; }
+.module-one .sources a { color: var(--primary); text-decoration: underline; }
+body.presenting { overflow: hidden; }
+.presenter-slides-wrap { min-height: 0; }
+.presenter-slide { height: 100%; box-sizing: border-box; }
+.presenter-slide.reveal { opacity: 1 !important; transform: none !important; }
+.module-one.presenting .reveal { opacity: 1 !important; transform: none !important; }
+.module-one .presenter-topbar { padding: .7rem 1.5rem; background: var(--surface); }
+.module-one .presenter-title { max-width: 65vw; font-size: .9rem; }
+.module-one .presenter-slide { padding: 1.5rem max(4%, calc((100vw - 1100px)/2)); border: none; }
+.module-one .presenter-slide h2 { font-size: 2rem; }
+.module-one .presenter-slide .lab-panel { margin: 1rem 0; }
+.module-one .presenter-controls { padding: .6rem 1.5rem; background: var(--surface); }
+.module-one .presenter-slide .lab-diagram { max-height: 42vh; }
+.module-one .presenter-slide .lab-heading { display: none; }
+.module-one .presenter-slide .lab-panel { padding: 1rem; }
+.module-one .presenter-slide .lab-panel > p { font-size: .95rem; margin-bottom: .5rem; }
+.module-one .presenter-slide .lab-diagram { max-height: 24vh; }
+.module-one .presenter-slide .timeline { grid-template-columns: repeat(6, 1fr); gap: 2px; margin: .5rem 0; }
+.module-one .presenter-slide .timeline > div { font-size: .8rem; padding: .4rem; }
+.module-one .presenter-slide .lab-readout { min-height: 0; padding-top: .6rem; margin-top: .6rem; font-size: .95rem; }
+.module-one .presenter-slide .lab-note { font-size: .75rem !important; }
+.module-one .print-answer { display: none; white-space: pre-wrap; }
+@media(max-width: 700px) {
+  .module-one .key-idea { grid-template-columns: 1fr; gap: .8rem; }
+  .module-one .timeline { grid-template-columns: 1fr 1fr; }
+  .module-one .lab-heading { display: block; }
+  .module-one .lab-heading h3 { margin-top: .3rem; }
+  .module-one .site-header { gap: .5rem; padding-left: .8rem; padding-right: .8rem; }
+  .module-one .logo-link { min-width: 0; flex: 1; gap: .4rem; }
+  .module-one .header-actions { flex-shrink: 0; gap: .35rem; }
+  .module-one .header-actions .btn-present { font-size: 0; padding: .5rem; width: 34px; height: 34px; }
+  .module-one .header-actions .btn-present svg { width: 17px; height: 17px; flex-shrink: 0; }
+  .module-one .logo-title { font-size: .8rem; }
+  .module-one .logo-sub { font-size: .6rem; }
+  .module-one .presenter-title, .module-one .presenter-info { display: none; }
+  .module-one .presenter-controls > div { display: none; }
+  .module-one .presenter-nav-btn { padding: .5rem .8rem; }
+  .module-one .presenter-slide .timeline { grid-template-columns: repeat(2, 1fr); }
+  .module-one .lab-panel .lab-diagram { min-width: 540px; }
+  .module-one .lab-panel [data-drawing]::after { content: '↔ Scorri lo schema per vederlo interamente'; display: block; font-size: .7rem; color: var(--text-muted); padding-top: .3rem; }
+}
+@media print {
+  body.module-one { --bg: #fff; --surface: #fff; --surface-2: #f3f3f3; --text: #111; --text-muted: #444; --primary: #17505a; --border: #bbb; --border-2: #999; background: #fff; color: #111; }
+  .module-one .reveal { opacity: 1 !important; transform: none !important; }
+  .module-one .site-header, .module-one .sidebar, .module-one .lab-controls, .module-one .presenter-controls, .module-one .presenter-topbar, .module-one .mark-done-wrap { display: none !important; }
+  .module-one .slide { break-inside: auto; }
+  .module-one .lab-panel, .module-one .lab-diagram, .module-one tr { break-inside: avoid; }
+  .module-one .lab-panel { padding: .7rem; }
+  .module-one .lab-panel .lab-diagram { min-width: 0; }
+  .module-one .lab-panel [data-drawing]::after { display: none; }
+  .module-one .print-answer { display: block; min-height: 5rem; border-bottom: 1px solid #aaa; }
+  .module-one textarea { display: none; }
+  .module-one .slides-presenter { position: static; display: block; }
+  .module-one .presenter-slide { display: block; height: auto; padding: 0; overflow: visible; }
+  .module-one .presenter-slides-wrap { overflow: visible !important; }
+  .module-one .sources { font-size: 8pt; }
+}
+@media(prefers-reduced-motion: reduce) { .module-one *, .module-one *::before, .module-one *::after { animation: none !important; transition: none !important; } }

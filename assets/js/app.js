@@ -11,7 +11,7 @@ const ThemeManager = (() => {
   const root = document.documentElement;
 
   function get() {
-    return localStorage.getItem(KEY) || 'dark'; // Dark mode di default per il look "wow"
+    return localStorage.getItem(KEY) || 'dark';
   }
 
   function set(theme) {
@@ -289,6 +289,9 @@ const PresentationMode = (() => {
   let counterEl = null;
   let prevBtn = null;
   let nextBtn = null;
+  let origins = [];
+  let returnFocus = null;
+  let scrollPosition = 0;
 
   function buildPresenter() {
     const pageSections = document.querySelectorAll('.slide');
@@ -303,7 +306,7 @@ const PresentationMode = (() => {
     presenterEl.innerHTML = `
       <div class="presenter-topbar">
         <div>
-          <div class="presenter-info">📡 Telecomunicazioni 5A · Modo Presentazione</div>
+          <div class="presenter-info">Maxwell / Laboratorio di telecomunicazioni</div>
           <div class="presenter-title">${lessonTitle}</div>
         </div>
         <div class="presenter-counter">
@@ -330,15 +333,12 @@ const PresentationMode = (() => {
     wrap.style.overflow = 'hidden';
     wrap.style.position = 'relative';
 
-    slides.forEach((section, i) => {
-      const clone = section.cloneNode(true);
-      clone.className = 'presenter-slide';
-      clone.dataset.slideIndex = i;
-      if (i === 0) clone.classList.add('active-slide');
-      wrap.appendChild(clone);
-    });
-
     document.body.appendChild(presenterEl);
+    presenterEl.setAttribute('role', 'dialog');
+    presenterEl.setAttribute('aria-modal', 'true');
+    presenterEl.setAttribute('aria-label', 'Presentazione della lezione');
+    counterEl = presenterEl.querySelector('#slideNum');
+    counterEl.setAttribute('aria-live', 'polite');
 
     counterEl = presenterEl.querySelector('#slideNum');
     prevBtn   = presenterEl.querySelector('#prevSlide');
@@ -355,26 +355,74 @@ const PresentationMode = (() => {
     const presSlides = presenterEl.querySelectorAll('.presenter-slide');
     if (idx < 0 || idx >= presSlides.length) return;
     presSlides[currentSlide].classList.remove('active-slide');
+    presSlides[currentSlide].inert = true;
     currentSlide = idx;
     presSlides[currentSlide].classList.add('active-slide');
+    presSlides[currentSlide].inert = false;
     presSlides[currentSlide].scrollTop = 0;
     if (counterEl) counterEl.textContent = currentSlide + 1;
     if (prevBtn) prevBtn.disabled = currentSlide === 0;
     if (nextBtn) nextBtn.disabled = currentSlide === presSlides.length - 1;
+    window.dispatchEvent(new Event('resize'));
   }
 
   function start() {
+    if (document.body.classList.contains('presenting')) return;
     if (!presenterEl) { if (!buildPresenter()) return; }
+    returnFocus = document.activeElement;
+    scrollPosition = window.scrollY;
+    const wrap = presenterEl.querySelector('#presenterSlidesWrap');
+    // Move live elements, never copies. Give each experiment its own screen.
+    origins = [];
+    slides.forEach(section => {
+      let page = null;
+      const title = section.querySelector('h2')?.textContent || 'Lezione';
+      const newPage = (heading) => {
+        page = document.createElement('section');
+        page.className = 'presenter-slide';
+        page.inert = true;
+        page.tabIndex = -1;
+        if (heading) {
+          const h = document.createElement('h2');
+          h.textContent = heading;
+          page.appendChild(h);
+        }
+        wrap.appendChild(page);
+      };
+      Array.from(section.children).forEach(element => {
+        const experiment = element.matches('.lab-panel');
+        if (experiment) newPage(element.querySelector('h3')?.textContent || title);
+        else if (!page || (page.textContent.length > 1300) || (element.matches('h3') && page.children.length > 2)) {
+          newPage(element.matches('h2, h3') ? '' : title + ' · continua');
+        }
+        const marker = document.createComment('presentation-origin');
+        element.before(marker);
+        page.appendChild(element);
+        origins.push({ element, marker });
+        if (experiment) page = null;
+      });
+    });
+    presenterEl.querySelector('#slideTotal').textContent = wrap.children.length;
+    document.querySelector('.app-layout').inert = true;
     currentSlide = 0;
-    goTo(0);
     document.body.classList.add('presenting');
+    goTo(0);
+    presenterEl.querySelector('#exitPresent').focus();
     if (document.documentElement.requestFullscreen) {
       document.documentElement.requestFullscreen().catch(() => {});
     }
   }
 
   function stop() {
+    if (!document.body.classList.contains('presenting')) return;
     document.body.classList.remove('presenting');
+    origins.forEach(({ element, marker }) => marker.replaceWith(element));
+    origins = [];
+    presenterEl.querySelector('#presenterSlidesWrap').replaceChildren();
+    document.querySelector('.app-layout').inert = false;
+    returnFocus?.focus({ preventScroll: true });
+    window.scrollTo(0, scrollPosition);
+    window.dispatchEvent(new Event('resize'));
     if (document.exitFullscreen && document.fullscreenElement) {
       document.exitFullscreen().catch(() => {});
     }
@@ -382,6 +430,17 @@ const PresentationMode = (() => {
 
   function handleKey(e) {
     if (!document.body.classList.contains('presenting')) return;
+    if (e.key === 'Escape') { stop(); return; }
+    if (e.key === 'Tab') {
+      const focusable = Array.from(presenterEl.querySelectorAll('button, a[href], input, select, textarea, [tabindex="0"]'))
+        .filter(el => !el.disabled && !el.closest('[inert]') && el.getClientRects().length);
+      const first = focusable[0], last = focusable[focusable.length - 1];
+      if (e.shiftKey && document.activeElement === first) { e.preventDefault(); last.focus(); }
+      else if (!e.shiftKey && document.activeElement === last) { e.preventDefault(); first.focus(); }
+      return;
+    }
+    if (e.target.closest('input, select, textarea, canvas, [contenteditable="true"]')) return;
+    if (e.key === ' ' && e.target.closest('button, a')) return;
     if (e.key === 'ArrowRight' || e.key === ' ' || e.key === 'ArrowDown') {
       e.preventDefault(); goTo(currentSlide + 1);
     }

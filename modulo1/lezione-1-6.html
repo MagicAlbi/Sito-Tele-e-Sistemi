@@ -12,8 +12,10 @@
       border-radius: var(--r-xl); padding: 1.5rem; margin: 1.5rem 0;
     }
   </style>
+  <link rel="stylesheet" href="../assets/css/modulo1.css">
+  <link rel="stylesheet" href="../assets/css/esperimenti.css">
 </head>
-<body data-lesson-id="m1-6">
+<body class="module-one" data-lesson-id="m1-6">
 
 <div class="app-layout">
 
@@ -164,7 +166,7 @@
       <div class="tldr reveal">
         <span class="tldr-icon">⚡</span>
         <div>
-          <strong>TL;DR in 15 secondi:</strong> Progettare una rete wireless richiede due competenze: <strong>1. Calcolo del Link Budget</strong> (sommare potenze e guadagni d'antenna in dBm e sottrarre l'attenuazione di spazio libero e muri per garantire un RSSI $\ge -67\text{ dBm}$) e <strong>2. Sicurezza</strong> (il vecchio WEP si buca in 60 secondi, WPA2 è vulnerabile a dizionario offline catturando l'handshake, mentre <strong>WPA3 SAE Dragonfly</strong> protegge matematicamente anche da password deboli!).
+          <strong>TL;DR in 15 secondi:</strong> Progettare una rete wireless richiede due competenze: <strong>1. Calcolo del Link Budget</strong> (sommare potenze e guadagni d'antenna in dBm e sottrarre l'attenuazione di spazio libero e muri per garantire un RSSI ≥ -67 dBm) e <strong>2. Sicurezza</strong> (il vecchio WEP si buca in 60 secondi, WPA2 è vulnerabile a dizionario offline catturando l'handshake, mentre <strong>WPA3 SAE Dragonfly</strong> protegge matematicamente anche da password deboli!).
         </div>
       </div>
 
@@ -175,78 +177,15 @@
         <h2>1. Il Bilancio di Collegamento (Link Budget)</h2>
 
         <p>
-          Il <strong>Link Budget</strong> è la contabilità matematica della potenza radio. La potenza con cui il segnale giunge al ricevitore ($P_{rx}$) deve superare la <strong>sensibilità di soglia</strong> del chip Wi-Fi ($S_{rx}$), altrimenti il segnale scompare nel rumore termico di fondo:
+          Il <strong>Link Budget</strong> è la contabilità matematica della potenza radio. La potenza con cui il segnale giunge al ricevitore (P<sub>rx</sub>) deve superare la <strong>sensibilità di soglia</strong> del chip Wi-Fi (S<sub>rx</sub>), altrimenti il segnale scompare nel rumore termico di fondo:
         </p>
 
         <div style="background:var(--surface); border:1px solid var(--border-2); border-radius:var(--r-md); padding:1rem 1.25rem; font-family:var(--font-mono); font-size:0.95rem; color:var(--primary); margin:1rem 0;">
-          $$P_{rx}\text{ (dBm)} = P_{tx} + G_{tx} - L_{FS} - L_{ostacoli} + G_{rx}$$
+          P<sub>rx</sub> (dBm) = P<sub>tx</sub> + G<sub>tx</sub> - L<sub>FS</sub> - L<sub>ostacoli</sub> + G<sub>rx</sub>
         </div>
 
         <!-- SIMULATORE LINK BUDGET -->
-        <div class="budget-calc-card">
-          <div class="interactive-title">
-            <span class="badge-live">Live Link Budget Calculator</span>
-            <span>Simula la Potenza Ricevuta dal tuo Telefono</span>
-          </div>
-
-          <div style="display:grid; grid-template-columns: 1fr 1fr; gap:1.25rem;">
-            <div class="tech-slider-group">
-              <div class="tech-slider-header">
-                <span>Distanza dall'Access Point</span>
-                <span class="val" id="dispDist">12 metri</span>
-              </div>
-              <input type="range" class="tech-slider" id="rangeDist" min="1" max="40" value="12" oninput="LinkCalc.compute()">
-            </div>
-
-            <div class="tech-slider-group">
-              <div class="tech-slider-header">
-                <span>Frequenza Radio</span>
-                <span class="val" id="dispFreq">5.0 GHz</span>
-              </div>
-              <select id="selFreq" style="background:var(--surface); color:var(--text); border:1px solid var(--border-2); padding:0.5rem; border-radius:var(--r-sm); font-family:var(--font-mono); font-size:0.85rem;" onchange="LinkCalc.compute()">
-                <option value="2.4">2.4 GHz (Minore attenuazione)</option>
-                <option value="5.0" selected>5.0 GHz (Maggiore attenuazione)</option>
-              </select>
-            </div>
-          </div>
-
-          <div style="display:grid; grid-template-columns: 1fr 1fr; gap:1.25rem; margin-top:1rem;">
-            <div class="tech-slider-group">
-              <div class="tech-slider-header">
-                <span>Pareti in Cartongesso (-3 dB cad.)</span>
-                <span class="val" id="dispDry">1 parete</span>
-              </div>
-              <input type="range" class="tech-slider" id="rangeDry" min="0" max="4" value="1" oninput="LinkCalc.compute()">
-            </div>
-
-            <div class="tech-slider-group">
-              <div class="tech-slider-header">
-                <span>Muri Portanti / Cemento (-12 dB cad.)</span>
-                <span class="val" id="dispConc">1 muro</span>
-              </div>
-              <input type="range" class="tech-slider" id="rangeConc" min="0" max="3" value="1" oninput="LinkCalc.compute()">
-            </div>
-          </div>
-
-          <!-- RISULTATI LINK BUDGET -->
-          <div class="speed-result-grid" style="margin-top:1.5rem;">
-            <div class="speed-stat-card">
-              <div class="speed-stat-val" id="resRSSI">-68 dBm</div>
-              <div class="speed-stat-lbl">Potenza Segnale Ricevuta (RSSI)</div>
-            </div>
-            <div class="speed-stat-card">
-              <div class="speed-stat-val" id="resModulation" style="color:var(--success)">256-QAM</div>
-              <div class="speed-stat-lbl">Massima Modulazione Negoziabile</div>
-            </div>
-          </div>
-
-          <div id="boxBudgetDiag" class="box box-success" style="margin-top:1.25rem; margin-bottom:0;">
-            <div class="box-label" id="budgetDiagTitle">📶 LIVELLO SEGNALE OTTIMO</div>
-            <p id="budgetDiagText" style="margin:0; font-size:0.9rem;">
-              La potenza ricevuta (-68 dBm) supera agevolmente la soglia minima di -75 dBm. La connessione garantisce streaming 4K e videochiamate senza lag.
-            </p>
-          </div>
-        </div>
+        <div class="lab-panel" data-sim="budget"></div>
       </section>
 
       <hr>
@@ -281,7 +220,7 @@
         </div>
 
         <h3>Confronto Sicurezza: Da WPA2 a WPA3</h3>
-        <table class="osi-table">
+        <div class="table-scroll" role="region" aria-label="Tabella scorrevole" tabindex="0"><table class="osi-table">
           <thead>
             <tr>
               <th>Protocollo</th>
@@ -316,7 +255,7 @@
               <td><span style="color:var(--success); font-weight:700;">MASSIMA SICUREZZA ATTUALE</span></td>
             </tr>
           </tbody>
-        </table>
+        </table></div>
 
         <!-- CURIOSITA' SUL TASTO WPS -->
         <div class="box-curiosity">
@@ -329,7 +268,7 @@
               Hai presente il pulsantino <strong>WPS (Wi-Fi Protected Setup)</strong> sul retro dei modem per connettere la stampante senza digitare la password? Molti modem consentivano l'autenticazione tramite un <strong>PIN numerico a 8 cifre</strong>.
             </p>
             <p style="margin-bottom:0">
-              Errore di progettazione fatale: il router verificava separatamente le prime 4 cifre ($10.000$ combinazioni) e poi le ultime 4 (in realtà solo 3 cifre + 1 di checksum: appena $1.000$ combinazioni!). Uno script automatico (come <em>Reaver</em>) provava le $11.000$ combinazioni totali in appena 4-6 ore, rivelando la password WPA2 complessa di 30 caratteri del proprietario! WPA3 ha rimosso definitivamente questo protocollo bacato.
+              Errore di progettazione fatale: il router verificava separatamente le prime 4 cifre (10.000 combinazioni) e poi le ultime 4 (in realtà solo 3 cifre + 1 di checksum: appena 1.000 combinazioni!). Uno script automatico (come <em>Reaver</em>) provava le 11.000 combinazioni totali in appena 4-6 ore, rivelando la password WPA2 complessa di 30 caratteri del proprietario! WPA3 ha rimosso definitivamente questo protocollo bacato.
             </p>
           </div>
         </div>
@@ -354,13 +293,14 @@
       </section>
 
       <!-- COMPLETAMENTO & NAVIGAZIONE -->
+      <p class="sources">Riferimento per l’esperimento: <a href="https://www.itu.int/rec/R-REC-P.525/" target="_blank" rel="noopener noreferrer">ITU-R P.525 · Attenuazione in spazio libero</a>.</p>
       <div class="mark-done-wrap reveal">
         <button class="mark-done-btn">
           ✓ Segna Lezione come Studiata
         </button>
         <div class="lesson-nav-btns">
           <a href="lezione-1-5.html" class="btn btn-ghost">
-            ← 1.5 Strato Fisico & MIMO 3D
+            ← 1.5 Strato Fisico & MIMO
           </a>
           <a href="lab-copertura.html" class="btn btn-primary">
             Passa al Laboratorio Interattivo →
@@ -373,77 +313,11 @@
 </div>
 
 <script src="../assets/js/app.js"></script>
+<script src="../assets/js/modulo1.js"></script>
 <script>
 /* Calcolatore Link Budget */
-const LinkCalc = (() => {
-  function compute() {
-    const d = parseFloat(document.getElementById('rangeDist').value);
-    const freq = parseFloat(document.getElementById('selFreq').value);
-    const dryWalls = parseInt(document.getElementById('rangeDry').value);
-    const concWalls = parseInt(document.getElementById('rangeConc').value);
-
-    document.getElementById('dispDist').innerText = `${d} metri`;
-    document.getElementById('dispFreq').innerText = `${freq.toFixed(1)} GHz`;
-    document.getElementById('dispDry').innerText = `${dryWalls} ${dryWalls === 1 ? 'parete' : 'pareti'}`;
-    document.getElementById('dispConc').innerText = `${concWalls} ${concWalls === 1 ? 'muro' : 'muri'}`;
-
-    // Potenza TX router = +20 dBm (100mW per legge europea)
-    const Ptx = 20; 
-    const Gtx = 3;  // Guadagno antenna router (dBi)
-    const Grx = 0;  // Guadagno antenna smartphone (dBi)
-
-    // Formula Free Space Path Loss (FSPL): 20*log10(d) + 20*log10(f_MHz) - 27.55
-    const fMHz = freq * 1000;
-    const fspl = 20 * Math.log10(d) + 20 * Math.log10(fMHz) - 27.55;
-
-    // Attenuazione ostacoli
-    const lossObstacles = (dryWalls * 3.5) + (concWalls * 12.0);
-
-    // Potenza ricevuta RSSI
-    const Prx = Math.round(Ptx + Gtx - fspl - lossObstacles + Grx);
-
-    document.getElementById('resRSSI').innerText = `${Prx} dBm`;
-
-    const box = document.getElementById('boxBudgetDiag');
-    const title = document.getElementById('budgetDiagTitle');
-    const desc = document.getElementById('budgetDiagText');
-    const modEl = document.getElementById('resModulation');
-
-    if (Prx >= -55) {
-      modEl.innerText = "1024-QAM (Max Velocità)";
-      modEl.style.color = "var(--success)";
-      box.className = "box box-success";
-      title.innerText = "📶 SEGNALE ECCELLENTE (> -55 dBm)";
-      desc.innerText = "Copertura ottimale a bassissima latenza. La scheda negozia la modulazione più alta possibile.";
-    } else if (Prx >= -67) {
-      modEl.innerText = "256-QAM";
-      modEl.style.color = "var(--primary)";
-      box.className = "box box-success";
-      title.innerText = "📶 SEGNALE BUONO / STANDARD ENTERPRISE (-67 dBm)";
-      desc.innerText = "Livello target per reti scolastiche e aziendali. Roaming trasparente garantito e streaming perfetto.";
-    } else if (Prx >= -78) {
-      modEl.innerText = "64-QAM / 16-QAM";
-      modEl.style.color = "var(--warning)";
-      box.className = "box box-warning";
-      title.innerText = "⚠️ SEGNALE AL LIMITE (-78 dBm)";
-      desc.innerText = "La modulazione scala a velocità inferiori per preservare la connessione. Iniziano i primi ritardi e jitter.";
-    } else {
-      modEl.innerText = "BPSK / Disconnessione";
-      modEl.style.color = "var(--error)";
-      box.className = "box box-warning";
-      box.style.borderColor = "var(--error)";
-      title.innerText = "🚨 ZONA D'OMBRA / SEGNALE INSUFFICIENTE (< -80 dBm)";
-      desc.innerText = "Il segnale è troppo debole e collassa nel rumore di fondo. I pacchetti vengono persi a raffica.";
-    }
-  }
-
-  return { compute };
-})();
-
 document.addEventListener('DOMContentLoaded', () => {
-  LinkCalc.compute();
-
-  const quizQuestions = [
+const quizQuestions = [
     {
       question: "Per quale motivo la crittografia WEP è considerata totalmente insicura e vietata?",
       answers: [
@@ -474,8 +348,8 @@ document.addEventListener('DOMContentLoaded', () => {
         { text: "0 dBm", correct: false },
         { text: "-105 dBm", correct: false }
       ],
-      explain_correct: "Perfetto! $P_{rx} = P_{tx} - \\text{Loss} = +20\\text{ dBm} - 85\\text{ dB} = -65\\text{ dBm}$. Un ottimo valore di segnale!",
-      explain_wrong: "I calcoli in decibel si risolvono con semplici somme e sottrazioni: $+20\\text{ dBm} - 85\\text{ dB} = -65\\text{ dBm}$."
+      explain_correct: "Perfetto! P<sub>rx</sub> = P<sub>tx</sub> - Loss = +20 dBm - 85 dB = -65 dBm. Un ottimo valore di segnale!",
+      explain_wrong: "I calcoli in decibel si risolvono con semplici somme e sottrazioni: +20 dBm - 85 dB = -65 dBm."
     },
     {
       question: "Quale livello di segnale RSSI è considerato la soglia standard per garantire chiamate VoIP e roaming senza interruzioni?",
@@ -491,13 +365,13 @@ document.addEventListener('DOMContentLoaded', () => {
     {
       question: "Perché l'uso del PIN WPS a 8 cifre è stato una grave falla di sicurezza?",
       answers: [
-        { text: "Perché il PIN veniva verificato spezzato in due metà ($4 + 4$ cifre), riducendo le combinazioni da 100 milioni a sole 11.000 forzabili in poche ore", correct: true },
+        { text: "Perché il PIN veniva verificato spezzato in due metà (4 + 4 cifre), riducendo le combinazioni da 100 milioni a sole 11.000 forzabili in poche ore", correct: true },
         { text: "Perché il PIN doveva essere scritto con un pennarello sul muro", correct: false },
         { text: "Perché funzionava solo con numeri pari", correct: false },
         { text: "Perché causava il cortocircuito del trasformatore del router", correct: false }
       ],
       explain_correct: "Grandioso! Un madornale errore di progettazione: verificando prima le prime 4 cifre e poi le ultime 4, un attacco a forza bruta impiegava pochissime ore!",
-      explain_wrong: "Il WPS divideva il PIN in due tronconi: l'attaccante scopriva prima se la prima metà era esatta ($10.000$ tentativi) e poi la seconda ($1.000$ tentativi), polverizzando la sicurezza."
+      explain_wrong: "Il WPS divideva il PIN in due tronconi: l'attaccante scopriva prima se la prima metà era esatta (10.000 tentativi) e poi la seconda (1.000 tentativi), polverizzando la sicurezza."
     }
   ];
 

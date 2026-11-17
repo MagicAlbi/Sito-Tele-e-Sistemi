@@ -58,8 +58,10 @@
       fill: var(--primary); filter: drop-shadow(0 0 6px var(--primary));
     }
   </style>
+  <link rel="stylesheet" href="../assets/css/modulo1.css">
+  <link rel="stylesheet" href="../assets/css/esperimenti.css">
 </head>
-<body data-lesson-id="m1-1">
+<body class="module-one" data-lesson-id="m1-1">
 
 <div class="app-layout">
 
@@ -228,7 +230,7 @@
           Confrontiamo punto per punto cosa accade tra una rete Ethernet cablata e una rete wireless:
         </p>
 
-        <table class="osi-table">
+        <div class="table-scroll" role="region" aria-label="Tabella scorrevole" tabindex="0"><table class="osi-table">
           <thead>
             <tr>
               <th>Livello OSI</th>
@@ -262,7 +264,7 @@
               </td>
             </tr>
           </tbody>
-        </table>
+        </table></div>
 
         <div class="box box-info">
           <div class="box-label">🔍 Perché il Livello 2 deve essere diverso?</div>
@@ -511,6 +513,7 @@
 </div>
 
 <script src="../assets/js/app.js"></script>
+<script src="../assets/js/modulo1.js"></script>
 <script>
 /* Logica interattivo topologia */
 const TopoDiagram = (() => {

@@ -1,0 +1,76 @@
+/* Disposizione delle esperienze: il disegno è il centro, i comandi restano vicini. */
+.module-one .lab-panel { scroll-margin-top: calc(var(--header-h) + 1rem); }
+.module-one .ofdma-modes { display: flex; gap: .5rem; margin: 1rem 0; flex-wrap: wrap; }
+.module-one [aria-pressed="true"].btn, .module-one .map-tool[aria-pressed="true"] { background: var(--primary-subtle); border-color: var(--primary); color: var(--primary); }
+.module-one .ofdma-scene { display: grid; grid-template-columns: 110px minmax(150px,1fr) minmax(160px,1fr); align-items: center; gap: 1.4rem; padding: 1.4rem 0; border-block: 1px solid var(--border); }
+.module-one .ofdma-ap { display: grid; text-align: center; gap: .4rem; }
+.module-one .device-outline { margin: auto; display: grid; place-items: center; width: 64px; height: 64px; border: 2px solid var(--primary); border-radius: 10px; font: 700 1.4rem var(--font-mono); color: var(--primary); }
+.module-one .ofdma-scene small { display: block; font-size: .75rem; color: var(--text-muted); margin-top: .35rem; }
+.module-one .scene-label { display: block; font-size: .8rem; margin-bottom: .7rem; }
+.module-one .single-channel { display: grid; place-items: center; min-height: 142px; padding: 1rem; border: 1px solid var(--border-2); text-align: center; font-size: .9rem; }
+.module-one .ru-stack { display: grid; gap: 3px; }
+.module-one .ru { padding: .7rem; font-size: .75rem; border: 1px solid var(--border-2); opacity: .45; }
+.module-one .ru.allocated { opacity: 1; }
+.module-one .ru-0 { --ru-color: var(--primary); }
+.module-one .ru-1 { --ru-color: var(--secondary); }
+.module-one .ru-2 { --ru-color: var(--warning); }
+.module-one .ru, .module-one .single-channel { background: color-mix(in srgb, var(--ru-color, var(--primary)) 16%, var(--bg)); border-left: 3px solid var(--ru-color, var(--primary)); }
+.module-one .ofdma-receivers { display: grid; gap: .8rem; }
+.module-one .ofdma-client { display: flex; align-items: center; gap: .7rem; opacity: .5; padding: .4rem 0; }
+.module-one .ofdma-client.has-data { opacity: 1; }
+.module-one .client-code { display: grid; place-items: center; width: 34px; height: 34px; border: 1px solid var(--ru-color); color: var(--ru-color); font: 600 1rem var(--font-mono); flex-shrink: 0; }
+.module-one .ofdma-client strong { font-size: .9rem; }
+.module-one .ofdma-explanation { padding: 1rem 0 .5rem; min-height: 7rem; }
+.module-one .ofdma-explanation > strong { color: var(--primary); }
+.module-one .ofdma-explanation p { margin: .4rem 0; }
+.module-one .ofdma-navigation { display: flex; align-items: center; gap: .8rem; flex-wrap: wrap; }
+.module-one .ofdma-navigation [data-step] { font: .8rem var(--font-mono); color: var(--text-muted); }
+.module-one .coverage-panel { background: none; border: none; padding: 0; overflow: visible; }
+.module-one .coverage-workbench { display: grid; grid-template-columns: minmax(0,2.2fr) minmax(200px,1fr); gap: 1.5rem; align-items: start; }
+.module-one .coverage-map { min-width: 0; }
+.module-one #heatmapCanvas { width: 100%; aspect-ratio: 3/2; display: block; background: #071326; touch-action: none; cursor: crosshair; border: 1px solid var(--border-2); }
+.module-one .map-tools { display: flex; gap: 0; }
+.module-one .map-tool { padding: .6rem 1rem; color: var(--text-muted); background: var(--surface); border: 1px solid var(--border-2); border-bottom: none; cursor: pointer; font: 600 .8rem var(--font-sans); }
+.module-one .rf-gradient { height: 12px; margin-top: 1rem; background: linear-gradient(90deg,rgb(103,212,183) 0%,rgb(51,173,168) 36.36%,rgb(232,183,78) 58.18%,rgb(221,100,73) 78.18%,rgb(116,45,68) 100%); }
+.module-one .rf-scale { position: relative; height: 2.5rem; font: .7rem var(--font-mono); color: var(--text-muted); margin-top: .35rem; }
+.module-one .rf-scale span { position: absolute; text-align: center; transform: translateX(-50%); }
+.module-one .rf-scale span:nth-child(1) { left: 0; transform: none; }
+.module-one .rf-scale span:nth-child(2) { left: 36.36%; }
+.module-one .rf-scale span:nth-child(3) { left: 58.18%; }
+.module-one .rf-scale span:nth-child(4) { left: 78.18%; }
+.module-one .rf-scale span:nth-child(5) { right: 0; transform: none; }
+.module-one .coverage-measure { padding-left: 1.5rem; border-left: 1px solid var(--border-2); }
+.module-one .measure-kicker { color: var(--text-muted); font-size: .75rem; display: block; }
+.module-one #measureRSSI { display: block; font: 600 clamp(1.5rem,2.5vw,2.2rem) var(--font-mono); color: var(--primary); margin: .5rem 0 1.5rem; }
+.module-one .coverage-measure dl > div { margin: 1rem 0; }
+.module-one .coverage-measure dt { color: var(--text-muted); font-size: .75rem; }
+.module-one .coverage-measure dd { margin: .3rem 0; font-family: var(--font-mono); font-size: .9rem; }
+.module-one .coverage-measure p { font-size: .85rem; }
+.module-one .measure-equation { border-block: 1px solid var(--border); padding: .8rem 0; font: .8rem/1.6 var(--font-mono); }
+.module-one .rf-settings { margin: 1.5rem 0 .8rem; border-top: 1px solid var(--border); padding-top: .8rem; }
+.module-one .rf-settings summary { cursor: pointer; color: var(--text-muted); font-size: .8rem; }
+.module-one .presenter-slide .coverage-panel { padding: 0; }
+.module-one .presenter-slide .coverage-workbench { grid-template-columns: minmax(0,2fr) minmax(210px,1fr); }
+.module-one .presenter-slide #heatmapCanvas { width: min(100%, 67.5vh); max-height: none; }
+.module-one .variant-link { display: block; border-top: 1px solid var(--border); padding-top: 1rem; font-size: .8rem; }
+.module-one #beam3dCanvas { display: block; width: 100%; aspect-ratio: 16/10; touch-action: none; background: #071222; cursor: grab; }
+.module-one .presenter-slide #beam3dCanvas { width: min(100%, 67.2vh); margin-inline: auto; }
+.module-one .beam-explainer { border-left: 2px solid var(--primary); padding-left: 1.2rem; margin: 1rem 0; font-size: .9rem; }
+@media(max-width:700px) {
+  .module-one .ofdma-scene { grid-template-columns: 62px minmax(95px,1fr) minmax(95px,1fr); gap: .5rem; }
+  .module-one .device-outline { width: 45px; height: 45px; font-size: 1rem; }
+  .module-one .ofdma-ap strong, .module-one .ofdma-ap small { font-size: .65rem; }
+  .module-one .ofdma-client { gap: .4rem; }
+  .module-one .ofdma-client strong { font-size: .72rem; }
+  .module-one .client-code { width: 22px; height: 28px; font-size: .8rem; }
+  .module-one .ru { padding: .6rem .3rem; font-size: .65rem; }
+  .module-one .scene-label, .module-one .single-channel { font-size: .7rem; }
+  .module-one .coverage-workbench, .module-one .presenter-slide .coverage-workbench { grid-template-columns: 1fr; }
+  .module-one .coverage-measure { border-left: none; border-top: 1px solid var(--border); padding: 1rem 0 0; }
+  .module-one .coverage-measure dl { display: flex; gap: 1.5rem; }
+}
+@media print {
+  .module-one .map-tools, .module-one .ofdma-modes, .module-one .ofdma-navigation, .module-one .rf-settings { display: none; }
+  .module-one .coverage-workbench { grid-template-columns: 2fr 1fr; gap: .5rem; }
+  .module-one .coverage-workbench p { font-size: 9pt; }
+}

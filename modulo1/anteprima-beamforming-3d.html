@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="it" data-theme="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Confronto facoltativo · Beamforming 3D | Telecomunicazioni 5A</title>
+  <link rel="stylesheet" href="../assets/css/style.css">
+  <style>
+    :root { --m-color: var(--m1); }
+  </style>
+  <link rel="stylesheet" href="../assets/css/modulo1.css">
+  <link rel="stylesheet" href="../assets/css/esperimenti.css">
+</head>
+<body class="module-one" data-preview="beamforming-3d">
+
+<div class="app-layout">
+
+  <!-- HEADER -->
+  <header class="site-header">
+    <a href="../index.html" class="logo-link">
+      <div class="logo-icon">⚡</div>
+      <div class="logo-text">
+        <span class="logo-title text-gradient">Telecomunicazioni 5A</span>
+        <span class="logo-sub">IIS J.C. Maxwell</span>
+      </div>
+    </a>
+
+    <nav class="header-breadcrumb">
+      <a href="../index.html">Home</a>
+      <span>›</span>
+      <a href="index.html">Modulo 1</a>
+      <span>›</span>
+      <span class="current">Lezione 1.5 — Strato Fisico & MIMO</span>
+    </nav>
+
+    <div class="header-actions">
+      <button class="btn btn-present" data-present aria-label="Modalità presentazione">
+        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg>
+        Presenta in Classe
+      </button>
+      <button class="btn btn-icon btn-ghost" data-theme-toggle aria-label="Cambia tema"></button>
+      <button class="btn btn-icon btn-ghost btn-hamburger" aria-label="Menu">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+      </button>
+    </div>
+  </header>
+
+  <!-- SIDEBAR -->
+  <nav class="sidebar">
+    <div class="sidebar-module-badge">
+      <div class="module-dot" style="background:var(--m1); box-shadow: 0 0 10px var(--m1);"></div>
+      <span class="module-label" style="color:var(--m1)">Modulo 1 · WLAN</span>
+    </div>
+
+    <span class="sidebar-section-title">Percorso Guidato</span>
+    <ul class="sidebar-nav">
+      <li data-lesson="m1-1">
+        <a href="lezione-1-1.html">
+          <span class="lesson-num">1.1</span>
+          <span class="lesson-title">Introduzione alle WLAN</span>
+          <span class="lesson-check"></span>
+        </a>
+      </li>
+      <li data-lesson="m1-2">
+        <a href="lezione-1-2.html">
+          <span class="lesson-num">1.2</span>
+          <span class="lesson-title">Standard IEEE 802.11</span>
+          <span class="lesson-check"></span>
+        </a>
+      </li>
+      <li data-lesson="m1-3">
+        <a href="lezione-1-3.html">
+          <span class="lesson-num">1.3</span>
+          <span class="lesson-title">Canali Radio & Spettro</span>
+          <span class="lesson-check"></span>
+        </a>
+      </li>
+      <li data-lesson="m1-4">
+        <a href="lezione-1-4.html">
+          <span class="lesson-num">1.4</span>
+          <span class="lesson-title">CSMA/CA & Collisioni</span>
+          <span class="lesson-check"></span>
+        </a>
+      </li>
+      <li class="active" data-lesson="m1-5">
+        <a href="lezione-1-5.html">
+          <span class="lesson-num">1.5</span>
+          <span class="lesson-title">Strato Fisico & Modulazioni</span>
+          <span class="lesson-check"></span>
+        </a>
+      </li>
+      <li data-lesson="m1-6">
+        <a href="lezione-1-6.html">
+          <span class="lesson-num">1.6</span>
+          <span class="lesson-title">Progettazione & Site Survey</span>
+          <span class="lesson-check"></span>
+        </a>
+      </li>
+    </ul>
+
+    <span class="sidebar-section-title">Pratica & Verifiche</span>
+    <ul class="sidebar-nav">
+      <li>
+        <a href="lab-copertura.html">
+          <span class="lesson-num">🔬</span>
+          <span class="lesson-title">Simulatore Copertura RF</span>
+        </a>
+      </li>
+      <li>
+        <a href="verifica.html">
+          <span class="lesson-num">📋</span>
+          <span class="lesson-title">Compito & Verifica M1</span>
+        </a>
+      </li>
+    </ul>
+
+    <div class="sidebar-progress" data-module-progress="m1" data-total="6">
+      <div class="progress-label">
+        <span>Progresso Modulo</span>
+        <span><span data-progress-done>0</span>/6 (<span data-progress-pct>0</span>%)</span>
+      </div>
+      <div class="progress-bar">
+        <div class="progress-fill" style="width:0%"></div>
+      </div>
+    </div>
+  </nav>
+
+  <!-- CONTENUTO PRINCIPALE -->
+<main class="main-content"><div class="content-wrap"><header class="lesson-hero"><div class="lesson-meta"><span class="lesson-badge">Variante facoltativa / 1.5</span></div><h1 class="lesson-title-h1">Beamforming: osserva la direzione nello spazio.</h1><p class="lesson-subtitle">Questa è una proposta da confrontare. La lezione 1.5 conserva lo schema bidimensionale attuale.</p><a href="lezione-1-5.html#slide-1" class="btn btn-primary">Torna alla versione attuale</a></header><section class="slide"><h2>Ruota il modello, poi sposta il client</h2><div class="lab-panel"><div class="lab-heading"><span>Proposta 3D</span><h3>Quattro antenne, uno stesso segnale</h3></div><div class="lab-controls"><button class="btn btn-ghost" id="beam3dToggle" aria-pressed="true">Beamforming attivo</button><button class="btn btn-ghost" id="beam3dReset">Ripristina vista</button><label>Direzione del client: <output id="beam3dAngleValue">0°</output><input type="range" min="-60" max="60" value="0" id="beam3dAngle" aria-label="Direzione del client"></label></div><canvas id="beam3dCanvas" tabindex="0" role="img" aria-label="Diagramma tridimensionale di un array ideale di quattro antenne; trascina o usa le frecce per ruotare la vista"></canvas><p class="lab-note">Trascina per ruotare la vista, oppure seleziona il disegno e usa le frecce. Il cursore sposta il client e aggiorna il coordinamento delle antenne.</p><p id="beam3dState" class="beam-explainer" aria-live="polite"></p><div class="key-idea"><div><h3>Che cosa indica la forma?</h3><p>La distanza dalla sorgente rappresenta il valore normalizzato del diagramma: dove la forma si allunga, la radiazione è favorita. La superficie non è un confine oltre il quale il Wi-Fi smette di esistere.</p></div><div><h3>Che cosa osservare?</h3><p>Sposta il client. Le fasi si adattano e cambia la direzione favorita. Poi disattiva il coordinamento per confrontare la forma di riferimento. Qui si mostra un solo segnale, non flussi MIMO indipendenti.</p></div></div><details><summary>Ipotesi del modello</summary><p class="lab-note">Array lineare ideale di quattro elementi, distanziati di mezza lunghezza d’onda, su un piano senza ostacoli. Diagramma d’elemento proporzionale a sin²(θ); fattore d’array calcolato come somma complessa dei quattro segnali. Raggio della superficie proporzionale alla radice della potenza normalizzata, con minimo grafico 0,08. Il confronto è normalizzato separatamente: non esprime guadagni assoluti né misure in dBm. Riferimento: <a href="https://www.mathworks.com/help/phased/ug/element-and-array-radiation-patterns-and-responses.html" target="_blank" rel="noopener noreferrer">MathWorks · Diagrammi d’elemento e d’array</a>.</p></details></div></section></div></main></div><script src="../assets/js/app.js"></script><script src="../assets/js/beamforming-preview.js"></script></body></html>

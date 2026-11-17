@@ -53,8 +53,10 @@
       .exam-header-card, .open-q-card, .box { border-color: #ccc !important; background: #fff !important; color: #000 !important; }
     }
   </style>
+  <link rel="stylesheet" href="../assets/css/modulo1.css">
+  <link rel="stylesheet" href="../assets/css/esperimenti.css">
 </head>
-<body data-lesson-id="m1-exam">
+<body class="module-one" data-lesson-id="m1-exam">
 
 <div class="app-layout">
 
@@ -191,17 +193,17 @@
       <div class="box box-info reveal" style="margin-bottom:2rem;">
         <div class="box-label">📐 Traccia Esercizio Numerico di Laboratorio</div>
         <p style="font-size:0.92rem; line-height:1.6;">
-          Un Access Point Wi-Fi 5 situato nel corridoio della scuola trasmette a una frequenza di <strong>5 GHz</strong> con una potenza $P_{tx} = +20\text{ dBm}$ e un'antenna di guadagno $G_{tx} = +3\text{ dBi}$.
+          Un Access Point Wi-Fi 5 situato nel corridoio della scuola trasmette a una frequenza di <strong>5 GHz</strong> con una potenza P<sub>tx</sub> = +20 dBm e un'antenna di guadagno G<sub>tx</sub> = +3 dBi.
           Uno studente nell'Aula 5 si trova a una distanza di <strong>15 metri</strong> in linea d'aria, separato da:
         </p>
         <ul style="font-size:0.88rem; margin-bottom:0.75rem;">
-          <li>Una parete in cartongesso (attenuazione $L_1 = 3\text{ dB}$)</li>
-          <li>Un muro portante in cemento armato (attenuazione $L_2 = 12\text{ dB}$)</li>
+          <li>Una parete in cartongesso (attenuazione L<sub>1</sub> = 3 dB)</li>
+          <li>Un muro portante in cemento armato (attenuazione L<sub>2</sub> = 12 dB)</li>
         </ul>
         <p style="font-size:0.92rem; line-height:1.6; margin-bottom:0;">
-          Sapendo che l'antenna dello smartphone ha guadagno $G_{rx} = 0\text{ dBi}$ e che la sensibilità di soglia minima richiesta per sostenere una videochiamata VoIP è di <strong>-67 dBm</strong>:
-          <br><strong>1.</strong> Calcola l'attenuazione nello spazio libero $FSPL$ a 15 metri (formula di Friis).
-          <br><strong>2.</strong> Calcola la potenza ricevuta $P_{rx}$ in dBm.
+          Sapendo che l'antenna dello smartphone ha guadagno G<sub>rx</sub> = 0 dBi e che la sensibilità di soglia minima richiesta per sostenere una videochiamata VoIP è di <strong>-67 dBm</strong>:
+          <br><strong>1.</strong> Calcola l'attenuazione nello spazio libero FSPL a 15 metri (formula di Friis).
+          <br><strong>2.</strong> Calcola la potenza ricevuta P<sub>rx</sub> in dBm.
           <br><strong>3.</strong> Determina se il collegamento supporta la chiamata VoIP o se subisce disconnessioni.
         </p>
 
@@ -234,6 +236,7 @@
 </div>
 
 <script src="../assets/js/app.js"></script>
+<script src="../assets/js/modulo1.js"></script>
 <script>
 /* Gestione Timer Compito */
 const ExamTimer = (() => {
@@ -340,7 +343,7 @@ document.addEventListener('DOMContentLoaded', () => {
     {
       question: "4. Perché a 2.4 GHz si raccomanda di utilizzare rigorosamente solo i canali 1, 6 e 11?",
       answers: [
-        { text: "Perché sono gli unici tre canali con separazione $\ge 25\\text{ MHz}$ totalmente privi di sovrapposizione spettrale a 20 MHz", correct: true },
+        { text: "Perché sono gli unici tre canali con separazione ≥ 25 MHz totalmente privi di sovrapposizione spettrale a 20 MHz", correct: true },
         { text: "Perché gli altri canali sono a pagamento", correct: false },
         { text: "Perché i numeri pari sono vietati dalla polizia postale", correct: false },
         { text: "Perché trasmettono a voltaggio più basso", correct: false }
@@ -386,11 +389,11 @@ document.addEventListener('DOMContentLoaded', () => {
       answers: [
         { text: "4 bit", correct: false },
         { text: "6 bit", correct: false },
-        { text: "8 bit ($2^8 = 256$)", correct: true },
+        { text: "8 bit (2<sup>8</sup> = 256)", correct: true },
         { text: "10 bit", correct: false }
       ],
-      explain_correct: "Esatto! $k = \\log_2(256) = 8$ bit/simbolo.",
-      explain_wrong: "Dato che $2^8 = 256$, ogni punto della costellazione 256-QAM trasporta esattamente 8 bit."
+      explain_correct: "Esatto! k = log₂(256) = 8 bit/simbolo.",
+      explain_wrong: "Dato che 2<sup>8</sup> = 256, ogni punto della costellazione 256-QAM trasporta esattamente 8 bit."
     },
     {
       question: "9. Qual è il principale difetto che ha portato alla dismissione totale della crittografia WEP?",

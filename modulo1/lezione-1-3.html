@@ -23,8 +23,10 @@
     }
     .freq-axis text { fill: var(--text-muted); font-family: var(--font-mono); font-size: 10px; }
   </style>
+  <link rel="stylesheet" href="../assets/css/modulo1.css">
+  <link rel="stylesheet" href="../assets/css/esperimenti.css">
 </head>
-<body data-lesson-id="m1-3">
+<body class="module-one" data-lesson-id="m1-3">
 
 <div class="app-layout">
 
@@ -165,7 +167,7 @@
             <span class="lesson-prereq-icon">🧠</span>
             <div>
               <strong>Nozioni di base:</strong>
-              Relazione fondamentale d'onda ($\lambda = c / f$), concetto di frequenza in Hertz e larghezza di banda (Bandwidth) di un canale di trasmissione.
+              Relazione fondamentale d'onda (λ = c / f), concetto di frequenza in Hertz e larghezza di banda (Bandwidth) di un canale di trasmissione.
             </div>
           </div>
         </div>
@@ -194,64 +196,7 @@
         </p>
 
         <!-- SIMULATORE SPETTRO CANALI -->
-        <div class="spectrum-canvas-wrap">
-          <div class="interactive-title">
-            <span class="badge-live">Live Spectrum Analyzer</span>
-            <span>Simulatore di Interferenza tra Router Confinanti</span>
-          </div>
-
-          <p style="font-size:0.86rem; color:var(--text-muted); margin-bottom:1rem;">
-            Imposta i canali di due router vicini (es. il tuo router e quello dell'aula accanto) e guarda in tempo reale cosa accade allo spettro:
-          </p>
-
-          <div style="display:grid; grid-template-columns: 1fr 1fr; gap:1rem; margin-bottom:1.5rem;">
-            <div class="tech-slider-group">
-              <div class="tech-slider-header">
-                <span>Router A (Tuo)</span>
-                <span class="val" id="dispChA">Canale 1 (2412 MHz)</span>
-              </div>
-              <input type="range" class="tech-slider" id="rangeChA" min="1" max="13" value="1" oninput="SpectrumSim.update()">
-            </div>
-
-            <div class="tech-slider-group">
-              <div class="tech-slider-header">
-                <span>Router B (Vicino)</span>
-                <span class="val" id="dispChB">Canale 6 (2437 MHz)</span>
-              </div>
-              <input type="range" class="tech-slider" id="rangeChB" min="1" max="13" value="6" oninput="SpectrumSim.update()">
-            </div>
-          </div>
-
-          <!-- CANVAS SVG DELLO SPETTRO -->
-          <svg id="spectrumSvg" viewBox="0 0 600 220" width="100%" height="220" style="background:var(--surface); border-radius:var(--r-md); border:1px solid var(--border);">
-            <!-- Griglia di frequenza -->
-            <line x1="30" y1="180" x2="570" y2="180" stroke="var(--border-2)" stroke-width="2"/>
-            <g class="freq-axis">
-              <text x="50"  y="200" text-anchor="middle">Ch 1 (2.412)</text>
-              <text x="145" y="200" text-anchor="middle">Ch 4</text>
-              <text x="240" y="200" text-anchor="middle">Ch 6 (2.437)</text>
-              <text x="335" y="200" text-anchor="middle">Ch 8</text>
-              <text x="430" y="200" text-anchor="middle">Ch 11 (2.462)</text>
-              <text x="525" y="200" text-anchor="middle">Ch 13</text>
-            </g>
-
-            <!-- Campana Router A -->
-            <path id="curveA" class="bell-curve clean" d="M 10 180 Q 50 40 90 180 Z"/>
-            <text id="lblA" x="50" y="30" fill="var(--primary)" font-weight="700" font-size="12" text-anchor="middle">Router A</text>
-
-            <!-- Campana Router B -->
-            <path id="curveB" class="bell-curve clean" d="M 200 180 Q 240 40 280 180 Z"/>
-            <text id="lblB" x="240" y="30" fill="var(--secondary)" font-weight="700" font-size="12" text-anchor="middle">Router B</text>
-          </svg>
-
-          <!-- Diagnosi interattiva -->
-          <div id="spectrumAlert" class="box box-success" style="margin-top:1.25rem; margin-bottom:0;">
-            <div class="box-label" id="spectrumStatusLabel">✅ NESSUNA INTERFERENZA (Spettro Pulito)</div>
-            <p id="spectrumStatusText" style="margin:0; font-size:0.9rem;">
-              I canali 1 e 6 hanno una separazione di 25 MHz: le loro onde radio non si toccano. Entrambi i router trasmettono al 100% della velocità senza collisioni.
-            </p>
-          </div>
-        </div>
+        <div class="lab-panel" data-sim="spectrum"></div>
       </section>
 
       <hr>
@@ -364,70 +309,11 @@
 </div>
 
 <script src="../assets/js/app.js"></script>
+<script src="../assets/js/modulo1.js"></script>
 <script>
 /* Logica simulatore spettro */
-const SpectrumSim = (() => {
-  function update() {
-    const chA = parseInt(document.getElementById('rangeChA').value);
-    const chB = parseInt(document.getElementById('rangeChB').value);
-
-    // Frequenza centrale: Ch 1 = 2412, Ch 13 = 2472
-    const freqA = 2412 + (chA - 1) * 5;
-    const freqB = 2412 + (chB - 1) * 5;
-
-    document.getElementById('dispChA').innerText = `Canale ${chA} (${freqA} MHz)`;
-    document.getElementById('dispChB').innerText = `Canale ${chB} (${freqB} MHz)`;
-
-    // Calcolo coordinate X sull'asse SVG (Ch 1 = 50px, Ch 13 = 530px)
-    const xA = 50 + (chA - 1) * 40;
-    const xB = 50 + (chB - 1) * 40;
-
-    const curveA = document.getElementById('curveA');
-    const curveB = document.getElementById('curveB');
-    const lblA = document.getElementById('lblA');
-    const lblB = document.getElementById('lblB');
-
-    curveA.setAttribute('d', `M ${xA - 40} 180 Q ${xA} 40 ${xA + 40} 180 Z`);
-    curveB.setAttribute('d', `M ${xB - 40} 180 Q ${xB} 40 ${xB + 40} 180 Z`);
-    lblA.setAttribute('x', xA);
-    lblB.setAttribute('x', xB);
-
-    // Calcolo sovrapposizione: ogni canale è largo 20MHz (ovvero 4 canali di distanza minima per non toccarsi)
-    const chDiff = Math.abs(chA - chB);
-    const alertBox = document.getElementById('spectrumAlert');
-    const alertLabel = document.getElementById('spectrumStatusLabel');
-    const alertText = document.getElementById('spectrumStatusText');
-
-    if (chDiff === 0) {
-      curveA.className.baseVal = "bell-curve interfering";
-      curveB.className.baseVal = "bell-curve interfering";
-      alertBox.className = "box box-warning";
-      alertLabel.innerText = "⚠️ INTERFERENZA CO-CANALE (Stesso Canale)";
-      alertText.innerHTML = `I router condividono lo stesso identico canale. Tramite CSMA/CA dovranno fare i turni per parlare: <strong>la banda per ciascuno è dimezzata</strong>, ma non ci sono errori di decodifica irreparabili.`;
-    } else if (chDiff < 5) {
-      curveA.className.baseVal = "bell-curve interfering";
-      curveB.className.baseVal = "bell-curve interfering";
-      alertBox.className = "box box-warning";
-      alertBox.style.borderColor = "var(--error)";
-      alertLabel.innerText = "🚨 DISASTRO SPETTRALE (Interferenza a Canali Adiacenti)";
-      alertText.innerHTML = `Peggior scenario possibile! I canali si sovrappongono parzialmente. I router non riescono a decodificare i pacchetti del vicino come frame validi: li percepiscono come <strong>puro rumore elettromagnetico distruttivo</strong>. Pacchetti persi, jitter altissimo e connessione che singhiozza.`;
-    } else {
-      curveA.className.baseVal = "bell-curve clean";
-      curveB.className.baseVal = "bell-curve clean";
-      alertBox.className = "box box-success";
-      alertBox.style.borderColor = "";
-      alertLabel.innerText = "✅ NESSUNA INTERFERENZA (Spettro Pulito)";
-      alertText.innerHTML = `Ottima pianificazione RF! I canali distano almeno 5 numeri (≥ 25 MHz): le campane spettrali non si sovrappongono e i due router trasmettono alla massima velocità senza alcun disturbo reciproco.`;
-    }
-  }
-
-  return { update };
-})();
-
 document.addEventListener('DOMContentLoaded', () => {
-  SpectrumSim.update();
-
-  const quizQuestions = [
+const quizQuestions = [
     {
       question: "Quali sono gli unici tre canali radio a 2.4 GHz totalmente NON sovrapposti in una tipica configurazione europea a 20 MHz?",
       answers: [
@@ -459,7 +345,7 @@ document.addEventListener('DOMContentLoaded', () => {
         { text: "Perché i fotoni a 5 GHz sono troppo pesanti per viaggiare lontano", correct: false }
       ],
       explain_correct: "Perfetto! Secondo l'equazione di Friis, a parità di distanza, frequenze più elevate subiscono una maggiore attenuazione di propagazione e vengono assorbite più avidamente dai muri.",
-      explain_wrong: "È una diretta conseguenza dell'equazione di trasmissione di Friis: più sale la frequenza radio ($f$), maggiore è l'attenuazione nello spazio e attraverso gli ostacoli."
+      explain_wrong: "È una diretta conseguenza dell'equazione di trasmissione di Friis: più sale la frequenza radio (f), maggiore è l'attenuazione nello spazio e attraverso gli ostacoli."
     },
     {
       question: "Quale dispositivo domestico crea interferenze devastanti nella porzione centrale della banda a 2.4 GHz (canali 8-10)?",

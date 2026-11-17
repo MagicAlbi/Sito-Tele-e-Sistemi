@@ -24,8 +24,10 @@
     }
     .boom-effect { animation: collidePulse 0.8s ease-out infinite; }
   </style>
+  <link rel="stylesheet" href="../assets/css/modulo1.css">
+  <link rel="stylesheet" href="../assets/css/esperimenti.css">
 </head>
-<body data-lesson-id="m1-4">
+<body class="module-one" data-lesson-id="m1-4">
 
 <div class="app-layout">
 
@@ -225,73 +227,7 @@
         </p>
 
         <!-- SIMULATORE NODO NASCOSTO -->
-        <div class="hidden-node-canvas-wrap">
-          <div class="interactive-title">
-            <span class="badge-live">Interactive Simulation</span>
-            <span>Simulatore Dinamico: Senza RTS/CTS vs Con RTS/CTS</span>
-          </div>
-
-          <div style="display:flex; gap:0.6rem; flex-wrap:wrap; margin-bottom:1rem;">
-            <button class="btn btn-sm btn-ghost" id="btnSimNoRts" onclick="HiddenNodeSim.runWithoutRts()">
-              💥 1. Simula Senza RTS/CTS (Collisione)
-            </button>
-            <button class="btn btn-sm btn-primary" id="btnSimRts" onclick="HiddenNodeSim.runWithRts()">
-              🛡️ 2. Risolvi con Handshake RTS/CTS
-            </button>
-          </div>
-
-          <!-- CANVAS SVG -->
-          <svg id="hiddenNodeSvg" viewBox="0 0 600 240" width="100%" height="240" style="background:var(--surface); border-radius:var(--r-md); border:1px solid var(--border);">
-            
-            <!-- Raggio copertura Nodo A -->
-            <circle cx="110" cy="120" r="170" class="node-range-circle" stroke="#38bdf8" fill="#38bdf8"/>
-            <!-- Raggio copertura Nodo C (non raggiunge A!) -->
-            <circle cx="490" cy="120" r="170" class="node-range-circle" stroke="#a78bfa" fill="#a78bfa"/>
-
-            <!-- Linee di trasmissione -->
-            <line id="lineA" x1="110" y1="120" x2="300" y2="120" stroke="var(--primary)" stroke-width="2" stroke-dasharray="6 4" opacity="0"/>
-            <line id="lineC" x1="490" y1="120" x2="300" y2="120" stroke="var(--secondary)" stroke-width="2" stroke-dasharray="6 4" opacity="0"/>
-
-            <!-- Animazione esplosione collisione -->
-            <circle id="boomCircle" cx="300" cy="120" r="0" fill="#ef4444" opacity="0"/>
-
-            <!-- NODO A -->
-            <g transform="translate(110, 120)">
-              <circle cx="0" cy="0" r="24" fill="var(--surface-2)" stroke="var(--primary)" stroke-width="2"/>
-              <text x="0" y="5" text-anchor="middle" font-size="18">💻</text>
-              <text x="0" y="38" text-anchor="middle" font-size="11" font-weight="700" fill="var(--text)">Host A</text>
-              <text id="badgeA" x="0" y="-30" text-anchor="middle" font-size="10" fill="var(--primary)"></text>
-            </g>
-
-            <!-- AP B (CENTRALE) -->
-            <g transform="translate(300, 120)">
-              <circle cx="0" cy="0" r="30" fill="var(--surface-3)" stroke="var(--border-2)" stroke-width="2"/>
-              <text x="0" y="6" text-anchor="middle" font-size="22">📡</text>
-              <text x="0" y="45" text-anchor="middle" font-size="11" font-weight="800" fill="var(--success)">AP Root (B)</text>
-              <text id="badgeB" x="0" y="-36" text-anchor="middle" font-size="11" font-weight="700" fill="var(--text)"></text>
-            </g>
-
-            <!-- NODO C (NASCOSTO AD A) -->
-            <g transform="translate(490, 120)">
-              <circle cx="0" cy="0" r="24" fill="var(--surface-2)" stroke="var(--secondary)" stroke-width="2"/>
-              <text x="0" y="5" text-anchor="middle" font-size="18">📱</text>
-              <text x="0" y="38" text-anchor="middle" font-size="11" font-weight="700" fill="var(--text)">Host C (Nascosto)</text>
-              <text id="badgeC" x="0" y="-30" text-anchor="middle" font-size="10" fill="var(--secondary)"></text>
-            </g>
-
-            <text x="300" y="215" text-anchor="middle" font-size="10" fill="var(--text-muted)" font-family="var(--font-mono)">
-              Raggio di A e C non si toccano: Host A e Host C sono reciprocamente invisibili!
-            </text>
-          </svg>
-
-          <!-- Status box -->
-          <div id="simStatusBox" class="box box-info" style="margin-top:1.25rem; margin-bottom:0;">
-            <div class="box-label" id="simStatusTitle">💡 Istruzioni Simulatore</div>
-            <p id="simStatusDesc" style="margin:0; font-size:0.9rem;">
-              Clicca su <strong>"1. Simula Senza RTS/CTS"</strong> per vedere il fallimento della trasmissione causato dal nodo nascosto. Poi attiva <strong>"2. Risolvi con Handshake RTS/CTS"</strong> per capire la soluzione ufficiale dello standard IEEE 802.11!
-            </p>
-          </div>
-        </div>
+        <div class="lab-panel" data-sim="hidden"></div>
 
         <h3>La Soluzione Elegante: RTS / CTS (Request to Send / Clear to Send)</h3>
         <p>
@@ -351,6 +287,7 @@
       </section>
 
       <!-- COMPLETAMENTO & NAVIGAZIONE -->
+      <p class="sources">Riferimento per l’esperimento: <a href="https://inet.omnetpp.org/docs/showcases/wireless/hiddennode/doc/" target="_blank" rel="noopener noreferrer">INET · Nodo nascosto e RTS/CTS</a>.</p>
       <div class="mark-done-wrap reveal">
         <button class="mark-done-btn">
           ✓ Segna Lezione come Studiata
@@ -370,77 +307,9 @@
 </div>
 
 <script src="../assets/js/app.js"></script>
+<script src="../assets/js/modulo1.js"></script>
 <script>
 /* Logica simulazione nodo nascosto */
-const HiddenNodeSim = (() => {
-  const lineA = document.getElementById('lineA');
-  const lineC = document.getElementById('lineC');
-  const boom = document.getElementById('boomCircle');
-  const badgeA = document.getElementById('badgeA');
-  const badgeB = document.getElementById('badgeB');
-  const badgeC = document.getElementById('badgeC');
-  const box = document.getElementById('simStatusBox');
-  const title = document.getElementById('simStatusTitle');
-  const desc = document.getElementById('simStatusDesc');
-
-  function reset() {
-    lineA.style.opacity = '0';
-    lineC.style.opacity = '0';
-    boom.setAttribute('r', '0');
-    boom.style.opacity = '0';
-    badgeA.innerText = '';
-    badgeB.innerText = '';
-    badgeC.innerText = '';
-  }
-
-  function runWithoutRts() {
-    reset();
-    badgeA.innerText = "Sente libero -> INVIA DATI";
-    badgeC.innerText = "Sente libero -> INVIA DATI";
-    lineA.style.opacity = '1';
-    lineC.style.opacity = '1';
-
-    setTimeout(() => {
-      boom.setAttribute('r', '35');
-      boom.style.opacity = '0.9';
-      badgeB.innerText = "💥 COLLISIONE!";
-      badgeB.style.fill = "#ef4444";
-
-      box.className = "box box-warning";
-      box.style.borderColor = "var(--error)";
-      title.innerText = "💥 Collisione Distruttiva all'Access Point!";
-      desc.innerHTML = `Host A e Host C non si sentivano tra loro, quindi entrambi hanno iniziato a trasmettere credendo che l'etere fosse libero. All'AP B i segnali si sono sovrapposti: <strong>nessun pacchetto è stato decodificato</strong>. Entrambi dovranno ritrasmettere aumentando il Backoff.`;
-    }, 600);
-  }
-
-  function runWithRts() {
-    reset();
-    badgeA.innerText = "1. Invia RTS (Richiesta)";
-    lineA.style.opacity = '1';
-
-    setTimeout(() => {
-      badgeB.innerText = "2. Risponde CTS (Autorizzato)";
-      badgeB.style.fill = "var(--success)";
-      lineA.style.opacity = '0';
-      lineC.style.opacity = '1'; // Il CTS arriva anche a C!
-
-      setTimeout(() => {
-        badgeC.innerText = "3. Riceve CTS -> Silenzio NAV 🔒";
-        badgeA.innerText = "4. Trasmette DATI in Sicurezza";
-        lineA.style.opacity = '1';
-        lineC.style.opacity = '0';
-
-        box.className = "box box-success";
-        box.style.borderColor = "";
-        title.innerText = "🛡️ Successo Garantito con RTS/CTS!";
-        desc.innerHTML = `Anche se C non sentiva A, ha ricevuto il <strong>CTS</strong> trasmesso dall'Access Point B! C ha bloccato le proprie trasmissioni impostando il timer NAV. Host A ha completato la trasmissione al 100% senza alcuna collisione.`;
-      }, 900);
-    }, 800);
-  }
-
-  return { runWithoutRts, runWithRts };
-})();
-
 document.addEventListener('DOMContentLoaded', () => {
   const quizQuestions = [
     {

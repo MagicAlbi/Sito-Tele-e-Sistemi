@@ -21,8 +21,10 @@
     .speed-stat-val { font-size: 1.8rem; font-weight: 800; font-family: var(--font-mono); color: var(--primary); }
     .speed-stat-lbl { font-size: 0.78rem; color: var(--text-muted); text-transform: uppercase; margin-top: 0.2rem; }
   </style>
+  <link rel="stylesheet" href="../assets/css/modulo1.css">
+  <link rel="stylesheet" href="../assets/css/esperimenti.css">
 </head>
-<body data-lesson-id="m1-2">
+<body class="module-one" data-lesson-id="m1-2">
 
 <div class="app-layout">
 
@@ -187,7 +189,7 @@
           Il comitato <strong>IEEE 802.11</strong> ha sviluppato vari emendamenti identificati da lettere alfabetiche. Nel 2018, la <em>Wi-Fi Alliance</em> ha deciso di semplificare la vita al pubblico adottando una nomenclatura numerica progressiva:
         </p>
 
-        <table class="osi-table">
+        <div class="table-scroll" role="region" aria-label="Tabella scorrevole" tabindex="0"><table class="osi-table">
           <thead>
             <tr>
               <th>Nome Commerciale</th>
@@ -248,7 +250,7 @@
               <td>Canali a 320 MHz, 4096-QAM, Multi-Link Operation (MLO)</td>
             </tr>
           </tbody>
-        </table>
+        </table></div>
 
         <!-- BOX CURIOSITA' HACKER/MARKETING -->
         <div class="box-curiosity">
@@ -348,19 +350,10 @@
       <section class="slide reveal" id="slide-3" data-num="03">
         <h2>3. Guarda & Comprendi: Come Funziona il Wi-Fi 6</h2>
 
-        <p>
-          Questo video (in inglese con sottotitoli disponibili) spiega visivamente l'innovazione cardine di 802.11ax: l'<strong>OFDMA</strong>, che permette all'antenna di suddividere un canale in decine di "camioncini" più piccoli (Resource Units) per servire tantissimi telefoni in contemporanea senza code:
-        </p>
+        <p>Questa animazione mostra l’innovazione cardine di 802.11ax: l’<strong>OFDMA</strong>. Il canale può essere suddiviso in gruppi di sottoportanti, chiamati Resource Unit, assegnati a più dispositivi nello stesso intervallo.</p>
 
         <!-- VIDEO EMBED RESPONSIVE -->
-        <div class="video-container">
-          <iframe 
-            src="https://www.youtube-nocookie.com/embed/1kGff_J4jGk" 
-            title="How WiFi 6 Works" 
-            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
-            allowfullscreen>
-          </iframe>
-        </div>
+        <div class="lab-panel" id="esperimento-ofdma" data-sim="ofdma"></div>
 
         <!-- CURIOSITA' HEDY LAMARR -->
         <div class="box-curiosity" style="margin-top:2rem;">
@@ -398,6 +391,7 @@
       </section>
 
       <!-- COMPLETAMENTO & NAVIGAZIONE -->
+      <p class="sources">Riferimento per l’esperimento: <a href="https://documentation.meraki.com/Wireless/Design_and_Configure/Architecture_and_Best_Practices/Wi-Fi_6_%28802.11ax%29_Technical_Guide" target="_blank" rel="noopener noreferrer">Cisco Meraki · OFDMA e Resource Unit</a>.</p>
       <div class="mark-done-wrap reveal">
         <button class="mark-done-btn">
           ✓ Segna Lezione come Studiata
@@ -417,6 +411,7 @@
 </div>
 
 <script src="../assets/js/app.js"></script>
+<script src="../assets/js/modulo1.js"></script>
 <script>
 /* Calcolatore Throughput */
 const SpeedSim = (() => {
