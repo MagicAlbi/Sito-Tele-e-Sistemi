@@ -151,3 +151,7 @@ Il lavoro deve ora proseguire con la creazione della cartella `sito/modulo2/`.
 - Il docente ha approvato il resto del secondo passaggio, ma rifiutato il nuovo layout. Ripristinato quello dell'anteprima precedente: indice a otto riquadri, aperture delle lezioni nel pannello, titolo e introduzione in successione, glossario e approfondimenti come prima. Rimosse le righe del percorso e l'apertura a due colonne. Non riproporre questi cambiamenti senza richiesta.
 - Nuova attività 1.2, heatmap e proposta 3D separata conservate integralmente; verificata l'invarianza dei file degli esperimenti e delle lezioni durante il ripristino. La 1.5 bidimensionale resta la versione principale. Nessuna autorizzazione alla pubblicazione: la bozza resta locale.
 - Precisazione successiva del docente: vuole la grafica blu originale del sito online, non quella della precedente anteprima. Rimosse quindi anche le personalizzazioni residue di pannelli iniziali, schede, titoli, etichette, curiosità, quiz e tabelle da `modulo1.css`: tornano alle regole originali di `style.css`, che è invariato rispetto a Git. Conservati solo gli stili per i nuovi esperimenti e le correzioni funzionali di presentazione, stampa e adattamento allo schermo. HTML delle lezioni e script degli esperimenti verificati invariati durante questa operazione.
+
+### Durata dei moduli
+
+- La home mostra il numero di lezioni per ogni modulo e l’indice del Modulo 1 indica il quadrimestre. Le durate e il totale delle ore sono stati rimossi dalle pagine del sito. Il monte ore resta nel programma di dipartimento.
