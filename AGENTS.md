@@ -10,8 +10,10 @@
 - Per i contenuti usa chunking visivo, simulatori quando utili, esempi reali e curiosita tecniche. Non modificare altri moduli senza richiesta.
 
 ## Lavori a fasi
+- Usa elementi di gioco leggeri in tutto il sito per tenere viva l’attenzione, per esempio brevi sfide con riscontro immediato. Quando aggiungi o rivedi materiali, adatta l’attività all’obiettivo della lezione.
 - Per i lavori che occupano più sessioni, usa `$piani-a-fasi` dalla radice Git. Trova i piani in `indice.md`, sezione «Piani». Il riepilogo è in `piani/<nome>/PIANO.md` e ogni riga della tabella collega alla scheda `fasi/<NN>/FASE.md`.
 - Il piano contiene decisioni, dipendenze, stato e prossimo passo. La scheda di fase contiene il prompt, i criteri specifici e l’esito. Prima di iniziare la prima fase, fai approvare il piano al docente.
+- Una fase è «fatta» dopo che tutti i criteri applicabili sono stati superati e il docente ha approvato il risultato. Registra l’esito delle verifiche nella scheda e usa lo stato «in corso» fino all’approvazione.
 - Per ogni fase, apri una nuova sessione nella radice Git, leggi piano e scheda, verifica che i prerequisiti siano conclusi e svolgi solo la fase richiesta. A fine sessione aggiorna la tabella del piano e scrivi nella scheda i controlli eseguiti e ciò che resta da fare.
 - Per un intervento che si conclude in una sessione, lavora direttamente. Se incide su un piano già attivo, aggiorna le sole informazioni interessate.
 

@@ -28,23 +28,26 @@ Entro il 31 marzo 2027 la 5A Telecomunicazioni dell’IIS J.C. Maxwell di Nichel
 - Per il Modulo 2 erano previste cinque lezioni su interfacce DTE/DCE, accessi WAN, xDSL e fibra, protocolli di linea e introduzione al routing. La classe conosce IP e subnetting. Il routing parte da zero.
 - Mantenere la grafica blu del sito e i colori dei singoli moduli, compreso il viola del Modulo 2. Usare le funzioni già presenti per quiz, presentazione sulla LIM, progressi e tema. Nel Modulo 1 lo schema 2D del beamforming resta quello principale e il 3D è una variante facoltativa già collegata alla lezione.
 - Nelle pagine esistono già i collegamenti della home ai Moduli 2–5. Le pagine di destinazione vanno create con i rispettivi moduli. Per ogni fase restano in vigore le approvazioni definite in `AGENTS.md`.
+- Usare elementi di gioco leggeri in tutto il sito per mantenere l’attenzione. Integrare brevi sfide o attività con riscontro immediato nei materiali nuovi. Concordare eventuali interventi sui materiali esistenti.
+- Ogni sottomodulo ha un quiz di autovalutazione, indicativamente di tre domande. Ogni modulo completo ha una sezione dedicata alla verifica finale, che il docente somministra per valutare gli studenti.
 
 ## Fasi
 
 | N. | Fase | Dipende da | Stato | Fatta il |
 | --- | --- | --- | --- | --- |
 | 1 | [Mappa delle lezioni e delle attività](fasi/01/FASE.md) | — | fatta | 20 novembre 2026 |
-| 2 | [Modulo 2 · interfacce, WAN e accessi](fasi/02/FASE.md) | 1 | da fare | — |
+| 2 | [Modulo 2 · interfacce, WAN e accessi](fasi/02/FASE.md) | 1 | in corso | — |
 | 3 | [Modulo 2 · protocolli e routing](fasi/03/FASE.md) | 2 | da fare | — |
-| 4 | [Modulo 2 · laboratorio e verifica](fasi/04/FASE.md) | 3 | da fare | — |
+| 4 | [Modulo 2 · laboratorio e verifica](fasi/04/FASE.md) | 3, 13 | da fare | — |
 | 5 | [Modulo 3 · modello digitale e teoria dell’informazione](fasi/05/FASE.md) | 1 | da fare | — |
 | 6 | [Modulo 3 · tecniche e applicazioni](fasi/06/FASE.md) | 2, 5 | da fare | — |
-| 7 | [Modulo 3 · laboratorio e verifica](fasi/07/FASE.md) | 6 | da fare | — |
+| 7 | [Modulo 3 · laboratorio e verifica](fasi/07/FASE.md) | 6, 13 | da fare | — |
 | 8 | [Modulo 4 · lezioni sulle reti mobili](fasi/08/FASE.md) | 1 | da fare | — |
-| 9 | [Modulo 4 · laboratorio e verifica](fasi/09/FASE.md) | 8 | da fare | — |
+| 9 | [Modulo 4 · laboratorio e verifica](fasi/09/FASE.md) | 8, 13 | da fare | — |
 | 10 | [Modulo 5 · lezioni sulle reti convergenti](fasi/10/FASE.md) | 1 | da fare | — |
-| 11 | [Modulo 5 · laboratorio e verifica](fasi/11/FASE.md) | 10 | da fare | — |
+| 11 | [Modulo 5 · laboratorio e verifica](fasi/11/FASE.md) | 10, 13 | da fare | — |
 | 12 | [Controllo finale del sito](fasi/12/FASE.md) | 4, 7, 9, 11 | da fare | — |
+| 13 | [Progettazione delle verifiche di fine modulo](fasi/13/FASE.md) | 1 | da fare | — |
 
 Per avviare una fase, apri il suo collegamento e copia il prompt in una nuova chat nella radice del progetto. La tabella indica quali fasi devono essere già concluse.
 
@@ -56,4 +59,6 @@ Per le fasi che producono lezioni, ogni pagina deve avere una sintesi iniziale, 
 
 - **Eventuali sospensioni della 5A** Da verificare con il docente. Se riducono le ore concordate, usare prima il margine di 6 ore e aggiornare le tappe interessate.
 - **Scaletta e attività** Il calendario compatto è la proposta per l’aula. Concordare eventuali attività del giovedì con l’ITP prima di contarle.
-- **Prossima fase** Dopo il via del docente, copiare il prompt della [fase 2](fasi/02/FASE.md) in una nuova chat nella radice del progetto.
+- **Verifiche di fine modulo** Concordare formato, modalità di svolgimento ed eventuale salvataggio dei risultati nella [fase 13](fasi/13/FASE.md), prima di costruire le nuove verifiche.
+- **Altre idee per il sito** Da raccogliere quando il docente vorrà discuterne.
+- **Prossimi passi** La [fase 2](fasi/02/FASE.md) ha superato i criteri applicabili ed è in attesa dell’approvazione del docente. Dopo l’approvazione si può avviare la [fase 3](fasi/03/FASE.md). La [fase 13](fasi/13/FASE.md) può essere discussa in parallelo e va conclusa prima della fase 4.

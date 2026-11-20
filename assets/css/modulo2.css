@@ -1,0 +1,40 @@
+:root {
+  --m-color: var(--m2);
+}
+
+.main-content {
+  grid-column: 1 / -1;
+}
+
+.module-lessons {
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 240px), 1fr));
+}
+
+@media (max-width: 540px) {
+  .site-header {
+    padding-inline: .75rem;
+    gap: .5rem;
+  }
+
+  .logo-link {
+    flex-shrink: 1;
+    min-width: 0;
+  }
+
+  .logo-title {
+    font-size: .78rem;
+  }
+
+  .btn-present {
+    padding-inline: .6rem;
+  }
+
+  .osi-table {
+    overflow-wrap: anywhere;
+  }
+
+  .osi-table th,
+  .osi-table td {
+    padding-inline: .45rem;
+  }
+}

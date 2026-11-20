@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="it" data-theme="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>2.2 · Accesso remoto e interconnessione WAN | Telecomunicazioni 5A</title>
+  <link rel="stylesheet" href="../assets/css/style.css">
+  <link rel="stylesheet" href="../assets/css/modulo2.css">
+</head>
+<body data-lesson-id="m2-2">
+<div class="app-layout">
+  <header class="site-header">
+    <a href="../index.html" class="logo-link">
+      <div class="logo-icon" aria-hidden="true">⚡</div>
+      <div class="logo-text">
+        <span class="logo-title text-gradient">Telecomunicazioni 5A</span>
+        <span class="logo-sub">IIS J.C. Maxwell</span>
+      </div>
+    </a>
+    <nav class="header-breadcrumb" aria-label="Percorso">
+      <a href="../index.html">Home</a>
+      <span aria-hidden="true">›</span>
+      <a href="index.html">Modulo 2</a>
+      <span aria-hidden="true">›</span>
+      <span class="current" aria-current="page">Lezione 2.2</span>
+    </nav>
+    <div class="header-actions">
+      <button type="button" class="btn btn-present" data-present aria-label="Presenta in classe">Presenta</button>
+      <button type="button" class="btn btn-icon btn-ghost" data-theme-toggle aria-label="Cambia tema"></button>
+    </div>
+  </header>
+
+  <main class="main-content">
+    <div class="content-wrap">
+      <header class="lesson-hero">
+        <div class="lesson-hero-content">
+          <div class="lesson-meta">
+            <span class="lesson-badge lesson-badge-module">Lezione 2.2 · Reti WAN</span>
+          </div>
+          <h1 class="lesson-title-h1">Accesso remoto e interconnessione WAN</h1>
+          <p class="lesson-subtitle">Dalla telefonata con il modem alle reti a pacchetto. Scegli come collegare due sedi in base a quando e come devono comunicare.</p>
+        </div>
+      </header>
+
+      <section class="slide" aria-label="Sintesi">
+        <h2>In 15 secondi</h2>
+        <div class="tldr">
+          <p>Una WAN collega reti distanti. L’accesso può essere attivato su richiesta oppure restare disponibile con un collegamento dedicato. All’interno della rete, i dati possono usare risorse riservate o condividerle a pacchetti.</p>
+        </div>
+      </section>
+
+      <section class="slide">
+        <h2>Dalla LAN alla rete dell’operatore</h2>
+        <p>Pensa a due sedi di una stessa officina. In ciascuna sede i computer comunicano sulla propria <strong>LAN</strong>. L’accesso collega la sede alla rete dell’operatore. La <strong>WAN</strong> (Wide Area Network) permette ai dati di raggiungere l’altra sede. Internet è un insieme pubblico di reti interconnesse. Anche un’organizzazione può usare un servizio WAN privato.</p>
+        <div class="box box-aggancio">
+          <p><strong>Percorso dei dati</strong></p>
+          <p>LAN sede A → accesso → rete geografica → accesso → LAN sede B</p>
+        </div>
+        <table class="osi-table">
+          <thead><tr><th scope="col">Accesso</th><th scope="col">Quando è disponibile</th><th scope="col">Esempio</th></tr></thead>
+          <tbody>
+            <tr><td>Commutato</td><td>Si instaura quando serve.</td><td>Una filiale chiama il modem della sede centrale per inviare il riepilogo di fine giornata.</td></tr>
+            <tr><td>Dedicato</td><td>Il collegamento punto-punto è predisposto in modo permanente.</td><td>Due sedi scambiano dati per l’intero turno su una linea dedicata.</td></tr>
+          </tbody>
+        </table>
+        <p>Un esempio storico di linea dedicata è il <strong>CDN</strong> (Collegamento Diretto Numerico). Tra le capacità storiche figuravano 64 kbit/s e il flusso E1 da 2,048 Mbit/s lordi.</p>
+      </section>
+
+      <section class="slide">
+        <h2>Circuito riservato e pacchetti condivisi</h2>
+        <div class="box box-info">
+          <p><strong>Commutazione di circuito</strong></p>
+          <p>Una chiamata sulla rete telefonica pubblica (PSTN) o una chiamata dati ISDN occupa risorse per la durata della chiamata. Anche durante una pausa quelle risorse restano riservate.</p>
+        </div>
+        <div class="box box-info">
+          <p><strong>Commutazione di pacchetto</strong></p>
+          <p>Quando due sedi trasferiscono file su una rete IP, i pacchetti di più comunicazioni possono alternarsi sullo stesso collegamento. Se arrivano più pacchetti di quanti il collegamento possa smaltire, si forma una coda e alcuni pacchetti possono andare persi.</p>
+        </div>
+        <p>Fai due domande distinte. <strong>Come entro nella rete?</strong> <strong>Come viaggiano i dati dentro la rete?</strong> Per esempio un accesso permanente può portare a una rete dell’operatore che trasporta traffico a pacchetti.</p>
+      </section>
+
+      <section class="slide">
+        <h2>Come si sono evolute le WAN</h2>
+        <table class="osi-table">
+          <thead><tr><th scope="col">Tecnologia</th><th scope="col">Idea da ricordare</th></tr></thead>
+          <tbody>
+            <tr><td>X.25</td><td>Rete a pacchetto con circuiti virtuali e controlli pensati per linee soggette a errori.</td></tr>
+            <tr><td>Frame Relay</td><td>Inoltra trame di lunghezza variabile lungo circuiti virtuali.</td></tr>
+            <tr><td>ATM</td><td>Usa celle di dimensione fissa e percorsi virtuali.</td></tr>
+            <tr><td>MPLS</td><td>Inoltra il traffico usando etichette. Un operatore può usarlo per collegare più sedi.</td></tr>
+          </tbody>
+        </table>
+        <p>Un <strong>circuito virtuale</strong> è un percorso logico. Più percorsi logici possono condividere la stessa infrastruttura fisica.</p>
+        <p>Per approfondire, vedi <a href="https://www.itu.int/rec/T-REC-G.704/en">ITU-T G.704 per E1</a>, <a href="https://www.itu.int/rec/T-REC-I.361">ITU-T I.361 per ATM</a> e <a href="https://www.rfc-editor.org/rfc/rfc3031">RFC 3031 per MPLS</a>.</p>
+      </section>
+
+      <section class="slide">
+        <h2>Sfida rapida</h2>
+        <p>Una piccola officina apre una seconda sede. Scegli il tipo di accesso e riconosci come viaggiano i dati nei tre scenari. Dopo ogni risposta trovi la spiegazione. Alla fine puoi riprovare.</p>
+        <div class="quiz-wrap" id="quizContainer"></div>
+      </section>
+
+      <div class="mark-done-wrap">
+        <button type="button" class="mark-done-btn">✓ Segna la lezione come studiata</button>
+        <nav class="lesson-nav-btns" aria-label="Lezioni del modulo">
+          <a href="lezione-2-1.html" class="btn btn-ghost">← Lezione 2.1</a>
+          <a href="index.html" class="btn btn-ghost">Indice del modulo</a>
+          <a href="lezione-2-3.html" class="btn btn-primary">Lezione 2.3 →</a>
+        </nav>
+      </div>
+    </div>
+  </main>
+</div>
+
+<script src="../assets/js/app.js"></script>
+<script>
+  QuizEngine.init('quizContainer', [
+    {
+      question: "Caso storico. La filiale invia un riepilogo ogni sera chiamando il modem della centrale. Quale accesso sta usando?",
+      answers: [
+        { text: "Dedicato", correct: false },
+        { text: "Commutato a richiesta", correct: true },
+        { text: "Ottico punto-punto permanente", correct: false }
+      ],
+      explain_correct: "La chiamata instaura il collegamento quando serve. La filiale lo può chiudere dopo l’invio.",
+      explain_wrong: "La chiamata instaura il collegamento quando serve. La filiale lo può chiudere dopo l’invio."
+    },
+    {
+      question: "Il contratto prevede un collegamento punto-punto sempre disponibile fra le due sedi. Quale accesso descrive?",
+      answers: [
+        { text: "Dedicato", correct: true },
+        { text: "Commutato a richiesta", correct: false },
+        { text: "Una chiamata PSTN", correct: false }
+      ],
+      explain_correct: "Il collegamento dedicato è predisposto in modo permanente. Le due sedi possono usarlo senza comporre un numero.",
+      explain_wrong: "Il collegamento dedicato è predisposto in modo permanente. Le due sedi possono usarlo senza comporre un numero."
+    },
+    {
+      question: "Nella rete IP dell’operatore, più flussi di dati si alternano sullo stesso collegamento. Quale commutazione riconosci?",
+      answers: [
+        { text: "Di circuito con capacità riservata per ogni chiamata", correct: false },
+        { text: "Commutata a richiesta sul doppino", correct: false },
+        { text: "Di pacchetto", correct: true }
+      ],
+      explain_correct: "Il collegamento trasporta pacchetti di più flussi. Se arrivano tutti insieme, possono dover aspettare in coda.",
+      explain_wrong: "Il collegamento trasporta pacchetti di più flussi. Se arrivano tutti insieme, possono dover aspettare in coda."
+    }
+  ]);
+</script>
+</body>
+</html>

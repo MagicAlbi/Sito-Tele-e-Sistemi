@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="it" data-theme="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>2.1 · Dalla rete locale al canale fisico | Telecomunicazioni 5A</title>
+  <link rel="stylesheet" href="../assets/css/style.css">
+  <link rel="stylesheet" href="../assets/css/modulo2.css">
+</head>
+<body data-lesson-id="m2-1">
+<div class="app-layout">
+  <header class="site-header">
+    <a href="../index.html" class="logo-link">
+      <div class="logo-icon" aria-hidden="true">⚡</div>
+      <div class="logo-text">
+        <span class="logo-title text-gradient">Telecomunicazioni 5A</span>
+        <span class="logo-sub">IIS J.C. Maxwell</span>
+      </div>
+    </a>
+    <nav class="header-breadcrumb" aria-label="Percorso">
+      <a href="../index.html">Home</a>
+      <span aria-hidden="true">›</span>
+      <a href="index.html">Modulo 2</a>
+      <span aria-hidden="true">›</span>
+      <span class="current" aria-current="page">Lezione 2.1</span>
+    </nav>
+    <div class="header-actions">
+      <button type="button" class="btn btn-present" data-present aria-label="Presenta in classe">Presenta</button>
+      <button type="button" class="btn btn-icon btn-ghost" data-theme-toggle aria-label="Cambia tema"></button>
+    </div>
+  </header>
+
+  <main class="main-content">
+    <div class="content-wrap">
+      <header class="lesson-hero">
+        <div class="lesson-hero-content">
+          <div class="lesson-meta">
+            <span class="lesson-badge lesson-badge-module">Lezione 2.1 · Reti WAN</span>
+          </div>
+          <h1 class="lesson-title-h1">Dalla rete locale al canale fisico</h1>
+          <p class="lesson-subtitle">Segui i dati di un file dal terminale al collegamento seriale e riconosci chi scandisce il ritmo dei bit.</p>
+        </div>
+      </header>
+
+      <section class="slide" aria-label="Sintesi">
+        <h2>In 15 secondi</h2>
+        <div class="tldr">
+          <p>Il DTE produce o usa i dati. Il DCE collega il DTE alla linea e adatta il segnale al mezzo. Su un’interfaccia seriale sincrona il clock indica quando leggere i bit.</p>
+        </div>
+      </section>
+
+      <section class="slide">
+        <h2>Chi genera i dati e chi li adatta?</h2>
+        <p>Nel Modulo 1 il Wi-Fi collegava il dispositivo alla rete locale (LAN). Per raggiungere una sede lontana, il router della LAN deve anche usare un collegamento verso l’esterno. Osserviamo il lato WAN del router in un esempio seriale.</p>
+        <div class="box box-aggancio">
+          <p><strong>Da sede A a sede B</strong></p>
+          <p>Router A (DTE) → modem A (DCE) → linea → modem B (DCE) → router B (DTE)</p>
+          <p>Il computer della sede A crea il file. Il router A consegna al modem i dati da inoltrare. Il modem A li traduce in segnali adatti alla linea. Il modem B recupera i dati e li consegna al router B.</p>
+        </div>
+        <p><strong>DTE</strong> significa <em>Data Terminal Equipment</em>, apparato terminale dei dati. Nel tratto seriale dell’esempio è il router. <strong>DCE</strong> significa <em>Data Circuit-terminating Equipment</em>, apparato di terminazione del circuito dati. Nell’esempio è il modem. I ruoli si riferiscono all’interfaccia che stai osservando.</p>
+      </section>
+
+      <section class="slide">
+        <h2>Dati, sincronismo e controllo</h2>
+        <p><strong>TXD e RXD</strong> indicano trasmissione e ricezione dei dati. In un collegamento sincrono ci sono riferimenti temporali per trasmissione e ricezione, detti clock TX e RX. Nel caso tipico il DCE li fornisce al DTE per scandire l’invio e la lettura dei bit.</p>
+        <p>In un collegamento asincrono come una comune porta RS-232, i due apparati concordano velocità e formato. I bit di start e stop delimitano ogni carattere senza un filo di clock condiviso.</p>
+        <table class="osi-table">
+          <thead><tr><th scope="col">Segnali</th><th scope="col">Che cosa indicano fra terminale e modem</th></tr></thead>
+          <tbody>
+            <tr><td>RTS / CTS</td><td>Il DTE chiede di trasmettere. Il DCE risponde quando può accettare i dati.</td></tr>
+            <tr><td>DTR / DSR</td><td>Il DTE segnala di essere pronto con DTR. Il DCE segnala di essere pronto con DSR.</td></tr>
+            <tr><td>DCD</td><td>Il modem indica al terminale che ha rilevato la portante remota.</td></tr>
+          </tbody>
+        </table>
+      </section>
+
+      <section class="slide">
+        <h2>Due interfacce seriali</h2>
+        <p><strong>RS-232</strong> si incontra per esempio sulle console di apparati di rete e su macchine industriali. <strong>V.35</strong> è un’interfaccia storica usata per collegare un router a un apparato di linea su una tratta WAN seriale sincrona.</p>
+        <div class="box box-info">
+          <p><strong>Perché si chiama cavo null modem?</strong> Per un collegamento RS-232 asincrono diretto tra due terminali, un cavo null modem porta il TX di ciascun lato all’RX dell’altro. I collegamenti dei segnali di controllo dipendono da come i due apparati gestiscono il flusso.</p>
+        </div>
+        <p>Per approfondire, consulta la <a href="https://www.cisco.com/c/en/us/td/docs/routers/access/interfaces/nm/hardware/installation/guide/ConntSer.html">guida Cisco alle interfacce seriali e al clock</a> e la <a href="https://www.cisco.com/c/en/us/products/collateral/routers/829-industrial-router/white-paper-c11-743674.html">guida Cisco alle porte asincrone</a>.</p>
+      </section>
+
+      <section class="slide">
+        <h2>Sfida rapida</h2>
+        <p>Sul banco c’è un collegamento router–modem. Prendi tre decisioni prima di inviare i dati. Dopo ogni risposta trovi la spiegazione. Alla fine puoi riprovare.</p>
+        <div class="quiz-wrap" id="quizContainer"></div>
+      </section>
+
+      <div class="mark-done-wrap">
+        <button type="button" class="mark-done-btn">✓ Segna la lezione come studiata</button>
+        <nav class="lesson-nav-btns" aria-label="Lezioni del modulo">
+          <a href="index.html" class="btn btn-ghost">Indice del modulo</a>
+          <a href="lezione-2-2.html" class="btn btn-primary">Lezione 2.2 →</a>
+        </nav>
+      </div>
+    </div>
+  </main>
+</div>
+
+<script src="../assets/js/app.js"></script>
+<script>
+  QuizEngine.init('quizContainer', [
+    {
+      question: "Il router consegna i dati e il modem li adatta alla linea. Chi svolge il ruolo di DCE?",
+      answers: [
+        { text: "Il modem", correct: true },
+        { text: "Il router", correct: false },
+        { text: "Il cavo telefonico", correct: false }
+      ],
+      explain_correct: "Il modem termina il circuito e adatta il segnale alla linea. Il router è il DTE su questa interfaccia.",
+      explain_wrong: "Il modem termina il circuito e adatta il segnale alla linea. Il router è il DTE su questa interfaccia."
+    },
+    {
+      question: "Sulla porta sincrona del router manca il riferimento temporale. Che cosa controlli per primo?",
+      answers: [
+        { text: "Se il nome del file è corretto", correct: false },
+        { text: "Se il DCE fornisce il clock previsto", correct: true },
+        { text: "Se i due terminali hanno lo stesso nome", correct: false }
+      ],
+      explain_correct: "Il clock è il riferimento usato per scandire i bit su questa interfaccia sincrona.",
+      explain_wrong: "Il clock è il riferimento usato per scandire i bit su questa interfaccia sincrona."
+    },
+    {
+      question: "Nel collegamento RS-232 dell’esempio il terminale ha attivato RTS. Quale segnale attende per iniziare a inviare?",
+      answers: [
+        { text: "DTR", correct: false },
+        { text: "DCD", correct: false },
+        { text: "CTS", correct: true }
+      ],
+      explain_correct: "CTS è il via libera del DCE. DCD segnala la portante, mentre DTR indica che il terminale è pronto.",
+      explain_wrong: "CTS è il via libera del DCE. DCD segnala la portante, mentre DTR indica che il terminale è pronto."
+    }
+  ]);
+</script>
+</body>
+</html>
