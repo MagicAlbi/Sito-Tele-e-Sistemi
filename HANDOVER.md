@@ -119,7 +119,7 @@ Il lavoro deve ora proseguire con la creazione della cartella `sito/modulo2/`.
 - Sito: https://magicalbi.github.io/Sito-Tele-e-Sistemi/
 - GitHub Pages pubblica `main`, cartella radice `/`. Il contenuto di questa cartella sito è la radice del repository remoto.
 - AGENTS.md e HANDOVER.md viaggiano con il codice. Le skill di progetto vanno in `.agents/skills/`.
-- Per pianificare lavori distribuiti su più sessioni, usa la skill `piani-a-fasi` in `.agents/skills/piani-a-fasi/SKILL.md`.
+- Per pianificare lavori distribuiti su più sessioni, usa la skill `piani-a-fasi` in `.agents/skills/piani-a-fasi/SKILL.md`. Il piano di [Telecomunicazioni 5A](piani/telecomunicazioni-5a/PIANO.md) riporta stati e dipendenze. Apri dalla tabella la scheda della fase per trovare il prompt, i criteri e l’esito.
 - Configurazione condivisa, skill personali e guida: repository privato MagicAlbi/Istruzioni-generali. Identificativo del progetto: `sito-tele`.
 - Ogni PC abilita il progetto esplicitamente e conserva i percorsi solo nella configurazione locale. I progetti non abilitati non vengono clonati o aggiornati.
 - Prima di lavorare: Sync.ps1 -Mode Start. Dopo approvazione (comprensiva della pubblicazione): Sync.ps1 -Mode Save -Project sito-tele -Approved. Prima del cambio PC: Check-End.ps1.
