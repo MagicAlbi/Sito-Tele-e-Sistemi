@@ -31,23 +31,32 @@ Entro il 31 marzo 2027 la 5A Telecomunicazioni dell’IIS J.C. Maxwell di Nichel
 - Usare elementi di gioco leggeri in tutto il sito per mantenere l’attenzione. Integrare brevi sfide o attività con riscontro immediato nei materiali nuovi. Concordare eventuali interventi sui materiali esistenti.
 - Ogni sottomodulo ha un quiz di autovalutazione, indicativamente di tre domande. Ogni modulo completo ha una sezione dedicata alla verifica finale, che il docente somministra per valutare gli studenti.
 
+## Priorità attuale
+
+La costruzione dei moduli è sospesa su richiesta del docente. La fase 2 resta in attesa di approvazione. Dare precedenza alla bozza di evidenziatori e note sulle sei lezioni del Modulo 1. Il lavoro procede in parallelo al percorso didattico e ne usa le pagine esistenti.
+
 ## Fasi
 
 | N. | Fase | Dipende da | Stato | Fatta il |
 | --- | --- | --- | --- | --- |
-| 1 | [Mappa delle lezioni e delle attività](fasi/01/FASE.md) | — | fatta | 20 novembre 2026 |
-| 2 | [Modulo 2 · interfacce, WAN e accessi](fasi/02/FASE.md) | 1 | in corso | — |
-| 3 | [Modulo 2 · protocolli e routing](fasi/03/FASE.md) | 2 | da fare | — |
-| 4 | [Modulo 2 · laboratorio e verifica](fasi/04/FASE.md) | 3, 13 | da fare | — |
-| 5 | [Modulo 3 · modello digitale e teoria dell’informazione](fasi/05/FASE.md) | 1 | da fare | — |
-| 6 | [Modulo 3 · tecniche e applicazioni](fasi/06/FASE.md) | 2, 5 | da fare | — |
-| 7 | [Modulo 3 · laboratorio e verifica](fasi/07/FASE.md) | 6, 13 | da fare | — |
-| 8 | [Modulo 4 · lezioni sulle reti mobili](fasi/08/FASE.md) | 1 | da fare | — |
-| 9 | [Modulo 4 · laboratorio e verifica](fasi/09/FASE.md) | 8, 13 | da fare | — |
-| 10 | [Modulo 5 · lezioni sulle reti convergenti](fasi/10/FASE.md) | 1 | da fare | — |
-| 11 | [Modulo 5 · laboratorio e verifica](fasi/11/FASE.md) | 10, 13 | da fare | — |
-| 12 | [Controllo finale del sito](fasi/12/FASE.md) | 4, 7, 9, 11 | da fare | — |
-| 13 | [Progettazione delle verifiche di fine modulo](fasi/13/FASE.md) | 1 | da fare | — |
+| 1 | [Mappa delle lezioni e delle attività](fasi/01/FASE.md) | — | fatta | 20 novembre 2026 | 2–3 h (stima a posteriori) | GPT‑6.2 Astra |
+| 2 | [Modulo 2 · interfacce, WAN e accessi](fasi/02/FASE.md) | 1 | in corso | — | 6–9 h (fase già svolta, da approvare) | GPT‑6.2 Astra |
+| 3 | [Modulo 2 · protocolli e routing](fasi/03/FASE.md) | 2 | da fare | — | 5–8 h | GPT‑6.2 Astra |
+| 4 | [Modulo 2 · laboratorio e verifica](fasi/04/FASE.md) | 3, 13 | da fare | — | 5–8 h | GPT‑6.2 Astra |
+| 5 | [Modulo 3 · modello digitale e teoria dell’informazione](fasi/05/FASE.md) | 1 | da fare | — | 6–9 h | GPT‑6.2 Astra |
+| 6 | [Modulo 3 · tecniche e applicazioni](fasi/06/FASE.md) | 2, 5 | da fare | — | 6–9 h | GPT‑6.2 Astra |
+| 7 | [Modulo 3 · laboratorio e verifica](fasi/07/FASE.md) | 6, 13 | da fare | — | 5–8 h | GPT‑6.2 Astra |
+| 8 | [Modulo 4 · lezioni sulle reti mobili](fasi/08/FASE.md) | 1 | da fare | — | 7–10 h | GPT‑6.2 Astra |
+| 9 | [Modulo 4 · laboratorio e verifica](fasi/09/FASE.md) | 8, 13 | da fare | — | 5–8 h | GPT‑6.2 Astra |
+| 10 | [Modulo 5 · lezioni sulle reti convergenti](fasi/10/FASE.md) | 1 | da fare | — | 8–12 h | GPT‑6.2 Astra |
+| 11 | [Modulo 5 · laboratorio e verifica](fasi/11/FASE.md) | 10, 13 | da fare | — | 5–8 h | GPT‑6.2 Astra |
+| 12 | [Controllo finale del sito](fasi/12/FASE.md) | 4, 7, 9, 11, 16 | da fare | — | 3–5 h | GPT‑6.2 Sol |
+| 13 | [Progettazione delle verifiche di fine modulo](fasi/13/FASE.md) | 1 | da fare | — | 2–4 h | GPT‑6.2 Astra |
+| 14 | [Bozza di evidenziatori e note nel Modulo 1](fasi/14/FASE.md) | — | fatta | 22 novembre 2026 | 4–6 h | GPT‑6.2 Astra |
+| 15 | [Revisione della bozza con il docente](fasi/15/FASE.md) | 14 | in corso | — | 3–5 h | GPT‑6.2 Sol |
+| 16 | [Estensione alle pagine di spiegazione](fasi/16/FASE.md) | 15 | da fare | — | 2–3 h | GPT‑6.2 Sol |
+
+Lo sforzo stima lavoro e controlli per ciascuna fase, esclusa l’attesa per la revisione. Astra è assegnato a progettazione, contenuti tecnici e integrazione iniziale. Sol a revisioni mirate, estensione e controlli.
 
 Per avviare una fase, apri il suo collegamento e copia il prompt in una nuova chat nella radice del progetto. La tabella indica quali fasi devono essere già concluse.
 
@@ -55,10 +64,12 @@ Per avviare una fase, apri il suo collegamento e copia il prompt in una nuova ch
 
 Per le fasi che producono lezioni, ogni pagina deve avere una sintesi iniziale, un esempio o esercizio, un quiz funzionante e una modalità presentazione che si può avviare, usare e chiudere da tastiera. Verifica con il browser e verifica i calcoli eseguendoli. Per le fasi di laboratorio e verifica, prova almeno un caso del laboratorio con esito atteso e controlla la correzione del quiz e la stampa delle domande aperte. Usa dati di fantasia.
 
+Dopo la fase 16, attiva le annotazioni nelle nuove pagine di spiegazione e prova che una nota resta associata alla relativa lezione dopo la ricarica.
+
 ## Da decidere
 
 - **Eventuali sospensioni della 5A** Da verificare con il docente. Se riducono le ore concordate, usare prima il margine di 6 ore e aggiornare le tappe interessate.
 - **Scaletta e attività** Il calendario compatto è la proposta per l’aula. Concordare eventuali attività del giovedì con l’ITP prima di contarle.
 - **Verifiche di fine modulo** Concordare formato, modalità di svolgimento ed eventuale salvataggio dei risultati nella [fase 13](fasi/13/FASE.md), prima di costruire le nuove verifiche.
 - **Altre idee per il sito** Da raccogliere quando il docente vorrà discuterne.
-- **Prossimi passi** La [fase 2](fasi/02/FASE.md) ha superato i criteri applicabili ed è in attesa dell’approvazione del docente. Dopo l’approvazione si può avviare la [fase 3](fasi/03/FASE.md). La [fase 13](fasi/13/FASE.md) può essere discussa in parallelo e va conclusa prima della fase 4.
+- **Prossimi passi** Il docente ha autorizzato la pubblicazione delle annotazioni nelle sei lezioni del Modulo 1. La [fase 15](fasi/15/FASE.md) resta in corso per i ritocchi successivi, prima dell’estensione alle altre lezioni nella fase 16. La fase 13 può essere ripresa indipendentemente dalle annotazioni.

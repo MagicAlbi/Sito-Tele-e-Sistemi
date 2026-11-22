@@ -156,3 +156,8 @@ Il lavoro deve ora proseguire con la creazione della cartella `sito/modulo2/`.
 ### Durata dei moduli
 
 - La home mostra il numero di lezioni per ogni modulo e l’indice del Modulo 1 indica il quadrimestre. Le durate e il totale delle ore sono stati rimossi dalle pagine del sito. Il monte ore resta nel programma di dipartimento.
+
+## 8. Annotazioni nelle lezioni (22 novembre 2026)
+
+- Costruzione dei moduli sospesa. La [fase 14](piani/telecomunicazioni-5a/fasi/14/FASE.md) registra la prima bozza sulle sei lezioni del Modulo 1. La [fase 15](piani/telecomunicazioni-5a/fasi/15/FASE.md) registra la revisione locale richiesta dal docente. Il menu mostra sei quadratini fluorescenti, il clic sul testo evidenziato apre colore e cestino, le note compaiono accanto al passaggio o subito sotto sugli schermi stretti. Dopo l’approvazione è prevista l’estensione alle altre lezioni nella fase 16.
+- Le lezioni abilitate caricano gli stili e lo script `annotazioni` e dichiarano un identificativo stabile in `data-lesson-annotations`. Lo script conserva testo selezionato e posizione nel browser, con un archivio per lezione. In modalità Presentazione sospende i segni sul testo e li ripristina all’uscita. I fogli stampati escludono il pannello e i segni.

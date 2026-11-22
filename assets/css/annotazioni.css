@@ -1,0 +1,208 @@
+:root {
+  --annotation-giallo: #f4ff00;
+  --annotation-verde: #68ff33;
+  --annotation-azzurro: #52e9ff;
+  --annotation-rosa: #ff69d2;
+  --annotation-arancione: #ffad39;
+  --annotation-viola: #c1a3ff;
+  --annotation-ink: #141a24;
+  --annotation-note-bg: #192940;
+}
+
+[data-theme="light"] { --annotation-note-bg: #f9fbff; }
+
+.annotation-swatch[data-color="giallo"] { --annotation-color: var(--annotation-giallo); }
+.annotation-swatch[data-color="verde"] { --annotation-color: var(--annotation-verde); }
+.annotation-swatch[data-color="azzurro"] { --annotation-color: var(--annotation-azzurro); }
+.annotation-swatch[data-color="rosa"] { --annotation-color: var(--annotation-rosa); }
+.annotation-swatch[data-color="arancione"] { --annotation-color: var(--annotation-arancione); }
+.annotation-swatch[data-color="viola"] { --annotation-color: var(--annotation-viola); }
+
+.annotations-toggle:is([aria-expanded="true"], .annotation-active) {
+  color: var(--primary);
+  border-color: var(--primary);
+  background: var(--primary-subtle);
+}
+
+.annotations-tools-popover {
+  position: fixed;
+  z-index: 210;
+  top: calc(var(--header-h) + .5rem);
+  right: .75rem;
+  display: grid;
+  justify-items: end;
+  gap: .4rem;
+  max-width: calc(100vw - 1.5rem);
+  pointer-events: none;
+}
+
+.annotations-menu, .annotations-mode, .annotations-mark-editor,
+.annotations-mark-colors, .annotations-card {
+  padding: .5rem;
+  border: 1px solid var(--border-2);
+  border-radius: var(--r-md);
+  background: var(--surface);
+  color: var(--text);
+  box-shadow: var(--shadow-lg);
+  font-size: .875rem;
+  pointer-events: auto;
+}
+
+.annotations-menu { display: grid; gap: .5rem; }
+.annotations-mode, .annotations-row, .annotations-colors {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: .35rem;
+}
+.annotations-mode {
+  border-color: var(--primary);
+  padding: .25rem .35rem .25rem .65rem;
+  font-size: .8rem;
+}
+.annotations-note-controls {
+  border-top: 1px solid var(--border-2);
+  padding-top: .4rem;
+}
+.annotations-note-controls button { font-size: .8rem; }
+
+.annotations-tools-popover button, .annotations-mark-editor button, .annotations-card button {
+  min-height: 2rem;
+  padding: .2rem .55rem;
+  border: 1px solid var(--border-2);
+  border-radius: var(--r-sm);
+  background: var(--surface-2);
+  color: var(--text);
+  font: inherit;
+  cursor: pointer;
+}
+.annotations-tools-popover button:disabled { opacity: .65; cursor: default; }
+.annotations-tools-popover button[aria-pressed="true"] { border-color: var(--primary); }
+.annotations-tools-popover .annotation-swatch, .annotations-mark-editor .annotation-swatch {
+  width: 1.8rem;
+  height: 1.8rem;
+  min-height: 0;
+  padding: 0;
+  border-radius: 4px;
+  background: var(--annotation-color);
+}
+.annotation-swatch[aria-pressed="true"] { outline: 2px solid var(--primary); outline-offset: 1px; }
+.annotations-toggle:focus-visible, .annotations-tools-popover :focus-visible,
+.annotations-mark-editor :focus-visible, .annotations-card :focus-visible {
+  outline: 2px solid var(--primary);
+  outline-offset: 2px;
+}
+:is(.annotations-tools-popover, .annotations-mark-editor, .annotations-rail) [hidden],
+.annotations-mark-editor[hidden] { display: none; }
+
+.annotations-mark-editor {
+  position: fixed;
+  z-index: 215;
+  padding: .3rem;
+}
+.annotations-mark-editor .annotation-icon {
+  display: grid;
+  place-items: center;
+  width: 2rem;
+  padding: 0;
+}
+.annotations-mark-editor .annotation-icon:hover { color: var(--error); }
+.annotations-mark-colors {
+  position: absolute;
+  left: 0;
+  bottom: calc(100% + .3rem);
+  width: max-content;
+}
+.annotations-palette-below .annotations-mark-colors { top: calc(100% + .3rem); bottom: auto; }
+.annotations-palette-align-end .annotations-mark-colors { right: 0; left: auto; }
+
+.annotations-content { position: relative; }
+.annotations-rail {
+  position: absolute;
+  inset: 0 0 auto;
+  pointer-events: none;
+}
+.annotations-card {
+  position: absolute;
+  inset-inline: 0;
+  background: var(--annotation-note-bg);
+  overflow-wrap: anywhere;
+  box-shadow: none;
+  border-inline-start: 3px solid var(--primary);
+}
+.annotations-card summary { font-weight: 600; cursor: pointer; }
+.annotations-note-body { margin: .45rem 0; white-space: pre-wrap; }
+.annotations-editor { display: grid; gap: .35rem; }
+.annotations-editor input, .annotations-editor textarea {
+  width: 100%;
+  min-width: 0;
+  padding: .35rem;
+  border: 1px solid var(--border-2);
+  border-radius: var(--r-sm);
+  background: var(--surface-2);
+  color: var(--text);
+  font: inherit;
+}
+.annotations-editor textarea { resize: none; }
+.annotations-editor p { margin: 0; font-size: .75rem; color: var(--text-muted); }
+.annotations-inline-space { flex: 0 0 100%; grid-column: 1 / -1; }
+
+.annotations-feedback:not([data-error]) {
+  position: fixed;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip-path: inset(50%);
+}
+.annotations-feedback[data-error] {
+  position: fixed;
+  z-index: 220;
+  inset: auto 1rem 1rem auto;
+  max-width: calc(100vw - 2rem);
+  padding: .6rem;
+  background: var(--surface);
+  color: var(--error);
+  border: 1px solid var(--error);
+  border-radius: var(--r-sm);
+}
+
+[data-annotation-mode="highlight"] :is(.lesson-hero-content, .tldr, .slide) { cursor: text; }
+[data-annotation-mode="note"] :is(.lesson-hero-content, .tldr, .slide) { cursor: crosshair; }
+
+@media screen and (min-width: 1080px) {
+  .main-content.annotations-with-notes { padding-right: 15.5rem; }
+  .annotations-rail { left: calc(100% + .95rem); right: auto; width: 12.5rem; }
+  .annotations-card::before {
+    position: absolute;
+    top: .75rem;
+    right: 100%;
+    width: .95rem;
+    border-top: 1px solid var(--primary);
+    content: "";
+  }
+}
+
+@media screen {
+  ::highlight(lesson-giallo) { background-color: var(--annotation-giallo); color: var(--annotation-ink); }
+  ::highlight(lesson-verde) { background-color: var(--annotation-verde); color: var(--annotation-ink); }
+  ::highlight(lesson-azzurro) { background-color: var(--annotation-azzurro); color: var(--annotation-ink); }
+  ::highlight(lesson-rosa) { background-color: var(--annotation-rosa); color: var(--annotation-ink); }
+  ::highlight(lesson-arancione) { background-color: var(--annotation-arancione); color: var(--annotation-ink); }
+  ::highlight(lesson-viola) { background-color: var(--annotation-viola); color: var(--annotation-ink); }
+  ::highlight(lesson-note) { text-decoration: underline dotted #60a5fa 2px; }
+  ::highlight(lesson-draft) { text-decoration: underline solid #60a5fa 2px; }
+}
+
+@media (max-width: 370px) {
+  .module-one .site-header:has(.annotations-toggle) { padding-inline: .55rem; gap: .35rem; }
+  .module-one .site-header:has(.annotations-toggle) .header-actions { gap: .25rem; }
+}
+
+body.presenting :is(.annotations-tools-popover, .annotations-rail, .annotations-mark-editor, .annotations-inline-space) {
+  display: none !important;
+}
+
+@media print {
+  .annotations-tools-popover, .annotations-toggle, .annotations-rail,
+  .annotations-mark-editor, .annotations-inline-space, .annotations-feedback { display: none !important; }
+}

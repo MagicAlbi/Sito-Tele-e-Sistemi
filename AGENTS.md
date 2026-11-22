@@ -6,13 +6,14 @@
 - Se la cartella di lavoro contiene `sito/.git`, la radice Git e `sito`; altrimenti usa la radice Git corrente. Non inizializzare un repository nella cartella superiore.
 - Piattaforma didattica per 5A Telecomunicazioni, IIS J.C. Maxwell. HTML5, CSS Custom Properties e Vanilla JavaScript, sito statico GitHub Pages, nessun backend o framework pesante.
 - Mantieni il design di `assets/css/style.css` e le API di `assets/js/app.js`: QuizEngine, PresentationMode, Progress e ThemeManager.
-- Modulo 1 completato. Prossimo: Modulo 2, WAN e accesso remoto, 30 ore, viola #a78bfa, cinque lezioni, laboratorio e verifica. Gli studenti conoscono IP/subnetting, ma il routing va introdotto da zero.
+- Modulo 1 completato. La costruzione dei moduli è in pausa su richiesta del docente. Priorità attuale alla bozza di evidenziatori e note nel Modulo 1, fasi 14–16 del piano.
 - Per i contenuti usa chunking visivo, simulatori quando utili, esempi reali e curiosita tecniche. Non modificare altri moduli senza richiesta.
 
 ## Lavori a fasi
 - Usa elementi di gioco leggeri in tutto il sito per tenere viva l’attenzione, per esempio brevi sfide con riscontro immediato. Quando aggiungi o rivedi materiali, adatta l’attività all’obiettivo della lezione.
 - Per i lavori che occupano più sessioni, usa `$piani-a-fasi` dalla radice Git. Trova i piani in `indice.md`, sezione «Piani». Il riepilogo è in `piani/<nome>/PIANO.md` e ogni riga della tabella collega alla scheda `fasi/<NN>/FASE.md`.
 - Il piano contiene decisioni, dipendenze, stato e prossimo passo. La scheda di fase contiene il prompt, i criteri specifici e l’esito. Prima di iniziare la prima fase, fai approvare il piano al docente.
+- Quando il docente propone un intervento che cambia il progetto, aggiorna autonomamente priorità, fasi e dipendenze. Stima lo sforzo di ogni fase e indica nel piano il modello da usare, scelto in base al lavoro.
 - Una fase è «fatta» dopo che tutti i criteri applicabili sono stati superati e il docente ha approvato il risultato. Registra l’esito delle verifiche nella scheda e usa lo stato «in corso» fino all’approvazione.
 - Per ogni fase, apri una nuova sessione nella radice Git, leggi piano e scheda, verifica che i prerequisiti siano conclusi e svolgi solo la fase richiesta. A fine sessione aggiorna la tabella del piano e scrivi nella scheda i controlli eseguiti e ciò che resta da fare.
 - Per un intervento che si conclude in una sessione, lavora direttamente. Se incide su un piano già attivo, aggiorna le sole informazioni interessate.
