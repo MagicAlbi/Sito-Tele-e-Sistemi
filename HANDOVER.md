@@ -17,6 +17,10 @@ Creare una piattaforma didattica interattiva moderna che **sostituisca completam
 ---
 
 ## ⚙️ 2. Architettura & Stack Tecnologico
+
+Le bozze si sviluppano in `Bozze sito`, accanto alla cartella Git `sito`. Prima di pubblicare, confrontare le due copie e portare in `sito` solo i file approvati. Per cambiare PC si porta con sé la cartella delle bozze, anche tramite una cartella privata già sincronizzata. MagicAlbi Sync continua a gestire la copia Git di `sito`.
+
+Il sito pubblico resta su GitHub Pages. Per provare il salvataggio tra PC è disponibile un ambiente locale Cloudflare Workers e D1 in [sincronizzazione/](sincronizzazione/), con due profili inventati. Su un PC con Node.js 24 e pnpm, eseguire `pnpm install --ignore-scripts` nella cartella, poi `pnpm test` per ripetere le prove. `pnpm start --init` prepara il database persistente in `.local/sincronizzazione/` e `pnpm start` avvia il servizio su `127.0.0.1:8787`. Il database, i codici e la chiave per verificarli restano nella cartella ignorata da Git. Il [piano](piani/telecomunicazioni-5a/PIANO.md) descrive le fasi di collegamento al Modulo 1 e di prova sul piano gratuito.
 - **HTML5 semantico** + **CSS3 Custom Properties** (Dark-first, palette neon per i moduli, responsive, print media query).
 - **Vanilla JavaScript puro** (nessun framework pesante tipo React/Angular):
   - `assets/css/style.css`: Design system completo (Inter + JetBrains Mono, orbs animati, glassmorphism, card neon, 3D viewport wrapper).
@@ -112,6 +116,12 @@ Il lavoro deve ora proseguire con la creazione della cartella `sito/modulo2/`.
 3. **Chunking visivo:** non creare mai muri di testo; usa tabelle comparative, box colorati, elenchi puntati e schemi visivi.
 4. **Curiosità Tech per 18enni:** inserisci sempre nei box `.box-curiosity` aneddoti reali, trucchi di networking o analogie con videogiochi, streaming e smartphone.
 5. **Autonomia:** per ogni lezione includi sempre il componente quiz in fondo invocando `QuizEngine.init('quizContainer', questions)` affinché la pagina sia subito funzionante.
+
+## Sezioni finali dei moduli
+
+Il [piano](piani/telecomunicazioni-5a/PIANO.md) prevede un primo intervento nel Modulo 1 (fasi 20–24) e il riuso nei Moduli 2–5 alla ripresa dei lavori. L’ordine è Laboratorio, Test di allenamento, Esercizi numerici quando sono previsti nelle lezioni e Verifica. Il test propone 10 domande estratte da una banca di 70–100 e mescola le opzioni. Negli esercizi numerici si sceglie la tipologia dal menu, si ricevono due esercizi e, dopo un errore, si vede lo svolgimento completo. Per i requisiti su banche, correzione e guida visiva, apri le schede dal piano. La progettazione della verifica sommativa del Modulo 2 descritta sopra è rimandata alla fase 13 insieme a quella degli altri moduli. La verifica del Modulo 1 resta disponibile com’è.
+
+Quando cambia il contenuto di una sezione, ricontrolla sempre quiz delle lezioni, quiz di fine modulo, banca di allenamento, verifica finale ed esercizi collegati rispetto a ciò che gli studenti possono consultare. Aggiorna e riprova le attività interessate insieme al materiale. Verifica anche le spiegazioni, i riferimenti e i risultati attesi.
 
 ## 6. Pubblicazione e alternanza PC (13 novembre 2026)
 

@@ -1,4 +1,4 @@
-# Fase 4 · Modulo 2 · laboratorio e verifica
+# Fase 4 · Modulo 2 · laboratorio e sezione finale
 
 [Torna al piano](../../PIANO.md)
 
@@ -14,7 +14,7 @@ Aggiorna l’esito nel file di fase e lo stato nella tabella del piano. Per il s
 
 ## Lavoro e verifiche
 
-- **Produce** indice, laboratorio sul routing e verifica del Modulo 2. Il laboratorio visualizza la scelta della rotta da una tabella.
+- **Produce** indice e laboratorio sul routing del Modulo 2. L’indice riserva l’ultima posizione alla verifica, da progettare nella fase 13. Il laboratorio visualizza la scelta della rotta da una tabella.
 - **Leggi** le cinque lezioni e, come modelli, il laboratorio e la verifica del Modulo 1.
-- **Criteri** Dalla home si raggiungono indice, cinque lezioni, laboratorio e verifica. Il laboratorio mostra la rotta attesa in almeno tre casi, compresa la rotta predefinita. Ogni item della verifica rimanda a un obiettivo svolto e ha soluzione o griglia di valutazione.
+- **Criteri** Dalla home si raggiungono indice, cinque lezioni, laboratorio e indicazione della verifica in ultima posizione. Il laboratorio mostra la rotta attesa in almeno tre casi, compresa la rotta predefinita. Il collegamento al laboratorio funziona. L’indicazione della verifica non contiene collegamenti a pagine assenti. Le sezioni di allenamento vengono aggiunte nelle fasi 25 e 26.
 - **Esito**

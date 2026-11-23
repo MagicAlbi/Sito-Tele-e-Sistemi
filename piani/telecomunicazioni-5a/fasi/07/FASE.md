@@ -1,4 +1,4 @@
-# Fase 7 · Modulo 3 · laboratorio e verifica
+# Fase 7 · Modulo 3 · laboratorio e sezione finale
 
 [Torna al piano](../../PIANO.md)
 
@@ -14,7 +14,7 @@ Aggiorna l’esito nel file di fase e lo stato nella tabella del piano. Per il s
 
 ## Lavoro e verifiche
 
-- **Produce** indice, laboratorio sulle modulazioni e verifica del Modulo 3.
+- **Produce** indice e laboratorio sulle modulazioni del Modulo 3. L’indice riserva l’ultima posizione alla verifica, da progettare nella fase 13.
 - **Leggi** le sei lezioni del Modulo 3 e la [mappa della fase 1](../01/FASE.md).
-- **Criteri** Dalla home si raggiungono indice, sei lezioni, laboratorio e verifica. Il laboratorio fa osservare come cambia almeno un segnale al variare dei simboli. Ogni item della verifica rimanda a un obiettivo svolto e ha soluzione o griglia di valutazione.
+- **Criteri** Dalla home si raggiungono indice, sei lezioni, laboratorio e indicazione della verifica in ultima posizione. Il laboratorio fa osservare come cambia almeno un segnale al variare dei simboli. Il collegamento al laboratorio funziona. L’indicazione della verifica non contiene collegamenti a pagine assenti. Le sezioni di allenamento vengono aggiunte nelle fasi 27 e 28.
 - **Esito**

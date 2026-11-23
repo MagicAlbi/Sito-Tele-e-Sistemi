@@ -6,7 +6,9 @@
 - Se la cartella di lavoro contiene `sito/.git`, la radice Git e `sito`; altrimenti usa la radice Git corrente. Non inizializzare un repository nella cartella superiore.
 - Piattaforma didattica per 5A Telecomunicazioni, IIS J.C. Maxwell. HTML5, CSS Custom Properties e Vanilla JavaScript, sito statico GitHub Pages, nessun backend o framework pesante.
 - Mantieni il design di `assets/css/style.css` e le API di `assets/js/app.js`: QuizEngine, PresentationMode, Progress e ThemeManager.
-- Modulo 1 completato. La costruzione dei moduli è in pausa su richiesta del docente. Priorità attuale alla bozza di evidenziatori e note nel Modulo 1, fasi 14–16 del piano.
+- Modulo 1 completato. La costruzione degli altri moduli è in pausa su richiesta del docente. La priorità è la prova di sincronizzazione del Modulo 1 sul piano gratuito Cloudflare, fasi 17–19. La revisione di evidenziatori e note prosegue nelle fasi 15–16.
+- La riorganizzazione delle sezioni finali parte dal Modulo 1 nelle fasi 20–24, dopo l’approvazione del piano. In fondo a ogni modulo prevedi Laboratorio, Test di allenamento, Esercizi numerici se previsti dalle lezioni e Verifica. La pagina della verifica Wi-Fi resta quella esistente. Rimanda la progettazione delle altre verifiche alla fase 13.
+- Dopo ogni modifica ai contenuti di qualsiasi sezione, verifica sempre la coerenza del materiale a disposizione degli alunni con i quiz delle lezioni, i quiz di fine modulo, la banca di allenamento, la verifica finale e gli esercizi collegati. Controlla argomenti, domande, opzioni, correzioni, collegamenti, formule e soluzioni. Aggiorna le attività che risentono della modifica, riprova quelle interessate e registra l’esito nello stesso intervento.
 - Per i contenuti usa chunking visivo, simulatori quando utili, esempi reali e curiosita tecniche. Non modificare altri moduli senza richiesta.
 
 ## Lavori a fasi
@@ -24,6 +26,11 @@
 - Prima di lavorare: controlla lo stato Git e sincronizza solo se non ci sono modifiche locali o divergenze. Mai reset, force-push o risoluzioni automatiche dei conflitti per sincronizzare.
 - Dopo un lavoro verificato e approvato, usa la procedura di salvataggio della skill `magicalbi-session-sync` per caricare le modifiche interessate, compreso il piano quando pertinente. Il push su main pubblica automaticamente il sito: l'approvazione del lavoro deve comprendere la pubblicazione.
 - Non dichiarare sincronizzato senza verifica del ramo remoto. Le bozze non approvate restano locali e vanno segnalate prima del cambio PC.
+
+## Bozze e pubblicazione
+- Usa `Bozze sito`, accanto a `sito`, come cartella di lavoro per le modifiche da rivedere, incluse le anteprime. Sul nuovo PC puoi usare una copia di quella cartella o la stessa cartella privata già sincronizzata.
+- `sito` è la cartella collegata a GitHub Pages. Trasferisci lì soltanto le modifiche approvate per la pubblicazione. Prima di trasferire o pubblicare, controlla le modifiche locali già presenti in `sito` e preservale.
+- MagicAlbi Sync sincronizza `sito` con GitHub. Per portare le bozze su un altro PC, copia `Bozze sito` oppure usa una cartella privata già sincronizzata tra i tuoi PC. Il docente pubblica personalmente con **Salva su GitHub**.
 
 ## Verifiche
 - Controlla sintassi JavaScript, collegamenti relativi, pagine interessate, interazioni e stampa quando pertinenti. Per modifiche puramente documentali verifica percorsi, comandi e coerenza.

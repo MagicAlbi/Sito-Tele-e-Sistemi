@@ -1,4 +1,4 @@
-# Fase 9 · Modulo 4 · laboratorio e verifica
+# Fase 9 · Modulo 4 · laboratorio e sezione finale
 
 [Torna al piano](../../PIANO.md)
 
@@ -14,7 +14,7 @@ Aggiorna l’esito nel file di fase e lo stato nella tabella del piano. Per il s
 
 ## Lavoro e verifiche
 
-- **Produce** indice, laboratorio sulle celle radio e verifica del Modulo 4.
+- **Produce** indice e laboratorio sulle celle radio del Modulo 4. L’indice riserva l’ultima posizione alla verifica, da progettare nella fase 13.
 - **Leggi** le quattro lezioni del Modulo 4 e la [mappa della fase 1](../01/FASE.md).
-- **Criteri** Dalla home si raggiungono indice, quattro lezioni, laboratorio e verifica. Il laboratorio fa osservare almeno un passaggio tra due celle simulando lo spostamento di un terminale. Ogni item della verifica rimanda a un obiettivo svolto e ha soluzione o griglia di valutazione.
+- **Criteri** Dalla home si raggiungono indice, quattro lezioni, laboratorio e indicazione della verifica in ultima posizione. Il laboratorio fa osservare almeno un passaggio tra due celle simulando lo spostamento di un terminale. Il collegamento al laboratorio funziona. L’indicazione della verifica non contiene collegamenti a pagine assenti. Le sezioni di allenamento vengono aggiunte nelle fasi 29 e 30.
 - **Esito**

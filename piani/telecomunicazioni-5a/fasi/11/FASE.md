@@ -1,4 +1,4 @@
-# Fase 11 · Modulo 5 · laboratorio e verifica
+# Fase 11 · Modulo 5 · laboratorio e sezione finale
 
 [Torna al piano](../../PIANO.md)
 
@@ -14,7 +14,7 @@ Aggiorna l’esito nel file di fase e lo stato nella tabella del piano. Per il s
 
 ## Lavoro e verifiche
 
-- **Produce** indice, laboratorio sulla qualità della voce su IP e verifica del Modulo 5.
+- **Produce** indice e laboratorio sulla qualità della voce su IP del Modulo 5. L’indice riserva l’ultima posizione alla verifica, da progettare nella fase 13.
 - **Leggi** le cinque lezioni del Modulo 5 e la [mappa della fase 1](../01/FASE.md).
-- **Criteri** Dalla home si raggiungono indice, cinque lezioni, laboratorio e verifica. Il laboratorio fa confrontare almeno due condizioni di rete e mostra il valore o l’effetto che cambia. Ogni item della verifica rimanda a un obiettivo svolto e ha soluzione o griglia di valutazione.
+- **Criteri** Dalla home si raggiungono indice, cinque lezioni, laboratorio e indicazione della verifica in ultima posizione. Il laboratorio fa confrontare almeno due condizioni di rete e mostra il valore o l’effetto che cambia. Il collegamento al laboratorio funziona. L’indicazione della verifica non contiene collegamenti a pagine assenti. Le sezioni di allenamento vengono aggiunte nelle fasi 31 e 32.
 - **Esito**

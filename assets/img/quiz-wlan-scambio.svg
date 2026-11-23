@@ -1,0 +1,20 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 190 236" fill="none" aria-hidden="true">
+  <g stroke="#a78bfa" stroke-width="1.15" stroke-linecap="round" stroke-linejoin="round">
+    <rect x="100" y="21" width="59" height="42" rx="5"/>
+    <path d="M111 43h37m-37 7h25m-20 13v8m27-8v8m-34 0h41"/>
+    <path d="M43 99v-7a6 6 0 0 1 6-6h74a6 6 0 0 0 6-6v-3" stroke-dasharray="3 5" opacity=".65"/>
+    <rect x="24" y="105" width="39" height="70" rx="7"/>
+    <path d="M28 116h31m-31 45h31m-19 7h7"/>
+    <path d="M43 181v19h77" stroke-dasharray="3 5" opacity=".65"/>
+    <circle cx="43" cy="200" r="3" opacity=".75"/>
+  </g>
+  <g stroke="#38bdf8" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M80 119h79m-9-8 9 8-9 8M153 151H77m8-8-8 8 8 8" opacity=".8"/>
+    <rect x="105" y="110" width="15" height="18" rx="3"/>
+    <rect x="127" y="142" width="15" height="18" rx="3"/>
+    <path d="M109 115h7m-7 7h7m15 25h7m-7 7h7" opacity=".6"/>
+    <path d="m126 195 22-8 18 8-22 8zm0 0v10l18 8 22-8v-10m-22 8v10"/>
+    <path d="M16 34h48m-48 9h28m110 181h18" opacity=".3"/>
+    <circle cx="72" cy="34" r="2" opacity=".55"/>
+  </g>
+</svg>

@@ -1,0 +1,12 @@
+{
+  "name": "sito-tele-sincronizzazione",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "start": "node ambiente-locale.mjs",
+    "test": "node --test prova-locale.test.mjs"
+  },
+  "devDependencies": {
+    "miniflare": "4.20260730.0"
+  }
+}
