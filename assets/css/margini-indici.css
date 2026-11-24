@@ -31,3 +31,20 @@
   .index-art-end { inset-inline-end: 1rem; top: 43%; }
   [data-theme="light"] .index-art img { filter: brightness(.71); opacity: .87; }
 }
+
+@media screen and (min-width: 1200px) {
+  .home-page .index-art {
+    background:
+      radial-gradient(ellipse at left 32%, var(--primary-subtle), transparent 24%),
+      radial-gradient(ellipse at right 66%, var(--secondary-glow), transparent 24%);
+  }
+
+  .home-page .index-art img {
+    width: min(15rem, calc((100% - var(--index-content-width)) / 2 - 1.6rem));
+    opacity: .9;
+  }
+
+  [data-theme="light"] .home-page .index-art img {
+    opacity: .87;
+  }
+}

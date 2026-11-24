@@ -9,7 +9,7 @@
   <link rel="stylesheet" href="assets/css/margini-indici.css">
   <link rel="stylesheet" href="assets/css/accesso-studio.css">
 </head>
-<body>
+<body class="home-page">
 
 <div class="app-layout">
 
@@ -37,7 +37,7 @@
     <div class="content-wrap">
 
       <!-- HERO WOW IMMERSIVA -->
-      <section class="home-hero reveal">
+      <section class="home-hero">
         <div class="hero-orb hero-orb-1"></div>
         <div class="hero-orb hero-orb-2"></div>
 
@@ -72,7 +72,7 @@
         </div>
       </section>
 
-      <section class="study-access" aria-labelledby="study-access-title" hidden>
+      <section class="study-access" aria-labelledby="study-access-title">
         <div>
           <h2 id="study-access-title">Riprendi il tuo studio</h2>
           <p>Usa il tuo codice personale per accedere anche quando cambi PC.</p>
@@ -83,7 +83,7 @@
             <input id="study-code" name="code" type="password" autocomplete="off"
               autocapitalize="characters" spellcheck="false" required minlength="8" maxlength="8"
               pattern="[A-HJ-NP-Za-hj-np-z2-9]{8}" placeholder="••••••••">
-            <button class="btn btn-primary" type="submit">Accedi</button>
+            <button class="btn btn-primary" type="submit" disabled>Accedi</button>
           </div>
         </form>
         <button class="btn btn-ghost study-import" type="button" data-import-study hidden>Recupera i dati salvati su questo browser</button>
@@ -91,14 +91,14 @@
       </section>
 
       <!-- 1° QUADRIMESTRE -->
-      <div class="section-heading reveal">
+      <div class="section-heading">
         <span>Primo Quadrimestre · Fondamenti di Rete e Trasmissione</span>
       </div>
 
       <div class="modules-grid">
 
         <!-- MODULO 1 -->
-        <a href="modulo1/index.html" class="module-card reveal reveal-delay-1" style="--m-color: var(--m1);" data-num="01" data-module-progress="m1" data-total="6">
+        <a href="modulo1/index.html" class="module-card" style="--m-color: var(--m1);" data-num="01" data-module-progress="m1" data-total="6">
           <div class="module-card-header">
             <div class="module-number">01</div>
             <div class="module-card-title">
@@ -128,7 +128,7 @@
         </a>
 
         <!-- MODULO 2 -->
-        <a href="modulo2/index.html" class="module-card reveal reveal-delay-2" style="--m-color: var(--m2);" data-num="02" data-module-progress="m2" data-total="5">
+        <a href="modulo2/index.html" class="module-card" style="--m-color: var(--m2);" data-num="02" data-module-progress="m2" data-total="5">
           <div class="module-card-header">
             <div class="module-number">02</div>
             <div class="module-card-title">
@@ -158,7 +158,7 @@
         </a>
 
         <!-- MODULO 3 -->
-        <a href="modulo3/index.html" class="module-card reveal reveal-delay-3" style="--m-color: var(--m3);" data-num="03" data-module-progress="m3" data-total="6">
+        <a href="modulo3/index.html" class="module-card" style="--m-color: var(--m3);" data-num="03" data-module-progress="m3" data-total="6">
           <div class="module-card-header">
             <div class="module-number">03</div>
             <div class="module-card-title">
@@ -190,14 +190,14 @@
       </div>
 
       <!-- 2° QUADRIMESTRE -->
-      <div class="section-heading reveal">
+      <div class="section-heading">
         <span>Secondo Quadrimestre · Comunicazioni Mobili e Convergenza</span>
       </div>
 
       <div class="modules-grid">
 
         <!-- MODULO 4 -->
-        <a href="modulo4/index.html" class="module-card reveal reveal-delay-1" style="--m-color: var(--m4);" data-num="04" data-module-progress="m4" data-total="4">
+        <a href="modulo4/index.html" class="module-card" style="--m-color: var(--m4);" data-num="04" data-module-progress="m4" data-total="4">
           <div class="module-card-header">
             <div class="module-number">04</div>
             <div class="module-card-title">
@@ -227,7 +227,7 @@
         </a>
 
         <!-- MODULO 5 -->
-        <a href="modulo5/index.html" class="module-card reveal reveal-delay-2" style="--m-color: var(--m5);" data-num="05" data-module-progress="m5" data-total="5">
+        <a href="modulo5/index.html" class="module-card" style="--m-color: var(--m5);" data-num="05" data-module-progress="m5" data-total="5">
           <div class="module-card-header">
             <div class="module-number">05</div>
             <div class="module-card-title">

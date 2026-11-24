@@ -4,6 +4,8 @@
 
 .main-content {
   grid-column: 1 / -1;
+  --page-art-start: url('../img/indice-nodi-wan.svg');
+  --page-art-end: url('../img/indice-fibra-ottica.svg');
 }
 
 .module-lessons {

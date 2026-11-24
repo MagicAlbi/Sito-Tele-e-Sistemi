@@ -1,38 +1,20 @@
-# Sito Tele e Sistemi - IIS J.C. Maxwell
+# Sito Tele e Sistemi – IIS J.C. Maxwell
 
-## Progetto
-- Repository: https://github.com/MagicAlbi/Sito-Tele-e-Sistemi
-- Sito pubblico: https://magicalbi.github.io/Sito-Tele-e-Sistemi/
-- Se la cartella di lavoro contiene `sito/.git`, la radice Git e `sito`; altrimenti usa la radice Git corrente. Non inizializzare un repository nella cartella superiore.
-- Piattaforma didattica per 5A Telecomunicazioni, IIS J.C. Maxwell. HTML5, CSS Custom Properties e Vanilla JavaScript, sito statico GitHub Pages, nessun backend o framework pesante.
-- Mantieni il design di `assets/css/style.css` e le API di `assets/js/app.js`: QuizEngine, PresentationMode, Progress e ThemeManager.
-- Modulo 1 completato. La costruzione degli altri moduli è in pausa su richiesta del docente. La priorità è la prova di sincronizzazione del Modulo 1 sul piano gratuito Cloudflare, fasi 17–19. La revisione di evidenziatori e note prosegue nelle fasi 15–16.
-- La riorganizzazione delle sezioni finali parte dal Modulo 1 nelle fasi 20–24, dopo l’approvazione del piano. In fondo a ogni modulo prevedi Laboratorio, Test di allenamento, Esercizi numerici se previsti dalle lezioni e Verifica. La pagina della verifica Wi-Fi resta quella esistente. Rimanda la progettazione delle altre verifiche alla fase 13.
-- Dopo ogni modifica ai contenuti di qualsiasi sezione, verifica sempre la coerenza del materiale a disposizione degli alunni con i quiz delle lezioni, i quiz di fine modulo, la banca di allenamento, la verifica finale e gli esercizi collegati. Controlla argomenti, domande, opzioni, correzioni, collegamenti, formule e soluzioni. Aggiorna le attività che risentono della modifica, riprova quelle interessate e registra l’esito nello stesso intervento.
-- Per i contenuti usa chunking visivo, simulatori quando utili, esempi reali e curiosita tecniche. Non modificare altri moduli senza richiesta.
+- Sito statico per 5A Telecomunicazioni, su GitHub Pages (`main`, radice). Lavora nella radice Git esistente, anche se si trova in `sito/`. Mantieni HTML, CSS e JavaScript nativo, il design blu di `assets/css/style.css` e le API di `assets/js/app.js` (`QuizEngine`, `PresentationMode`, `Progress`, `ThemeManager`).
+- Usa URL relativi, compatibili con il prefisso `/Sito-Tele-e-Sistemi/`. Mantieni materiali brevi, esempi realistici, simulatori utili e sfide con riscontro immediato. Intervieni solo sui moduli richiesti.
+- Per stato e priorità, parti da [indice.md](indice.md) e apri il piano e la scheda pertinente. Consulta [HANDOVER.md](HANDOVER.md) per orientarti tra i file.
 
 ## Lavori a fasi
-- Usa elementi di gioco leggeri in tutto il sito per tenere viva l’attenzione, per esempio brevi sfide con riscontro immediato. Quando aggiungi o rivedi materiali, adatta l’attività all’obiettivo della lezione.
-- Per i lavori che occupano più sessioni, usa `$piani-a-fasi` dalla radice Git. Trova i piani in `indice.md`, sezione «Piani». Il riepilogo è in `piani/<nome>/PIANO.md` e ogni riga della tabella collega alla scheda `fasi/<NN>/FASE.md`.
-- Il piano contiene decisioni, dipendenze, stato e prossimo passo. La scheda di fase contiene il prompt, i criteri specifici e l’esito. Prima di iniziare la prima fase, fai approvare il piano al docente.
-- Quando il docente propone un intervento che cambia il progetto, aggiorna autonomamente priorità, fasi e dipendenze. Stima lo sforzo di ogni fase e indica nel piano il modello da usare, scelto in base al lavoro.
-- Una fase è «fatta» dopo che tutti i criteri applicabili sono stati superati e il docente ha approvato il risultato. Registra l’esito delle verifiche nella scheda e usa lo stato «in corso» fino all’approvazione.
-- Per ogni fase, apri una nuova sessione nella radice Git, leggi piano e scheda, verifica che i prerequisiti siano conclusi e svolgi solo la fase richiesta. A fine sessione aggiorna la tabella del piano e scrivi nella scheda i controlli eseguiti e ciò che resta da fare.
-- Per un intervento che si conclude in una sessione, lavora direttamente. Se incide su un piano già attivo, aggiorna le sole informazioni interessate.
 
-## Alternanza tra PC
-- Identificativo nel catalogo privato Istruzioni-generali: `sito-tele`. Usa la skill `magicalbi-session-sync` per avvio, salvataggio approvato e cambio PC.
-- Istruzioni di progetto autorevoli: questo file e `.agents/skills/` nella radice Git. Copie di riferimento sono salvate nella repository privata Istruzioni-generali dopo l'approvazione.
-- Prima di lavorare: controlla lo stato Git e sincronizza solo se non ci sono modifiche locali o divergenze. Mai reset, force-push o risoluzioni automatiche dei conflitti per sincronizzare.
-- Dopo un lavoro verificato e approvato, usa la procedura di salvataggio della skill `magicalbi-session-sync` per caricare le modifiche interessate, compreso il piano quando pertinente. Il push su main pubblica automaticamente il sito: l'approvazione del lavoro deve comprendere la pubblicazione.
-- Non dichiarare sincronizzato senza verifica del ramo remoto. Le bozze non approvate restano locali e vanno segnalate prima del cambio PC.
-
-## Bozze e pubblicazione
-- Usa `Bozze sito`, accanto a `sito`, come cartella di lavoro per le modifiche da rivedere, incluse le anteprime. Sul nuovo PC puoi usare una copia di quella cartella o la stessa cartella privata già sincronizzata.
-- `sito` è la cartella collegata a GitHub Pages. Trasferisci lì soltanto le modifiche approvate per la pubblicazione. Prima di trasferire o pubblicare, controlla le modifiche locali già presenti in `sito` e preservale.
-- MagicAlbi Sync sincronizza `sito` con GitHub. Per portare le bozze su un altro PC, copia `Bozze sito` oppure usa una cartella privata già sincronizzata tra i tuoi PC. Il docente pubblica personalmente con **Salva su GitHub**.
+- Usa `$piani-a-fasi` per lavori su più sessioni. Fai approvare il piano prima di iniziare. Apri una sessione per fase, controlla i prerequisiti e leggi le altre schede solo quando servono.
+- Se cambia il progetto, aggiorna le priorità, le dipendenze e le stime interessate, incluso il modello previsto per fase. Registra controlli, esito e prossimo passo nella scheda e aggiorna la tabella. Segna «fatta» dopo i controlli e l’approvazione del docente. Per interventi di una sessione, lavora direttamente e aggiorna il piano solo se ne cambia lo stato.
 
 ## Verifiche
-- Controlla sintassi JavaScript, collegamenti relativi, pagine interessate, interazioni e stampa quando pertinenti. Per modifiche puramente documentali verifica percorsi, comandi e coerenza.
-- Su GitHub Pages i percorsi includono `/Sito-Tele-e-Sistemi/`: conserva URL relativi per CSS, JS e navigazione interna.
-- Non inserire dati identificativi o valutazioni degli studenti. Credenziali, profili del PC e stato interno di Codex non vanno nel repository.
+
+- Dopo ogni modifica ai contenuti, confronta il materiale disponibile agli alunni con quiz delle lezioni e di fine modulo, banca di allenamento, verifica ed esercizi collegati. Controlla argomenti, domande, opzioni, spiegazioni, link, formule e soluzioni. Aggiorna e riprova le attività interessate e registra l’esito.
+- Controlla sintassi JavaScript, link, pagine, interazioni e stampa quando pertinenti. Per le modifiche documentali verifica percorsi, comandi e coerenza.
+
+## Cambio PC e pubblicazione
+
+- Usa `magicalbi-session-sync` (progetto `sito-tele`). Controlla lo stato Git locale e l’esito disponibile; il docente esegue le operazioni con GitHub tramite MagicAlbi Sync. **Salva su GitHub** su `main` aggiorna il sito e richiede l’approvazione esplicita della pubblicazione.
+- Prima di cambiare PC, segnala i file ancora locali. **Termina sessione** controlla i progetti gestiti e può salvare il lavoro approvato. Per il lavoro a metà il trasferimento privato è ancora da definire. Tieni dati degli studenti, credenziali e configurazioni del PC fuori dal repository.

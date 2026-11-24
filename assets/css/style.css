@@ -9,7 +9,7 @@
    TOKENS — Dark (default)
    ============================================================ */
 :root {
-  --bg:             #060b18;
+  --bg:             #10192b;
   --surface:        #0c1428;
   --surface-2:      #111e35;
   --surface-3:      #172540;
@@ -382,6 +382,52 @@ mark {
   min-width: 0;
 }
 .content-wrap { max-width: var(--content-max); margin: 0 auto; }
+
+/* Disegni per le pagine che non hanno già illustrazioni nei margini. */
+@media screen and (min-width: 1280px) {
+  .main-content {
+    --page-art-start: url('../img/indice-rete-radio.svg');
+    --page-art-end: url('../img/quiz-wlan-scambio.svg');
+    --page-art-inset: 0px;
+    --page-art-width: min(12rem, calc((100% - var(--page-art-inset) - var(--content-max)) / 2 - 1.6rem));
+  }
+
+  .sidebar ~ .main-content {
+    --page-art-inset: var(--sidebar-w);
+  }
+
+  body:not(.presenting) .main-content:not(:is(.index-margins, .numerical-exercises, .training-quiz, .annotations-with-notes))::before,
+  body:not(.presenting) .main-content:not(:is(.index-margins, .numerical-exercises, .training-quiz, .annotations-with-notes))::after {
+    content: "";
+    position: fixed;
+    width: var(--page-art-width);
+    aspect-ratio: 200 / 252;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: contain;
+    opacity: .76;
+    pointer-events: none;
+  }
+
+  .main-content::before {
+    inset-inline-start: calc(var(--page-art-inset) + 1rem);
+    top: 21%;
+    background-image: var(--page-art-start);
+  }
+
+  .main-content::after {
+    inset-inline-end: 1rem;
+    top: 43%;
+    background-image: var(--page-art-end);
+  }
+
+  [data-theme="light"] .main-content::before,
+  [data-theme="light"] .main-content::after {
+    filter: brightness(.71);
+    opacity: .87;
+  }
+}
+
 
 /* ============================================================
    HOMEPAGE HERO

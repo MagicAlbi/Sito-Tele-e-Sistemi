@@ -8,7 +8,6 @@ const status = panel.querySelector('[role="status"]');
 const recover = panel.querySelector('[data-import-study]');
 const codePattern = /^[A-HJ-NP-Z2-9]{8}$/;
 let signingIn = false;
-panel.hidden = false;
 
 function report(message, state = '') {
   status.textContent = message;
@@ -72,3 +71,4 @@ recover.addEventListener('click', async () => {
 });
 window.addEventListener('studio-change', showSession);
 showSession();
+submit.disabled = false;
