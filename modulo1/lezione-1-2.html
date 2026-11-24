@@ -159,17 +159,17 @@
             </span>
           </div>
 
-          <h1 class="lesson-title-h1">L'Evoluzione degli Standard IEEE 802.11: Da 2 Mbps al Wi-Fi 7</h1>
+          <h1 class="lesson-title-h1">L’evoluzione degli standard 802.11 fino al Wi-Fi 7</h1>
           
           <p class="lesson-subtitle">
-            Cosa significano le sigle b/g/n/ac/ax? Perché la Wi-Fi Alliance ha inventato i numeri "Wi-Fi 4, 5, 6, 7"? E soprattutto: perché la velocità scritta sulla scatola del router non corrisponde MAI a quello che vedi su Speedtest?
+            L’IEEE (Institute of Electrical and Electronics Engineers) pubblica gli standard 802.11. Le lettere b, g, n, ac e ax distinguono alcune revisioni. Perché la Wi-Fi Alliance ha inventato i numeri "Wi-Fi 4, 5, 6, 7"? E soprattutto: perché la velocità scritta sulla scatola del router non corrisponde MAI a quello che vedi su Speedtest?
           </p>
 
           <div class="lesson-prereq">
             <span class="lesson-prereq-icon">🧠</span>
             <div>
               <strong>Concetti collegati:</strong>
-              Larghezza di banda in frequenza (MHz), multiplazione a divisione di frequenza, antenne multiple (MIMO) e velocità di trasferimento dati (bps, Mbps, Gbps).
+              Larghezza di banda in frequenza (MHz, megahertz, e GHz, gigahertz), multiplazione a divisione di frequenza, antenne multiple (MIMO, Multiple Input Multiple Output) e velocità di trasferimento dati (bps, bit al secondo; Mbps, megabit al secondo; Gbps, gigabit al secondo).
             </div>
           </div>
         </div>
@@ -211,7 +211,7 @@
               <td>1999</td>
               <td>2.4 GHz</td>
               <td>11 Mbps</td>
-              <td>DSSS / CCK (Molto robusto ma lento)</td>
+              <td>DSSS (Direct Sequence Spread Spectrum, distribuzione del segnale su una banda più ampia) e CCK (Complementary Code Keying, codifica per aumentare la velocità di 802.11b)</td>
             </tr>
             <tr>
               <td>Legacy</td>
@@ -219,7 +219,7 @@
               <td>1999/2003</td>
               <td>5 GHz / 2.4 GHz</td>
               <td>54 Mbps</td>
-              <td>Introduzione OFDM (modulazione a sottoportanti)</td>
+              <td>OFDM (Orthogonal Frequency Division Multiplexing, trasmissione su più sottoportanti ortogonali)</td>
             </tr>
             <tr style="background:rgba(56,189,248,0.06)">
               <td><strong style="color:var(--primary)">Wi-Fi 4</strong></td>
@@ -235,7 +235,7 @@
               <td>2013</td>
               <td>Solo 5 GHz</td>
               <td>3.46 Gbps (Wave 2)</td>
-              <td>Canali a 80/160 MHz, 256-QAM, MU-MIMO downlink</td>
+              <td>Canali a 80/160 MHz, 256-QAM (Quadrature Amplitude Modulation, modulazione di ampiezza e fase) e MU-MIMO (Multi-User MIMO, flussi verso più dispositivi)</td>
             </tr>
             <tr style="background:rgba(52,211,153,0.06)">
               <td><strong style="color:var(--success)">Wi-Fi 6 / 6E</strong></td>
@@ -243,7 +243,7 @@
               <td>2019/2021</td>
               <td>2.4, 5 & 6 GHz</td>
               <td>9.6 Gbps</td>
-              <td>OFDMA, 1024-QAM, Target Wake Time (IoT batterylife)</td>
+              <td>OFDMA (Orthogonal Frequency Division Multiple Access, condivisione del canale tra più dispositivi), 1024-QAM e Target Wake Time, che programma i risvegli dei dispositivi connessi (IoT, Internet of Things)</td>
             </tr>
             <tr style="background:rgba(251,191,36,0.06)">
               <td><strong style="color:var(--warning)">Wi-Fi 7</strong></td>
@@ -251,7 +251,7 @@
               <td>2024</td>
               <td>2.4, 5 & 6 GHz</td>
               <td>46 Gbps</td>
-              <td>Canali a 320 MHz, 4096-QAM, Multi-Link Operation (MLO)</td>
+              <td>Canali a 320 MHz, 4096-QAM, Multi-Link Operation (MLO, uso di più collegamenti radio)</td>
             </tr>
           </tbody>
         </table></div>
@@ -282,7 +282,7 @@
         <h2>2. Simulatore Interattivo: Velocità Teorica vs Speedtest Reale</h2>
 
         <p>
-          Perché quando fai uno Speedtest non raggiungi mai la velocità scritta sulla scatola del router? Il Wi-Fi è un protocollo con un pesante <strong>overhead di protocollo</strong>: frame di intestazione MAC, contese del canale radio CSMA/CA, intervalli di guardia, frame di ACK e gestione degli errori riducono drasticamente la resa.
+          Perché quando fai uno Speedtest non raggiungi mai la velocità scritta sulla scatola del router? Il Wi-Fi è un protocollo con un pesante <strong>overhead di protocollo</strong>: intestazioni del controllo di accesso al mezzo (MAC), contese del canale con ascolto e prevenzione delle collisioni (CSMA/CA), intervalli di guardia, conferme di ricezione (ACK) e gestione degli errori riducono drasticamente la resa.
         </p>
 
         <div class="speed-meter-box">
@@ -313,15 +313,15 @@
               <select id="selMimo" style="background:var(--surface); color:var(--text); border:1px solid var(--border-2); padding:0.5rem; border-radius:var(--r-sm); font-family:var(--font-mono); font-size:0.85rem;" onchange="SpeedSim.calc()">
                 <option value="1">1x1 (1 Antenna - IoT / Telefoni Economici)</option>
                 <option value="2" selected>2x2 (2 Antenne - iPhone / Samsung Galaxy)</option>
-                <option value="4">4x4 (4 Antenne - PC Gaming / Router Master)</option>
+                <option value="4">4x4 (4 Antenne - Computer da gioco / router)</option>
               </select>
             </div>
           </div>
 
           <div class="tech-slider-group" style="margin-top:1rem;">
             <div class="tech-slider-header">
-              <span>Dimensione File Download (es. Gioco / Film 4K)</span>
-              <span class="val" id="dispFileSize">30 GB</span>
+              <span>Dimensione del file in gigabyte (GB)</span>
+              <span class="val" id="dispFileSize" aria-label="Dimensione del file in gigabyte (GB)">30 GB</span>
             </div>
             <input type="range" class="tech-slider" id="rangeFileSize" min="1" max="100" value="30" oninput="SpeedSim.calc()">
           </div>
@@ -354,7 +354,7 @@
       <section class="slide reveal" id="slide-3" data-num="03">
         <h2>3. Guarda & Comprendi: Come Funziona il Wi-Fi 6</h2>
 
-        <p>Questa animazione mostra l’innovazione cardine di 802.11ax: l’<strong>OFDMA</strong>. Il canale può essere suddiviso in gruppi di sottoportanti, chiamati Resource Unit, assegnati a più dispositivi nello stesso intervallo.</p>
+        <p>Questa animazione mostra l’innovazione cardine di 802.11ax: l’<strong>OFDMA</strong>. Il punto di accesso (AP, Access Point) può servire più dispositivi. Il canale può essere suddiviso in gruppi di sottoportanti, chiamati RU (Resource Unit, unità di risorse), assegnati a più dispositivi nello stesso intervallo.</p>
 
         <!-- VIDEO EMBED RESPONSIVE -->
         <div class="lab-panel" id="esperimento-ofdma" data-sim="ofdma"></div>
@@ -582,8 +582,8 @@ document.addEventListener('DOMContentLoaded', () => {
       answers: [
         { text: "L'uso esclusivo della banda a 60 GHz", correct: false },
         { text: "L'introduzione della tecnologia MIMO e l'estensione del canale a 40 MHz", correct: true },
-        { text: "L'eliminazione dei controlli di sicurezza WPA", correct: false },
-        { text: "Il passaggio dalla modulazione digitale a quella analogica FM", correct: false }
+        { text: "L'eliminazione dei controlli di sicurezza WPA (Wi-Fi Protected Access)", correct: false },
+        { text: "Il passaggio dalla modulazione digitale a quella analogica FM (modulazione di frequenza)", correct: false }
       ],
       explain_correct: "Esatto! 802.11n è stato rivoluzionario perché ha introdotto il MIMO (più flussi radio paralleli con più antenne) e canali da 40MHz.",
       explain_wrong: "Wi-Fi 4 (802.11n) ha raggiunto i 600 Mbps grazie all'accoppiamento di canali (channel bonding a 40 MHz) e al MIMO (fino a 4 antenne simultanee)."
@@ -594,7 +594,7 @@ document.addEventListener('DOMContentLoaded', () => {
         { text: "Solo su frequenza 2.4 GHz", correct: false },
         { text: "Solo su frequenza 5 GHz", correct: true },
         { text: "Sia a 2.4 GHz che a 5 GHz indifferentemente", correct: false },
-        { text: "Sulle frequenze audio a 20 kHz", correct: false }
+        { text: "Sulle frequenze audio a 20 kHz (kilohertz)", correct: false }
       ],
       explain_correct: "Corretto! Lo standard 802.11ac è stato progettato per operare ESCLUSIVAMENTE sulla banda a 5 GHz, meno congestionata e più ampia.",
       explain_wrong: "Attenzione: 802.11ac NON opera a 2.4 GHz! Se un router Wi-Fi 5 trasmette a 2.4 GHz, per quella banda usa il vecchio standard 802.11n."
@@ -608,7 +608,7 @@ document.addEventListener('DOMContentLoaded', () => {
         { text: "Per colpa della polvere che entra nelle antenne del router", correct: false }
       ],
       explain_correct: "Bravissimo! Il Wi-Fi deve condividere l'aria: attese per evitare collisioni, invio di ACK per ogni pacchetto e crittografia riducono il throughput netto dei dati utili.",
-      explain_wrong: "La differenza tra velocità fisica grezza (PHY rate) e dati utili applicativi (goodput) è dovuta all'overhead dei protocolli di Livello 2 e all'accesso condiviso CSMA/CA."
+      explain_wrong: "La differenza tra velocità grezza dello strato fisico (PHY, Physical Layer) e dati utili applicativi (goodput) è dovuta all'overhead dei protocolli di Livello 2 e all'accesso condiviso CSMA/CA."
     },
     {
       question: "Che cos'è l'OFDMA introdotto con il Wi-Fi 6 (802.11ax)?",
@@ -626,7 +626,7 @@ document.addEventListener('DOMContentLoaded', () => {
       answers: [
         { text: "La banda dei 900 MHz", correct: false },
         { text: "La banda dei 6 GHz (senza interferenze storiche da vecchi dispositivi)", correct: true },
-        { text: "La banda delle onde corte (HF)", correct: false },
+        { text: "La banda delle onde corte (HF, High Frequency)", correct: false },
         { text: "La frequenza dei raggi X", correct: false }
       ],
       explain_correct: "Perfetto! La 'E' di Wi-Fi 6E sta per 'Extended' e apre l'autostrada pulita della banda a 6 GHz (5.925 - 7.125 GHz) libera da vecchi apparati legacy.",

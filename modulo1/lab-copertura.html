@@ -74,7 +74,7 @@
             <span class="lesson-badge lesson-badge-num">Site Survey Tool</span>
           </div>
 
-          <h1 class="lesson-title-h1">Simulatore di Copertura Radioelettrica (Heatmap RF)</h1>
+          <h1 class="lesson-title-h1">Simulatore di copertura a radiofrequenza (RF, Radio Frequency)</h1>
           <p class="lesson-subtitle">
             Trascina l'Access Point sulla planimetria scolastica e osserva la propagazione delle onde radio attraverso pareti in cartongesso e muri in cemento armato.
           </p>
@@ -85,7 +85,8 @@
 <section class="slide" id="esperimento-copertura"><h2>Trova una posizione migliore per l’Access Point</h2>
 <div class="lab-panel coverage-panel">
 <div class="lab-heading"><span>Laboratorio RF</span><h3>Un colore sulla mappa, una misura nel punto P</h3></div>
-<p>La mappa mostra <strong>quanto segnale arriva</strong>, non la velocità di Internet. Parti dall’Aula 3: sposta l’AP, osserva il tratteggio verso P e conta i muri attraversati.</p>
+<p>La mappa mostra <strong>quanto segnale arriva</strong>, non la velocità di Internet. Parti dall’Aula 3: sposta il punto di accesso (AP, Access Point), osserva il tratteggio verso P e conta i muri attraversati.</p>
+<p class="lab-note">GHz significa gigahertz. I dB (decibel) esprimono perdite o guadagni, i dBm potenze riferite a un milliwatt e i dBi guadagni rispetto a un’antenna ideale che irradia ugualmente in tutte le direzioni.</p>
 <div class="lab-controls"><label>Banda radio<select id="mapFrequency"><option value="2.4">2,4 GHz</option><option value="5">5 GHz</option><option value="6">6 GHz</option></select></label><label>Punto di misura<select id="probePreset"><option value="460,260">Aula 3</option><option value="130,120">Aula 1</option><option value="130,280">Laboratorio</option><option value="300,110">Aula 2</option><option value="" disabled>Posizione scelta sulla mappa</option></select></label><button class="btn btn-ghost btn-sm" id="resetMap">Ripristina</button></div>
 <div class="coverage-workbench">
 <div class="coverage-map">

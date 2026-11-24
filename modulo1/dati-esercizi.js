@@ -94,7 +94,7 @@
       task: 'Calcola la potenza ricevuta e il margine rispetto alla soglia. Usa un margine negativo se il segnale è sotto soglia.',
       facts: [
         ['Potenza trasmessa', `${tx} dBm`],
-        ['Guadagni TX e RX', `${txGain} e ${rxGain} dBi`],
+        ['Guadagni delle antenne in trasmissione (TX) e ricezione (RX)', `${txGain} e ${rxGain} dBi`],
         ['Perdita in spazio libero', `${spaceLoss} dB`],
         ['Perdita per ostacoli', `${obstacleLoss} dB`],
         ['Soglia richiesta', `${fixed(threshold, 0)} dBm`]

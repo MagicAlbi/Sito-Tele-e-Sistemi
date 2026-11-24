@@ -15,7 +15,11 @@ Aggiorna l’esito nel file di fase e lo stato nella tabella del piano. Per il s
 ## Lavoro e verifiche
 
 - **Produce** La sezione Test di allenamento del Modulo 2, usando il funzionamento approvato nel Modulo 1 e una banca di 70–100 domande originali.
-- **Leggi** Le lezioni del Modulo 2, il laboratorio e l’indice preparati nella [fase 4](../04/FASE.md) e il riferimento della [fase 24](../24/FASE.md).
+- **Leggi** Le lezioni del Modulo 2, il laboratorio e l’indice della [fase 4](../04/FASE.md) e il motore di allenamento approvato nella [fase 20](../20/FASE.md).
 - **Criteri** Conta e rivedi la banca con i criteri comuni. Ogni lezione ha domande pertinenti. Prova nuovi tentativi, mescolamento delle opzioni e spiegazione specifica di un errore. La voce Test di allenamento compare dopo il laboratorio e prima della verifica prevista.
 
-## Esito
+## Esito · 24 novembre 2026
+
+- [Test di allenamento WAN](../../../../modulo2/allenamento.html) con 70 domande, 14 per lezione, quattro opzioni, spiegazioni per tutte le opzioni e link al paragrafo di ripasso. Usa il motore comune già provato nel Modulo 1. Ogni tentativo conserva sul browser le 10 domande, il loro ordine, le risposte e la correzione.
+- Verificati estrazione senza ripetizioni, mescolamento delle opzioni, risposte esatte, errate e omesse, spiegazione dell’errore, ripresa dopo ricarica e nuovo tentativo.
+- Prossimo passo per il docente, revisione di un tentativo completo dall’indice.

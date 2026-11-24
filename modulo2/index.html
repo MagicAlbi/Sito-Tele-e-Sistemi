@@ -1,86 +1,81 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="it" data-theme="dark">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Reti WAN e accesso remoto | Telecomunicazioni 5A</title>
   <link rel="stylesheet" href="../assets/css/style.css">
   <link rel="stylesheet" href="../assets/css/modulo2.css">
-  <link rel="stylesheet" href="../assets/css/margini-indici.css">
+
 </head>
-<body>
+<body class="module-two">
 <div class="app-layout">
   <header class="site-header">
     <a href="../index.html" class="logo-link">
-      <div class="logo-icon" aria-hidden="true">⚡</div>
-      <div class="logo-text">
-        <span class="logo-title text-gradient">Telecomunicazioni 5A</span>
-        <span class="logo-sub">IIS J.C. Maxwell</span>
-      </div>
+      <span class="logo-icon" aria-hidden="true">⚡</span>
+      <span class="logo-text"><span class="logo-title text-gradient">Telecomunicazioni 5A</span><span class="logo-sub">IIS J.C. Maxwell</span></span>
     </a>
     <nav class="header-breadcrumb" aria-label="Percorso">
-      <a href="../index.html">Home</a>
-      <span aria-hidden="true">›</span>
+      <a href="../index.html">Home</a><span aria-hidden="true">›</span>
+
       <span class="current" aria-current="page">Modulo 2</span>
     </nav>
     <div class="header-actions">
+
       <button type="button" class="btn btn-icon btn-ghost" data-theme-toggle aria-label="Cambia tema"></button>
     </div>
   </header>
-
-  <main class="main-content index-margins">
-    <div class="index-art" aria-hidden="true">
-      <img class="index-art-start" src="../assets/img/indice-nodi-wan.svg" alt="" width="200" height="252">
-      <img class="index-art-end" src="../assets/img/indice-fibra-ottica.svg" alt="" width="200" height="252">
-    </div>
-    <div class="content-wrap">
-      <header class="lesson-hero">
-        <div class="lesson-hero-content">
-          <div class="lesson-meta">
-            <span class="lesson-badge lesson-badge-module">Modulo 2</span>
-          </div>
-          <h1 class="lesson-title-h1">Reti WAN e accesso remoto</h1>
-          <p class="lesson-subtitle">Dal collegamento della rete locale alla rete geografica, attraverso doppino e fibra.</p>
-        </div>
+  <main class="main-content">
+  <div class="content-wrap">
+    <header class="wan-hero wan-hero-illustrated">
+  <div><p class="wan-kicker">Modulo 2 · Telecomunicazioni 5A</p><h1 class="lesson-title-h1">Reti WAN e accesso remoto</h1><p class="lesson-subtitle">Segui i dati da una rete locale alla fibra dell’operatore. Arriva fino al router che decide dove consegnare ogni pacchetto.</p></div>
+  <img src="../assets/img/indice-nodi-wan.svg" alt="" width="200" height="252">
+</header>
+    <nav class="wan-jump" aria-label="Sezioni del modulo"><a href="#lezioni">Lezioni</a><a href="#laboratorio">Laboratorio</a><a href="#ripasso">Allenamento e verifica</a></nav>
+    <section id="lezioni" aria-labelledby="wan-lessons-title">
+      <header class="wan-index-heading"><h2 id="wan-lessons-title">Cinque lezioni</h2><p>Ogni lezione ha una presentazione per la LIM, una missione e un checkpoint.</p>
+        <p class="wan-progress" data-module-progress="m2" data-total="5"><strong data-progress-done>0</strong> di 5 lezioni completate su questo browser</p>
       </header>
-
-      <h2>Lezioni disponibili</h2>
-      <div class="modules-grid module-lessons">
-        <a href="lezione-2-1.html" class="module-card">
-          <div class="module-card-header">
-            <div class="module-number">2.1</div>
-            <div class="module-card-title"><h3>Dalla rete locale al canale fisico</h3></div>
-          </div>
-          <p>Segui i dati di un file dal terminale al collegamento seriale e riconosci chi scandisce il ritmo dei bit.</p>
-          <div class="module-card-footer">
-            <span class="module-start-btn">Apri la lezione →</span>
-          </div>
-        </a>
-        <a href="lezione-2-2.html" class="module-card">
-          <div class="module-card-header">
-            <div class="module-number">2.2</div>
-            <div class="module-card-title"><h3>Accesso remoto e interconnessione WAN</h3></div>
-          </div>
-          <p>Dalla telefonata con il modem alle reti a pacchetto. Scegli come collegare due sedi in base a quando e come devono comunicare.</p>
-          <div class="module-card-footer">
-            <span class="module-start-btn">Apri la lezione →</span>
-          </div>
-        </a>
-        <a href="lezione-2-3.html" class="module-card">
-          <div class="module-card-header">
-            <div class="module-number">2.3</div>
-            <div class="module-card-title"><h3>Accesso in rame e in fibra</h3></div>
-          </div>
-          <p>Segui il segnale dalla centrale a casa in un video narrato e scopri dove termina la fibra in FTTC e FTTH.</p>
-          <div class="module-card-footer">
-            <span class="module-start-btn">Apri la lezione →</span>
-          </div>
-        </a>
+      <div class="wan-path">
+      <a class="wan-path-card" href="lezione-2-1.html" data-lesson="m2-1">
+        <span class="wan-path-number">2.1</span>
+        <div><h3>Dalla rete locale al canale fisico</h3><p>Riconosci DTE e DCE, distingui dati, clock e controllo, e individua il primo controllo quando un collegamento seriale non parte.</p></div><span class="wan-path-arrow" aria-hidden="true">→</span>
+      </a>
+      <a class="wan-path-card" href="lezione-2-2.html" data-lesson="m2-2">
+        <span class="wan-path-number">2.2</span>
+        <div><h3>Accesso remoto e interconnessione WAN</h3><p>Distingui accesso commutato e dedicato, confronta circuito e pacchetti e calcola capacità e tempi per un servizio WAN.</p></div><span class="wan-path-arrow" aria-hidden="true">→</span>
+      </a>
+      <a class="wan-path-card" href="lezione-2-3.html" data-lesson="m2-3">
+        <span class="wan-path-number">2.3</span>
+        <div><h3>Accesso in rame e in fibra</h3><p>Distingui ADSL, FTTC e FTTH seguendo il cavo in ingresso. Spiega come distanza e diafonia influiscono sul rame e come si condivide un ramo PON.</p></div><span class="wan-path-arrow" aria-hidden="true">→</span>
+      </a>
+      <a class="wan-path-card" href="lezione-2-4.html" data-lesson="m2-4">
+        <span class="wan-path-number">2.4</span>
+        <div><h3>Protocolli di linea</h3><p>Leggi una trama di linea, spiega cosa segnala l’FCS e riconosci in quale fase PPP si può bloccare un collegamento.</p></div><span class="wan-path-arrow" aria-hidden="true">→</span>
+      </a>
+      <a class="wan-path-card" href="lezione-2-5.html" data-lesson="m2-5">
+        <span class="wan-path-number">2.5</span>
+        <div><h3>Primo routing</h3><p>Decidi se una destinazione è sulla stessa rete, leggi una tabella IPv4 e scegli il prefisso più lungo, anche in presenza della rotta predefinita.</p></div><span class="wan-path-arrow" aria-hidden="true">→</span>
+      </a>
       </div>
-    </div>
-  </main>
+    </section>
+    <section id="laboratorio" aria-labelledby="wan-lab-title">
+      <header class="wan-index-heading"><h2 id="wan-lab-title">Laboratorio</h2></header>
+      <a href="lab-routing.html" class="wan-path-card"><span class="wan-path-number" aria-hidden="true">IP</span><div><h3>Laboratorio di routing</h3><p>Prevedi il prossimo salto e metti alla prova il router con i tuoi indirizzi IPv4.</p></div><span class="wan-path-arrow" aria-hidden="true">→</span></a>
+    </section>
+    <section id="ripasso" aria-labelledby="wan-resources-title">
+      <header class="wan-index-heading"><h2 id="wan-resources-title">Allenamento e verifica</h2></header>
+      <div class="wan-resources">
+        <a class="wan-resource" href="allenamento.html"><h3>Test di allenamento</h3><p>Dieci domande per tentativo, estratte da una banca di 70 con spiegazioni e rimandi al ripasso.</p></a>
+        <a class="wan-resource" href="esercizi.html"><h3>Esercizi numerici</h3><p>Consulta il formulario e prova i calcoli su capacità, tempi, trame e indirizzi.</p></a>
+        <a class="wan-resource" href="verifica.html"><h3>Simulazione di verifica</h3><p>Svolgi una prova completa da 45 minuti o stampa la scheda per la classe.</p></a>
+      </div>
+    </section>
+  </div>
+</main>
 </div>
 
 <script src="../assets/js/app.js"></script>
+
 </body>
 </html>

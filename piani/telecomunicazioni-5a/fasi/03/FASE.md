@@ -17,4 +17,8 @@ Aggiorna l’esito nel file di fase e lo stato nella tabella del piano. Per il s
 - **Produce** le lezioni 2.4–2.5, con protocolli WAN e routing introdotto da zero. La classe conosce IP e subnetting.
 - **Leggi** la [mappa della fase 1](../01/FASE.md) e le lezioni 2.1–2.3.
 - **Criteri** Si aprono entrambe le pagine con quiz e presentazione funzionanti. La prima spiega HDLC, PPP e il ruolo dell’autenticazione. Un esercizio della seconda fa scegliere la rotta tra una rete direttamente collegata, una rotta più specifica e la rotta predefinita, con tre risultati verificati.
-- **Esito**
+## Esito · 24 novembre 2026
+
+- Completate [2.4 · Protocolli di linea](../../../../modulo2/lezione-2-4.html) e [2.5 · Primo routing](../../../../modulo2/lezione-2-5.html). Ciascuna comprende presentazione LIM, missione, checkpoint e spiegazioni anche per il lavoro autonomo.
+- Provati HDLC, inserimento degli zeri, fasi PPP e scelta della rotta con rete connessa, prefissi sovrapposti e rotta predefinita. I calcoli sull’efficienza di trama e sulle sottoreti sono stati eseguiti. Controllate tastiera, risposte e resa in Chrome.
+- Prossimo passo per il docente, revisione e prova delle presentazioni sulla LIM fisica.

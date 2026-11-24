@@ -43,3 +43,10 @@ Resta da verificare la resa sulla LIM della classe. Salvataggio e pubblicazione 
 ## Approvazione del 24 novembre 2026
 
 Il docente ha approvato la versione del video con la voce Marin e ne ha chiesto la pubblicazione. Il controllo sulla LIM resta da fare.
+
+## Rifacimento del Modulo 2 · 24 novembre 2026
+
+- Rifatte le lezioni [2.1](../../../../modulo2/lezione-2-1.html), [2.2](../../../../modulo2/lezione-2-2.html) e [2.3](../../../../modulo2/lezione-2-3.html) con diagrammi, casi, calcoli, missioni a tre prove e checkpoint di cinque domande. Le presentazioni hanno schermate dedicate, schemi e una soluzione da aprire in classe.
+- Nella 2.2 il [video 2D sui pacchetti](../../../../modulo2/lezione-2-2.html#video-pacchetti) accompagna il banco prova di una coda. Il video 3D e l’immagine di anteprima della 2.3 corrispondono byte per byte agli originali. Entrambi i video si aprono anche nelle presentazioni.
+- Controlli locali in Chrome a 360, 1024 e 1366 px. Verificati avanzamento, riscontri, nuovo tentativo, navigazione da tastiera e riproduzione dei video. Eseguiti i calcoli su 8N1, E1, tempi e capacità PON.
+- Prossimo passo per il docente, revisione dei materiali e prova sulla LIM fisica.

@@ -161,7 +161,7 @@
             <span class="lesson-prereq-icon">🧠</span>
             <div>
               <strong>Concetti cardine:</strong>
-              Modulazione di ampiezza e fase (QAM), interferenza costruttiva e distruttiva tra onde radio e propagazione multipath (rimbalzi su pavimenti e pareti).
+              Modulazione di ampiezza e fase (QAM, Quadrature Amplitude Modulation), interferenza costruttiva e distruttiva tra onde radio e propagazione multipath (rimbalzi su pavimenti e pareti).
             </div>
           </div>
         </div>
@@ -171,12 +171,12 @@
       <div class="tldr reveal">
         <span class="tldr-icon">⚡</span>
         <div>
-          <strong>In breve.</strong> Lo strato fisico delle WLAN moderne si basa su tre pilastri: <strong>OFDM</strong> (divide il canale in centinaia di sottoportanti ortogonali resistenti al rumore), <strong>MIMO</strong> (trasmette flussi di dati diversi in parallelo usando più antenne e sfruttando i rimbalzi) e <strong>Beamforming</strong> (sincronizza la fase delle antenne per indirizzare un fascio radio focalizzato dritto verso il terminale ricevente).
+          <strong>In breve.</strong> Lo strato fisico delle reti locali senza fili (WLAN, Wireless Local Area Network) moderne si basa su tre pilastri: <strong>OFDM</strong> (Orthogonal Frequency Division Multiplexing, divide il canale in centinaia di sottoportanti ortogonali resistenti al rumore), <strong>MIMO</strong> (Multiple Input Multiple Output, trasmette flussi di dati diversi in parallelo usando più antenne e sfruttando i rimbalzi) e <strong>Beamforming</strong> (sincronizza la fase delle antenne per indirizzare un fascio radio focalizzato dritto verso il terminale ricevente).
         </div>
       </div>
 
       <!-- ======================================
-           SLIDE 1 — MIMO E BEAMFORMING IN 2D E 3D
+           SLIDE 1 — MIMO E BEAMFORMING IN DUE E TRE DIMENSIONI
            ====================================== -->
       <section class="slide reveal" id="slide-1" data-num="01">
         <h2>1. MIMO e Beamforming: Due Effetti da Distinguere</h2>
@@ -184,6 +184,7 @@
         <p>
           Un’antenna distribuisce l’energia secondo un <strong>diagramma di radiazione</strong>. Con il <strong>beamforming</strong>, più antenne coordinano i segnali per favorire la ricezione in una direzione. Il <strong>MIMO</strong> può invece usare più flussi spaziali per trasportare dati diversi sullo stesso canale. Confronta questi effetti nello schema, poi sposta il client.</p>
 
+<p>Nello schema, AP (Access Point) indica il punto di accesso. SISO (Single Input Single Output) indica una sola antenna per lato.</p>
 <div class="lab-panel" data-sim="physical"></div>
         <div class="lab-panel beamforming-3d" id="beamforming-3d">
           <div class="lab-heading">
@@ -203,7 +204,7 @@
           <p class="lab-note">Disattiva il beamforming per confrontare i due diagrammi. Dove la forma si allunga, la radiazione è favorita. Qui le quattro antenne coordinano lo stesso segnale.</p>
           <details>
             <summary>Ipotesi del modello</summary>
-            <p class="lab-note">Quattro elementi allineati a mezza lunghezza d’onda, senza ostacoli. Il raggio segue la radice della potenza normalizzata del modello, con un minimo grafico. Il diagramma mostra come si distribuisce la radiazione: non rappresenta né un limite di copertura né valori di potenza in dBm.</p>
+            <p class="lab-note">Quattro elementi allineati a mezza lunghezza d’onda, senza ostacoli. Il raggio segue la radice della potenza normalizzata del modello, con un minimo grafico. Il diagramma mostra come si distribuisce la radiazione: non rappresenta né un limite di copertura né valori di potenza in dBm (decibel riferiti a un milliwatt).</p>
             <p class="sources"><a href="https://www.mathworks.com/help/phased/ug/element-and-array-radiation-patterns-and-responses.html" target="_blank" rel="noopener noreferrer">MathWorks · Diagrammi d’elemento e d’array</a></p>
           </details>
         </div>
@@ -215,13 +216,13 @@
            SLIDE 2 — OFDM & MULTIPATH MIMO
            ====================================== -->
       <section class="slide reveal" id="slide-2" data-num="02">
-        <h2>2. OFDM: Centinaia di Onde Indipendenti in 20 MHz</h2>
+        <h2>2. OFDM: Centinaia di Onde Indipendenti in 20 megahertz (MHz)</h2>
 
         <p>
           Invece di modulare una sola portante a velocità vertiginosa (soggetta a fading selettivo e distruzione su una sola frequenza), l'<strong>OFDM (Orthogonal Frequency Division Multiplexing)</strong> scompone il canale da 20 MHz in <strong>52 sottoportanti</strong> (in 802.11a/g/n) o <strong>256 sottoportanti</strong> (in 802.11ax).
         </p>
         <p>
-          Ciascuna sottoportante viaggia a velocità più rilassata ed è matematicamente <strong>ortogonale</strong> alle vicine (il picco di ciascuna cade esattamente sullo zero di tutte le altre): <em>possono sovrapporsi nello spazio delle frequenze senza generare alcuna interferenza inter-canale (ICI)!</em>
+          Ciascuna sottoportante viaggia a velocità più rilassata ed è matematicamente <strong>ortogonale</strong> alle vicine (il picco di ciascuna cade esattamente sullo zero di tutte le altre): <em>possono sovrapporsi nello spazio delle frequenze senza generare alcuna interferenza tra sottoportanti (ICI, Inter-Carrier Interference)!</em>
         </p>
 
         <!-- CURIOSITA' TECH SUI RIMBALZI MULTIPATH -->
@@ -235,14 +236,14 @@
               Nelle prime telecomunicazioni wireless degli anni '90, il <strong>multipath</strong> (il fatto che il segnale rimbalzi su piastrelle, specchi, computer e pareti arrivando al ricevitore con ritardi sfasati) era considerato una maledizione: generava echi distruttivi che cancellavano il segnale (fading).
             </p>
             <p style="margin-bottom:0">
-              Con l'avvento del <strong>MIMO (Multiple Input Multiple Output)</strong> in 802.11n, gli ingegneri hanno ribaltato la fisica: le matrici di calcolo matematiche del processore DSP usano i percorsi multipli di rimbalzo per <strong>distinguere e decodificare 2, 4 o 8 flussi di dati totalmente differenti contemporaneamente sulla stessa frequenza!</strong> Più rimbalzi ci sono nell'aula, più i percorsi sono scorrelati e più il MIMO riesce a raddoppiare o quadruplicare la velocità. La stanza piena di ostacoli è diventata un acceleratore di banda!
+              Con l'avvento del <strong>MIMO (Multiple Input Multiple Output)</strong> in 802.11n, gli ingegneri hanno ribaltato la fisica: le matrici di calcolo matematiche del processore digitale di segnali (DSP, Digital Signal Processor) usano i percorsi multipli di rimbalzo per <strong>distinguere e decodificare 2, 4 o 8 flussi di dati totalmente differenti contemporaneamente sulla stessa frequenza!</strong> Più rimbalzi ci sono nell'aula, più i percorsi sono scorrelati e più il MIMO riesce a raddoppiare o quadruplicare la velocità. La stanza piena di ostacoli è diventata un acceleratore di banda!
             </p>
           </div>
         </div>
 
         <h3>La Scalata delle Modulazioni QAM: Da 1 Bit a 12 Bit per Simbolo</h3>
         <p>
-          In base alla qualità del segnale (SNR), il modem radio adatta dinamicamente la propria costellazione:
+          In base alla rapporto segnale/rumore (SNR, Signal-to-Noise Ratio), il modem radio adatta dinamicamente la propria costellazione:
         </p>
 
         <div class="table-scroll" role="region" aria-label="Tabella scorrevole" tabindex="0"><table class="osi-table">
@@ -257,14 +258,14 @@
           </thead>
           <tbody>
             <tr>
-              <td><strong>BPSK</strong></td>
+              <td><strong>BPSK</strong> (Binary Phase Shift Keying, modulazione a due fasi)</td>
               <td>2 stati</td>
               <td>1 bit/simbolo</td>
               <td>Pessimo (anche a -85 dBm)</td>
               <td>Fallback di emergenza</td>
             </tr>
             <tr>
-              <td><strong>QPSK</strong></td>
+              <td><strong>QPSK</strong> (Quadrature Phase Shift Keying, modulazione a quattro fasi)</td>
               <td>4 stati</td>
               <td>2 bit/simbolo</td>
               <td>Scarso</td>
@@ -473,7 +474,7 @@ const quizQuestions = [
         { text: "L'innalzamento della tensione a 220 Volt", correct: false }
       ],
       explain_correct: "Esatto! L'ortogonalità matematica consente alle sottoportanti di sovrapporsi nello spettro senza disturbo reciproco (Zero Inter-Carrier Interference).",
-      explain_wrong: "OFDM (Orthogonal FDM) sfrutta l'ortogonalità matematica delle funzioni sinusoidali: i massimi di una sottoportante coincidono con i nulli delle portanti adiacenti."
+      explain_wrong: "OFDM sfrutta l'ortogonalità matematica delle funzioni sinusoidali: i massimi di una sottoportante coincidono con i nulli delle portanti adiacenti."
     },
     {
       question: "In una configurazione MIMO 4x4 con multiplexing spaziale, cosa accade alla trasmissione dati?",

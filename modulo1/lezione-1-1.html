@@ -196,17 +196,17 @@
             </span>
           </div>
 
-          <h1 class="lesson-title-h1">Dalla Rete Cablata al Segnale nell'Aria: Introduzione alle WLAN</h1>
+          <h1 class="lesson-title-h1">Dalla rete cablata alle reti locali senza fili (WLAN)</h1>
           
           <p class="lesson-subtitle">
-            Cosa succede fisicamente quando il tuo smartphone si associa all'Access Point della scuola? Come si colloca il Wi-Fi nello stack ISO/OSI e perché non abbiamo bisogno di un nuovo protocollo IP?
+            Una WLAN (Wireless Local Area Network) è una rete locale senza fili. Il telefono si collega al punto di accesso (Access Point, AP). Il modello OSI (Open Systems Interconnection), definito dall’Organizzazione internazionale per la normazione (ISO), descrive la rete in sette livelli. Il protocollo IP (Internet Protocol) indirizza i pacchetti fra reti.
           </p>
 
           <div class="lesson-prereq">
             <span class="lesson-prereq-icon">🧠</span>
             <div>
               <strong>Cosa diamo già per scontato da Sistemi e Reti:</strong>
-              Architettura LAN cablata (Ethernet 802.3), stack a 7 livelli ISO/OSI, indirizzamento MAC di livello 2 e assegnazione IP locale.
+              Architettura LAN cablata (Ethernet 802.3), stack a 7 livelli ISO/OSI, indirizzi del livello 2 (MAC, Media Access Control, controllo di accesso al mezzo) e assegnazione IP locale.
             </div>
           </div>
         </div>
@@ -227,7 +227,7 @@
         <h2>1. Lo Stack ISO/OSI: Dove cambia il Wi-Fi?</h2>
 
         <p>
-          Immagina di inviare un messaggio WhatsApp. L'applicazione non ha idea se tu sia connesso tramite un cavo Ethernet CAT 6, una rete Wi-Fi 6 o una fibra ottica. Questo è il principio cardine dell'<strong>incapsulamento</strong>.
+          Immagina di inviare un messaggio WhatsApp. L'applicazione non ha idea se tu sia connesso tramite un cavo Ethernet di categoria 6 (Cat 6), una rete Wi-Fi 6 o una fibra ottica. Questo è il principio cardine dell'<strong>incapsulamento</strong>.
         </p>
 
         <p>
@@ -248,23 +248,23 @@
               <td><strong>7–3</strong></td>
               <td>Applicazione, Trasporto, Rete</td>
               <td colspan="2" style="text-align:center; color:var(--text-muted); font-size:0.82rem;">
-                <mark>IDENTICI</mark> — HTTP, TCP, UDP, IP (v4/v6), Routing. Nessuna modifica richiesta.
+                <mark>IDENTICI</mark> — HTTP (Hypertext Transfer Protocol, scambio di risorse sul Web), TCP (Transmission Control Protocol, trasporto affidabile), UDP (User Datagram Protocol, trasporto a datagrammi) e IP (versioni 4 e 6, instradamento tra reti). Nessuna modifica richiesta.
               </td>
             </tr>
             <tr class="row-mac">
               <td><strong>2</strong></td>
-              <td><strong>Data Link (LLC / MAC)</strong></td>
-              <td>802.3 MAC (CSMA/CD con rilevamento collisioni su filo)</td>
+              <td><strong>Data Link (LLC, Logical Link Control, controllo del collegamento logico / MAC)</strong></td>
+              <td>802.3 MAC (CSMA/CD (Carrier Sense Multiple Access with Collision Detection), accesso condiviso con ascolto e rilevamento delle collisioni sul cavo)</td>
               <td class="cell-highlight">
-                <strong>802.11 MAC</strong> (CSMA/CA con prevenzione collisioni via radio, frame ACK e gestione beacon)
+                <strong>802.11 MAC</strong> (CSMA/CA (Carrier Sense Multiple Access with Collision Avoidance), accesso condiviso con ascolto e misure per ridurre le collisioni via radio, conferme di ricezione (ACK, Acknowledgment) e annunci periodici della rete (beacon))
               </td>
             </tr>
             <tr class="row-phy">
               <td><strong>1</strong></td>
-              <td><strong>Fisico (PHY)</strong></td>
+              <td><strong>Fisico (PHY, Physical Layer, trasmissione dei segnali)</strong></td>
               <td>Segnali elettrici su doppino in rame o impulsi luminosi su fibra</td>
               <td class="cell-highlight">
-                <strong>Onde elettromagnetiche</strong> a radiofrequenza (2.4 GHz, 5 GHz o 6 GHz)
+                <strong>Onde elettromagnetiche</strong> a radiofrequenza (2,4, 5 o 6 gigahertz (GHz))
               </td>
             </tr>
           </tbody>
@@ -284,7 +284,8 @@
            SLIDE 2 — TOPOLOGIE INTERATTIVE
            ====================================== -->
       <section class="slide reveal" id="slide-2" data-num="02">
-        <h2>2. Laboratorio Interattivo: Topologie WLAN</h2>
+        <h2>2. Laboratorio interattivo: topologie WLAN</h2>
+        <p>Una cella con punto di accesso si chiama BSS (Basic Service Set). Più celle collegate possono formare un ESS (Extended Service Set). In una rete ad hoc i dispositivi comunicano direttamente e formano un IBSS (Independent Basic Service Set). Nello schema, STA (Station) indica un dispositivo Wi-Fi.</p>
         <p>
           Nelle specifiche IEEE 802.11 esistono due modalità operative fondamentali per far comunicare le stazioni wireless. Seleziona una topologia per vedere la configurazione in tempo reale e clicca sui nodi per ispezionarli:
         </p>
@@ -297,10 +298,10 @@
 
           <div class="topology-tabs">
             <button class="tab-btn active" id="btnInfra" onclick="TopoDiagram.show('infra')">
-              🏗️ Modalità Infrastructure (BSS / ESS)
+              🏗️ Con punto di accesso (BSS / ESS)
             </button>
             <button class="tab-btn" id="btnAdhoc" onclick="TopoDiagram.show('adhoc')">
-              🔗 Modalità Ad-Hoc (IBSS Peer-to-Peer)
+              🔗 Collegamento diretto (IBSS)
             </button>
           </div>
 
@@ -417,7 +418,7 @@
           <div class="def-item">
             <span class="def-term">BSS e BSSID</span>
             <span class="def-full">Cella e identificativo</span>
-            <span class="def-desc"><strong>BSS</strong> (Basic Service Set) è una cella Wi-Fi. In questa configurazione è formata da un AP e dai dispositivi collegati a quell’AP.<br><strong>BSSID</strong> è l’indirizzo MAC a 48 bit che identifica quella cella. L’<strong>SSID</strong> è il nome di rete che vedi sul telefono, per esempio «Wi-Fi Scuola».</span>
+            <span class="def-desc"><strong>BSS</strong> (Basic Service Set) è una cella Wi-Fi. In questa configurazione è formata da un AP e dai dispositivi collegati a quell’AP.<br><strong>BSSID</strong> (Basic Service Set Identifier) è l’indirizzo MAC a 48 bit che identifica quella cella. L’<strong>SSID</strong> (Service Set Identifier) è il nome di rete che vedi sul telefono, per esempio «Wi-Fi Scuola».</span>
           </div>
           <div class="def-item">
             <span class="def-term">ESS e roaming</span>
@@ -448,12 +449,12 @@
           <div class="step-card" onclick="StepViewer.select(1)">
             <span class="step-badge">FASE 2</span>
             <div class="step-title">Autenticazione 802.11</div>
-            <div class="step-desc">Verifica formale di livello 2 (Open System o WPA Pre-Shared Key).</div>
+            <div class="step-desc">Verifica formale di livello 2 (Open System o WPA (Wi-Fi Protected Access) con chiave condivisa).</div>
           </div>
           <div class="step-card" onclick="StepViewer.select(2)">
             <span class="step-badge">FASE 3</span>
             <div class="step-title">Associazione al BSS</div>
-            <div class="step-desc">Assegnazione Association ID (AID), allocazione risorse e bridging attivo.</div>
+            <div class="step-desc">Assegnazione dell’AID (Association Identifier), il numero che il punto di accesso assegna al dispositivo associato.</div>
           </div>
         </div>
 
@@ -473,7 +474,7 @@
               Hai presente quando entri in un centro commerciale e hai il Wi-Fi acceso ma non ti connetti a nessuna rete? Ebbene, il tuo smartphone urla costantemente nell'etere attraverso i <strong>Probe Request</strong>: <em>"C'è il router di casa mia qui? C'è il Wi-Fi della scuola?"</em>.
             </p>
             <p style="margin-bottom:0">
-              Negli anni passati, i negozianti installavano antenne nascoste che registravano l'indirizzo MAC univoco del tuo telefono e la potenza del segnale (RSSI): in questo modo <strong>triangolavano la tua posizione al millimetro</strong>, calcolavano quanto tempo passavi davanti alle vetrine di Zara o GameStop e ti profilavano! Per fermare questo spionaggio di massa, iOS e Android hanno dovuto inventare il <strong>MAC Address Randomization</strong>: ogni volta che cerchi una rete, il telefono inventa un indirizzo MAC falso e lo cambia periodicamente. Controlla subito nelle impostazioni Wi-Fi del tuo telefono: vedrai la voce <em>"Usa MAC privato / casuale"</em>!
+              Negli anni passati, i negozianti installavano antenne nascoste che registravano l'indirizzo MAC univoco del tuo telefono e la indicatore di intensità del segnale ricevuto (RSSI, Received Signal Strength Indicator): in questo modo <strong>triangolavano la tua posizione al millimetro</strong>, calcolavano quanto tempo passavi davanti alle vetrine di Zara o GameStop e ti profilavano! Per fermare questo spionaggio di massa, iOS e Android hanno dovuto inventare il <strong>MAC Address Randomization</strong>: ogni volta che cerchi una rete, il telefono inventa un indirizzo MAC falso e lo cambia periodicamente. Controlla subito nelle impostazioni Wi-Fi del tuo telefono: vedrai la voce <em>"Usa MAC privato / casuale"</em>!
             </p>
           </div>
         </div>
@@ -528,7 +529,7 @@
     <div class="lim-stage">
       <div>
         <h2>Il Wi-Fi cambia i primi due livelli</h2>
-        <p>Nel modello <strong>OSI</strong>, ogni livello ha un compito. Passando dal cavo alla radio cambia come il segnale viaggia e come si condivide il mezzo.</p>
+        <p>Nel modello <strong>OSI</strong> (Open Systems Interconnection), ogni livello ha un compito. Passando dal cavo alla radio cambia come il segnale viaggia e come si condivide il mezzo.</p>
         <p>L’applicazione continua a inviare il suo messaggio. La scelta del mezzo avviene nei livelli inferiori.</p>
         <p class="lim-terms">
           <span><strong>OSI</strong> · Open Systems Interconnection, modello a livelli delle comunicazioni.</span>
@@ -547,7 +548,7 @@
     <div class="lim-stage">
       <div>
         <h2>Una cella, due modi per riconoscerla</h2>
-        <p>In una rete con infrastruttura un <strong>punto di accesso</strong> collega i dispositivi. Lui e i dispositivi associati formano una cella, detta <strong>BSS</strong>.</p>
+        <p>In una rete con infrastruttura un <strong>punto di accesso</strong> collega i dispositivi. Lui e i dispositivi associati formano una cella, detta <strong>BSS</strong> (Basic Service Set).</p>
         <p>Il telefono mostra il nome della rete. Per distinguere le celle usa un identificativo a 48 bit.</p>
         <p class="lim-terms">
           <span><strong>BSS</strong> · Basic Service Set, una cella Wi-Fi.</span>
@@ -567,8 +568,8 @@
     <div class="lim-stage">
       <div>
         <h2>Stesso nome, un’altra cella</h2>
-        <p>Più celle collegate possono usare lo stesso nome di rete e formare un <strong>ESS</strong>. Spostandoti, il telefono può cambiare punto di accesso: è il <strong>roaming</strong>.</p>
-        <p>Con una rete <strong>ad hoc</strong>, invece, i dispositivi comunicano direttamente. È la modalità <strong>IBSS</strong> del Wi-Fi.</p>
+        <p>Più celle collegate possono usare lo stesso nome di rete e formare un <strong>ESS</strong> (Extended Service Set). Spostandoti, il telefono può cambiare punto di accesso: è il <strong>roaming</strong>.</p>
+        <p>Con una rete <strong>ad hoc</strong>, invece, i dispositivi comunicano direttamente. È la modalità <strong>IBSS</strong> (Independent Basic Service Set) del Wi-Fi.</p>
         <p class="lim-terms">
           <span><strong>ESS</strong> · Extended Service Set, più celle della stessa rete.</span>
           <span><strong>IBSS</strong> · Independent Basic Service Set, cella senza punto di accesso.</span>
@@ -602,7 +603,7 @@
     <div class="lim-stage">
       <div>
         <h2>Perché il telefono usa un indirizzo privato</h2>
-        <p>Usare sempre lo stesso <strong>indirizzo MAC</strong> rende più facile riconoscere un dispositivo quando ricompare.</p>
+        <p>Usare sempre lo stesso <strong>indirizzo MAC</strong> (Media Access Control, identificativo dell’interfaccia di rete) rende più facile riconoscere un dispositivo quando ricompare.</p>
         <p><strong>Curiosità.</strong> Nelle impostazioni Wi-Fi puoi trovare «indirizzo privato» o «casuale». Il telefono può usare un indirizzo diverso da quello di fabbrica per limitare il tracciamento.</p>
         <p class="lim-terms">
           <span><strong>MAC</strong> · Medium Access Control. L’indirizzo MAC identifica un’interfaccia a livello di collegamento.</span>
@@ -628,9 +629,9 @@ const TopoDiagram = (() => {
   const btnAdhoc = document.getElementById('btnAdhoc');
 
   const nodeDetails = {
-    router: `<strong>🌐 Gateway IP (Router Scolastico)</strong><br>Apparato di Livello 3 (Rete). Connesso all'AP tramite cavo Ethernet su porta Trunk/Access. Esegue NAT, routing verso il server e assegna gli indirizzi IP tramite DHCP.`,
+    router: `<strong>🌐 Gateway IP (Router Scolastico)</strong><br>Apparato di Livello 3 (Rete). Connesso all'AP tramite cavo Ethernet su porta Trunk/Access. Traduce gli indirizzi tra reti (NAT, Network Address Translation), instrada i dati verso il server e assegna automaticamente gli indirizzi IP (DHCP, Dynamic Host Configuration Protocol).`,
     ap: `<strong>📡 Access Point Wi-Fi (BSSID: 00:1A:2B:3C:4D:5E)</strong><br>Punto focale di Livello 2. Trasmette il Beacon con SSID <code>Maxwell-WiFi</code>. Riceve i frame 802.11 via etere e li incapsula in frame Ethernet 802.3 per la rete cablata.`,
-    client1: `<strong>💻 STA-01 (Laptop Studente)</strong><br>Indirizzo IP: <code>192.168.10.45/24</code> · Segnale RSSI: <code>-52 dBm</code> (Eccellente). Associato con successo tramite autenticazione WPA2-Enterprise.`,
+    client1: `<strong>💻 STA-01 (Laptop Studente)</strong><br>Indirizzo IP: <code>192.168.10.45/24</code> · Segnale RSSI: <code>-52 dBm (decibel riferiti a un milliwatt)</code> (Eccellente). Associato con successo tramite autenticazione WPA2-Enterprise, la modalità di protezione WPA2 per reti con credenziali individuali.`,
     client2: `<strong>📱 STA-02 (Smartphone)</strong><br>Indirizzo IP: <code>192.168.10.60/24</code> · Segnale RSSI: <code>-68 dBm</code> (Buono). Gestisce power-save sleeping per non esaurire la batteria.`,
     client3: `<strong>🖥️ STA-03 (Postazione Laboratorio)</strong><br>Indirizzo IP: <code>192.168.10.82/24</code> · Segnale RSSI: <code>-48 dBm</code>. Connessione fissa stabile con antenna direzionale.`,
     adhoc: `<strong>🔗 Nodo Rete IBSS (Peer-to-Peer)</strong><br>In questa modalità non esiste un AP master. Le stazioni sincronizzano i clock tra loro e comunicano direttamente. Ottimo per emergenze o scambio rapido (es. AirDrop), ma inefficiente per più di 4-5 terminali.`
@@ -678,7 +679,7 @@ const StepViewer = (() => {
     },
     {
       title: "Fase 3: Associazione al BSS (Association)",
-      desc: "La stazione invia un <em>Association Request</em> dichiarando le proprie capacità hardware (es. MIMO, velocità massime). L'AP risponde con un <em>Association Response</em> contenente l'<strong>AID (Association Identifier)</strong> numerico: da questo istante la stazione è membro ufficiale del BSS."
+      desc: "La stazione invia un <em>Association Request</em> dichiarando le proprie capacità hardware (es. antenne multiple MIMO, Multiple Input Multiple Output, e velocità massime). L'AP risponde con un <em>Association Response</em> contenente l'<strong>AID (Association Identifier)</strong> numerico: da questo istante la stazione è membro ufficiale del BSS."
     }
   ];
 

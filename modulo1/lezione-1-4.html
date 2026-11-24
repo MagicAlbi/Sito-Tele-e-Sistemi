@@ -166,14 +166,14 @@
           <h1 class="lesson-title-h1">Accesso al Mezzo Radio: CSMA/CA e il Dilemma del Nodo Nascosto</h1>
           
           <p class="lesson-subtitle">
-            Nell'aria non puoi accorgerti se qualcuno sta trasmettendo mentre parli tu. Come fa il Wi-Fi a evitare il caos totale? Scopri l'algoritmo di Collision Avoidance, il meccanismo RTS/CTS e perché uno studente con segnale scarso rallenta tutta la classe!
+            Il Wi-Fi usa CSMA/CA (Carrier Sense Multiple Access with Collision Avoidance): i dispositivi ascoltano il canale e aspettano prima di trasmettere per ridurre le collisioni. Per riservare il canale possono scambiarsi una richiesta di invio (RTS, Request to Send) e un via libera (CTS, Clear to Send).
           </p>
 
           <div class="lesson-prereq">
             <span class="lesson-prereq-icon">🧠</span>
             <div>
               <strong>Confronto con Sistemi e Reti:</strong>
-              In Ethernet cablato si usava CSMA/CD (Collision Detection: trasmetto e ascolto contemporaneamente sul filo di rame). Nel wireless questo principio fisico decade: scopriamo perché.
+              In Ethernet cablato si usava CSMA/CD (Carrier Sense Multiple Access with Collision Detection), accesso condiviso con ascolto e rilevamento delle collisioni sul cavo. Nel wireless questo principio fisico decade: scopriamo perché.
             </div>
           </div>
         </div>
@@ -183,7 +183,7 @@
       <div class="tldr reveal">
         <span class="tldr-icon">⚡</span>
         <div>
-          <strong>In breve.</strong> Le schede radio Wi-Fi sono <em>Half-Duplex</em>: trasmettere acceca il proprio ricevitore, quindi è impossibile rilevare collisioni in tempo reale (no CD). La soluzione è il <strong>CSMA/CA (Collision Avoidance)</strong>: prima di trasmettere si ascolta (Carrier Sense), si attende un tempo di silenzio casuale (Backoff esponenziale) e si richiede un frame di conferma <strong>ACK</strong> per ogni pacchetto. Per i nodi che non si vedono tra loro (Hidden Node), si usa l'handshake <strong>RTS/CTS</strong>.
+          <strong>In breve.</strong> Le schede radio Wi-Fi sono <em>Half-Duplex</em>: trasmettere acceca il proprio ricevitore, quindi è impossibile rilevare collisioni in tempo reale. La soluzione è il <strong>CSMA/CA (Collision Avoidance)</strong>: prima di trasmettere si ascolta (Carrier Sense), si attende un tempo di silenzio casuale (Backoff esponenziale) e si richiede un frame di conferma <strong>ACK</strong> (Acknowledgment) per ogni pacchetto. Per i nodi che non si vedono tra loro (Hidden Node), si usa l'handshake <strong>RTS/CTS</strong>.
         </div>
       </div>
 
@@ -201,7 +201,7 @@
           In una scheda radio Wi-Fi accade esattamente la stessa cosa:
         </p>
         <ul>
-          <li>La potenza di trasmissione locale del tuo cellulare è di circa <strong>+15 / +20 dBm (30-100 mW)</strong>.</li>
+          <li>La potenza di trasmissione locale del tuo cellulare è di circa <strong>+15 / +20 dBm</strong> (decibel riferiti a un milliwatt), cioè circa <strong>30-100 mW</strong> (milliwatt).</li>
           <li>Il segnale che ricevi da un'altra stazione remota è attenuato a circa <strong>-70 / -85 dBm (pochi picowatt!)</strong>.</li>
         </ul>
         <p>
@@ -209,9 +209,9 @@
         </p>
 
         <div class="box box-info">
-          <div class="box-label">📐 La Regola dei Timer: DIFS, SIFS e Backoff</div>
+          <div class="box-label">📐 Le pause prima di trasmettere o rispondere</div>
           <p style="margin:0">
-            Prima di trasmettere un frame dati, ogni stazione deve sentire l'etere libero per un tempo fisso chiamato <strong>DIFS (DCF Inter-Frame Space)</strong>. Se l'etere è libero, non parte subito! Estrae un numero casuale da una finestra di contesa (<strong>Backoff Timer</strong>) e fa il conto alla rovescia. Chi finisce per primo il timer vince l'etere. Se due stazioni estraggono lo stesso numero e collidono, non ricevendo l'<strong>ACK</strong> raddoppiano la finestra di attesa (Backoff Esponenziale).
+            Prima di trasmettere un frame dati, ogni stazione deve sentire l'etere libero per un tempo fisso chiamato <strong>DIFS (DCF Interframe Space)</strong>. DCF (Distributed Coordination Function) è il metodo con cui i dispositivi si contendono il canale. La pausa breve prima di una risposta si chiama SIFS (Short Interframe Space). Se l'etere è libero, non parte subito! Estrae un numero casuale da una finestra di contesa (<strong>Backoff Timer</strong>) e fa il conto alla rovescia. Chi finisce per primo il timer vince l'etere. Se due stazioni estraggono lo stesso numero e collidono, non ricevendo l'<strong>ACK</strong> raddoppiano la finestra di attesa (Backoff Esponenziale).
           </p>
         </div>
       </section>
@@ -225,7 +225,7 @@
         <h2>2. Il Problema del Nodo Nascosto (Hidden Node Problem)</h2>
 
         <p>
-          C'è un'insidia ancora peggiore: supponi che due smartphone (<strong>STA-A</strong> e <strong>STA-C</strong>) siano collegati allo stesso Access Point centrale <strong>AP-B</strong>, ma siano posti ai due lati opposti di un grande corridoio o separati da un grosso muro portante.
+          C'è un'insidia ancora peggiore: supponi che due smartphone, indicati come stazioni Wi-Fi (STA, Station) <strong>STA-A</strong> e <strong>STA-C</strong>, siano collegati allo stesso punto di accesso centrale (AP, Access Point) <strong>AP-B</strong>, ma siano posti ai due lati opposti di un grande corridoio o separati da un grosso muro portante.
         </p>
         <p>
           STA-A vuole trasmettere e ascolta l'etere: <em>"Silenzio perfetto, vado!"</em>. Nello stesso identico momento STA-C ascolta l'etere: non sente STA-A (perché è troppo lontano), crede che l'aria sia libera e trasmette anche lui! <strong>Entrambi i pacchetti arrivano all'AP-B nello stesso microsecondo: COLLISIONE TOTALE!</strong>
@@ -267,7 +267,7 @@
               La colpa è di come funziona il CSMA/CA di base: l'Access Point concede l'accesso all'etere a turno <strong>in base al numero di pacchetti, non in base al tempo di occupazione dell'aria</strong>!
             </p>
             <p style="margin-bottom:0">
-              Se uno studente siede all'ultimo banco dietro a un armadio di ferro con una tacca di segnale (-85 dBm), la sua scheda Wi-Fi scala sulla modulazione più lenta e protetta (es. BPSK a 1 Mbps anziché 64-QAM a 54 Mbps). Per trasmettere una foto da 5 MB, quel telefono <strong>occuperà l'etere radio per oltre 40 secondi consecutivi</strong>, obbligando tutti gli altri 24 compagni di classe (che hanno segnale perfetto) ad aspettare in silenzio il proprio turno! I router enterprise risolvono questo paradosso con l'<strong>Airtime Fairness</strong>: danno a ciascun utente la stessa frazione di millisecondi d'aria, impedendo ai dispositivi lenti di sequestrare la banda a tutta l'aula.
+              Se uno studente siede all'ultimo banco dietro a un armadio di ferro con una tacca di segnale (-85 dBm), la sua scheda Wi-Fi scala sulla modulazione più lenta e protetta (per esempio BPSK, Binary Phase Shift Keying, a due fasi, anziché 64-QAM, Quadrature Amplitude Modulation, con 64 combinazioni di ampiezza e fase). Nell’esempio passa da 54 a 1 megabit al secondo (Mbps). Per trasmettere una foto da 5 megabyte (MB), quel telefono <strong>occuperà l'etere radio per oltre 40 secondi consecutivi</strong>, obbligando tutti gli altri 24 compagni di classe (che hanno segnale perfetto) ad aspettare in silenzio il proprio turno! I router enterprise risolvono questo paradosso con l'<strong>Airtime Fairness</strong>: danno a ciascun utente la stessa frazione di millisecondi d'aria, impedendo ai dispositivi lenti di sequestrare la banda a tutta l'aula.
             </p>
           </div>
         </div>
@@ -281,7 +281,7 @@
       <section class="slide reveal" id="slide-4" data-num="04">
         <h2>4. Checkpoint di Autovalutazione</h2>
         <p>
-          Verifica di aver compreso la gestione delle collisioni e il protocollo di contesa MAC:
+          Verifica di aver compreso la gestione delle collisioni e il protocollo di contesa per il controllo di accesso al mezzo (MAC, Media Access Control):
         </p>
 
         <div class="quiz-wrap">
@@ -471,7 +471,7 @@ document.addEventListener('DOMContentLoaded', () => {
       answers: [
         { text: "Perché le schede radio Wi-Fi sono Half-Duplex: la forte potenza di trasmissione acceca il proprio ricevitore", correct: true },
         { text: "Perché la velocità della luce nell'aria è inferiore a quella nel rame", correct: false },
-        { text: "Perché il protocollo IP vieta il rilevamento delle collisioni", correct: false },
+        { text: "Perché il protocollo IP (Internet Protocol) vieta il rilevamento delle collisioni", correct: false },
         { text: "Perché l'Access Point spegne l'alimentazione durante la trasmissione", correct: false }
       ],
       explain_correct: "Esatto! La potenza del trasmettitore locale supera di milioni di volte il debole segnale che giunge da una stazione remota: è fisicamente impossibile sentire un'altra stazione mentre si trasmette.",
@@ -492,9 +492,9 @@ document.addEventListener('DOMContentLoaded', () => {
       question: "Quale sequenza di frame risolve il problema del nodo nascosto nell'802.11?",
       answers: [
         { text: "PING -> PONG -> ECHO", correct: false },
-        { text: "SYN -> SYN-ACK -> ACK", correct: false },
+        { text: "SYN (richiesta di sincronizzazione) -> SYN-ACK (sincronizzazione con conferma) -> ACK", correct: false },
         { text: "RTS (Request to Send) -> CTS (Clear to Send) -> DATA -> ACK", correct: true },
-        { text: "BEACON -> PROBE -> ASSOC", correct: false }
+        { text: "BEACON (annuncio) -> PROBE (ricerca) -> ASSOC (associazione)", correct: false }
       ],
       explain_correct: "Grandioso! L'handshake a 4 vie RTS/CTS riserva virtualmente il canale: il CTS dell'AP informa tutti i nodi nascosti di congelarsi (NAV attivo) durante lo scambio.",
       explain_wrong: "La sequenza corretta per la riserva preventiva del mezzo radio è: RTS dal client, CTS dall'AP (che zittisce i nodi nascosti), trasmissione dei dati DATA e conferma finale ACK."
@@ -503,7 +503,7 @@ document.addEventListener('DOMContentLoaded', () => {
       question: "Che cos'è il NAV (Network Allocation Vector)?",
       answers: [
         { text: "Un timer software che indica per quanti microsecondi il mezzo radio rimarrà occupato da un'altra stazione", correct: true },
-        { text: "Il sistema GPS integrato nelle antenne direzionali", correct: false },
+        { text: "Il sistema di posizionamento satellitare (GPS, Global Positioning System) integrato nelle antenne direzionali", correct: false },
         { text: "La velocità massima della scheda di rete", correct: false },
         { text: "Un comando per navigare su Internet in incognito", correct: false }
       ],

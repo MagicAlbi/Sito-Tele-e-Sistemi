@@ -150,17 +150,17 @@
             </span>
           </div>
 
-          <h1 class="lesson-title-h1">Progettazione delle WLAN: Link Budget, Site Survey e Sicurezza Crittografica</h1>
+          <h1 class="lesson-title-h1">Progettazione di reti locali senza fili: copertura e sicurezza</h1>
           
           <p class="lesson-subtitle">
-            Come si calcola la copertura radio in un edificio scolastico a più piani? Come si dimensiona il bilancio di potenza (Link Budget) e cosa rende WPA3 a prova di hacker rispetto ai vecchi WEP e WPA2?
+            Come si calcola la copertura radio in un edificio a più piani? E come si sono evolute le protezioni Wi-Fi, dalla cifratura WEP (Wired Equivalent Privacy) a WPA2 e WPA3, seconda e terza generazione di Wi-Fi Protected Access?
           </p>
 
           <div class="lesson-prereq">
             <span class="lesson-prereq-icon">🧠</span>
             <div>
               <strong>Calcoli richiesti nelle prove scritte:</strong>
-              Unità di misura logaritmiche (dB, dBm, dBi), attenuazione in spazio libero e crittografia asimmetrica/simmetrica.
+              Unità logaritmiche: decibel (dB) per rapporti, dBm per potenze riferite a un milliwatt, dBi per il guadagno d’antenna rispetto a un’antenna isotropica, cioè che irradia ugualmente in ogni direzione. Attenuazione in spazio libero e crittografia asimmetrica/simmetrica.
             </div>
           </div>
         </div>
@@ -170,7 +170,7 @@
       <div class="tldr reveal">
         <span class="tldr-icon">⚡</span>
         <div>
-          <strong>In breve.</strong> Progettare una rete wireless richiede due competenze: <strong>1. Calcolo del Link Budget</strong> (sommare potenze e guadagni d'antenna in dBm e sottrarre l'attenuazione di spazio libero e muri per garantire un RSSI ≥ -67 dBm) e <strong>2. Sicurezza</strong> (il vecchio WEP si buca in 60 secondi, WPA2 è vulnerabile a dizionario offline catturando l'handshake, mentre <strong>WPA3 SAE Dragonfly</strong> protegge matematicamente anche da password deboli!).
+          <strong>In breve.</strong> Progettare una rete wireless richiede due competenze: <strong>1. Calcolo del Link Budget</strong> (sommare alla potenza trasmessa in dBm i guadagni d’antenna in dBi e sottrarre le perdite in dB per puntare a un RSSI (Received Signal Strength Indicator, indicatore del livello di segnale ricevuto) di almeno −67 dBm) e <strong>2. Sicurezza</strong> (il vecchio WEP si buca in 60 secondi, WPA2 è vulnerabile a dizionario offline catturando l'handshake, mentre <strong>WPA3-Personal con SAE</strong> (Simultaneous Authentication of Equals, lo scambio che autentica i due dispositivi) ostacola i tentativi di indovinare la password senza interagire con la rete).
         </div>
       </div>
 
@@ -189,6 +189,7 @@
         </div>
 
         <!-- SIMULATORE LINK BUDGET -->
+        <p>Nella formula, tx indica la trasmissione, rx la ricezione e FS (Free Space) lo spazio libero. Nello schema, AP (Access Point) indica il punto di accesso. Il simulatore indica anche il rapporto tra segnale e rumore (SNR, Signal-to-Noise Ratio).</p>
         <div class="lab-panel" data-sim="budget"></div>
       </section>
 
@@ -215,7 +216,7 @@
               Il primo protocollo di protezione, il <strong>WEP (Wired Equivalent Privacy)</strong> del 1999, è uno dei più grandi fallimenti crittografici della storia informatica.
             </p>
             <p>
-              Usava l'algoritmo di cifratura RC4 abbinato a un <strong>Initialization Vector (IV) di soli 24 bit</strong> trasmesso in chiaro. In una rete trafficata, dopo aver scambiato circa 5.000 pacchetti radio, gli IV inevitabilmente si ripetevano (paradosso del compleanno).
+              Usava RC4 (Rivest Cipher 4), un algoritmo che cifra i dati come flusso, abbinato a un <strong>vettore di inizializzazione (IV, Initialization Vector) di soli 24 bit</strong> trasmesso in chiaro. In una rete trafficata, dopo aver scambiato circa 5.000 pacchetti radio, gli IV inevitabilmente si ripetevano (paradosso del compleanno).
             </p>
             <p style="margin-bottom:0">
               Con un computer portatile e una scheda wireless impostata in <em>Monitor Mode</em>, software leggendari come <code>aircrack-ng</code> raccoglievano qualche migliaio di frame per derivare matematicamente la password segreta del router in meno di 2 minuti di orologio! Il WEP è stato bandito nel 2004: se trovi un router ancora protetto con WEP, è considerabile a tutti gli effetti una rete aperta senza password.
@@ -242,19 +243,19 @@
             </tr>
             <tr>
               <td><strong>WPA (v1)</strong></td>
-              <td>TKIP</td>
+              <td>TKIP (Temporal Key Integrity Protocol), protezione dei dati con chiavi temporanee</td>
               <td>Patch tampone per WEP, attacchi di iniezione pacchetti</td>
               <td><span style="color:var(--warning); font-weight:700;">SCONSIGLIATO</span></td>
             </tr>
             <tr>
               <td><strong>WPA2-Personal</strong></td>
-              <td>AES-CCMP (128 bit)</td>
-              <td>Attacco a dizionario offline catturando il 4-way handshake, attacco KRACK</td>
+              <td>AES-CCMP (128 bit): cifratura con AES (Advanced Encryption Standard) e controllo di integrità dei messaggi tramite CCMP (Counter Mode with Cipher Block Chaining Message Authentication Code Protocol), protocollo che usa la cifratura in modalità contatore e un codice di autenticazione dei messaggi</td>
+              <td>Attacco a dizionario offline catturando il 4-way handshake, attacco KRACK (Key Reinstallation Attack, reinstallazione di una chiave)</td>
               <td><span style="color:var(--primary); font-weight:700;">ACCETTABILE (con password complessa)</span></td>
             </tr>
             <tr style="background:rgba(52,211,153,0.08)">
               <td><strong style="color:var(--success)">WPA3-Personal</strong></td>
-              <td>AES-GCM (128/192 bit)</td>
+              <td>AES-GCM (128/192 bit): modalità GCM (Galois/Counter Mode) per cifrare e verificare l’integrità dei dati</td>
               <td>Protocollo Dragonfly (SAE): immune ad attacchi offline a dizionario!</td>
               <td><span style="color:var(--success); font-weight:700;">MASSIMA SICUREZZA ATTUALE</span></td>
             </tr>
@@ -265,11 +266,11 @@
         <div class="box-curiosity">
           <div class="box-curiosity-title">
             <span>⚠️</span>
-            <span>Perché Dovresti Disattivare il Tasto "WPS" sul Tuo Router di Casa</span>
+            <span>Il tasto per collegare i dispositivi al Wi-Fi</span>
           </div>
           <div class="box-curiosity-content">
             <p>
-              Hai presente il pulsantino <strong>WPS (Wi-Fi Protected Setup)</strong> sul retro dei modem per connettere la stampante senza digitare la password? Molti modem consentivano l'autenticazione tramite un <strong>PIN numerico a 8 cifre</strong>.
+              Hai presente il pulsantino <strong>WPS (Wi-Fi Protected Setup)</strong> sul retro dei modem per connettere la stampante senza digitare la password? Molti modem consentivano l'autenticazione tramite un <strong>PIN a 8 cifre</strong> (Personal Identification Number, codice di identificazione).
             </p>
             <p style="margin-bottom:0">
               Errore di progettazione fatale: il router verificava separatamente le prime 4 cifre (10.000 combinazioni) e poi le ultime 4 (in realtà solo 3 cifre + 1 di checksum: appena 1.000 combinazioni!). Uno script automatico (come <em>Reaver</em>) provava le 11.000 combinazioni totali in appena 4-6 ore, rivelando la password WPA2 complessa di 30 caratteri del proprietario! WPA3 ha rimosso definitivamente questo protocollo bacato.
@@ -297,7 +298,7 @@
       </section>
 
       <!-- COMPLETAMENTO & NAVIGAZIONE -->
-      <p class="sources">Riferimento per l’esperimento: <a href="https://www.itu.int/rec/R-REC-P.525/" target="_blank" rel="noopener noreferrer">ITU-R P.525 · Attenuazione in spazio libero</a>.</p>
+      <p class="sources">Riferimento per l’esperimento: <a href="https://www.itu.int/rec/R-REC-P.525/" target="_blank" rel="noopener noreferrer">Unione internazionale delle telecomunicazioni, settore radiocomunicazioni (ITU-R) · P.525, attenuazione in spazio libero</a>.</p>
       <div class="mark-done-wrap reveal lesson-completion">
         <button type="button" class="mark-done-btn" disabled>
           Termina il quiz per completare la lezione
@@ -468,7 +469,7 @@ const quizQuestions = [
       explain_wrong: "I calcoli in decibel si risolvono con semplici somme e sottrazioni: +20 dBm - 85 dB = -65 dBm."
     },
     {
-      question: "Quale livello di segnale RSSI è considerato la soglia standard per garantire chiamate VoIP e roaming senza interruzioni?",
+      question: "Quale livello di segnale RSSI è considerato la soglia standard per garantire chiamate via rete IP (VoIP, Voice over Internet Protocol) e roaming senza interruzioni?",
       answers: [
         { text: "-30 dBm", correct: false },
         { text: "Circa -67 dBm", correct: true },

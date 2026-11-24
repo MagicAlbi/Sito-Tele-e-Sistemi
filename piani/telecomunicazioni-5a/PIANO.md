@@ -5,7 +5,7 @@ Completare AM/FM e i Moduli 1–5 entro il 31 marzo 2027. Da aprile, preparazion
 ## Priorità
 
 - **Wi-Fi** [Esercizi da pubblicare](fasi/22/FASE.md), poi [banca](fasi/23/FASE.md) e [controllo finale](fasi/24/FASE.md). Quiz delle lezioni [approvati](fasi/35/FASE.md).
-- **WAN** [Video 2.3 approvato, prova LIM aperta](fasi/02/FASE.md). Alla ripresa, [protocolli e routing](fasi/03/FASE.md). Moduli 3–5 sospesi.
+- **WAN** Modulo 2 completo in locale. Prossimo passo, revisione dei [materiali](../../modulo2/index.html) e prova sulla [LIM della classe](fasi/02/FASE.md). Moduli 3–5 sospesi.
 - **In parallelo** [Annotazioni](fasi/15/FASE.md), [approvazione prova di accesso](fasi/17/FASE.md) prima del [collegamento al Modulo 1](fasi/18/FASE.md), [progettazione verifiche](fasi/13/FASE.md) indipendente. [Area docente online](fasi/34/FASE.md) dopo la prova online.
 
 ## Fasi
@@ -15,9 +15,9 @@ Apri la scheda e le righe delle dipendenze pertinenti. I controlli generali sono
 | N. | Fase | Dipende da | Stato | Fatta il | Sforzo | Modello |
 | --- | --- | --- | --- | --- | --- | --- |
 | 1 | [Mappa delle lezioni e delle attività](fasi/01/FASE.md) | — | fatta | 20 novembre 2026 | 2–3 h (stima a posteriori) | GPT‑6.2 Astra |
-| 2 | [Modulo 2 · interfacce, WAN e accessi](fasi/02/FASE.md) | 1 | in corso | — | 6–9 h per le lezioni, 3–5 h per la revisione del video | GPT‑6.2 Astra |
-| 3 | [Modulo 2 · protocolli e routing](fasi/03/FASE.md) | 2 | da fare | — | 5–8 h | GPT‑6.2 Astra |
-| 4 | [Modulo 2 · laboratorio e sezione finale](fasi/04/FASE.md) | 3 | da fare | — | 5–8 h | GPT‑6.2 Astra |
+| 2 | [Modulo 2 · interfacce, WAN e accessi](fasi/02/FASE.md) | 1 | in corso | — | 30–45 min, revisione e prova LIM | Docente |
+| 3 | [Modulo 2 · protocolli e routing](fasi/03/FASE.md) | 2 | in corso | — | 20–30 min, revisione e prova LIM | Docente |
+| 4 | [Modulo 2 · laboratorio e sezione finale](fasi/04/FASE.md) | 3 | in corso | — | 15–20 min, revisione e prova di stampa | Docente |
 | 5 | [Modulo 3 · modello digitale e teoria dell’informazione](fasi/05/FASE.md) | 1 | da fare | — | 6–9 h | GPT‑6.2 Astra |
 | 6 | [Modulo 3 · tecniche e applicazioni](fasi/06/FASE.md) | 2, 5 | da fare | — | 6–9 h | GPT‑6.2 Astra |
 | 7 | [Modulo 3 · laboratorio e sezione finale](fasi/07/FASE.md) | 6 | da fare | — | 5–8 h | GPT‑6.2 Astra |
@@ -38,8 +38,8 @@ Apri la scheda e le righe delle dipendenze pertinenti. I controlli generali sono
 | 22 | [Modulo 1 · funzionamento degli esercizi numerici](fasi/22/FASE.md) | 20 | in corso | — | 4–6 h | GPT‑6.2 Astra |
 | 23 | [Modulo 1 · banca di esercizi Wi-Fi](fasi/23/FASE.md) | 22 | da fare | — | 5–8 h | GPT‑6.2 Astra |
 | 24 | [Modulo 1 · integrazione e controllo delle sezioni finali](fasi/24/FASE.md) | 21, 23, 35 | da fare | — | 2–4 h | GPT‑6.2 Sol |
-| 25 | [Modulo 2 · test di allenamento](fasi/25/FASE.md) | 4, 24 | da fare | — | 5–8 h | GPT‑6.2 Astra |
-| 26 | [Modulo 2 · valutazione e preparazione degli esercizi numerici](fasi/26/FASE.md) | 25, 24 | da fare | — | 1–8 h | GPT‑6.2 Astra |
+| 25 | [Modulo 2 · test di allenamento](fasi/25/FASE.md) | 4, 20 | in corso | — | 10–15 min, revisione | Docente |
+| 26 | [Modulo 2 · valutazione e preparazione degli esercizi numerici](fasi/26/FASE.md) | 25 | in corso | — | 10–15 min, revisione | Docente |
 | 27 | [Modulo 3 · test di allenamento](fasi/27/FASE.md) | 7, 24 | da fare | — | 5–8 h | GPT‑6.2 Astra |
 | 28 | [Modulo 3 · valutazione e preparazione degli esercizi numerici](fasi/28/FASE.md) | 27, 24 | da fare | — | 1–8 h | GPT‑6.2 Astra |
 | 29 | [Modulo 4 · test di allenamento](fasi/29/FASE.md) | 9, 24 | da fare | — | 5–8 h | GPT‑6.2 Astra |

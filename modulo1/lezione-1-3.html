@@ -161,7 +161,7 @@
             </span>
           </div>
 
-          <h1 class="lesson-title-h1">Spettro Elettromagnetico & Canali Radio: La Guerra dei 2.4 GHz, 5 GHz e 6 GHz</h1>
+          <h1 class="lesson-title-h1">Spettro Elettromagnetico & Canali Radio: Le bande a 2,4, 5 e 6 gigahertz (GHz)</h1>
           
           <p class="lesson-subtitle">
             Perché a 2.4 GHz esistono solo 3 canali non interferenti? Che succede se il tuo vicino di casa sceglie il canale sbagliato? E perché il microonde o i radar dell'aeroporto possono farti cadere la connessione?
@@ -181,7 +181,7 @@
       <div class="tldr reveal">
         <span class="tldr-icon">⚡</span>
         <div>
-          <strong>In breve.</strong> A 2.4 GHz abbiamo solo ~83 MHz di spettro totale: dato che ogni canale Wi-Fi occupa 20 o 22 MHz e i canali sono distanziati di appena 5 MHz, <strong>solo i canali 1, 6 e 11 non si sovrappongono tra loro</strong>! A 5 GHz e 6 GHz abbiamo autostrade radio molto più ampie e decine di canali puliti, ma le onde a frequenza più alta faticano a penetrare i muri di casa.
+          <strong>In breve.</strong> A 2.4 GHz abbiamo solo circa 83 megahertz (MHz) di spettro totale: dato che ogni canale Wi-Fi occupa 20 o 22 MHz e i canali sono distanziati di appena 5 MHz, <strong>solo i canali 1, 6 e 11 non si sovrappongono tra loro</strong>! A 5 GHz e 6 GHz abbiamo autostrade radio molto più ampie e decine di canali puliti, ma le onde a frequenza più alta faticano a penetrare i muri di casa.
         </div>
       </div>
 
@@ -192,7 +192,7 @@
         <h2>1. Il "Caos" dei Canali a 2.4 GHz: Perché 1, 6 e 11?</h2>
 
         <p>
-          In Europa, la banda non licenziata ISM a 2.4 GHz va da <strong>2.400 GHz a 2.4835 GHz</strong>. L'IEEE ha definito 13 canali numerati. La frequenza centrale del Canale 1 è a 2.412 GHz, e ciascun canale successivo dista appena <strong>5 MHz</strong> (il Canale 2 è a 2.417 GHz, il 3 a 2.422 GHz, ecc.).
+          In Europa, la banda ISM (Industrial, Scientific and Medical, destinata anche ad applicazioni industriali, scientifiche e mediche) a 2.4 GHz va da <strong>2.400 GHz a 2.4835 GHz</strong>. L’IEEE (Institute of Electrical and Electronics Engineers), l’ente che pubblica gli standard 802.11, ha definito 13 canali numerati. La frequenza centrale del Canale 1 è a 2.412 GHz, e ciascun canale successivo dista appena <strong>5 MHz</strong> (il Canale 2 è a 2.417 GHz, il 3 a 2.422 GHz, ecc.).
         </p>
 
         <p>
@@ -200,6 +200,7 @@
         </p>
 
         <!-- SIMULATORE SPETTRO CANALI -->
+        <p>Nel simulatore, AP (Access Point) indica il punto di accesso. Due punti di accesso sullo stesso canale possono coordinare le trasmissioni con CSMA/CA (Carrier Sense Multiple Access with Collision Avoidance), ascoltando il canale prima di trasmettere.</p>
         <div class="lab-panel" data-sim="spectrum"></div>
       </section>
 
@@ -222,10 +223,10 @@
               Ti è mai successo di giocare online su console o guardare una diretta Twitch e avere un freeze totale proprio mentre qualcuno in cucina scaldava la pizza nel forno a microonde?
             </p>
             <p>
-              Non è sfortuna: è <strong>risonanza molecolare</strong>! I forni a microonde scaldano il cibo facendo vibrare le molecole d'acqua a una frequenza precisa di <strong>2.450 GHz</strong> (esattamente in mezzo ai canali Wi-Fi 8, 9 e 10!). Un router trasmette con una potenza di circa <strong>0.1 Watt (100 mW)</strong> per legge; un forno a microonde spara dentro la camera circa <strong>800 - 1000 Watt</strong>.
+              Non è sfortuna: è <strong>risonanza molecolare</strong>! I forni a microonde scaldano il cibo facendo vibrare le molecole d'acqua a una frequenza precisa di <strong>2.450 GHz</strong> (esattamente in mezzo ai canali Wi-Fi 8, 9 e 10!). Un router trasmette con una potenza di circa <strong>0.1 Watt (100 mW, milliwatt)</strong> per legge; un forno a microonde spara dentro la camera circa <strong>800 - 1000 Watt</strong>.
             </p>
             <p style="margin-bottom:0">
-              Anche con la migliore schermatura metallica, una frazione microscopica di segnale sfugge dalla guarnizione dello sportello. Per il tuo ricevitore Wi-Fi a 2.4 GHz, quel trafilamento è una bomba acustica assordante che azzera il rapporto segnale/rumore (SNR) e causa il crollo immediato dei frame! Soluzione da sistemista: <em>passare sempre alla banda a 5 GHz o 6 GHz per il gaming</em>.
+              Anche con la migliore schermatura metallica, una frazione microscopica di segnale sfugge dalla guarnizione dello sportello. Per il tuo ricevitore Wi-Fi a 2.4 GHz, quel trafilamento è una bomba acustica assordante che azzera il rapporto segnale/rumore (SNR, Signal-to-Noise Ratio) e causa il crollo immediato dei frame! Soluzione da sistemista: <em>passare sempre alla banda a 5 GHz o 6 GHz per il gaming</em>.
             </p>
           </div>
         </div>
@@ -254,7 +255,7 @@
             <div class="box-label">🚀 Banda 6 GHz (Wi-Fi 6E/7)</div>
             <p style="font-size:0.85rem; margin-bottom:0.4rem;"><strong>Copertura:</strong> Nella stessa stanza (line-of-sight).</p>
             <p style="font-size:0.85rem; margin-bottom:0.4rem;"><strong>Penetrazione muri:</strong> Quasi nulla.</p>
-            <p style="font-size:0.85rem; margin:0;"><strong>Velocità:</strong> Mostruosa (>2-5 Gbps reali, latenza 1ms).</p>
+            <p style="font-size:0.85rem; margin:0;"><strong>Velocità:</strong> Mostruosa (>2-5 gigabit al secondo (Gbps) reali, latenza 1ms).</p>
           </div>
         </div>
 
@@ -262,11 +263,11 @@
         <div class="box-curiosity">
           <div class="box-curiosity-title">
             <span>✈️</span>
-            <span>I Canali DFS: Quando il Router Sente l'Aeroporto e si Mette a Tacere</span>
+            <span>Quando il Wi-Fi deve lasciare il canale ai radar</span>
           </div>
           <div class="box-curiosity-content">
             <p>
-              Nella banda a 5 GHz esistono canali speciali chiamati <strong>DFS (Dynamic Frequency Selection)</strong>, compresi tra 5.25 GHz e 5.725 GHz. Queste stesse frequenze sono storicamente riservate ai <strong>radar militari e ai radar meteorologici aeroportuali</strong>.
+              Nella banda a 5 GHz esistono canali soggetti a <strong>DFS (Dynamic Frequency Selection)</strong>, la selezione dinamica della frequenza per proteggere i radar, compresi tra 5.25 GHz e 5.725 GHz. Queste stesse frequenze sono storicamente riservate ai <strong>radar militari e ai radar meteorologici aeroportuali</strong>.
             </p>
             <p style="margin-bottom:0">
               Per legge, un router Wi-Fi che usa un canale DFS ha l'obbligo di ascoltare costantemente l'etere: se rileva anche solo un debole impulso radar di un aereo di linea o del maltempo, il router <strong>deve spegnere immediatamente le trasmissioni radio per almeno 60 secondi</strong> e migrare su un altro canale! Se hai notato che il Wi-Fi di casa ogni tanto "sparisce" per un minuto e poi ricompare, vivi vicino a un aeroporto o a una stazione meteo.
@@ -283,7 +284,7 @@
       <section class="slide reveal" id="slide-3" data-num="03">
         <h2>3. Checkpoint di Autovalutazione</h2>
         <p>
-          Metti alla prova quello che hai imparato sui canali radio e sullo spettro RF:
+          Metti alla prova quello che hai imparato sui canali radio e sullo spettro a radiofrequenza (RF, Radio Frequency):
         </p>
 
         <div class="quiz-wrap">

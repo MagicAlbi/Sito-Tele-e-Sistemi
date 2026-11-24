@@ -1,0 +1,130 @@
+<!doctype html>
+<html lang="it" data-theme="dark">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Simulazione di verifica WAN | Telecomunicazioni 5A</title>
+  <link rel="stylesheet" href="../assets/css/style.css">
+  <link rel="stylesheet" href="../assets/css/modulo2.css">
+
+</head>
+<body class="module-two">
+<div class="app-layout">
+  <header class="site-header">
+    <a href="../index.html" class="logo-link">
+      <span class="logo-icon" aria-hidden="true">⚡</span>
+      <span class="logo-text"><span class="logo-title text-gradient">Telecomunicazioni 5A</span><span class="logo-sub">IIS J.C. Maxwell</span></span>
+    </a>
+    <nav class="header-breadcrumb" aria-label="Percorso">
+      <a href="../index.html">Home</a><span aria-hidden="true">›</span>
+      <a href="index.html">Modulo 2</a><span aria-hidden="true">›</span>
+      <span class="current" aria-current="page">Verifica</span>
+    </nav>
+    <div class="header-actions">
+
+      <button type="button" class="btn btn-icon btn-ghost" data-theme-toggle aria-label="Cambia tema"></button>
+    </div>
+  </header>
+  <main class="main-content wan-study wan-exam">
+  <div class="content-wrap">
+    <header class="wan-hero ">
+  <div><p class="wan-kicker">Modulo 2 · Simulazione di verifica</p><h1 class="lesson-title-h1">Reti WAN · prova finale</h1><p class="lesson-subtitle">45 minuti. Otto domande a scelta singola e tre casi da motivare. Totale 20 punti.</p></div>
+
+</header>
+    <p class="wan-print-only">Nome e cognome ____________________________________ Data __________________</p>
+    <div class="wan-exam-toolbar"><button class="btn btn-primary" type="button" data-wan-print>Stampa scheda</button></div>
+    <form id="wan-exam-form">
+      <section class="slide wan-chapter">
+        <h2>Parte A · Otto scelte (8 punti)</h2>
+        <fieldset class="wan-exam-question" data-correct="0">
+          <legend>1. Sul tratto sincrono studiato il router è DTE e il modem è DCE. Da dove viene il clock del DTE?</legend>
+          <label><input type="radio" name="q1" value="0"> <span>A. Dal modem</span></label>
+          <label><input type="radio" name="q1" value="1"> <span>B. Dal PC</span></label>
+          <label><input type="radio" name="q1" value="2"> <span>C. Dal segnale ad alta frequenza del Wi-Fi</span></label>
+          <p class="wan-exam-feedback" hidden>Sul tratto studiato il modem DCE fornisce il riferimento temporale al DTE.</p>
+        </fieldset>
+        <fieldset class="wan-exam-question" data-correct="1">
+          <legend>2. Una filiale ha un servizio punto-punto sempre pronto. Nel nucleo dell’operatore i dati condividono collegamenti IP. Come lo descrivi?</legend>
+          <label><input type="radio" name="q2" value="0"> <span>A. Accesso commutato, rete a circuito</span></label>
+          <label><input type="radio" name="q2" value="1"> <span>B. Accesso dedicato, rete a pacchetto</span></label>
+          <label><input type="radio" name="q2" value="2"> <span>C. Accesso dedicato, risorse interne sempre riservate</span></label>
+          <p class="wan-exam-feedback" hidden>L’accesso è disponibile in permanenza. Nella rete IP le risorse sono condivise fra pacchetti.</p>
+        </fieldset>
+        <fieldset class="wan-exam-question" data-correct="2">
+          <legend>3. La fibra finisce nel cabinet. Dal cabinet all’edificio c’è rame. Quale tecnologia descrive il percorso?</legend>
+          <label><input type="radio" name="q3" value="0"> <span>A. FTTH</span></label>
+          <label><input type="radio" name="q3" value="1"> <span>B. PON fino alla presa</span></label>
+          <label><input type="radio" name="q3" value="2"> <span>C. FTTC</span></label>
+          <p class="wan-exam-feedback" hidden>In FTTC la fibra termina nell’armadio. Il doppino copre il tratto fino all’utente.</p>
+        </fieldset>
+        <fieldset class="wan-exam-question" data-correct="0">
+          <legend>4. In una PON quale elemento suddivide otticamente il segnale senza alimentazione?</legend>
+          <label><input type="radio" name="q4" value="0"> <span>A. Splitter</span></label>
+          <label><input type="radio" name="q4" value="1"> <span>B. ONT</span></label>
+          <label><input type="radio" name="q4" value="2"> <span>C. OLT</span></label>
+          <p class="wan-exam-feedback" hidden>Lo splitter è il componente passivo. OLT e ONT sono alimentati.</p>
+        </fieldset>
+        <fieldset class="wan-exam-question" data-correct="1">
+          <legend>5. Una trama ricevuta fallisce il controllo FCS. Che cosa accade?</legend>
+          <label><input type="radio" name="q5" value="0"> <span>A. Il pacchetto passa al livello IP</span></label>
+          <label><input type="radio" name="q5" value="1"> <span>B. La trama è scartata</span></label>
+          <label><input type="radio" name="q5" value="2"> <span>C. Il dispositivo ricostruisce sempre i bit originali</span></label>
+          <p class="wan-exam-feedback" hidden>L’FCS serve a rilevare errori. Il ricevitore scarta la trama se il controllo fallisce.</p>
+        </fieldset>
+        <fieldset class="wan-exam-question" data-correct="2">
+          <legend>6. In una sessione PPP con autenticazione richiesta, quando si configura IPv4 tramite IPCP?</legend>
+          <label><input type="radio" name="q6" value="0"> <span>A. Prima di LCP</span></label>
+          <label><input type="radio" name="q6" value="1"> <span>B. Al posto di LCP</span></label>
+          <label><input type="radio" name="q6" value="2"> <span>C. Dopo LCP e autenticazione riuscita</span></label>
+          <p class="wan-exam-feedback" hidden>IPCP è un NCP. Con l’autenticazione richiesta, si raggiunge dopo che il peer è stato accettato.</p>
+        </fieldset>
+        <fieldset class="wan-exam-question" data-correct="0">
+          <legend>7. L’indirizzo 10.20.30.8 coincide con /0, 10.20.0.0/16 e 10.20.30.0/24. Quale prefisso prevale?</legend>
+          <label><input type="radio" name="q7" value="0"> <span>A. 10.20.30.0/24</span></label>
+          <label><input type="radio" name="q7" value="1"> <span>B. 10.20.0.0/16</span></label>
+          <label><input type="radio" name="q7" value="2"> <span>C. 0.0.0.0/0</span></label>
+          <p class="wan-exam-feedback" hidden>Il /24 vincola più bit iniziali rispetto al /16 e al /0.</p>
+        </fieldset>
+        <fieldset class="wan-exam-question" data-correct="1">
+          <legend>8. Il PC 192.168.10.21/24 deve inviare a 192.168.10.84. Chi riceve la trama sulla LAN?</legend>
+          <label><input type="radio" name="q8" value="0"> <span>A. Il gateway predefinito</span></label>
+          <label><input type="radio" name="q8" value="1"> <span>B. Il destinatario locale</span></label>
+          <label><input type="radio" name="q8" value="2"> <span>C. Il router del fornitore</span></label>
+          <p class="wan-exam-feedback" hidden>Con /24 i due IPv4 appartengono alla stessa LAN. Il PC può consegnare direttamente.</p>
+        </fieldset>
+      </section>
+      <section class="slide wan-chapter">
+        <h2>Parte B · Tre casi (12 punti)</h2>
+        <article class="wan-exam-open">
+          <h3>1. Capacità e tempo di trasferimento (4 punti)</h3><p id="wan-open-0">Una sede invia un archivio di 90 MB su una linea nominale da 30 Mbit/s. Gli overhead lasciano il 60% della capacità per il file. Calcola la capacità utile e il tempo di trasferimento ideale. Mostra conversioni e unità.</p>
+
+          <textarea rows="4" aria-labelledby="wan-open-0" placeholder="Passaggi e risposta"></textarea><div class="wan-print-only wan-paper-lines" aria-hidden="true"><span></span><span></span><span></span><span></span></div>
+        </article>
+        <article class="wan-exam-open">
+          <h3>2. Diagnosi di una sessione PPP (4 punti)</h3><p id="wan-open-1">Su una linea il collegamento fisico è operativo e LCP risulta aperto. CHAP respinge il peer e IPv4 resta fermo. Ordina le fasi successive al livello fisico. Indica dove inizi la diagnosi e spiega perché.</p>
+
+          <textarea rows="4" aria-labelledby="wan-open-1" placeholder="Passaggi e risposta"></textarea><div class="wan-print-only wan-paper-lines" aria-hidden="true"><span></span><span></span><span></span><span></span></div>
+        </article>
+        <article class="wan-exam-open">
+          <h3>3. Quattro decisioni di routing (4 punti)</h3><p id="wan-open-2">Usa la tabella. Per ogni destinazione scrivi prefisso scelto, prossimo salto o consegna diretta e uscita. Valuta 192.168.10.55, 10.20.30.77, 10.20.80.41 e 203.0.113.90.</p>
+          <table class="osi-table"><thead><tr><th scope="col">Prefisso</th><th scope="col">Prossimo salto</th><th scope="col">Uscita</th></tr></thead><tbody><tr><td>192.168.10.0/24</td><td>Direttamente collegata</td><td>LAN</td></tr><tr><td>10.20.0.0/16</td><td>172.16.0.2</td><td>WAN A</td></tr><tr><td>10.20.30.0/24</td><td>172.16.1.2</td><td>WAN B</td></tr><tr><td>0.0.0.0/0</td><td>172.16.0.2</td><td>WAN A</td></tr></tbody></table>
+          <textarea rows="4" aria-labelledby="wan-open-2" placeholder="Passaggi e risposta"></textarea><div class="wan-print-only wan-paper-lines" aria-hidden="true"><span></span><span></span><span></span><span></span><span></span></div>
+        </article>
+      </section>
+      <div class="wan-exam-toolbar"><button class="btn btn-primary">Correggi la parte A</button><p id="wan-exam-result" role="status"></p></div>
+    </form>
+    <details class="wan-reveal wan-exam-solutions" hidden>
+      <summary>Svolgimenti e criteri della parte B</summary>
+      <h3>Capacità e tempo di trasferimento</h3><p>30 × 0,60 = 18 Mbit/s utili. 90 × 8 = 720 Mbit. 720 ÷ 18 = 40 s. Nel modello la capacità utile è costante.</p><p>1 punto per la quota 0,60, 1 per 18 Mbit/s, 1 per 720 Mbit e 1 per 40 s.</p>
+      <h3>Diagnosi di una sessione PPP</h3><p>La sequenza è LCP, autenticazione CHAP, IPCP per IPv4, traffico IPv4. Il rifiuto CHAP è il primo errore. Il collegamento non arriva alla configurazione IPv4 finché l’identità richiesta non è verificata.</p><p>1 punto per LCP, 1 per CHAP nella posizione corretta, 1 per IPCP dopo CHAP e 1 per la diagnosi motivata.</p>
+      <h3>Quattro decisioni di routing</h3><p>192.168.10.55 → /24 direttamente collegato, LAN. 10.20.30.77 → 10.20.30.0/24, 172.16.1.2, WAN B. 10.20.80.41 → 10.20.0.0/16, 172.16.0.2, WAN A. 203.0.113.90 → /0, 172.16.0.2, WAN A.</p><p>1 punto per ogni decisione completa. Per la rete locale indica consegna diretta.</p>
+    </details>
+    <p class="wan-exam-toolbar"><a href="index.html" class="btn btn-ghost">← Torna al Modulo 2</a></p>
+  </div>
+</main>
+</div>
+
+<script src="../assets/js/app.js"></script>
+<script src="../assets/js/verifica-modulo2.js"></script>
+</body>
+</html>

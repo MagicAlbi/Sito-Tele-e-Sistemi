@@ -1,0 +1,86 @@
+<!doctype html>
+<html lang="it" data-theme="dark">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Laboratorio di routing | Telecomunicazioni 5A</title>
+  <link rel="stylesheet" href="../assets/css/style.css">
+  <link rel="stylesheet" href="../assets/css/modulo2.css">
+
+</head>
+<body class="module-two">
+<div class="app-layout">
+  <header class="site-header">
+    <a href="../index.html" class="logo-link">
+      <span class="logo-icon" aria-hidden="true">⚡</span>
+      <span class="logo-text"><span class="logo-title text-gradient">Telecomunicazioni 5A</span><span class="logo-sub">IIS J.C. Maxwell</span></span>
+    </a>
+    <nav class="header-breadcrumb" aria-label="Percorso">
+      <a href="../index.html">Home</a><span aria-hidden="true">›</span>
+      <a href="index.html">Modulo 2</a><span aria-hidden="true">›</span>
+      <span class="current" aria-current="page">Laboratorio</span>
+    </nav>
+    <div class="header-actions">
+
+      <button type="button" class="btn btn-icon btn-ghost" data-theme-toggle aria-label="Cambia tema"></button>
+    </div>
+  </header>
+  <main class="main-content wan-study">
+  <div class="content-wrap">
+    <header class="wan-hero wan-hero-illustrated">
+  <div><p class="wan-kicker">Laboratorio · Modulo 2</p><h1 class="lesson-title-h1">Porta il pacchetto a destinazione</h1><p class="lesson-subtitle">Decidi la rotta prima del router. Poi prova una destinazione a tua scelta e osserva quali righe corrispondono.</p></div>
+  <img src="../assets/img/indice-nodi-wan.svg" alt="" width="200" height="252">
+</header>
+    <section class="slide wan-chapter" aria-labelledby="lab-challenge">
+      <h2 id="lab-challenge">Prima prevedi l’uscita</h2>
+      <p class="wan-lead">Completa tre prove con la tabella qui sotto. Puoi ritentare e usare l’indizio quando una risposta non passa.</p>
+      <div class="wan-demo" data-wan-demo="routing"></div>
+    </section>
+    <section class="slide wan-chapter" data-wan-lab aria-labelledby="lab-simulator">
+      <h2 id="lab-simulator">Banco prova IPv4</h2>
+      <p class="wan-lead">Scrivi l’indirizzo di destinazione e confronta le rotte compatibili. La tabella indica quale prevale per lunghezza del prefisso.</p>
+      <ol class="wan-flow"><li><strong>LAN</strong><span>rete 192.168.10.0/24</span></li><li><strong>WAN A</strong><span>vicino 172.16.0.2</span></li><li><strong>WAN B</strong><span>vicino 172.16.1.2</span></li></ol>
+      <form novalidate>
+        <div class="wan-lab-controls">
+          <label for="wan-destination">Indirizzo di destinazione
+            <input id="wan-destination" type="text" value="10.20.30.8" inputmode="url" autocomplete="off" spellcheck="false" maxlength="15" aria-describedby="wan-route-message">
+          </label>
+          <button class="btn btn-primary">Cerca rotta</button>
+          <label><input type="checkbox" id="wan-default-route" checked> Rotta predefinita attiva</label>
+        </div>
+        <div class="wan-demo-actions" aria-label="Destinazioni di prova">
+          <button class="btn btn-ghost" data-wan-ip="192.168.10.42" type="button">Rete locale</button>
+          <button class="btn btn-ghost" data-wan-ip="10.20.30.8" type="button">Due prefissi</button>
+          <button class="btn btn-ghost" data-wan-ip="10.20.80.8" type="button">Solo /16</button>
+          <button class="btn btn-ghost" data-wan-ip="203.0.113.8" type="button">Fuori elenco</button>
+        </div>
+      </form>
+      <dl class="wan-route-outcome"><div><dt>Rotta scelta</dt><dd>—</dd></div><div><dt>Prossimo salto</dt><dd>—</dd></div><div><dt>Uscita</dt><dd>—</dd></div></dl>
+      <p class="wan-route-status" id="wan-route-message" role="status"></p>
+      <div class="wan-table-wrap">
+        <table class="osi-table">
+          <thead><tr><th scope="col">Prefisso</th><th scope="col">Prossimo salto</th><th scope="col">Uscita</th><th scope="col">Esito</th></tr></thead>
+          <tbody><tr><th scope="row">192.168.10.0/24</th><td>Direttamente collegata</td><td>LAN</td><td>—</td></tr>
+          <tr><th scope="row">10.20.0.0/16</th><td>172.16.0.2</td><td>WAN A</td><td>—</td></tr>
+          <tr><th scope="row">10.20.30.0/24</th><td>172.16.1.2</td><td>WAN B</td><td>—</td></tr>
+          <tr><th scope="row">0.0.0.0/0</th><td>172.16.0.2</td><td>WAN A</td><td>—</td></tr></tbody>
+        </table>
+      </div>
+      <noscript><p>Attiva JavaScript per calcolare la rotta a partire dalla tabella.</p></noscript>
+    </section>
+    <section class="slide wan-chapter">
+      <h2>Consegna in tre passaggi</h2>
+      <ol><li>Verifica la destinazione <code>10.20.30.8</code> e annota tutte le rotte compatibili.</li><li>Cambia il terzo ottetto in <code>80</code>. Indica quale corrispondenza sparisce e quale ora vince.</li><li>Prova <code>203.0.113.8</code> due volte, con la predefinita attiva e disattivata. Spiega la differenza.</li></ol>
+      <details class="wan-reveal"><summary>Confronta le soluzioni</summary><ol><li>Sono compatibili /24, /16 e /0. Vince /24, via WAN B.</li><li>Sparisce il /24 di <code>10.20.30.0</code>. Vince /16, via WAN A.</li><li>Con /0 attiva il pacchetto esce via WAN A. Senza /0 non ha una rotta e viene scartato.</li></ol></details>
+    </section>
+    <nav class="lesson-nav-btns" aria-label="Percorso del modulo">
+      <a href="lezione-2-5.html" class="btn btn-ghost">← Primo routing</a><a href="index.html" class="btn btn-ghost">Indice del modulo</a><a href="allenamento.html" class="btn btn-primary">Test di allenamento →</a>
+    </nav>
+  </div>
+</main>
+</div>
+
+<script src="../assets/js/app.js"></script>
+<script src="../assets/js/modulo2.js"></script>
+</body>
+</html>

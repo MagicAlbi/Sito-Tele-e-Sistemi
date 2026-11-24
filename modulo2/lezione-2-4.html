@@ -1,0 +1,277 @@
+<!doctype html>
+<html lang="it" data-theme="dark">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Protocolli di linea | Telecomunicazioni 5A</title>
+  <link rel="stylesheet" href="../assets/css/style.css">
+  <link rel="stylesheet" href="../assets/css/modulo2.css">
+  <link rel="stylesheet" href="../assets/css/presentazioni-modulo1.css">
+</head>
+<body class="module-two" data-lesson-id="m2-4">
+<div class="app-layout">
+  <header class="site-header">
+    <a href="../index.html" class="logo-link">
+      <span class="logo-icon" aria-hidden="true">⚡</span>
+      <span class="logo-text"><span class="logo-title text-gradient">Telecomunicazioni 5A</span><span class="logo-sub">IIS J.C. Maxwell</span></span>
+    </a>
+    <nav class="header-breadcrumb" aria-label="Percorso">
+      <a href="../index.html">Home</a><span aria-hidden="true">›</span>
+      <a href="index.html">Modulo 2</a><span aria-hidden="true">›</span>
+      <span class="current" aria-current="page">Lezione 2.4</span>
+    </nav>
+    <div class="header-actions">
+      <button type="button" class="btn btn-present" data-present>Presenta <span class="wan-present-lim">sulla LIM</span></button>
+      <button type="button" class="btn btn-icon btn-ghost" data-theme-toggle aria-label="Cambia tema"></button>
+    </div>
+  </header>
+  <main class="main-content wan-study">
+    <div class="content-wrap">
+      <header class="wan-hero wan-hero-illustrated">
+  <div><p class="wan-kicker">Lezione 2.4 · HDLC · PPP</p><h1 class="lesson-title-h1">Protocolli di linea</h1><p class="lesson-subtitle">Il segnale arriva. Ora i due apparati devono riconoscere le trame e mettersi d’accordo su come parlare.</p></div>
+  <img src="../assets/img/indice-nodi-wan.svg" alt="" width="200" height="252">
+</header>
+      <section class="wan-brief" aria-labelledby="obiettivo"><h2 id="obiettivo">In questa lezione</h2><p>Leggi una trama di linea, spiega cosa segnala l’FCS e riconosci in quale fase PPP si può bloccare un collegamento.</p></section>
+      <nav class="wan-jump" aria-label="In questa pagina"><a href="#trama">Dai bit alla trama</a><a href="#hdlc">Che cosa succede se il flag appare nei dati?</a><a href="#ppp">Come parte una sessione PPP</a><a href="#autenticazione">Identità, errori e riservatezza</a><a href="#overhead">Quanti byte portano informazione?</a><a href="#prova">Diagnostica una sessione PPP</a><a href="#checkpoint">Checkpoint</a></nav>
+      <section class="slide wan-chapter" id="trama">
+        <header><h2>Dai bit alla trama</h2><p class="wan-lead">Uno stesso collegamento può trasportare molte unità di dati in successione.</p></header>
+        <figure class="wan-visual"><svg class="wan-drawing" viewBox="0 0 520 226" role="img" aria-label="Trama HDLC schematica. Flag, indirizzo e controllo, dati, FCS e flag."><text class="violet" x="24" y="48" font-size="23">Una trama sul collegamento</text><rect class="outline" x="24" y="74" width="59" height="66" rx="7"/><text class="ink" x="53.5" y="113" text-anchor="middle" font-size="18">Flag</text><rect class="outline" x="84" y="74" width="107" height="66" rx="7"/><text class="ink" x="137.5" y="113" text-anchor="middle" font-size="18">Ind. / ctrl</text><rect class="segment" x="192" y="74" width="141" height="66" rx="7"/><text class="ink" x="262.5" y="113" text-anchor="middle" font-size="18">Dati</text><rect class="segment" x="334" y="74" width="86" height="66" rx="7"/><text class="teal" x="377" y="113" text-anchor="middle" font-size="18">FCS</text><rect class="outline" x="421" y="74" width="68" height="66" rx="7"/><text class="ink" x="455" y="113" text-anchor="middle" font-size="18">Flag</text><path class="return" d="M375 147v27"/><text class="teal" x="320" y="196" font-size="19">Verifica errori</text></svg><figcaption>Formato HDLC didattico. Dimensioni dei campi schematiche.</figcaption></figure>
+        <div class="wan-copy"><p>In un collegamento punto-punto il livello di linea incapsula un pacchetto in una <strong>trama</strong>. L’apparato a valle identifica i confini, interpreta i campi e verifica la trama prima di passarne il contenuto al livello superiore.</p><p>Nel formato <strong>HDLC</strong> didattico i flag segnano i confini. Indirizzo e controllo dipendono dalla modalità. Il campo informazione contiene i dati quando previsto. L’<strong>FCS</strong> è una sequenza calcolata per rilevare errori: il ricevitore ricalcola e confronta. Una trama con verifica fallita viene scartata. La rilevazione da sola non ripara gli errori.</p></div>
+      </section>
+      <section class="slide wan-chapter" id="hdlc">
+        <header><h2>Che cosa succede se il flag appare nei dati?</h2><p class="wan-lead">Il ricevitore deve distinguere un confine dal contenuto della trama.</p></header>
+        <ol class="wan-flow"><li><strong>Dati</strong><span>01111110</span></li><li><strong>Linea</strong><span>011111010</span></li><li><strong>Dati recuperati</strong><span>01111110</span></li></ol>
+        <div class="wan-copy"><p>Nella modalità HDLC sincrona orientata al bit, il flag è <code>01111110</code>. Il trasmettitore inserisce uno zero dopo cinque uno consecutivi nella parte della trama soggetta al <em>bit stuffing</em>. Il ricevitore rimuove quello zero e ricostruisce il contenuto. In questo modo la sequenza di confine resta riconoscibile.</p><p>Esempio: il gruppo di dati <code>01111110</code> diventa <code>011111010</code> sulla linea. In modalità asincrone con inquadratura simile a HDLC si può usare invece un meccanismo di escape a livello di byte.</p><p>Le estensioni proprietarie derivate da HDLC possono differire nel formato. Per collegare due apparati serve una configurazione compatibile.</p></div>
+      </section>
+      <section class="slide wan-chapter" id="ppp">
+        <header><h2>Come parte una sessione PPP</h2><p class="wan-lead">PPP trasporta protocolli di rete su un collegamento fra due estremi.</p></header>
+        <figure class="wan-visual"><svg class="wan-drawing" viewBox="0 0 520 226" role="img" aria-label="Dopo LCP si può negoziare l’autenticazione. Poi NCP configura i protocolli di rete."><path class="flow" d="M139 115H178m-9-7 9 7-9 7"/><path class="return" d="M329 115H369m-9-7 9 7-9 7"/><text class="muted" x="307" y="191" font-size="16">IPCP è l’NCP per IPv4</text><g><rect class="segment" x="17" y="79" width="120" height="72" rx="10"/><text class="violet" x="77" y="112" text-anchor="middle" font-size="21">LCP</text><text class="muted" x="77" y="135" text-anchor="middle" font-size="15">Collegamento</text></g><g><rect class="segment" x="181" y="79" width="147" height="72" rx="10"/><text class="teal" x="254.5" y="112" text-anchor="middle" font-size="21">Identità</text><text class="muted" x="254.5" y="135" text-anchor="middle" font-size="15">Se richiesta</text></g><g><rect class="segment" x="372" y="79" width="128" height="72" rx="10"/><text class="violet" x="436" y="112" text-anchor="middle" font-size="21">NCP</text><text class="muted" x="436" y="135" text-anchor="middle" font-size="15">Livello rete</text></g></svg><figcaption>L’eventuale autenticazione avviene fra LCP e NCP.</figcaption></figure>
+        <div class="wan-copy"><p>Il campo <strong>Protocol</strong> di PPP indica quale contenuto trasporta la trama. Nelle inquadrature simili a HDLC ritrovi flag e FCS. Per aprire il collegamento, <strong>LCP</strong> (Link Control Protocol) negozia e verifica il collegamento. Segue l’eventuale <strong>autenticazione</strong>. Poi i protocolli <strong>NCP</strong> configurano i protocolli di rete. <strong>IPCP</strong> è l’NCP per IPv4.</p><p>Quando la configurazione per un protocollo è pronta, possono viaggiare i suoi pacchetti. LCP gestisce anche la chiusura del link. Se il collegamento fisico manca, la sequenza non può partire.</p></div>
+      </section>
+      <section class="slide wan-chapter" id="autenticazione">
+        <header><h2>Identità, errori e riservatezza</h2><p class="wan-lead">Durante la diagnosi distingui ciò che ogni meccanismo controlla.</p></header>
+        <ol class="wan-flow"><li><strong>FCS</strong><span>integrità della trama ricevuta</span></li><li><strong>Autenticazione</strong><span>identità del peer</span></li><li><strong>Cifratura</strong><span>riservatezza dei dati</span></li></ol>
+        <div class="wan-copy"><p><strong>PAP</strong> invia le credenziali al peer in chiaro sul collegamento PPP. <strong>CHAP</strong> usa una sfida, una risposta calcolata con il segreto condiviso e una verifica. In CHAP il segreto non viene inviato nella risposta. Entrambi sono meccanismi storici di autenticazione. La riservatezza del traffico richiede un meccanismo di cifratura distinto.</p><p>Se LCP si apre ma l’autenticazione richiesta fallisce, il collegamento si ferma prima di NCP. Se autenticazione e LCP sono riusciti ma IPv4 non parte, controlla IPCP e i parametri di rete.</p></div>
+      </section>
+      <section class="slide wan-chapter" id="overhead">
+        <header><h2>Quanti byte portano informazione?</h2><p class="wan-lead">Calcola l’efficienza di un formato semplificato.</p></header>
+        <ol class="wan-flow"><li><strong>Totale = informazione + altri campi</strong></li><li><strong>Quota utile = informazione ÷ totale × 100</strong></li></ol>
+        <div class="wan-copy"><p>Raccogliamo 100 byte di informazione in una trama didattica con 8 byte di altri campi. La dimensione è <strong>108 byte</strong>. La quota utile è 100 ÷ 108 × 100 ≈ <strong>92,59%</strong>. Se il carico utile diventa 200 byte, con gli stessi 8 byte il rapporto sale a <strong>96,15%</strong>.</p><p>L’esercizio specifica il costo fisso per trama e trascura byte di escape, bit stuffing e altri campi o vincoli. Su un collegamento reale il costo può cambiare con le opzioni in uso.</p></div>
+      </section>
+      <section class="slide wan-chapter" id="prova">
+        <h2>Diagnostica una sessione PPP</h2>
+        <div class="wan-model" data-wan-stuffing>
+          <h3>Banco prova · Inserimento degli zeri</h3>
+          <p>Prova una sequenza di dati. L’uscita evidenzia ogni zero inserito dopo cinque uno consecutivi.</p>
+          <form class="wan-lab-controls" novalidate>
+            <label for="wan-bits">Dati originali
+              <input id="wan-bits" type="text" inputmode="numeric" maxlength="18" value="01111110" autocomplete="off" spellcheck="false" aria-describedby="wan-bits-status">
+            </label>
+            <button class="btn btn-primary">Mostra la sequenza</button>
+          </form>
+          <div class="wan-bit-output">
+            <strong>Sulla linea</strong>
+            <output for="wan-bits" class="wan-bit-strip" aria-hidden="true"></output>
+          </div>
+          <p class="wan-feedback" id="wan-bits-status" role="status"></p>
+        </div>
+        <div class="wan-demo" data-wan-demo="ppp"></div>
+        <noscript><p>Attiva JavaScript per usare la simulazione.</p></noscript>
+        <details class="wan-reveal"><summary>LCP è aperto. L’autenticazione riesce, ma il collegamento non trasporta IPv4. Dove cerchi il problema?</summary><p>Controlla lo stato di IPCP e i parametri IPv4 negoziati. IPCP è il protocollo di configurazione di IPv4 in PPP.</p></details>
+      </section>
+      <section class="slide wan-chapter" id="checkpoint">
+        <h2>Checkpoint</h2><p class="wan-lead">Cinque decisioni. Leggi il riscontro dopo ogni risposta e riprova quando vuoi.</p>
+        <div class="quiz-wrap" id="quizContainer" data-lesson-quiz></div>
+        <p><a href="allenamento.html">Vai al test di allenamento →</a></p>
+      </section>
+      <details class="wan-sources"><summary>Riferimenti tecnici</summary><ul><li><a href="https://www.rfc-editor.org/rfc/rfc1661">RFC 1661 · PPP</a></li><li><a href="https://www.rfc-editor.org/rfc/rfc1662">RFC 1662 · PPP con inquadratura simile a HDLC</a></li><li><a href="https://www.rfc-editor.org/rfc/rfc1994">RFC 1994 · CHAP</a></li><li><a href="https://www.rfc-editor.org/rfc/rfc1332">RFC 1332 · IPCP</a></li></ul></details>
+      <div class="mark-done-wrap">
+        <button type="button" class="mark-done-btn">Termina il quiz per completare la lezione</button>
+        <nav class="lesson-nav-btns" aria-label="Lezioni del modulo">
+          <a href="lezione-2-3.html" class="btn btn-ghost">← Lezione 2.3</a>
+          <a href="index.html" class="btn btn-ghost">Indice del modulo</a>
+          <a href="lezione-2-5.html" class="btn btn-primary">Lezione 2.5 →</a>
+        </nav>
+      </div>
+    </div>
+  </main>
+</div>
+<template data-presentation data-presentation-title="Protocolli di linea">
+  <section class="presenter-slide lim-slide" tabindex="-1" inert>
+    <div class="lim-stage">
+      <div><h2>Uno stesso filo, molte trame</h2><p>Il livello di linea delimita e verifica ciò che passa fra i due apparati.</p></div>
+      <div class="lim-visual"><ol class="lim-diagram"><li><strong>Pacchetto IP</strong></li><li><strong>Trama sul link</strong></li><li><strong>Dati estratti all’arrivo</strong></li></ol></div>
+    </div>
+  </section>
+  <section class="presenter-slide lim-slide" tabindex="-1" inert>
+    <div class="lim-stage">
+      <div><h2>Anatomia della trama</h2><p>Che cosa permette al ricevitore di scartare una trama alterata?</p></div>
+      <figure class="lim-visual wan-visual"><svg class="wan-drawing" viewBox="0 0 520 226" role="img" aria-label="Trama HDLC schematica. Flag, indirizzo e controllo, dati, FCS e flag."><text class="violet" x="24" y="48" font-size="23">Una trama sul collegamento</text><rect class="outline" x="24" y="74" width="59" height="66" rx="7"/><text class="ink" x="53.5" y="113" text-anchor="middle" font-size="18">Flag</text><rect class="outline" x="84" y="74" width="107" height="66" rx="7"/><text class="ink" x="137.5" y="113" text-anchor="middle" font-size="18">Ind. / ctrl</text><rect class="segment" x="192" y="74" width="141" height="66" rx="7"/><text class="ink" x="262.5" y="113" text-anchor="middle" font-size="18">Dati</text><rect class="segment" x="334" y="74" width="86" height="66" rx="7"/><text class="teal" x="377" y="113" text-anchor="middle" font-size="18">FCS</text><rect class="outline" x="421" y="74" width="68" height="66" rx="7"/><text class="ink" x="455" y="113" text-anchor="middle" font-size="18">Flag</text><path class="return" d="M375 147v27"/><text class="teal" x="320" y="196" font-size="19">Verifica errori</text></svg></figure>
+    </div>
+  </section>
+  <section class="presenter-slide lim-slide" tabindex="-1" inert>
+    <div class="lim-stage">
+      <div><h2>Quando i dati imitano il flag</h2><p>Dopo cinque uno consecutivi inserisci uno zero nel contenuto interessato.</p></div>
+      <div class="lim-visual"><ol class="lim-diagram"><li><strong>Flag</strong><span> · 01111110</span></li><li><strong>Dati sulla linea</strong><span> · 011111010</span></li><li><strong>Il ricevitore rimuove lo zero inserito</strong></li></ol></div>
+    </div>
+  </section>
+  <section class="presenter-slide lim-slide" tabindex="-1" inert>
+    <div class="lim-stage">
+      <div><h2>Avvia una sessione PPP</h2><p>Leggi le fasi nell’ordine in cui le attraversa il collegamento.</p></div>
+      <figure class="lim-visual wan-visual"><svg class="wan-drawing" viewBox="0 0 520 226" role="img" aria-label="Dopo LCP si può negoziare l’autenticazione. Poi NCP configura i protocolli di rete."><path class="flow" d="M139 115H178m-9-7 9 7-9 7"/><path class="return" d="M329 115H369m-9-7 9 7-9 7"/><text class="muted" x="307" y="191" font-size="16">IPCP è l’NCP per IPv4</text><g><rect class="segment" x="17" y="79" width="120" height="72" rx="10"/><text class="violet" x="77" y="112" text-anchor="middle" font-size="21">LCP</text><text class="muted" x="77" y="135" text-anchor="middle" font-size="15">Collegamento</text></g><g><rect class="segment" x="181" y="79" width="147" height="72" rx="10"/><text class="teal" x="254.5" y="112" text-anchor="middle" font-size="21">Identità</text><text class="muted" x="254.5" y="135" text-anchor="middle" font-size="15">Se richiesta</text></g><g><rect class="segment" x="372" y="79" width="128" height="72" rx="10"/><text class="violet" x="436" y="112" text-anchor="middle" font-size="21">NCP</text><text class="muted" x="436" y="135" text-anchor="middle" font-size="15">Livello rete</text></g></svg></figure>
+    </div>
+  </section>
+  <section class="presenter-slide lim-slide" tabindex="-1" inert>
+    <div class="lim-stage">
+      <div><h2>PAP e CHAP</h2><p>Entrambi verificano l’identità del peer con meccanismi diversi.</p></div>
+      <div class="lim-visual"><ol class="lim-diagram"><li><strong>PAP</strong><span> · credenziali sul link</span></li><li><strong>CHAP</strong><span> · sfida e risposta</span></li><li><strong>Riservatezza</strong><span> · richiede cifratura</span></li></ol></div>
+    </div>
+  </section>
+  <section class="presenter-slide lim-slide" tabindex="-1" inert>
+    <div class="lim-stage">
+      <div><h2>Da dove parti con la diagnosi?</h2><p>Riconosci l’ultimo passo riuscito e verifica quello successivo.</p></div>
+      <div class="lim-visual"><ol class="lim-diagram"><li><strong>Niente segnale</strong><span> · fisico</span></li><li><strong>LCP riuscito, identità respinta</strong><span> · autenticazione</span></li><li><strong>Identità accettata, IPv4 assente</strong><span> · IPCP</span></li></ol></div>
+    </div>
+  </section>
+  <section class="presenter-slide lim-slide" tabindex="-1" inert>
+    <div class="lim-stage">
+      <div><h2>Misura l’overhead</h2><p>Per la trama di esempio aggiungi 8 byte di campi a 100 byte utili.</p></div>
+      <div class="lim-visual"><ol class="lim-diagram"><li><strong>100 + 8 = 108 byte</strong></li><li><strong>100 ÷ 108 × 100 ≈ 92,59% utile</strong></li></ol></div>
+    </div>
+  </section>
+  <section class="presenter-slide lim-slide" tabindex="-1" inert>
+    <div class="lim-stage">
+      <div><h2>Sfida alla classe</h2><p>LCP è aperto. L’autenticazione riesce, ma il collegamento non trasporta IPv4. Dove cerchi il problema?</p></div>
+      <div class="lim-visual"><button type="button" class="btn btn-primary" data-wan-reveal aria-expanded="false" aria-controls="lim-solution-4">Mostra soluzione</button><p class="wan-lim-answer" id="lim-solution-4" hidden>Controlla lo stato di IPCP e i parametri IPv4 negoziati. IPCP è il protocollo di configurazione di IPv4 in PPP.</p></div>
+    </div>
+  </section>
+  <section class="presenter-slide lim-slide" tabindex="-1" inert>
+    <div class="lim-stage">
+      <div><h2>Da ricordare</h2><p>Leggi una trama di linea, spiega cosa segnala l’FCS e riconosci in quale fase PPP si può bloccare un collegamento.</p></div>
+      <div class="lim-visual"><ol class="lim-diagram"><li><strong>Anatomia della trama</strong></li><li><strong>Quando i dati imitano il flag</strong></li><li><strong>Avvia una sessione PPP</strong></li></ol></div>
+    </div>
+  </section>
+</template>
+<script src="../assets/js/app.js"></script>
+<script src="../assets/js/modulo2.js"></script>
+<script>
+  QuizEngine.init('quizContainer', [
+    {
+      "question": "Il ricevitore ricalcola l’FCS e il confronto fallisce. Che cosa fa?",
+      "answers": [
+        {
+          "text": "Corregge sempre tutti i bit",
+          "correct": false
+        },
+        {
+          "text": "Scarta la trama",
+          "correct": true
+        },
+        {
+          "text": "Passa comunque il contenuto a IP",
+          "correct": false
+        },
+        {
+          "text": "Negozia un nuovo IP",
+          "correct": false
+        }
+      ],
+      "explain_correct": "Ha rilevato un errore e l’FCS da solo non lo ripara.",
+      "explain_wrong": "Scarta la trama. Ha rilevato un errore e l’FCS da solo non lo ripara."
+    },
+    {
+      "question": "Quale forma assume il contenuto 01111110 dopo il bit stuffing?",
+      "answers": [
+        {
+          "text": "011110110",
+          "correct": false
+        },
+        {
+          "text": "01111110",
+          "correct": false
+        },
+        {
+          "text": "001111110",
+          "correct": false
+        },
+        {
+          "text": "011111010",
+          "correct": true
+        }
+      ],
+      "explain_correct": "Lo zero entra dopo il quinto uno.",
+      "explain_wrong": "011111010. Lo zero entra dopo il quinto uno."
+    },
+    {
+      "question": "Quale ordine segue una sessione PPP con autenticazione richiesta?",
+      "answers": [
+        {
+          "text": "LCP, autenticazione, NCP",
+          "correct": true
+        },
+        {
+          "text": "LCP, NCP, autenticazione",
+          "correct": false
+        },
+        {
+          "text": "NCP, LCP, autenticazione",
+          "correct": false
+        },
+        {
+          "text": "Autenticazione, NCP, LCP",
+          "correct": false
+        }
+      ],
+      "explain_correct": "LCP concorda le opzioni, poi si verifica il peer e si configura la rete.",
+      "explain_wrong": "LCP, autenticazione, NCP. LCP concorda le opzioni, poi si verifica il peer e si configura la rete."
+    },
+    {
+      "question": "LCP è aperto. L’identità viene respinta. Quale fase controlli?",
+      "answers": [
+        {
+          "text": "Indirizzo del server",
+          "correct": false
+        },
+        {
+          "text": "Clock per primo",
+          "correct": false
+        },
+        {
+          "text": "Autenticazione",
+          "correct": true
+        },
+        {
+          "text": "IPCP",
+          "correct": false
+        }
+      ],
+      "explain_correct": "È la prima fase indicata come fallita.",
+      "explain_wrong": "Autenticazione. È la prima fase indicata come fallita."
+    },
+    {
+      "question": "Una trama ha 72 byte utili e 8 byte di altri campi. Qual è la quota utile?",
+      "answers": [
+        {
+          "text": "72%",
+          "correct": false
+        },
+        {
+          "text": "80%",
+          "correct": false
+        },
+        {
+          "text": "10%",
+          "correct": false
+        },
+        {
+          "text": "90%",
+          "correct": true
+        }
+      ],
+      "explain_correct": "72 diviso 80 dà 0,90.",
+      "explain_wrong": "90%. 72 diviso 80 dà 0,90."
+    }
+  ]);
+</script>
+</body>
+</html>

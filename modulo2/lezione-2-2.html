@@ -1,107 +1,98 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="it" data-theme="dark">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>2.2 · Accesso remoto e interconnessione WAN | Telecomunicazioni 5A</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Accesso remoto e interconnessione WAN | Telecomunicazioni 5A</title>
   <link rel="stylesheet" href="../assets/css/style.css">
   <link rel="stylesheet" href="../assets/css/modulo2.css">
+  <link rel="stylesheet" href="../assets/css/presentazioni-modulo1.css">
+  <link rel="stylesheet" href="../assets/css/accesso-fibra.css">
 </head>
-<body data-lesson-id="m2-2">
+<body class="module-two" data-lesson-id="m2-2">
 <div class="app-layout">
   <header class="site-header">
     <a href="../index.html" class="logo-link">
-      <div class="logo-icon" aria-hidden="true">⚡</div>
-      <div class="logo-text">
-        <span class="logo-title text-gradient">Telecomunicazioni 5A</span>
-        <span class="logo-sub">IIS J.C. Maxwell</span>
-      </div>
+      <span class="logo-icon" aria-hidden="true">⚡</span>
+      <span class="logo-text"><span class="logo-title text-gradient">Telecomunicazioni 5A</span><span class="logo-sub">IIS J.C. Maxwell</span></span>
     </a>
     <nav class="header-breadcrumb" aria-label="Percorso">
-      <a href="../index.html">Home</a>
-      <span aria-hidden="true">›</span>
-      <a href="index.html">Modulo 2</a>
-      <span aria-hidden="true">›</span>
+      <a href="../index.html">Home</a><span aria-hidden="true">›</span>
+      <a href="index.html">Modulo 2</a><span aria-hidden="true">›</span>
       <span class="current" aria-current="page">Lezione 2.2</span>
     </nav>
     <div class="header-actions">
-      <button type="button" class="btn btn-present" data-present aria-label="Presenta in classe">Presenta</button>
+      <button type="button" class="btn btn-present" data-present>Presenta <span class="wan-present-lim">sulla LIM</span></button>
       <button type="button" class="btn btn-icon btn-ghost" data-theme-toggle aria-label="Cambia tema"></button>
     </div>
   </header>
-
-  <main class="main-content">
+  <main class="main-content wan-study">
     <div class="content-wrap">
-      <header class="lesson-hero">
-        <div class="lesson-hero-content">
-          <div class="lesson-meta">
-            <span class="lesson-badge lesson-badge-module">Lezione 2.2 · Reti WAN</span>
+      <header class="wan-hero wan-hero-illustrated">
+  <div><p class="wan-kicker">Lezione 2.2 · Reti geografiche</p><h1 class="lesson-title-h1">Accesso remoto e interconnessione WAN</h1><p class="lesson-subtitle">Due sedi devono lavorare insieme. Progetta il loro collegamento e osserva cosa succede quando il traffico aumenta.</p></div>
+  <img src="../assets/img/indice-nodi-wan.svg" alt="" width="200" height="252">
+</header>
+      <section class="wan-brief" aria-labelledby="obiettivo"><h2 id="obiettivo">In questa lezione</h2><p>Distingui accesso commutato e dedicato, confronta circuito e pacchetti e calcola capacità e tempi per un servizio WAN.</p></section>
+      <nav class="wan-jump" aria-label="In questa pagina"><a href="#percorso">Una rete fra due sedi</a><a href="#accessi">Commutato o dedicato?</a><a href="#commutazione">Il viaggio dei dati dentro la WAN</a><a href="#video-pacchetti">Quando i pacchetti fanno la fila</a><a href="#tecnologie">Quattro tappe delle WAN</a><a href="#capacita">Capacità lorda e tempo utile</a><a href="#prova">Gestisci la coda in uscita</a><a href="#checkpoint">Checkpoint</a></nav>
+      <section class="slide wan-chapter" id="percorso">
+        <header><h2>Una rete fra due sedi</h2><p class="wan-lead">Il punto in cui finisce la LAN è l’inizio del percorso geografico.</p></header>
+        <figure class="wan-visual"><svg class="wan-drawing" viewBox="0 0 520 226" role="img" aria-label="La rete geografica collega le due LAN attraverso le due tratte di accesso."><path class="flow" d="M123 106H181m-10-7 10 7-10 7"/><path class="return" d="M337 106H396m-10-7 10 7-10 7"/><text class="muted" x="91" y="179" font-size="16">Accesso A</text><text class="muted" x="349" y="179" font-size="16">Accesso B</text><path class="guide" d="M150 116V157"/><path class="guide" d="M371 116V157"/><g><rect class="segment" x="18" y="73" width="104" height="68" rx="10"/><text class="violet" x="70" y="104" text-anchor="middle" font-size="21">LAN A</text><text class="muted" x="70" y="127" text-anchor="middle" font-size="15">Aurora</text></g><g><rect class="segment" x="185" y="61" width="151" height="92" rx="10"/><text class="teal" x="260.5" y="104" text-anchor="middle" font-size="21">WAN</text><text class="muted" x="260.5" y="127" text-anchor="middle" font-size="15">Operatore</text></g><g><rect class="segment" x="399" y="73" width="104" height="68" rx="10"/><text class="violet" x="451" y="104" text-anchor="middle" font-size="21">LAN B</text><text class="muted" x="451" y="127" text-anchor="middle" font-size="15">Brina</text></g></svg><figcaption>I due accessi collegano le sedi alla WAN dell’operatore.</figcaption></figure>
+        <div class="wan-copy"><p>Una <strong>WAN</strong> collega reti distanti. Nella piccola officina Aurora i PC della sede A comunicano sulla propria LAN. Il router inoltra i dati sulla tratta di <strong>accesso</strong>, che porta alla rete dell’operatore. Da lì il traffico raggiunge l’accesso e la LAN della sede B. Un servizio WAN privato può collegare le sedi. Internet è a sua volta un insieme pubblico di reti interconnesse.</p><p>Il collegamento attraversa più tratti con funzioni diverse. Una porta di accesso veloce da sola non elimina la coda su un tratto successivo più lento.</p></div>
+      </section>
+      <section class="slide wan-chapter" id="accessi">
+        <header><h2>Commutato o dedicato?</h2><p class="wan-lead">La prima scelta riguarda quando si stabilisce il collegamento di accesso.</p></header>
+        <ol class="wan-flow"><li><strong>Una chiamata</strong><span>accesso su richiesta</span></li><li><strong>Servizio punto-punto disponibile</strong><span>accesso dedicato</span></li></ol>
+        <div class="wan-copy"><dl class="wan-definitions"><div><dt>Commutato</dt><dd>Il collegamento si instaura su richiesta, per esempio con una chiamata tra modem o tramite ISDN. Dopo l’invio si chiude la comunicazione.</dd></div><div><dt>Dedicato</dt><dd>Il servizio punto-punto è predisposto in modo permanente. Il CDN, Collegamento Diretto Numerico, è un esempio storico.</dd></div></dl><p>Per lo storico riepilogo serale della filiale basta la chiamata su richiesta. Per lo scambio continuo dell’officina, un collegamento già disponibile evita di ristabilire ogni volta l’accesso. Chiediti anche quale capacità utile serve nel momento di maggior uso.</p></div>
+      </section>
+      <section class="slide wan-chapter" id="commutazione">
+        <header><h2>Il viaggio dei dati dentro la WAN</h2><p class="wan-lead">La seconda scelta riguarda come si usano le risorse nella rete.</p></header>
+        <figure class="wan-visual"><svg class="wan-drawing" viewBox="0 0 520 226" role="img" aria-label="Dopo il primo turno A ha superato l’uscita. B e C aspettano in coda."><text class="violet" x="26" y="44" font-size="23">Buffer del nodo</text><text class="teal" x="275" y="44" font-size="20">Collegamento in uscita</text><rect class="outline" x="23" y="65" width="201" height="93" rx="14"/><rect class="outline" x="40" y="88" width="50" height="46" rx="8"/><rect class="segment" x="99" y="88" width="50" height="46" rx="8"/><rect class="segment" x="158" y="88" width="50" height="46" rx="8"/><text class="ink" x="117" y="117" font-size="16">C</text><text class="ink" x="176" y="117" font-size="16">B</text><path class="return" d="M225 111H332m-12-9 12 9-12 9"/><rect class="segment" x="368" y="88" width="50" height="46" rx="8"/><text class="teal" x="387" y="117" font-size="16">A</text><text class="violet" x="60" y="196" font-size="21">2 in coda</text><text class="teal" x="359" y="196" font-size="21">1 partito</text></svg><figcaption>Caso a pacchetto. Dopo il primo turno il nodo ha inoltrato A e conserva B e C.</figcaption></figure>
+        <div class="wan-copy"><p>Con la <strong>commutazione di circuito</strong> si riservano risorse per la durata della comunicazione. Una chiamata voce sulla rete telefonica tradizionale occupa la sua risorsa anche in pausa. In una <strong>rete a pacchetto</strong> le unità di traffico di utenti diversi usano lo stesso tratto a turno. All’aumentare degli arrivi si forma una coda. Quando il buffer (la memoria della coda) si riempie, altri pacchetti possono essere scartati.</p><p>Un accesso permanente può immettere in una rete a pacchetto. Disponibilità del collegamento e condivisione delle risorse sono due proprietà distinte.</p></div>
+      </section>
+      <section class="slide wan-chapter" id="video-pacchetti">
+        <header><h2>Quando i pacchetti fanno la fila</h2><p class="wan-lead">Segui il percorso tra due LAN e osserva il collo di bottiglia della WAN.</p></header>
+        <div class="access-film"><video controls playsinline preload="metadata" poster="../assets/media/wan-pacchetti-poster.webp" aria-label="Animazione della coda dei pacchetti"><source src="../assets/media/wan-pacchetti.mp4" type="video/mp4"></video><p>Arrivano tre pacchetti insieme. L’uscita ne inoltra uno per turno. Dopo il primo invio ne restano due in coda, mentre il primo prosegue verso la seconda LAN.</p></div>
+      </section>
+      <section class="slide wan-chapter" id="tecnologie">
+        <header><h2>Quattro tappe delle WAN</h2><p class="wan-lead">Riconosci le tecnologie dall’unità trasmessa o dal modo di inoltro.</p></header>
+        <ol class="wan-flow"><li><strong>X.25</strong><span>pacchetti</span></li><li><strong>Frame Relay</strong><span>trame variabili</span></li><li><strong>ATM</strong><span>celle fisse</span></li><li><strong>MPLS</strong><span>etichette</span></li></ol>
+        <div class="wan-copy"><dl class="wan-definitions"><div><dt>X.25</dt><dd>Pacchetti e circuiti virtuali, con controlli pensati per linee soggette a errori.</dd></div><div><dt>Frame Relay</dt><dd>Trame di lunghezza variabile su circuiti virtuali.</dd></div><div><dt>ATM</dt><dd>Celle fisse da 53 byte, di cui 5 di intestazione e 48 di carico.</dd></div><div><dt>MPLS</dt><dd>Inoltro basato su etichette. Può essere usato da un operatore per collegare più sedi.</dd></div></dl><p>Un <strong>circuito virtuale</strong> descrive un percorso logico. Più percorsi logici possono condividere la stessa infrastruttura fisica.</p></div>
+      </section>
+      <section class="slide wan-chapter" id="capacita">
+        <header><h2>Capacità lorda e tempo utile</h2><p class="wan-lead">Misura il collegamento con unità coerenti.</p></header>
+        <ol class="wan-flow"><li><strong>E1</strong><span>32 × 8 × 8.000 = 2,048 Mbit/s lordi</span></li><li><strong>File da 40 MB</strong><span>320 Mbit ÷ 16 Mbit/s = 20 s</span></li></ol>
+        <div class="wan-copy"><p>Nel flusso storico <strong>E1</strong> ci sono 32 intervalli da 8 bit per trama e 8.000 trame al secondo. Quindi <strong>32 × 8 × 8.000 = 2.048.000 bit/s</strong>, cioè 2,048 Mbit/s lordi. Se il problema assegna 30 intervalli ai dati, la quota utile è 30 × 8 × 8.000 = 1.920.000 bit/s.</p><p>Su un altro collegamento a <strong>20 Mbit/s nominali</strong> con l’80% disponibile per il file, la capacità utile è <strong>16 Mbit/s</strong>. Un file da 40 MB vale 320 Mbit, perciò il tempo stimato è 320 ÷ 16 = <strong>20 s</strong>. Il modello assume velocità costante, unità decimali e assenza di pause.</p></div>
+      </section>
+      <section class="slide wan-chapter" id="prova">
+        <h2>Gestisci la coda in uscita</h2>
+        <div class="wan-model" data-wan-queue>
+          <h3>Banco prova · Un turno alla volta</h3>
+          <p>Il buffer può contenere tre pacchetti. Scegli quanti ne arrivano all’inizio del turno. Poi il collegamento fa partire il primo della fila.</p>
+          <div class="wan-demo-actions" aria-label="Pacchetti in arrivo nel turno">
+            <button class="btn btn-ghost" type="button" data-arrivals="0">Nessun arrivo</button>
+            <button class="btn btn-ghost" type="button" data-arrivals="1">Arriva 1 pacchetto</button>
+            <button class="btn btn-primary" type="button" data-arrivals="3">Arrivano 3 pacchetti</button>
           </div>
-          <h1 class="lesson-title-h1">Accesso remoto e interconnessione WAN</h1>
-          <p class="lesson-subtitle">Dalla telefonata con il modem alle reti a pacchetto. Scegli come collegare due sedi in base a quando e come devono comunicare.</p>
+          <dl class="wan-queue-board">
+            <div><dt>In attesa</dt><dd class="wan-packets" data-queue-list></dd></div>
+            <div><dt>Appena partito</dt><dd class="wan-packets" data-queue-departed>—</dd></div>
+            <div><dt>Scartati in totale</dt><dd data-queue-dropped>0</dd></div>
+          </dl>
+          <p class="wan-feedback" data-queue-status role="status">Coda vuota. Scegli il primo turno.</p>
+          <button class="btn btn-ghost" type="button" data-queue-reset>Ricomincia</button>
         </div>
-      </header>
-
-      <section class="slide" aria-label="Sintesi">
-        <h2>In 15 secondi</h2>
-        <div class="tldr">
-          <p>Una WAN collega reti distanti. L’accesso può essere attivato su richiesta oppure restare disponibile con un collegamento dedicato. All’interno della rete, i dati possono usare risorse riservate o condividerle a pacchetti.</p>
-        </div>
+        <div class="wan-demo" data-wan-demo="coda"></div>
+        <noscript><p>Attiva JavaScript per usare la simulazione.</p></noscript>
+        <details class="wan-reveal"><summary>La sede è sempre connessa all’operatore. Al picco serale i pacchetti aspettano in coda. Come descrivi accesso e inoltro?</summary><p>L’accesso è permanente. Nella rete a pacchetto la capacità di un’uscita è condivisa, perciò può formarsi una coda.</p></details>
       </section>
-
-      <section class="slide">
-        <h2>Dalla LAN alla rete dell’operatore</h2>
-        <p>Pensa a due sedi di una stessa officina. In ciascuna sede i computer comunicano sulla propria <strong>LAN</strong>. L’accesso collega la sede alla rete dell’operatore. La <strong>WAN</strong> (Wide Area Network) permette ai dati di raggiungere l’altra sede. Internet è un insieme pubblico di reti interconnesse. Anche un’organizzazione può usare un servizio WAN privato.</p>
-        <div class="box box-aggancio">
-          <p><strong>Percorso dei dati</strong></p>
-          <p>LAN sede A → accesso → rete geografica → accesso → LAN sede B</p>
-        </div>
-        <table class="osi-table">
-          <thead><tr><th scope="col">Accesso</th><th scope="col">Quando è disponibile</th><th scope="col">Esempio</th></tr></thead>
-          <tbody>
-            <tr><td>Commutato</td><td>Si instaura quando serve.</td><td>Una filiale chiama il modem della sede centrale per inviare il riepilogo di fine giornata.</td></tr>
-            <tr><td>Dedicato</td><td>Il collegamento punto-punto è predisposto in modo permanente.</td><td>Due sedi scambiano dati per l’intero turno su una linea dedicata.</td></tr>
-          </tbody>
-        </table>
-        <p>Un esempio storico di linea dedicata è il <strong>CDN</strong> (Collegamento Diretto Numerico). Tra le capacità storiche figuravano 64 kbit/s e il flusso E1 da 2,048 Mbit/s lordi.</p>
+      <section class="slide wan-chapter" id="checkpoint">
+        <h2>Checkpoint</h2><p class="wan-lead">Cinque decisioni. Leggi il riscontro dopo ogni risposta e riprova quando vuoi.</p>
+        <div class="quiz-wrap" id="quizContainer" data-lesson-quiz></div>
+        <p><a href="allenamento.html">Vai al test di allenamento →</a></p>
       </section>
-
-      <section class="slide">
-        <h2>Circuito riservato e pacchetti condivisi</h2>
-        <div class="box box-info">
-          <p><strong>Commutazione di circuito</strong></p>
-          <p>Una chiamata sulla rete telefonica pubblica (PSTN) o una chiamata dati ISDN occupa risorse per la durata della chiamata. Anche durante una pausa quelle risorse restano riservate.</p>
-        </div>
-        <div class="box box-info">
-          <p><strong>Commutazione di pacchetto</strong></p>
-          <p>Quando due sedi trasferiscono file su una rete IP, i pacchetti di più comunicazioni possono alternarsi sullo stesso collegamento. Se arrivano più pacchetti di quanti il collegamento possa smaltire, si forma una coda e alcuni pacchetti possono andare persi.</p>
-        </div>
-        <p>Fai due domande distinte. <strong>Come entro nella rete?</strong> <strong>Come viaggiano i dati dentro la rete?</strong> Per esempio un accesso permanente può portare a una rete dell’operatore che trasporta traffico a pacchetti.</p>
-      </section>
-
-      <section class="slide">
-        <h2>Come si sono evolute le WAN</h2>
-        <table class="osi-table">
-          <thead><tr><th scope="col">Tecnologia</th><th scope="col">Idea da ricordare</th></tr></thead>
-          <tbody>
-            <tr><td>X.25</td><td>Rete a pacchetto con circuiti virtuali e controlli pensati per linee soggette a errori.</td></tr>
-            <tr><td>Frame Relay</td><td>Inoltra trame di lunghezza variabile lungo circuiti virtuali.</td></tr>
-            <tr><td>ATM</td><td>Usa celle di dimensione fissa e percorsi virtuali.</td></tr>
-            <tr><td>MPLS</td><td>Inoltra il traffico usando etichette. Un operatore può usarlo per collegare più sedi.</td></tr>
-          </tbody>
-        </table>
-        <p>Un <strong>circuito virtuale</strong> è un percorso logico. Più percorsi logici possono condividere la stessa infrastruttura fisica.</p>
-        <p>Per approfondire, vedi <a href="https://www.itu.int/rec/T-REC-G.704/en">ITU-T G.704 per E1</a>, <a href="https://www.itu.int/rec/T-REC-I.361">ITU-T I.361 per ATM</a> e <a href="https://www.rfc-editor.org/rfc/rfc3031">RFC 3031 per MPLS</a>.</p>
-      </section>
-
-      <section class="slide">
-        <h2>Sfida rapida</h2>
-        <p>Una piccola officina apre una seconda sede. Scegli il tipo di accesso e riconosci come viaggiano i dati nei tre scenari. Dopo ogni risposta trovi la spiegazione. Alla fine puoi riprovare.</p>
-        <div class="quiz-wrap" id="quizContainer"></div>
-      </section>
-
+      <details class="wan-sources"><summary>Riferimenti tecnici</summary><ul><li><a href="https://www.itu.int/rec/T-REC-G.704/en">ITU-T G.704 per E1</a></li><li><a href="https://www.itu.int/rec/T-REC-I.361">ITU-T I.361 per ATM</a></li><li><a href="https://www.rfc-editor.org/rfc/rfc3031">RFC 3031 per MPLS</a></li></ul></details>
       <div class="mark-done-wrap">
-        <button type="button" class="mark-done-btn">✓ Segna la lezione come studiata</button>
+        <button type="button" class="mark-done-btn">Termina il quiz per completare la lezione</button>
         <nav class="lesson-nav-btns" aria-label="Lezioni del modulo">
           <a href="lezione-2-1.html" class="btn btn-ghost">← Lezione 2.1</a>
           <a href="index.html" class="btn btn-ghost">Indice del modulo</a>
@@ -111,39 +102,186 @@
     </div>
   </main>
 </div>
-
+<template data-presentation data-presentation-title="Accesso remoto e interconnessione WAN">
+  <section class="presenter-slide lim-slide" tabindex="-1" inert>
+    <div class="lim-stage">
+      <div><h2>Due sedi, un collegamento</h2><p>Segui il tragitto dei dati dell’officina Aurora.</p></div>
+      <figure class="lim-visual wan-visual"><svg class="wan-drawing" viewBox="0 0 520 226" role="img" aria-label="La rete geografica collega le due LAN attraverso le due tratte di accesso."><path class="flow" d="M123 106H181m-10-7 10 7-10 7"/><path class="return" d="M337 106H396m-10-7 10 7-10 7"/><text class="muted" x="91" y="179" font-size="16">Accesso A</text><text class="muted" x="349" y="179" font-size="16">Accesso B</text><path class="guide" d="M150 116V157"/><path class="guide" d="M371 116V157"/><g><rect class="segment" x="18" y="73" width="104" height="68" rx="10"/><text class="violet" x="70" y="104" text-anchor="middle" font-size="21">LAN A</text><text class="muted" x="70" y="127" text-anchor="middle" font-size="15">Aurora</text></g><g><rect class="segment" x="185" y="61" width="151" height="92" rx="10"/><text class="teal" x="260.5" y="104" text-anchor="middle" font-size="21">WAN</text><text class="muted" x="260.5" y="127" text-anchor="middle" font-size="15">Operatore</text></g><g><rect class="segment" x="399" y="73" width="104" height="68" rx="10"/><text class="violet" x="451" y="104" text-anchor="middle" font-size="21">LAN B</text><text class="muted" x="451" y="127" text-anchor="middle" font-size="15">Brina</text></g></svg></figure>
+    </div>
+  </section>
+  <section class="presenter-slide lim-slide" tabindex="-1" inert>
+    <div class="lim-stage">
+      <div><h2>Come entri nella WAN?</h2><p>Osserva quando il collegamento è disponibile.</p></div>
+      <div class="lim-visual"><ol class="lim-diagram"><li><strong>Commutato</strong><span> · si attiva su richiesta</span></li><li><strong>Dedicato</strong><span> · è predisposto in modo permanente</span></li></ol></div>
+    </div>
+  </section>
+  <section class="presenter-slide lim-slide" tabindex="-1" inert>
+    <div class="lim-stage">
+      <div><h2>Circuito o pacchetti?</h2><p>Osserva come sono usate le risorse mentre viaggiano i dati.</p></div>
+      <div class="lim-visual"><ol class="lim-diagram"><li><strong>Circuito</strong><span> · risorse riservate</span></li><li><strong>Pacchetti</strong><span> · capacità condivisa</span></li><li><strong>Picco</strong><span> · i pacchetti aspettano in coda</span></li></ol></div>
+    </div>
+  </section>
+  <section class="presenter-slide lim-slide" tabindex="-1" inert>
+    <div class="lim-stage">
+      <div><h2>Quando i pacchetti fanno la fila</h2><p>Quanti pacchetti restano in attesa dopo il primo invio?</p></div>
+      <div class="lim-visual"><div class="wan-lim-video"><video controls playsinline preload="none" poster="../assets/media/wan-pacchetti-poster.webp" aria-label="Animazione della coda dei pacchetti"><source src="../assets/media/wan-pacchetti.mp4" type="video/mp4"></video></div></div>
+    </div>
+  </section>
+  <section class="presenter-slide lim-slide" tabindex="-1" inert>
+    <div class="lim-stage">
+      <div><h2>Tre pacchetti, un’uscita</h2><p>Nel modello l’uscita spedisce un pacchetto per turno. L’arrivo avviene prima dell’invio.</p></div>
+      <figure class="lim-visual wan-visual"><svg class="wan-drawing" viewBox="0 0 520 226" role="img" aria-label="Dopo il primo turno A ha superato l’uscita. B e C aspettano in coda."><text class="violet" x="26" y="44" font-size="23">Buffer del nodo</text><text class="teal" x="275" y="44" font-size="20">Collegamento in uscita</text><rect class="outline" x="23" y="65" width="201" height="93" rx="14"/><rect class="outline" x="40" y="88" width="50" height="46" rx="8"/><rect class="segment" x="99" y="88" width="50" height="46" rx="8"/><rect class="segment" x="158" y="88" width="50" height="46" rx="8"/><text class="ink" x="117" y="117" font-size="16">C</text><text class="ink" x="176" y="117" font-size="16">B</text><path class="return" d="M225 111H332m-12-9 12 9-12 9"/><rect class="segment" x="368" y="88" width="50" height="46" rx="8"/><text class="teal" x="387" y="117" font-size="16">A</text><text class="violet" x="60" y="196" font-size="21">2 in coda</text><text class="teal" x="359" y="196" font-size="21">1 partito</text></svg></figure>
+    </div>
+  </section>
+  <section class="presenter-slide lim-slide" tabindex="-1" inert>
+    <div class="lim-stage">
+      <div><h2>Dai circuiti virtuali alle etichette</h2><p>Quattro tecnologie, quattro indizi per riconoscerle.</p></div>
+      <div class="lim-visual"><ol class="lim-diagram"><li><strong>X.25</strong><span> · pacchetti</span></li><li><strong>Frame Relay</strong><span> · trame variabili</span></li><li><strong>ATM</strong><span> · celle fisse</span></li><li><strong>MPLS</strong><span> · etichette</span></li></ol></div>
+    </div>
+  </section>
+  <section class="presenter-slide lim-slide" tabindex="-1" inert>
+    <div class="lim-stage">
+      <div><h2>E1 alla lavagna</h2><p>Calcola il flusso lordo con 32 intervalli, 8 bit e 8.000 trame al secondo.</p></div>
+      <div class="lim-visual"><ol class="lim-diagram"><li><strong>32 × 8 × 8.000</strong></li><li><strong>2.048.000 bit/s</strong></li><li><strong>2,048 Mbit/s lordi</strong></li></ol></div>
+    </div>
+  </section>
+  <section class="presenter-slide lim-slide" tabindex="-1" inert>
+    <div class="lim-stage">
+      <div><h2>Quanto dura l’invio?</h2><p>40 MB da inviare con 16 Mbit/s utili. Converti prima di dividere.</p></div>
+      <div class="lim-visual"><ol class="lim-diagram"><li><strong>40 MB × 8 = 320 Mbit</strong></li><li><strong>320 Mbit ÷ 16 Mbit/s = 20 s</strong></li></ol></div>
+    </div>
+  </section>
+  <section class="presenter-slide lim-slide" tabindex="-1" inert>
+    <div class="lim-stage">
+      <div><h2>Sfida alla classe</h2><p>La sede è sempre connessa all’operatore. Al picco serale i pacchetti aspettano in coda. Come descrivi accesso e inoltro?</p></div>
+      <div class="lim-visual"><button type="button" class="btn btn-primary" data-wan-reveal aria-expanded="false" aria-controls="lim-solution-2">Mostra soluzione</button><p class="wan-lim-answer" id="lim-solution-2" hidden>L’accesso è permanente. Nella rete a pacchetto la capacità di un’uscita è condivisa, perciò può formarsi una coda.</p></div>
+    </div>
+  </section>
+  <section class="presenter-slide lim-slide" tabindex="-1" inert>
+    <div class="lim-stage">
+      <div><h2>Da ricordare</h2><p>Distingui accesso commutato e dedicato, confronta circuito e pacchetti e calcola capacità e tempi per un servizio WAN.</p></div>
+      <div class="lim-visual"><ol class="lim-diagram"><li><strong>Come entri nella WAN?</strong></li><li><strong>Circuito o pacchetti?</strong></li><li><strong>Tre pacchetti, un’uscita</strong></li></ol></div>
+    </div>
+  </section>
+</template>
 <script src="../assets/js/app.js"></script>
+<script src="../assets/js/modulo2.js"></script>
 <script>
   QuizEngine.init('quizContainer', [
     {
-      question: "Caso storico. La filiale invia un riepilogo ogni sera chiamando il modem della centrale. Quale accesso sta usando?",
-      answers: [
-        { text: "Dedicato", correct: false },
-        { text: "Commutato a richiesta", correct: true },
-        { text: "Ottico punto-punto permanente", correct: false }
+      "question": "Quale tratto collega il router della sede alla rete dell’operatore?",
+      "answers": [
+        {
+          "text": "La LAN interna",
+          "correct": false
+        },
+        {
+          "text": "L’accesso",
+          "correct": true
+        },
+        {
+          "text": "La tratta d’accesso remota",
+          "correct": false
+        },
+        {
+          "text": "Il gateway della sede remota",
+          "correct": false
+        }
       ],
-      explain_correct: "La chiamata instaura il collegamento quando serve. La filiale lo può chiudere dopo l’invio.",
-      explain_wrong: "La chiamata instaura il collegamento quando serve. La filiale lo può chiudere dopo l’invio."
+      "explain_correct": "È il collegamento d’ingresso alla WAN.",
+      "explain_wrong": "L’accesso. È il collegamento d’ingresso alla WAN."
     },
     {
-      question: "Il contratto prevede un collegamento punto-punto sempre disponibile fra le due sedi. Quale accesso descrive?",
-      answers: [
-        { text: "Dedicato", correct: true },
-        { text: "Commutato a richiesta", correct: false },
-        { text: "Una chiamata PSTN", correct: false }
+      "question": "Quale caso rappresenta un accesso commutato storico?",
+      "answers": [
+        {
+          "text": "Una rete ATM con circuito virtuale",
+          "correct": false
+        },
+        {
+          "text": "Una linea punto-punto già predisposta",
+          "correct": false
+        },
+        {
+          "text": "Una coda che cresce a sera",
+          "correct": false
+        },
+        {
+          "text": "La filiale chiama un modem ogni sera",
+          "correct": true
+        }
       ],
-      explain_correct: "Il collegamento dedicato è predisposto in modo permanente. Le due sedi possono usarlo senza comporre un numero.",
-      explain_wrong: "Il collegamento dedicato è predisposto in modo permanente. Le due sedi possono usarlo senza comporre un numero."
+      "explain_correct": "Ogni chiamata instaura l’accesso su richiesta.",
+      "explain_wrong": "La filiale chiama un modem ogni sera. Ogni chiamata instaura l’accesso su richiesta."
     },
     {
-      question: "Nella rete IP dell’operatore, più flussi di dati si alternano sullo stesso collegamento. Quale commutazione riconosci?",
-      answers: [
-        { text: "Di circuito con capacità riservata per ogni chiamata", correct: false },
-        { text: "Commutata a richiesta sul doppino", correct: false },
-        { text: "Di pacchetto", correct: true }
+      "question": "Un nodo parte vuoto. Arrivano tre pacchetti e l’uscita serve uno per turno dopo gli arrivi. Quanti restano?",
+      "answers": [
+        {
+          "text": "Due",
+          "correct": true
+        },
+        {
+          "text": "Zero",
+          "correct": false
+        },
+        {
+          "text": "Uno",
+          "correct": false
+        },
+        {
+          "text": "Tre",
+          "correct": false
+        }
       ],
-      explain_correct: "Il collegamento trasporta pacchetti di più flussi. Se arrivano tutti insieme, possono dover aspettare in coda.",
-      explain_wrong: "Il collegamento trasporta pacchetti di più flussi. Se arrivano tutti insieme, possono dover aspettare in coda."
+      "explain_correct": "Tre arrivi meno una partenza danno due.",
+      "explain_wrong": "Due. Tre arrivi meno una partenza danno due."
+    },
+    {
+      "question": "Quale tecnologia riconosci dall’inoltro a etichette?",
+      "answers": [
+        {
+          "text": "X.25",
+          "correct": false
+        },
+        {
+          "text": "Frame Relay",
+          "correct": false
+        },
+        {
+          "text": "MPLS",
+          "correct": true
+        },
+        {
+          "text": "ATM",
+          "correct": false
+        }
+      ],
+      "explain_correct": "Usa etichette per decidere l’inoltro.",
+      "explain_wrong": "MPLS. Usa etichette per decidere l’inoltro."
+    },
+    {
+      "question": "Quanto tempo impiegano 60 MB a 24 Mbit/s utili costanti?",
+      "answers": [
+        {
+          "text": "2,5 s",
+          "correct": false
+        },
+        {
+          "text": "60 s",
+          "correct": false
+        },
+        {
+          "text": "24 s",
+          "correct": false
+        },
+        {
+          "text": "20 s",
+          "correct": true
+        }
+      ],
+      "explain_correct": "60 × 8 ÷ 24 dà 20.",
+      "explain_wrong": "20 s. 60 × 8 ÷ 24 dà 20."
     }
   ]);
 </script>
