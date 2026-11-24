@@ -168,18 +168,40 @@ const ConfettiFx = (() => {
 })();
 
 /* ---- Progress Tracking ---- */
+const studyPath = /\/modulo1\/(?:index\.html|allenamento\.html|lezione-1-[1-6]\.html)?$/.test(location.pathname);
+if (studyPath) {
+  import(new URL('studio.js', document.currentScript.src)).then(({ StudySync }) => {
+    StudySync.showStatus();
+    window.dispatchEvent(new Event('studio-change'));
+  }).catch(() => {});
+}
+
 const Progress = (() => {
   const KEY = 'tele5a-progress';
 
-  function getAll() {
+  function getLocal() {
     try { return JSON.parse(localStorage.getItem(KEY)) || {}; }
     catch { return {}; }
   }
 
+  function getAll() {
+    const local = getLocal();
+    if (!window.StudySync?.active()) return local;
+    for (const lesson of Object.keys(local)) {
+      if (/^m1-[1-6]$/.test(lesson)) delete local[lesson];
+    }
+    return { ...local, ...window.StudySync.progress() };
+  }
+
   function markDone(lessonId) {
-    const p = getAll();
-    p[lessonId] = { done: true, date: new Date().toISOString() };
-    localStorage.setItem(KEY, JSON.stringify(p));
+    const value = { done: true, date: new Date().toISOString() };
+    if (window.StudySync?.active() && /^m1-[1-6]$/.test(lessonId)) {
+      if (!window.StudySync.markDone(lessonId, value)) return;
+    } else {
+      const p = getLocal();
+      p[lessonId] = value;
+      localStorage.setItem(KEY, JSON.stringify(p));
+    }
     updateUI(lessonId);
     ConfettiFx.fire();
   }
@@ -222,15 +244,37 @@ const Progress = (() => {
       const fill = el.querySelector('.progress-fill, .module-progress-fill');
       const label = el.querySelector('[data-progress-pct]');
       if (fill) fill.style.width = pct + '%';
-      if (label) label.textContent = `${pct}%`;
+      if (label) label.textContent = window.StudySync && moduleId === 'm1' ? pct : `${pct}%`;
       const doneTxt = el.querySelector('[data-progress-done]');
-      if (doneTxt) doneTxt.textContent = `${done}/${total}`;
+      if (doneTxt) doneTxt.textContent = window.StudySync && moduleId === 'm1' ? done : `${done}/${total}`;
     });
     const totalEl = document.querySelector('[data-total-done]');
     if (totalEl) totalEl.textContent = getTotalProgress();
   }
 
   function init(currentLessonId) {
+    const studyButton = document.querySelector('.mark-done-btn');
+    if (studyPath && studyButton && currentLessonId) {
+      const originalLabel = studyButton.innerHTML;
+      window.addEventListener('studio-change', () => {
+        const done = isDone(currentLessonId);
+        studyButton.classList.toggle('done', done);
+        studyButton.disabled = done;
+        studyButton.innerHTML = done ? `${iconCheck()} Lezione completata!` : originalLabel;
+      });
+    }
+    if (studyPath || document.querySelector('.study-access')) {
+      window.addEventListener('studio-change', () => {
+        const progress = getAll();
+        document.querySelectorAll('.sidebar-nav li[data-lesson^="m1-"]').forEach(item => {
+          const done = Boolean(progress[item.dataset.lesson]?.done);
+          item.classList.toggle('completed', done);
+          const check = item.querySelector('.lesson-check');
+          if (check) check.innerHTML = done ? iconCheck() : '';
+        });
+        refreshModuleProgress();
+      });
+    }
     if (currentLessonId && isDone(currentLessonId)) {
       const btn = document.querySelector('.mark-done-btn');
       if (btn) {
@@ -252,7 +296,7 @@ const Progress = (() => {
     refreshModuleProgress();
 
     const btn = document.querySelector('.mark-done-btn');
-    if (btn && currentLessonId && !isDone(currentLessonId)) {
+    if (btn && currentLessonId && (studyPath || !isDone(currentLessonId))) {
       btn.addEventListener('click', () => markDone(currentLessonId));
     }
   }
@@ -474,6 +518,17 @@ const QuizEngine = (() => {
     let score = 0;
     let answered = false;
     const total = questions.length;
+    const lessonId = document.body.dataset.lessonId;
+    const studyQuiz = /^m1-[1-6]$/.test(lessonId || '');
+
+    function showLatest() {
+      const label = container.querySelector('[data-last-study-score]');
+      if (!label) return;
+      const latest = window.StudySync?.latestQuiz(lessonId);
+      label.hidden = !latest;
+      label.textContent = latest ? 'Ultimo risultato salvato: ' + latest.score + '/' + latest.total : '';
+    }
+    if (studyQuiz) window.addEventListener('studio-change', showLatest);
 
     function render() {
       if (current >= total) { showScore(); return; }
@@ -488,6 +543,7 @@ const QuizEngine = (() => {
         <div class="quiz-progress-bar">
           <div class="quiz-progress-fill" style="width:${((current)/total)*100}%"></div>
         </div>
+        ${studyQuiz ? '<p class="quiz-score-sub" data-last-study-score hidden></p>' : ''}
         <div class="question-text">${q.question}</div>
         <div class="answers-grid" id="answersGrid">
           ${q.answers.map((a, i) => `
@@ -509,6 +565,7 @@ const QuizEngine = (() => {
         btn.addEventListener('click', () => selectAnswer(btn, q));
       });
       document.getElementById('nextQBtn').addEventListener('click', () => { current++; render(); });
+      if (studyQuiz) showLatest();
     }
 
     function selectAnswer(btn, q) {
@@ -546,6 +603,7 @@ const QuizEngine = (() => {
     }
 
     function showScore() {
+      if (studyQuiz) window.StudySync?.quiz(lessonId, score, total);
       const pct = Math.round((score / total) * 100);
       let msg = pct >= 80 ? '🔥 Eccezionale! Hai dominato il modulo.' : pct >= 60 ? '👍 Buon risultato! Qualche dettaglio da affinare.' : '💡 Ti consiglio un rapido ripasso prima del compito.';
       

@@ -59,6 +59,21 @@ const QuizAllenamento = (() => {
     const message = summary.querySelector('.training-message');
     const actions = form.querySelector('.training-actions');
     const topRetry = form.querySelector('.training-toolbar .training-retry');
+    const studyQuiz = container.dataset.trainingKey === 'modulo1';
+    if (studyQuiz) {
+      const last = document.createElement('p');
+      last.className = 'quiz-score-sub';
+      last.dataset.lastTrainingScore = '';
+      last.hidden = true;
+      form.prepend(last);
+      const showLast = () => {
+        const result = window.StudySync?.latestQuiz('m1-allenamento');
+        last.hidden = !result;
+        last.textContent = result ? 'Ultimo risultato salvato: ' + result.score + '/' + result.total : '';
+      };
+      window.addEventListener('studio-change', showLast);
+      showLast();
+    }
     const questionTemplate = document.getElementById('training-question');
     const answerTemplate = document.getElementById('training-answer');
     let attempt = readAttempt(storageKey);
@@ -153,6 +168,7 @@ const QuizAllenamento = (() => {
       actions.hidden = true;
       topRetry.classList.replace('btn-ghost', 'btn-primary');
       summary.hidden = false;
+      return totals.correct;
     }
 
     function renderAttempt() {
@@ -186,7 +202,8 @@ const QuizAllenamento = (() => {
 
       attempt.submitted = true;
       saveAttempt();
-      showReview();
+      const result = showReview();
+      if (studyQuiz) window.StudySync?.quiz('m1-allenamento', result, questionCount);
 
       // Place the expanded result in view before starting its animation.
       score.focus({ preventScroll: true });

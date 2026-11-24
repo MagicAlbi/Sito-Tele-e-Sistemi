@@ -1,0 +1,38 @@
+.study-access {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  align-items: center;
+  gap: .65rem 1.25rem;
+  margin: 1.7rem 0 2.25rem;
+  padding: clamp(1rem, 3vw, 1.5rem);
+  border: 1px solid var(--border-2);
+  border-radius: var(--r-lg);
+  background: linear-gradient(130deg, var(--primary-subtle), transparent 60%), var(--surface);
+}
+.study-access[hidden], .study-access [hidden], .study-auth-status:empty { display: none; }
+.study-access h2 { font-size: clamp(1.15rem, 3vw, 1.45rem); }
+.study-access p { color: var(--text-muted); font-size: .88rem; }
+.study-auth-form { display: grid; gap: .3rem; }
+.study-auth-form label { font-size: .85rem; font-weight: 650; }
+.study-auth-fields { display: flex; gap: .45rem; }
+.study-auth-fields input {
+  width: 11ch;
+  min-width: 0;
+  padding: .5rem .65rem;
+  border: 1px solid var(--border-2);
+  border-radius: var(--r-md);
+  background: var(--bg);
+  color: var(--text);
+  font: 1rem var(--font-mono);
+  letter-spacing: .08em;
+}
+.study-auth-fields input:focus-visible { outline: 2px solid var(--primary); outline-offset: 2px; }
+.study-auth-status { grid-column: 1 / -1; }
+.study-auth-status[data-state="active"] { color: var(--success); }
+.study-auth-status[data-state="error"] { color: var(--error); }
+.study-import { justify-self: start; }
+.study-sync-status { color: var(--text); font-size: .75rem; text-align: right; max-width: 12rem; }
+.study-sync-status:empty { display: none; }
+@media (max-width: 680px) {
+  .study-access { grid-template-columns: 1fr; }
+}

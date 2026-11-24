@@ -123,6 +123,7 @@
   }
 
     function readEntries() {
+    if (window.StudySync?.active()) return window.StudySync.annotations(lesson.dataset.lessonAnnotations);
     try {
       const data = JSON.parse(localStorage.getItem(key));
       return Array.isArray(data) ? data : [];
@@ -133,12 +134,19 @@
 
   function saveEntries(update, message) {
     try {
-      const next = update(readEntries());
-      localStorage.setItem(key, JSON.stringify(next));
+      const before = readEntries();
+      const next = update(before);
+      if (window.StudySync?.active()) {
+        if (!window.StudySync.setAnnotations(lesson.dataset.lessonAnnotations, before, next)) {
+          throw new Error('Salvataggio locale non riuscito.');
+        }
+      } else {
+        localStorage.setItem(key, JSON.stringify(next));
+      }
       entries = next;
       refresh();
       feedback.removeAttribute('data-error');
-      feedback.textContent = message;
+      feedback.textContent = window.StudySync?.active() ? 'Modifica pronta per la sincronizzazione.' : message;
       return true;
     } catch {
       feedback.setAttribute('data-error', '');
@@ -598,6 +606,12 @@
   window.addEventListener('storage', event => {
     if (event.key !== key && event.key !== null) return;
     entries = readEntries();
+    refresh();
+  });
+  window.addEventListener('studio-change', () => {
+    const next = readEntries();
+    if (JSON.stringify(next) === JSON.stringify(entries)) return;
+    entries = next;
     refresh();
   });
 

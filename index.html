@@ -6,6 +6,7 @@
   <title>Telecomunicazioni 5A — IIS J.C. Maxwell</title>
   <meta name="description" content="Piattaforma didattica immersiva e interattiva di Telecomunicazioni — IIS J.C. Maxwell">
   <link rel="stylesheet" href="assets/css/style.css">
+  <link rel="stylesheet" href="assets/css/accesso-studio.css">
 </head>
 <body>
 
@@ -64,6 +65,24 @@
             </div>
           </div>
         </div>
+      </section>
+
+      <section class="study-access" aria-labelledby="study-access-title" hidden>
+        <div>
+          <h2 id="study-access-title">Riprendi il tuo studio</h2>
+          <p>Usa il tuo codice personale per accedere anche quando cambi PC.</p>
+        </div>
+        <form class="study-auth-form">
+          <label for="study-code">Codice personale</label>
+          <div class="study-auth-fields">
+            <input id="study-code" name="code" type="password" autocomplete="off"
+              autocapitalize="characters" spellcheck="false" required minlength="8" maxlength="8"
+              pattern="[A-HJ-NP-Za-hj-np-z2-9]{8}" placeholder="••••••••">
+            <button class="btn btn-primary" type="submit">Accedi</button>
+          </div>
+        </form>
+        <button class="btn btn-ghost study-import" type="button" data-import-study hidden>Recupera i dati salvati su questo browser</button>
+        <p class="study-auth-status" role="status"></p>
       </section>
 
       <!-- 1° QUADRIMESTRE -->
@@ -240,5 +259,6 @@
 </div><!-- /app-layout -->
 
 <script src="assets/js/app.js"></script>
+<script type="module" src="assets/js/accesso-studio.js" data-service="https://tele5a-studio.alberto-pignato.workers.dev"></script>
 </body>
 </html>
