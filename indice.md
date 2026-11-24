@@ -1,5 +1,5 @@
-# Indice di lavoro
+# Indice
 
-## Piani
-
-- [Completamento del sito di Telecomunicazioni 5A](piani/telecomunicazioni-5a/PIANO.md)
+- [Piano 5A](piani/telecomunicazioni-5a/PIANO.md)
+- [Passaggio di consegne](HANDOVER.md)
+- [Idee da esplorare](in-corso/IDEE.md)

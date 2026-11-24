@@ -14,7 +14,7 @@ Aggiorna l’esito nel file di fase e lo stato nella tabella del piano. Per il s
 
 ## Lavoro e verifiche
 
-- **Produce** le lezioni 2.4–2.5, con protocolli WAN e routing introdotto a partire da IP e subnetting.
+- **Produce** le lezioni 2.4–2.5, con protocolli WAN e routing introdotto da zero. La classe conosce IP e subnetting.
 - **Leggi** la [mappa della fase 1](../01/FASE.md) e le lezioni 2.1–2.3.
 - **Criteri** Si aprono entrambe le pagine con quiz e presentazione funzionanti. La prima spiega HDLC, PPP e il ruolo dell’autenticazione. Un esercizio della seconda fa scegliere la rotta tra una rete direttamente collegata, una rotta più specifica e la rotta predefinita, con tre risultati verificati.
 - **Esito**

@@ -18,6 +18,12 @@ Aggiorna l’esito nel file di fase e lo stato nella tabella del piano. Per il s
 - **Leggi** Le sei lezioni Wi-Fi, l’[indice](../../../../modulo1/index.html), il [laboratorio](../../../../modulo1/lab-copertura.html), la [verifica](../../../../modulo1/verifica.html) e il [motore dei quiz](../../../../assets/js/app.js).
 - **Criteri** Ogni tentativo estrae 10 domande distinte e mescola le opzioni di ogni domanda a ogni avvio. La correzione segue l’identità dell’opzione anche quando cambia posizione. Prima di **Consegna** le soluzioni sono nascoste. Dopo la consegna, prova risposte corrette, errate e omesse. Per ogni errore compaiono la spiegazione specifica dell’opzione selezionata e il motivo per cui è corretta l’alternativa giusta. Un nuovo tentativo riparte senza risposte, punteggi o spiegazioni del precedente. I quiz delle lezioni e la verifica esistente mantengono il comportamento attuale.
 
+## Regole per le sezioni finali
+
+- **Percorso didattico completo** Lezioni e laboratorio. **Ripasso, esercizi e valutazione** Quiz di allenamento, esercizi numerici quando previsti, verifica per ultima. La verifica Wi-Fi conserva contenuto e funzionamento. Negli altri moduli riserva il posto alla verifica, con collegamento solo quando la pagina esiste. Le nuove verifiche si progettano nella [fase 13](../13/FASE.md).
+- **Banca di allenamento** Da 70 a 100 domande a scelta multipla di difficoltà media, con una risposta corretta, opzioni di dettaglio comparabile, errori plausibili e spiegazioni specifiche. Ogni domanda rimanda alla sezione pertinente. Se manca un passaggio importante per gli obiettivi, documentalo e chiariscilo nella lezione prima di usarlo nel quiz.
+- **Esercizi numerici** Riusa il formato della [fase 22](../22/FASE.md) e le regole della [banca](../23/FASE.md). Prova lettura e riscontri anche su telefono e distingui i passaggi con testo oltre al colore. Tieni separati il riscontro numerico e l’eventuale ipotesi sull’errore di procedimento.
+
 ## Esito
 
 ### Materiali e struttura riutilizzabile

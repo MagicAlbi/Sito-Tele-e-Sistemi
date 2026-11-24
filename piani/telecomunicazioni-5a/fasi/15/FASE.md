@@ -22,6 +22,7 @@ Aggiorna l’esito nel file di fase e lo stato nella tabella del piano. Per il s
 
 - **22 novembre 2026** Applicato il feedback sulle sei lezioni Wi-Fi. Il menu della matita contiene Evidenzia e Aggiungi nota. La tavolozza usa sei quadratini, compresi giallo e verde fluorescenti. Il clic sul testo evidenziato mostra il colore attuale e il cestino. La nota si apre e resta a margine, oppure sotto il passaggio su schermo stretto.
 - **Controlli superati** In Chrome ed Edge verificati selezione, cambio colore, cancellazione immediata, creazione di note con o senza evidenziatore, crescita del campo, Invio, compressione individuale e collettiva, ricarica, Presentazione e stili di stampa. A 360 pixel verificate posizione e compressione al tocco simulato. Recuperati i quattro colori e una nota nel formato della prima bozza. Verificata l’attivazione sulle sole sei lezioni.
+- **Dove intervenire** Le pagine abilitate usano `data-lesson-annotations`. Note ed evidenziazioni restano nel browser. I segni sono sospesi in presentazione ed esclusi dalla stampa.
 - **Da completare** Raccogliere eventuali ritocchi dopo l’uso e provare la selezione su un telefono reale. La fase resta in corso prima dell’estensione.
 - **Ritocco successivo** Schiarito lo sfondo delle schede delle note con una tinta tenue dedicata ai due temi.
 - **Pubblicazione autorizzata** Il 22 novembre 2026 il docente ha dato il via libera per il Modulo 1. Il salvataggio su GitHub avviene tramite MagicAlbi Sync.

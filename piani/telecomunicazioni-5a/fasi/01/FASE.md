@@ -16,6 +16,7 @@ Aggiorna l’esito nel file di fase e lo stato nella tabella del piano. Per il s
 
 - **Produce** una mappa per i Moduli 2–5 con obiettivi, ordine, esercitazioni e verifiche, un calendario per AM/FM e i cinque moduli fino al 31 marzo 2027 e una proposta per il ripasso sulle antenne nel periodo d’esame.
 - **Leggi** le programmazioni di quarta e quinta con `markitdown`, la home e l’indice del Modulo 1. Consulta l’indice del libro dove serve.
+- **Fonti** Nella cartella `Materiali/` accanto a `sito/`, consulta `Programmazione - Telecomunicazioni 5A Tele.docx`, `Programmazione - Telecomunicazioni 4A Tele.docx` e le foto dell’indice del libro. Le pagine del sito indicano il numero di lezioni. Il monte ore ufficiale resta nella programmazione di dipartimento.
 - **Criteri** Ogni voce della programmazione dei Moduli 2–5 rimanda a una lezione o a un’attività. Ogni lezione prevista dalla home ha titolo e obiettivo. Ogni modulo ha un’attività di laboratorio e una verifica associate a obiettivi della mappa. L’xDSL nel Modulo 3 richiama il Modulo 2 e ne sviluppa gli aspetti di trasmissione digitale.
 - **Criteri per il calendario** Parti dalle stime interne e verifica giorni e ore effettive, comprese le 3 ore settimanali di laboratorio. Metti per primo il Modulo 1 in forma compatta usando i materiali esistenti. Dopo le WAN e prima della trasmissione digitale, inserisci il recupero AM/FM con un confronto pratico fra le due modulazioni e un controllo finale. Per ogni modulo associa date o settimane a lezioni, laboratorio, verifica e disponibilità dei materiali. Riserva almeno 6 ore per recuperi o imprevisti. Verifica che attività e margine rientrino nell’orario utile. Se c’è uno scarto, quantificalo e sottoponi al docente una proposta per restare entro marzo. Colloca il ripasso sulle antenne nella preparazione d’esame, dopo marzo.
 - **Esito** Mappati gli argomenti delle programmazioni di quarta e quinta sulle 20 lezioni dei Moduli 2–5, i laboratori, le verifiche e il recupero AM/FM. Verificati i riferimenti del Wi-Fi e il calendario compatto. Sulle 44 ore da orario e calendario regionale, 38 sono assegnate e 6 restano libere. Da verificare ulteriori sospensioni della 5A e disponibilità dei giovedì. La proposta compatta è pronta per la revisione del docente. Prossima fase, 2.1–2.3 sulle reti WAN.
@@ -100,6 +101,8 @@ Proposta per maggio da collocare con il docente. In 3 ore riprendere diagramma d
 
 #### Calendario di lavoro fino a marzo
 
+Orario di Telecomunicazioni: lunedì un’ora e mercoledì due ore in aula, giovedì tre ore di laboratorio. Le ore di Sistemi e Reti restano fuori dal conteggio. Su 44 ore in aula dal 23 novembre al 31 marzo, il percorso ne usa 38 e ne riserva 6. Verificare con il docente le sospensioni aggiuntive del Maxwell e le attività della 5A. Se riducono le ore, usare prima il margine e rivedere le tappe interessate. [Calendario regionale 2026/27](https://www.regione.piemonte.it/web/temi/istruzione-formazione-lavoro/istruzione/calendario-scolastico-2026-2027)
+
 Ogni modulo comprende una breve attività guidata in aula basata sul laboratorio della mappa e un controllo. I giovedì possono ospitare prove estese, se concordate. Come attività con Arduino da proporre all’ITP, si può confrontare un segnale a frequenze diverse prima della FSK oppure osservare il tempo tra un evento e la sua registrazione prima del lavoro sul ritardo nelle reti. L’ITP conferma fattibilità e disponibilità prima di inserirle.
 
 | Attività | Ore in aula | Periodo del modulo | Materiali pronti entro |
@@ -113,3 +116,7 @@ Ogni modulo comprende una breve attività guidata in aula basata sul laboratorio
 | Margine per recuperi, rinvii e attività che richiedono più tempo | 6 | 21 dicembre, 22, 24 e 31 marzo | — |
 
 Il 20 gennaio, usare la prima ora per chiudere AM/FM e la seconda per aprire la trasmissione digitale. Se l’ora di riserva del 21 dicembre non serve per le WAN, usarla per un recupero breve sul Wi-Fi o sul routing. Da aprile, usare la preparazione all’esame per il ripasso sulle antenne e il collegamento con la copertura Wi-Fi.
+
+#### PDF di progettazione
+
+In `Materiali progettazione/`, accanto a `Materiali/` e `sito/`, conserva `Piano Telecomunicazioni 5A.pdf` per calendario e scaletta e `Piano di sviluppo del sito - Telecomunicazioni 5A.pdf` per priorità, fasi, dipendenze, consegne e avanzamento. A fine sessione verifica se uno dei due va aggiornato. Mantieni i nomi e indica la data di revisione.

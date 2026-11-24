@@ -15,6 +15,7 @@
   <link rel="stylesheet" href="../assets/css/modulo1.css">
   <link rel="stylesheet" href="../assets/css/esperimenti.css">
   <link rel="stylesheet" href="../assets/css/annotazioni.css">
+  <link rel="stylesheet" href="../assets/css/presentazioni-modulo1.css">
 </head>
 <body class="module-one" data-lesson-id="m1-6">
 
@@ -306,6 +307,125 @@
     </div>
   </main>
 </div>
+
+<template data-presentation data-presentation-title="Copertura e sicurezza delle reti">
+  <section class="presenter-slide lim-slide" tabindex="-1" inert>
+    <div class="lim-stage">
+      <div>
+        <h2>Il segnale deve arrivare sopra la soglia</h2>
+        <p>Il <strong>bilancio di collegamento</strong> stima quanta potenza arriva al ricevitore. Si parte dalla potenza trasmessa, si aggiungono i guadagni e si sottraggono le perdite.</p>
+        <p>Il ricevitore ha bisogno di un livello minimo per leggere i dati. Il <strong>margine</strong> indica quanto il segnale ricevuto sta sopra o sotto quella soglia.</p>
+        <p class="lim-terms">
+          <span><strong>dBm</strong> · Decibel riferiti a un milliwatt, unità per il livello di potenza.</span>
+          <span><strong>dB</strong> · Decibel, unità per una differenza o un rapporto di livelli.</span>
+        </p>
+      </div>
+      <div class="lim-visual">
+        <ul class="lim-diagram" role="list">
+          <li><strong>Potenza ricevuta.</strong> Potenza trasmessa + guadagni − perdite.</li>
+          <li><strong>Margine.</strong> Potenza ricevuta − soglia del ricevitore.</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+  <section class="presenter-slide lim-slide" tabindex="-1" inert>
+    <div class="lim-stage">
+      <div>
+        <h2>Esempio: un margine di 2 decibel</h2>
+        <p>Il punto di accesso trasmette a <strong>+20 dBm</strong>. Trascuriamo i guadagni delle antenne e ipotizziamo <strong>85 dB</strong> di perdite.</p>
+        <p>Con una soglia di progetto di <strong>−67 dBm</strong>, il risultato è sopra soglia di poco. Un ostacolo in più può consumare tutto il margine.</p>
+        <p class="lim-terms">
+          <span><strong>dBm</strong> · Decibel riferiti a un milliwatt, per i livelli di potenza.</span>
+          <span><strong>dB</strong> · Decibel, per perdite e margine.</span>
+        </p>
+      </div>
+      <div class="lim-visual">
+        <ul class="lim-diagram" role="list">
+          <li><strong>Potenza ricevuta.</strong> 20 − 85 = −65 dBm.</li>
+          <li><strong>Margine.</strong> −65 − (−67) = 2 dB.</li>
+          <li><strong>Sfida lampo · Altri 4 dB di perdita.</strong> Risposta: il margine scende a −2 dB, quindi il segnale finisce sotto la soglia scelta.</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+  <section class="presenter-slide lim-slide" tabindex="-1" inert>
+    <div class="lim-stage">
+      <div>
+        <h2>Un sopralluogo dice dove il segnale manca</h2>
+        <p>Il <strong>site survey</strong> è il sopralluogo radio. Misuri il segnale in diversi punti e riporti i valori sulla pianta, insieme alle zone di interferenza o copertura debole.</p>
+        <p>Per una chiamata via Internet conta anche il passaggio tra celle. Qui −67 dBm è un obiettivo di progetto d’esempio. La qualità dipende anche da rumore e continuità della copertura.</p>
+        <p class="lim-terms">
+          <span><strong>RSSI</strong> · Received Signal Strength Indicator, indicatore del livello del segnale ricevuto.</span>
+          <span><strong>dBm</strong> · Decibel riferiti a un milliwatt, unità dei valori di potenza nell’esempio.</span>
+        </p>
+      </div>
+      <div class="lim-visual">
+        <ul class="lim-diagram" role="list">
+          <li><strong>Aula · RSSI −58 dBm.</strong> Sopra l’obiettivo dell’esempio.</li>
+          <li><strong>Corridoio · RSSI −67 dBm.</strong> Proprio sull’obiettivo.</li>
+          <li><strong>Stanza in fondo · RSSI −75 dBm.</strong> Sotto l’obiettivo: zona da verificare sul posto.</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+  <section class="presenter-slide lim-slide" tabindex="-1" inert>
+    <div class="lim-stage">
+      <div>
+        <h2>La radio attraversa i confini dell’aula</h2>
+        <p>Il segnale può arrivare anche in corridoio o fuori dalla stanza. La <strong>cifratura</strong> protegge il contenuto rendendolo incomprensibile a chi non ha la chiave.</p>
+        <p><strong>Curiosità.</strong> Il nome WEP prometteva una riservatezza paragonabile a quella di una rete cablata. Nella pratica, valori iniziali troppo corti potevano ripetersi e indebolire il sistema.</p>
+        <p class="lim-terms">
+          <span><strong>WEP</strong> · Wired Equivalent Privacy, vecchio sistema di sicurezza Wi-Fi.</span>
+          <span><strong>IV</strong> · Initialization Vector, valore iniziale usato nella cifratura.</span>
+        </p>
+      </div>
+      <div class="lim-visual">
+        <ul class="lim-diagram" role="list">
+          <li><strong>Il dettaglio che conta.</strong> L’IV del WEP era di soli 24 bit.</li>
+          <li><strong>La conseguenza.</strong> Quando i valori si ripetevano, il traffico offriva meno protezione. WEP è obsoleto.</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+  <section class="presenter-slide lim-slide" tabindex="-1" inert>
+    <div class="lim-stage">
+      <div>
+        <h2>Dalla password alla protezione della rete</h2>
+        <p><strong>WPA2-Personal</strong> protegge il traffico radio. La robustezza della password conta: una password prevedibile può essere indovinata.</p>
+        <p><strong>WPA3-Personal</strong> usa un diverso scambio di autenticazione, chiamato <strong>SAE</strong>. Rende più difficile provare molte password senza interagire con la rete.</p>
+        <p class="lim-terms">
+          <span><strong>WPA</strong> · Wi-Fi Protected Access, famiglia di sistemi di sicurezza Wi-Fi. I numeri indicano la generazione.</span>
+          <span><strong>SAE</strong> · Simultaneous Authentication of Equals, lo scambio di autenticazione di WPA3-Personal.</span>
+        </p>
+      </div>
+      <div class="lim-visual">
+        <ul class="lim-diagram" role="list">
+          <li><strong>WPA2-Personal.</strong> Le password prevedibili indeboliscono la protezione.</li>
+          <li><strong>WPA3-Personal.</strong> SAE rende più resistenti ai tentativi fatti lontano dalla rete.</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+  <section class="presenter-slide lim-slide" tabindex="-1" inert>
+    <div class="lim-stage">
+      <div>
+        <h2>Il pulsante per collegare la stampante</h2>
+        <p><strong>Curiosità.</strong> Il <strong>WPS</strong> è nato per facilitare il collegamento di dispositivi come le stampanti. Alcuni apparecchi offrivano, oltre al pulsante, un codice numerico.</p>
+        <p>In vecchie implementazioni il <strong>PIN</strong> veniva verificato in parti separate. Questo riduceva la sicurezza che ci si aspettava dalla sua lunghezza.</p>
+        <p class="lim-terms">
+          <span><strong>WPS</strong> · Wi-Fi Protected Setup, configurazione semplificata del collegamento Wi-Fi.</span>
+          <span><strong>PIN</strong> · Personal Identification Number, il codice numerico usato per configurare il collegamento.</span>
+        </p>
+      </div>
+      <div class="lim-visual">
+        <ul class="lim-diagram" role="list">
+          <li><strong>Pulsante.</strong> Si avvia l’abbinamento direttamente dal dispositivo.</li>
+          <li><strong>Vecchia modalità con PIN.</strong> La verifica in parti separate indeboliva la protezione del codice.</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+</template>
 
 <script src="../assets/js/app.js"></script>
 <script src="../assets/js/annotazioni.js" defer></script>

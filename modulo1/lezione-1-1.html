@@ -61,6 +61,7 @@
   <link rel="stylesheet" href="../assets/css/modulo1.css">
   <link rel="stylesheet" href="../assets/css/esperimenti.css">
   <link rel="stylesheet" href="../assets/css/annotazioni.css">
+  <link rel="stylesheet" href="../assets/css/presentazioni-modulo1.css">
 </head>
 <body class="module-one" data-lesson-id="m1-1">
 
@@ -506,6 +507,113 @@
     </div>
   </main>
 </div>
+
+<template data-presentation data-presentation-title="Reti locali senza fili">
+  <section class="presenter-slide lim-slide" tabindex="-1" inert>
+    <div class="lim-stage">
+      <div>
+        <h2>Dal cavo alle onde radio</h2>
+        <p>Un messaggio attraversa la rete sia con Ethernet sia con il Wi-Fi. Cambia soprattutto il modo in cui il dispositivo raggiunge la rete locale.</p>
+        <p>Una <strong>WLAN</strong> è una rete locale senza fili. Il telefono usa onde radio per parlare con il punto di accesso.</p>
+        <p class="lim-terms">
+          <span><strong>WLAN</strong> · Wireless Local Area Network, rete locale senza fili.</span>
+        </p>
+      </div>
+      <div class="lim-visual lim-art">
+        <img src="../assets/img/indice-rete-radio.svg" alt="Un punto di accesso radio collega un telefono e un computer.">
+      </div>
+    </div>
+  </section>
+  <section class="presenter-slide lim-slide" tabindex="-1" inert>
+    <div class="lim-stage">
+      <div>
+        <h2>Il Wi-Fi cambia i primi due livelli</h2>
+        <p>Nel modello <strong>OSI</strong>, ogni livello ha un compito. Passando dal cavo alla radio cambia come il segnale viaggia e come si condivide il mezzo.</p>
+        <p>L’applicazione continua a inviare il suo messaggio. La scelta del mezzo avviene nei livelli inferiori.</p>
+        <p class="lim-terms">
+          <span><strong>OSI</strong> · Open Systems Interconnection, modello a livelli delle comunicazioni.</span>
+          <span><strong>MAC</strong> · Medium Access Control, la parte del livello 2 che regola l’accesso al mezzo.</span>
+        </p>
+      </div>
+      <div class="lim-visual">
+        <ul class="lim-diagram" role="list">
+          <li><strong>Livello 1 · Fisico.</strong> Sul rame viaggia un segnale elettrico. Nel Wi-Fi viaggiano onde radio.</li>
+          <li><strong>Livello 2 · Collegamento.</strong> Il MAC stabilisce quando un dispositivo può usare il mezzo.</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+  <section class="presenter-slide lim-slide" tabindex="-1" inert>
+    <div class="lim-stage">
+      <div>
+        <h2>Una cella, due modi per riconoscerla</h2>
+        <p>In una rete con infrastruttura un <strong>punto di accesso</strong> collega i dispositivi. Lui e i dispositivi associati formano una cella, detta <strong>BSS</strong>.</p>
+        <p>Il telefono mostra il nome della rete. Per distinguere le celle usa un identificativo a 48 bit.</p>
+        <p class="lim-terms">
+          <span><strong>BSS</strong> · Basic Service Set, una cella Wi-Fi.</span>
+          <span><strong>SSID</strong> · Service Set Identifier, il nome della rete.</span>
+          <span><strong>BSSID</strong> · Basic Service Set Identifier, l’identificativo della singola cella.</span>
+        </p>
+      </div>
+      <div class="lim-visual">
+        <ul class="lim-diagram" role="list">
+          <li><strong>SSID · Nome visibile.</strong> Wi-Fi Scuola</li>
+          <li><strong>BSSID · Cella precisa.</strong> La cella del laboratorio ha un identificativo diverso da quella del corridoio.</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+  <section class="presenter-slide lim-slide" tabindex="-1" inert>
+    <div class="lim-stage">
+      <div>
+        <h2>Stesso nome, un’altra cella</h2>
+        <p>Più celle collegate possono usare lo stesso nome di rete e formare un <strong>ESS</strong>. Spostandoti, il telefono può cambiare punto di accesso: è il <strong>roaming</strong>.</p>
+        <p>Con una rete <strong>ad hoc</strong>, invece, i dispositivi comunicano direttamente. È la modalità <strong>IBSS</strong> del Wi-Fi.</p>
+        <p class="lim-terms">
+          <span><strong>ESS</strong> · Extended Service Set, più celle della stessa rete.</span>
+          <span><strong>IBSS</strong> · Independent Basic Service Set, cella senza punto di accesso.</span>
+        </p>
+      </div>
+      <div class="lim-visual">
+        <ul class="lim-diagram" role="list">
+          <li><strong>Sfida lampo.</strong> Dal laboratorio al corridoio la rete si chiama ancora «Wi-Fi Scuola». È cambiato qualcosa?</li>
+          <li><strong>Risposta.</strong> Può essere cambiata la cella. Il nome visibile può restare lo stesso.</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+  <section class="presenter-slide lim-slide" tabindex="-1" inert>
+    <div class="lim-stage">
+      <div>
+        <h2>Dal cercare la rete al collegarsi</h2>
+        <p>Nella <strong>scansione passiva</strong> il telefono ascolta gli annunci periodici delle reti. Nella <strong>scansione attiva</strong> invia una richiesta e aspetta le risposte.</p>
+        <p>Poi avvengono l’autenticazione e l’associazione alla cella scelta. Il Wi-Fi è pronto a scambiare dati dopo i passaggi di sicurezza previsti.</p>
+      </div>
+      <div class="lim-visual">
+        <ul class="lim-diagram" role="list">
+          <li><strong>1 · Scansione.</strong> Trova i punti di accesso nei dintorni.</li>
+          <li><strong>2 · Autenticazione.</strong> Avvia il riconoscimento previsto dalla modalità di rete.</li>
+          <li><strong>3 · Associazione.</strong> Il dispositivo entra nella cella scelta.</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+  <section class="presenter-slide lim-slide" tabindex="-1" inert>
+    <div class="lim-stage">
+      <div>
+        <h2>Perché il telefono usa un indirizzo privato</h2>
+        <p>Usare sempre lo stesso <strong>indirizzo MAC</strong> rende più facile riconoscere un dispositivo quando ricompare.</p>
+        <p><strong>Curiosità.</strong> Nelle impostazioni Wi-Fi puoi trovare «indirizzo privato» o «casuale». Il telefono può usare un indirizzo diverso da quello di fabbrica per limitare il tracciamento.</p>
+        <p class="lim-terms">
+          <span><strong>MAC</strong> · Medium Access Control. L’indirizzo MAC identifica un’interfaccia a livello di collegamento.</span>
+        </p>
+      </div>
+      <div class="lim-visual lim-art">
+        <img src="../assets/img/quiz-wlan-scambio.svg" alt="Telefono e computer si scambiano messaggi su una rete senza fili.">
+      </div>
+    </div>
+  </section>
+</template>
 
 <script src="../assets/js/app.js"></script>
 <script src="../assets/js/annotazioni.js" defer></script>

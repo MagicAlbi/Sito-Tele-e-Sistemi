@@ -24,6 +24,7 @@
   <link rel="stylesheet" href="../assets/css/modulo1.css">
   <link rel="stylesheet" href="../assets/css/esperimenti.css">
   <link rel="stylesheet" href="../assets/css/annotazioni.css">
+  <link rel="stylesheet" href="../assets/css/presentazioni-modulo1.css">
 </head>
 <body class="module-one" data-lesson-id="m1-2">
 
@@ -404,6 +405,127 @@
     </div>
   </main>
 </div>
+
+<template data-presentation data-presentation-title="Come si è evoluto il Wi-Fi">
+  <section class="presenter-slide lim-slide" tabindex="-1" inert>
+    <div class="lim-stage">
+      <div>
+        <h2>Dal numero della scatola allo standard</h2>
+        <p>La famiglia <strong>802.11</strong> stabilisce come funzionano le reti Wi-Fi. Per riconoscere le generazioni si usano nomi come Wi-Fi 4, 5, 6 e 7.</p>
+        <p><strong>Curiosità.</strong> Con i numeri è più facile vedere la successione: con le vecchie lettere era meno intuitivo capire che <code>ac</code> veniva dopo <code>n</code>.</p>
+      </div>
+      <div class="lim-visual">
+        <ul class="lim-diagram" role="list">
+          <li><strong>Wi-Fi 4 · 802.11n.</strong> Più flussi radio e canali più larghi.</li>
+          <li><strong>Wi-Fi 5 · 802.11ac.</strong> Canali ancora più larghi nella banda dei 5 gigahertz.</li>
+          <li><strong>Wi-Fi 6 e 7.</strong> Più strumenti per servire più dispositivi e sfruttare le bande disponibili.</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+  <section class="presenter-slide lim-slide" tabindex="-1" inert>
+    <div class="lim-stage">
+      <div>
+        <h2>Le prime reti Wi-Fi</h2>
+        <p>Nelle prime generazioni si facevano scelte diverse tra banda radio, velocità e portata.</p>
+        <p>Lo standard <strong>802.11b</strong> usava la banda dei 2,4 gigahertz e arrivava a 11 megabit al secondo nominali.</p>
+      </div>
+      <div class="lim-visual">
+        <ul class="lim-diagram" role="list">
+          <li><strong>802.11b · 2,4 gigahertz.</strong> Una delle prime reti Wi-Fi a diffondersi.</li>
+          <li><strong>802.11a · 5 gigahertz.</strong> Usava una banda diversa e arrivava a 54 megabit al secondo nominali.</li>
+          <li><strong>802.11g · 2,4 gigahertz.</strong> Portò i 54 megabit al secondo nominali nella stessa banda usata da 802.11b.</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+  <section class="presenter-slide lim-slide" tabindex="-1" inert>
+    <div class="lim-stage">
+      <div>
+        <h2>Wi-Fi 4 e 5: più flussi e più spazio</h2>
+        <p>Con Wi-Fi 4 si possono inviare <strong>più flussi di dati</strong> nello stesso momento, se i dispositivi riescono a distinguerli. I canali possono arrivare a 40 megahertz.</p>
+        <p>Wi-Fi 5 opera nella banda dei <strong>5 gigahertz</strong> e permette di usare canali ancora più larghi.</p>
+        <p class="lim-terms">
+          <span><strong>MIMO</strong> · Multiple Input Multiple Output, più antenne in trasmissione e ricezione per gestire più flussi.</span>
+        </p>
+      </div>
+      <div class="lim-visual">
+        <ul class="lim-diagram" role="list">
+          <li><strong>Wi-Fi 4.</strong> Il MIMO può far viaggiare due flussi sullo stesso canale.</li>
+          <li><strong>Wi-Fi 5.</strong> I 5 gigahertz offrono spazio per canali più larghi, dove disponibili.</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+  <section class="presenter-slide lim-slide" tabindex="-1" inert>
+    <div class="lim-stage">
+      <div>
+        <h2>Wi-Fi 6 serve più dispositivi insieme</h2>
+        <p>Con l’<strong>OFDMA</strong> il punto di accesso divide il canale in gruppi di frequenze e li assegna a dispositivi diversi nello stesso intervallo.</p>
+        <p>È utile in aula: chi deve inviare pochi dati può usare la propria parte del canale.</p>
+        <p class="lim-terms">
+          <span><strong>OFDMA</strong> · Orthogonal Frequency Division Multiple Access, accesso di più dispositivi a parti dello stesso canale.</span>
+        </p>
+      </div>
+      <figure class="lim-visual">
+        <figcaption>Un intervallo di trasmissione</figcaption>
+        <div class="lim-allocation" role="list">
+          <span role="listitem">Telefono</span>
+          <span role="listitem">Portatile</span>
+          <span role="listitem">Tablet</span>
+        </div>
+        <p class="lim-topology-note">Ogni dispositivo usa un gruppo di frequenze diverso.</p>
+      </figure>
+    </div>
+  </section>
+  <section class="presenter-slide lim-slide" tabindex="-1" inert>
+    <div class="lim-stage">
+      <div>
+        <h2>Wi-Fi 6E aggiunge una banda, il 7 più collegamenti</h2>
+        <p><strong>Wi-Fi 6E</strong> estende il Wi-Fi 6 alla banda dei 6 gigahertz. Serve che sia supportata sia dal punto di accesso sia dal dispositivo.</p>
+        <p><strong>Wi-Fi 7</strong> può coordinare più collegamenti e usare canali più larghi dove lo spettro lo permette. Le prestazioni dipendono anche dagli apparati e dalle condizioni radio.</p>
+      </div>
+      <div class="lim-visual">
+        <ul class="lim-diagram" role="list">
+          <li><strong>Sfida lampo.</strong> Un portatile Wi-Fi 6 senza supporto ai 6 gigahertz vede una rete attiva solo su quella banda?</li>
+          <li><strong>Risposta.</strong> No. Per usare quella banda la radio del portatile deve supportarla.</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+  <section class="presenter-slide lim-slide" tabindex="-1" inert>
+    <div class="lim-stage">
+      <div>
+        <h2>Perché lo speed test mostra un numero più basso</h2>
+        <p>La velocità nominale misura il collegamento radio in certe condizioni. Parte del tempo serve ad aspettare il turno, inviare messaggi di servizio e ritrasmettere dati.</p>
+        <p>Il risultato dello speed test dipende anche dalla linea Internet e dal traffico. L’esempio usa un rendimento ipotetico del <strong>55%</strong>.</p>
+      </div>
+      <div class="lim-visual">
+        <ul class="lim-diagram" role="list">
+          <li><strong>600 megabit al secondo.</strong> Velocità nominale dell’esempio.</li>
+          <li><strong>600 × 0,55 = 330.</strong> Megabit al secondo di dati utili nell’ipotesi scelta.</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+  <section class="presenter-slide lim-slide" tabindex="-1" inert>
+    <div class="lim-stage">
+      <div>
+        <h2>Hedy Lamarr: da Hollywood ai salti di frequenza</h2>
+        <p>Nel <strong>1942</strong> l’attrice Hedy Lamarr e il compositore George Antheil brevettarono un sistema radio per rendere il segnale più difficile da disturbare.</p>
+        <p>Trasmettitore e ricevitore cambiavano frequenza insieme. Il brevetto proponeva rulli perforati come quelli delle <strong>pianole</strong> per tenerli sincronizzati.</p>
+        <p class="lim-example"><strong>Il punto.</strong> È una storia di comunicazioni radio progettate per resistere ai disturbi.</p>
+        <p class="lim-terms"><a href="https://sova.si.edu/record/nmah.ac.1590" target="_blank" rel="noopener noreferrer">Archivio Smithsonian · Lamarr e Antheil</a></p>
+      </div>
+      <div class="lim-visual">
+        <ul class="lim-diagram" role="list">
+          <li><strong>Un momento · Frequenza A.</strong> Chi trasmette e chi ascolta sono sulla stessa frequenza.</li>
+          <li><strong>Momento successivo · Frequenza C.</strong> Entrambi cambiano insieme. Un disturbo fisso su A resta su A.</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+</template>
 
 <script src="../assets/js/app.js"></script>
 <script src="../assets/js/annotazioni.js" defer></script>

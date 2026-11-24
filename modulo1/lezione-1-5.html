@@ -7,10 +7,16 @@
   <link rel="stylesheet" href="../assets/css/style.css">
   <style>
     :root { --m-color: var(--m1); }
+    .module-one .beamforming-3d { margin-top: 1.5rem; }
+    .module-one .beamforming-3d summary { cursor: pointer; }
+    @media print {
+      .module-one .beamforming-3d #beam3dCanvas, .module-one #beam3dHelp, .module-one #beam3dState { display: none; }
+    }
   </style>
   <link rel="stylesheet" href="../assets/css/modulo1.css">
   <link rel="stylesheet" href="../assets/css/esperimenti.css">
   <link rel="stylesheet" href="../assets/css/annotazioni.css">
+  <link rel="stylesheet" href="../assets/css/presentazioni-modulo1.css">
 </head>
 <body class="module-one" data-lesson-id="m1-5">
 
@@ -170,7 +176,7 @@
       </div>
 
       <!-- ======================================
-           SLIDE 1 — MODELLO 3D ESPLORABILE
+           SLIDE 1 — MIMO E BEAMFORMING IN 2D E 3D
            ====================================== -->
       <section class="slide reveal" id="slide-1" data-num="01">
         <h2>1. MIMO e Beamforming: Due Effetti da Distinguere</h2>
@@ -179,7 +185,28 @@
           Un’antenna distribuisce l’energia secondo un <strong>diagramma di radiazione</strong>. Con il <strong>beamforming</strong>, più antenne coordinano i segnali per favorire la ricezione in una direzione. Il <strong>MIMO</strong> può invece usare più flussi spaziali per trasportare dati diversi sullo stesso canale. Confronta questi effetti nello schema, poi sposta il client.</p>
 
 <div class="lab-panel" data-sim="physical"></div>
-<p class="variant-link"><a href="anteprima-beamforming-3d.html">Confronta una variante 3D facoltativa →</a> · Lo schema qui sopra resta la versione principale.</p>
+        <div class="lab-panel beamforming-3d" id="beamforming-3d">
+          <div class="lab-heading">
+            <span>Esperimento 3D</span>
+            <h3>Ruota il fascio delle antenne</h3>
+          </div>
+          <p class="lab-note" id="beam3dHelp">Sposta il client e osserva dove si allunga il diagramma. Trascina il disegno, oppure selezionalo e usa le frecce, per guardarlo da un’altra angolazione.</p>
+          <div class="lab-controls">
+            <label for="beam3dAngle">Direzione del client <output id="beam3dAngleValue" for="beam3dAngle">0°</output>
+              <input type="range" id="beam3dAngle" min="-60" max="60" value="0">
+            </label>
+            <button type="button" class="btn btn-ghost" id="beam3dToggle" aria-pressed="true">Beamforming attivo</button>
+            <button type="button" class="btn btn-ghost" id="beam3dReset">Ripristina vista</button>
+          </div>
+          <canvas id="beam3dCanvas" tabindex="0" role="img" aria-label="Diagramma 3D di quattro antenne e della direzione del client" aria-describedby="beam3dHelp"></canvas>
+          <p id="beam3dState" class="beam-explainer" aria-live="polite"></p>
+          <p class="lab-note">Disattiva il beamforming per confrontare i due diagrammi. Dove la forma si allunga, la radiazione è favorita. Qui le quattro antenne coordinano lo stesso segnale.</p>
+          <details>
+            <summary>Ipotesi del modello</summary>
+            <p class="lab-note">Quattro elementi allineati a mezza lunghezza d’onda, senza ostacoli. Il raggio segue la radice della potenza normalizzata del modello, con un minimo grafico. Il diagramma mostra come si distribuisce la radiazione: non rappresenta né un limite di copertura né valori di potenza in dBm.</p>
+            <p class="sources"><a href="https://www.mathworks.com/help/phased/ug/element-and-array-radiation-patterns-and-responses.html" target="_blank" rel="noopener noreferrer">MathWorks · Diagrammi d’elemento e d’array</a></p>
+          </details>
+        </div>
       </section>
 
       <hr>
@@ -305,9 +332,134 @@
   </main>
 </div>
 
+<template data-presentation data-presentation-title="Tecniche di trasmissione Wi-Fi">
+  <section class="presenter-slide lim-slide" tabindex="-1" inert>
+    <div class="lim-stage">
+      <div>
+        <h2>Più dati e un segnale meglio diretto</h2>
+        <p>Più antenne possono aiutare in due modi. Possono trasportare <strong>flussi di dati diversi</strong> sullo stesso canale oppure coordinare i segnali per favorire la ricezione in una direzione.</p>
+        <p>Le due tecniche possono lavorare insieme.</p>
+        <p class="lim-terms">
+          <span><strong>MIMO</strong> · Multiple Input Multiple Output, uso di più antenne ai due estremi del collegamento.</span>
+        </p>
+      </div>
+      <div class="lim-visual">
+        <ul class="lim-diagram" role="list">
+          <li><strong>MIMO · Più flussi.</strong> Due sequenze di dati diverse viaggiano nello stesso momento.</li>
+          <li><strong>Beamforming · Più energia utile.</strong> Le antenne coordinano i segnali per favorire il ricevitore.</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+  <section class="presenter-slide lim-slide" tabindex="-1" inert>
+    <div class="lim-stage">
+      <div>
+        <h2>Quattro antenne per lato, fino a quattro flussi</h2>
+        <p>In un collegamento <strong>MIMO 4×4</strong> ci sono quattro catene radio a ciascun estremo. Se i percorsi sono abbastanza distinti, il ricevitore può separare fino a quattro flussi.</p>
+        <p>Il numero effettivo dipende anche dal dispositivo e da come arrivano i segnali.</p>
+        <p class="lim-terms">
+          <span><strong>MIMO</strong> · Multiple Input Multiple Output, più antenne in trasmissione e ricezione.</span>
+        </p>
+      </div>
+      <div class="lim-visual">
+        <ul class="lim-diagram" role="list">
+          <li><strong>Sfida lampo.</strong> Il punto di accesso arriva a quattro flussi. Il telefono ne supporta due. Quanti può riceverne?</li>
+          <li><strong>Risposta.</strong> Al massimo due. Conta anche il limite del telefono.</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+  <section class="presenter-slide lim-slide" tabindex="-1" inert>
+    <div class="lim-stage">
+      <div>
+        <h2>Come si orienta il segnale senza muovere le antenne</h2>
+        <p>Con il <strong>beamforming</strong> le antenne regolano le fasi dei segnali emessi. Verso il dispositivo le onde possono sommarsi e rendere più facile la ricezione.</p>
+        <p>Quando il dispositivo cambia posizione, la regolazione può cambiare con lui.</p>
+        <p class="lim-terms">
+          <span><strong>TxBF</strong> · Transmit Beamforming, coordinamento delle antenne in trasmissione.</span>
+        </p>
+      </div>
+      <div class="lim-visual">
+        <ul class="lim-diagram" role="list">
+          <li><strong>Prima.</strong> Le antenne emettono segnali che possono sommarsi poco nel punto in cui si trova il telefono.</li>
+          <li><strong>Dopo · TxBF.</strong> La regolazione delle fasi favorisce la somma dei segnali nella direzione utile.</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+  <section class="presenter-slide lim-slide" tabindex="-1" inert>
+    <div class="lim-stage">
+      <div>
+        <h2>Tante frequenze vicine, ciascuna con i suoi dati</h2>
+        <p>Con l’<strong>OFDM</strong> il canale è composto da molte <strong>sottoportanti</strong>. Ognuna è una frequenza usata per trasportare una parte dei dati.</p>
+        <p>Sono ortogonali: idealmente, dove si misura il massimo di una, i contributi delle altre si annullano. Il ricevitore riesce così a distinguerle.</p>
+        <p class="lim-terms">
+          <span><strong>OFDM</strong> · Orthogonal Frequency Division Multiplexing, trasmissione parallela su sottoportanti ortogonali.</span>
+        </p>
+      </div>
+      <figure class="lim-visual lim-band-chart">
+        <figcaption>Posizione delle sottoportanti nel canale</figcaption>
+        <div class="lim-timing">
+          <p>Frequenza 1</p>
+          <div class="lim-band-track" aria-hidden="true"><span style="--bar-start: 1%; --bar-size: 23%"></span></div>
+        </div>
+        <div class="lim-timing">
+          <p>Frequenza 2</p>
+          <div class="lim-band-track" aria-hidden="true"><span style="--bar-start: 23%; --bar-size: 23%"></span></div>
+        </div>
+        <div class="lim-timing">
+          <p>Frequenza 3</p>
+          <div class="lim-band-track" aria-hidden="true"><span style="--bar-start: 45%; --bar-size: 23%"></span></div>
+        </div>
+        <div class="lim-timing">
+          <p>Frequenza 4</p>
+          <div class="lim-band-track" aria-hidden="true"><span style="--bar-start: 67%; --bar-size: 23%"></span></div>
+        </div>
+      </figure>
+    </div>
+  </section>
+  <section class="presenter-slide lim-slide" tabindex="-1" inert>
+    <div class="lim-stage">
+      <div>
+        <h2>Quando gli echi possono tornare utili</h2>
+        <p><strong>Curiosità.</strong> In aula un’onda può arrivare al telefono direttamente oppure dopo un rimbalzo su una parete. Le copie ritardate possono indebolire il segnale.</p>
+        <p>Con più antenne, percorsi sufficientemente distinti possono invece aiutare il ricevitore a separare i flussi.</p>
+      </div>
+      <div class="lim-visual">
+        <ul class="lim-diagram" role="list">
+          <li><strong>Percorso diretto.</strong> L’onda arriva seguendo la via più corta.</li>
+          <li><strong>Percorso riflesso.</strong> Una copia passa dalla parete. Arriva da un’altra direzione e con un piccolo ritardo.</li>
+          <li><strong>Risultato possibile.</strong> Quando i percorsi sono abbastanza diversi, possono aiutare il ricevitore.</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+  <section class="presenter-slide lim-slide" tabindex="-1" inert>
+    <div class="lim-stage">
+      <div>
+        <h2>Più punti, più bit per simbolo</h2>
+        <p>Con la <strong>QAM</strong> ogni punto rappresenta una combinazione di bit. Più punti offre la costellazione, più bit porta ogni simbolo.</p>
+        <p>I punti diventano più vicini. Per distinguere simboli molto simili serve un segnale più pulito rispetto al rumore.</p>
+        <p class="lim-terms">
+          <span><strong>QAM</strong> · Quadrature Amplitude Modulation, modulazione che rappresenta i dati con punti di una costellazione.</span>
+        </p>
+      </div>
+      <div class="lim-visual">
+        <ul class="lim-diagram" role="list">
+          <li><strong>16-QAM · 4 bit.</strong> 2⁴ = 16 combinazioni.</li>
+          <li><strong>256-QAM · 8 bit.</strong> 2⁸ = 256 combinazioni.</li>
+          <li><strong>1024-QAM · 10 bit.</strong> 2¹⁰ = 1024 combinazioni.</li>
+          <li><strong>4096-QAM · 12 bit.</strong> 2¹² = 4096 combinazioni.</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+</template>
+
 <script src="../assets/js/app.js"></script>
 <script src="../assets/js/annotazioni.js" defer></script>
 <script src="../assets/js/modulo1.js"></script>
+<script src="../assets/js/beamforming-preview.js"></script>
 <script>
 /* Quiz: contenuti originali della lezione */
 document.addEventListener('DOMContentLoaded', () => {

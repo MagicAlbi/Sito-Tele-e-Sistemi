@@ -38,7 +38,7 @@ Resta da verificare la resa sulla LIM della classe. Salvataggio e pubblicazione 
 - **Controlli** Esportati e decodificati 1.402 fotogrammi a intervalli uguali (30 fps, 1280 × 720). Verificata la traccia audio AAC e il picco a −2 dBFS. In Chrome il lettore indica 46,8 secondi. Nel tratto in movimento di 6,5 secondi, Chrome ha scartato 1 fotogramma su circa 195, con l’audio attivo. Provati anche la pagina a 360 px, il testo del video, il quiz (3/3) e l’apertura del lettore in modalità presentazione.
 - **Aggiornamento del 24 novembre 2026** Sincronizzate le cinque frasi della voce Marin con le inquadrature a velocità naturale. Verificata l’identità della traccia video rispetto a prima e la sostituzione dell’audio. Decodificati 1.402 fotogrammi a 30 al secondo. Picco audio −1,8 dBFS.
 - **Vettoriali** Aggiunti alla [home](../../../../index.html) e agli indici dei [Moduli 1](../../../../modulo1/index.html) e [2](../../../../modulo2/index.html). In Chrome restano nei margini a 1440 px e spariscono a 390 px. Verificati i collegamenti relativi al prefisso del sito.
-- **Da rivedere con il docente** Resa delle immagini, voce e leggibilità sulla LIM. Poi valutare il viaggio dei pacchetti nella lezione 2.2.
+- **Da rivedere con il docente** Resa delle immagini, voce e leggibilità sulla LIM. Prima di estendere le illustrazioni ad altre pagine, rivederne l’effetto. Per la lezione 2.2, valutare un video sul viaggio di un pacchetto e una scelta interattiva.
 
 ## Approvazione del 24 novembre 2026
 

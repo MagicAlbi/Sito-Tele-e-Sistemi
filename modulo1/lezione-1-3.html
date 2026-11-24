@@ -26,6 +26,7 @@
   <link rel="stylesheet" href="../assets/css/modulo1.css">
   <link rel="stylesheet" href="../assets/css/esperimenti.css">
   <link rel="stylesheet" href="../assets/css/annotazioni.css">
+  <link rel="stylesheet" href="../assets/css/presentazioni-modulo1.css">
 </head>
 <body class="module-one" data-lesson-id="m1-3">
 
@@ -302,6 +303,104 @@
     </div>
   </main>
 </div>
+
+<template data-presentation data-presentation-title="Bande e canali radio">
+  <section class="presenter-slide lim-slide" tabindex="-1" inert>
+    <div class="lim-stage">
+      <div>
+        <h2>Tre bande, tre compromessi</h2>
+        <p>La <strong>banda</strong> è un intervallo di frequenze. Il <strong>canale</strong> è lo spazio che una rete occupa dentro la banda.</p>
+        <p>A parità di condizioni, una frequenza più alta ha più perdita in spazio libero. Pareti, distanza e apparati cambiano la copertura reale.</p>
+        <p class="lim-terms">
+          <span><strong>GHz</strong> · Gigahertz, miliardi di oscillazioni al secondo.</span>
+        </p>
+      </div>
+      <div class="lim-visual">
+        <ul class="lim-diagram" role="list">
+          <li><strong>2,4 GHz.</strong> Spesso copre più lontano, con meno spazio e più apparecchi vicini.</li>
+          <li><strong>5 GHz.</strong> Offre più possibilità di trovare un canale ampio.</li>
+          <li><strong>6 GHz.</strong> Offre altro spazio, con dispositivi compatibili.</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+  <section class="presenter-slide lim-slide" tabindex="-1" inert>
+    <div class="lim-stage">
+      <div>
+        <h2>I canali vicini possono sovrapporsi</h2>
+        <p>Nella banda dei 2,4 gigahertz i centri dei canali vicini distano <strong>5 megahertz</strong>. Un canale da <strong>20 megahertz</strong> è molto più largo di quella distanza.</p>
+        <p>Se due reti usano canali vicini, parte dei loro segnali occupa le stesse frequenze e può disturbare la ricezione.</p>
+      </div>
+      <figure class="lim-visual lim-band-chart">
+        <figcaption>Stessa scala per i due canali</figcaption>
+        <div class="lim-timing">
+          <p>Canale 1</p>
+          <div class="lim-band-track" aria-hidden="true"><span style="--bar-start: 8%; --bar-size: 42%"></span></div>
+        </div>
+        <div class="lim-timing">
+          <p>Canale 3</p>
+          <div class="lim-band-track" aria-hidden="true"><span style="--bar-start: 29%; --bar-size: 42%"></span></div>
+        </div>
+      </figure>
+    </div>
+  </section>
+  <section class="presenter-slide lim-slide" tabindex="-1" inert>
+    <div class="lim-stage">
+      <div>
+        <h2>Perché si usano spesso 1, 6 e 11</h2>
+        <p>Con canali da 20 megahertz, <strong>1, 6 e 11</strong> sono una scelta comune. Tra i loro centri ci sono 25 megahertz: i canali sono ben separati.</p>
+        <p>Se due reti usano lo stesso canale e si sentono, possono dover aspettare il turno. La pianificazione considera anche dove sono i punti di accesso.</p>
+        <p class="lim-example"><strong>Sfida lampo.</strong> Se una rete è sul canale 1, per separarti meglio scegli 3 o 6? <strong>Risposta:</strong> 6. I centri sono più distanti.</p>
+      </div>
+      <figure class="lim-visual lim-band-chart">
+        <figcaption>Tre canali distanziati</figcaption>
+        <div class="lim-timing">
+          <p>Canale 1</p>
+          <div class="lim-band-track" aria-hidden="true"><span style="--bar-start: 0%; --bar-size: 26%"></span></div>
+        </div>
+        <div class="lim-timing">
+          <p>Canale 6</p>
+          <div class="lim-band-track" aria-hidden="true"><span style="--bar-start: 32%; --bar-size: 26%"></span></div>
+        </div>
+        <div class="lim-timing">
+          <p>Canale 11</p>
+          <div class="lim-band-track" aria-hidden="true"><span style="--bar-start: 64%; --bar-size: 26%"></span></div>
+        </div>
+      </figure>
+    </div>
+  </section>
+  <section class="presenter-slide lim-slide" tabindex="-1" inert>
+    <div class="lim-stage">
+      <div>
+        <h2>Quando il microonde disturba il Wi-Fi</h2>
+        <p><strong>Curiosità.</strong> Un forno a microonde lavora vicino a 2,45 gigahertz, dentro la banda usata anche dal Wi-Fi a 2,4 gigahertz.</p>
+        <p>Un apparecchio vicino può aumentare il rumore radio mentre è in funzione. In quel caso un collegamento su un’altra banda può evitare quel disturbo.</p>
+      </div>
+      <div class="lim-visual lim-art">
+        <img src="../assets/img/quiz-wlan-rete.svg" alt="Illustrazione di un punto di accesso e dei dispositivi collegati.">
+      </div>
+    </div>
+  </section>
+  <section class="presenter-slide lim-slide" tabindex="-1" inert>
+    <div class="lim-stage">
+      <div>
+        <h2>Quando il radar ha la precedenza</h2>
+        <p><strong>Curiosità.</strong> Su alcuni canali dei 5 gigahertz il Wi-Fi condivide le frequenze con i radar. Il punto di accesso deve ascoltare e, se rileva un radar, lasciare il canale.</p>
+        <p>Durante il passaggio a un altro canale i dispositivi possono perdere il collegamento per un breve periodo.</p>
+        <p class="lim-terms">
+          <span><strong>DFS</strong> · Dynamic Frequency Selection, selezione dinamica della frequenza per proteggere il radar.</span>
+        </p>
+      </div>
+      <div class="lim-visual">
+        <ul class="lim-diagram" role="list">
+          <li><strong>1 · Ascolto.</strong> Il punto di accesso controlla il canale soggetto a DFS.</li>
+          <li><strong>2 · Rilevamento.</strong> Riconosce un segnale radar.</li>
+          <li><strong>3 · Cambio canale.</strong> Sposta la rete per liberare la frequenza.</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+</template>
 
 <script src="../assets/js/app.js"></script>
 <script src="../assets/js/annotazioni.js" defer></script>

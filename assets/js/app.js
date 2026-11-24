@@ -372,6 +372,7 @@ const SidebarManager = (() => {
 const PresentationMode = (() => {
   let currentSlide = 0;
   let slides = [];
+  let slideTemplate = null;
   let presenterEl = null;
   let counterEl = null;
   let prevBtn = null;
@@ -381,15 +382,17 @@ const PresentationMode = (() => {
   let scrollPosition = 0;
 
   function buildPresenter() {
-    const pageSections = document.querySelectorAll('.slide');
-    if (pageSections.length === 0) return false;
-
-    slides = Array.from(pageSections);
+    const template = document.querySelector('template[data-presentation]');
+    if (template?.content.querySelector('.presenter-slide')) slideTemplate = template;
+    slides = Array.from(document.querySelectorAll('.slide'));
+    if (!slideTemplate && slides.length === 0) return false;
 
     presenterEl = document.createElement('div');
     presenterEl.className = 'slides-presenter';
+    if (slideTemplate) presenterEl.classList.add('lim-presenter');
 
-    const lessonTitle = document.querySelector('.lesson-title-h1')?.textContent || '';
+    const lessonTitle = slideTemplate?.dataset.presentationTitle ||
+      document.querySelector('.lesson-title-h1')?.textContent || '';
     presenterEl.innerHTML = `
       <div class="presenter-topbar">
         <div>
@@ -453,14 +456,8 @@ const PresentationMode = (() => {
     window.dispatchEvent(new Event('resize'));
   }
 
-  function start() {
-    if (document.body.classList.contains('presenting')) return;
-    if (!presenterEl) { if (!buildPresenter()) return; }
-    returnFocus = document.activeElement;
-    scrollPosition = window.scrollY;
-    const wrap = presenterEl.querySelector('#presenterSlidesWrap');
+  function mountStudySections(wrap) {
     // Move live elements, never copies. Give each experiment its own screen.
-    origins = [];
     slides.forEach(section => {
       let page = null;
       const title = section.querySelector('h2')?.textContent || 'Lezione';
@@ -489,12 +486,23 @@ const PresentationMode = (() => {
         if (experiment) page = null;
       });
     });
+  }
+
+  function start() {
+    if (document.body.classList.contains('presenting')) return;
+    if (!presenterEl) { if (!buildPresenter()) return; }
+    returnFocus = document.activeElement;
+    scrollPosition = window.scrollY;
+    const wrap = presenterEl.querySelector('#presenterSlidesWrap');
+    if (slideTemplate) wrap.appendChild(slideTemplate.content.cloneNode(true));
+    else mountStudySections(wrap);
     presenterEl.querySelector('#slideTotal').textContent = wrap.children.length;
     document.querySelector('.app-layout').inert = true;
     currentSlide = 0;
     document.body.classList.add('presenting');
     goTo(0);
-    presenterEl.querySelector('#exitPresent').focus();
+    const initialFocus = slideTemplate ? wrap.firstElementChild : presenterEl.querySelector('#exitPresent');
+    initialFocus.focus();
     if (document.documentElement.requestFullscreen) {
       document.documentElement.requestFullscreen().catch(() => {});
     }

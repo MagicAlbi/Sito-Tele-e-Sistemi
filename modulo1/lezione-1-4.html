@@ -23,10 +23,12 @@
       100% { r: 50; opacity: 0; fill: #ef4444; }
     }
     .boom-effect { animation: collidePulse 0.8s ease-out infinite; }
+
   </style>
   <link rel="stylesheet" href="../assets/css/modulo1.css">
   <link rel="stylesheet" href="../assets/css/esperimenti.css">
   <link rel="stylesheet" href="../assets/css/annotazioni.css">
+  <link rel="stylesheet" href="../assets/css/presentazioni-modulo1.css">
 </head>
 <body class="module-one" data-lesson-id="m1-4">
 
@@ -300,6 +302,162 @@
     </div>
   </main>
 </div>
+
+<template data-presentation data-presentation-title="Accesso al canale radio">
+  <section class="presenter-slide lim-slide" tabindex="-1" inert>
+    <div class="lim-stage">
+      <div>
+        <h2>Il Wi-Fi condivide il canale radio</h2>
+        <p>In aula, telefoni e computer usano lo stesso canale per parlare con il <strong>punto di accesso (AP)</strong>.</p>
+        <p>Se due dispositivi trasmettono insieme, i segnali possono sovrapporsi e diventare illeggibili all’AP. È una <strong>collisione</strong>.</p>
+        <p class="lim-example"><strong>Curiosità.</strong> Fibra veloce, tutte le tacche, Wi-Fi lento. Può bastare che il canale radio sia già occupato.</p>
+        <p class="lim-terms"><strong>AP</strong> · Access Point, punto di accesso Wi-Fi.</p>
+      </div>
+      <div class="lim-visual lim-art">
+        <img src="../assets/img/indice-rete-radio.svg" width="200" height="252" alt="Punto di accesso Wi-Fi con un telefono e un computer collegati">
+      </div>
+    </div>
+  </section>
+  <section class="presenter-slide lim-slide" tabindex="-1" inert>
+    <div class="lim-stage">
+      <div>
+        <h2>Prima di inviare, il Wi-Fi ascolta</h2>
+        <p>La radio è <strong>half-duplex</strong>. Mentre trasmette, il suo segnale copre quelli più deboli degli altri dispositivi.</p>
+        <p>Per ridurre le collisioni il Wi-Fi usa il <strong>CSMA/CA</strong>, che regola l’ascolto e l’attesa prima dell’invio.</p>
+        <p class="lim-terms">
+          <span><strong>CSMA/CA</strong> · Carrier Sense Multiple Access with Collision Avoidance. Si ascolta il canale prima di usarlo.</span>
+          <span><strong>DIFS</strong> · DCF Interframe Space, la pausa a canale libero.</span>
+          <span><strong>DCF</strong> · Distributed Coordination Function, il metodo in cui i dispositivi si contendono il canale.</span>
+        </p>
+      </div>
+      <div class="lim-visual">
+        <ol class="lim-diagram" role="list">
+          <li><strong>1. Ascolta.</strong> Il canale deve restare libero per una breve pausa fissa, il DIFS.</li>
+          <li><strong>2. Sorteggia.</strong> Il backoff è il tempo di attesa casuale.</li>
+          <li><strong>3. Trasmette.</strong> Il conto alla rovescia avanza a canale libero. A zero parte l’invio.</li>
+        </ol>
+      </div>
+    </div>
+  </section>
+  <section class="presenter-slide lim-slide" tabindex="-1" inert>
+    <div class="lim-stage">
+      <div>
+        <h2>L’attesa casuale separa le partenze</h2>
+        <p>Due telefoni si sentono. Dopo la pausa fissa, <strong>A sorteggia 2 intervalli</strong> e <strong>C ne sorteggia 5</strong>.</p>
+        <p>Dopo 2 intervalli liberi A trasmette. C sente A e mette in pausa il suo conteggio.</p>
+        <p class="lim-example"><strong>Sfida lampo.</strong> Dopo il ritorno del canale libero e la pausa fissa, C riparte da 5 o da 3?<br><strong>Risposta.</strong> Da 3, perché conserva i 2 intervalli già contati.</p>
+      </div>
+      <figure class="lim-visual">
+        <figcaption>Quando A inizia a trasmettere</figcaption>
+        <div class="lim-timing">
+          <p><strong>A</strong> · 2 − 2 = 0, trasmette</p>
+          <div class="lim-slots" aria-hidden="true">
+            <span class="lim-elapsed"></span><span class="lim-elapsed"></span>
+          </div>
+        </div>
+        <div class="lim-timing">
+          <p><strong>C</strong> · 5 − 2 = 3, aspetta</p>
+          <div class="lim-slots" aria-hidden="true">
+            <span class="lim-elapsed"></span><span class="lim-elapsed"></span>
+            <span class="lim-waiting"></span><span class="lim-waiting"></span><span class="lim-waiting"></span>
+          </div>
+        </div>
+      </figure>
+    </div>
+  </section>
+  <section class="presenter-slide lim-slide" tabindex="-1" inert>
+    <div class="lim-stage">
+      <div>
+        <h2>L’ACK conferma la ricezione</h2>
+        <p>Quando i dati arrivano leggibili, il punto di accesso attende una breve pausa, il <strong>SIFS</strong>, e risponde con un <strong>ACK</strong>, il messaggio di conferma.</p>
+        <p>Se due telefoni sorteggiano la stessa attesa, possono partire insieme. Una collisione può rendere illeggibili i dati.</p>
+        <p class="lim-terms">
+          <span><strong>SIFS</strong> · Short Interframe Space, la pausa breve prima della risposta.</span>
+          <span><strong>ACK</strong> · Acknowledgment, conferma di ricezione.</span>
+        </p>
+      </div>
+      <div class="lim-visual">
+        <ul class="lim-diagram" role="list">
+          <li><strong>ACK ricevuto.</strong> Il mittente sa che i dati sono arrivati.</li>
+          <li><strong>ACK assente.</strong> Il mittente può ritentare, sorteggiando da più valori per ridurre la probabilità di un’altra partenza simultanea.</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+  <section class="presenter-slide lim-slide" tabindex="-1" inert>
+    <div class="lim-stage">
+      <div>
+        <h2>Il nodo nascosto sfugge all’ascolto</h2>
+        <p>Una parete separa i telefoni <strong>A</strong> e <strong>C</strong>. Entrambi raggiungono il punto di accesso, ma il segnale dell’uno è troppo debole per essere rilevato dall’altro.</p>
+        <p>A trasmette. Dalla propria posizione, C sente il canale libero e può iniziare a sua volta.</p>
+        <p class="lim-terms"><strong>AP</strong> · Access Point, punto di accesso Wi-Fi.</p>
+      </div>
+      <figure class="lim-visual">
+        <img class="lim-topology-art" src="../assets/img/quiz-wlan-rete.svg" width="190" height="238" alt="">
+        <div class="lim-topology" aria-hidden="true">
+          <b>Tel. A</b><span>→</span><b>AP</b><span>←</span><b>Tel. C</b>
+        </div>
+        <figcaption class="lim-topology-note"><strong>Collisione all’AP.</strong> I due segnali arrivano insieme al punto di accesso.</figcaption>
+      </figure>
+    </div>
+  </section>
+  <section class="presenter-slide lim-slide" tabindex="-1" inert>
+    <div class="lim-stage">
+      <div>
+        <h2>RTS e CTS riservano il canale</h2>
+        <p>Una parete divide A e C. Solo il punto di accesso riesce a parlare con entrambi.</p>
+        <p>Dal <strong>CTS</strong>, C ricava quanto aspettare e imposta il <strong>NAV</strong>. Aspetta anche se il canale gli sembra libero.</p>
+        <p class="lim-example">Se C non riceve il CTS, può ancora partire.</p>
+        <p class="lim-terms">
+          <span><strong>RTS</strong> · Request to Send, richiesta di invio.</span>
+          <span><strong>CTS</strong> · Clear to Send, via libera all’invio.</span>
+          <span><strong>NAV</strong> · Network Allocation Vector, timer della riserva.</span>
+          <span><strong>ACK</strong> · Acknowledgment, conferma di ricezione.</span>
+        </p>
+      </div>
+      <div class="lim-visual">
+        <ol class="lim-diagram" role="list">
+          <li class="lim-step"><strong>RTS</strong><span>A chiede di inviare e indica la durata prevista.</span></li>
+          <li class="lim-step"><strong>CTS</strong><span>Il punto di accesso dà il via libera ad A. Anche C lo sente.</span></li>
+          <li class="lim-step"><strong>DATA</strong><span>A invia i dati mentre C aspetta.</span></li>
+          <li class="lim-step"><strong>ACK</strong><span>Il punto di accesso conferma ad A la ricezione.</span></li>
+        </ol>
+      </div>
+    </div>
+  </section>
+  <section class="presenter-slide lim-slide" tabindex="-1" inert>
+    <div class="lim-stage">
+      <div>
+        <h2>Un invio più lento occupa il canale più a lungo</h2>
+        <p>Con un segnale debole il telefono può rallentare. Per inviare gli stessi dati occupa il canale per più <strong>tempo d’aria</strong>.</p>
+        <p>Con l’<strong>Airtime Fairness</strong>, il punto di accesso può bilanciare le quote di tempo. Nella stessa quota, il dispositivo veloce può inviare più dati.</p>
+        <p class="lim-terms"><strong>Mb/s</strong> · Megabit al secondo, l’unità di velocità usata nell’esempio.</p>
+      </div>
+      <figure class="lim-visual">
+        <figcaption>Tempo per inviare 12 megabit</figcaption>
+        <div class="lim-timing">
+          <p>A <strong>6 Mb/s</strong> servono 2 secondi</p>
+          <div class="lim-meter" aria-hidden="true"><span style="--bar-size: 100%"></span></div>
+        </div>
+        <div class="lim-timing">
+          <p>A <strong>24 Mb/s</strong> basta mezzo secondo</p>
+          <div class="lim-meter" aria-hidden="true"><span style="--bar-size: 25%"></span></div>
+        </div>
+        <p class="lim-topology-note">Il calcolo conta solo l’invio dei dati. Attese e messaggi di servizio si aggiungono.</p>
+      </figure>
+    </div>
+  </section>
+  <section class="presenter-slide lim-slide" tabindex="-1" inert>
+    <div class="lim-stage lim-stage-summary">
+      <h2>Come si condivide il canale, in tre punti</h2>
+      <ul class="lim-summary" role="list">
+        <li><strong>Prima dell’invio.</strong> Il Wi-Fi ascolta e sorteggia un’attesa per ridurre le partenze simultanee. Dopo l’invio arriva la conferma se i dati sono stati ricevuti.</li>
+        <li><strong>Con un nodo nascosto.</strong> Il punto di accesso comunica la riserva anche a chi non sente il mittente. Un timer indica quanto aspettare.</li>
+        <li><strong>Con molti dispositivi.</strong> Contano il numero di invii e il tempo che ciascuno occupa sul canale.</li>
+      </ul>
+    </div>
+  </section>
+</template>
 
 <script src="../assets/js/app.js"></script>
 <script src="../assets/js/annotazioni.js" defer></script>
