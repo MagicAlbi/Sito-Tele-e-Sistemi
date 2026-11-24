@@ -103,6 +103,8 @@
     <span class="sidebar-section-title">Pratica & Verifiche</span>
     <ul class="sidebar-nav">
       <li><a href="lab-copertura.html"><span class="lesson-num">🔬</span><span class="lesson-title">Simulatore Copertura RF</span></a></li>
+      <li><a href="allenamento.html"><span class="lesson-num">🎯</span><span class="lesson-title">Quiz di allenamento</span></a></li>
+      <li><a href="esercizi.html"><span class="lesson-num">🧮</span><span class="lesson-title">Esercizi numerici</span></a></li>
       <li class="active"><a href="verifica.html"><span class="lesson-num">📋</span><span class="lesson-title">Compito & Verifica M1</span></a></li>
     </ul>
   </nav>
@@ -321,13 +323,13 @@ document.addEventListener('DOMContentLoaded', () => {
     {
       question: "2. Che differenza c'è tra SSID e BSSID?",
       answers: [
-        { text: "SSID è il nome mnemonico della rete, BSSID è l'indirizzo MAC a 48 bit dell'interfaccia radio dell'AP", correct: true },
+        { text: "SSID è il nome della rete, BSSID è l'indirizzo MAC a 48 bit che identifica una cella Wi-Fi", correct: true },
         { text: "SSID è la password, BSSID è il nome dell'utente", correct: false },
         { text: "SSID è l'IP pubblico, BSSID è l'IP privato", correct: false },
         { text: "Sono due sigle che indicano esattamente la stessa cosa", correct: false }
       ],
-      explain_correct: "Perfetto! SSID = nome testuale; BSSID = MAC address dell'antenna.",
-      explain_wrong: "SSID è il nome della rete (Service Set Identifier); BSSID è il MAC fisico dell'Access Point."
+      explain_correct: "Esatto. L'SSID è il nome della rete. Il BSSID identifica la singola cella Wi-Fi.",
+      explain_wrong: "Più celle possono condividere lo stesso nome di rete (SSID). Il BSSID è l'indirizzo MAC a 48 bit che distingue una cella dalle altre."
     },
     {
       question: "3. Quale standard IEEE ha introdotto per la prima volta la tecnologia MIMO e i canali a 40 MHz (Wi-Fi 4)?",

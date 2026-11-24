@@ -157,6 +157,8 @@
           <span class="lesson-title">Simulatore Copertura RF</span>
         </a>
       </li>
+      <li><a href="allenamento.html"><span class="lesson-num">🎯</span><span class="lesson-title">Quiz di allenamento</span></a></li>
+      <li><a href="esercizi.html"><span class="lesson-num">🧮</span><span class="lesson-title">Esercizi numerici</span></a></li>
       <li>
         <a href="verifica.html">
           <span class="lesson-num">📋</span>
@@ -209,11 +211,11 @@
         </div>
       </header>
 
-      <!-- TL;DR IN EVIDENZA -->
+      <!-- RIASSUNTO IN EVIDENZA -->
       <div class="tldr reveal">
         <span class="tldr-icon">⚡</span>
         <div>
-          <strong>TL;DR in 15 secondi:</strong> Una WLAN è a tutti gli effetti una LAN in cui il cavo di rame è sostituito da onde radio. A livello 3 (IP) e superiori non cambia <em>assolutamente nulla</em>. Le uniche vere rivoluzioni avvengono al Livello 1 (Fisico RF) e nel sotto-livello MAC (Livello 2), che deve orchestrare il traffico in un mezzo broadcast condiviso senza far collidere i segnali.
+          <strong>In breve.</strong> Con il Wi-Fi i dati viaggiano via radio (livello 1). I dispositivi seguono regole per trasmettere su un canale condiviso e ridurre le collisioni (livello 2, parte MAC). IP e i protocolli dei livelli superiori funzionano come su una rete cablata.
         </div>
       </div>
 
@@ -399,27 +401,27 @@
         </div>
 
         <!-- BOX GLOSSARIO CONCETTI CHIAVE -->
-        <h3>Terminologia Chiave per la Verifica</h3>
+        <h3>Termini chiave per la verifica</h3>
         <div class="def-grid">
           <div class="def-item">
-            <span class="def-term">STA (Station)</span>
-            <span class="def-full">Station Wireless</span>
-            <span class="def-desc">Qualsiasi apparato terminale munito di scheda radio conforme a IEEE 802.11 (smartphone, portatili, stampanti Wi-Fi, sensori IoT).</span>
+            <span class="def-term">STA</span>
+            <span class="def-full">Station (stazione)</span>
+            <span class="def-desc">Un dispositivo che comunica via Wi-Fi. Per esempio, il tuo telefono o il portatile in laboratorio.</span>
           </div>
           <div class="def-item">
-            <span class="def-term">AP (Access Point)</span>
-            <span class="def-full">Punto di Accesso</span>
-            <span class="def-desc">Dispositivo centrale di Livello 2 che effettua il bridging tra il mezzo radio condiviso e il segmento cablato (Distribution System).</span>
+            <span class="def-term">AP</span>
+            <span class="def-full">Access Point</span>
+            <span class="def-desc">Il punto di accesso riceve i dati via Wi-Fi dai dispositivi e li inoltra alla rete della scuola. Fa da ponte tra il collegamento radio e la rete cablata al livello 2.</span>
           </div>
           <div class="def-item">
-            <span class="def-term">BSS & BSSID</span>
-            <span class="def-full">Basic Service Set</span>
-            <span class="def-desc">La cella elementare formata da un AP e dai terminali associati. Il <strong>BSSID</strong> è l'indirizzo MAC a 48 bit dell'interfaccia radio dell'AP.</span>
+            <span class="def-term">BSS e BSSID</span>
+            <span class="def-full">Cella e identificativo</span>
+            <span class="def-desc"><strong>BSS</strong> (Basic Service Set) è una cella Wi-Fi. In questa configurazione è formata da un AP e dai dispositivi collegati a quell’AP.<br><strong>BSSID</strong> è l’indirizzo MAC a 48 bit che identifica quella cella. L’<strong>SSID</strong> è il nome di rete che vedi sul telefono, per esempio «Wi-Fi Scuola».</span>
           </div>
           <div class="def-item">
-            <span class="def-term">ESS & Roaming</span>
+            <span class="def-term">ESS e roaming</span>
             <span class="def-full">Extended Service Set</span>
-            <span class="def-desc">Unione di più BSS interconnessi tramite dorsale cablata che condividono lo stesso SSID. Permette a un alunno o docente di camminare tra le aule senza disconnettersi.</span>
+            <span class="def-desc"><strong>ESS</strong> è l’insieme di più celle collegate tra loro che usano lo stesso nome di rete.<br>Quando passi dal laboratorio al corridoio, il telefono può agganciarsi all’AP del corridoio. È il <strong>roaming</strong>. Il nome «Wi-Fi Scuola» (SSID) resta uguale, mentre cambia l’identificativo della cella (BSSID).</span>
           </div>
         </div>
       </section>
@@ -602,11 +604,11 @@ document.addEventListener('DOMContentLoaded', () => {
       answers: [
         { text: "Il nome testuale visibile della rete (es. 'Wi-Fi Scuola')", correct: false },
         { text: "La password cifrata dell'Access Point", correct: false },
-        { text: "L'indirizzo MAC a 48 bit dell'interfaccia radio dell'Access Point", correct: true },
+        { text: "L'indirizzo MAC a 48 bit che identifica una cella Wi-Fi", correct: true },
         { text: "L'indirizzo IP pubblico assegnato dal provider", correct: false }
       ],
-      explain_correct: "Perfetto! Il SSID è il nome mnemonico (max 32 caratteri), mentre il BSSID è il MAC address univoco dell'antenna dell'AP.",
-      explain_wrong: "Non confondere SSID e BSSID! Il nome visibile è il SSID, mentre il BSSID è l'indirizzo fisico (MAC address) dell'Access Point."
+      explain_correct: "Esatto. Il BSSID identifica una singola cella Wi-Fi. Più celle possono avere lo stesso nome di rete (SSID).",
+      explain_wrong: "Il telefono mostra il nome di rete (SSID), per esempio «Wi-Fi Scuola». Il BSSID è l'indirizzo MAC a 48 bit che distingue una cella dalle altre."
     },
     {
       question: "In quale scenario si configura una topologia Ad-Hoc (IBSS)?",
@@ -634,12 +636,12 @@ document.addEventListener('DOMContentLoaded', () => {
       question: "A cosa serve definire un ESS (Extended Service Set)?",
       answers: [
         { text: "A permettere la modalità ad-hoc su lunghe distanze", correct: false },
-        { text: "A unire più AP sotto lo stesso SSID per consentire il roaming senza disconnessioni", correct: true },
+        { text: "A collegare più celle con lo stesso SSID, così il telefono può passare da un AP all'altro", correct: true },
         { text: "A raddoppiare la velocità massima di ogni singolo dispositivo", correct: false },
         { text: "A vietare l'accesso agli smartphone non autorizzati", correct: false }
       ],
-      explain_correct: "Grandioso! Un ESS interconnette diversi BSS con una dorsale comune, consentendo agli utenti di spostarsi (roaming) senza perdere la sessione di rete.",
-      explain_wrong: "L'ESS (Extended Service Set) è l'architettura tipica di scuole o aziende: tanti AP, stesso SSID, medesima sottorete, per supportare la mobilità dell'utente."
+      explain_correct: "Esatto. Un ESS collega più celle che condividono lo stesso SSID. Quando il telefono passa da una cella all'altra fa roaming.",
+      explain_wrong: "Pensa a due celle collegate, una in laboratorio e una in corridoio. Fanno parte dello stesso ESS. Quando il telefono passa da un AP all'altro cambia il BSSID, mentre l'SSID resta uguale."
     }
   ];
 
