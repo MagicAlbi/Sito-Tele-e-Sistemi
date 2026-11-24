@@ -1,0 +1,37 @@
+.access-film {
+  margin-block: 1rem 1.6rem;
+}
+
+.access-film video {
+  width: 100%;
+  display: block;
+  aspect-ratio: 16 / 9;
+  border: 1px solid var(--border-2);
+  border-radius: var(--r-lg);
+  background: #09121e;
+}
+
+.access-film video {
+  max-height: 56vh;
+}
+
+.access-film-credit {
+  margin: .45rem 0 0;
+  color: var(--text-muted);
+  font-size: .85rem;
+}
+
+.access-film details {
+  margin-top: .85rem;
+}
+
+.access-film summary {
+  cursor: pointer;
+  color: var(--text);
+  font-weight: 650;
+}
+
+.access-film ol {
+  margin-top: .65rem;
+  color: var(--text-muted);
+}

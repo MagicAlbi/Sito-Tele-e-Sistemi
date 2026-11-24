@@ -1,4 +1,4 @@
-# Fase 35 · Modulo 1 · suggerimenti e completamento dei quiz delle lezioni
+# Fase 35 · Modulo 1 · quiz obbligatori per completare le lezioni
 
 [Torna al piano](../../PIANO.md)
 
@@ -14,10 +14,14 @@ Aggiorna l’esito nel file di fase e lo stato nella tabella del piano. Per il s
 
 ## Lavoro e verifiche
 
-- **Produce** Suggerimenti nei quiz al termine delle sei lezioni Wi-Fi e completamento obbligatorio del quiz della singola lezione prima di poterla segnare come svolta.
-- **Leggi** Le sei lezioni, il [motore dei quiz e dei progressi](../../../../assets/js/app.js) e gli esiti della [fase 21](../21/FASE.md).
-- **Criteri** Ogni domanda dei quiz brevi offre un suggerimento coerente con la lezione, consultabile prima di rispondere. Il suggerimento orienta senza mostrare la soluzione.
-- **Criteri** Puoi segnare una nuova lezione come svolta solo dopo aver terminato tutte le domande del suo quiz, a prescindere dal punteggio. Prima del completamento del quiz è spiegato che cosa serve per sbloccare il comando. Completare il test di allenamento o il quiz di un’altra lezione non sblocca la lezione. I progressi già registrati si conservano.
-- **Prove** In tutte e sei le lezioni controlla almeno un suggerimento, la correzione, il comando prima, durante e dopo il quiz e il comportamento dopo una ricarica. Prova anche il caso con risposte errate e controlla che quiz di allenamento e verifica finale funzionino come prima.
+- **Risultato** Per segnare ciascuna delle sei lezioni come studiata, rispondi alle cinque domande del suo quiz. La correzione resta quella mostrata dopo ogni risposta.
+- **Criteri** Il pulsante è disattivato e spiega come sbloccarlo. Si attiva alla quinta risposta con qualsiasi punteggio. Lo sblocco dura anche dopo una ricarica nello stesso browser. Le lezioni già completate conservano il loro stato.
+- **Criteri** In fondo a ciascuna lezione c’è un solo pulsante, allineato a destra. Salva il completamento prima di aprire la lezione successiva. La 1.6 conferma il completamento sulla stessa pagina. L’allenamento è raggiungibile dalla pagina del Modulo 1.
+- **Prove** Controlla tutte e sei le lezioni prima, durante e dopo il quiz, anche con cinque risposte errate. Verifica l’avanzamento del modulo e controlla che allenamento e verifica finale funzionino senza sbloccare lezioni.
 
 ## Esito
+
+- In Edge, tutte e sei le lezioni restano bloccate fino alla quinta risposta e si possono segnare come studiate con 0 su 5. Dopo una ricarica, lo sblocco e il completamento restano memorizzati. Verificati i completamenti precedenti e il 100% di avanzamento con tutte e sei le lezioni svolte.
+- Allenamento e verifica finale completati in Edge senza sbloccare alcuna lezione. Le domande e le correzioni già presenti nella bozza sono state mantenute.
+- Verificati in Edge il pulsante unico, i cinque passaggi alla lezione successiva dopo il salvataggio, la conferma sulla 1.6, la riapertura di una lezione già svolta e l’allineamento a destra su schermo stretto. Verificato l’accesso all’allenamento dalla pagina del Modulo 1.
+- **23 novembre 2026** Il docente ha approvato il completamento obbligatorio e il pulsante finale. Trasferite nella copia del sito solo le relative modifiche. In Edge, verificati di nuovo tutti e sei i quiz, il passaggio tra lezioni, la conferma finale, i progressi precedenti e l’accesso ad allenamento e verifica finale. Pubblicazione a cura del docente con MagicAlbi Sync.

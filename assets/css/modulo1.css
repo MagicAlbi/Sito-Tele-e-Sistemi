@@ -102,3 +102,5 @@ body.presenting { overflow: hidden; }
   .module-one .sources { font-size: 8pt; }
 }
 @media(prefers-reduced-motion: reduce) { .module-one *, .module-one *::before, .module-one *::after { animation: none !important; transition: none !important; } }
+
+#percorso-didattico { scroll-margin-top: calc(var(--header-h) + 1rem); }

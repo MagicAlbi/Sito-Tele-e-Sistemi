@@ -8,6 +8,7 @@
   <style> :root { --m-color: var(--m1); } </style>
   <link rel="stylesheet" href="../assets/css/modulo1.css">
   <link rel="stylesheet" href="../assets/css/esperimenti.css">
+  <link rel="stylesheet" href="../assets/css/margini-indici.css">
 </head>
 <body class="module-one">
 <div class="app-layout">
@@ -31,8 +32,12 @@
     </div>
   </header>
 
-  <main class="main-content" style="grid-column:1/-1">
-    <div class="content-wrap" style="max-width:980px">
+  <main class="main-content index-margins" style="grid-column: 1 / -1; --index-content-width: 980px;">
+    <div class="index-art" aria-hidden="true">
+      <img class="index-art-start" src="../assets/img/indice-rete-radio.svg" alt="" width="200" height="252">
+      <img class="index-art-end" src="../assets/img/quiz-wlan-scambio.svg" alt="" width="190" height="236">
+    </div>
+    <div class="content-wrap">
 
       <!-- HERO MODULO -->
       <section class="lesson-hero reveal">
@@ -49,175 +54,195 @@
           </p>
 
           <div style="display:flex; gap:0.75rem; flex-wrap:wrap; margin-top:1.25rem;">
-            <a href="lezione-1-1.html" class="btn btn-primary">Avvia da Lezione 1.1 →</a>
+            <a href="lezione-1-1.html" class="btn btn-primary" id="riprendi-lezione">Inizia lezione 1.1 →</a>
             <a href="lab-copertura.html" class="btn btn-ghost">🔬 Laboratorio Heatmap</a>
-            <a href="allenamento.html" class="btn btn-ghost">🎯 Test di allenamento</a>
-            <a href="verifica.html" class="btn btn-ghost">📋 Prova Sommativa M1</a>
+            <a href="allenamento.html" class="btn btn-ghost">🎯 Quiz di allenamento</a>
+            <a href="esercizi.html" class="btn btn-ghost">🧮 Esercizi numerici</a>
           </div>
         </div>
       </section>
 
-      <!-- GRIGLIA LEZIONI -->
-      <div class="section-heading reveal">
-        <span>Percorso Didattico Completo</span>
-      </div>
+      <section aria-labelledby="percorso-didattico">
+        <h2 id="percorso-didattico" class="section-heading reveal">Percorso didattico completo</h2>
+        <div class="modules-grid">
 
-      <div class="modules-grid" style="grid-template-columns:repeat(auto-fill, minmax(280px, 1fr))">
-
-        <!-- 1.1 -->
-        <a href="lezione-1-1.html" class="module-card reveal reveal-delay-1" style="--m-color:var(--m1)">
-          <div class="module-card-header">
-            <div class="module-number">1.1</div>
-            <div class="module-card-title">
-              <div class="module-tag">Fondamenti</div>
-              <h3>Introduzione alle WLAN</h3>
+          <!-- 1.1 -->
+          <a href="lezione-1-1.html" class="module-card reveal reveal-delay-1" data-lesson-id="m1-1" style="--m-color:var(--m1)">
+            <div class="module-card-header">
+              <div class="module-number">1.1</div>
+              <div class="module-card-title">
+                <div class="module-tag">Fondamenti</div>
+                <h3>Introduzione alle WLAN</h3>
+              </div>
             </div>
-          </div>
-          <p style="font-size:0.84rem; color:var(--text-muted); margin:0;">
-            Topologie Infrastructure vs Ad-hoc, architetture BSS/ESS, SSID, associazione a 3 stadi e tracciamento radio reale.
-          </p>
-          <div class="module-card-footer" style="margin-top:0.75rem;">
-            <span class="module-start-btn">Inizia Lezione →</span>
-          </div>
-        </a>
-
-        <!-- 1.2 -->
-        <a href="lezione-1-2.html" class="module-card reveal reveal-delay-2" style="--m-color:var(--m1)">
-          <div class="module-card-header">
-            <div class="module-number">1.2</div>
-            <div class="module-card-title">
-              <div class="module-tag">Evoluzione</div>
-              <h3>Standard IEEE 802.11</h3>
+            <p style="font-size:0.84rem; color:var(--text-muted); margin:0;">
+              Topologie Infrastructure vs Ad-hoc, architetture BSS/ESS, SSID, associazione a 3 stadi e tracciamento radio reale.
+            </p>
+            <div class="module-card-footer">
+              <span class="module-start-btn">Inizia Lezione →</span>
             </div>
-          </div>
-          <p style="font-size:0.84rem; color:var(--text-muted); margin:0;">
-            Da 802.11b al Wi-Fi 7. Calcolatore di velocità nominale vs Speedtest reale, animazione guidata OFDMA e la storia di Hedy Lamarr.
-          </p>
-          <div class="module-card-footer" style="margin-top:0.75rem;">
-            <span class="module-start-btn">Inizia Lezione →</span>
-          </div>
-        </a>
+          </a>
 
-        <!-- 1.3 -->
-        <a href="lezione-1-3.html" class="module-card reveal reveal-delay-3" style="--m-color:var(--m1)">
-          <div class="module-card-header">
-            <div class="module-number">1.3</div>
-            <div class="module-card-title">
-              <div class="module-tag">Radiofrequenza</div>
-              <h3>Canali Radio & Spettro</h3>
+          <!-- 1.2 -->
+          <a href="lezione-1-2.html" class="module-card reveal reveal-delay-2" data-lesson-id="m1-2" style="--m-color:var(--m1)">
+            <div class="module-card-header">
+              <div class="module-number">1.2</div>
+              <div class="module-card-title">
+                <div class="module-tag">Evoluzione</div>
+                <h3>Standard IEEE 802.11</h3>
+              </div>
             </div>
-          </div>
-          <p style="font-size:0.84rem; color:var(--text-muted); margin:0;">
-            Spettro 2.4 / 5 / 6 GHz, simulatore di interferenza co-canale, il forno a microonde che fa laggare la console e i radar DFS.
-          </p>
-          <div class="module-card-footer" style="margin-top:0.75rem;">
-            <span class="module-start-btn">Inizia Lezione →</span>
-          </div>
-        </a>
-
-        <!-- 1.4 -->
-        <a href="lezione-1-4.html" class="module-card reveal reveal-delay-1" style="--m-color:var(--m1)">
-          <div class="module-card-header">
-            <div class="module-number">1.4</div>
-            <div class="module-card-title">
-              <div class="module-tag">Protocollo MAC</div>
-              <h3>CSMA/CA & Hidden Node</h3>
+            <p style="font-size:0.84rem; color:var(--text-muted); margin:0;">
+              Da 802.11b al Wi-Fi 7. Calcolatore di velocità nominale vs Speedtest reale, animazione guidata OFDMA e la storia di Hedy Lamarr.
+            </p>
+            <div class="module-card-footer">
+              <span class="module-start-btn">Inizia Lezione →</span>
             </div>
-          </div>
-          <p style="font-size:0.84rem; color:var(--text-muted); margin:0;">
-            Simulatore dinamico del nodo nascosto, contesa RTS/CTS, timer NAV e perché un telefono con segnale debole rallenta tutta l'aula.
-          </p>
-          <div class="module-card-footer" style="margin-top:0.75rem;">
-            <span class="module-start-btn">Inizia Lezione →</span>
-          </div>
-        </a>
+          </a>
 
-        <!-- 1.5 -->
-        <a href="lezione-1-5.html" class="module-card reveal reveal-delay-2" style="--m-color:var(--m1)">
-          <div class="module-card-header">
-            <div class="module-number">1.5</div>
-            <div class="module-card-title">
-              <div class="module-tag">Strato Fisico</div>
-              <h3>MIMO & Beamforming</h3>
+          <!-- 1.3 -->
+          <a href="lezione-1-3.html" class="module-card reveal reveal-delay-3" data-lesson-id="m1-3" style="--m-color:var(--m1)">
+            <div class="module-card-header">
+              <div class="module-number">1.3</div>
+              <div class="module-card-title">
+                <div class="module-tag">Radiofrequenza</div>
+                <h3>Canali Radio & Spettro</h3>
+              </div>
             </div>
-          </div>
-          <p style="font-size:0.84rem; color:var(--text-muted); margin:0;">
-            Confronto guidato tra flussi MIMO e beamforming, ortogonalità OFDM, rimbalzi multipath sfruttati dal MIMO e modulazioni QAM.
-          </p>
-          <div class="module-card-footer" style="margin-top:0.75rem;">
-            <span class="module-start-btn">Inizia Lezione →</span>
-          </div>
-        </a>
-
-        <!-- 1.6 -->
-        <a href="lezione-1-6.html" class="module-card reveal reveal-delay-3" style="--m-color:var(--m1)">
-          <div class="module-card-header">
-            <div class="module-number">1.6</div>
-            <div class="module-card-title">
-              <div class="module-tag">Progettazione</div>
-              <h3>Site Survey & Sicurezza</h3>
+            <p style="font-size:0.84rem; color:var(--text-muted); margin:0;">
+              Spettro 2.4 / 5 / 6 GHz, simulatore di interferenza co-canale, il forno a microonde che fa laggare la console e i radar DFS.
+            </p>
+            <div class="module-card-footer">
+              <span class="module-start-btn">Inizia Lezione →</span>
             </div>
-          </div>
-          <p style="font-size:0.84rem; color:var(--text-muted); margin:0;">
-            Calcolatore di Link Budget e attenuazione pareti, come si bucava il WEP in 60 secondi e perché WPA3 Dragonfly è a prova di attacco.
-          </p>
-          <div class="module-card-footer" style="margin-top:0.75rem;">
-            <span class="module-start-btn">Inizia Lezione →</span>
-          </div>
-        </a>
+          </a>
 
-        <!-- LAB COPERTURA -->
-        <a href="lab-copertura.html" class="module-card reveal reveal-delay-1" style="--m-color:var(--success)">
-          <div class="module-card-header">
-            <div class="module-number">🔬</div>
-            <div class="module-card-title">
-              <div class="module-tag" style="color:var(--success)">Esperienza Pratica</div>
-              <h3>Simulatore Heatmap RF</h3>
+          <!-- 1.4 -->
+          <a href="lezione-1-4.html" class="module-card reveal reveal-delay-1" data-lesson-id="m1-4" style="--m-color:var(--m1)">
+            <div class="module-card-header">
+              <div class="module-number">1.4</div>
+              <div class="module-card-title">
+                <div class="module-tag">Protocollo MAC</div>
+                <h3>CSMA/CA & Hidden Node</h3>
+              </div>
             </div>
-          </div>
-          <p style="font-size:0.84rem; color:var(--text-muted); margin:0;">
-            Trascina l'Access Point sulla planimetria scolastica e misura l'attenuazione delle onde radio attraverso le pareti dell'edificio.
-          </p>
-          <div class="module-card-footer" style="margin-top:0.75rem;">
-            <span class="module-start-btn" style="color:var(--success)">Apri Laboratorio →</span>
-          </div>
-        </a>
-
-        <!-- TEST DI ALLENAMENTO -->
-        <a href="allenamento.html" class="module-card reveal reveal-delay-2" style="--m-color:var(--m1)">
-          <div class="module-card-header">
-            <div class="module-number">🎯</div>
-            <div class="module-card-title">
-              <div class="module-tag" style="color:var(--m1)">Ripasso</div>
-              <h3>Test di allenamento</h3>
+            <p style="font-size:0.84rem; color:var(--text-muted); margin:0;">
+              Simulatore dinamico del nodo nascosto, contesa RTS/CTS, timer NAV e perché un telefono con segnale debole rallenta tutta l'aula.
+            </p>
+            <div class="module-card-footer">
+              <span class="module-start-btn">Inizia Lezione →</span>
             </div>
-          </div>
-          <p style="font-size:0.84rem; color:var(--text-muted); margin:0;">
-            Rispondi a 10 domande sulle sei lezioni. Dopo la consegna trovi le spiegazioni e i collegamenti per ripassare.
-          </p>
-          <div class="module-card-footer" style="margin-top:0.75rem;">
-            <span class="module-start-btn" style="color:var(--m1)">Inizia Allenamento →</span>
-          </div>
-        </a>
+          </a>
 
-        <!-- VERIFICA COMPLETA -->
-        <a href="verifica.html" class="module-card reveal reveal-delay-2" style="--m-color:var(--warning)">
-          <div class="module-card-header">
-            <div class="module-number">📋</div>
-            <div class="module-card-title">
-              <div class="module-tag" style="color:var(--warning)">Valutazione</div>
-              <h3>Compito Sommativo M1</h3>
+          <!-- 1.5 -->
+          <a href="lezione-1-5.html" class="module-card reveal reveal-delay-2" data-lesson-id="m1-5" style="--m-color:var(--m1)">
+            <div class="module-card-header">
+              <div class="module-number">1.5</div>
+              <div class="module-card-title">
+                <div class="module-tag">Strato Fisico</div>
+                <h3>MIMO & Beamforming</h3>
+              </div>
             </div>
-          </div>
-          <p style="font-size:0.84rem; color:var(--text-muted); margin:0;">
-            10 quesiti a risposta multipla con voto in decimi, 2 quesiti aperti ed esercizio di Link Budget da allegare su foglio con timer d'aula.
-          </p>
-          <div class="module-card-footer" style="margin-top:0.75rem;">
-            <span class="module-start-btn" style="color:var(--warning)">Inizia Verifica →</span>
-          </div>
-        </a>
+            <p style="font-size:0.84rem; color:var(--text-muted); margin:0;">
+              Confronto guidato tra flussi MIMO e beamforming, ortogonalità OFDM, rimbalzi multipath sfruttati dal MIMO e modulazioni QAM.
+            </p>
+            <div class="module-card-footer">
+              <span class="module-start-btn">Inizia Lezione →</span>
+            </div>
+          </a>
 
-      </div>
+          <!-- 1.6 -->
+          <a href="lezione-1-6.html" class="module-card reveal reveal-delay-3" data-lesson-id="m1-6" style="--m-color:var(--m1)">
+            <div class="module-card-header">
+              <div class="module-number">1.6</div>
+              <div class="module-card-title">
+                <div class="module-tag">Progettazione</div>
+                <h3>Site Survey & Sicurezza</h3>
+              </div>
+            </div>
+            <p style="font-size:0.84rem; color:var(--text-muted); margin:0;">
+              Calcolatore di Link Budget e attenuazione pareti, come si bucava il WEP in 60 secondi e perché WPA3 Dragonfly è a prova di attacco.
+            </p>
+            <div class="module-card-footer">
+              <span class="module-start-btn">Inizia Lezione →</span>
+            </div>
+          </a>
+
+          <!-- LAB COPERTURA -->
+          <a href="lab-copertura.html" class="module-card reveal reveal-delay-1" style="--m-color:var(--success)">
+            <div class="module-card-header">
+              <div class="module-number">🔬</div>
+              <div class="module-card-title">
+                <div class="module-tag" style="color:var(--success)">Esperienza Pratica</div>
+                <h3>Simulatore Heatmap RF</h3>
+              </div>
+            </div>
+            <p style="font-size:0.84rem; color:var(--text-muted); margin:0;">
+              Trascina l'Access Point sulla planimetria scolastica e misura l'attenuazione delle onde radio attraverso le pareti dell'edificio.
+            </p>
+            <div class="module-card-footer">
+              <span class="module-start-btn">Apri Laboratorio →</span>
+            </div>
+          </a>
+
+        </div>
+      </section>
+
+      <section aria-labelledby="attivita-finali">
+        <h2 id="attivita-finali" class="section-heading reveal">Ripasso, esercizi e valutazione</h2>
+        <div class="modules-grid">
+          <!-- QUIZ DI ALLENAMENTO -->
+          <a href="allenamento.html" class="module-card reveal reveal-delay-2" style="--m-color:var(--m1)">
+            <div class="module-card-header">
+              <div class="module-number">🎯</div>
+              <div class="module-card-title">
+                <div class="module-tag" style="color:var(--m1)">Ripasso</div>
+                <h3>Quiz di allenamento</h3>
+              </div>
+            </div>
+            <p style="font-size:0.84rem; color:var(--text-muted); margin:0;">
+              Rispondi a 10 domande sulle sei lezioni. Dopo la consegna trovi le spiegazioni e i collegamenti per ripassare.
+            </p>
+            <div class="module-card-footer">
+              <span class="module-start-btn">Inizia il quiz →</span>
+            </div>
+          </a>
+
+          <!-- ESERCIZI NUMERICI -->
+          <a href="esercizi.html" class="module-card reveal reveal-delay-2" style="--m-color:var(--secondary)">
+            <div class="module-card-header">
+              <div class="module-number" aria-hidden="true">🧮</div>
+              <div class="module-card-title">
+                <h3>Esercizi numerici</h3>
+              </div>
+            </div>
+            <p style="font-size:0.84rem; color:var(--text-muted); margin:0;">
+              Consulta il formulario, scegli una tipologia e svolgi due esercizi di calcolo sul Wi-Fi.
+            </p>
+            <div class="module-card-footer">
+              <span class="module-start-btn">Apri gli esercizi →</span>
+            </div>
+          </a>
+
+          <!-- VERIFICA COMPLETA -->
+          <a href="verifica.html" class="module-card reveal reveal-delay-2" style="--m-color:var(--warning)">
+            <div class="module-card-header">
+              <div class="module-number">📋</div>
+              <div class="module-card-title">
+                <div class="module-tag" style="color:var(--warning)">Valutazione</div>
+                <h3>Compito Sommativo M1</h3>
+              </div>
+            </div>
+            <p style="font-size:0.84rem; color:var(--text-muted); margin:0;">
+              10 quesiti a risposta multipla con voto in decimi, 2 quesiti aperti ed esercizio di Link Budget da allegare su foglio con timer d'aula.
+            </p>
+            <div class="module-card-footer">
+              <span class="module-start-btn">Inizia Verifica →</span>
+            </div>
+          </a>
+
+        </div>
+      </section>
 
       <div style="margin-top:2.5rem; display:flex; gap:0.75rem; flex-wrap:wrap;">
         <a href="../index.html" class="btn btn-ghost">← Torna alla Dashboard Generale</a>
@@ -227,5 +252,28 @@
   </main>
 </div>
 <script src="../assets/js/app.js"></script>
+<script>
+  function aggiornaRipresaLezioni() {
+    const link = document.getElementById('riprendi-lezione');
+    const lezioni = Array.from(document.querySelectorAll('a.module-card[data-lesson-id]'));
+    const completate = lezioni.map(lezione => Progress.isDone(lezione.dataset.lessonId));
+    const prossima = lezioni[completate.indexOf(false)];
+
+    if (prossima) {
+      const numero = prossima.querySelector('.module-number').textContent;
+      const azione = completate.includes(true) ? 'Riprendi da' : 'Inizia';
+      link.href = prossima.getAttribute('href');
+      link.textContent = `${azione} lezione ${numero} →`;
+    } else {
+      link.href = '#percorso-didattico';
+      link.textContent = 'Ripassa le lezioni →';
+    }
+  }
+
+  aggiornaRipresaLezioni();
+  window.addEventListener('pageshow', aggiornaRipresaLezioni);
+  window.addEventListener('storage', aggiornaRipresaLezioni);
+  window.addEventListener('studio-change', aggiornaRipresaLezioni);
+</script>
 </body>
 </html>

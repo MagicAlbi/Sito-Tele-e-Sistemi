@@ -1,0 +1,33 @@
+.index-margins {
+  --index-content-width: var(--content-max);
+}
+
+.index-margins .content-wrap {
+  position: relative;
+  max-width: var(--index-content-width);
+}
+
+.index-art {
+  display: none;
+}
+
+@media screen and (min-width: 1200px) {
+  .index-art {
+    position: fixed;
+    inset: 0;
+    display: block;
+    pointer-events: none;
+  }
+
+  .index-art img {
+    position: absolute;
+    width: min(12rem, calc((100% - var(--index-content-width)) / 2 - 1.6rem));
+    height: auto;
+    opacity: .73;
+    user-select: none;
+  }
+
+  .index-art-start { inset-inline-start: 1rem; top: 21%; }
+  .index-art-end { inset-inline-end: 1rem; top: 43%; }
+  [data-theme="light"] .index-art img { filter: brightness(.71); opacity: .87; }
+}

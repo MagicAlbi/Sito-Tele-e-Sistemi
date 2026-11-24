@@ -178,6 +178,7 @@ if (studyPath) {
 
 const Progress = (() => {
   const KEY = 'tele5a-progress';
+  const quizKey = lessonId => `tele5a-quiz-finished:${lessonId}`;
 
   function getLocal() {
     try { return JSON.parse(localStorage.getItem(KEY)) || {}; }
@@ -194,6 +195,7 @@ const Progress = (() => {
   }
 
   function markDone(lessonId) {
+    if (quizPending(lessonId)) return;
     const value = { done: true, date: new Date().toISOString() };
     if (window.StudySync?.active() && /^m1-[1-6]$/.test(lessonId)) {
       if (!window.StudySync.markDone(lessonId, value)) return;
@@ -210,6 +212,47 @@ const Progress = (() => {
     return !!getAll()[lessonId]?.done;
   }
 
+  function quizPending(lessonId) {
+    if (lessonId !== document.body.dataset.lessonId || !document.querySelector('[data-lesson-quiz]')) return false;
+    if (window.StudySync?.active() && /^m1-[1-6]$/.test(lessonId)) {
+      return !window.StudySync.latestQuiz(lessonId);
+    }
+    return localStorage.getItem(quizKey(lessonId)) !== 'true';
+  }
+
+  function updateQuizCompletionButton(lessonId) {
+    const btn = document.querySelector('.mark-done-btn');
+    if (!btn) return;
+
+    if (isDone(lessonId)) {
+      btn.disabled = !btn.dataset.nextLesson;
+      btn.classList.toggle('done', btn.disabled);
+      btn.innerHTML = btn.disabled
+        ? `${iconCheck()} Lezione completata!`
+        : `Prossima lezione ${iconArrowRight()}`;
+    } else if (!quizPending(lessonId)) {
+      btn.disabled = false;
+      btn.innerHTML = btn.dataset.nextLesson
+        ? `Completa e vai alla prossima lezione ${iconArrowRight()}`
+        : `${iconCheck()} Completa lezione`;
+    } else {
+      btn.disabled = true;
+      btn.classList.remove('done');
+      btn.textContent = 'Termina il quiz per completare la lezione';
+    }
+  }
+
+  function finishQuiz(container, score, total) {
+    const lessonId = document.body.dataset.lessonId;
+    if (!lessonId || !container.hasAttribute('data-lesson-quiz')) return;
+    if (window.StudySync?.active() && /^m1-[1-6]$/.test(lessonId)) {
+      window.StudySync.quiz(lessonId, score, total);
+    } else {
+      localStorage.setItem(quizKey(lessonId), 'true');
+    }
+    updateQuizCompletionButton(lessonId);
+  }
+
   function getModuleProgress(moduleId, totalLessons) {
     const p = getAll();
     const done = Object.keys(p).filter(k => k.startsWith(moduleId + '-') && p[k].done).length;
@@ -223,7 +266,9 @@ const Progress = (() => {
 
   function updateUI(lessonId) {
     const btn = document.querySelector('.mark-done-btn');
-    if (btn) {
+    if (document.querySelector('[data-lesson-quiz]')) {
+      updateQuizCompletionButton(lessonId);
+    } else if (btn) {
       btn.classList.add('done');
       btn.innerHTML = `${iconCheck()} Completata con successo!`;
       btn.disabled = true;
@@ -244,25 +289,17 @@ const Progress = (() => {
       const fill = el.querySelector('.progress-fill, .module-progress-fill');
       const label = el.querySelector('[data-progress-pct]');
       if (fill) fill.style.width = pct + '%';
-      if (label) label.textContent = window.StudySync && moduleId === 'm1' ? pct : `${pct}%`;
+      if (label) label.textContent = pct;
       const doneTxt = el.querySelector('[data-progress-done]');
-      if (doneTxt) doneTxt.textContent = window.StudySync && moduleId === 'm1' ? done : `${done}/${total}`;
+      if (doneTxt) doneTxt.textContent = done;
     });
     const totalEl = document.querySelector('[data-total-done]');
     if (totalEl) totalEl.textContent = getTotalProgress();
   }
 
   function init(currentLessonId) {
-    const studyButton = document.querySelector('.mark-done-btn');
-    if (studyPath && studyButton && currentLessonId) {
-      const originalLabel = studyButton.innerHTML;
-      window.addEventListener('studio-change', () => {
-        const done = isDone(currentLessonId);
-        studyButton.classList.toggle('done', done);
-        studyButton.disabled = done;
-        studyButton.innerHTML = done ? `${iconCheck()} Lezione completata!` : originalLabel;
-      });
-    }
+    const btn = document.querySelector('.mark-done-btn');
+    const hasLessonQuiz = document.querySelector('[data-lesson-quiz]');
     if (studyPath || document.querySelector('.study-access')) {
       window.addEventListener('studio-change', () => {
         const progress = getAll();
@@ -272,16 +309,14 @@ const Progress = (() => {
           const check = item.querySelector('.lesson-check');
           if (check) check.innerHTML = done ? iconCheck() : '';
         });
+        if (currentLessonId && hasLessonQuiz) updateQuizCompletionButton(currentLessonId);
         refreshModuleProgress();
       });
     }
-    if (currentLessonId && isDone(currentLessonId)) {
-      const btn = document.querySelector('.mark-done-btn');
-      if (btn) {
-        btn.classList.add('done');
-        btn.innerHTML = `${iconCheck()} Lezione completata!`;
-        btn.disabled = true;
-      }
+    if (btn && currentLessonId && isDone(currentLessonId) && !hasLessonQuiz) {
+      btn.classList.add('done');
+      btn.innerHTML = `${iconCheck()} Lezione completata!`;
+      btn.disabled = true;
     }
     const p = getAll();
     Object.keys(p).forEach(lessonId => {
@@ -295,13 +330,21 @@ const Progress = (() => {
     });
     refreshModuleProgress();
 
-    const btn = document.querySelector('.mark-done-btn');
-    if (btn && currentLessonId && (studyPath || !isDone(currentLessonId))) {
+    if (!btn || !currentLessonId) return;
+    if (hasLessonQuiz) {
+      updateQuizCompletionButton(currentLessonId);
+      btn.addEventListener('click', () => {
+        if (!isDone(currentLessonId)) markDone(currentLessonId);
+        if (btn.dataset.nextLesson && isDone(currentLessonId)) {
+          window.location.assign(btn.dataset.nextLesson);
+        }
+      });
+    } else if (!isDone(currentLessonId)) {
       btn.addEventListener('click', () => markDone(currentLessonId));
     }
   }
 
-  return { init, markDone, isDone, getModuleProgress, refreshModuleProgress, getTotalProgress };
+  return { init, markDone, isDone, finishQuiz, getModuleProgress, refreshModuleProgress, getTotalProgress };
 })();
 
 /* ---- Sidebar mobile ---- */
@@ -600,10 +643,10 @@ const QuizEngine = (() => {
       }
 
       document.getElementById('nextQBtn').classList.remove('hidden');
+      if (current === total - 1) Progress.finishQuiz(container, score, total);
     }
 
     function showScore() {
-      if (studyQuiz) window.StudySync?.quiz(lessonId, score, total);
       const pct = Math.round((score / total) * 100);
       let msg = pct >= 80 ? '🔥 Eccezionale! Hai dominato il modulo.' : pct >= 60 ? '👍 Buon risultato! Qualche dettaglio da affinare.' : '💡 Ti consiglio un rapido ripasso prima del compito.';
       
@@ -621,9 +664,9 @@ const QuizEngine = (() => {
           <div class="score-sub">${pct}% di risposte corrette</div>
           <div class="quiz-actions">
             <button class="btn btn-ghost" id="retryQuiz">↩ Riprova</button>
-            <button class="btn btn-primary" onclick="document.querySelector('.mark-done-btn')?.scrollIntoView({behavior:'smooth'})">
+            ${container.hasAttribute('data-lesson-quiz') ? '' : `<button class="btn btn-primary" onclick="document.querySelector('.mark-done-btn')?.scrollIntoView({behavior:'smooth'})">
               Completa lezione ${iconArrowRight()}
-            </button>
+            </button>`}
           </div>
         </div>
       `;

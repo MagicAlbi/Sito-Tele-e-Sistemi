@@ -31,3 +31,15 @@ L’[indice del Modulo 2](../../../../modulo2/index.html) è raggiungibile dalla
 **Controlli superati in Chrome.** Apertura dalla home e dall’indice, spiegazione per risposte corrette e sbagliate in tutte e nove le domande, punteggi 0/3 e 3/3, nuovo tentativo. In ciascuna lezione la presentazione si avvia con Tab e Invio, si naviga con frecce e barra spaziatrice e si chiude con Esc. Il quiz funziona anche durante la presentazione. Controllati i collegamenti relativi, la larghezza delle pagine a 360 pixel e il calcolo del flusso E1 (32 × 8 × 8.000 = 2.048.000 bit/s).
 
 Resta da verificare la resa sulla LIM della classe. Salvataggio e pubblicazione spettano al docente tramite MagicAlbi Sync. La [fase 3](../03/FASE.md) riguarda le lezioni sui protocolli di linea e sul routing.
+
+## Integrazione multimediale · 23 novembre 2026
+
+- **Consegna** Nella [lezione 2.3](../../../../modulo2/lezione-2-3.html) il video «Dalla centrale a casa» parte da una vista larga, accompagna la fibra lungo la strada, inquadra l’armadio e spiega il passaggio al doppino, poi segue il rame fino a casa. La panoramica finale confronta FTTC e FTTH. La geometria 3D è stata rifatta con edifici distinti, materiali e ombre. La narrazione in italiano usa Marin, generata con la demo ufficiale OpenAI.fm. La pagina dichiara che la voce è generata con intelligenza artificiale.
+- **Controlli** Esportati e decodificati 1.402 fotogrammi a intervalli uguali (30 fps, 1280 × 720). Verificata la traccia audio AAC e il picco a −2 dBFS. In Chrome il lettore indica 46,8 secondi. Nel tratto in movimento di 6,5 secondi, Chrome ha scartato 1 fotogramma su circa 195, con l’audio attivo. Provati anche la pagina a 360 px, il testo del video, il quiz (3/3) e l’apertura del lettore in modalità presentazione.
+- **Aggiornamento del 24 novembre 2026** Sincronizzate le cinque frasi della voce Marin con le inquadrature a velocità naturale. Verificata l’identità della traccia video rispetto a prima e la sostituzione dell’audio. Decodificati 1.402 fotogrammi a 30 al secondo. Picco audio −1,8 dBFS.
+- **Vettoriali** Aggiunti alla [home](../../../../index.html) e agli indici dei [Moduli 1](../../../../modulo1/index.html) e [2](../../../../modulo2/index.html). In Chrome restano nei margini a 1440 px e spariscono a 390 px. Verificati i collegamenti relativi al prefisso del sito.
+- **Da rivedere con il docente** Resa delle immagini, voce e leggibilità sulla LIM. Poi valutare il viaggio dei pacchetti nella lezione 2.2.
+
+## Approvazione del 24 novembre 2026
+
+Il docente ha approvato la versione del video con la voce Marin e ne ha chiesto la pubblicazione. Il controllo sulla LIM resta da fare.

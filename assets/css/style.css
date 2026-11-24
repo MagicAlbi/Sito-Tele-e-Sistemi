@@ -503,7 +503,7 @@ mark {
   font-family: var(--font-mono);
 }
 
-.module-card:hover {
+a.module-card:hover {
   border-color: var(--m-color);
   box-shadow: var(--shadow-card), 0 0 30px color-mix(in srgb, var(--m-color) 15%, transparent);
   transform: translateY(-3px);
@@ -520,7 +520,7 @@ mark {
   font-weight: 800; font-size: 1.1rem; flex-shrink: 0;
   transition: all var(--t-fast);
 }
-.module-card:hover .module-number {
+a.module-card:hover .module-number {
   background: color-mix(in srgb, var(--m-color) 20%, transparent);
   box-shadow: 0 0 16px color-mix(in srgb, var(--m-color) 30%, transparent);
 }
@@ -555,7 +555,7 @@ mark {
   border-radius: var(--r-md);
   transition: all var(--t-fast);
 }
-.module-card:hover .module-start-btn {
+a.module-card:hover .module-start-btn {
   background: var(--m-color);
   color: #000;
   box-shadow: 0 0 16px color-mix(in srgb, var(--m-color) 40%, transparent);
@@ -993,6 +993,7 @@ mark {
   display: flex; align-items: center; justify-content: space-between;
   flex-wrap: wrap; gap: 1rem;
 }
+.mark-done-wrap.lesson-completion { justify-content: flex-end; align-items: flex-end; }
 .mark-done-btn {
   display: inline-flex; align-items: center; gap: .5rem;
   padding: .7rem 1.4rem;
@@ -1002,7 +1003,8 @@ mark {
   font-weight: 700; font-size: .9rem; cursor: pointer;
   transition: all var(--t-fast); font-family: var(--font-sans);
 }
-.mark-done-btn:hover { background: var(--success); color: #000; box-shadow: 0 0 20px rgba(52,211,153,.3); }
+.mark-done-btn:enabled:hover { background: var(--success); color: #000; box-shadow: 0 0 20px rgba(52,211,153,.3); }
+.mark-done-btn:disabled:not(.done) { color: var(--text-muted); cursor: default; }
 .mark-done-btn.done  { background: var(--success); color: #000; cursor: default; }
 .lesson-nav-btns { display: flex; gap: .75rem; }
 
