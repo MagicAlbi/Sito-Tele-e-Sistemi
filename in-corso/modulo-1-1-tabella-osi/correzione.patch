@@ -1,0 +1,10 @@
+diff --git a/modulo1/lezione-1-1.html b/modulo1/lezione-1-1.html
+--- a/modulo1/lezione-1-1.html
++++ b/modulo1/lezione-1-1.html
+@@ -246,5 +246,5 @@
+           <tbody>
+             <tr>
+-              <td><strong>7–3</strong></td>
++              <td><strong>3–7</strong></td>
+               <td>Applicazione, Trasporto, Rete</td>
+               <td colspan="2" style="text-align:center; color:var(--text-muted); font-size:0.82rem;">
