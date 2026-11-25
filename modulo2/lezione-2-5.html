@@ -163,58 +163,116 @@
   </main>
 </div>
 <template data-presentation data-presentation-title="Primo routing">
-  <section class="presenter-slide lim-slide" tabindex="-1" inert>
+  <section class="presenter-slide lim-slide lim-opening" tabindex="-1" inert>
     <div class="lim-stage">
-      <div><h2>Un pacchetto deve uscire dalla LAN</h2><p>Prima decisione del PC: invio diretto o al gateway?</p></div>
+      <div>
+        <p class="lim-type">Lezione 2.5</p>
+        <h2>Un pacchetto deve uscire dalla LAN</h2>
+        <p>Il PC usa la maschera per capire se l’indirizzo di destinazione appartiene alla sua rete locale. Se è nella stessa rete, lo raggiunge direttamente.</p>
+        <p>Se è in un’altra rete, affida il pacchetto al <strong>gateway</strong>, il router da cui esce il traffico verso altre reti.</p>
+      </div>
       <div class="lim-visual"><ol class="lim-diagram"><li><strong>Destinazione nella stessa rete</strong><span> · diretta</span></li><li><strong>Destinazione in un’altra rete</strong><span> · gateway</span></li></ol></div>
     </div>
   </section>
   <section class="presenter-slide lim-slide" tabindex="-1" inert>
     <div class="lim-stage">
-      <div><h2>La riga della tabella</h2><p>Leggi separatamente prefisso, prossimo salto e interfaccia.</p></div>
+      <div>
+        <h2>La riga della tabella</h2>
+        <p>Una rotta indica quali destinazioni copre e come raggiungerle. Il <strong>prefisso</strong> identifica un gruppo di indirizzi, qui 10.20.30.0/24.</p>
+        <p>Il <strong>prossimo salto</strong> è l’indirizzo del router vicino. L’<strong>interfaccia</strong> è la porta locale da cui esce il pacchetto.</p>
+      </div>
       <div class="lim-visual"><ol class="lim-diagram"><li><strong>10.20.30.0/24</strong><span> · rete di destinazione</span></li><li><strong>172.16.1.2</strong><span> · router vicino</span></li><li><strong>WAN B</strong><span> · porta d’uscita</span></li></ol></div>
     </div>
   </section>
   <section class="presenter-slide lim-slide" tabindex="-1" inert>
     <div class="lim-stage">
-      <div><h2>Il prefisso più lungo</h2><p>Per 10.20.30.8 tutte le righe qui sotto sono compatibili.</p></div>
+      <div>
+        <h2>Il prefisso più lungo</h2>
+        <p>Per 10.20.30.8 sono compatibili /24, /16 e /0. Il numero dopo la barra indica quanti bit iniziali dell’indirizzo devono coincidere.</p>
+        <p>Il router sceglie il <strong>prefisso più lungo</strong> fra quelli compatibili. Il /24 è il più specifico perché richiede più bit uguali.</p>
+      </div>
       <figure class="lim-visual wan-visual"><svg class="wan-drawing" viewBox="0 0 520 226" role="img" aria-label="Per 10.20.30.8 tutte le tre righe corrispondono, ma 10.20.30.0/24 ha il più lungo prefisso e vince."><text class="ink" x="27" y="38" font-size="24">Destinazione 10.20.30.8</text><rect class="segment" x="27" y="56" width="468" height="44" rx="9"/><text class="teal" x="44" y="84" font-size="18">/24</text><text class="ink" x="121" y="84" font-size="19">10.20.30.0/24</text><text class="teal" x="354" y="84" font-size="17">Scelta</text><rect class="outline" x="27" y="111" width="468" height="44" rx="9"/><text class="muted" x="44" y="139" font-size="18">/16</text><text class="ink" x="121" y="139" font-size="19">10.20.0.0/16</text><text class="muted" x="354" y="139" font-size="17">Compatibile</text><rect class="outline" x="27" y="166" width="468" height="44" rx="9"/><text class="muted" x="44" y="194" font-size="18">/0</text><text class="ink" x="121" y="194" font-size="19">0.0.0.0/0</text><text class="muted" x="354" y="194" font-size="17">Compatibile</text></svg></figure>
     </div>
   </section>
-  <section class="presenter-slide lim-slide" tabindex="-1" inert>
+  <section class="presenter-slide lim-slide lim-exercise" tabindex="-1" inert>
     <div class="lim-stage">
-      <div><h2>Cambia la destinazione</h2><p>Ora valuta 10.20.80.8 e 203.0.113.8.</p></div>
-      <div class="lim-visual"><ol class="lim-diagram"><li><strong>10.20.80.8</strong><span> · /16, WAN A</span></li><li><strong>203.0.113.8</strong><span> · /0, WAN A</span></li></ol></div>
+      <div>
+        <p class="lim-type">Esercizio</p>
+        <h2>Cambia la destinazione</h2>
+        <p class="lim-example"><strong>Consegna.</strong> Usando le tre rotte della slide precedente, scegli il prefisso e la porta per 10.20.80.8 e 203.0.113.8.</p>
+        <p>Usa questo promemoria delle uscite. Il /24 porta su WAN B. Il /16 e la rotta predefinita /0 portano su WAN A.</p>
+      </div>
+      <div class="lim-visual"><button type="button" class="btn btn-primary" data-wan-reveal aria-expanded="false" aria-controls="lim-exercise-5-1">Mostra soluzione</button><div class="lim-solution" id="lim-exercise-5-1" hidden><h3>Soluzione guidata</h3><p>Per <strong>10.20.80.8</strong> il terzo numero è 80 e la rotta /24 richiede 30. Vince il /16, su <strong>WAN A</strong>. Per <strong>203.0.113.8</strong> non vale né /16 né /24. Resta la rotta /0, sempre su <strong>WAN A</strong>.</p></div></div>
     </div>
   </section>
-  <section class="presenter-slide lim-slide" tabindex="-1" inert>
+  <section class="presenter-slide lim-slide lim-exercise" tabindex="-1" inert>
     <div class="lim-stage">
-      <div><h2>Leggi un /26</h2><p>Dove cade 192.168.10.77 con maschera 255.255.255.192?</p></div>
+      <div>
+        <p class="lim-type">Esempio guidato</p>
+        <h2>Leggi un /26</h2>
+        <p>Il <strong>/26</strong> fissa i primi 26 bit e ne lascia 6 per gli indirizzi del blocco. Ogni blocco contiene quindi 2⁶ = 64 indirizzi.</p>
+        <p class="lim-example"><strong>Consegna.</strong> Trova il blocco che contiene 192.168.10.77. Il 77 cade fra 64 e 127, quindi l’indirizzo di rete è <strong>192.168.10.64/26</strong>, il primo del blocco.</p>
+      </div>
       <figure class="lim-visual wan-visual"><svg class="wan-drawing" viewBox="0 0 520 226" role="img" aria-label="Con /26 quattro intervalli da 64 indirizzi. Il valore 77 cade tra 64 e 127."><text class="ink" x="26" y="48" font-size="25">192.168.10.77/26</text><rect class="outline" x="26" y="109" width="111" height="58" rx="9"/><text class="muted" x="81" y="143" font-size="19" text-anchor="middle">0–63</text><rect class="segment" x="143" y="109" width="111" height="58" rx="9"/><text class="teal" x="198" y="143" font-size="19" text-anchor="middle">64–127</text><rect class="outline" x="260" y="109" width="111" height="58" rx="9"/><text class="muted" x="315" y="143" font-size="19" text-anchor="middle">128–191</text><rect class="outline" x="377" y="109" width="111" height="58" rx="9"/><text class="muted" x="432" y="143" font-size="19" text-anchor="middle">192–255</text><path class="return" d="M187 82v22m-6-7 6 7 6-7"/><text class="teal" x="174" y="77" font-size="22">77</text><text class="muted" x="26" y="205" font-size="19">Quattro blocchi da 64 indirizzi</text></svg></figure>
     </div>
   </section>
   <section class="presenter-slide lim-slide" tabindex="-1" inert>
     <div class="lim-stage">
-      <div><h2>Dopo la scelta</h2><p>Il router inoltra sul tratto successivo con una nuova trama.</p></div>
+      <div>
+        <h2>Dopo la scelta</h2>
+        <p>Il router riduce il <strong>TTL</strong>, il limite di salti. Nell’esempio l’IP di destinazione resta lo stesso lungo il tragitto.</p>
+        <p>Per la tratta successiva il router inserisce il pacchetto in una <strong>nuova trama</strong>, adatta al collegamento in uscita.</p>
+      </div>
       <div class="lim-visual"><ol class="lim-diagram"><li><strong>TTL</strong><span> · diminuisce</span></li><li><strong>IP di destinazione</strong><span> · resta invariato nell’esempio</span></li><li><strong>Trama</strong><span> · ricostruita per il collegamento</span></li></ol></div>
     </div>
   </section>
   <section class="presenter-slide lim-slide" tabindex="-1" inert>
     <div class="lim-stage">
-      <div><h2>Da dove viene la tabella?</h2><p>I router possono imparare le rotte in più modi.</p></div>
+      <div>
+        <h2>Da dove viene la tabella?</h2>
+        <p>Il router conosce le reti collegate alle proprie porte. Un amministratore può aggiungere una <strong>rotta statica</strong> indicando come raggiungere una rete lontana.</p>
+        <p>I router possono anche scambiarsi informazioni con un protocollo di routing e ottenere <strong>rotte dinamiche</strong>.</p>
+      </div>
       <div class="lim-visual"><ol class="lim-diagram"><li><strong>Connessa</strong><span> · rete su un’interfaccia</span></li><li><strong>Statica</strong><span> · configurata</span></li><li><strong>Dinamica</strong><span> · appresa con un protocollo</span></li></ol></div>
     </div>
   </section>
-  <section class="presenter-slide lim-slide" tabindex="-1" inert>
+  <section class="presenter-slide lim-slide lim-curiosity" tabindex="-1" inert>
     <div class="lim-stage">
-      <div><h2>Sfida alla classe</h2><p>L’IP 10.20.30.8 corrisponde sia a 10.20.0.0/16 sia a 10.20.30.0/24. Quale riga usi e dove consegni il pacchetto?</p></div>
-      <div class="lim-visual"><button type="button" class="btn btn-primary" data-wan-reveal aria-expanded="false" aria-controls="lim-solution-5">Mostra soluzione</button><p class="wan-lim-answer" id="lim-solution-5" hidden>Usi il /24 perché è il prefisso più lungo fra quelli compatibili. Il prossimo salto è 172.16.1.2, su WAN B.</p></div>
+      <div>
+        <p class="lim-curiosity-label">Curiosità</p>
+        <h2>Sulle tracce di un pacchetto</h2>
+        <p><strong>Traceroute</strong> usa il TTL per farsi rispondere dai router lungo il percorso. Prova prima con un limite di un salto, poi di due e così via.</p>
+        <p>Quando il TTL scade, il router può rispondere. Se la risposta manca, quel salto può risultare sconosciuto anche quando la destinazione è raggiungibile.</p>
+        <p class="lim-terms">Fonte · <a target="_blank" rel="noopener noreferrer" href="https://www.rfc-editor.org/rfc/rfc1812.html#section-5.3.1">RFC 1812 · Comportamento dei router IPv4</a></p>
+      </div>
+      <div class="lim-visual">
+        <p class="lim-example"><strong>Prima di leggere.</strong> Se un router non risponde, possiamo concludere che la destinazione sia irraggiungibile?</p>
+        <ul class="lim-diagram" role="list">
+          <li><strong>TTL 1</strong><span> · può rispondere il primo router</span></li>
+          <li><strong>TTL 2</strong><span> · può rispondere il secondo</span></li>
+          <li><strong>Nessuna risposta</strong><span> · salto sconosciuto</span></li>
+        </ul>
+      </div>
     </div>
   </section>
-  <section class="presenter-slide lim-slide" tabindex="-1" inert>
+  <section class="presenter-slide lim-slide lim-challenge" tabindex="-1" inert>
     <div class="lim-stage">
-      <div><h2>Da ricordare</h2><p>Decidi se una destinazione è sulla stessa rete, leggi una tabella IPv4 e scegli il prefisso più lungo, anche in presenza della rotta predefinita.</p></div>
-      <div class="lim-visual"><ol class="lim-diagram"><li><strong>La riga della tabella</strong></li><li><strong>Quale riga vince?</strong></li><li><strong>Cambia la destinazione</strong></li></ol></div>
+      <div>
+        <h2>Sfida alla classe</h2>
+        <p>Un router deve inoltrare un pacchetto per <strong>10.20.30.8</strong>. Ha due rotte compatibili, una per 10.20.0.0/16 e una per 10.20.30.0/24. La rotta /24 indica 172.16.1.2 su WAN B.</p>
+        <p class="lim-example"><strong>Consegna.</strong> Confrontati con un compagno. Scrivi il prefisso scelto, il prossimo salto e la porta d’uscita. Spiega la scelta in una frase.</p>
+      </div>
+      <div class="lim-visual"><button type="button" class="btn btn-primary" data-wan-reveal aria-expanded="false" aria-controls="lim-solution-5">Mostra soluzione</button><div class="lim-solution" id="lim-solution-5" hidden><h3>Soluzione guidata</h3><p>Scegli <strong>10.20.30.0/24</strong>, perché 24 bit iniziali coincidono, contro i 16 dell’altra rotta. Invia il pacchetto al router vicino <strong>172.16.1.2</strong> dalla porta <strong>WAN B</strong>.</p></div></div>
+    </div>
+  </section>
+  <section class="presenter-slide lim-slide lim-recap" tabindex="-1" inert>
+    <div class="lim-stage lim-stage-summary">
+      <h2>Da ricordare</h2>
+      <ul class="lim-summary" role="list">
+        <li><strong>Prima scelta del PC</strong>Se la destinazione è nella LAN, il PC invia direttamente. Se è fuori rete, usa il gateway.</li>
+        <li><strong>Scelta del router</strong>Fra le rotte compatibili vince il prefisso più lungo. La rotta predefinita /0 vale se manca una corrispondenza più precisa.</li>
+        <li><strong>Passaggio successivo</strong>La rotta scelta indica la porta d’uscita e, quando previsto, il router a cui consegnare il pacchetto.</li>
+      </ul>
     </div>
   </section>
 </template>

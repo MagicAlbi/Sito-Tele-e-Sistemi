@@ -370,22 +370,13 @@
       </div>
     </div>
   </section>
-  <section class="presenter-slide lim-slide" tabindex="-1" inert>
+  <section class="presenter-slide lim-slide lim-demo" tabindex="-1" inert>
     <div class="lim-stage">
-      <div>
-        <h2>Come si orienta il segnale senza muovere le antenne</h2>
-        <p>Con il <strong>beamforming</strong> le antenne regolano le fasi dei segnali emessi. Verso il dispositivo le onde possono sommarsi e rendere più facile la ricezione.</p>
-        <p>Quando il dispositivo cambia posizione, la regolazione può cambiare con lui.</p>
-        <p class="lim-terms">
-          <span><strong>TxBF</strong> · Transmit Beamforming, coordinamento delle antenne in trasmissione.</span>
-        </p>
+      <div class="lim-demo-intro">
+        <h2>Le antenne restano ferme, il segnale cambia direzione</h2>
+        <p>Con il beamforming le antenne si coordinano: le onde si sommano meglio verso il dispositivo. Sposta il client e confronta i due diagrammi.</p>
       </div>
-      <div class="lim-visual">
-        <ul class="lim-diagram" role="list">
-          <li><strong>Prima.</strong> Le antenne emettono segnali che possono sommarsi poco nel punto in cui si trova il telefono.</li>
-          <li><strong>Dopo · TxBF.</strong> La regolazione delle fasi favorisce la somma dei segnali nella direzione utile.</li>
-        </ul>
-      </div>
+      <div class="lim-demo-panel" data-presentation-demo="beamforming-3d"></div>
     </div>
   </section>
   <section class="presenter-slide lim-slide" tabindex="-1" inert>
@@ -419,20 +410,28 @@
       </figure>
     </div>
   </section>
-  <section class="presenter-slide lim-slide" tabindex="-1" inert>
+  <section class="presenter-slide lim-slide lim-curiosity" tabindex="-1" inert>
     <div class="lim-stage">
       <div>
+        <p class="lim-curiosity-label">Curiosità</p>
         <h2>Quando gli echi possono tornare utili</h2>
-        <p><strong>Curiosità.</strong> In aula un’onda può arrivare al telefono direttamente oppure dopo un rimbalzo su una parete. Le copie ritardate possono indebolire il segnale.</p>
+        <p><strong>Vero o falso?</strong> Un’onda che rimbalza su una parete è sempre un problema.</p>
+        <p>Falso. In aula un’onda può arrivare al telefono direttamente oppure dopo un rimbalzo su una parete. Le copie ritardate possono indebolire il segnale.</p>
         <p>Con più antenne, percorsi sufficientemente distinti possono invece aiutare il ricevitore a separare i flussi.</p>
       </div>
-      <div class="lim-visual">
-        <ul class="lim-diagram" role="list">
-          <li><strong>Percorso diretto.</strong> L’onda arriva seguendo la via più corta.</li>
-          <li><strong>Percorso riflesso.</strong> Una copia passa dalla parete. Arriva da un’altra direzione e con un piccolo ritardo.</li>
-          <li><strong>Risultato possibile.</strong> Quando i percorsi sono abbastanza diversi, possono aiutare il ricevitore.</li>
+      <figure class="lim-visual">
+        <figcaption>Lo stesso segnale, due percorsi</figcaption>
+        <div class="lim-echo" aria-hidden="true">
+          <span class="lim-echo-wall">Parete</span>
+          <span class="lim-echo-direct"></span>
+          <span class="lim-echo-reflected"></span>
+          <span class="lim-echo-ap">AP</span><span class="lim-echo-client">Client</span>
+        </div>
+        <ul class="lim-echo-legend" role="list">
+          <li><strong>Diretto.</strong> Dall’AP al client.</li>
+          <li><strong>Riflesso.</strong> Rimbalza sulla parete e arriva più tardi.</li>
         </ul>
-      </div>
+      </figure>
     </div>
   </section>
   <section class="presenter-slide lim-slide" tabindex="-1" inert>
@@ -453,6 +452,32 @@
           <li><strong>4096-QAM · 12 bit.</strong> 2¹² = 4096 combinazioni.</li>
         </ul>
       </div>
+    </div>
+  </section>
+  <section class="presenter-slide lim-slide lim-challenge" tabindex="-1" inert>
+    <div class="lim-stage">
+      <div>
+        <h2>Sfida alla classe</h2>
+        <p><strong>Un solo flusso, segnale debole.</strong> Il punto di accesso può inviare fino a due flussi. Il portatile sa riceverne uno solo e si trova a sinistra rispetto alla direzione frontale delle antenne.</p>
+        <p class="lim-example"><strong>60 secondi a squadre.</strong> Scegliete fra inviare due flussi indipendenti o orientare il diagramma di un flusso verso il portatile. Dite cosa cambierebbe nel grafico e quanti flussi riceverebbe. Un punto per ogni previsione.</p>
+      </div>
+      <div class="lim-visual">
+        <button type="button" class="btn btn-primary lim-reveal" data-presentation-reveal aria-expanded="false" aria-controls="lim-soluzione-1-5">Mostra soluzione</button>
+        <div class="lim-solution" id="lim-soluzione-1-5" hidden>
+          <h3>Soluzione guidata</h3>
+          <ol><li>Scegliete il <strong>beamforming</strong>: le antenne coordinano lo stesso flusso per favorire la direzione del portatile.</li><li>Nel grafico la zona di emissione principale si orienta verso il client. Il numero di flussi resta <strong>uno</strong>, perché il portatile ne gestisce al massimo uno.</li></ol>
+        </div>
+      </div>
+    </div>
+  </section>
+  <section class="presenter-slide lim-slide lim-recap" tabindex="-1" inert>
+    <div class="lim-stage lim-stage-summary">
+      <h2>Da ricordare</h2>
+      <ul class="lim-summary" role="list">
+        <li><strong>MIMO</strong>Può trasportare più flussi sullo stesso canale se entrambi gli apparati riescono a gestirli.</li>
+        <li><strong>Beamforming</strong>Le antenne si coordinano per favorire il segnale verso il dispositivo.</li>
+        <li><strong>OFDM</strong>La trasmissione distribuisce i dati su molte frequenze vicine nello stesso canale.</li>
+      </ul>
     </div>
   </section>
 </template>

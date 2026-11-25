@@ -34,11 +34,11 @@
           <p class="wan-kicker">Modulo 2 · Telecomunicazioni 5A</p>
           <h1 class="lesson-title-h1">Reti WAN e accesso remoto</h1>
           <p class="lesson-subtitle">Segui i dati da una rete locale alla fibra dell’operatore, fino al router che decide dove consegnare ogni pacchetto.</p>
-          <nav class="wan-index-actions" aria-label="Accessi rapidi">
-            <a href="#lezioni" class="btn btn-primary">Vai alle lezioni ↓</a>
-            <a href="lab-routing.html" class="btn btn-ghost">Laboratorio di routing</a>
-            <a href="allenamento.html" class="btn btn-ghost">Test di allenamento</a>
-            <a href="esercizi.html" class="btn btn-ghost">Esercizi numerici</a>
+          <nav class="wan-index-actions" style="margin-top:1.25rem" aria-label="Accessi rapidi">
+            <a href="lezione-2-1.html" class="btn btn-primary" id="riprendi-lezione">Inizia lezione 2.1 →</a>
+            <a href="lab-routing.html" class="btn btn-ghost">🔬 Laboratorio di routing</a>
+            <a href="allenamento.html" class="btn btn-ghost">🎯 Quiz di allenamento</a>
+            <a href="esercizi.html" class="btn btn-ghost">🧮 Esercizi numerici</a>
           </nav>
         </div>
       </header>
@@ -158,6 +158,29 @@
 </div>
 
 <script src="../assets/js/app.js"></script>
+<script>
+  function aggiornaRipresaLezioni() {
+    const link = document.getElementById('riprendi-lezione');
+    const lezioni = Array.from(document.querySelectorAll('a.module-card[data-lesson]'));
+    const completate = lezioni.map(lezione => Progress.isDone(lezione.dataset.lesson));
+    const prossima = lezioni[completate.indexOf(false)];
+
+    if (prossima) {
+      const numero = prossima.querySelector('.module-number').textContent;
+      const azione = completate.includes(true) ? 'Riprendi da' : 'Inizia';
+      link.href = prossima.getAttribute('href');
+      link.textContent = `${azione} lezione ${numero} →`;
+    } else {
+      link.href = '#lezioni';
+      link.textContent = 'Ripassa le lezioni →';
+    }
+  }
+
+  aggiornaRipresaLezioni();
+  window.addEventListener('pageshow', aggiornaRipresaLezioni);
+  window.addEventListener('storage', aggiornaRipresaLezioni);
+  window.addEventListener('studio-change', aggiornaRipresaLezioni);
+</script>
 
 </body>
 </html>

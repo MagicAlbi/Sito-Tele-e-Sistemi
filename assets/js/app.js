@@ -422,6 +422,15 @@ const PresentationMode = (() => {
     wrap.style.flex = '1';
     wrap.style.overflow = 'hidden';
     wrap.style.position = 'relative';
+    wrap.addEventListener('click', (event) => {
+      const button = event.target.closest('button[data-presentation-reveal]');
+      if (!button) return;
+      const answer = document.getElementById(button.getAttribute('aria-controls'));
+      if (!answer || !wrap.contains(answer)) return;
+      answer.hidden = !answer.hidden;
+      button.setAttribute('aria-expanded', String(!answer.hidden));
+      button.textContent = answer.hidden ? 'Mostra soluzione' : 'Nascondi soluzione';
+    });
 
     document.body.appendChild(presenterEl);
     presenterEl.setAttribute('role', 'dialog');
@@ -494,8 +503,17 @@ const PresentationMode = (() => {
     returnFocus = document.activeElement;
     scrollPosition = window.scrollY;
     const wrap = presenterEl.querySelector('#presenterSlidesWrap');
-    if (slideTemplate) wrap.appendChild(slideTemplate.content.cloneNode(true));
-    else mountStudySections(wrap);
+    if (slideTemplate) {
+      wrap.appendChild(slideTemplate.content.cloneNode(true));
+      wrap.querySelectorAll('[data-presentation-demo]').forEach(slot => {
+        const element = document.getElementById(slot.dataset.presentationDemo);
+        if (!element || wrap.contains(element)) return;
+        const marker = document.createComment('presentation-origin');
+        element.before(marker);
+        slot.appendChild(element);
+        origins.push({ element, marker });
+      });
+    } else mountStudySections(wrap);
     presenterEl.querySelector('#slideTotal').textContent = wrap.children.length;
     document.querySelector('.app-layout').inert = true;
     currentSlide = 0;

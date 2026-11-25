@@ -370,26 +370,37 @@
       </figure>
     </div>
   </section>
-  <section class="presenter-slide lim-slide" tabindex="-1" inert>
+  <section class="presenter-slide lim-slide lim-curiosity" tabindex="-1" inert>
     <div class="lim-stage">
       <div>
+        <p class="lim-curiosity-label">Curiosità</p>
         <h2>Quando il microonde disturba il Wi-Fi</h2>
-        <p><strong>Curiosità.</strong> Un forno a microonde lavora vicino a 2,45 gigahertz, dentro la banda usata anche dal Wi-Fi a 2,4 gigahertz.</p>
+        <p><strong>Indovinate:</strong> quale banda ha qualcosa in comune con il forno?</p>
+        <p>Un forno a microonde lavora vicino a 2,45 gigahertz, dentro la banda usata anche dal Wi-Fi a 2,4 gigahertz.</p>
         <p>Un apparecchio vicino può aumentare il rumore radio mentre è in funzione. In quel caso un collegamento su un’altra banda può evitare quel disturbo.</p>
+        <p class="lim-terms"><a href="https://doi.org/10.18434/mds2-3226" target="_blank" rel="noopener noreferrer">NIST · Misure sui forni a microonde</a></p>
       </div>
-      <div class="lim-visual lim-art">
-        <img src="../assets/img/quiz-wlan-rete.svg" alt="Illustrazione di un punto di accesso e dei dispositivi collegati.">
-      </div>
+      <figure class="lim-visual">
+        <figcaption>Il forno e il Wi-Fi condividono una zona dello spettro</figcaption>
+        <div class="lim-spectrum-picture">
+          <div><strong>Wi-Fi a 2,4 GHz</strong><div class="lim-frequency-band"><span>↑ 2,45 GHz · forno</span></div></div>
+          <div><strong>Wi-Fi a 5 GHz</strong><div class="lim-frequency-band lim-frequency-separate"></div></div>
+        </div>
+        <p class="lim-terms">Due bande distinte. Disegno fuori scala.</p>
+      </figure>
     </div>
   </section>
-  <section class="presenter-slide lim-slide" tabindex="-1" inert>
+  <section class="presenter-slide lim-slide lim-curiosity" tabindex="-1" inert>
     <div class="lim-stage">
       <div>
+        <p class="lim-curiosity-label">Curiosità</p>
         <h2>Quando il radar ha la precedenza</h2>
-        <p><strong>Curiosità.</strong> Su alcuni canali dei 5 gigahertz il Wi-Fi condivide le frequenze con i radar. Il punto di accesso deve ascoltare e, se rileva un radar, lasciare il canale.</p>
+        <p><strong>Votate:</strong> sul canale resta il Wi-Fi o ha la precedenza il radar?</p>
+        <p>Su alcuni canali dei 5 gigahertz il Wi-Fi condivide le frequenze con i radar. Il punto di accesso deve ascoltare e, se rileva un radar, lasciare il canale.</p>
         <p>Durante il passaggio a un altro canale i dispositivi possono perdere il collegamento per un breve periodo.</p>
         <p class="lim-terms">
-          <span><strong>DFS</strong> · Dynamic Frequency Selection, selezione dinamica della frequenza per proteggere il radar.</span>
+          <span><strong>DFS</strong> · Selezione dinamica della frequenza.</span>
+          <a href="https://www.cisco.com/c/en/us/support/docs/wireless-mobility/80211/213882-radar-detection-in-dynamic-frequency-sel.html" target="_blank" rel="noopener noreferrer">Cisco · Rilevamento radar sui canali DFS</a>
         </p>
       </div>
       <div class="lim-visual">
@@ -399,6 +410,32 @@
           <li><strong>3 · Cambio canale.</strong> Sposta la rete per liberare la frequenza.</li>
         </ul>
       </div>
+    </div>
+  </section>
+  <section class="presenter-slide lim-slide lim-challenge" tabindex="-1" inert>
+    <div class="lim-stage">
+      <div>
+        <h2>Sfida alla classe</h2>
+        <p><strong>La videochiamata scatta in pausa pranzo.</strong> Vicino al forno acceso la rete a 2,4 GHz peggiora e torna stabile a forno spento. Nella stessa stanza il portatile può usare anche la rete a 5 GHz.</p>
+        <p class="lim-example"><strong>60 secondi a squadre.</strong> Scegliete la prima prova da fare e dite quale risultato vi aspettereste se il forno fosse la causa. Un punto per la prova, uno per il confronto.</p>
+      </div>
+      <div class="lim-visual">
+        <button type="button" class="btn btn-primary lim-reveal" data-presentation-reveal aria-expanded="false" aria-controls="lim-soluzione-1-3">Mostra soluzione</button>
+        <div class="lim-solution" id="lim-soluzione-1-3" hidden>
+          <h3>Soluzione guidata</h3>
+          <ol><li>Provate la stessa chiamata a <strong>5 GHz</strong>, dalla stessa posizione, lasciando il forno in funzione.</li><li>Se a 5 GHz va meglio, il risultato è coerente con un disturbo localizzato nella banda dei 2,4 GHz. Ripetete accendendo e spegnendo il forno per verificare se l’effetto si ripresenta.</li></ol>
+        </div>
+      </div>
+    </div>
+  </section>
+  <section class="presenter-slide lim-slide lim-recap" tabindex="-1" inert>
+    <div class="lim-stage lim-stage-summary">
+      <h2>Da ricordare</h2>
+      <ul class="lim-summary" role="list">
+        <li><strong>Scelta della banda</strong>Confronta la copertura a 2,4, 5 e 6 GHz. Ostacoli e distanza cambiano il risultato.</li>
+        <li><strong>Canali</strong>Conta sia la distanza tra le frequenze centrali sia la larghezza occupata da ciascun canale.</li>
+        <li><strong>Disturbi</strong>Prova un’altra banda se sospetti un disturbo. Sui canali soggetti a DFS, il radar ha la precedenza.</li>
+      </ul>
     </div>
   </section>
 </template>

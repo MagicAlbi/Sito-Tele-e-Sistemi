@@ -1,0 +1,85 @@
+.module-two .lim-slide.lim-curiosity h2 { color: var(--lim-curiosity-accent); }
+.module-two .lim-curiosity .lim-diagram li:nth-child(odd) { --lim-accent: var(--lim-curiosity-accent); }
+.module-two .lim-curiosity .lim-diagram li:nth-child(even) {
+  --lim-accent: var(--lim-curiosity-rose);
+}
+.module-two .lim-curiosity .lim-example {
+  border-inline-start-color: var(--lim-curiosity-accent);
+  background: color-mix(in srgb, var(--lim-curiosity-accent) 10%, var(--surface));
+}
+.module-two .lim-curiosity .lim-example strong { color: var(--lim-curiosity-accent); }
+
+.module-two .lim-opening .lim-stage {
+  background:
+    linear-gradient(90deg, var(--wan-accent), var(--wan-contrast)) top / 100% .35rem no-repeat,
+    radial-gradient(ellipse at top left, var(--wan-panel), transparent 75%), var(--surface);
+}
+.module-two .lim-opening .lim-type { color: var(--wan-accent); }
+.module-two .lim-type {
+  margin-bottom: .5em;
+  font-size: clamp(1rem, 1.45vw, 1.4rem);
+  font-weight: 800;
+}
+
+.module-two .lim-with-video .lim-stage { grid-template-columns: minmax(0, 1fr) minmax(0, 1.45fr); }
+.module-two .lim-with-video .lim-type { color: var(--wan-contrast); }
+.module-two .lim-with-video .lim-visual {
+  border-color: var(--wan-line);
+  background: #0b1526;
+}
+
+.module-two .lim-exercise .lim-type { color: var(--wan-contrast); }
+.module-two :is(.lim-exercise, .lim-challenge) .lim-example { margin-bottom: 0; }
+.module-two .lim-exercise .lim-example {
+  border-inline-start-color: var(--wan-contrast);
+  background: color-mix(in srgb, var(--wan-contrast) 8%, var(--surface));
+}
+.module-two .lim-challenge { --wan-challenge: #5b35ad; }
+.module-two .lim-challenge .lim-stage {
+  border-color: color-mix(in srgb, var(--wan-accent) 66%, var(--border));
+  background:
+    linear-gradient(var(--wan-challenge), var(--wan-accent)) left / .4rem 100% no-repeat,
+    linear-gradient(125deg, color-mix(in srgb, var(--wan-challenge) 25%, var(--surface)), var(--surface) 72%);
+}
+.module-two .lim-challenge.lim-slide h2 {
+  display: inline-block;
+  padding: .16em .32em .2em;
+  border-radius: var(--r-md);
+  background: var(--wan-challenge);
+  color: #fff;
+}
+.module-two .lim-challenge .lim-example {
+  border-inline-start-color: var(--wan-accent);
+  background: color-mix(in srgb, var(--wan-accent) 13%, var(--surface));
+}
+.module-two .lim-challenge .lim-example strong { color: var(--wan-accent); }
+.module-two .lim-challenge .lim-visual {
+  border-color: color-mix(in srgb, var(--wan-accent) 48%, var(--border));
+  background: var(--surface);
+}
+.module-two .lim-challenge [data-wan-reveal] {
+  background: var(--wan-challenge);
+  color: #fff;
+}
+.module-two .lim-challenge [data-wan-reveal]:hover { background: #472688; }
+.module-two .lim-slide .lim-solution:not([hidden]) { margin-top: 1rem; }
+.module-two .lim-solution h3 { font-size: clamp(1.2rem, 1.8vw, 1.85rem); }
+
+.module-two .lim-recap .lim-stage {
+  border-color: color-mix(in srgb, var(--wan-contrast) 52%, var(--border));
+  background:
+    linear-gradient(90deg, var(--wan-contrast), var(--wan-accent)) top / 100% .4rem no-repeat,
+    linear-gradient(155deg, color-mix(in srgb, var(--wan-contrast) 10%, var(--surface)), var(--surface) 65%);
+  gap: clamp(.75rem, 2vw, 2rem);
+}
+.module-two .lim-recap.lim-slide h2 { color: var(--wan-contrast); margin-bottom: 0; }
+.module-two .lim-recap .lim-summary li {
+  --lim-accent: var(--wan-contrast);
+  border-block-start: .24rem solid var(--lim-accent);
+}
+.module-two .lim-recap .lim-summary li:nth-child(2) { --lim-accent: var(--wan-accent); }
+.module-two .lim-recap .lim-summary li:nth-child(3) { --lim-accent: var(--lim-blue); }
+
+@media (max-width: 760px) {
+  .module-two .lim-with-video .lim-stage { grid-template-columns: 1fr; }
+}

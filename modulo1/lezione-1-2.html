@@ -412,7 +412,7 @@
       <div>
         <h2>Dal numero della scatola allo standard</h2>
         <p>La famiglia <strong>802.11</strong> stabilisce come funzionano le reti Wi-Fi. Per riconoscere le generazioni si usano nomi come Wi-Fi 4, 5, 6 e 7.</p>
-        <p><strong>Curiosità.</strong> Con i numeri è più facile vedere la successione: con le vecchie lettere era meno intuitivo capire che <code>ac</code> veniva dopo <code>n</code>.</p>
+        <p>Le sigle <code>n</code> e <code>ac</code> indicano gli standard. I numeri 4 e 5 aiutano a riconoscere l’ordine delle generazioni.</p>
       </div>
       <div class="lim-visual">
         <ul class="lim-diagram" role="list">
@@ -508,21 +508,50 @@
       </div>
     </div>
   </section>
-  <section class="presenter-slide lim-slide" tabindex="-1" inert>
+  <section class="presenter-slide lim-slide lim-curiosity" tabindex="-1" inert>
     <div class="lim-stage">
       <div>
+        <p class="lim-curiosity-label">Curiosità</p>
         <h2>Hedy Lamarr: da Hollywood ai salti di frequenza</h2>
+        <p><strong>Indovinello.</strong> Che cosa ci fa un rullo da pianola in un brevetto radio?</p>
         <p>Nel <strong>1942</strong> l’attrice Hedy Lamarr e il compositore George Antheil brevettarono un sistema radio per rendere il segnale più difficile da disturbare.</p>
         <p>Trasmettitore e ricevitore cambiavano frequenza insieme. Il brevetto proponeva rulli perforati come quelli delle <strong>pianole</strong> per tenerli sincronizzati.</p>
-        <p class="lim-example"><strong>Il punto.</strong> È una storia di comunicazioni radio progettate per resistere ai disturbi.</p>
-        <p class="lim-terms"><a href="https://sova.si.edu/record/nmah.ac.1590" target="_blank" rel="noopener noreferrer">Archivio Smithsonian · Lamarr e Antheil</a></p>
+        <p class="lim-terms"><a href="https://sova.si.edu/record/nmah.ac.1590" target="_blank" rel="noopener noreferrer">Archivio Smithsonian</a> · <a href="https://patents.google.com/patent/US2292387A/en" target="_blank" rel="noopener noreferrer">Brevetto del 1942</a></p>
+      </div>
+      <figure class="lim-visual">
+        <figcaption>Due rulli, gli stessi salti</figcaption>
+        <table class="lim-roll">
+          <thead><tr><th scope="col">Frequenza</th><th scope="col">Ora</th><th scope="col">Dopo</th></tr></thead>
+          <tbody><tr><th scope="row">Chi invia</th><td>A</td><td>C</td></tr><tr><th scope="row">Chi ascolta</th><td>A</td><td>C</td></tr></tbody>
+        </table>
+        <p class="lim-terms">I rulli danno lo stesso ordine a entrambi. Schema semplificato.</p>
+      </figure>
+    </div>
+  </section>
+  <section class="presenter-slide lim-slide lim-challenge" tabindex="-1" inert>
+    <div class="lim-stage">
+      <div>
+        <h2>Sfida alla classe</h2>
+        <p><strong>Tre messaggi da consegnare.</strong> Un punto di accesso Wi-Fi 6 ha un piccolo messaggio per ciascuno dei tre dispositivi compatibili: portatile A, telefono B e tablet C. Nel caso monoutente li servirebbe uno alla volta.</p>
+        <p class="lim-example"><strong>60 secondi a squadre.</strong> Disegnate il canale nella prima trasmissione con OFDMA. Indicate chi riceve in quel momento e come si divide il canale. Un punto per i destinatari, uno per il disegno.</p>
       </div>
       <div class="lim-visual">
-        <ul class="lim-diagram" role="list">
-          <li><strong>Un momento · Frequenza A.</strong> Chi trasmette e chi ascolta sono sulla stessa frequenza.</li>
-          <li><strong>Momento successivo · Frequenza C.</strong> Entrambi cambiano insieme. Un disturbo fisso su A resta su A.</li>
-        </ul>
+        <button type="button" class="btn btn-primary lim-reveal" data-presentation-reveal aria-expanded="false" aria-controls="lim-soluzione-1-2">Mostra soluzione</button>
+        <div class="lim-solution" id="lim-soluzione-1-2" hidden>
+          <h3>Soluzione guidata</h3>
+          <ol><li>Nello scenario, <strong>A, B e C possono ricevere nella stessa trasmissione</strong>.</li><li>Dividete il canale in tre porzioni di frequenza e assegnatene una a testa. Le porzioni possono essere attive insieme: sono frequenze, non turni.</li></ol>
+        </div>
       </div>
+    </div>
+  </section>
+  <section class="presenter-slide lim-slide lim-recap" tabindex="-1" inert>
+    <div class="lim-stage lim-stage-summary">
+      <h2>Da ricordare</h2>
+      <ul class="lim-summary" role="list">
+        <li><strong>Generazioni Wi-Fi</strong>Nomi come Wi-Fi 4 e 5 aiutano a riconoscere le generazioni degli standard 802.11.</li>
+        <li><strong>Velocità utile</strong>Controlli, attese e condivisione del canale riducono la velocità disponibile per i dati.</li>
+        <li><strong>OFDMA</strong>Più dispositivi compatibili ricevono insieme su porzioni diverse dello stesso canale.</li>
+      </ul>
     </div>
   </section>
 </template>

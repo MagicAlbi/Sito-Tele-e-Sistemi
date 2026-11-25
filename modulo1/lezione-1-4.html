@@ -304,13 +304,14 @@
 </div>
 
 <template data-presentation data-presentation-title="Accesso al canale radio">
-  <section class="presenter-slide lim-slide" tabindex="-1" inert>
+  <section class="presenter-slide lim-slide lim-curiosity" tabindex="-1" inert>
     <div class="lim-stage">
       <div>
+        <p class="lim-curiosity-label">Curiosità</p>
         <h2>Il Wi-Fi condivide il canale radio</h2>
         <p>In aula, telefoni e computer usano lo stesso canale per parlare con il <strong>punto di accesso (AP)</strong>.</p>
         <p>Se due dispositivi trasmettono insieme, i segnali possono sovrapporsi e diventare illeggibili all’AP. È una <strong>collisione</strong>.</p>
-        <p class="lim-example"><strong>Curiosità.</strong> Fibra veloce, tutte le tacche, Wi-Fi lento. Può bastare che il canale radio sia già occupato.</p>
+        <p class="lim-example"><strong>Domanda lampo.</strong> Possiamo avere fibra veloce, tutte le tacche e Wi-Fi lento? Sì. Può bastare che il canale radio sia già occupato.</p>
         <p class="lim-terms"><strong>AP</strong> · Access Point, punto di accesso Wi-Fi.</p>
       </div>
       <div class="lim-visual lim-art">
@@ -425,10 +426,12 @@
       </div>
     </div>
   </section>
-  <section class="presenter-slide lim-slide" tabindex="-1" inert>
+  <section class="presenter-slide lim-slide lim-curiosity" tabindex="-1" inert>
     <div class="lim-stage">
       <div>
+        <p class="lim-curiosity-label">Curiosità</p>
         <h2>Un invio più lento occupa il canale più a lungo</h2>
+        <p><strong>Stimate al volo.</strong> A 6 Mb/s o a 24 Mb/s, quanto cambia il tempo per spedire gli stessi dati?</p>
         <p>Con un segnale debole il telefono può rallentare. Per inviare gli stessi dati occupa il canale per più <strong>tempo d’aria</strong>.</p>
         <p>Con l’<strong>Airtime Fairness</strong>, il punto di accesso può bilanciare le quote di tempo. Nella stessa quota, il dispositivo veloce può inviare più dati.</p>
         <p class="lim-terms"><strong>Mb/s</strong> · Megabit al secondo, l’unità di velocità usata nell’esempio.</p>
@@ -447,13 +450,29 @@
       </figure>
     </div>
   </section>
-  <section class="presenter-slide lim-slide" tabindex="-1" inert>
+  <section class="presenter-slide lim-slide lim-challenge" tabindex="-1" inert>
+    <div class="lim-stage">
+      <div>
+        <h2>Sfida alla classe</h2>
+        <p><strong>Mistero in corridoio.</strong> A e C sentono il punto di accesso, ma non si sentono fra loro a causa dei muri. Entrambi trovano il canale libero e iniziano a inviare nello stesso istante.</p>
+        <p class="lim-example"><strong>60 secondi a squadre.</strong> Dite dove si sovrappongono i segnali e quale messaggio potrebbe avvisare C di aspettare se A chiedesse il permesso per primo. Un punto per ogni risposta motivata.</p>
+      </div>
+      <div class="lim-visual">
+        <button type="button" class="btn btn-primary lim-reveal" data-presentation-reveal aria-expanded="false" aria-controls="lim-soluzione-1-4">Mostra soluzione</button>
+        <div class="lim-solution" id="lim-soluzione-1-4" hidden>
+          <h3>Soluzione guidata</h3>
+          <ol><li>I segnali si sovrappongono <strong>al punto di accesso</strong>, che riceve entrambi. A e C non si sentono direttamente.</li><li>Se A invia prima una richiesta RTS e il punto di accesso risponde <strong>CTS</strong>, C può sentire quel permesso, leggere il tempo di riserva e aspettare.</li></ol>
+        </div>
+      </div>
+    </div>
+  </section>
+  <section class="presenter-slide lim-slide lim-recap" tabindex="-1" inert>
     <div class="lim-stage lim-stage-summary">
-      <h2>Come si condivide il canale, in tre punti</h2>
+      <h2>Da ricordare</h2>
       <ul class="lim-summary" role="list">
-        <li><strong>Prima dell’invio.</strong> Il Wi-Fi ascolta e sorteggia un’attesa per ridurre le partenze simultanee. Dopo l’invio arriva la conferma se i dati sono stati ricevuti.</li>
-        <li><strong>Con un nodo nascosto.</strong> Il punto di accesso comunica la riserva anche a chi non sente il mittente. Un timer indica quanto aspettare.</li>
-        <li><strong>Con molti dispositivi.</strong> Contano il numero di invii e il tempo che ciascuno occupa sul canale.</li>
+        <li><strong>Prima dell’invio</strong>Il Wi-Fi ascolta il canale e può aspettare un tempo casuale. La conferma segnala che i dati sono arrivati.</li>
+        <li><strong>Nodo nascosto</strong>Due dispositivi possono collidere al punto di accesso. Un permesso CTS può far aspettare chi lo riceve.</li>
+        <li><strong>Tempo d’aria</strong>A parità di dati, una trasmissione più lenta occupa il canale più a lungo.</li>
       </ul>
     </div>
   </section>

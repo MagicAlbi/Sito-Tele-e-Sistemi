@@ -178,58 +178,114 @@
   </main>
 </div>
 <template data-presentation data-presentation-title="Protocolli di linea">
-  <section class="presenter-slide lim-slide" tabindex="-1" inert>
+  <section class="presenter-slide lim-slide lim-opening" tabindex="-1" inert>
     <div class="lim-stage">
-      <div><h2>Uno stesso filo, molte trame</h2><p>Il livello di linea delimita e verifica ciò che passa fra i due apparati.</p></div>
+      <div>
+        <p class="lim-type">Lezione 2.4</p>
+        <h2>Uno stesso filo, molte trame</h2>
+        <p>Sul filo viaggia una sequenza di bit. Il livello di linea li organizza in <strong>trame</strong>, le unità che due apparati si scambiano sul collegamento.</p>
+        <p>Chi riceve deve capire dove inizia e finisce ogni trama e verificare se durante il viaggio si è alterata.</p>
+      </div>
       <div class="lim-visual"><ol class="lim-diagram"><li><strong>Pacchetto IP</strong></li><li><strong>Trama sul link</strong></li><li><strong>Dati estratti all’arrivo</strong></li></ol></div>
     </div>
   </section>
   <section class="presenter-slide lim-slide" tabindex="-1" inert>
     <div class="lim-stage">
-      <div><h2>Anatomia della trama</h2><p>Che cosa permette al ricevitore di scartare una trama alterata?</p></div>
+      <div>
+        <h2>Anatomia della trama</h2>
+        <p>Il <strong>flag</strong> segna il confine della trama. Nel campo dati viaggia il contenuto da consegnare.</p>
+        <p>L’<strong>FCS</strong> è un valore calcolato dal mittente sui campi previsti. Il ricevitore rifà il calcolo. Se i valori non coincidono, scarta la trama.</p>
+      </div>
       <figure class="lim-visual wan-visual"><svg class="wan-drawing" viewBox="0 0 520 226" role="img" aria-label="Trama HDLC schematica. Flag, indirizzo e controllo, dati, FCS e flag."><text class="violet" x="24" y="48" font-size="23">Una trama sul collegamento</text><rect class="outline" x="24" y="74" width="59" height="66" rx="7"/><text class="ink" x="53.5" y="113" text-anchor="middle" font-size="18">Flag</text><rect class="outline" x="84" y="74" width="107" height="66" rx="7"/><text class="ink" x="137.5" y="113" text-anchor="middle" font-size="18">Ind. / ctrl</text><rect class="segment" x="192" y="74" width="141" height="66" rx="7"/><text class="ink" x="262.5" y="113" text-anchor="middle" font-size="18">Dati</text><rect class="segment" x="334" y="74" width="86" height="66" rx="7"/><text class="teal" x="377" y="113" text-anchor="middle" font-size="18">FCS</text><rect class="outline" x="421" y="74" width="68" height="66" rx="7"/><text class="ink" x="455" y="113" text-anchor="middle" font-size="18">Flag</text><path class="return" d="M375 147v27"/><text class="teal" x="320" y="196" font-size="19">Verifica errori</text></svg></figure>
     </div>
   </section>
   <section class="presenter-slide lim-slide" tabindex="-1" inert>
     <div class="lim-stage">
-      <div><h2>Quando i dati imitano il flag</h2><p>Dopo cinque uno consecutivi inserisci uno zero nel contenuto interessato.</p></div>
+      <div>
+        <h2>Quando i dati imitano il flag</h2>
+        <p>Nell’esempio di trama sincrona il flag è <strong>01111110</strong>. Se lo stesso motivo compare nei dati, il ricevitore potrebbe scambiarlo per un confine.</p>
+        <p>Per evitarlo il mittente inserisce uno zero dopo cinque bit a 1 consecutivi nei campi interessati. Il ricevitore toglie quello zero e recupera i dati originali.</p>
+      </div>
       <div class="lim-visual"><ol class="lim-diagram"><li><strong>Flag</strong><span> · 01111110</span></li><li><strong>Dati sulla linea</strong><span> · 011111010</span></li><li><strong>Il ricevitore rimuove lo zero inserito</strong></li></ol></div>
     </div>
   </section>
   <section class="presenter-slide lim-slide" tabindex="-1" inert>
     <div class="lim-stage">
-      <div><h2>Avvia una sessione PPP</h2><p>Leggi le fasi nell’ordine in cui le attraversa il collegamento.</p></div>
+      <div>
+        <h2>Avvia una sessione PPP</h2>
+        <p><strong>PPP</strong> fa dialogare i due estremi di un collegamento. Prima <strong>LCP</strong> concorda le opzioni di linea. Poi, se richiesta, si verifica l’identità dell’altro apparato.</p>
+        <p>Infine un <strong>NCP</strong> configura il protocollo di rete da usare. Per IPv4 questo compito spetta a <strong>IPCP</strong>.</p>
+      </div>
       <figure class="lim-visual wan-visual"><svg class="wan-drawing" viewBox="0 0 520 226" role="img" aria-label="Dopo LCP si può negoziare l’autenticazione. Poi NCP configura i protocolli di rete."><path class="flow" d="M139 115H178m-9-7 9 7-9 7"/><path class="return" d="M329 115H369m-9-7 9 7-9 7"/><text class="muted" x="307" y="191" font-size="16">IPCP è l’NCP per IPv4</text><g><rect class="segment" x="17" y="79" width="120" height="72" rx="10"/><text class="violet" x="77" y="112" text-anchor="middle" font-size="21">LCP</text><text class="muted" x="77" y="135" text-anchor="middle" font-size="15">Collegamento</text></g><g><rect class="segment" x="181" y="79" width="147" height="72" rx="10"/><text class="teal" x="254.5" y="112" text-anchor="middle" font-size="21">Identità</text><text class="muted" x="254.5" y="135" text-anchor="middle" font-size="15">Se richiesta</text></g><g><rect class="segment" x="372" y="79" width="128" height="72" rx="10"/><text class="violet" x="436" y="112" text-anchor="middle" font-size="21">NCP</text><text class="muted" x="436" y="135" text-anchor="middle" font-size="15">Livello rete</text></g></svg></figure>
     </div>
   </section>
   <section class="presenter-slide lim-slide" tabindex="-1" inert>
     <div class="lim-stage">
-      <div><h2>PAP e CHAP</h2><p>Entrambi verificano l’identità del peer con meccanismi diversi.</p></div>
+      <div>
+        <h2>PAP e CHAP</h2>
+        <p>Con <strong>PAP</strong> le credenziali passano sul collegamento in chiaro. Con <strong>CHAP</strong> un apparato invia una sfida e l’altro calcola una risposta con il segreto condiviso.</p>
+        <p>In CHAP il segreto resta presso gli apparati. Per rendere riservati i dati che viaggiano serve la cifratura.</p>
+      </div>
       <div class="lim-visual"><ol class="lim-diagram"><li><strong>PAP</strong><span> · credenziali sul link</span></li><li><strong>CHAP</strong><span> · sfida e risposta</span></li><li><strong>Riservatezza</strong><span> · richiede cifratura</span></li></ol></div>
     </div>
   </section>
   <section class="presenter-slide lim-slide" tabindex="-1" inert>
     <div class="lim-stage">
-      <div><h2>Da dove parti con la diagnosi?</h2><p>Riconosci l’ultimo passo riuscito e verifica quello successivo.</p></div>
+      <div>
+        <h2>Da dove parti con la diagnosi?</h2>
+        <p>Parti dall’ultimo passo che sai essere riuscito. Se manca il segnale, controlla la parte fisica. Se LCP è aperto e l’identità è respinta, controlla l’autenticazione.</p>
+        <p>Se anche l’identità è accettata ma IPv4 non parte, il primo controllo riguarda IPCP.</p>
+      </div>
       <div class="lim-visual"><ol class="lim-diagram"><li><strong>Niente segnale</strong><span> · fisico</span></li><li><strong>LCP riuscito, identità respinta</strong><span> · autenticazione</span></li><li><strong>Identità accettata, IPv4 assente</strong><span> · IPCP</span></li></ol></div>
     </div>
   </section>
-  <section class="presenter-slide lim-slide" tabindex="-1" inert>
+  <section class="presenter-slide lim-slide lim-exercise" tabindex="-1" inert>
     <div class="lim-stage">
-      <div><h2>Misura l’overhead</h2><p>Per la trama di esempio aggiungi 8 byte di campi a 100 byte utili.</p></div>
-      <div class="lim-visual"><ol class="lim-diagram"><li><strong>100 + 8 = 108 byte</strong></li><li><strong>100 ÷ 108 × 100 ≈ 92,59% utile</strong></li></ol></div>
+      <div>
+        <p class="lim-type">Esercizio</p>
+        <h2>Misura l’overhead</h2>
+        <p>Una trama contiene 100 byte di dati utili e 8 byte di campi di servizio. Questi 8 byte sono l’<strong>overhead</strong> dell’esempio.</p>
+        <p class="lim-example"><strong>Consegna.</strong> Trova la dimensione totale della trama e calcola che percentuale occupano i dati utili.</p>
+      </div>
+      <div class="lim-visual"><button type="button" class="btn btn-primary" data-wan-reveal aria-expanded="false" aria-controls="lim-exercise-4-1">Mostra soluzione</button><div class="lim-solution" id="lim-exercise-4-1" hidden><h3>Soluzione guidata</h3><p>La trama misura <strong>100 + 8 = 108 byte</strong>. Per trovare la quota utile, dividi i 100 byte di dati per tutti i 108 byte e moltiplica per 100. Ottieni circa <strong>92,59%</strong>.</p></div></div>
     </div>
   </section>
-  <section class="presenter-slide lim-slide" tabindex="-1" inert>
+  <section class="presenter-slide lim-slide lim-curiosity" tabindex="-1" inert>
     <div class="lim-stage">
-      <div><h2>Sfida alla classe</h2><p>LCP è aperto. L’autenticazione riesce, ma il collegamento non trasporta IPv4. Dove cerchi il problema?</p></div>
-      <div class="lim-visual"><button type="button" class="btn btn-primary" data-wan-reveal aria-expanded="false" aria-controls="lim-solution-4">Mostra soluzione</button><p class="wan-lim-answer" id="lim-solution-4" hidden>Controlla lo stato di IPCP e i parametri IPv4 negoziati. IPCP è il protocollo di configurazione di IPv4 in PPP.</p></div>
+      <div>
+        <p class="lim-curiosity-label">Curiosità</p>
+        <h2>Perché nel router di casa a volte c’è PPPoE?</h2>
+        <p>Su alcuni accessi il router di casa usa <strong>PPPoE</strong>, cioè PPP sopra Ethernet, per aprire una sessione con l’operatore.</p>
+        <p>Le trame Ethernet trasportano i messaggi PPP. Le fasi di una sessione PPP si possono quindi ritrovare anche su un accesso Ethernet.</p>
+        <p class="lim-terms">Fonte · <a target="_blank" rel="noopener noreferrer" href="https://www.rfc-editor.org/info/rfc2516/">RFC 2516 · PPP sopra Ethernet</a></p>
+      </div>
+      <div class="lim-visual">
+        <p class="lim-example"><strong>Prima di leggere.</strong> Perché la sigla PPPoE contiene sia PPP sia Ethernet? Che compito hanno?</p>
+        <ul class="lim-diagram" role="list">
+          <li><strong>Ethernet</strong><span> · trasporta i messaggi sul collegamento</span></li>
+          <li><strong>PPP</strong><span> · gestisce la sessione con l’operatore</span></li>
+        </ul>
+      </div>
     </div>
   </section>
-  <section class="presenter-slide lim-slide" tabindex="-1" inert>
+  <section class="presenter-slide lim-slide lim-challenge" tabindex="-1" inert>
     <div class="lim-stage">
-      <div><h2>Da ricordare</h2><p>Leggi una trama di linea, spiega cosa segnala l’FCS e riconosci in quale fase PPP si può bloccare un collegamento.</p></div>
-      <div class="lim-visual"><ol class="lim-diagram"><li><strong>Anatomia della trama</strong></li><li><strong>Quando i dati imitano il flag</strong></li><li><strong>Avvia una sessione PPP</strong></li></ol></div>
+      <div>
+        <h2>Sfida alla classe</h2>
+        <p>Due router aprono il collegamento PPP e superano l’autenticazione. Il collegamento però non è ancora in grado di trasportare IPv4.</p>
+        <p class="lim-example"><strong>Consegna.</strong> Confrontati con un compagno. Indica quale fase controllare per prima, quale protocollo la gestisce e che cosa verificheresti sui router.</p>
+      </div>
+      <div class="lim-visual"><button type="button" class="btn btn-primary" data-wan-reveal aria-expanded="false" aria-controls="lim-solution-4">Mostra soluzione</button><div class="lim-solution" id="lim-solution-4" hidden><h3>Soluzione guidata</h3><p>Controlla la configurazione del livello di rete, in particolare <strong>IPCP</strong>, che negozia i parametri IPv4 in PPP. Verifica se IPCP è aperto e quali indirizzi IPv4 sono stati concordati. LCP e autenticazione sono già riusciti.</p></div></div>
+    </div>
+  </section>
+  <section class="presenter-slide lim-slide lim-recap" tabindex="-1" inert>
+    <div class="lim-stage lim-stage-summary">
+      <h2>Da ricordare</h2>
+      <ul class="lim-summary" role="list">
+        <li><strong>Trama</strong>Il flag indica il confine. Il controllo FCS permette di scartare una trama alterata.</li>
+        <li><strong>Sessione PPP</strong>LCP apre il collegamento, segue l’autenticazione se richiesta, poi si configura il protocollo di rete.</li>
+        <li><strong>Diagnosi</strong>Parti dall’ultima fase riuscita. Se manca IPv4 dopo l’autenticazione, verifica IPCP.</li>
+      </ul>
     </div>
   </section>
 </template>

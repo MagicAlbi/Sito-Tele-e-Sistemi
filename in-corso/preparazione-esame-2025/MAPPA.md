@@ -1,0 +1,54 @@
+# Esame di Stato · Telecomunicazioni 2025
+
+Obiettivo di fine anno. Svolgere tutti i punti obbligatori delle tre tracce e saper scegliere e argomentare almeno due risposte della seconda parte in ciascuna sessione. Tutti i quesiti sono censiti qui. Nelle simulazioni si usa il manuale tecnico e si dichiara da dove vengono dati, formule e ipotesi. Allenare anche le risposte sintetiche entro il limite di 20 righe indicato nelle tracce, esclusi schemi, grafici e tabelle.
+
+I PDF originali sono in `Materiali/Tracce esame Telecomunicazioni 2025/`, accanto alla cartella `sito/`. Nella stessa radice `Materiali/` sono conservate le programmazioni di Telecomunicazioni, Sistemi e Reti e TPSIT. Gli abbinamenti alle altre discipline si basano su argomenti in programma. Lo svolgimento effettivo in classe è da verificare con il docente.
+
+## Prime parti obbligatorie
+
+| Traccia e punto | Cosa esercitare in Telecomunicazioni | Dove riprendere |
+| --- | --- | --- |
+| Ordinaria A · Portata AIS | Convertire le potenze, stimare la portata dalla soglia del ricevitore e confrontarla con l’orizzonte radio determinato dalle altezze. Dichiarare perdite, guadagni e ipotesi sulla propagazione. | 1.6 come base, 3.6 e ripasso antenne per il caso marittimo. |
+| Ordinaria B · Frequenza degli aggiornamenti | Leggere la tabella degli intervalli, ricavare lo spostamento fra due messaggi dalla velocità e motivare il dettaglio scelto per una regata. Se serve, proporre un sistema alternativo e giustificarne copertura, frequenza di invio e capacità. | 3.6 e laboratorio del Modulo 3. TPSIT 5A per i principi dell’acquisizione periodica, con posizione e orario. |
+| Ordinaria C · Saturazione AIS | Distinguere bit utili, bit totali e intervalli di trasmissione. Stimare quanti intervalli servono per barca e per canale, poi confrontare domanda e capacità a regime e con invii più frequenti. Dichiarare numero di barche, frequenza degli invii e ipotesi sui canali. | 2.2 e 2.4 come richiami su condivisione e trama, Modulo 3 per il calcolo con TDMA, cioè accesso a turni. Sistemi e Reti 4A tratta già TDMA. |
+| Ordinaria D · Dati in sede e da remoto | Disegnare il percorso dal ricevitore AIS alla visualizzazione locale e remota. Motivare come distribuire dati aggiornati e regolare l’accesso. | Laboratorio del Modulo 2 e 5.1 per il percorso dei dati. Sistemi e Reti 5A per client/server, servizi web e accesso sicuro. |
+| Suppletiva A · Rete agricola | Disegnare sensori, centraline, concentratori e sede. Motivare la scelta tra Wi-Fi, ZigBee, LoRa e NB-IoT con copertura, alimentazione, quantità di dati e disponibilità della rete. | Modulo 4 dopo 4.4, con richiamo a 1.1 e 1.6. TPSIT 4A per scelta e acquisizione dei sensori, TPSIT 5A per reti di sensori, Wi-Fi e ZigBee. LoRa e NB-IoT restano un confronto applicativo di Telecomunicazioni. |
+| Suppletiva B · Formato dei pacchetti | Definire identificativo, data e ora, misure, unità, precisione e regole di lettura. Stimare la lunghezza del messaggio distinguendo dati utili e campi aggiuntivi. | 2.4 per trama e controllo degli errori, laboratorio del Modulo 2 per il caso completo. Coordinare con TPSIT 5A la costruzione e lettura del messaggio a partire dalle misure. |
+| Suppletiva C · Ponte radio a 5 GHz | Scegliere diametro, guadagno e posizione delle antenne. Verificare perdite in spazio libero e nei cavi, ostacoli e prima zona di Fresnel. Calcolare potenza ricevuta e margine rispetto alla sensibilità dichiarando le ipotesi. | 1.6 come base, 3.6 e laboratorio del Modulo 3 per il dimensionamento completo. |
+| Suppletiva D · Piano IP | Partire da almeno 13 concentratori e includere gli altri apparati IP. Motivare reti, prefissi, indirizzi dei router e spazio di crescita. | 2.5 e laboratorio del Modulo 2. Sistemi e Reti 4A per sottoreti e piano di indirizzamento completo. |
+| Straordinaria A · Schema della stazione DAB | Disegnare multiplexer, ponte radio Ethernet, trasmettitore, divisore e pannelli. Distinguere il collegamento che consegna il flusso al trasmettitore dalla diffusione verso gli ascoltatori. | 5.4, con richiami a 2.1 e 3.6. |
+| Straordinaria B · Perdite e potenza per pannello | Seguire ogni ramo e distinguere divisione della potenza, perdita aggiuntiva del divisore, perdita del cavo e guadagno del pannello. Distinguere potenza all’ingresso dell’antenna e potenza irradiata equivalente, dichiarando il riferimento del guadagno. | 5.4 per l’esercizio completo, con richiami a 1.6 e antenne di quarta. |
+| Straordinaria C · Ponte radio a 17,1 GHz | Confrontare le due larghezze di canale con il flusso richiesto e l’eventuale crescita. Usare per ciascuna scelta i suoi dati di potenza e sensibilità. Scegliere le antenne e verificare margine e ostacoli. | 3.6 per il metodo, 5.4 per applicarlo alla stazione DAB. |
+| Straordinaria D · Monitoraggio IP | Disegnare la rete di gestione, indicare apparati, accesso remoto, protocolli e controlli. Distinguere il traffico audio da quello di monitoraggio. | 5.4 e laboratorio del Modulo 2. Sistemi e Reti 5A per SNMP, ruoli di gestore e agente, e accesso sicuro. |
+
+## Seconda parte a scelta
+
+La colonna «Preparazione» propone da quali quesiti partire per avere almeno due risposte praticabili in ogni sessione. Le estensioni specialistiche si affrontano dopo l’allenamento sulle parti obbligatorie.
+
+| Traccia e quesito | Cosa preparare e dove | Preparazione |
+| --- | --- | --- |
+| Ordinaria 1 · Routing | Nella 2.5 confrontare distance vector e link state usando la stessa rete e un cambio di collegamento. Richiamare topologia e tabelle con Sistemi e Reti 4A. | Tra i primi da preparare. |
+| Ordinaria 2 · ISO/OSI e TCP/IP | Nella 2.1 richiamare i livelli facendo seguire un dato dal sensore alla rete. Sistemi e Reti 4A guida il confronto completo fra i modelli. | Tra i primi da preparare. |
+| Ordinaria 3 · Campionamento per radio software | Nella 3.1 distinguere campionamento diretto della banda FM, conversione a una frequenza più bassa e campionamento passa-banda con verifica della sovrapposizione delle repliche. | Principio di campionamento nel percorso comune. Scelte avanzate da approfondire in preparazione all’esame. |
+| Ordinaria 4 · Zona di Fresnel | Nella 3.6 e nel ripasso antenne spiegare perché vedere l’altra antenna può essere insufficiente e usare un profilo con ostacolo per motivare l’altezza scelta. | Tra i primi da preparare. Serve anche nelle parti obbligatorie. |
+| Suppletiva 1 · Adattamento della Yagi | Nel ripasso antenne collocare l’adattamento d’impedenza alle linee. Posizione e lunghezza dello stub, uno spezzone di linea usato per adattare l’antenna, richiedono una guida alla consultazione del manuale e un esercizio dedicato. | Estensione specialistica. |
+| Suppletiva 2 · QAM, banda e rapporto segnale/rumore | Nelle 3.3–3.5 collegare numero di stati, bit per simbolo, simboli al secondo e banda, dichiarando le ipotesi sul filtraggio. Per il rapporto segnale/rumore alla probabilità d’errore richiesta, usare curve o formule del manuale e dichiararne il modello. | Calcoli di base nel percorso comune. Probabilità d’errore come estensione. |
+| Suppletiva 3 · Fading | Nella 1.5 collegare riflessioni e variazioni del segnale ricevuto. Nella 3.6 esercitare cause e rimedi, fra cui margine, scelta della posizione e uso di più antenne. | Tra i primi da preparare. |
+| Suppletiva 4 · DAB e FM | Usare il recupero AM/FM come base. Nella 5.4 confrontare diffusione analogica e digitale, programmi raggruppati, ricezione e differenze operative. | Tra i primi da preparare. |
+| Straordinaria 1 · Esposizione ai campi | Nel ripasso antenne spiegare quali dati del sistema radiante servono per stimare l’esposizione e come distinguere lavoratori e popolazione. Il metodo e i riferimenti applicabili sono da verificare prima di preparare un esercizio. | Estensione specialistica. |
+| Straordinaria 2 · Fibra fra due LAN | Nella 2.3 esercitare la scelta di fibra e apparati, il bilancio ottico su tre tratte e la verifica della capacità. Coordinare con Sistemi e Reti 4A, dove è già previsto il bilancio di potenza in fibra. | Tra i primi da preparare. |
+| Straordinaria 3 · Telelettura idrica | Nel Modulo 4 estendere il caso agricolo a contatori con un messaggio breve. Progettare rete e frequenza di invio, separando i dati del contatore dai campi aggiunti. TPSIT 4A–5A per acquisizione e rete di dispositivi. | Tra i primi da preparare. |
+| Straordinaria 4 · Campionamento e multiplazione | Nella 3.1 e nel laboratorio del Modulo 3 organizzare in una trama i campioni analogici e il flusso numerico. Calcolare la velocità dichiarando il ritmo del quarto canale, che la traccia non indica esplicitamente, e gli eventuali bit di servizio. | Tra i primi da preparare. |
+
+## Verifica dei moduli 1 e 2
+
+| Materiale attuale | Approfondimento da preparare |
+| --- | --- |
+| [1.5 · Strato fisico e antenne](../../modulo1/lezione-1-5.html) tratta diagrammi di radiazione, riflessioni, antenne multiple e modulazioni. | Collegare le riflessioni al fading con un esempio e un rimedio motivato. |
+| [1.6 · Copertura e sicurezza](../../modulo1/lezione-1-6.html) e [esercizi Wi-Fi](../../modulo1/esercizi.html) trattano potenza ricevuta e margine in ambiente Wi-Fi. | Aggiungere un esercizio breve all’aperto con perdita dei cavi e soglia del ricevitore. Sviluppare scelta delle antenne, orizzonte e Fresnel nella 3.6. |
+| [2.3 · Accesso in rame e fibra](../../modulo2/lezione-2-3.html) presenta accessi ottici e architetture. | Aggiungere un collegamento fra sedi da dimensionare, con perdite di fibra, giunti e connettori, margine e capacità. |
+| [2.4 · HDLC e PPP](../../modulo2/lezione-2-4.html) mostra delimitazione, dati e controllo di una trama. | Far scegliere i campi di un messaggio di sensori e stimare quanti bit richiede. Usare poi la trama AIS nel Modulo 3 per calcolare l’occupazione del canale. |
+| [2.5 · Routing](../../modulo2/lezione-2-5.html) distingue percorsi connessi, statici e dinamici e cita OSPF. Gli [esercizi WAN](../../modulo2/esercizi.html) includono sottoreti. | Aggiungere il confronto distance vector/link state e un piano IP ragionato per un impianto completo, coordinato con Sistemi e Reti. |
+| [Laboratorio WAN](../../modulo2/lab-routing.html) fa seguire il percorso di un pacchetto. | Aggiungere uno scenario unico con sensori, concentratori e sede. Far produrre schema, formato dei dati e piano IP. Riprendere visualizzazione e monitoraggio con Sistemi e Reti 5A. |
+
+Prima di fissare tempi e verifiche, usare i laboratori esistenti come prima sede per i casi integrati e controllare con il docente il calendario e ciò che è già svolto nelle altre materie. Poi riallineare esercizi, banca, quiz e verifiche solo per gli approfondimenti approvati. Verifica finale prevista con tre simulazioni, ognuna con tutti i punti obbligatori e due risposte a scelta, usando il manuale e motivando ipotesi e scelte.

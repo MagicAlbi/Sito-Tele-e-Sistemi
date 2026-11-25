@@ -369,12 +369,13 @@
       </div>
     </div>
   </section>
-  <section class="presenter-slide lim-slide" tabindex="-1" inert>
+  <section class="presenter-slide lim-slide lim-curiosity" tabindex="-1" inert>
     <div class="lim-stage">
       <div>
+        <p class="lim-curiosity-label">Curiosità</p>
         <h2>La radio attraversa i confini dell’aula</h2>
         <p>Il segnale può arrivare anche in corridoio o fuori dalla stanza. La <strong>cifratura</strong> protegge il contenuto rendendolo incomprensibile a chi non ha la chiave.</p>
-        <p><strong>Curiosità.</strong> Il nome WEP prometteva una riservatezza paragonabile a quella di una rete cablata. Nella pratica, valori iniziali troppo corti potevano ripetersi e indebolire il sistema.</p>
+        <p><strong>Prima di rispondere:</strong> il nome di una protezione basta per fidarsi? Il nome WEP prometteva una riservatezza paragonabile a quella di una rete cablata. Nella pratica, valori iniziali troppo corti potevano ripetersi e indebolire il sistema.</p>
         <p class="lim-terms">
           <span><strong>WEP</strong> · Wired Equivalent Privacy, vecchio sistema di sicurezza Wi-Fi.</span>
           <span><strong>IV</strong> · Initialization Vector, valore iniziale usato nella cifratura.</span>
@@ -407,11 +408,13 @@
       </div>
     </div>
   </section>
-  <section class="presenter-slide lim-slide" tabindex="-1" inert>
+  <section class="presenter-slide lim-slide lim-curiosity" tabindex="-1" inert>
     <div class="lim-stage">
       <div>
+        <p class="lim-curiosity-label">Curiosità</p>
         <h2>Il pulsante per collegare la stampante</h2>
-        <p><strong>Curiosità.</strong> Il <strong>WPS</strong> è nato per facilitare il collegamento di dispositivi come le stampanti. Alcuni apparecchi offrivano, oltre al pulsante, un codice numerico.</p>
+        <p><strong>Indovinello.</strong> Come si collegava una stampante al Wi-Fi senza scrivere tutta la password?</p>
+        <p>Il <strong>WPS</strong> è nato per facilitare il collegamento di dispositivi come le stampanti. Alcuni apparecchi offrivano, oltre al pulsante, un codice numerico.</p>
         <p>In vecchie implementazioni il <strong>PIN</strong> veniva verificato in parti separate. Questo riduceva la sicurezza che ci si aspettava dalla sua lunghezza.</p>
         <p class="lim-terms">
           <span><strong>WPS</strong> · Wi-Fi Protected Setup, configurazione semplificata del collegamento Wi-Fi.</span>
@@ -424,6 +427,32 @@
           <li><strong>Vecchia modalità con PIN.</strong> La verifica in parti separate indeboliva la protezione del codice.</li>
         </ul>
       </div>
+    </div>
+  </section>
+  <section class="presenter-slide lim-slide lim-challenge" tabindex="-1" inert>
+    <div class="lim-stage">
+      <div>
+        <h2>Sfida alla classe</h2>
+        <p><strong>Dove proviamo la chiamata?</strong> Per una videochiamata la scuola vuole provare un obiettivo di segnale di −67 dBm. Misura −62 dBm nell’aula A e −74 dBm nell’aula B.</p>
+        <p class="lim-example"><strong>60 secondi a squadre.</strong> Calcolate il margine di entrambe le aule sottraendo la soglia al valore misurato. Dite dove partireste con la prova. Un punto per i margini, uno per la scelta motivata.</p>
+      </div>
+      <div class="lim-visual">
+        <button type="button" class="btn btn-primary lim-reveal" data-presentation-reveal aria-expanded="false" aria-controls="lim-soluzione-1-6">Mostra soluzione</button>
+        <div class="lim-solution" id="lim-soluzione-1-6" hidden>
+          <h3>Soluzione guidata</h3>
+          <ol><li>Aula A: −62 − (−67) = <strong>+5 dB</strong>. Il segnale è sopra la soglia.</li><li>Aula B: −74 − (−67) = <strong>−7 dB</strong>. Il segnale è sotto la soglia.</li><li>Partiamo dall’<strong>aula A</strong>. Poi proviamo la chiamata: il livello di segnale, da solo, non misura la qualità effettiva.</li></ol>
+        </div>
+      </div>
+    </div>
+  </section>
+  <section class="presenter-slide lim-slide lim-recap" tabindex="-1" inert>
+    <div class="lim-stage lim-stage-summary">
+      <h2>Da ricordare</h2>
+      <ul class="lim-summary" role="list">
+        <li><strong>Margine del segnale</strong>Sottrai la soglia di progetto al valore misurato. Un margine positivo indica che sei sopra la soglia.</li>
+        <li><strong>Copertura sul posto</strong>Misura nelle zone da servire e prova il servizio nelle condizioni d’uso.</li>
+        <li><strong>Sicurezza Wi-Fi</strong>Scegli WPA3 quando gli apparati lo supportano e usa una password robusta.</li>
+      </ul>
     </div>
   </section>
 </template>

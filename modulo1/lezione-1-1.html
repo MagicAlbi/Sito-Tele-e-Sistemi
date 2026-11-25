@@ -599,19 +599,48 @@
       </div>
     </div>
   </section>
-  <section class="presenter-slide lim-slide" tabindex="-1" inert>
+  <section class="presenter-slide lim-slide lim-curiosity" tabindex="-1" inert>
     <div class="lim-stage">
       <div>
+        <p class="lim-curiosity-label">Curiosità</p>
         <h2>Perché il telefono usa un indirizzo privato</h2>
         <p>Usare sempre lo stesso <strong>indirizzo MAC</strong> (Media Access Control, identificativo dell’interfaccia di rete) rende più facile riconoscere un dispositivo quando ricompare.</p>
-        <p><strong>Curiosità.</strong> Nelle impostazioni Wi-Fi puoi trovare «indirizzo privato» o «casuale». Il telefono può usare un indirizzo diverso da quello di fabbrica per limitare il tracciamento.</p>
+        <p><strong>Vero o falso?</strong> Il telefono deve presentarsi con lo stesso indirizzo a tutte le reti Wi-Fi.</p>
+        <p>Falso. Con la funzione «indirizzo privato» il telefono può presentarsi con un indirizzo Wi-Fi diverso a seconda della rete, rendendo più difficile collegare le sue attività.</p>
         <p class="lim-terms">
           <span><strong>MAC</strong> · Medium Access Control. L’indirizzo MAC identifica un’interfaccia a livello di collegamento.</span>
+          <a href="https://support.apple.com/it-it/102509" target="_blank" rel="noopener noreferrer">Apple · Indirizzo Wi-Fi privato</a>
         </p>
       </div>
       <div class="lim-visual lim-art">
         <img src="../assets/img/quiz-wlan-scambio.svg" alt="Telefono e computer si scambiano messaggi su una rete senza fili.">
       </div>
+    </div>
+  </section>
+  <section class="presenter-slide lim-slide lim-challenge" tabindex="-1" inert>
+    <div class="lim-stage">
+      <div>
+        <h2>Sfida alla classe</h2>
+        <p><strong>Cambio aula senza cambiare rete.</strong> Il portatile passa dall’aula A all’aula B e si aggancia al punto di accesso B. Entrambi i punti di accesso appartengono alla stessa rete «Lab-Demo».</p>
+        <p class="lim-example"><strong>60 secondi a squadre.</strong> Indicate quale dato resta uguale e quale cambia tra SSID (nome della rete) e BSSID (identificativo della cella). Un punto per i due dati corretti, uno per il motivo.</p>
+      </div>
+      <div class="lim-visual">
+        <button type="button" class="btn btn-primary lim-reveal" data-presentation-reveal aria-expanded="false" aria-controls="lim-soluzione-1-1">Mostra soluzione</button>
+        <div class="lim-solution" id="lim-soluzione-1-1" hidden>
+          <h3>Soluzione guidata</h3>
+          <ol><li>L’SSID resta <strong>Lab-Demo</strong> in entrambe le aule. È il nome comune della rete.</li><li>Il BSSID cambia: il portatile passa dalla cella A alla cella B. Il BSSID identifica la singola cella a cui si aggancia.</li></ol>
+        </div>
+      </div>
+    </div>
+  </section>
+  <section class="presenter-slide lim-slide lim-recap" tabindex="-1" inert>
+    <div class="lim-stage lim-stage-summary">
+      <h2>Da ricordare</h2>
+      <ul class="lim-summary" role="list">
+        <li><strong>Collegamento radio</strong>Il Wi-Fi usa le onde radio per collegare i dispositivi alla rete locale.</li>
+        <li><strong>SSID</strong>È il nome della rete. Più punti di accesso della stessa rete possono usare lo stesso nome.</li>
+        <li><strong>BSSID</strong>Identifica la singola cella. Può cambiare quando ti agganci al punto di accesso di un’altra aula.</li>
+      </ul>
     </div>
   </section>
 </template>

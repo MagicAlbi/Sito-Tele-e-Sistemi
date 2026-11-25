@@ -163,58 +163,114 @@
   </main>
 </div>
 <template data-presentation data-presentation-title="Dalla rete locale al canale fisico">
-  <section class="presenter-slide lim-slide" tabindex="-1" inert>
+  <section class="presenter-slide lim-slide lim-opening" tabindex="-1" inert>
     <div class="lim-stage">
-      <div><h2>Il primo metro della WAN</h2><p>Segui il file di una sede prima che entri nella rete dell’operatore.</p></div>
+      <div>
+        <p class="lim-type">Lezione 2.1</p>
+        <h2>Il primo metro della WAN</h2>
+        <p>Una WAN, cioè una rete geografica, collega reti lontane. Immagina che la sede Aurora invii un file alla sede Brina. Il PC lo divide in dati da trasmettere e li invia sulla rete locale.</p>
+        <p>Il router inoltra i pacchetti verso l’operatore. Nell’esempio il modem adatta il segnale al mezzo fisico della tratta di accesso.</p>
+      </div>
       <div class="lim-visual"><ol class="lim-diagram"><li><strong>PC</strong><span> · crea il file</span></li><li><strong>Router</strong><span> · consegna i dati</span></li><li><strong>Modem</strong><span> · adatta il segnale</span></li></ol></div>
     </div>
   </section>
   <section class="presenter-slide lim-slide" tabindex="-1" inert>
     <div class="lim-stage">
-      <div><h2>DTE e DCE</h2><p>Leggi il ruolo dalla porta che stai osservando.</p></div>
+      <div>
+        <h2>DTE e DCE</h2>
+        <p>Il router dell’esempio è il <strong>DTE</strong>, il terminale che scambia dati. Il modem è il <strong>DCE</strong>, l’apparato che collega il terminale alla linea.</p>
+        <p>Su questa porta seriale sincrona il modem fornisce anche il <strong>clock</strong>, il segnale che indica al terminale quando leggere o inviare un bit.</p>
+      </div>
       <figure class="lim-visual wan-visual"><svg class="wan-drawing" viewBox="0 0 520 226" role="img" aria-label="Il router DTE invia dati al modem DCE. Il modem DCE restituisce il clock nel collegamento sincrono considerato."><path class="flow" d="M192 86H325m-10-8 10 8-10 8"/><path class="return" d="M330 112H196m10-8-10 8 10 8"/><text class="ink" x="218" y="74" font-size="16">Dati TXD</text><text class="teal" x="207" y="144" font-size="16">Clock dal DCE</text><text class="muted" x="99" y="187" font-size="16">RTS → richiesta     •     CTS ← permesso</text><g><rect class="segment" x="28" y="62" width="160" height="74" rx="10"/><text class="violet" x="108" y="96" text-anchor="middle" font-size="21">Router</text><text class="muted" x="108" y="119" text-anchor="middle" font-size="15">DTE</text></g><g><rect class="segment" x="331" y="62" width="160" height="74" rx="10"/><text class="teal" x="411" y="96" text-anchor="middle" font-size="21">Modem</text><text class="muted" x="411" y="119" text-anchor="middle" font-size="15">DCE</text></g></svg></figure>
     </div>
   </section>
   <section class="presenter-slide lim-slide" tabindex="-1" inert>
     <div class="lim-stage">
-      <div><h2>Dati e clock</h2><p>TXD e RXD trasportano i bit. Il clock dice quando leggerli.</p></div>
+      <div>
+        <h2>Dati e clock</h2>
+        <p>Dal punto di vista del terminale, <strong>TXD</strong> porta i bit in uscita e <strong>RXD</strong> quelli in ingresso. Chi riceve deve sapere in quale istante leggere il segnale.</p>
+        <p>Nel primo schema quel ritmo arriva dal clock. Nel secondo, il bit di start dà il punto di partenza per leggere un carattere.</p>
+      </div>
       <figure class="lim-visual wan-visual"><svg class="wan-drawing" viewBox="0 0 520 226" role="img" aria-label="Esempio di clock periodico e formato asincrono da 10 bit."><text class="teal" x="23" y="37" font-size="21">Clock sincrono</text><path class="return" d="M23 89H61V58H101V89H141V58H181V89H221V58H261V89H301V58H341V89H381V58H421V89H461V58H497"/><text class="violet" x="23" y="140" font-size="21">Carattere asincrono 8N1</text><rect class="segment" x="23" y="160" width="43" height="37" rx="6"/><rect class="outline" x="71" y="160" width="43" height="37" rx="6"/><rect class="outline" x="119" y="160" width="43" height="37" rx="6"/><rect class="outline" x="167" y="160" width="43" height="37" rx="6"/><rect class="outline" x="215" y="160" width="43" height="37" rx="6"/><rect class="outline" x="263" y="160" width="43" height="37" rx="6"/><rect class="outline" x="311" y="160" width="43" height="37" rx="6"/><rect class="outline" x="359" y="160" width="43" height="37" rx="6"/><rect class="outline" x="407" y="160" width="43" height="37" rx="6"/><rect class="segment" x="455" y="160" width="43" height="37" rx="6"/><text class="ink" x="26" y="184" font-size="14">Start</text><text class="ink" x="209" y="184" font-size="17">8 bit di dati</text><text class="ink" x="458" y="184" font-size="14">Stop</text></svg></figure>
     </div>
   </section>
   <section class="presenter-slide lim-slide" tabindex="-1" inert>
     <div class="lim-stage">
-      <div><h2>Il permesso di inviare</h2><p>Nel dialogo dell’esempio il terminale chiede e il modem risponde.</p></div>
+      <div>
+        <h2>Il permesso di inviare</h2>
+        <p>Nel collegamento dell’esempio il terminale attiva <strong>RTS</strong> per chiedere di inviare. Quando il modem è pronto, risponde con <strong>CTS</strong>.</p>
+        <p>Solo allora il terminale invia i bit su <strong>TXD</strong>. RTS e CTS sono segnali di controllo del flusso.</p>
+      </div>
       <div class="lim-visual"><ol class="lim-diagram"><li><strong>1</strong><span> · RTS: posso inviare?</span></li><li><strong>2</strong><span> · CTS: puoi inviare</span></li><li><strong>3</strong><span> · TXD: partono i dati</span></li></ol></div>
     </div>
   </section>
   <section class="presenter-slide lim-slide" tabindex="-1" inert>
     <div class="lim-stage">
-      <div><h2>Sincrono o asincrono?</h2><p>Una comune console 8N1 si allinea allo start di ogni carattere.</p></div>
+      <div>
+        <h2>Sincrono o asincrono?</h2>
+        <p>In un collegamento sincrono il clock scandisce la lettura dei bit. In una console asincrona il ricevitore si riallinea all’inizio di ogni carattere.</p>
+        <p><strong>8N1</strong> significa 8 bit di dati, nessun bit di parità e 1 bit di stop. Con lo start iniziale, ogni byte occupa 10 bit sulla linea.</p>
+      </div>
       <div class="lim-visual"><ol class="lim-diagram"><li><strong>Sincrono</strong><span> · ritmo di clock</span></li><li><strong>Asincrono</strong><span> · start, 8 dati, stop</span></li><li><strong>8N1</strong><span> · 10 bit sulla linea per byte</span></li></ol></div>
     </div>
   </section>
-  <section class="presenter-slide lim-slide" tabindex="-1" inert>
+  <section class="presenter-slide lim-slide lim-exercise" tabindex="-1" inert>
     <div class="lim-stage">
-      <div><h2>Quanto tempo impiega?</h2><p>Invia 480 byte a 9.600 bit/s in 8N1. Fai il conto prima di leggere.</p></div>
-      <div class="lim-visual"><ol class="lim-diagram"><li><strong>480 × 10 = 4.800 bit</strong></li><li><strong>4.800 ÷ 9.600 = 0,50 s</strong></li></ol></div>
+      <div>
+        <p class="lim-type">Esercizio</p>
+        <h2>Quanto tempo impiega?</h2>
+        <p>Devi spedire 480 byte su una seriale a 9.600 bit/s in 8N1, senza pause tra i caratteri.</p>
+        <p class="lim-example"><strong>Consegna.</strong> Calcola quanti bit passano sulla linea e il tempo in secondi. Spiega da dove vengono i 10 bit per byte.</p>
+      </div>
+      <div class="lim-visual"><button type="button" class="btn btn-primary" data-wan-reveal aria-expanded="false" aria-controls="lim-exercise-1-1">Mostra soluzione</button><div class="lim-solution" id="lim-exercise-1-1" hidden><h3>Soluzione guidata</h3><p>Ogni carattere occupa 1 bit di start, 8 di dati e 1 di stop. In totale sono <strong>480 × 10 = 4.800 bit</strong>. A 9.600 bit/s, il tempo è <strong>4.800 ÷ 9.600 = 0,50 s</strong>.</p></div></div>
     </div>
   </section>
   <section class="presenter-slide lim-slide" tabindex="-1" inert>
     <div class="lim-stage">
-      <div><h2>Due terminali, un cavo</h2><p>Il null modem incrocia trasmissione e ricezione fra terminali RS-232.</p></div>
+      <div>
+        <h2>Due terminali, un cavo</h2>
+        <p>Per collegare direttamente due terminali RS-232 si può usare un cavo <strong>null modem</strong>. L’uscita di ciascuno va all’ingresso dell’altro.</p>
+        <p>Se colleghi due uscite fra loro, il ricevitore resta senza dati. Verifica anche come i due apparati gestiscono i segnali di controllo.</p>
+      </div>
       <div class="lim-visual"><ol class="lim-diagram"><li><strong>TX A → RX B</strong></li><li><strong>TX B → RX A</strong></li><li><strong>Controllo secondo il cablaggio richiesto</strong></li></ol></div>
     </div>
   </section>
-  <section class="presenter-slide lim-slide" tabindex="-1" inert>
+  <section class="presenter-slide lim-slide lim-curiosity" tabindex="-1" inert>
     <div class="lim-stage">
-      <div><h2>Sfida alla classe</h2><p>La porta sincrona è collegata. I dati risultano illeggibili e il riferimento temporale è assente. Che cosa controlli per primo?</p></div>
-      <div class="lim-visual"><button type="button" class="btn btn-primary" data-wan-reveal aria-expanded="false" aria-controls="lim-solution-1">Mostra soluzione</button><p class="wan-lim-answer" id="lim-solution-1" hidden>Controlla configurazione, cavo e uscita del clock sul DCE. Il ricevitore usa quel riferimento per scandire i bit.</p></div>
+      <div>
+        <p class="lim-curiosity-label">Curiosità</p>
+        <h2>La console senza indirizzo IP</h2>
+        <p>Nei Cisco Catalyst 2960-X puoi collegare un computer direttamente alla porta di console, già alla prima accensione.</p>
+        <p>La guida usa 9.600 baud e il formato <strong>8N1</strong>. Gli stessi parametri visti nell’esempio servono per far dialogare computer e switch.</p>
+        <p class="lim-terms">Fonte · <a target="_blank" rel="noopener noreferrer" href="https://www.cisco.com/c/en/us/td/docs/switches/lan/catalyst2960xr/hardware/installation/guide/b_c2960xr_hig/b_c2960xr_hig_appendix_0111.html">Guida Cisco Catalyst 2960-X</a></p>
+      </div>
+      <div class="lim-visual">
+        <p class="lim-example"><strong>Prima di leggere.</strong> Lo switch non ha ancora un indirizzo IP. Come provereste a configurarlo?</p>
+        <ul class="lim-diagram" role="list">
+          <li><strong>9.600 baud, 8N1</strong><span> · impostazioni del terminale</span></li>
+          <li><strong>Switch</strong><span> · si può configurare prima di assegnargli un IP</span></li>
+        </ul>
+      </div>
     </div>
   </section>
-  <section class="presenter-slide lim-slide" tabindex="-1" inert>
+  <section class="presenter-slide lim-slide lim-challenge" tabindex="-1" inert>
     <div class="lim-stage">
-      <div><h2>Da ricordare</h2><p>Riconosci DTE e DCE, distingui dati, clock e controllo, e individua il primo controllo quando un collegamento seriale non parte.</p></div>
-      <div class="lim-visual"><ol class="lim-diagram"><li><strong>DTE e DCE</strong></li><li><strong>Dati e clock</strong></li><li><strong>Il permesso di inviare</strong></li></ol></div>
+      <div>
+        <h2>Sfida alla classe</h2>
+        <p>Due apparati sono collegati via seriale sincrona. I dati ricevuti sono illeggibili e alla porta del terminale manca il clock previsto.</p>
+        <p class="lim-example"><strong>Consegna.</strong> Confrontati con un compagno. Indica quale apparato dovrebbe fornire il clock, quali controlli faresti e perché quel segnale serve.</p>
+      </div>
+      <div class="lim-visual"><button type="button" class="btn btn-primary" data-wan-reveal aria-expanded="false" aria-controls="lim-solution-1">Mostra soluzione</button><div class="lim-solution" id="lim-solution-1" hidden><h3>Soluzione guidata</h3><p>Il <strong>DCE</strong>, il modem nell’esempio, deve fornire il clock. Verifica che sia configurato per generarlo e che il cavo porti quel segnale fino al DTE. Senza quel ritmo il ricevitore non sa quando leggere ciascun bit.</p></div></div>
+    </div>
+  </section>
+  <section class="presenter-slide lim-slide lim-recap" tabindex="-1" inert>
+    <div class="lim-stage lim-stage-summary">
+      <h2>Da ricordare</h2>
+      <ul class="lim-summary" role="list">
+        <li><strong>Ruoli della porta</strong>Il DTE scambia dati. Il DCE collega il terminale alla linea e fornisce il clock nell’esempio sincrono.</li>
+        <li><strong>Segnali distinti</strong>TXD e RXD portano i bit. Il clock indica quando leggerli. RTS e CTS regolano quando inviarli.</li>
+        <li><strong>Tempi della seriale</strong>In 8N1 un byte occupa 10 bit sulla linea. Se manca il clock sincrono, controlla DCE e cavo.</li>
+      </ul>
     </div>
   </section>
 </template>

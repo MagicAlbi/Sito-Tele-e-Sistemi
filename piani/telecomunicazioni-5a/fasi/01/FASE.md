@@ -21,6 +21,10 @@ Aggiorna l’esito nel file di fase e lo stato nella tabella del piano. Per il s
 - **Criteri per il calendario** Parti dalle stime interne e verifica giorni e ore effettive, comprese le 3 ore settimanali di laboratorio. Metti per primo il Modulo 1 in forma compatta usando i materiali esistenti. Dopo le WAN e prima della trasmissione digitale, inserisci il recupero AM/FM con un confronto pratico fra le due modulazioni e un controllo finale. Per ogni modulo associa date o settimane a lezioni, laboratorio, verifica e disponibilità dei materiali. Riserva almeno 6 ore per recuperi o imprevisti. Verifica che attività e margine rientrino nell’orario utile. Se c’è uno scarto, quantificalo e sottoponi al docente una proposta per restare entro marzo. Colloca il ripasso sulle antenne nella preparazione d’esame, dopo marzo.
 - **Esito** Mappati gli argomenti delle programmazioni di quarta e quinta sulle 20 lezioni dei Moduli 2–5, i laboratori, le verifiche e il recupero AM/FM. Verificati i riferimenti del Wi-Fi e il calendario compatto. Sulle 44 ore da orario e calendario regionale, 38 sono assegnate e 6 restano libere. Da verificare ulteriori sospensioni della 5A e disponibilità dei giovedì. La proposta compatta è pronta per la revisione del docente. Prossima fase, 2.1–2.3 sulle reti WAN.
 
+#### Approfondimenti per la seconda prova
+
+Usare la [mappa quesito per quesito](../../../../in-corso/preparazione-esame-2025/MAPPA.md). Le tre parti obbligatorie guidano la revisione dei laboratori. Usare la 3.6 per il dimensionamento dei ponti radio, il Modulo 4 per la raccolta dati da sensori e la 5.4 per il sistema DAB completo. La mappa indica anche i rinforzi delle lezioni 1.5–1.6 e 2.3–2.5 e gli argomenti da coordinare con le altre materie. Monte ore e calendario da verificare prima di cambiare le attività previste.
+
 #### Wi-Fi nella prima settimana
 
 Usare i materiali del [Modulo 1](../../../../modulo1/index.html) lunedì 23 e mercoledì 25 novembre. Le sei pagine restano disponibili per approfondire.

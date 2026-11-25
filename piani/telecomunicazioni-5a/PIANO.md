@@ -2,8 +2,11 @@
 
 Completare AM/FM e i Moduli 1–5 entro il 31 marzo 2027. Da aprile, preparazione all’esame con ripasso delle antenne. [Calendario, fonti e PDF](fasi/01/FASE.md).
 
+Il traguardo di fine anno è svolgere tutte le parti obbligatorie delle tre prove di Telecomunicazioni 2025 e saper rispondere ad almeno due quesiti a scelta per ciascuna. Usare la [mappa quesito per quesito](../../in-corso/preparazione-esame-2025/MAPPA.md) quando si sviluppano o si rivedono lezioni, laboratori e verifiche. Nelle simulazioni si usa il manuale tecnico.
+
 ## Priorità
 
+- **Seconda prova** Dare precedenza a ponti radio e portata, reti di raccolta dati e stazione DAB. Nella prossima revisione dei Moduli 1 e 2 riprendere copertura all’aperto, formato dei dati, routing, piano IP e fibra. Coordinare i richiami di Sistemi e Reti e TPSIT prima di fissare tempi e attività, come indicato nella mappa.
 - **Wi-Fi** [Esercizi da pubblicare](fasi/22/FASE.md), poi [banca](fasi/23/FASE.md) e [controllo finale](fasi/24/FASE.md). Quiz delle lezioni [approvati](fasi/35/FASE.md).
 - **WAN** Modulo 2 completo in locale. Prossimo passo, revisione dei [materiali](../../modulo2/index.html) e prova sulla [LIM della classe](fasi/02/FASE.md). Moduli 3–5 sospesi.
 - **In parallelo** [Annotazioni](fasi/15/FASE.md), [approvazione prova di accesso](fasi/17/FASE.md) prima del [collegamento al Modulo 1](fasi/18/FASE.md), [progettazione verifiche](fasi/13/FASE.md) indipendente. [Area docente online](fasi/34/FASE.md) dopo la prova online.
