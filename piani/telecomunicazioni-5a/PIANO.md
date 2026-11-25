@@ -29,7 +29,7 @@ Apri la scheda e le righe delle dipendenze pertinenti. I controlli generali sono
 | 10 | [Modulo 5 · lezioni sulle reti convergenti](fasi/10/FASE.md) | 1 | da fare | — | 8–12 h | GPT‑6.2 Astra |
 | 11 | [Modulo 5 · laboratorio e sezione finale](fasi/11/FASE.md) | 10 | da fare | — | 5–8 h | GPT‑6.2 Astra |
 | 12 | [Controllo finale del sito](fasi/12/FASE.md) | 4, 7, 9, 11, 16, 24, 26, 28, 30, 32 | da fare | — | 3–5 h | GPT‑6.2 Sol |
-| 13 | [Progettazione delle verifiche di fine modulo](fasi/13/FASE.md) | 1 | da fare | — | 2–4 h | GPT‑6.2 Astra |
+| 13 | [Progettazione delle verifiche di fine modulo](fasi/13/FASE.md) | 1 | in corso | — | 2–4 h | GPT‑6.2 Astra |
 | 14 | [Bozza di evidenziatori e note nel Modulo 1](fasi/14/FASE.md) | — | fatta | 22 novembre 2026 | 4–6 h | GPT‑6.2 Astra |
 | 15 | [Revisione della bozza con il docente](fasi/15/FASE.md) | 14 | in corso | — | 3–5 h | GPT‑6.2 Sol |
 | 16 | [Estensione alle pagine di spiegazione](fasi/16/FASE.md) | 15 | da fare | — | 2–3 h | GPT‑6.2 Sol |

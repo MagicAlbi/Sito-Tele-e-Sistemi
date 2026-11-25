@@ -353,8 +353,10 @@
         <ul class="lim-diagram" role="list">
           <li><strong>Potenza ricevuta.</strong> 20 − 85 = −65 dBm.</li>
           <li><strong>Margine.</strong> −65 − (−67) = 2 dB.</li>
-          <li><strong>Sfida lampo · Altri 4 dB di perdita.</strong> Risposta: il margine scende a −2 dB, quindi il segnale finisce sotto la soglia scelta.</li>
         </ul>
+        <p>Con altri 4 dB di perdita, quanto margine resta?</p>
+        <button type="button" class="btn btn-primary" data-presentation-reveal aria-expanded="false" aria-controls="lim-rapida-1-6">Mostra soluzione</button>
+        <div class="lim-solution" id="lim-rapida-1-6" hidden><p>Il margine scende a −2 dB, quindi il segnale finisce sotto la soglia scelta.</p></div>
       </div>
     </div>
   </section>
@@ -384,18 +386,19 @@
         <p class="lim-curiosity-label">Curiosità</p>
         <h2>La radio attraversa i confini dell’aula</h2>
         <p>Il segnale può arrivare anche in corridoio o fuori dalla stanza. La <strong>cifratura</strong> protegge il contenuto rendendolo incomprensibile a chi non ha la chiave.</p>
-        <p><strong>Prima di rispondere:</strong> il nome di una protezione basta per fidarsi? Il nome WEP prometteva una riservatezza paragonabile a quella di una rete cablata. Nella pratica, valori iniziali troppo corti potevano ripetersi e indebolire il sistema.</p>
+        <p>Il nome WEP prometteva una riservatezza paragonabile a quella di una rete cablata. Il nome basta per fidarsi? Quale dato tecnico vorreste controllare?</p>
         <p class="lim-terms">
           <span><strong>WEP</strong> · Wired Equivalent Privacy, vecchio sistema di sicurezza Wi-Fi.</span>
           <span><strong>IV</strong> · Initialization Vector, valore iniziale usato nella cifratura.</span>
         </p>
       </div>
-      <div class="lim-visual">
+      <div><button type="button" class="btn btn-primary" data-presentation-reveal aria-expanded="false" aria-controls="lim-curiosita-1-6-wep">Mostra soluzione</button>
+        <div id="lim-curiosita-1-6-wep" hidden><div class="lim-visual">
         <ul class="lim-diagram" role="list">
           <li><strong>Il dettaglio che conta.</strong> L’IV del WEP era di soli 24 bit.</li>
           <li><strong>La conseguenza.</strong> Quando i valori si ripetevano, il traffico offriva meno protezione. WEP è obsoleto.</li>
         </ul>
-      </div>
+      </div></div></div>
     </div>
   </section>
   <section class="presenter-slide lim-slide" tabindex="-1" inert>
@@ -421,21 +424,16 @@
     <div class="lim-stage">
       <div>
         <p class="lim-curiosity-label">Curiosità</p>
-        <h2>Il pulsante per collegare la stampante</h2>
+        <h2>Una stampante da collegare al Wi-Fi</h2>
         <p><strong>Indovinello.</strong> Come si collegava una stampante al Wi-Fi senza scrivere tutta la password?</p>
-        <p>Il <strong>WPS</strong> è nato per facilitare il collegamento di dispositivi come le stampanti. Alcuni apparecchi offrivano, oltre al pulsante, un codice numerico.</p>
-        <p>In vecchie implementazioni il <strong>PIN</strong> veniva verificato in parti separate. Questo riduceva la sicurezza che ci si aspettava dalla sua lunghezza.</p>
-        <p class="lim-terms">
-          <span><strong>WPS</strong> · Wi-Fi Protected Setup, configurazione semplificata del collegamento Wi-Fi.</span>
-          <span><strong>PIN</strong> · Personal Identification Number, il codice numerico usato per configurare il collegamento.</span>
-        </p>
       </div>
-      <div class="lim-visual">
+      <div><button type="button" class="btn btn-primary" data-presentation-reveal aria-expanded="false" aria-controls="lim-curiosita-1-6-wps">Mostra soluzione</button>
+        <div id="lim-curiosita-1-6-wps" hidden><div class="lim-visual">
         <ul class="lim-diagram" role="list">
-          <li><strong>Pulsante.</strong> Si avvia l’abbinamento direttamente dal dispositivo.</li>
+          <li><strong>Pulsante WPS.</strong> Si avvia l’abbinamento direttamente dal dispositivo. WPS sta per Wi-Fi Protected Setup.</li>
           <li><strong>Vecchia modalità con PIN.</strong> La verifica in parti separate indeboliva la protezione del codice.</li>
         </ul>
-      </div>
+      </div></div></div>
     </div>
   </section>
   <section class="presenter-slide lim-slide" tabindex="-1" inert>
@@ -444,7 +442,10 @@
         <h2>Dal Wi-Fi a un collegamento all’aperto</h2>
         <p>Due antenne da 10 dBi, 18 dBm in uscita, 105 dB sul percorso. I cavi perdono 2 e 1 dB. La soglia è −78 dBm.</p><p>Quale margine resta? Che cosa accade con altri 10 dB di perdita?</p>
       </div>
-      <div class="lim-visual"><details><summary>Verifica</summary><p>Arrivano −70 dBm. Il margine è 8 dB e scende a −2 dB se si aggiunge l’ostacolo.</p></details></div>
+      <div class="lim-visual">
+        <button type="button" class="btn btn-primary" data-presentation-reveal aria-expanded="false" aria-controls="lim-verifica-1-6-1">Mostra soluzione</button>
+        <div class="lim-solution" id="lim-verifica-1-6-1" hidden><p>Arrivano −70 dBm. Il margine è 8 dB e scende a −2 dB se si aggiunge l’ostacolo.</p></div>
+      </div>
     </div>
   </section>
 
@@ -453,7 +454,7 @@
       <div>
         <h2>Sfida alla classe</h2>
         <p><strong>Dove proviamo la chiamata?</strong> Per una videochiamata la scuola vuole provare un obiettivo di segnale di −67 dBm. Misura −62 dBm nell’aula A e −74 dBm nell’aula B.</p>
-        <p class="lim-example"><strong>60 secondi a squadre.</strong> Calcolate il margine di entrambe le aule sottraendo la soglia al valore misurato. Dite dove partireste con la prova. Un punto per i margini, uno per la scelta motivata.</p>
+        <p class="lim-example">Calcolate il margine delle due aule sottraendo la soglia al valore misurato. Da quale aula partireste per provare la chiamata? Confrontiamo i risultati.</p>
       </div>
       <div class="lim-visual">
         <button type="button" class="btn btn-primary lim-reveal" data-presentation-reveal aria-expanded="false" aria-controls="lim-soluzione-1-6">Mostra soluzione</button>

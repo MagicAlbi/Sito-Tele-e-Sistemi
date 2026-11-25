@@ -254,25 +254,25 @@ const domandeAllenamento = [
     ]
   },
   {
-    prompt: "Due scansioni dello stesso telefono mostrano indirizzi MAC diversi con la funzione MAC privato attiva. Quale conclusione è giustificata?",
-    source: { href: "lezione-1-1.html#slide-3", label: "Ripassa · L’indirizzo MAC privato" },
+    prompt: "Il Wi-Fi di casa registra un indirizzo MAC. Il Wi-Fi della scuola ne registra uno diverso. Che cosa puoi concludere guardando solo questi due codici?",
+    source: { href: "lezione-1-1.html#mac-privato", label: "Ripassa · L’indirizzo MAC privato" },
     options: [
       {
-        text: "I due indirizzi provano che nella zona ci sono due telefoni.",
-        explanation: "La funzione MAC privato rende possibile osservare due indirizzi dallo stesso terminale."
+        text: "Si sono collegati sicuramente due telefoni diversi.",
+        explanation: "Con il MAC privato, uno stesso telefono può usare un indirizzo a casa e un altro a scuola."
       },
       {
-        text: "Gli indirizzi osservati, da soli, non bastano per contare due telefoni distinti.",
+        text: "I due indirizzi potrebbero essere stati usati dallo stesso telefono.",
         correct: true,
-        explanation: "Il telefono può usare indirizzi differenti. Lo stesso apparato può comparire con più identificativi."
+        explanation: "Il telefono può generare un MAC privato per ciascuna rete. Il MAC di fabbrica resta memorizzato."
       },
       {
-        text: "I due indirizzi provano che è cambiato il nome della rete wireless.",
-        explanation: "L’SSID è il nome della rete. Il MAC in questo caso identifica la scheda del terminale durante le scansioni."
+        text: "I due indirizzi indicano i nomi delle reti Wi-Fi.",
+        explanation: "Il nome della rete è l’SSID. Qui ogni MAC è il codice usato da un dispositivo per farsi riconoscere dalla rete."
       },
       {
-        text: "I due indirizzi dimostrano che il telefono ha completato due associazioni.",
-        explanation: "La funzione può influire sugli indirizzi osservati anche durante la scoperta della rete. L’associazione va verificata a parte."
+        text: "Il router della scuola ha cambiato il MAC di fabbrica del telefono.",
+        explanation: "Il codice privato lo sceglie il telefono e lo scrive nei messaggi Wi-Fi. L’indirizzo di fabbrica resta memorizzato."
       }
     ]
   },

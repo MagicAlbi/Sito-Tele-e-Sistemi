@@ -463,18 +463,26 @@
           <p id="stepDetailContent" style="margin:0; font-size:0.9rem;">
             Il dispositivo wireless scansiona le frequenze disponibili. Può farlo in modo <strong>Passivo</strong> (rimanendo in ascolto dei <em>Beacon Frame</em> che gli AP trasmettono periodicamente a intervalli di ~100ms) oppure <strong>Attivo</strong> (inviando una <em>Probe Request</em> su ciascun canale e attendendo la <em>Probe Response</em> degli AP nell'area).
           </p>
-        <!-- BOX CURIOSITA' CYBERPUNK / HACKER FACT -->
-        <div class="box-curiosity">
+        <div class="box-curiosity" id="mac-privato">
           <div class="box-curiosity-title">
             <span>🕵️‍♂️</span>
-            <span>Come i centri commerciali sanno in quale negozio sei andato (anche senza connetterti al Wi-Fi!)</span>
+            <span>Perché il telefono usa un indirizzo Wi-Fi privato?</span>
           </div>
           <div class="box-curiosity-content">
             <p>
-              Hai presente quando entri in un centro commerciale e hai il Wi-Fi acceso ma non ti connetti a nessuna rete? Ebbene, il tuo smartphone urla costantemente nell'etere attraverso i <strong>Probe Request</strong>: <em>"C'è il router di casa mia qui? C'è il Wi-Fi della scuola?"</em>.
+              La scheda Wi-Fi del telefono ha un <strong>indirizzo MAC di fabbrica</strong>. Quando il telefono invia un messaggio Wi-Fi, scrive nel messaggio l’indirizzo MAC che sta usando. Il punto di accesso usa quel codice per distinguere il telefono dagli altri dispositivi e rispondergli.
             </p>
+            <p>
+              Con l’opzione <strong>Indirizzo Wi-Fi privato</strong> o <strong>MAC casuale</strong>, il telefono genera un altro indirizzo valido e lo usa per quella rete. Per esempio, a casa può usare <code>02:11:22:33:44:10</code> e a scuola <code>02:11:22:33:44:20</code>. Il MAC di fabbrica resta memorizzato. A seconda delle impostazioni, il telefono può riusare lo stesso MAC privato quando torna sulla stessa rete.
+            </p>
+            <p>
+              Usare codici diversi rende più difficile riconoscere lo stesso telefono confrontando i registri di reti diverse. Il MAC privato vale sulla rete locale. Una coincidenza con un indirizzo usato su un’altra rete è possibile e le due reti continuano a funzionare separatamente.
+            </p>
+            <p>Durante la <strong>scansione attiva</strong>, il telefono può usare un indirizzo casuale anche nelle richieste con cui cerca una rete, prima di collegarsi.</p>
             <p style="margin-bottom:0">
-              Negli anni passati, i negozianti installavano antenne nascoste che registravano l'indirizzo MAC univoco del tuo telefono e la indicatore di intensità del segnale ricevuto (RSSI, Received Signal Strength Indicator): in questo modo <strong>triangolavano la tua posizione al millimetro</strong>, calcolavano quanto tempo passavi davanti alle vetrine di Zara o GameStop e ti profilavano! Per fermare questo spionaggio di massa, iOS e Android hanno dovuto inventare il <strong>MAC Address Randomization</strong>: ogni volta che cerchi una rete, il telefono inventa un indirizzo MAC falso e lo cambia periodicamente. Controlla subito nelle impostazioni Wi-Fi del tuo telefono: vedrai la voce <em>"Usa MAC privato / casuale"</em>!
+              <a href="https://support.apple.com/it-it/102509" target="_blank" rel="noopener noreferrer">Apple · Indirizzo Wi-Fi privato</a> ·
+              <a href="https://source.android.com/docs/core/connect/wifi-mac-randomization-behavior" target="_blank" rel="noopener noreferrer">Android · MAC casuale</a> ·
+              <a href="https://www.rfc-editor.org/rfc/rfc9724.html#section-2.2" target="_blank" rel="noopener noreferrer">IETF · Indirizzi casuali e scansione Wi-Fi</a>
             </p>
           </div>
         </div>
@@ -576,10 +584,9 @@
         </p>
       </div>
       <div class="lim-visual">
-        <ul class="lim-diagram" role="list">
-          <li><strong>Sfida lampo.</strong> Dal laboratorio al corridoio la rete si chiama ancora «Wi-Fi Scuola». È cambiato qualcosa?</li>
-          <li><strong>Risposta.</strong> Può essere cambiata la cella. Il nome visibile può restare lo stesso.</li>
-        </ul>
+        <p class="lim-example">Dal laboratorio al corridoio la rete si chiama ancora «Wi-Fi Scuola». È cambiato qualcosa?</p>
+        <button type="button" class="btn btn-primary" data-presentation-reveal aria-expanded="false" aria-controls="lim-rapida-1-1">Mostra soluzione</button>
+        <div class="lim-solution" id="lim-rapida-1-1" hidden><p>Può essere cambiata la cella. Il nome visibile può restare lo stesso.</p></div>
       </div>
     </div>
   </section>
@@ -603,17 +610,20 @@
     <div class="lim-stage">
       <div>
         <p class="lim-curiosity-label">Curiosità</p>
-        <h2>Perché il telefono usa un indirizzo privato</h2>
-        <p>Usare sempre lo stesso <strong>indirizzo MAC</strong> (Media Access Control, identificativo dell’interfaccia di rete) rende più facile riconoscere un dispositivo quando ricompare.</p>
-        <p><strong>Vero o falso?</strong> Il telefono deve presentarsi con lo stesso indirizzo a tutte le reti Wi-Fi.</p>
-        <p>Falso. Con la funzione «indirizzo privato» il telefono può presentarsi con un indirizzo Wi-Fi diverso a seconda della rete, rendendo più difficile collegare le sue attività.</p>
+        <h2>Come il Wi-Fi riconosce il telefono</h2>
+        <p>La scheda Wi-Fi ha un <strong>indirizzo MAC di fabbrica</strong>. Il punto di accesso legge il MAC nei messaggi del telefono e lo usa per rispondergli.</p>
+        <p class="lim-example"><strong>Vero o falso?</strong><br>Per collegarsi al Wi-Fi di casa e a quello della scuola, il telefono deve usare lo stesso indirizzo MAC.</p>
         <p class="lim-terms">
-          <span><strong>MAC</strong> · Medium Access Control. L’indirizzo MAC identifica un’interfaccia a livello di collegamento.</span>
           <a href="https://support.apple.com/it-it/102509" target="_blank" rel="noopener noreferrer">Apple · Indirizzo Wi-Fi privato</a>
         </p>
       </div>
-      <div class="lim-visual lim-art">
-        <img src="../assets/img/quiz-wlan-scambio.svg" alt="Telefono e computer si scambiano messaggi su una rete senza fili.">
+      <div class="lim-visual">
+        <button type="button" class="btn btn-primary" data-presentation-reveal aria-expanded="false" aria-controls="lim-curiosita-1-1">Mostra soluzione</button>
+        <div class="lim-solution" id="lim-curiosita-1-1" hidden>
+          <p><strong>Falso.</strong> Con «Indirizzo Wi-Fi privato», il telefono genera il codice che scrive nei messaggi per quella rete. Il MAC di fabbrica resta memorizzato.</p>
+          <p>Casa <code>02:11:22:33:44:10</code><br>Scuola <code>02:11:22:33:44:20</code></p>
+          <p>Con due codici diversi è più difficile riconoscere lo stesso telefono nei registri delle due reti.</p>
+        </div>
       </div>
     </div>
   </section>
@@ -621,8 +631,8 @@
     <div class="lim-stage">
       <div>
         <h2>Sfida alla classe</h2>
-        <p><strong>Cambio aula senza cambiare rete.</strong> Il portatile passa dall’aula A all’aula B e si aggancia al punto di accesso B. Entrambi i punti di accesso appartengono alla stessa rete «Lab-Demo».</p>
-        <p class="lim-example"><strong>60 secondi a squadre.</strong> Indicate quale dato resta uguale e quale cambia tra SSID (nome della rete) e BSSID (identificativo della cella). Un punto per i due dati corretti, uno per il motivo.</p>
+        <p><strong>Cambio d’aula.</strong> Il portatile passa dall’aula A all’aula B e si aggancia al punto di accesso B. Entrambi i punti di accesso appartengono alla stessa rete «Lab-Demo».</p>
+        <p class="lim-example">Quale dato resta uguale e quale cambia: l’SSID (nome della rete) o il BSSID (identificativo della cella)? Pensate al motivo, poi confrontiamo le risposte.</p>
       </div>
       <div class="lim-visual">
         <button type="button" class="btn btn-primary lim-reveal" data-presentation-reveal aria-expanded="false" aria-controls="lim-soluzione-1-1">Mostra soluzione</button>

@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="it" data-theme="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Quiz di allenamento · Wireless LAN | Telecomunicazioni 5A</title>
+  <link rel="stylesheet" href="../../../assets/css/style.css">
+  <link rel="stylesheet" href="../../../assets/css/quiz-allenamento.css">
+  <script src="../../../assets/js/app.js" defer></script>
+  <script src="../../../assets/js/quiz-allenamento.js" defer></script>
+  <script src="domande-allenamento.js" defer></script>
+</head>
+<body>
+  <div class="app-layout">
+    <header class="site-header">
+      <a href="../../../index.html" class="logo-link">
+        <div class="logo-icon" aria-hidden="true">⚡</div>
+        <div class="logo-text">
+          <span class="logo-title text-gradient">Telecomunicazioni 5A</span>
+          <span class="logo-sub">IIS J.C. Maxwell</span>
+        </div>
+      </a>
+      <nav class="header-breadcrumb" aria-label="Percorso">
+        <a href="../../../modulo1/index.html">Modulo 1 · Wireless LAN</a>
+        <span aria-hidden="true">›</span>
+        <span class="current">Allenamento</span>
+      </nav>
+      <div class="header-actions">
+        <button type="button" class="btn btn-icon btn-ghost" data-theme-toggle aria-label="Cambia tema"></button>
+      </div>
+    </header>
+
+    <main class="main-content training-quiz" id="training-quiz" data-training-key="modulo1">
+      <div class="training-art" aria-hidden="true">
+        <img class="training-art-start" src="../../../assets/img/quiz-wlan-rete.svg" alt="">
+        <img class="training-art-end" src="../../../assets/img/quiz-wlan-scambio.svg" alt="">
+      </div>
+      <div class="content-wrap">
+        <header class="lesson-hero">
+          <div class="lesson-hero-content">
+            <div class="lesson-meta">
+              <span class="lesson-badge lesson-badge-module">Modulo 1 · Wireless LAN</span>
+            </div>
+            <h1 class="lesson-title-h1" tabindex="-1">Quiz di allenamento</h1>
+            <p class="lesson-subtitle">Dieci domande sul Wi-Fi. Scegli una risposta per domanda e premi <strong>Consegna</strong> per vedere la correzione.</p>
+          </div>
+        </header>
+
+        <details class="training-terms">
+          <summary>Sigle usate nel quiz</summary>
+          <p><strong>Reti e dispositivi.</strong> BSS (Basic Service Set), una cella Wi-Fi. ESS (Extended Service Set), più celle collegate. SSID (Service Set Identifier), nome della rete. BSSID (Basic Service Set Identifier), identificativo della cella. MAC (Media Access Control), controllo di accesso al mezzo. IP (Internet Protocol), protocollo per indirizzare i pacchetti fra reti. AID (Association Identifier), numero assegnato al dispositivo associato.</p>
+          <p><strong>Canali radio e velocità.</strong> OFDM (Orthogonal Frequency Division Multiplexing), trasmissione su sottoportanti ortogonali. OFDMA (Orthogonal Frequency Division Multiple Access), accesso condiviso su sottoportanti ortogonali. QAM (Quadrature Amplitude Modulation), modulazione di ampiezza e fase. MIMO (Multiple Input Multiple Output), uso di più antenne in trasmissione e ricezione. MLO (Multi-Link Operation), uso di più collegamenti radio. DFS (Dynamic Frequency Selection), selezione dinamica della frequenza. GHz e MHz significano gigahertz e megahertz. I dBm esprimono una potenza riferita a un milliwatt.</p>
+          <p><strong>Accesso al canale.</strong> RTS (Request to Send), richiesta di invio. CTS (Clear to Send), via libera. NAV (Network Allocation Vector), timer che indica per quanto tempo aspettare. ACK (Acknowledgment), conferma di ricezione. DIFS (DCF Interframe Space), intervallo di ascolto prima dell’attesa casuale. DCF (Distributed Coordination Function), metodo con cui i dispositivi si contendono il canale.</p>
+          <p><strong>Sicurezza.</strong> WEP (Wired Equivalent Privacy), primo sistema di cifratura Wi-Fi. WPA, WPA2 e WPA3 (Wi-Fi Protected Access), tre generazioni di protezione. SAE (Simultaneous Authentication of Equals), scambio di autenticazione. TKIP (Temporal Key Integrity Protocol), protezione con chiavi temporanee. WPS (Wi-Fi Protected Setup), configurazione semplificata. PIN (Personal Identification Number), codice di identificazione.</p>
+        </details>
+        <noscript><p>Per svolgere il quiz, attiva JavaScript nel browser.</p></noscript>
+        <form class="training-form" hidden>
+          <div class="training-toolbar">
+            <button type="button" class="btn btn-ghost training-retry">Nuovo tentativo</button>
+          </div>
+          <div class="training-questions"></div>
+          <div class="quiz-nav training-actions">
+            <output class="quiz-counter training-count" aria-live="polite"></output>
+            <button type="button" class="btn btn-ghost training-retry">Nuovo tentativo</button>
+            <button type="submit" class="btn btn-primary training-submit">Consegna</button>
+          </div>
+          <section class="training-summary" aria-labelledby="training-score" hidden>
+            <div class="training-stage" aria-hidden="true">
+              <svg viewBox="0 0 328 145" class="training-track" focusable="false">
+                <text class="packet-name" x="19" y="22">Milo · Pacchetto dati</text>
+                <path class="packet-grid" d="M19 36h290M19 58h290M19 80h290M19 102h290M50 31v76m57-76v76m57-76v76m57-76v76m57-76v76"/>
+                <path class="packet-path" d="M28 102h272" />
+                <g class="packet-stops">
+                  <circle cx="30" cy="102" r="3"/>
+                  <circle cx="97" cy="102" r="3"/>
+                  <circle cx="164" cy="102" r="5"/>
+                  <circle cx="231" cy="102" r="3"/>
+                  <circle cx="298" cy="102" r="3"/>
+                </g>
+                <g class="packet-signals">
+                  <circle class="packet-signal packet-signal-start" cx="30" cy="102" r="12"/>
+                  <circle class="packet-signal packet-signal-mid" cx="164" cy="102" r="12"/>
+                  <circle class="packet-signal packet-signal-end" cx="298" cy="102" r="12"/>
+                </g>
+                <path class="packet-warning" d="M101 44l10 17H91zM101 50v4m0 3v.2"/>
+                <path class="packet-goal" d="M289 100V70h20v20h-20m5-15h5v5h-5zm5 5h5v5h-5z"/>
+                <path class="packet-stars" d="M286 45v12m-6-6h12m16-18v8m-4-4h8m-36-12v6m-3-3h6"/>
+                <g class="packet-runner">
+                  <g transform="translate(14 60)">
+                    <path class="packet-trail" d="M-14 15h10m-5 8h5m-10 8h10"/>
+                    <rect class="packet-shell" x="0" y="9" width="42" height="25" rx="6"/>
+                    <path class="packet-details" d="M3 10 12 3h30l8 7v16l-8 8m0-25 8 1M7 34v5m27-5v5M13 3l6 6m14-6 6 6"/>
+                    <circle class="packet-eye" cx="14" cy="20" r="2"/>
+                    <circle class="packet-eye" cx="28" cy="20" r="2"/>
+                    <path class="packet-smile" d="M18 25q3 4 6 0"/>
+                  </g>
+                </g>
+                <text class="packet-place" x="26" y="127">CLIENT</text>
+                <text class="packet-place" x="302" y="127" text-anchor="end">SERVER</text>
+              </svg>
+            </div>
+            <div class="training-result">
+              <p class="training-rank"></p>
+              <h2 id="training-score" tabindex="-1"></h2>
+              <p class="training-message"></p>
+              <p class="training-breakdown"></p>
+              <div class="training-result-actions">
+                <button type="button" class="btn btn-primary training-retry">Nuovo tentativo</button>
+                <button type="button" class="btn btn-ghost training-review" hidden></button>
+              </div>
+            </div>
+          </section>
+        </form>
+
+        <a class="btn btn-ghost training-back" href="../../../modulo1/index.html">← Torna al Modulo 1</a>
+      </div>
+    </main>
+  </div>
+
+  <template id="training-question">
+    <section class="training-card">
+      <fieldset>
+        <legend class="question-text">
+          <span class="training-question-heading">
+            <span class="training-number"></span>
+            <span class="training-prompt"></span>
+          </span>
+        </legend>
+        <div class="answers-grid"></div>
+      </fieldset>
+      <div class="quiz-feedback" hidden>
+        <h3 class="feedback-text" tabindex="-1"></h3>
+        <p class="training-error" hidden></p>
+        <p class="training-solution"></p>
+        <a class="training-source" hidden></a>
+      </div>
+    </section>
+  </template>
+  <template id="training-answer">
+    <label class="answer-btn">
+      <input type="radio">
+      <span class="training-answer-text"></span>
+      <span class="training-answer-result" hidden></span>
+    </label>
+  </template>
+</body>
+</html>

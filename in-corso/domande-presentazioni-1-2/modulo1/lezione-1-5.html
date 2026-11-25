@@ -1,0 +1,574 @@
+<!DOCTYPE html>
+<html lang="it" data-theme="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>M1.5 · Strato Fisico: OFDM, MIMO & Beamforming | Telecomunicazioni 5A</title>
+  <link rel="stylesheet" href="../../../assets/css/style.css">
+  <style>
+    :root { --m-color: var(--m1); }
+    .module-one .beamforming-3d { margin-top: 1.5rem; }
+    .module-one .beamforming-3d summary { cursor: pointer; }
+    @media print {
+      .module-one .beamforming-3d #beam3dCanvas, .module-one #beam3dHelp, .module-one #beam3dState { display: none; }
+    }
+  </style>
+  <link rel="stylesheet" href="../../../assets/css/modulo1.css">
+  <link rel="stylesheet" href="../../../assets/css/introduzione-lezioni.css">
+  <link rel="stylesheet" href="../../../assets/css/esperimenti.css">
+  <link rel="stylesheet" href="../../../assets/css/annotazioni.css">
+  <link rel="stylesheet" href="../../../assets/css/presentazioni-modulo1.css">
+</head>
+<body class="module-one" data-lesson-id="m1-5">
+
+<div class="app-layout">
+
+  <!-- HEADER -->
+  <header class="site-header">
+    <a href="../../../index.html" class="logo-link">
+      <div class="logo-icon">⚡</div>
+      <div class="logo-text">
+        <span class="logo-title text-gradient">Telecomunicazioni 5A</span>
+        <span class="logo-sub">IIS J.C. Maxwell</span>
+      </div>
+    </a>
+
+    <nav class="header-breadcrumb">
+      <a href="../../../index.html">Home</a>
+      <span>›</span>
+      <a href="../../../modulo1/index.html">Modulo 1</a>
+      <span>›</span>
+      <span class="current">Lezione 1.5 — Strato Fisico & MIMO</span>
+    </nav>
+
+    <div class="header-actions">
+      <button class="btn btn-present" data-present aria-label="Modalità presentazione">
+        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg>
+        Presenta in Classe
+      </button>
+      <button class="btn btn-icon btn-ghost" data-theme-toggle aria-label="Cambia tema"></button>
+      <button class="btn btn-icon btn-ghost btn-hamburger" aria-label="Menu">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+      </button>
+    </div>
+  </header>
+
+  <!-- SIDEBAR -->
+  <nav class="sidebar">
+    <div class="sidebar-module-badge">
+      <div class="module-dot" style="background:var(--m1); box-shadow: 0 0 10px var(--m1);"></div>
+      <span class="module-label" style="color:var(--m1)">Modulo 1 · WLAN</span>
+    </div>
+
+    <span class="sidebar-section-title">Percorso Guidato</span>
+    <ul class="sidebar-nav">
+      <li data-lesson="m1-1">
+        <a href="lezione-1-1.html">
+          <span class="lesson-num">1.1</span>
+          <span class="lesson-title">Introduzione alle WLAN</span>
+          <span class="lesson-check"></span>
+        </a>
+      </li>
+      <li data-lesson="m1-2">
+        <a href="lezione-1-2.html">
+          <span class="lesson-num">1.2</span>
+          <span class="lesson-title">Standard IEEE 802.11</span>
+          <span class="lesson-check"></span>
+        </a>
+      </li>
+      <li data-lesson="m1-3">
+        <a href="lezione-1-3.html">
+          <span class="lesson-num">1.3</span>
+          <span class="lesson-title">Canali Radio & Spettro</span>
+          <span class="lesson-check"></span>
+        </a>
+      </li>
+      <li data-lesson="m1-4">
+        <a href="lezione-1-4.html">
+          <span class="lesson-num">1.4</span>
+          <span class="lesson-title">CSMA/CA & Collisioni</span>
+          <span class="lesson-check"></span>
+        </a>
+      </li>
+      <li class="active" data-lesson="m1-5">
+        <a href="lezione-1-5.html">
+          <span class="lesson-num">1.5</span>
+          <span class="lesson-title">Strato Fisico & Modulazioni</span>
+          <span class="lesson-check"></span>
+        </a>
+      </li>
+      <li data-lesson="m1-6">
+        <a href="lezione-1-6.html">
+          <span class="lesson-num">1.6</span>
+          <span class="lesson-title">Progettazione & Site Survey</span>
+          <span class="lesson-check"></span>
+        </a>
+      </li>
+    </ul>
+
+    <span class="sidebar-section-title">Pratica & Verifiche</span>
+    <ul class="sidebar-nav">
+      <li>
+        <a href="../../../modulo1/lab-copertura.html">
+          <span class="lesson-num">🔬</span>
+          <span class="lesson-title">Simulatore Copertura RF</span>
+        </a>
+      </li>
+      <li><a href="../../../modulo1/allenamento.html"><span class="lesson-num">🎯</span><span class="lesson-title">Quiz di allenamento</span></a></li>
+      <li><a href="../../../modulo1/esercizi.html"><span class="lesson-num">🧮</span><span class="lesson-title">Esercizi numerici</span></a></li>
+      <li>
+        <a href="../../../modulo1/verifica.html">
+          <span class="lesson-num">📋</span>
+          <span class="lesson-title">Compito & Verifica M1</span>
+        </a>
+      </li>
+    </ul>
+
+    <div class="sidebar-progress" data-module-progress="m1" data-total="6">
+      <div class="progress-label">
+        <span>Progresso Modulo</span>
+        <span><span data-progress-done>0</span>/6 (<span data-progress-pct>0</span>%)</span>
+      </div>
+      <div class="progress-bar">
+        <div class="progress-fill" style="width:0%"></div>
+      </div>
+    </div>
+  </nav>
+
+  <!-- CONTENUTO PRINCIPALE -->
+  <main class="main-content" data-lesson-annotations="m1-5">
+    <div class="content-wrap">
+
+      <!-- HERO LEZIONE -->
+      <header class="lesson-intro-hero">
+        <div>
+          <div class="lesson-intro-meta">
+            <p class="lesson-intro-topic">Lezione 1.5 · Strato fisico e antenne</p>
+            <span class="lesson-time">
+              <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+              ~45 min studio interattivo
+            </span>
+          </div>
+          <h1 class="lesson-title-h1">Strato Fisico: OFDM, MIMO e Beamforming Spaziale</h1>
+          <p class="lesson-subtitle">
+            Come si trasmettono Gigabit al secondo senza fili? Confronta nello schema le antenne multiple, osserva come il Beamforming concentra l'energia sul tuo telefono e scopri come i rimbalzi del segnale sui muri sono diventati un'arma vincente invece che un difetto!
+          </p>
+        </div>
+        <img src="../../../assets/img/esercizi-wlan-segnale.svg" alt="" width="200" height="252">
+      </header>
+
+      <div class="lesson-prereq lesson-intro-prereq">
+        <span class="lesson-prereq-icon" aria-hidden="true">🧠</span>
+        <div>
+          <strong>Concetti cardine:</strong>
+          Modulazione di ampiezza e fase (QAM, Quadrature Amplitude Modulation), interferenza costruttiva e distruttiva tra onde radio e propagazione multipath (rimbalzi su pavimenti e pareti).
+        </div>
+      </div>
+
+      <!-- RIASSUNTO IN EVIDENZA -->
+      <section class="lesson-summary" aria-labelledby="obiettivo">
+        <h2 id="obiettivo">In questa lezione</h2>
+        <ul>
+          <li><span aria-hidden="true">📡</span><p><strong>Più flussi e un segnale più diretto.</strong> Distinguerai MIMO, che usa più antenne per trasportare flussi di dati, dal beamforming, che combina i segnali per favorire una direzione.</p></li>
+          <li><span aria-hidden="true">🔬</span><p><strong>Il fascio nello spazio.</strong> Userai lo schema e il modello 3D per osservare come cambia la direzione favorita quando si sposta il dispositivo.</p></li>
+          <li><span aria-hidden="true">🧩</span><p><strong>Dalle sottoportanti ai bit.</strong> Vedrai come OFDM divide il canale in molte sottoportanti e come le modulazioni QAM cambiano il numero di bit per simbolo.</p></li>
+        </ul>
+      </section>
+
+      <!-- ======================================
+           SLIDE 1 — MIMO E BEAMFORMING IN DUE E TRE DIMENSIONI
+           ====================================== -->
+      <section class="slide reveal" id="slide-1" data-num="01">
+        <h2>1. MIMO e Beamforming: Due Effetti da Distinguere</h2>
+
+        <p>
+          Un’antenna distribuisce l’energia secondo un <strong>diagramma di radiazione</strong>. Con il <strong>beamforming</strong>, più antenne coordinano i segnali per favorire la ricezione in una direzione. Il <strong>MIMO</strong> può invece usare più flussi spaziali per trasportare dati diversi sullo stesso canale. Confronta questi effetti nello schema, poi sposta il client.</p>
+
+<p>Nello schema, AP (Access Point) indica il punto di accesso. SISO (Single Input Single Output) indica una sola antenna per lato.</p>
+<div class="lab-panel" data-sim="physical"></div>
+        <div class="lab-panel beamforming-3d" id="beamforming-3d">
+          <div class="lab-heading">
+            <span>Esperimento 3D</span>
+            <h3>Ruota il fascio delle antenne</h3>
+          </div>
+          <p class="lab-note" id="beam3dHelp">Sposta il client e osserva dove si allunga il diagramma. Trascina il disegno, oppure selezionalo e usa le frecce, per guardarlo da un’altra angolazione.</p>
+          <div class="lab-controls">
+            <label for="beam3dAngle">Direzione del client <output id="beam3dAngleValue" for="beam3dAngle">0°</output>
+              <input type="range" id="beam3dAngle" min="-60" max="60" value="0">
+            </label>
+            <button type="button" class="btn btn-ghost" id="beam3dToggle" aria-pressed="true">Beamforming attivo</button>
+            <button type="button" class="btn btn-ghost" id="beam3dReset">Ripristina vista</button>
+          </div>
+          <canvas id="beam3dCanvas" tabindex="0" role="img" aria-label="Diagramma 3D di quattro antenne e della direzione del client" aria-describedby="beam3dHelp"></canvas>
+          <p id="beam3dState" class="beam-explainer" aria-live="polite"></p>
+          <p class="lab-note">Disattiva il beamforming per confrontare i due diagrammi. Dove la forma si allunga, la radiazione è favorita. Qui le quattro antenne coordinano lo stesso segnale.</p>
+          <details>
+            <summary>Ipotesi del modello</summary>
+            <p class="lab-note">Quattro elementi allineati a mezza lunghezza d’onda, senza ostacoli. Il raggio segue la radice della potenza normalizzata del modello, con un minimo grafico. Il diagramma mostra come si distribuisce la radiazione: non rappresenta né un limite di copertura né valori di potenza in dBm (decibel riferiti a un milliwatt).</p>
+            <p class="sources"><a href="https://www.mathworks.com/help/phased/ug/element-and-array-radiation-patterns-and-responses.html" target="_blank" rel="noopener noreferrer">MathWorks · Diagrammi d’elemento e d’array</a></p>
+          </details>
+        </div>
+      </section>
+
+      <hr>
+
+      <!-- ======================================
+           SLIDE 2 — OFDM & MULTIPATH MIMO
+           ====================================== -->
+      <section class="slide reveal" id="slide-2" data-num="02">
+        <h2>2. OFDM: Centinaia di Onde Indipendenti in 20 megahertz (MHz)</h2>
+
+        <p>
+          Invece di modulare una sola portante a velocità vertiginosa (soggetta a fading selettivo e distruzione su una sola frequenza), l'<strong>OFDM (Orthogonal Frequency Division Multiplexing)</strong> scompone il canale da 20 MHz in <strong>52 sottoportanti</strong> (in 802.11a/g/n) o <strong>256 sottoportanti</strong> (in 802.11ax).
+        </p>
+        <p>
+          Ciascuna sottoportante viaggia a velocità più rilassata ed è matematicamente <strong>ortogonale</strong> alle vicine (il picco di ciascuna cade esattamente sullo zero di tutte le altre): <em>possono sovrapporsi nello spazio delle frequenze senza generare alcuna interferenza tra sottoportanti (ICI, Inter-Carrier Interference)!</em>
+        </p>
+
+        <!-- CURIOSITA' TECH SUI RIMBALZI MULTIPATH -->
+        <div class="box-curiosity">
+          <div class="box-curiosity-title">
+            <span>🪞</span>
+            <span>Il Nemico Diventato Eroe: Come il MIMO Sfrutta i Rimbalzi sui Muri</span>
+          </div>
+          <div class="box-curiosity-content">
+            <p>
+              Nelle prime telecomunicazioni wireless degli anni '90, il <strong>multipath</strong> (il fatto che il segnale rimbalzi su piastrelle, specchi, computer e pareti arrivando al ricevitore con ritardi sfasati) era considerato una maledizione: generava echi distruttivi che cancellavano il segnale (fading).
+            </p>
+            <p style="margin-bottom:0">
+              Con l'avvento del <strong>MIMO (Multiple Input Multiple Output)</strong> in 802.11n, gli ingegneri hanno ribaltato la fisica: le matrici di calcolo matematiche del processore digitale di segnali (DSP, Digital Signal Processor) usano i percorsi multipli di rimbalzo per <strong>distinguere e decodificare 2, 4 o 8 flussi di dati totalmente differenti contemporaneamente sulla stessa frequenza!</strong> Più rimbalzi ci sono nell'aula, più i percorsi sono scorrelati e più il MIMO riesce a raddoppiare o quadruplicare la velocità. La stanza piena di ostacoli è diventata un acceleratore di banda!
+            </p>
+          </div>
+        </div>
+
+        <h3>La Scalata delle Modulazioni QAM: Da 1 Bit a 12 Bit per Simbolo</h3>
+        <p>
+          In base alla rapporto segnale/rumore (SNR, Signal-to-Noise Ratio), il modem radio adatta dinamicamente la propria costellazione:
+        </p>
+
+        <div class="table-scroll" role="region" aria-label="Tabella scorrevole" tabindex="0"><table class="osi-table">
+          <thead>
+            <tr>
+              <th>Modulazione</th>
+              <th>Punti Costellazione</th>
+              <th>Bit per Simbolo</th>
+              <th>Segnale Richiesto</th>
+              <th>Standard di Riferimento</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><strong>BPSK</strong> (Binary Phase Shift Keying, modulazione a due fasi)</td>
+              <td>2 stati</td>
+              <td>1 bit/simbolo</td>
+              <td>Pessimo (anche a -85 dBm)</td>
+              <td>Fallback di emergenza</td>
+            </tr>
+            <tr>
+              <td><strong>QPSK</strong> (Quadrature Phase Shift Keying, modulazione a quattro fasi)</td>
+              <td>4 stati</td>
+              <td>2 bit/simbolo</td>
+              <td>Scarso</td>
+              <td>802.11a/b/g</td>
+            </tr>
+            <tr>
+              <td><strong>16-QAM / 64-QAM</strong></td>
+              <td>16 / 64 stati</td>
+              <td>4 o 6 bit/simbolo</td>
+              <td>Medio / Buono</td>
+              <td>Wi-Fi 4 (802.11n)</td>
+            </tr>
+            <tr>
+              <td><strong>256-QAM</strong></td>
+              <td>256 stati</td>
+              <td>8 bit/simbolo</td>
+              <td>Ottimo (> -65 dBm)</td>
+              <td>Wi-Fi 5 (802.11ac)</td>
+            </tr>
+            <tr style="background:rgba(52,211,153,0.08)">
+              <td><strong style="color:var(--success)">1024-QAM</strong></td>
+              <td>1024 stati</td>
+              <td>10 bit/simbolo</td>
+              <td>Eccellente (> -55 dBm)</td>
+              <td>Wi-Fi 6 (802.11ax)</td>
+            </tr>
+            <tr style="background:rgba(251,191,36,0.08)">
+              <td><strong style="color:var(--warning)">4096-QAM</strong></td>
+              <td>4096 stati</td>
+              <td>12 bit/simbolo</td>
+              <td>Perfetto (> -50 dBm line-of-sight)</td>
+              <td>Wi-Fi 7 (802.11be)</td>
+            </tr>
+          </tbody>
+        </table></div>
+      </section>
+
+      <hr>
+
+      <!-- ======================================
+           SLIDE 3 — CHECKPOINT AUTOVALUTAZIONE
+           ====================================== -->
+      <section class="slide reveal" id="fading">
+        <h2>Quando il segnale cambia anche da vicino</h2>
+        <p>Un segnale radio può arrivare sia per via diretta sia dopo una riflessione. Le due onde possono rinforzarsi oppure indebolirsi.</p>
+        <p>Se sposti il ricevitore o si muove un ostacolo, cambiano i percorsi e cambia il modo in cui le onde si sommano. Un calo del segnale dovuto a queste variazioni è un esempio di <strong>fading</strong>. Può capitare anche con il trasmettitore alla stessa potenza.</p>
+        <p>Prova prima a cambiare posizione e ripeti la misura. Se il segnale varia molto, usare antenne in posizioni diverse può aiutare: dove una riceve male, l’altra può ricevere meglio. Un margine di potenza dà invece una riserva contro cali moderati.</p>
+        <details><summary>Controlla il tuo ragionamento</summary><p>In un cortile il segnale cala vicino a una parete metallica e migliora spostandosi di poco. La parete può riflettere il segnale. Il piccolo spostamento cambia la somma fra onda diretta e riflessa.</p></details>
+      </section>
+
+      <section class="slide reveal" id="slide-3" data-num="03">
+        <h2>3. Checkpoint di Autovalutazione</h2>
+        <p>
+          Metti alla prova la tua comprensione dello strato fisico e delle tecnologie MIMO/Beamforming:
+        </p>
+
+        <div class="quiz-wrap">
+          <div id="quizContainer" data-lesson-quiz>
+            <!-- Rendered by QuizEngine -->
+          </div>
+        </div>
+      </section>
+
+      <!-- COMPLETAMENTO & NAVIGAZIONE -->
+      <p class="sources">Riferimento per l’esperimento: <a href="https://documentation.meraki.com/Wireless/Design_and_Configure/Architecture_and_Best_Practices/Wi-Fi_6_%28802.11ax%29_Technical_Guide" target="_blank" rel="noopener noreferrer">Cisco Meraki · Flussi spaziali e beamforming</a>.</p>
+      <div class="mark-done-wrap reveal lesson-completion">
+        <button type="button" class="mark-done-btn" data-next-lesson="lezione-1-6.html" disabled>
+          Termina il quiz per completare la lezione
+        </button>
+      </div>
+
+    </div>
+  </main>
+</div>
+
+<template data-presentation data-presentation-title="Tecniche di trasmissione Wi-Fi">
+  <section class="presenter-slide lim-slide" tabindex="-1" inert>
+    <div class="lim-stage">
+      <div>
+        <h2>Più dati e un segnale meglio diretto</h2>
+        <p>Più antenne possono aiutare in due modi. Possono trasportare <strong>flussi di dati diversi</strong> sullo stesso canale oppure coordinare i segnali per favorire la ricezione in una direzione.</p>
+        <p>Le due tecniche possono lavorare insieme.</p>
+        <p class="lim-terms">
+          <span><strong>MIMO</strong> · Multiple Input Multiple Output, uso di più antenne ai due estremi del collegamento.</span>
+        </p>
+      </div>
+      <div class="lim-visual">
+        <ul class="lim-diagram" role="list">
+          <li><strong>MIMO · Più flussi.</strong> Due sequenze di dati diverse viaggiano nello stesso momento.</li>
+          <li><strong>Beamforming · Più energia utile.</strong> Le antenne coordinano i segnali per favorire il ricevitore.</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+  <section class="presenter-slide lim-slide" tabindex="-1" inert>
+    <div class="lim-stage">
+      <div>
+        <h2>Quattro antenne per lato, fino a quattro flussi</h2>
+        <p>In un collegamento <strong>MIMO 4×4</strong> ci sono quattro catene radio a ciascun estremo. Se i percorsi sono abbastanza distinti, il ricevitore può separare fino a quattro flussi.</p>
+        <p>Il numero effettivo dipende anche dal dispositivo e da come arrivano i segnali.</p>
+        <p class="lim-terms">
+          <span><strong>MIMO</strong> · Multiple Input Multiple Output, più antenne in trasmissione e ricezione.</span>
+        </p>
+      </div>
+      <div class="lim-visual">
+        <p class="lim-example">Il punto di accesso arriva a quattro flussi. Il telefono ne supporta due. Quanti può riceverne?</p>
+        <button type="button" class="btn btn-primary" data-presentation-reveal aria-expanded="false" aria-controls="lim-rapida-1-5">Mostra soluzione</button>
+        <div class="lim-solution" id="lim-rapida-1-5" hidden><p>Al massimo due. Conta anche il limite del telefono.</p></div>
+      </div>
+    </div>
+  </section>
+  <section class="presenter-slide lim-slide lim-demo" tabindex="-1" inert>
+    <div class="lim-stage">
+      <div class="lim-demo-intro">
+        <h2>Le antenne restano ferme, il segnale cambia direzione</h2>
+        <p>Con il beamforming le antenne si coordinano: le onde si sommano meglio verso il dispositivo. Sposta il client e confronta i due diagrammi.</p>
+      </div>
+      <div class="lim-demo-panel" data-presentation-demo="beamforming-3d"></div>
+    </div>
+  </section>
+  <section class="presenter-slide lim-slide" tabindex="-1" inert>
+    <div class="lim-stage">
+      <div>
+        <h2>Tante frequenze vicine, ciascuna con i suoi dati</h2>
+        <p>Con l’<strong>OFDM</strong> il canale è composto da molte <strong>sottoportanti</strong>. Ognuna è una frequenza usata per trasportare una parte dei dati.</p>
+        <p>Sono ortogonali: idealmente, dove si misura il massimo di una, i contributi delle altre si annullano. Il ricevitore riesce così a distinguerle.</p>
+        <p class="lim-terms">
+          <span><strong>OFDM</strong> · Orthogonal Frequency Division Multiplexing, trasmissione parallela su sottoportanti ortogonali.</span>
+        </p>
+      </div>
+      <figure class="lim-visual lim-band-chart">
+        <figcaption>Posizione delle sottoportanti nel canale</figcaption>
+        <div class="lim-timing">
+          <p>Frequenza 1</p>
+          <div class="lim-band-track" aria-hidden="true"><span style="--bar-start: 1%; --bar-size: 23%"></span></div>
+        </div>
+        <div class="lim-timing">
+          <p>Frequenza 2</p>
+          <div class="lim-band-track" aria-hidden="true"><span style="--bar-start: 23%; --bar-size: 23%"></span></div>
+        </div>
+        <div class="lim-timing">
+          <p>Frequenza 3</p>
+          <div class="lim-band-track" aria-hidden="true"><span style="--bar-start: 45%; --bar-size: 23%"></span></div>
+        </div>
+        <div class="lim-timing">
+          <p>Frequenza 4</p>
+          <div class="lim-band-track" aria-hidden="true"><span style="--bar-start: 67%; --bar-size: 23%"></span></div>
+        </div>
+      </figure>
+    </div>
+  </section>
+  <section class="presenter-slide lim-slide lim-curiosity" tabindex="-1" inert>
+    <div class="lim-stage">
+      <div>
+        <p class="lim-curiosity-label">Curiosità</p>
+        <h2>Gli echi del segnale Wi-Fi</h2>
+        <p><strong>Vero o falso?</strong><br>Un’onda che rimbalza su una parete è sempre un problema.</p>
+        <button type="button" class="btn btn-primary" data-presentation-reveal aria-expanded="false" aria-controls="lim-curiosita-1-5">Mostra soluzione</button>
+        <div class="lim-solution" id="lim-curiosita-1-5" hidden><p>Falso. In aula un’onda può arrivare al telefono direttamente oppure dopo un rimbalzo su una parete. Le copie ritardate possono indebolire il segnale.</p><p>Con più antenne, percorsi sufficientemente distinti possono invece aiutare il ricevitore a separare i flussi.</p></div>
+      </div>
+      <figure class="lim-visual">
+        <figcaption>Lo stesso segnale, due percorsi</figcaption>
+        <div class="lim-echo" aria-hidden="true">
+          <span class="lim-echo-wall">Parete</span>
+          <span class="lim-echo-direct"></span>
+          <span class="lim-echo-reflected"></span>
+          <span class="lim-echo-ap">AP</span><span class="lim-echo-client">Client</span>
+        </div>
+        <ul class="lim-echo-legend" role="list">
+          <li><strong>Diretto.</strong> Dall’AP al client.</li>
+          <li><strong>Riflesso.</strong> Rimbalza sulla parete e arriva più tardi.</li>
+        </ul>
+      </figure>
+    </div>
+  </section>
+  <section class="presenter-slide lim-slide" tabindex="-1" inert>
+    <div class="lim-stage">
+      <div>
+        <h2>Più punti, più bit per simbolo</h2>
+        <p>Con la <strong>QAM</strong> ogni punto rappresenta una combinazione di bit. Più punti offre la costellazione, più bit porta ogni simbolo.</p>
+        <p>I punti diventano più vicini. Per distinguere simboli molto simili serve un segnale più pulito rispetto al rumore.</p>
+        <p class="lim-terms">
+          <span><strong>QAM</strong> · Quadrature Amplitude Modulation, modulazione che rappresenta i dati con punti di una costellazione.</span>
+        </p>
+      </div>
+      <div class="lim-visual">
+        <ul class="lim-diagram" role="list">
+          <li><strong>16-QAM · 4 bit.</strong> 2⁴ = 16 combinazioni.</li>
+          <li><strong>256-QAM · 8 bit.</strong> 2⁸ = 256 combinazioni.</li>
+          <li><strong>1024-QAM · 10 bit.</strong> 2¹⁰ = 1024 combinazioni.</li>
+          <li><strong>4096-QAM · 12 bit.</strong> 2¹² = 4096 combinazioni.</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+  <section class="presenter-slide lim-slide" tabindex="-1" inert>
+    <div class="lim-stage">
+      <div>
+        <h2>Quando il segnale cambia anche da vicino</h2>
+        <p>Vicino a una parete metallica arrivano l’onda diretta e quella riflessa. Se si indeboliscono a vicenda, il livello ricevuto cala.</p><p>Che misura faresti prima di aumentare la potenza?</p>
+      </div>
+      <div class="lim-visual">
+        <button type="button" class="btn btn-primary" data-presentation-reveal aria-expanded="false" aria-controls="lim-verifica-1-5-1">Mostra soluzione</button>
+        <div class="lim-solution" id="lim-verifica-1-5-1" hidden><p>Ripeterei la misura spostando il ricevitore. Se il livello risale, la posizione e le riflessioni meritano una verifica.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="presenter-slide lim-slide lim-challenge" tabindex="-1" inert>
+    <div class="lim-stage">
+      <div>
+        <h2>Sfida alla classe</h2>
+        <p><strong>Un solo flusso, segnale debole.</strong> Il punto di accesso può inviare fino a due flussi. Il portatile sa riceverne uno solo e si trova a sinistra rispetto alla direzione frontale delle antenne.</p>
+        <p class="lim-example">Quale scelta aiuta il portatile: inviare due flussi indipendenti o orientare un solo flusso verso di lui? Prevedete come cambierebbe il grafico e quanti flussi riceverebbe.</p>
+      </div>
+      <div class="lim-visual">
+        <button type="button" class="btn btn-primary lim-reveal" data-presentation-reveal aria-expanded="false" aria-controls="lim-soluzione-1-5">Mostra soluzione</button>
+        <div class="lim-solution" id="lim-soluzione-1-5" hidden>
+          <h3>Soluzione guidata</h3>
+          <ol><li>Scegliete il <strong>beamforming</strong>: le antenne coordinano lo stesso flusso per favorire la direzione del portatile.</li><li>Nel grafico la zona di emissione principale si orienta verso il client. Il numero di flussi resta <strong>uno</strong>, perché il portatile ne gestisce al massimo uno.</li></ol>
+        </div>
+      </div>
+    </div>
+  </section>
+  <section class="presenter-slide lim-slide lim-recap" tabindex="-1" inert>
+    <div class="lim-stage lim-stage-summary">
+      <h2>Da ricordare</h2>
+      <ul class="lim-summary" role="list">
+        <li><strong>MIMO</strong>Può trasportare più flussi sullo stesso canale se entrambi gli apparati riescono a gestirli.</li>
+        <li><strong>Beamforming</strong>Le antenne si coordinano per favorire il segnale verso il dispositivo.</li>
+        <li><strong>OFDM</strong>La trasmissione distribuisce i dati su molte frequenze vicine nello stesso canale.</li>
+      </ul>
+    </div>
+  </section>
+</template>
+
+<script src="../../../assets/js/app.js"></script>
+<script src="../../../assets/js/annotazioni.js" defer></script>
+<script src="../../../assets/js/modulo1.js"></script>
+<script src="../../../assets/js/beamforming-preview.js"></script>
+<script>
+/* Quiz: contenuti originali della lezione */
+document.addEventListener('DOMContentLoaded', () => {
+const quizQuestions = [
+    {
+      question: "Qual è il principio matematico fondamentale che rende l'OFDM così efficiente contro le interferenze?",
+      answers: [
+        { text: "L'ortogonalità tra le sottoportanti: il picco di ciascuna frequenza cade esattamente sullo zero delle vicine", correct: true },
+        { text: "L'uso di cavi coassiali dorati all'interno dell'antenna", correct: false },
+        { text: "La cancellazione forzata di tutti i numeri dispari", correct: false },
+        { text: "L'innalzamento della tensione a 220 Volt", correct: false }
+      ],
+      explain_correct: "Esatto! L'ortogonalità matematica consente alle sottoportanti di sovrapporsi nello spettro senza disturbo reciproco (Zero Inter-Carrier Interference).",
+      explain_wrong: "OFDM sfrutta l'ortogonalità matematica delle funzioni sinusoidali: i massimi di una sottoportante coincidono con i nulli delle portanti adiacenti."
+    },
+    {
+      question: "In una configurazione MIMO 4x4 con multiplexing spaziale, cosa accade alla trasmissione dati?",
+      answers: [
+        { text: "La portata della batteria del telefono aumenta di 4 volte", correct: false },
+        { text: "Vengono trasmessi fino a 4 flussi indipendenti di bit simultaneamente sulla stessa frequenza, quadruplicando la banda", correct: true },
+        { text: "Il router si collega contemporaneamente a 4 operatori telefonici diversi", correct: false },
+        { text: "Le frequenze radio vengono riflesse verso lo spazio", correct: false }
+      ],
+      explain_correct: "Corretto! Il multiplexing spaziale del MIMO divide il flusso binario in 4 tronconi paralleli e li trasmette insieme sfruttando antenne distanziate.",
+      explain_wrong: "MIMO (Multiple Input Multiple Output) sfrutta le matrici di canale per inviare flussi di dati indipendenti (spatial streams) in parallelo, moltiplicando la capacità del link."
+    },
+    {
+      question: "Che cos'è il Beamforming adattativo (TxBF)?",
+      answers: [
+        { text: "Un braccio meccanico che ruota l'antenna verso l'utente", correct: false },
+        { text: "Il controllo della fase del segnale su antenne multiple per concentrare l'energia in un fascio focalizzato verso il ricevitore", correct: true },
+        { text: "Una vernice metallica da applicare sulle pareti", correct: false },
+        { text: "Il formato video ad altissima risoluzione dei router", correct: false }
+      ],
+      explain_correct: "Perfetto! Modulando opportunamente i ritardi di fase su ciascun elemento radiante, le onde si sommano costruttivamente solo nella direzione del client bersaglio.",
+      explain_wrong: "Il Beamforming non muove parti meccaniche: è uno sfasamento elettronico dei segnali emessi da più antenne per creare interferenza costruttiva verso il ricevitore."
+    },
+    {
+      question: "Quanti bit di informazione trasporta un singolo simbolo modulato in 1024-QAM (Wi-Fi 6)?",
+      answers: [
+        { text: "2 bit (2<sup>2</sup> = 4)", correct: false },
+        { text: "8 bit (2<sup>8</sup> = 256)", correct: false },
+        { text: "10 bit (2<sup>10</sup> = 1024)", correct: true },
+        { text: "1024 bit interi", correct: false }
+      ],
+      explain_correct: "Grandioso! Poiché 2<sup>10</sup> = 1024, ogni singolo punto della costellazione 1024-QAM codifica una stringa di 10 bit (es. 1010110011)!",
+      explain_wrong: "La regola delle modulazioni M-QAM: il numero di bit per simbolo è k = log₂(M). Per 1024-QAM si ha log₂(1024) = 10 bit per simbolo."
+    },
+    {
+      question: "Cosa richiede una modulazione densa come la 4096-QAM del Wi-Fi 7 per poter funzionare senza generare errori sui bit?",
+      answers: [
+        { text: "Un rapporto segnale/rumore (SNR) elevatissimo e segnale molto pulito: i punti sono così vicini che il minimo rumore altera i bit", correct: true },
+        { text: "Un abbonamento speciale a pagamento", correct: false },
+        { text: "Che tutti gli smartphone della casa siano spenti", correct: false },
+        { text: "Una temperatura ambiente inferiore a zero gradi", correct: false }
+      ],
+      explain_correct: "Bravissimo! Con 4096 punti stipati nello stesso diagramma I-Q, i margini di tolleranza sono microscopici: basta un soffio di rumore per scambiare un simbolo con un altro.",
+      explain_wrong: "Con 4096 punti la distanza minima tra gli stati è minuscola: serve un SNR eccellente (linea di vista ravvicinata con l'Access Point), altrimenti il modem degrada a modulazioni inferiori."
+    }
+  ];
+
+  QuizEngine.init('quizContainer', quizQuestions);
+});
+</script>
+</body>
+</html>

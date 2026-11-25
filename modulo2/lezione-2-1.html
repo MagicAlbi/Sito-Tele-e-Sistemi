@@ -239,17 +239,13 @@
     <div class="lim-stage">
       <div>
         <p class="lim-curiosity-label">Curiosità</p>
-        <h2>La console senza indirizzo IP</h2>
-        <p>Nei Cisco Catalyst 2960-X puoi collegare un computer direttamente alla porta di console, già alla prima accensione.</p>
-        <p>La guida usa 9.600 baud e il formato <strong>8N1</strong>. Gli stessi parametri visti nell’esempio servono per far dialogare computer e switch.</p>
+        <h2>Uno switch appena acceso</h2>
+        <p class="lim-example">Come configurereste uno switch che non ha ancora un indirizzo IP?</p>
         <p class="lim-terms">Fonte · <a target="_blank" rel="noopener noreferrer" href="https://www.cisco.com/c/en/us/td/docs/switches/lan/catalyst2960xr/hardware/installation/guide/b_c2960xr_hig/b_c2960xr_hig_appendix_0111.html">Guida Cisco Catalyst 2960-X</a></p>
       </div>
       <div class="lim-visual">
-        <p class="lim-example"><strong>Prima di leggere.</strong> Lo switch non ha ancora un indirizzo IP. Come provereste a configurarlo?</p>
-        <ul class="lim-diagram" role="list">
-          <li><strong>9.600 baud, 8N1</strong><span> · impostazioni del terminale</span></li>
-          <li><strong>Switch</strong><span> · si può configurare prima di assegnargli un IP</span></li>
-        </ul>
+        <button type="button" class="btn btn-primary" data-presentation-reveal aria-expanded="false" aria-controls="lim-curiosita-2-1">Mostra soluzione</button>
+        <div class="lim-solution" id="lim-curiosita-2-1" hidden><p>Colleghiamo un computer direttamente alla porta di console. Per il Cisco Catalyst 2960-X, la guida indica <strong>9.600 baud e 8N1</strong>.</p></div>
       </div>
     </div>
   </section>
@@ -258,7 +254,7 @@
       <div>
         <h2>Sfida alla classe</h2>
         <p>Due apparati sono collegati via seriale sincrona. I dati ricevuti sono illeggibili e alla porta del terminale manca il clock previsto.</p>
-        <p class="lim-example"><strong>Consegna.</strong> Confrontati con un compagno. Indica quale apparato dovrebbe fornire il clock, quali controlli faresti e perché quel segnale serve.</p>
+        <p class="lim-example">Quale apparato dovrebbe fornire il clock? Quali controlli fareste e perché quel segnale serve? Confrontiamo le proposte.</p>
       </div>
       <div class="lim-visual"><button type="button" class="btn btn-primary" data-wan-reveal aria-expanded="false" aria-controls="lim-solution-1">Mostra soluzione</button><div class="lim-solution" id="lim-solution-1" hidden><h3>Soluzione guidata</h3><p>Il <strong>DCE</strong>, il modem nell’esempio, deve fornire il clock. Verifica che sia configurato per generarlo e che il cavo porti quel segnale fino al DTE. Senza quel ritmo il ricevitore non sa quando leggere ciascun bit.</p></div></div>
     </div>

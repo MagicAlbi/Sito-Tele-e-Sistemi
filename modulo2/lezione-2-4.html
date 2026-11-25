@@ -263,17 +263,13 @@
     <div class="lim-stage">
       <div>
         <p class="lim-curiosity-label">Curiosità</p>
-        <h2>Perché nel router di casa a volte c’è PPPoE?</h2>
-        <p>Su alcuni accessi il router di casa usa <strong>PPPoE</strong>, cioè PPP sopra Ethernet, per aprire una sessione con l’operatore.</p>
-        <p>Le trame Ethernet trasportano i messaggi PPP. Le fasi di una sessione PPP si possono quindi ritrovare anche su un accesso Ethernet.</p>
-        <p class="lim-terms">Fonte · <a target="_blank" rel="noopener noreferrer" href="https://www.rfc-editor.org/info/rfc2516/">RFC 2516 · PPP sopra Ethernet</a></p>
+        <h2>PPPoE nel router di casa</h2>
+        <p class="lim-example">Perché la sigla PPPoE contiene sia PPP sia Ethernet? Che compito hanno?</p>
+        <p class="lim-terms">Fonte · <a target="_blank" rel="noopener noreferrer" href="https://www.rfc-editor.org/info/rfc2516/">RFC 2516</a></p>
       </div>
       <div class="lim-visual">
-        <p class="lim-example"><strong>Prima di leggere.</strong> Perché la sigla PPPoE contiene sia PPP sia Ethernet? Che compito hanno?</p>
-        <ul class="lim-diagram" role="list">
-          <li><strong>Ethernet</strong><span> · trasporta i messaggi sul collegamento</span></li>
-          <li><strong>PPP</strong><span> · gestisce la sessione con l’operatore</span></li>
-        </ul>
+        <button type="button" class="btn btn-primary" data-presentation-reveal aria-expanded="false" aria-controls="lim-curiosita-2-4">Mostra soluzione</button>
+        <div class="lim-solution" id="lim-curiosita-2-4" hidden><p>Le trame <strong>Ethernet</strong> trasportano i messaggi <strong>PPP</strong>. È PPP a gestire la sessione con l’operatore.</p></div>
       </div>
     </div>
   </section>
@@ -283,7 +279,10 @@
         <h2>Progettare un messaggio di misure</h2>
         <p>ID 1 byte · istante 4 byte · due misure da 2 byte. La trama aggiunge 7 byte.</p><p>Che cosa deve sapere il ricevitore e quanti bit viaggiano?</p>
       </div>
-      <div class="lim-visual"><details class="wan-reveal"><summary>Verifica</summary><p>Ordine, unità e codifica dei campi. 72 bit di messaggio, 128 bit nella trama del modello.</p></details></div>
+      <div class="lim-visual">
+        <button type="button" class="btn btn-primary" data-presentation-reveal aria-expanded="false" aria-controls="lim-verifica-2-4-1">Mostra soluzione</button>
+        <div class="lim-solution" id="lim-verifica-2-4-1" hidden><p>Ordine, unità e codifica dei campi. 72 bit di messaggio, 128 bit nella trama del modello.</p></div>
+      </div>
     </div>
   </section>
 
@@ -292,7 +291,7 @@
       <div>
         <h2>Sfida alla classe</h2>
         <p>Due router aprono il collegamento PPP e superano l’autenticazione. Il collegamento però non è ancora in grado di trasportare IPv4.</p>
-        <p class="lim-example"><strong>Consegna.</strong> Confrontati con un compagno. Indica quale fase controllare per prima, quale protocollo la gestisce e che cosa verificheresti sui router.</p>
+        <p class="lim-example">Quale fase controllereste per prima? Quale protocollo la gestisce e che cosa verifichereste sui router? Confrontiamo le proposte.</p>
       </div>
       <div class="lim-visual"><button type="button" class="btn btn-primary" data-wan-reveal aria-expanded="false" aria-controls="lim-solution-4">Mostra soluzione</button><div class="lim-solution" id="lim-solution-4" hidden><h3>Soluzione guidata</h3><p>Controlla la configurazione del livello di rete, in particolare <strong>IPCP</strong>, che negozia i parametri IPv4 in PPP. Verifica se IPCP è aperto e quali indirizzi IPv4 sono stati concordati. LCP e autenticazione sono già riusciti.</p></div></div>
     </div>

@@ -272,17 +272,13 @@
     <div class="lim-stage">
       <div>
         <p class="lim-curiosity-label">Curiosità</p>
-        <h2>La fibra può fermarsi durante un blackout</h2>
-        <p>Lo <strong>splitter</strong> distribuisce il segnale luminoso senza alimentazione propria. In casa invece l’ONT e il router hanno bisogno di corrente.</p>
-        <p>Durante un blackout Internet può quindi fermarsi anche con la fibra intatta. Un’alimentazione di riserva può tenere accesi gli apparati per un tempo limitato.</p>
+        <h2>La fibra durante un blackout</h2>
+        <p class="lim-example">La fibra è intatta ma in casa manca la corrente. Quali apparati controllate?</p>
         <p class="lim-terms">Fonte · <a target="_blank" rel="noopener noreferrer" href="https://www.openreach.com/help-and-support/problems-and-appointments/checks-for-fibre-network-termination-points">Openreach · Controlli del terminale ottico</a></p>
       </div>
       <div class="lim-visual">
-        <p class="lim-example"><strong>Prima di leggere.</strong> La fibra è intatta ma manca la corrente. Quali apparati di casa controllate?</p>
-        <ul class="lim-diagram" role="list">
-          <li><strong>Splitter</strong><span> · distribuisce la luce senza corrente</span></li>
-          <li><strong>ONT e router</strong><span> · richiedono alimentazione</span></li>
-        </ul>
+        <button type="button" class="btn btn-primary" data-presentation-reveal aria-expanded="false" aria-controls="lim-curiosita-2-3">Mostra soluzione</button>
+        <div class="lim-solution" id="lim-curiosita-2-3" hidden><p>Controlliamo <strong>ONT e router</strong>: in casa entrambi hanno bisogno di corrente. Lo splitter distribuisce la luce senza alimentazione. Una batteria può tenere accesi gli apparati di casa per un tempo limitato.</p></div>
       </div>
     </div>
   </section>
@@ -292,7 +288,10 @@
         <h2>Collegare due sedi in fibra</h2>
         <p>6 km × 0,35 dB/km. Due giunti da 0,15 dB. Due connessioni da 0,5 dB. Budget ottico di 12 dB.</p><p>Quanta riserva rimane?</p>
       </div>
-      <div class="lim-visual"><details class="wan-reveal"><summary>Verifica</summary><p>Perdita 3,4 dB. Riserva 8,6 dB. Verifica a parte portata degli apparati e velocità utile.</p></details></div>
+      <div class="lim-visual">
+        <button type="button" class="btn btn-primary" data-presentation-reveal aria-expanded="false" aria-controls="lim-verifica-2-3-1">Mostra soluzione</button>
+        <div class="lim-solution" id="lim-verifica-2-3-1" hidden><p>Perdita 3,4 dB. Riserva 8,6 dB. Verifica a parte portata degli apparati e velocità utile.</p></div>
+      </div>
     </div>
   </section>
 
@@ -301,7 +300,7 @@
       <div>
         <h2>Sfida alla classe</h2>
         <p>La fibra dell’operatore arriva alla presa ottica dentro casa. La presa è collegata all’ONT e da lì un cavo Ethernet raggiunge il router.</p>
-        <p class="lim-example"><strong>Consegna.</strong> Confrontati con un compagno. Scegli fra ADSL, FTTC e FTTH. Indica dove termina la fibra e quale tratto percorre il cavo Ethernet.</p>
+        <p class="lim-example">Quale accesso è fra ADSL, FTTC e FTTH? Dove termina la fibra e quale tratto percorre il cavo Ethernet?</p>
       </div>
       <div class="lim-visual"><button type="button" class="btn btn-primary" data-wan-reveal aria-expanded="false" aria-controls="lim-solution-3">Mostra soluzione</button><div class="lim-solution" id="lim-solution-3" hidden><h3>Soluzione guidata</h3><p>L’accesso è <strong>FTTH</strong> perché la fibra dell’operatore arriva alla presa ottica dentro casa. L’ONT termina il collegamento ottico. Ethernet collega l’ONT al router sul tratto interno.</p></div></div>
     </div>

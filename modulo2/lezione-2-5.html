@@ -252,17 +252,12 @@
       <div>
         <p class="lim-curiosity-label">Curiosità</p>
         <h2>Sulle tracce di un pacchetto</h2>
-        <p><strong>Traceroute</strong> usa il TTL per farsi rispondere dai router lungo il percorso. Prova prima con un limite di un salto, poi di due e così via.</p>
-        <p>Quando il TTL scade, il router può rispondere. Se la risposta manca, quel salto può risultare sconosciuto anche quando la destinazione è raggiungibile.</p>
+        <p class="lim-example">Traceroute prova prima con un limite di un salto, poi di due e così via. Se un router non risponde, possiamo concludere che la destinazione sia irraggiungibile?</p>
         <p class="lim-terms">Fonte · <a target="_blank" rel="noopener noreferrer" href="https://www.rfc-editor.org/rfc/rfc1812.html#section-5.3.1">RFC 1812 · Comportamento dei router IPv4</a></p>
       </div>
       <div class="lim-visual">
-        <p class="lim-example"><strong>Prima di leggere.</strong> Se un router non risponde, possiamo concludere che la destinazione sia irraggiungibile?</p>
-        <ul class="lim-diagram" role="list">
-          <li><strong>TTL 1</strong><span> · può rispondere il primo router</span></li>
-          <li><strong>TTL 2</strong><span> · può rispondere il secondo</span></li>
-          <li><strong>Nessuna risposta</strong><span> · salto sconosciuto</span></li>
-        </ul>
+        <button type="button" class="btn btn-primary" data-presentation-reveal aria-expanded="false" aria-controls="lim-curiosita-2-5">Mostra soluzione</button>
+        <div class="lim-solution" id="lim-curiosita-2-5" hidden><p><strong>No.</strong> Quando il TTL (limite di salti) scade, il router può rispondere. Se tace, quel salto resta sconosciuto anche quando la destinazione è raggiungibile.</p></div>
       </div>
     </div>
   </section>
@@ -272,7 +267,10 @@
         <h2>Due modi per aggiornare le rotte</h2>
         <p>Si guasta A–C. Resta possibile la strada A–B–C.</p><p>Che cosa riceve A con ciascun metodo?</p>
       </div>
-      <div class="lim-visual"><details class="wan-reveal"><summary>Verifica</summary><p>RIP: da B riceve una distanza per raggiungere C. OSPF: riceve informazioni sui collegamenti e aggiorna la mappa. Il nuovo prossimo salto è B.</p></details></div>
+      <div class="lim-visual">
+        <button type="button" class="btn btn-primary" data-presentation-reveal aria-expanded="false" aria-controls="lim-verifica-2-5-1">Mostra soluzione</button>
+        <div class="lim-solution" id="lim-verifica-2-5-1" hidden><p>RIP: da B riceve una distanza per raggiungere C. OSPF: riceve informazioni sui collegamenti e aggiorna la mappa. Il nuovo prossimo salto è B.</p></div>
+      </div>
     </div>
   </section>
 
@@ -282,7 +280,10 @@
         <h2>Quanti indirizzi servono?</h2>
         <p>13 concentratori, 1 router, 1 apparato di gestione sulla stessa LAN. In quale blocco entrano?</p>
       </div>
-      <div class="lim-visual"><details class="wan-reveal"><summary>Verifica</summary><p>Una /28 offre 14 indirizzi utilizzabili. Con una /27 ne hai 30 e ne restano 15 disponibili.</p></details></div>
+      <div class="lim-visual">
+        <button type="button" class="btn btn-primary" data-presentation-reveal aria-expanded="false" aria-controls="lim-verifica-2-5-2">Mostra soluzione</button>
+        <div class="lim-solution" id="lim-verifica-2-5-2" hidden><p>Una /28 offre 14 indirizzi utilizzabili. Con una /27 ne hai 30 e ne restano 15 disponibili.</p></div>
+      </div>
     </div>
   </section>
 
@@ -291,7 +292,7 @@
       <div>
         <h2>Sfida alla classe</h2>
         <p>Un router deve inoltrare un pacchetto per <strong>10.20.30.8</strong>. Ha due rotte compatibili, una per 10.20.0.0/16 e una per 10.20.30.0/24. La rotta /24 indica 172.16.1.2 su WAN B.</p>
-        <p class="lim-example"><strong>Consegna.</strong> Confrontati con un compagno. Scrivi il prefisso scelto, il prossimo salto e la porta d’uscita. Spiega la scelta in una frase.</p>
+        <p class="lim-example">Quale prefisso scegliete? Indicate il prossimo salto e la porta d’uscita, poi spiegate la scelta.</p>
       </div>
       <div class="lim-visual"><button type="button" class="btn btn-primary" data-wan-reveal aria-expanded="false" aria-controls="lim-solution-5">Mostra soluzione</button><div class="lim-solution" id="lim-solution-5" hidden><h3>Soluzione guidata</h3><p>Scegli <strong>10.20.30.0/24</strong>, perché 24 bit iniziali coincidono, contro i 16 dell’altra rotta. Invia il pacchetto al router vicino <strong>172.16.1.2</strong> dalla porta <strong>WAN B</strong>.</p></div></div>
     </div>

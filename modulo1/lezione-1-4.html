@@ -309,9 +309,10 @@
       <div>
         <p class="lim-curiosity-label">Curiosità</p>
         <h2>Il Wi-Fi condivide il canale radio</h2>
-        <p>In aula, telefoni e computer usano lo stesso canale per parlare con il <strong>punto di accesso (AP)</strong>.</p>
-        <p>Se due dispositivi trasmettono insieme, i segnali possono sovrapporsi e diventare illeggibili all’AP. È una <strong>collisione</strong>.</p>
-        <p class="lim-example"><strong>Domanda lampo.</strong> Possiamo avere fibra veloce, tutte le tacche e Wi-Fi lento? Sì. Può bastare che il canale radio sia già occupato.</p>
+        <p>Telefoni e computer usano lo stesso canale per parlare con il <strong>punto di accesso (AP)</strong>. Se inviano insieme, i segnali possono sovrapporsi: è una <strong>collisione</strong>.</p>
+        <p class="lim-example"><strong>Domanda lampo.</strong> Possiamo avere fibra veloce, tutte le tacche e Wi-Fi lento?</p>
+        <button type="button" class="btn btn-primary" data-presentation-reveal aria-expanded="false" aria-controls="lim-curiosita-1-4-canale">Mostra soluzione</button>
+        <div class="lim-solution" id="lim-curiosita-1-4-canale" hidden><p>Sì. Può bastare che il canale radio sia già occupato.</p></div>
         <p class="lim-terms"><strong>AP</strong> · Access Point, punto di accesso Wi-Fi.</p>
       </div>
       <div class="lim-visual lim-art">
@@ -346,9 +347,10 @@
         <h2>L’attesa casuale separa le partenze</h2>
         <p>Due telefoni si sentono. Dopo la pausa fissa, <strong>A sorteggia 2 intervalli</strong> e <strong>C ne sorteggia 5</strong>.</p>
         <p>Dopo 2 intervalli liberi A trasmette. C sente A e mette in pausa il suo conteggio.</p>
-        <p class="lim-example"><strong>Sfida lampo.</strong> Dopo il ritorno del canale libero e la pausa fissa, C riparte da 5 o da 3?<br><strong>Risposta.</strong> Da 3, perché conserva i 2 intervalli già contati.</p>
+        <p class="lim-example">Dopo il ritorno del canale libero e la pausa fissa, C riparte da 5 o da 3?</p>
       </div>
-      <figure class="lim-visual">
+      <div><button type="button" class="btn btn-primary" data-presentation-reveal aria-expanded="false" aria-controls="lim-rapida-1-4">Mostra soluzione</button>
+        <div id="lim-rapida-1-4" hidden><figure class="lim-visual">
         <figcaption>Quando A inizia a trasmettere</figcaption>
         <div class="lim-timing">
           <p><strong>A</strong> · 2 − 2 = 0, trasmette</p>
@@ -357,13 +359,13 @@
           </div>
         </div>
         <div class="lim-timing">
-          <p><strong>C</strong> · 5 − 2 = 3, aspetta</p>
+          <p><strong>C</strong> · 5 − 2 = 3: conserva i 2 intervalli già contati</p>
           <div class="lim-slots" aria-hidden="true">
             <span class="lim-elapsed"></span><span class="lim-elapsed"></span>
             <span class="lim-waiting"></span><span class="lim-waiting"></span><span class="lim-waiting"></span>
           </div>
         </div>
-      </figure>
+      </figure></div></div>
     </div>
   </section>
   <section class="presenter-slide lim-slide" tabindex="-1" inert>
@@ -431,12 +433,13 @@
       <div>
         <p class="lim-curiosity-label">Curiosità</p>
         <h2>Un invio più lento occupa il canale più a lungo</h2>
-        <p><strong>Stimate al volo.</strong> A 6 Mb/s o a 24 Mb/s, quanto cambia il tempo per spedire gli stessi dati?</p>
+        <p>Quanto tempo serve per inviare 12 megabit a 6 Mb/s? E a 24 Mb/s?</p>
         <p>Con un segnale debole il telefono può rallentare. Per inviare gli stessi dati occupa il canale per più <strong>tempo d’aria</strong>.</p>
         <p>Con l’<strong>Airtime Fairness</strong>, il punto di accesso può bilanciare le quote di tempo. Nella stessa quota, il dispositivo veloce può inviare più dati.</p>
         <p class="lim-terms"><strong>Mb/s</strong> · Megabit al secondo, l’unità di velocità usata nell’esempio.</p>
       </div>
-      <figure class="lim-visual">
+      <div><button type="button" class="btn btn-primary" data-presentation-reveal aria-expanded="false" aria-controls="lim-curiosita-1-4-tempo">Mostra soluzione</button>
+        <div id="lim-curiosita-1-4-tempo" hidden><figure class="lim-visual">
         <figcaption>Tempo per inviare 12 megabit</figcaption>
         <div class="lim-timing">
           <p>A <strong>6 Mb/s</strong> servono 2 secondi</p>
@@ -447,7 +450,7 @@
           <div class="lim-meter" aria-hidden="true"><span style="--bar-size: 25%"></span></div>
         </div>
         <p class="lim-topology-note">Il calcolo conta solo l’invio dei dati. Attese e messaggi di servizio si aggiungono.</p>
-      </figure>
+      </figure></div></div>
     </div>
   </section>
   <section class="presenter-slide lim-slide lim-challenge" tabindex="-1" inert>
@@ -455,7 +458,7 @@
       <div>
         <h2>Sfida alla classe</h2>
         <p><strong>Mistero in corridoio.</strong> A e C sentono il punto di accesso, ma non si sentono fra loro a causa dei muri. Entrambi trovano il canale libero e iniziano a inviare nello stesso istante.</p>
-        <p class="lim-example"><strong>60 secondi a squadre.</strong> Dite dove si sovrappongono i segnali e quale messaggio potrebbe avvisare C di aspettare se A chiedesse il permesso per primo. Un punto per ogni risposta motivata.</p>
+        <p class="lim-example">Dove si sovrappongono i segnali? Se A chiedesse il permesso per primo, quale risposta direbbe a C di aspettare? Ricostruiamo insieme lo scambio.</p>
       </div>
       <div class="lim-visual">
         <button type="button" class="btn btn-primary lim-reveal" data-presentation-reveal aria-expanded="false" aria-controls="lim-soluzione-1-4">Mostra soluzione</button>
