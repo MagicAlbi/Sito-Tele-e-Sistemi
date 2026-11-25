@@ -166,8 +166,8 @@
   border-radius: var(--r-sm);
 }
 
-[data-annotation-mode="highlight"] :is(.lesson-hero-content, .tldr, .slide) { cursor: text; }
-[data-annotation-mode="note"] :is(.lesson-hero-content, .tldr, .slide) { cursor: crosshair; }
+:is([data-annotation-mode="highlight"], [data-annotation-mode="note"])
+  :is(.lesson-intro-hero, .lesson-intro-prereq, .lesson-summary, .lesson-hero-content, .tldr, .slide) { cursor: text; }
 
 @media screen and (min-width: 1080px) {
   .main-content.annotations-with-notes { padding-right: 15.5rem; }

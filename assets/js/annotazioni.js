@@ -8,11 +8,17 @@
     ['arancione', 'Arancione'], ['viola', 'Viola']
   ]);
   const regions = new Map();
-  for (const region of lesson.querySelectorAll('.lesson-hero-content, .tldr, .slide[id]')) {
-    const key = region.id || (region.classList.contains('tldr') ? 'sintesi' : 'introduzione');
-    regions.set(key, region);
+  for (const [key, selector] of [
+    ['introduzione', '.lesson-intro-hero, .lesson-hero-content'],
+    ['prerequisiti', '.lesson-intro-prereq'],
+    ['sintesi', '.lesson-summary, .tldr']
+  ]) {
+    const region = lesson.querySelector(selector);
+    if (region) regions.set(region.id || key, region);
   }
+  for (const slide of lesson.querySelectorAll('.slide[id]')) regions.set(slide.id, slide);
   const excluded = '.quiz-wrap, .lab-panel, .interactive-wrap, button, input, select, textarea, [contenteditable], svg, canvas';
+  const textBlocks = 'p, li, h1, h2, h3, h4, h5, h6, blockquote, figcaption, dt, dd, td, th, .lesson-intro-prereq > div';
   const key = 'telecomunicazioni:annotazioni:v1:' + lesson.dataset.lessonAnnotations;
   const registry = window.CSS?.highlights;
   const canPaint = Boolean(registry && window.Highlight);
@@ -164,7 +170,10 @@
 
   function selectedAnchor() {
     if (!selection?.rangeCount || selection.isCollapsed) return null;
-    const range = selection.getRangeAt(0);
+    return anchorFromRange(selection.getRangeAt(0));
+  }
+
+  function anchorFromRange(range) {
     const quote = range.toString();
     if (!quote.trim()) return null;
     for (const [regionKey, region] of regions) {
@@ -245,7 +254,7 @@
     if (next !== 'highlight') setMenu(false);
     modeBar.hidden = !next;
     colorGroup.hidden = next !== 'highlight';
-    hint.textContent = next === 'note' ? 'Modalità nota · Seleziona una frase' : 'Evidenziatore attivo';
+    hint.textContent = next === 'note' ? 'Modalità nota · Clicca sul testo o seleziona una frase' : 'Evidenziatore attivo';
     apply.textContent = next === 'note' ? 'Annota selezione' : 'Evidenzia selezione';
     updateSelection();
   }
@@ -314,7 +323,9 @@
 
   function inlineBlock(range) {
     const node = range.startContainer;
-    const block = node.parentElement.closest('p, h1, h2, h3, h4, h5, h6, li, blockquote, table, .lesson-hero-content, .tldr, .slide');
+    const introBlock = node.parentElement.closest('.lesson-intro-hero, .lesson-summary, .lesson-intro-prereq');
+    if (introBlock) return introBlock;
+    const block = node.parentElement.closest(textBlocks + ', table, .lesson-hero-content, .tldr, .slide');
     if (block?.closest('table')) return block.closest('table');
     if (block?.matches('li')) return block.parentElement;
     return block;
@@ -496,6 +507,7 @@
       for (const option of colorGroup.children) {
         option.setAttribute('aria-pressed', String(option.dataset.color === color));
       }
+      applySelection(selectedAnchor());
     });
     button.setAttribute('aria-pressed', String(color === name));
     colorGroup.append(button);
@@ -532,7 +544,11 @@
     closeEditor();
     toggle.focus({ preventScroll: true });
   });
-  apply.addEventListener('pointerdown', event => event.preventDefault());
+  for (const tools of [toggle, popover]) {
+    tools.addEventListener('pointerdown', event => {
+      if (event.button === 0 && event.target.closest('button') && selectedAnchor()) event.preventDefault();
+    });
+  }
   apply.addEventListener('click', () => applySelection(selectedAnchor()));
   document.addEventListener('selectionchange', updateSelection);
   lesson.addEventListener('pointerup', event => {
@@ -543,12 +559,23 @@
   lesson.addEventListener('click', event => {
     if (event.target.closest(excluded + ', a, .annotations-rail') || !selection.isCollapsed) return;
     const mark = markAtPoint(event);
+    if (mode === 'note') {
+      if (mark) {
+        applySelection(mark.entry.anchor);
+        return;
+      }
+      const block = event.target.closest(textBlocks);
+      if (!block) return;
+      const range = document.createRange();
+      range.selectNodeContents(block);
+      applySelection(anchorFromRange(range));
+      return;
+    }
     if (!mark) {
       closeMark();
       return;
     }
-    if (mode === 'note') applySelection(mark.entry.anchor);
-    else if (editing?.id === mark.entry.id) closeMark();
+    if (editing?.id === mark.entry.id) closeMark();
     else openMark(mark.entry, mark.rect, event.clientX);
   });
   document.addEventListener('pointerdown', event => {
