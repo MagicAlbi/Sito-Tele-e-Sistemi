@@ -59,6 +59,7 @@
     }
   </style>
   <link rel="stylesheet" href="../assets/css/modulo1.css">
+  <link rel="stylesheet" href="../assets/css/introduzione-lezioni.css">
   <link rel="stylesheet" href="../assets/css/esperimenti.css">
   <link rel="stylesheet" href="../assets/css/annotazioni.css">
   <link rel="stylesheet" href="../assets/css/presentazioni-modulo1.css">
@@ -184,41 +185,40 @@
     <div class="content-wrap">
 
       <!-- HERO LEZIONE -->
-      <header class="lesson-hero reveal">
-        <div class="lesson-hero-bg-num">01</div>
-        <div class="lesson-hero-content">
-          <div class="lesson-meta">
-            <span class="lesson-badge lesson-badge-module">Modulo 1 · Wireless LAN</span>
-            <span class="lesson-badge lesson-badge-num">Lezione 1.1</span>
+      <header class="lesson-intro-hero">
+        <div>
+          <div class="lesson-intro-meta">
+            <p class="lesson-intro-topic">Lezione 1.1 · Fondamenti delle reti senza fili</p>
             <span class="lesson-time">
               <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
               ~30 min studio interattivo
             </span>
           </div>
-
           <h1 class="lesson-title-h1">Dalla rete cablata alle reti locali senza fili (WLAN)</h1>
-          
           <p class="lesson-subtitle">
             Una WLAN (Wireless Local Area Network) è una rete locale senza fili. Il telefono si collega al punto di accesso (Access Point, AP). Il modello OSI (Open Systems Interconnection), definito dall’Organizzazione internazionale per la normazione (ISO), descrive la rete in sette livelli. Il protocollo IP (Internet Protocol) indirizza i pacchetti fra reti.
           </p>
-
-          <div class="lesson-prereq">
-            <span class="lesson-prereq-icon">🧠</span>
-            <div>
-              <strong>Cosa diamo già per scontato da Sistemi e Reti:</strong>
-              Architettura LAN cablata (Ethernet 802.3), stack a 7 livelli ISO/OSI, indirizzi del livello 2 (MAC, Media Access Control, controllo di accesso al mezzo) e assegnazione IP locale.
-            </div>
-          </div>
         </div>
+        <img src="../assets/img/quiz-wlan-rete.svg" alt="" width="200" height="252">
       </header>
 
-      <!-- RIASSUNTO IN EVIDENZA -->
-      <div class="tldr reveal">
-        <span class="tldr-icon">⚡</span>
+      <div class="lesson-prereq lesson-intro-prereq">
+        <span class="lesson-prereq-icon" aria-hidden="true">🧠</span>
         <div>
-          <strong>In breve.</strong> Con il Wi-Fi i dati viaggiano via radio (livello 1). I dispositivi seguono regole per trasmettere su un canale condiviso e ridurre le collisioni (livello 2, parte MAC). IP e i protocolli dei livelli superiori funzionano come su una rete cablata.
+          <strong>Cosa diamo già per scontato da Sistemi e Reti:</strong>
+          Architettura LAN cablata (Ethernet 802.3), stack a 7 livelli ISO/OSI, indirizzi del livello 2 (MAC, Media Access Control, controllo di accesso al mezzo) e assegnazione IP locale.
         </div>
       </div>
+
+      <!-- RIASSUNTO IN EVIDENZA -->
+      <section class="lesson-summary" aria-labelledby="obiettivo">
+        <h2 id="obiettivo">In questa lezione</h2>
+        <ul>
+          <li><span aria-hidden="true">📡</span><p><strong>Dal cavo alla radio.</strong> Vedrai quali funzioni cambiano nei primi due livelli della rete quando il telefono si collega via Wi-Fi e quali restano a carico di IP.</p></li>
+          <li><span aria-hidden="true">🧩</span><p><strong>Celle e nomi di rete.</strong> Nello schema interattivo distinguerai il nome mostrato sul telefono, la singola cella radio e il modo in cui più punti di accesso formano una stessa rete.</p></li>
+          <li><span aria-hidden="true">🔬</span><p><strong>Collegamento in tre fasi.</strong> Seguirai il dispositivo dalla ricerca della rete all’autenticazione e all’associazione al punto di accesso.</p></li>
+        </ul>
+      </section>
 
       <!-- ======================================
            SLIDE 1 — LO STACK ISO/OSI

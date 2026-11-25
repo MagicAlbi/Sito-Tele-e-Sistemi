@@ -1,0 +1,121 @@
+.lesson-intro-hero,
+.lesson-summary {
+  --intro-accent: var(--wan-accent, var(--primary));
+  --intro-contrast: var(--wan-contrast, var(--success));
+  --intro-line: color-mix(in srgb, var(--intro-accent) 28%, var(--border));
+}
+
+[data-theme="light"] .module-one :is(.lesson-intro-hero, .lesson-summary) {
+  --intro-accent: #00658d;
+}
+
+:is(.lesson-intro-hero, .wan-hero) {
+  --hero-accent: var(--intro-accent, var(--wan-accent));
+  --hero-contrast: var(--intro-contrast, var(--wan-contrast));
+  --hero-line: var(--intro-line, var(--wan-line));
+  isolation: isolate;
+  position: relative;
+  overflow: hidden;
+  display: grid;
+  align-items: center;
+  margin-bottom: 1.25rem;
+  padding: clamp(1.15rem, 3vw, 2.15rem);
+  border: 1px solid var(--hero-line);
+  border-radius: var(--r-2xl);
+  background:
+    radial-gradient(ellipse at 96% 100%, color-mix(in srgb, var(--hero-contrast) 16%, transparent), transparent 49%),
+    radial-gradient(ellipse at 22% 3%, color-mix(in srgb, var(--hero-accent) 20%, transparent), transparent 72%),
+    var(--surface);
+}
+
+:is(.lesson-intro-hero, .wan-hero)::before {
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  content: "";
+  background: repeating-linear-gradient(114deg, transparent 0 35px, var(--hero-line) 36px, transparent 37px 70px);
+  opacity: .24;
+  mask-image: linear-gradient(90deg, transparent 16%, #000);
+}
+
+:is(.lesson-intro-hero, .wan-hero-illustrated) {
+  grid-template-columns: minmax(0, 1fr) minmax(6rem, 21%);
+  gap: 1.25rem;
+}
+
+:is(.lesson-intro-hero, .wan-hero) > img {
+  width: 100%;
+  height: clamp(5.5rem, 10vw, 8.5rem);
+  object-fit: contain;
+  opacity: .9;
+}
+
+.lesson-intro-meta {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: .3rem .85rem;
+  margin-bottom: .75rem;
+}
+
+.lesson-intro-topic {
+  margin: 0;
+  color: var(--intro-accent);
+  font-size: .86rem;
+  font-weight: 800;
+  letter-spacing: .045em;
+}
+
+.lesson-intro-hero .lesson-title-h1 { text-wrap: balance; }
+.lesson-intro-hero .lesson-subtitle { margin-bottom: 0; }
+.lesson-intro-prereq { margin-bottom: 1rem; }
+
+.lesson-summary {
+  display: grid;
+  grid-template-columns: minmax(9rem, auto) minmax(0, 1fr);
+  align-items: start;
+  gap: .75rem 1.3rem;
+  margin-bottom: 1.6rem;
+  padding: 1rem 1.2rem;
+  border: 1px solid var(--intro-line);
+  border-radius: var(--r-lg);
+  background: color-mix(in srgb, var(--intro-accent) 7%, var(--surface));
+}
+
+.lesson-summary h2 {
+  margin: 0;
+  color: var(--intro-accent);
+  font-size: 1rem;
+}
+
+.lesson-summary ul {
+  display: grid;
+  gap: .45rem;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  font-size: .9rem;
+  line-height: 1.55;
+}
+
+.lesson-summary li {
+  display: grid;
+  grid-template-columns: 1.25rem minmax(0, 1fr);
+  gap: .45rem;
+}
+
+.lesson-summary p { margin: 0; }
+
+.main-content > .content-wrap > hr:has(+ .slide[data-num]) {
+  display: none;
+}
+
+.main-content .content-wrap :is(.slide[data-num], .slide[data-num] > header) > h2 {
+  padding-block: .75rem;
+  border-block-start: 1px solid var(--border);
+}
+
+@media (max-width: 620px) {
+  :is(.lesson-intro-hero, .wan-hero-illustrated), .lesson-summary { grid-template-columns: 1fr; }
+  :is(.lesson-intro-hero, .wan-hero) > img { display: none; }
+}

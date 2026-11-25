@@ -26,6 +26,7 @@
 
   </style>
   <link rel="stylesheet" href="../assets/css/modulo1.css">
+  <link rel="stylesheet" href="../assets/css/introduzione-lezioni.css">
   <link rel="stylesheet" href="../assets/css/esperimenti.css">
   <link rel="stylesheet" href="../assets/css/annotazioni.css">
   <link rel="stylesheet" href="../assets/css/presentazioni-modulo1.css">
@@ -151,41 +152,40 @@
     <div class="content-wrap">
 
       <!-- HERO LEZIONE -->
-      <header class="lesson-hero reveal">
-        <div class="lesson-hero-bg-num">04</div>
-        <div class="lesson-hero-content">
-          <div class="lesson-meta">
-            <span class="lesson-badge lesson-badge-module">Modulo 1 · Wireless LAN</span>
-            <span class="lesson-badge lesson-badge-num">Lezione 1.4</span>
+      <header class="lesson-intro-hero">
+        <div>
+          <div class="lesson-intro-meta">
+            <p class="lesson-intro-topic">Lezione 1.4 · Accesso al canale e nodo nascosto</p>
             <span class="lesson-time">
               <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
               ~40 min studio interattivo
             </span>
           </div>
-
           <h1 class="lesson-title-h1">Accesso al Mezzo Radio: CSMA/CA e il Dilemma del Nodo Nascosto</h1>
-          
           <p class="lesson-subtitle">
             Il Wi-Fi usa CSMA/CA (Carrier Sense Multiple Access with Collision Avoidance): i dispositivi ascoltano il canale e aspettano prima di trasmettere per ridurre le collisioni. Per riservare il canale possono scambiarsi una richiesta di invio (RTS, Request to Send) e un via libera (CTS, Clear to Send).
           </p>
-
-          <div class="lesson-prereq">
-            <span class="lesson-prereq-icon">🧠</span>
-            <div>
-              <strong>Confronto con Sistemi e Reti:</strong>
-              In Ethernet cablato si usava CSMA/CD (Carrier Sense Multiple Access with Collision Detection), accesso condiviso con ascolto e rilevamento delle collisioni sul cavo. Nel wireless questo principio fisico decade: scopriamo perché.
-            </div>
-          </div>
         </div>
+        <img src="../assets/img/quiz-wlan-rete.svg" alt="" width="200" height="252">
       </header>
 
-      <!-- RIASSUNTO IN EVIDENZA -->
-      <div class="tldr reveal">
-        <span class="tldr-icon">⚡</span>
+      <div class="lesson-prereq lesson-intro-prereq">
+        <span class="lesson-prereq-icon" aria-hidden="true">🧠</span>
         <div>
-          <strong>In breve.</strong> Le schede radio Wi-Fi sono <em>Half-Duplex</em>: trasmettere acceca il proprio ricevitore, quindi è impossibile rilevare collisioni in tempo reale. La soluzione è il <strong>CSMA/CA (Collision Avoidance)</strong>: prima di trasmettere si ascolta (Carrier Sense), si attende un tempo di silenzio casuale (Backoff esponenziale) e si richiede un frame di conferma <strong>ACK</strong> (Acknowledgment) per ogni pacchetto. Per i nodi che non si vedono tra loro (Hidden Node), si usa l'handshake <strong>RTS/CTS</strong>.
+          <strong>Confronto con Sistemi e Reti:</strong>
+          In Ethernet cablato si usava CSMA/CD (Carrier Sense Multiple Access with Collision Detection), accesso condiviso con ascolto e rilevamento delle collisioni sul cavo. Nel wireless questo principio fisico decade: scopriamo perché.
         </div>
       </div>
+
+      <!-- RIASSUNTO IN EVIDENZA -->
+      <section class="lesson-summary" aria-labelledby="obiettivo">
+        <h2 id="obiettivo">In questa lezione</h2>
+        <ul>
+          <li><span aria-hidden="true">⏱️</span><p><strong>Prima di inviare.</strong> Seguirai l’ordine delle operazioni nel Wi-Fi: ascolto del canale, attesa casuale, invio e conferma di ricezione.</p></li>
+          <li><span aria-hidden="true">🔬</span><p><strong>Due dispositivi che non si sentono.</strong> Osserverai come due nodi possano interferire presso lo stesso punto di accesso. Proverai il dialogo RTS/CTS per riservare il canale.</p></li>
+          <li><span aria-hidden="true">📶</span><p><strong>Il tempo sul canale.</strong> Vedrai perché una trasmissione lenta può occupare più a lungo il mezzo condiviso e rallentare gli altri dispositivi.</p></li>
+        </ul>
+      </section>
 
       <!-- ======================================
            SLIDE 1 — PERCHÉ CSMA/CD FALLISCE NEL WIRELESS

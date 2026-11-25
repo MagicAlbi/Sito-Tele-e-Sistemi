@@ -1,3 +1,5 @@
+@import url('introduzione-lezioni.css');
+
 :root {
   --m-color: var(--m2);
 }
@@ -19,47 +21,50 @@
   --page-art-start: none;
   --page-art-end: none;
 }
+
+.module-two[data-lesson-id="m2-1"] .wan-lesson {
+  --page-art-start: url('../img/wan-seriale-console.svg');
+  --page-art-end: url('../img/wan-seriale-clock.svg');
+}
+.module-two[data-lesson-id="m2-2"] .wan-lesson {
+  --page-art-start: url('../img/wan-geografia-sedi.svg');
+  --page-art-end: url('../img/wan-geografia-coda.svg');
+}
+.module-two[data-lesson-id="m2-3"] .wan-lesson {
+  --page-art-start: url('../img/wan-fibra-armadio.svg');
+  --page-art-end: url('../img/wan-fibra-splitter.svg');
+}
+.module-two[data-lesson-id="m2-4"] .wan-lesson {
+  --page-art-start: url('../img/wan-protocolli-trama.svg');
+  --page-art-end: url('../img/wan-protocolli-dialogo.svg');
+}
+.module-two[data-lesson-id="m2-5"] .wan-lesson {
+  --page-art-start: url('../img/wan-routing-dirama.svg');
+  --page-art-end: url('../img/wan-routing-tabella.svg');
+}
+
 .module-two [hidden] { display: none !important; }
 .module-two.presenting > canvas { visibility: hidden; }
-
-.wan-hero {
-  isolation: isolate;
-  position: relative;
-  overflow: hidden;
-  display: grid;
-  align-items: center;
-  min-height: 13rem;
-  margin-bottom: 1.25rem;
-  padding: clamp(1.4rem, 4.5vw, 3.8rem);
-  border: 1px solid var(--wan-line);
-  border-radius: var(--r-2xl);
-  background:
-    radial-gradient(ellipse at 96% 100%, color-mix(in srgb, var(--wan-contrast) 16%, transparent), transparent 49%),
-    radial-gradient(ellipse at 22% 3%, color-mix(in srgb, var(--wan-accent) 20%, transparent), transparent 72%),
-    var(--surface);
+.module-two .sidebar .module-dot { color: var(--wan-accent); background: currentColor; }
+.module-two .sidebar .module-label { color: var(--wan-accent); }
+.module-two .sidebar-nav li.active a {
+  color: var(--wan-accent);
+  background: var(--wan-panel);
+  border-left-color: var(--wan-accent);
+  text-shadow: none;
 }
 
-.wan-hero::before {
-  position: absolute;
-  inset: 0;
-  z-index: -1;
-  content: "";
-  background: repeating-linear-gradient(114deg, transparent 0 35px, var(--wan-line) 36px, transparent 37px 70px);
-  opacity: .24;
-  mask-image: linear-gradient(90deg, transparent 16%, #000);
+@media (min-width: 901px) {
+  .module-two .sidebar ~ .main-content { grid-column: 2; }
 }
 
-.wan-hero-illustrated { grid-template-columns: minmax(0, 1fr) minmax(8rem, 21%); gap: 1.5rem; }
-.wan-hero img { width: 100%; height: clamp(8rem, 17vw, 13rem); object-fit: contain; opacity: .9; }
-.wan-hero h1 { font-size: clamp(2.1rem, 6vw, 4.5rem); line-height: 1.02; letter-spacing: -.055em; text-wrap: balance; }
-.wan-hero .lesson-subtitle { max-width: 58ch; margin: .9rem 0 0; font-size: clamp(1.04rem, 1.7vw, 1.28rem); }
+@media (max-width: 900px) {
+  .module-two .sidebar:not(.open) { visibility: hidden; }
+}
+
+.wan-hero h1 { font-size: clamp(1.65rem, 3.65vw, 2.8rem); line-height: 1.12; letter-spacing: -.04em; text-wrap: balance; }
+.wan-hero .lesson-subtitle { max-width: 66ch; margin: .6rem 0 0; font-size: clamp(.98rem, 1.4vw, 1.1rem); }
 .wan-kicker { margin: 0 0 .75rem; color: var(--wan-accent); font-size: .86rem; font-weight: 800; letter-spacing: .045em; }
-.wan-brief { display: grid; grid-template-columns: minmax(9rem, auto) 1fr; gap: .6rem 1.3rem; padding: 1rem 1.2rem; border: 1px solid var(--wan-line); border-radius: var(--r-lg); background: var(--wan-panel); }
-.wan-brief h2, .wan-brief p { margin: 0; }
-.wan-brief h2 { color: var(--wan-accent); font-size: 1rem; }
-.wan-jump { display: flex; flex-wrap: wrap; gap: .45rem .65rem; margin: 1rem 0 1.55rem; }
-.wan-jump a { display: inline-block; padding: .34rem .68rem; border: 1px solid var(--border-2); border-radius: 2rem; color: var(--text); font-size: .86rem; }
-.wan-jump a:hover { border-color: var(--wan-accent); color: var(--wan-accent); }
 
 .wan-chapter {
   margin-bottom: 1.15rem;
@@ -72,6 +77,12 @@
 
 .wan-chapter h2 { margin: 0 0 .42rem; font-size: clamp(1.4rem, 3vw, 2rem); line-height: 1.17; }
 .wan-chapter .wan-lead { max-width: 66ch; margin: 0 0 1rem; color: var(--text-muted); font-size: 1.08rem; }
+.wan-lesson .wan-lead { max-width: 66ch; margin-bottom: 1rem; color: var(--text-muted); }
+.wan-lesson-section[data-num]::before { color: var(--wan-accent); }
+.wan-lesson .box-curiosity { padding-top: 2rem; }
+.wan-curiosity-source { margin-top: .65rem; font-size: .82rem; }
+.wan-curiosity-source a { color: var(--wan-accent); text-decoration: underline; }
+[data-theme="light"] .wan-lesson .box-curiosity-title { color: #92400e; }
 .wan-copy { max-width: 79ch; }
 .wan-copy p, .wan-copy li { line-height: 1.69; }
 .wan-copy p:last-child, .wan-copy ol:last-child { margin-bottom: 0; }
@@ -93,6 +104,13 @@
 .wan-flow strong { color: var(--wan-accent); }
 .wan-flow li:nth-child(even) strong { color: var(--wan-contrast); }
 .wan-flow span { font-size: .9rem; line-height: 1.35; }
+.wan-lesson .wan-flow li {
+  min-height: 0;
+  border-block: 0;
+  border-inline-end: 0;
+  border-radius: 0;
+  background: none;
+}
 .wan-definitions { display: grid; grid-template-columns: repeat(auto-fit,minmax(min(100%,14rem),1fr)); gap: .75rem 1.1rem; margin: .9rem 0; }
 .wan-definitions div { border-top: 1px solid var(--wan-line); padding-top: .45rem; }
 .wan-definitions dt { color: var(--wan-accent); font-weight: 800; }
@@ -123,32 +141,10 @@
 .wan-lim-video video { display: block; width: 100%; max-height: 51vh; border-radius: var(--r-md); background: #0b1526; }
 .lim-slide .wan-lim-answer { margin-top: 1rem; }
 
-.wan-index-heading { margin: 1.8rem 0 .7rem; }
-.wan-index-heading h2 { margin-bottom: .25rem; }
-.wan-index-heading p { margin: 0; color: var(--text-muted); }
-.wan-path { display: grid; gap: .62rem; }
-.wan-path-card {
-  display: grid;
-  grid-template-columns: 4.15rem minmax(0, 1fr) auto;
-  align-items: center;
-  gap: .9rem 1.05rem;
-  padding: .9rem 1rem;
-  border: 1px solid var(--border-2);
-  border-radius: var(--r-lg);
-  background: var(--surface);
-  color: var(--text);
-  transition: border-color .18s ease, background .18s ease;
-}
-.wan-path-card:hover { border-color: var(--wan-accent); background: var(--wan-panel); color: var(--text); }
-.wan-path-card .wan-path-number { display: grid; place-items: center; align-self: stretch; min-height: 3rem; border-radius: var(--r-md); background: var(--wan-panel); color: var(--wan-accent); font-size: 1.16rem; font-weight: 850; }
-.wan-path-card h3 { margin: 0; font-size: 1.12rem; }
-.wan-path-card p { margin: .22rem 0 0; color: var(--text-muted); }
-.wan-path-arrow { color: var(--wan-accent); }
-.wan-resources { display: grid; grid-template-columns: repeat(auto-fit,minmax(min(100%,13rem),1fr)); gap: .75rem; }
-.wan-resource { display: block; padding: 1rem; border: 1px solid var(--wan-line); border-radius: var(--r-lg); background: var(--wan-panel); color: var(--text); }
-.wan-resource:hover { border-color: var(--wan-accent); color: var(--text); }
-.wan-resource h3 { margin: 0 0 .4rem; color: var(--wan-accent); }
-.wan-resource p { margin: 0; }
+.wan-index.index-margins { --index-content-width: 980px; }
+.wan-index-actions { display: flex; flex-wrap: wrap; gap: .75rem; margin-top: 1.05rem; }
+.wan-index :is(.section-heading, #laboratorio) { scroll-margin-top: calc(var(--header-h) + 1rem); }
+.wan-index .module-card p { margin: 0; color: var(--text-muted); font-size: .84rem; }
 
 .wan-demo:empty { display: none; }
 .wan-demo {
@@ -274,16 +270,13 @@
   .module-two .logo-title { font-size: .76rem; }
   .module-two .btn-present { padding-inline: .58rem; }
   .wan-present-lim { display: none; }
-  .wan-hero-illustrated { grid-template-columns: 1fr; }
-  .wan-hero img { display: none; }
-  .wan-brief { grid-template-columns: 1fr; }
-  .wan-path-card { grid-template-columns: 3.2rem minmax(0,1fr) auto; gap: .55rem; }
   .module-two .osi-table { overflow-wrap: anywhere; }
   .module-two .osi-table th, .module-two .osi-table td { padding-inline: .4rem; }
+  .wan-lesson .box-curiosity { padding-inline: 1rem; }
+  .wan-lesson .box-curiosity::before { right: 1rem; }
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .wan-path-card { transition: none; }
   [data-queue-departed] span { animation: none; }
 }
 

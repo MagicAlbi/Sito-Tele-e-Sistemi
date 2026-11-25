@@ -24,6 +24,7 @@
     .freq-axis text { fill: var(--text-muted); font-family: var(--font-mono); font-size: 10px; }
   </style>
   <link rel="stylesheet" href="../assets/css/modulo1.css">
+  <link rel="stylesheet" href="../assets/css/introduzione-lezioni.css">
   <link rel="stylesheet" href="../assets/css/esperimenti.css">
   <link rel="stylesheet" href="../assets/css/annotazioni.css">
   <link rel="stylesheet" href="../assets/css/presentazioni-modulo1.css">
@@ -149,41 +150,40 @@
     <div class="content-wrap">
 
       <!-- HERO LEZIONE -->
-      <header class="lesson-hero reveal">
-        <div class="lesson-hero-bg-num">03</div>
-        <div class="lesson-hero-content">
-          <div class="lesson-meta">
-            <span class="lesson-badge lesson-badge-module">Modulo 1 · Wireless LAN</span>
-            <span class="lesson-badge lesson-badge-num">Lezione 1.3</span>
+      <header class="lesson-intro-hero">
+        <div>
+          <div class="lesson-intro-meta">
+            <p class="lesson-intro-topic">Lezione 1.3 · Spettro e canali radio</p>
             <span class="lesson-time">
               <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
               ~40 min studio interattivo
             </span>
           </div>
-
           <h1 class="lesson-title-h1">Spettro Elettromagnetico & Canali Radio: Le bande a 2,4, 5 e 6 gigahertz (GHz)</h1>
-          
           <p class="lesson-subtitle">
             Perché a 2.4 GHz esistono solo 3 canali non interferenti? Che succede se il tuo vicino di casa sceglie il canale sbagliato? E perché il microonde o i radar dell'aeroporto possono farti cadere la connessione?
           </p>
-
-          <div class="lesson-prereq">
-            <span class="lesson-prereq-icon">🧠</span>
-            <div>
-              <strong>Nozioni di base:</strong>
-              Relazione fondamentale d'onda (λ = c / f), concetto di frequenza in Hertz e larghezza di banda (Bandwidth) di un canale di trasmissione.
-            </div>
-          </div>
         </div>
+        <img src="../assets/img/esercizi-wlan-segnale.svg" alt="" width="200" height="252">
       </header>
 
-      <!-- RIASSUNTO IN EVIDENZA -->
-      <div class="tldr reveal">
-        <span class="tldr-icon">⚡</span>
+      <div class="lesson-prereq lesson-intro-prereq">
+        <span class="lesson-prereq-icon" aria-hidden="true">🧠</span>
         <div>
-          <strong>In breve.</strong> A 2.4 GHz abbiamo solo circa 83 megahertz (MHz) di spettro totale: dato che ogni canale Wi-Fi occupa 20 o 22 MHz e i canali sono distanziati di appena 5 MHz, <strong>solo i canali 1, 6 e 11 non si sovrappongono tra loro</strong>! A 5 GHz e 6 GHz abbiamo autostrade radio molto più ampie e decine di canali puliti, ma le onde a frequenza più alta faticano a penetrare i muri di casa.
+          <strong>Nozioni di base:</strong>
+          Relazione fondamentale d'onda (λ = c / f), concetto di frequenza in Hertz e larghezza di banda (Bandwidth) di un canale di trasmissione.
         </div>
       </div>
+
+      <!-- RIASSUNTO IN EVIDENZA -->
+      <section class="lesson-summary" aria-labelledby="obiettivo">
+        <h2 id="obiettivo">In questa lezione</h2>
+        <ul>
+          <li><span aria-hidden="true">📻</span><p><strong>Canali che si sovrappongono.</strong> Osserverai perché centri distanti appena 5 MHz non bastano a separare canali da 20 o 22 MHz e perché si usa spesso la combinazione 1, 6 e 11.</p></li>
+          <li><span aria-hidden="true">🔬</span><p><strong>Interferenze da riconoscere.</strong> Con gli schemi confronterai canali sovrapposti e canali condivisi. Vedrai che cosa cambia quando nelle vicinanze trasmette anche un microonde o un radar.</p></li>
+          <li><span aria-hidden="true">🏠</span><p><strong>Una banda per ogni situazione.</strong> Confronterai 2,4, 5 e 6 GHz in base a canali disponibili, interferenze e muri da attraversare.</p></li>
+        </ul>
+      </section>
 
       <!-- ======================================
            SLIDE 1 — IL PARADOSSO DEI CANALI 2.4 GHZ

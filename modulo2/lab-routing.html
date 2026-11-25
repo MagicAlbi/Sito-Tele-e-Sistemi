@@ -23,8 +23,54 @@
     <div class="header-actions">
 
       <button type="button" class="btn btn-icon btn-ghost" data-theme-toggle aria-label="Cambia tema"></button>
+      <button type="button" class="btn btn-icon btn-ghost btn-hamburger" aria-label="Percorso del modulo" aria-controls="wan-sidebar">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="M3 6h18M3 12h18M3 18h18"/></svg>
+      </button>
     </div>
   </header>
+  <nav class="sidebar" id="wan-sidebar" aria-label="Percorso del Modulo 2">
+    <div class="sidebar-module-badge">
+      <span class="module-dot" aria-hidden="true"></span>
+      <a class="module-label" href="index.html">Modulo 2 · Reti WAN</a>
+    </div>
+    <span class="sidebar-section-title">Percorso guidato</span>
+    <ul class="sidebar-nav">
+      <li data-lesson="m2-1">
+        <a href="lezione-2-1.html"><span class="lesson-num">2.1</span><span class="lesson-title">Dalla rete locale al canale fisico</span><span class="lesson-check" aria-hidden="true"></span></a>
+      </li>
+      <li data-lesson="m2-2">
+        <a href="lezione-2-2.html"><span class="lesson-num">2.2</span><span class="lesson-title">Accesso remoto e interconnessione WAN</span><span class="lesson-check" aria-hidden="true"></span></a>
+      </li>
+      <li data-lesson="m2-3">
+        <a href="lezione-2-3.html"><span class="lesson-num">2.3</span><span class="lesson-title">Accesso in rame e in fibra</span><span class="lesson-check" aria-hidden="true"></span></a>
+      </li>
+      <li data-lesson="m2-4">
+        <a href="lezione-2-4.html"><span class="lesson-num">2.4</span><span class="lesson-title">Protocolli di linea</span><span class="lesson-check" aria-hidden="true"></span></a>
+      </li>
+      <li data-lesson="m2-5">
+        <a href="lezione-2-5.html"><span class="lesson-num">2.5</span><span class="lesson-title">Primo routing</span><span class="lesson-check" aria-hidden="true"></span></a>
+      </li>
+    </ul>
+    <span class="sidebar-section-title">Pratica e verifiche</span>
+    <ul class="sidebar-nav">
+      <li class="active">
+        <a href="lab-routing.html" aria-current="page"><span class="lesson-num" aria-hidden="true">🔬</span><span class="lesson-title">Laboratorio di routing</span></a>
+      </li>
+      <li>
+        <a href="allenamento.html"><span class="lesson-num" aria-hidden="true">🎯</span><span class="lesson-title">Test di allenamento</span></a>
+      </li>
+      <li>
+        <a href="esercizi.html"><span class="lesson-num" aria-hidden="true">🧮</span><span class="lesson-title">Esercizi numerici</span></a>
+      </li>
+      <li>
+        <a href="verifica.html"><span class="lesson-num" aria-hidden="true">📋</span><span class="lesson-title">Simulazione di verifica</span></a>
+      </li>
+    </ul>
+    <div class="sidebar-progress" data-module-progress="m2" data-total="5">
+      <div class="progress-label"><span>Lezioni completate</span><span><span data-progress-done>0</span>/5</span></div>
+      <div class="progress-bar" aria-hidden="true"><div class="progress-fill" style="width:0%"></div></div>
+    </div>
+  </nav>
   <main class="main-content wan-study">
   <div class="content-wrap">
     <header class="wan-hero wan-hero-illustrated">

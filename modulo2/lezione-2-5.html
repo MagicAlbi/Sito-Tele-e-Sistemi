@@ -23,49 +23,130 @@
     <div class="header-actions">
       <button type="button" class="btn btn-present" data-present>Presenta <span class="wan-present-lim">sulla LIM</span></button>
       <button type="button" class="btn btn-icon btn-ghost" data-theme-toggle aria-label="Cambia tema"></button>
+      <button type="button" class="btn btn-icon btn-ghost btn-hamburger" aria-label="Percorso del modulo" aria-controls="wan-sidebar">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="M3 6h18M3 12h18M3 18h18"/></svg>
+      </button>
     </div>
   </header>
-  <main class="main-content wan-study">
+  <nav class="sidebar" id="wan-sidebar" aria-label="Percorso del Modulo 2">
+    <div class="sidebar-module-badge">
+      <span class="module-dot" aria-hidden="true"></span>
+      <a class="module-label" href="index.html">Modulo 2 · Reti WAN</a>
+    </div>
+    <span class="sidebar-section-title">Percorso guidato</span>
+    <ul class="sidebar-nav">
+      <li data-lesson="m2-1">
+        <a href="lezione-2-1.html"><span class="lesson-num">2.1</span><span class="lesson-title">Dalla rete locale al canale fisico</span><span class="lesson-check" aria-hidden="true"></span></a>
+      </li>
+      <li data-lesson="m2-2">
+        <a href="lezione-2-2.html"><span class="lesson-num">2.2</span><span class="lesson-title">Accesso remoto e interconnessione WAN</span><span class="lesson-check" aria-hidden="true"></span></a>
+      </li>
+      <li data-lesson="m2-3">
+        <a href="lezione-2-3.html"><span class="lesson-num">2.3</span><span class="lesson-title">Accesso in rame e in fibra</span><span class="lesson-check" aria-hidden="true"></span></a>
+      </li>
+      <li data-lesson="m2-4">
+        <a href="lezione-2-4.html"><span class="lesson-num">2.4</span><span class="lesson-title">Protocolli di linea</span><span class="lesson-check" aria-hidden="true"></span></a>
+      </li>
+      <li data-lesson="m2-5" class="active">
+        <a href="lezione-2-5.html" aria-current="page"><span class="lesson-num">2.5</span><span class="lesson-title">Primo routing</span><span class="lesson-check" aria-hidden="true"></span></a>
+      </li>
+    </ul>
+    <span class="sidebar-section-title">Pratica e verifiche</span>
+    <ul class="sidebar-nav">
+      <li>
+        <a href="lab-routing.html"><span class="lesson-num" aria-hidden="true">🔬</span><span class="lesson-title">Laboratorio di routing</span></a>
+      </li>
+      <li>
+        <a href="allenamento.html"><span class="lesson-num" aria-hidden="true">🎯</span><span class="lesson-title">Test di allenamento</span></a>
+      </li>
+      <li>
+        <a href="esercizi.html"><span class="lesson-num" aria-hidden="true">🧮</span><span class="lesson-title">Esercizi numerici</span></a>
+      </li>
+      <li>
+        <a href="verifica.html"><span class="lesson-num" aria-hidden="true">📋</span><span class="lesson-title">Simulazione di verifica</span></a>
+      </li>
+    </ul>
+    <div class="sidebar-progress" data-module-progress="m2" data-total="5">
+      <div class="progress-label"><span>Lezioni completate</span><span><span data-progress-done>0</span>/5</span></div>
+      <div class="progress-bar" aria-hidden="true"><div class="progress-fill" style="width:0%"></div></div>
+    </div>
+  </nav>
+  <main class="main-content wan-study wan-lesson">
     <div class="content-wrap">
-      <header class="wan-hero wan-hero-illustrated">
-  <div><p class="wan-kicker">Lezione 2.5 · IPv4 · tabella di inoltro</p><h1 class="lesson-title-h1">Primo routing</h1><p class="lesson-subtitle">Un pacchetto ha una destinazione. Scopri come il router decide a quale porta e a quale vicino consegnarlo.</p></div>
-  <img src="../assets/img/indice-nodi-wan.svg" alt="" width="200" height="252">
-</header>
-      <section class="wan-brief" aria-labelledby="obiettivo"><h2 id="obiettivo">In questa lezione</h2><p>Decidi se una destinazione è sulla stessa rete, leggi una tabella IPv4 e scegli il prefisso più lungo, anche in presenza della rotta predefinita.</p></section>
-      <nav class="wan-jump" aria-label="In questa pagina"><a href="#host">Prima decisione: il destinatario è vicino?</a><a href="#tabella">Leggi la tabella del router</a><a href="#prefissi">Confronta i prefissi, poi scegli</a><a href="#inoltro">Un salto alla volta</a><a href="#rotte">Come arrivano le rotte nella tabella?</a><a href="#prova">Prova tre destinazioni</a><a href="#checkpoint">Checkpoint</a></nav>
-      <section class="slide wan-chapter" id="host">
-        <header><h2>Prima decisione: il destinatario è vicino?</h2><p class="wan-lead">Il PC usa indirizzo e maschera per riconoscere le destinazioni sulla propria rete.</p></header>
+      <header class="lesson-intro-hero">
+        <div>
+          <div class="lesson-intro-meta">
+            <p class="lesson-intro-topic">Lezione 2.5 · IPv4 · tabella di inoltro</p>
+          </div>
+          <h1 class="lesson-title-h1">Primo routing</h1>
+          <p class="lesson-subtitle">Un pacchetto ha un indirizzo di destinazione. Ragiona prima come il computer che lo invia e poi come il router che lo riceve. Alla fine potrai mettere alla prova le tue decisioni nel laboratorio di routing.</p>
+        </div>
+        <img src="../assets/img/indice-nodi-wan.svg" alt="" width="200" height="252">
+      </header>
+      <div class="lesson-prereq lesson-intro-prereq">
+        <span class="lesson-prereq-icon" aria-hidden="true">🧠</span>
+        <div><strong>Cosa diamo già per scontato.</strong> Un indirizzo IPv4 è formato da quattro ottetti. La maschera di rete, o il prefisso dopo la barra, indica quali bit identificano la rete. Riprendi la differenza fra una trama locale e il pacchetto dentro la trama.</div>
+      </div>
+      <section class="lesson-summary" aria-labelledby="obiettivo">
+        <h2 id="obiettivo">In questa lezione</h2>
+        <ul>
+          <li><span aria-hidden="true">🏠</span><p><strong>Destinatario vicino o lontano.</strong> Con indirizzo e maschera capirai quando il computer può consegnare direttamente nella rete locale e quando deve prima passare il pacchetto al router.</p></li>
+          <li><span aria-hidden="true">🧭</span><p><strong>La tabella del router.</strong> Confronterai righe con prefissi sovrapposti. Vedrai come si sceglie la corrispondenza più specifica e quando interviene la rotta predefinita.</p></li>
+          <li><span aria-hidden="true">🔬</span><p><strong>Metti alla prova la decisione.</strong> Proverai destinazioni locali e remote nella missione. Nel laboratorio potrai cambiare indirizzo, disattivare la rotta predefinita e osservare l’effetto sull’inoltro.</p></li>
+        </ul>
+      </section>
+      <section class="slide wan-lesson-section" id="host" data-num="01">
+        <header><h2>1. Prima decisione: il destinatario è vicino?</h2><p class="wan-lead">Il PC usa indirizzo e maschera per riconoscere le destinazioni sulla propria rete.</p></header>
         <ol class="wan-flow"><li><strong>Stessa rete</strong><span>consegna diretta</span></li><li><strong>Altra rete</strong><span>consegna al gateway</span></li><li><strong>IP di destinazione</strong><span>rimane quello del destinatario</span></li></ol>
         <div class="wan-copy"><p>Il PC <code>192.168.10.21/24</code> appartiene alla rete <code>192.168.10.0/24</code>. Su Ethernet, per raggiungere <code>192.168.10.40</code> nella stessa rete cerca l’indirizzo fisico della destinazione con ARP. Per raggiungere <code>10.20.30.8</code> consegna la trama al <strong>gateway predefinito</strong>, ad esempio <code>192.168.10.1</code>. Il pacchetto mantiene <code>10.20.30.8</code> come destinazione IP nel nostro esempio senza NAT.</p><p>Il prossimo salto è il destinatario della trama sul tratto corrente. Il destinatario IP è il punto finale del pacchetto.</p></div>
       </section>
-      <section class="slide wan-chapter" id="tabella">
-        <header><h2>Leggi la tabella del router</h2><p class="wan-lead">Il prefisso indica quali indirizzi appartengono a ciascuna rotta.</p></header>
+      <hr>
+
+      <section class="slide wan-lesson-section" id="tabella" data-num="02">
+        <header><h2>2. Leggi la tabella del router</h2><p class="wan-lead">Il prefisso indica quali indirizzi appartengono a ciascuna rotta.</p></header>
         <ol class="wan-flow"><li><strong>Prefisso</strong><span>insieme di destinazioni</span></li><li><strong>Prossimo salto</strong><span>router vicino, se previsto</span></li><li><strong>Uscita</strong><span>interfaccia da usare</span></li></ol>
         <div class="wan-copy"><table class="osi-table"><thead><tr><th scope="col">Prefisso</th><th scope="col">Prossimo salto</th><th scope="col">Uscita</th></tr></thead><tbody><tr><td>192.168.10.0/24</td><td>Direttamente collegata</td><td>LAN</td></tr><tr><td>10.20.0.0/16</td><td>172.16.0.2</td><td>WAN A</td></tr><tr><td>10.20.30.0/24</td><td>172.16.1.2</td><td>WAN B</td></tr><tr><td>0.0.0.0/0</td><td>172.16.0.2</td><td>WAN A</td></tr></tbody></table><p>Una rete <strong>direttamente collegata</strong> si raggiunge sull’interfaccia indicata. Una rotta attraverso un router vicino indica un <strong>prossimo salto</strong>. Il prefisso <code>0.0.0.0/0</code>, la rotta predefinita, corrisponde a ogni indirizzo e ha lunghezza zero.</p></div>
       </section>
-      <section class="slide wan-chapter" id="prefissi">
-        <header><h2>Confronta i prefissi, poi scegli</h2><p class="wan-lead">Tra tutte le righe compatibili vince quella con più bit iniziali in comune secondo il suo prefisso.</p></header>
+      <hr>
+
+      <section class="slide wan-lesson-section" id="prefissi" data-num="03">
+        <header><h2>3. Confronta i prefissi, poi scegli</h2><p class="wan-lead">Tra tutte le righe compatibili vince quella con più bit iniziali in comune secondo il suo prefisso.</p></header>
         <figure class="wan-visual"><svg class="wan-drawing" viewBox="0 0 520 226" role="img" aria-label="Per 10.20.30.8 tutte le tre righe corrispondono, ma 10.20.30.0/24 ha il più lungo prefisso e vince."><text class="ink" x="27" y="38" font-size="24">Destinazione 10.20.30.8</text><rect class="segment" x="27" y="56" width="468" height="44" rx="9"/><text class="teal" x="44" y="84" font-size="18">/24</text><text class="ink" x="121" y="84" font-size="19">10.20.30.0/24</text><text class="teal" x="354" y="84" font-size="17">Scelta</text><rect class="outline" x="27" y="111" width="468" height="44" rx="9"/><text class="muted" x="44" y="139" font-size="18">/16</text><text class="ink" x="121" y="139" font-size="19">10.20.0.0/16</text><text class="muted" x="354" y="139" font-size="17">Compatibile</text><rect class="outline" x="27" y="166" width="468" height="44" rx="9"/><text class="muted" x="44" y="194" font-size="18">/0</text><text class="ink" x="121" y="194" font-size="19">0.0.0.0/0</text><text class="muted" x="354" y="194" font-size="17">Compatibile</text></svg><figcaption>Fra le righe compatibili, la più specifica è la /24.</figcaption></figure>
         <div class="wan-copy"><p><code>10.20.30.8</code> corrisponde a <code>10.20.0.0/16</code>, <code>10.20.30.0/24</code> e <code>0.0.0.0/0</code>. Il prefisso <code>/24</code> è il più lungo. Il prossimo salto è <code>172.16.1.2</code>, uscita WAN B. Per <code>10.20.80.8</code> il <code>/24</code> non coincide: vince il <code>/16</code>. Per <code>203.0.113.8</code> vince la predefinita.</p><p>Per prefissi non allineati agli ottetti, applica la maschera. Con <code>/26</code> gli intervalli cominciano a 0, 64, 128 e 192 nell’ultimo ottetto. <code>192.168.10.77/26</code> appartiene a <code>192.168.10.64/26</code>, intervallo 64–127. La maschera <code>255.255.255.192</code> tiene i primi 26 bit. La dimensione del blocco è <strong>2<sup>32 − p</sup></strong>, dove <em>p</em> è il numero di bit del prefisso. Nel caso /26 il primo indirizzo del blocco, <code>.64</code>, è l’indirizzo di rete. L’ultimo, <code>.127</code>, è il broadcast, usato per raggiungere tutti i dispositivi del segmento.</p></div>
       </section>
-      <section class="slide wan-chapter" id="inoltro">
-        <header><h2>Un salto alla volta</h2><p class="wan-lead">Ogni router prende una decisione sul pacchetto che riceve.</p></header>
+      <hr>
+
+      <section class="slide wan-lesson-section" id="inoltro" data-num="04">
+        <header><h2>4. Un salto alla volta</h2><p class="wan-lead">Ogni router prende una decisione sul pacchetto che riceve.</p></header>
         <ol class="wan-flow"><li><strong>Leggi IP di destinazione</strong></li><li><strong>Aggiorna TTL e cerca l’uscita</strong></li><li><strong>Crea una nuova trama per il tratto successivo</strong></li></ol>
         <div class="wan-copy"><p>Il router estrae il pacchetto dalla trama in ingresso, diminuisce il <strong>TTL</strong> (limite dei salti), legge la destinazione e cerca la rotta. Per inviare il pacchetto prepara una nuova trama adatta al collegamento in uscita. Su Ethernet cerca l’indirizzo fisico del prossimo salto, oppure del destinatario se è sulla rete direttamente collegata.</p><p>Se il TTL si esaurisce o nessuna rotta è applicabile, il router scarta il pacchetto. In condizioni ordinarie può segnalare la causa con ICMP. Il percorso di ritorno richiede a sua volta rotte adatte.</p></div>
+        <aside class="box-curiosity" aria-labelledby="curiosita-inoltro">
+          <h3 class="box-curiosity-title" id="curiosita-inoltro"><span aria-hidden="true">🧭</span> Come si ricostruisce il viaggio di un pacchetto?</h3>
+          <div class="box-curiosity-content">
+            <p>Il limite di salti (TTL) impedisce ai pacchetti di girare senza fine. Uno strumento di diagnosi chiamato traceroute usa proprio quel limite per ricostruire il percorso. I messaggi di risposta dei router aiutano a capire dove passa il traffico. Se un router non risponde, quel passaggio può restare sconosciuto anche quando la destinazione è raggiungibile.</p>
+            <p class="wan-curiosity-source"><a href="https://www.rfc-editor.org/rfc/rfc1812.html#section-5.3.1">RFC 1812 · Comportamento dei router IPv4</a></p>
+          </div>
+        </aside>
       </section>
-      <section class="slide wan-chapter" id="rotte">
-        <header><h2>Come arrivano le rotte nella tabella?</h2><p class="wan-lead">La scelta del prefisso vale per le rotte disponibili per l’inoltro.</p></header>
+      <hr>
+
+      <section class="slide wan-lesson-section" id="rotte" data-num="05">
+        <header><h2>5. Come arrivano le rotte nella tabella?</h2><p class="wan-lead">La scelta del prefisso vale per le rotte disponibili per l’inoltro.</p></header>
         <ol class="wan-flow"><li><strong>Connessa</strong><span>rete dell’interfaccia</span></li><li><strong>Statica</strong><span>configurata</span></li><li><strong>Dinamica</strong><span>appresa da altri router</span></li></ol>
         <div class="wan-copy"><p>Una rotta <strong>connessa</strong> deriva da un’interfaccia configurata e operativa. Una rotta <strong>statica</strong> è configurata da chi amministra il router. Un protocollo di <strong>routing dinamico</strong> come OSPF scambia informazioni per apprendere percorsi. Nel laboratorio lavoriamo con una tabella già pronta e senza prefissi duplicati.</p><p>Per <code>192.168.10.42</code> il router consegna direttamente sulla LAN. Per <code>203.0.113.8</code> senza predefinita non trova alcuna rotta. Prova entrambe le situazioni nel laboratorio.</p></div>
       </section>
-      <section class="slide wan-chapter" id="prova">
-        <h2>Prova tre destinazioni</h2>
+      <hr>
+
+      <section class="slide wan-lesson-section" id="prova" data-num="06">
+        <h2>6. Prova tre destinazioni</h2>
         <div class="wan-demo" data-wan-demo="routing"></div>
         <noscript><p>Attiva JavaScript per usare la simulazione.</p></noscript>
         <details class="wan-reveal"><summary>L’IP 10.20.30.8 corrisponde sia a 10.20.0.0/16 sia a 10.20.30.0/24. Quale riga usi e dove consegni il pacchetto?</summary><p>Usi il /24 perché è il prefisso più lungo fra quelli compatibili. Il prossimo salto è 172.16.1.2, su WAN B.</p></details>
       </section>
-      <section class="slide wan-chapter" id="checkpoint">
-        <h2>Checkpoint</h2><p class="wan-lead">Cinque decisioni. Leggi il riscontro dopo ogni risposta e riprova quando vuoi.</p>
+      <hr>
+
+      <section class="slide wan-lesson-section" id="checkpoint" data-num="07">
+        <h2>7. Checkpoint</h2><p class="wan-lead">Cinque decisioni. Leggi il riscontro dopo ogni risposta e riprova quando vuoi.</p>
         <div class="quiz-wrap" id="quizContainer" data-lesson-quiz></div>
         <p><a href="allenamento.html">Vai al test di allenamento →</a></p>
       </section>

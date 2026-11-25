@@ -13,6 +13,7 @@
     }
   </style>
   <link rel="stylesheet" href="../assets/css/modulo1.css">
+  <link rel="stylesheet" href="../assets/css/introduzione-lezioni.css">
   <link rel="stylesheet" href="../assets/css/esperimenti.css">
   <link rel="stylesheet" href="../assets/css/annotazioni.css">
   <link rel="stylesheet" href="../assets/css/presentazioni-modulo1.css">
@@ -138,41 +139,40 @@
     <div class="content-wrap">
 
       <!-- HERO LEZIONE -->
-      <header class="lesson-hero reveal">
-        <div class="lesson-hero-bg-num">06</div>
-        <div class="lesson-hero-content">
-          <div class="lesson-meta">
-            <span class="lesson-badge lesson-badge-module">Modulo 1 · Wireless LAN</span>
-            <span class="lesson-badge lesson-badge-num">Lezione 1.6</span>
+      <header class="lesson-intro-hero">
+        <div>
+          <div class="lesson-intro-meta">
+            <p class="lesson-intro-topic">Lezione 1.6 · Copertura e sicurezza</p>
             <span class="lesson-time">
               <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
               ~45 min studio interattivo
             </span>
           </div>
-
           <h1 class="lesson-title-h1">Progettazione di reti locali senza fili: copertura e sicurezza</h1>
-          
           <p class="lesson-subtitle">
             Come si calcola la copertura radio in un edificio a più piani? E come si sono evolute le protezioni Wi-Fi, dalla cifratura WEP (Wired Equivalent Privacy) a WPA2 e WPA3, seconda e terza generazione di Wi-Fi Protected Access?
           </p>
-
-          <div class="lesson-prereq">
-            <span class="lesson-prereq-icon">🧠</span>
-            <div>
-              <strong>Calcoli richiesti nelle prove scritte:</strong>
-              Unità logaritmiche: decibel (dB) per rapporti, dBm per potenze riferite a un milliwatt, dBi per il guadagno d’antenna rispetto a un’antenna isotropica, cioè che irradia ugualmente in ogni direzione. Attenuazione in spazio libero e crittografia asimmetrica/simmetrica.
-            </div>
-          </div>
         </div>
+        <img src="../assets/img/quiz-wlan-rete.svg" alt="" width="200" height="252">
       </header>
 
-      <!-- RIASSUNTO IN EVIDENZA -->
-      <div class="tldr reveal">
-        <span class="tldr-icon">⚡</span>
+      <div class="lesson-prereq lesson-intro-prereq">
+        <span class="lesson-prereq-icon" aria-hidden="true">🧠</span>
         <div>
-          <strong>In breve.</strong> Progettare una rete wireless richiede due competenze: <strong>1. Calcolo del Link Budget</strong> (sommare alla potenza trasmessa in dBm i guadagni d’antenna in dBi e sottrarre le perdite in dB per puntare a un RSSI (Received Signal Strength Indicator, indicatore del livello di segnale ricevuto) di almeno −67 dBm) e <strong>2. Sicurezza</strong> (il vecchio WEP si buca in 60 secondi, WPA2 è vulnerabile a dizionario offline catturando l'handshake, mentre <strong>WPA3-Personal con SAE</strong> (Simultaneous Authentication of Equals, lo scambio che autentica i due dispositivi) ostacola i tentativi di indovinare la password senza interagire con la rete).
+          <strong>Calcoli richiesti nelle prove scritte:</strong>
+          Unità logaritmiche: decibel (dB) per rapporti, dBm per potenze riferite a un milliwatt, dBi per il guadagno d’antenna rispetto a un’antenna isotropica, cioè che irradia ugualmente in ogni direzione. Attenuazione in spazio libero e crittografia asimmetrica/simmetrica.
         </div>
       </div>
+
+      <!-- RIASSUNTO IN EVIDENZA -->
+      <section class="lesson-summary" aria-labelledby="obiettivo">
+        <h2 id="obiettivo">In questa lezione</h2>
+        <ul>
+          <li><span aria-hidden="true">🧮</span><p><strong>Bilancio del segnale.</strong> Combinerai potenza, guadagni d’antenna e perdite per stimare il livello ricevuto e confrontarlo con la soglia scelta per la copertura.</p></li>
+          <li><span aria-hidden="true">📍</span><p><strong>Dalla stima al sopralluogo.</strong> Vedrai perché conviene misurare il segnale nelle stanze e nei corridoi prima di decidere dove sistemare i punti di accesso.</p></li>
+          <li><span aria-hidden="true">🔒</span><p><strong>Protezione della rete.</strong> Confronterai WEP, WPA2 e WPA3 per capire come si sono evolute la protezione del collegamento e la verifica dell’identità.</p></li>
+        </ul>
+      </section>
 
       <!-- ======================================
            SLIDE 1 — IL LINK BUDGET (CALCOLATORE)

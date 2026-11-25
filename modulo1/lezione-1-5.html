@@ -14,6 +14,7 @@
     }
   </style>
   <link rel="stylesheet" href="../assets/css/modulo1.css">
+  <link rel="stylesheet" href="../assets/css/introduzione-lezioni.css">
   <link rel="stylesheet" href="../assets/css/esperimenti.css">
   <link rel="stylesheet" href="../assets/css/annotazioni.css">
   <link rel="stylesheet" href="../assets/css/presentazioni-modulo1.css">
@@ -139,41 +140,40 @@
     <div class="content-wrap">
 
       <!-- HERO LEZIONE -->
-      <header class="lesson-hero reveal">
-        <div class="lesson-hero-bg-num">05</div>
-        <div class="lesson-hero-content">
-          <div class="lesson-meta">
-            <span class="lesson-badge lesson-badge-module">Modulo 1 · Wireless LAN</span>
-            <span class="lesson-badge lesson-badge-num">Lezione 1.5</span>
+      <header class="lesson-intro-hero">
+        <div>
+          <div class="lesson-intro-meta">
+            <p class="lesson-intro-topic">Lezione 1.5 · Strato fisico e antenne</p>
             <span class="lesson-time">
               <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
               ~45 min studio interattivo
             </span>
           </div>
-
           <h1 class="lesson-title-h1">Strato Fisico: OFDM, MIMO e Beamforming Spaziale</h1>
-          
           <p class="lesson-subtitle">
             Come si trasmettono Gigabit al secondo senza fili? Confronta nello schema le antenne multiple, osserva come il Beamforming concentra l'energia sul tuo telefono e scopri come i rimbalzi del segnale sui muri sono diventati un'arma vincente invece che un difetto!
           </p>
-
-          <div class="lesson-prereq">
-            <span class="lesson-prereq-icon">🧠</span>
-            <div>
-              <strong>Concetti cardine:</strong>
-              Modulazione di ampiezza e fase (QAM, Quadrature Amplitude Modulation), interferenza costruttiva e distruttiva tra onde radio e propagazione multipath (rimbalzi su pavimenti e pareti).
-            </div>
-          </div>
         </div>
+        <img src="../assets/img/esercizi-wlan-segnale.svg" alt="" width="200" height="252">
       </header>
 
-      <!-- RIASSUNTO IN EVIDENZA -->
-      <div class="tldr reveal">
-        <span class="tldr-icon">⚡</span>
+      <div class="lesson-prereq lesson-intro-prereq">
+        <span class="lesson-prereq-icon" aria-hidden="true">🧠</span>
         <div>
-          <strong>In breve.</strong> Lo strato fisico delle reti locali senza fili (WLAN, Wireless Local Area Network) moderne si basa su tre pilastri: <strong>OFDM</strong> (Orthogonal Frequency Division Multiplexing, divide il canale in centinaia di sottoportanti ortogonali resistenti al rumore), <strong>MIMO</strong> (Multiple Input Multiple Output, trasmette flussi di dati diversi in parallelo usando più antenne e sfruttando i rimbalzi) e <strong>Beamforming</strong> (sincronizza la fase delle antenne per indirizzare un fascio radio focalizzato dritto verso il terminale ricevente).
+          <strong>Concetti cardine:</strong>
+          Modulazione di ampiezza e fase (QAM, Quadrature Amplitude Modulation), interferenza costruttiva e distruttiva tra onde radio e propagazione multipath (rimbalzi su pavimenti e pareti).
         </div>
       </div>
+
+      <!-- RIASSUNTO IN EVIDENZA -->
+      <section class="lesson-summary" aria-labelledby="obiettivo">
+        <h2 id="obiettivo">In questa lezione</h2>
+        <ul>
+          <li><span aria-hidden="true">📡</span><p><strong>Più flussi e un segnale più diretto.</strong> Distinguerai MIMO, che usa più antenne per trasportare flussi di dati, dal beamforming, che combina i segnali per favorire una direzione.</p></li>
+          <li><span aria-hidden="true">🔬</span><p><strong>Il fascio nello spazio.</strong> Userai lo schema e il modello 3D per osservare come cambia la direzione favorita quando si sposta il dispositivo.</p></li>
+          <li><span aria-hidden="true">🧩</span><p><strong>Dalle sottoportanti ai bit.</strong> Vedrai come OFDM divide il canale in molte sottoportanti e come le modulazioni QAM cambiano il numero di bit per simbolo.</p></li>
+        </ul>
+      </section>
 
       <!-- ======================================
            SLIDE 1 — MIMO E BEAMFORMING IN DUE E TRE DIMENSIONI
