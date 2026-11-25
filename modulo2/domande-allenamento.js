@@ -1823,6 +1823,87 @@ const domandeAllenamento = [
         "explanation": "L’arrivo di un file non crea la rete connessa."
       }
     ]
+  },
+  // Preparazione alla seconda prova
+  {
+    prompt: "Il budget ottico è 12 dB e le perdite stimate sono 3,4 dB. Qual è il margine?",
+    source: { href: "lezione-2-3.html#bilancio-fibra", label: "Ripassa il passaggio della lezione" },
+    options: [
+      { text: "8,6 dB", correct: true, explanation: "Sottrai le perdite dal budget." },
+      { text: "15,4 dB", explanation: "Le perdite consumano budget." },
+      { text: "3,4 dB", explanation: "Questo è il valore delle perdite." },
+      { text: "12 dB", explanation: "Questo è il budget prima delle perdite." }
+    ]
+  },
+  {
+    prompt: "La potenza ricevuta rientra nei limiti, ma gli apparati garantiscono 0,6 Gbit/s utili e ne servono 0,8. Qual è l’esito?",
+    source: { href: "lezione-2-3.html#bilancio-fibra", label: "Ripassa il passaggio della lezione" },
+    options: [
+      { text: "La soluzione va rivista per la velocità utile.", correct: true, explanation: "Servono sia un livello ottico valido sia capacità sufficiente." },
+      { text: "La soluzione è valida perché c’è margine ottico.", explanation: "Il margine ottico da solo non assicura la velocità richiesta." },
+      { text: "Basta aggiungere un connettore.", explanation: "Un connettore può aggiungere perdita e non aumenta la velocità." },
+      { text: "La capacità richiesta è soddisfatta.", explanation: "0,6 è minore di 0,8." }
+    ]
+  },
+  {
+    prompt: "Un messaggio di 9 byte è trasportato in una trama che aggiunge 7 byte. Quanti bit sono utili e quanti sono trasmessi?",
+    source: { href: "lezione-2-4.html#messaggio-sensori", label: "Ripassa il passaggio della lezione" },
+    options: [
+      { text: "72 bit utili e 128 bit trasmessi.", correct: true, explanation: "Moltiplica per 8 sia i 9 byte utili sia i 16 byte totali." },
+      { text: "56 bit utili e 128 bit trasmessi.", explanation: "I 7 byte sono campi aggiuntivi." },
+      { text: "9 bit utili e 16 bit trasmessi.", explanation: "Le grandezze date sono byte. Convertile in bit." },
+      { text: "72 bit utili e 72 bit trasmessi.", explanation: "Nei bit totali rientrano anche i campi aggiuntivi." }
+    ]
+  },
+  {
+    prompt: "La centralina invia la temperatura come intero con segno in decimi di grado. Che cosa serve al destinatario?",
+    source: { href: "lezione-2-4.html#messaggio-sensori", label: "Ripassa il passaggio della lezione" },
+    options: [
+      { text: "Conoscere posizione, lunghezza, ordine dei byte e scala del campo.", correct: true, explanation: "Queste regole permettono di leggere e interpretare il valore." },
+      { text: "Conoscere soltanto il controllo degli errori.", explanation: "Il controllo verifica l’integrità della trama, mentre le regole del campo danno significato al dato." },
+      { text: "Conoscere soltanto l’ora della misura.", explanation: "L’ora non dice come leggere la temperatura." },
+      { text: "Conoscere soltanto la lunghezza della trama.", explanation: "La lunghezza complessiva non identifica il campo né la sua codifica." }
+    ]
+  },
+  {
+    prompt: "Quale informazione permette a un router OSPF di calcolare da sé il percorso?",
+    source: { href: "lezione-2-5.html#routing-dinamico", label: "Ripassa il passaggio della lezione" },
+    options: [
+      { text: "Le descrizioni di stato e costo dei collegamenti.", correct: true, explanation: "Con queste informazioni ricostruisce la topologia dell’area." },
+      { text: "Solo il numero di salti annunciato da un vicino.", explanation: "Il numero di salti annunciato è il modo di ragionare di RIP." },
+      { text: "Solo l’indirizzo di origine del pacchetto.", explanation: "Per calcolare i percorsi servono informazioni sulla rete." },
+      { text: "Il traffico utente intercettato dalle altre porte.", explanation: "I router scambiano informazioni di controllo sullo stato dei collegamenti." }
+    ]
+  },
+  {
+    prompt: "In RIP, B annuncia di raggiungere una rete in un salto. A può raggiungere B con un salto. Quale distanza valuta A passando per B?",
+    source: { href: "lezione-2-5.html#routing-dinamico", label: "Ripassa il passaggio della lezione" },
+    options: [
+      { text: "Due salti.", correct: true, explanation: "A aggiunge alla distanza annunciata il salto necessario per raggiungere B." },
+      { text: "Un salto.", explanation: "Il valore annunciato è la distanza vista da B." },
+      { text: "Tre salti.", explanation: "I dati dell’esempio descrivono due salti." },
+      { text: "Calcola prima tutta la mappa dell’area.", explanation: "Questo è il metodo di tipo link state usato da OSPF." }
+    ]
+  },
+  {
+    prompt: "Una LAN deve avere 13 concentratori, 1 router e 1 apparato di gestione. Qual è il blocco IPv4 più piccolo fra quelli proposti che li contiene?",
+    source: { href: "lezione-2-5.html#routing-dinamico", label: "Ripassa il passaggio della lezione" },
+    options: [
+      { text: "/27", correct: true, explanation: "Offre 30 indirizzi utilizzabili per 15 necessari." },
+      { text: "/28", explanation: "Offre 14 indirizzi utilizzabili." },
+      { text: "/29", explanation: "Offre 6 indirizzi utilizzabili." },
+      { text: "/30", explanation: "Offre 2 indirizzi utilizzabili." }
+    ]
+  },
+  {
+    prompt: "Nel laboratorio, i sensori parlano con i concentratori su una rete locale dedicata priva di IP. Chi va contato nella sottorete IPv4 di campo?",
+    source: { href: "lab-routing.html#impianto-sensori", label: "Ripassa il passaggio della lezione" },
+    options: [
+      { text: "Concentratori, interfaccia del router e apparato di gestione.", correct: true, explanation: "Sono gli apparati IP collegati alla sottorete di campo." },
+      { text: "Anche tutti i sensori.", explanation: "Nello scenario i sensori usano un collegamento privo di IP." },
+      { text: "Solo i sensori e il server in sede.", explanation: "Sensori e server non sono nella sottorete IPv4 di campo." },
+      { text: "Solo i concentratori.", explanation: "Riserva un indirizzo anche per il router e l’apparato di gestione." }
+    ]
   }
 ];
 

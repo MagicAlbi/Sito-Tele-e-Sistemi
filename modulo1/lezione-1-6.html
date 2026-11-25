@@ -284,6 +284,15 @@
       <!-- ======================================
            SLIDE 3 — CHECKPOINT AUTOVALUTAZIONE
            ====================================== -->
+      <section class="slide reveal" id="ponte-aperto">
+        <h2>Dal Wi-Fi a un collegamento all’aperto</h2>
+        <p>Per collegare due edifici, conta anche quanto segnale si perde nei cavi che portano alle antenne.</p>
+        <p>Somma alla potenza trasmessa i guadagni delle due antenne. Sottrai la perdita del percorso e quelle dei cavi ai due capi. Il margine è la potenza ricevuta meno la sensibilità, cioè il minimo livello richiesto dal ricevitore.</p>
+        <p>Supponi 18 dBm in uscita, antenne da 10 dBi ciascuna, perdita di spazio libero di 105 dB e perdite nei due cavi di 2 e 1 dB. La soglia è −78 dBm.</p>
+        <details><summary>Calcola potenza e margine</summary><p>Potenza ricevuta: 18 + 10 + 10 − 105 − 2 − 1 = −70 dBm. Margine: −70 − (−78) = 8 dB. Se un ostacolo aggiunge 10 dB di perdita, il margine scende a −2 dB.</p></details>
+        <p>Prima di scegliere dove montare le antenne, controlla il profilo fra le due estremità. Un ostacolo vicino alla linea diretta può peggiorare il collegamento. Nello studio dei ponti radio riprenderemo questo controllo con la zona di Fresnel.</p>
+      </section>
+
       <section class="slide reveal" id="slide-3" data-num="03">
         <h2>3. Checkpoint di Autovalutazione</h2>
         <p>
@@ -429,6 +438,16 @@
       </div>
     </div>
   </section>
+  <section class="presenter-slide lim-slide" tabindex="-1" inert>
+    <div class="lim-stage">
+      <div>
+        <h2>Dal Wi-Fi a un collegamento all’aperto</h2>
+        <p>Due antenne da 10 dBi, 18 dBm in uscita, 105 dB sul percorso. I cavi perdono 2 e 1 dB. La soglia è −78 dBm.</p><p>Quale margine resta? Che cosa accade con altri 10 dB di perdita?</p>
+      </div>
+      <div class="lim-visual"><details><summary>Verifica</summary><p>Arrivano −70 dBm. Il margine è 8 dB e scende a −2 dB se si aggiunge l’ostacolo.</p></details></div>
+    </div>
+  </section>
+
   <section class="presenter-slide lim-slide lim-challenge" tabindex="-1" inert>
     <div class="lim-stage">
       <div>

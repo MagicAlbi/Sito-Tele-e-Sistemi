@@ -166,6 +166,14 @@
       </section>
       <hr>
 
+      <section class="slide wan-lesson-section" id="bilancio-fibra">
+        <h2>Collegare due sedi in fibra</h2>
+        <p class="wan-lead">Per scegliere fibra e apparati verifica sia le perdite ottiche sia la velocità richiesta.</p>
+        <p>Per un collegamento di 6 km su tre tratte, ipotizza fibra monomodale, 0,35 dB/km, due giunti da 0,15 dB e due connessioni da 0,5 dB. Conta ogni collegamento intermedio secondo lo schema reale e usa valori compatibili con la lunghezza d’onda dei moduli.</p>
+        <p>Il trasmettitore garantisce almeno −6 dBm e il ricevitore richiede almeno −18 dBm. La rete richiede 0,8 Gbit/s utili. Per l’esempio, le schede dei moduli compatibili dichiarano 10 km di portata e il sistema garantisce 0,9 Gbit/s utili.</p>
+        <details class="wan-reveal"><summary>Confronta perdite e velocità</summary><p>Budget disponibile: −6 − (−18) = 12 dB. Perdita stimata: 6 × 0,35 + 2 × 0,15 + 2 × 0,5 = 3,4 dB. Restano 8,6 dB da confrontare con il margine richiesto. I 0,9 Gbit/s utili soddisfano la richiesta. Per apparati reali controlla anche portata alla velocità scelta, tipo di fibra e potenza massima ammessa in ricezione.</p></details>
+      </section>
+
       <section class="slide wan-lesson-section" id="checkpoint" data-num="08">
         <h2>8. Checkpoint</h2><p class="wan-lead">Cinque decisioni. Leggi il riscontro dopo ogni risposta e riprova quando vuoi.</p>
         <div class="quiz-wrap" id="quizContainer" data-lesson-quiz></div>
@@ -278,6 +286,16 @@
       </div>
     </div>
   </section>
+  <section class="presenter-slide lim-slide" tabindex="-1" inert>
+    <div class="lim-stage">
+      <div>
+        <h2>Collegare due sedi in fibra</h2>
+        <p>6 km × 0,35 dB/km. Due giunti da 0,15 dB. Due connessioni da 0,5 dB. Budget ottico di 12 dB.</p><p>Quanta riserva rimane?</p>
+      </div>
+      <div class="lim-visual"><details class="wan-reveal"><summary>Verifica</summary><p>Perdita 3,4 dB. Riserva 8,6 dB. Verifica a parte portata degli apparati e velocità utile.</p></details></div>
+    </div>
+  </section>
+
   <section class="presenter-slide lim-slide lim-challenge" tabindex="-1" inert>
     <div class="lim-stage">
       <div>

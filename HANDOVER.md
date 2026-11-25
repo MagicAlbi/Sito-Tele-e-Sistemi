@@ -2,6 +2,8 @@
 
 Il [piano](piani/telecomunicazioni-5a/PIANO.md#priorità) indica stato e prossimo passo. Per una bozza da riprendere, apri il suo `LAVORO.md` in `in-corso/`.
 
+- **Preparazione alla seconda prova** Gli approfondimenti approvati dei Moduli 1 e 2 sono verificati nei file locali e pronti per il salvataggio da parte del docente. La [scheda di lavoro](in-corso/preparazione-esame-2025/LAVORO.md) rimanda agli approfondimenti previsti nei moduli successivi e alla nota per gli studenti, ancora in bozza.
+
 - **Wi-Fi** [Materiali](modulo1/index.html) e [controlli aperti](piani/telecomunicazioni-5a/fasi/12/FASE.md).
 - **Presentazioni del Modulo 1** La versione approvata è nei file locali. Ogni lezione ha curiosità con grafica dedicata, una sfida con soluzione guidata e una slide finale «Da ricordare». Sfide e riepiloghi usano la grafica della bozza del Modulo 2. Il [promemoria di lavoro](in-corso/modulo1-presentazioni/LAVORO.md) raccoglie i controlli e l’anteprima.
 - **Lezione 1.5** Il beamforming 3D è nella [pagina di studio](modulo1/lezione-1-5.html#slide-1), sotto lo schema 2D, e nella terza schermata della presentazione. Resta la prova sulla LIM fisica.

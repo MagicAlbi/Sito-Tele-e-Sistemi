@@ -1,0 +1,152 @@
+<!doctype html>
+<html lang="it" data-theme="dark">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Laboratorio di routing | Telecomunicazioni 5A</title>
+  <link rel="stylesheet" href="../../../../assets/css/style.css">
+  <link rel="stylesheet" href="../../../../assets/css/modulo2.css">
+
+</head>
+<body class="module-two">
+<div class="app-layout">
+  <header class="site-header">
+    <a href="../../../../index.html" class="logo-link">
+      <span class="logo-icon" aria-hidden="true">⚡</span>
+      <span class="logo-text"><span class="logo-title text-gradient">Telecomunicazioni 5A</span><span class="logo-sub">IIS J.C. Maxwell</span></span>
+    </a>
+    <nav class="header-breadcrumb" aria-label="Percorso">
+      <a href="../../../../index.html">Home</a><span aria-hidden="true">›</span>
+      <a href="../../../../modulo2/index.html">Modulo 2</a><span aria-hidden="true">›</span>
+      <span class="current" aria-current="page">Laboratorio</span>
+    </nav>
+    <div class="header-actions">
+
+      <button type="button" class="btn btn-icon btn-ghost" data-theme-toggle aria-label="Cambia tema"></button>
+      <button type="button" class="btn btn-icon btn-ghost btn-hamburger" aria-label="Percorso del modulo" aria-controls="wan-sidebar">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="M3 6h18M3 12h18M3 18h18"/></svg>
+      </button>
+    </div>
+  </header>
+  <nav class="sidebar" id="wan-sidebar" aria-label="Percorso del Modulo 2">
+    <div class="sidebar-module-badge">
+      <span class="module-dot" aria-hidden="true"></span>
+      <a class="module-label" href="../../../../modulo2/index.html">Modulo 2 · Reti WAN</a>
+    </div>
+    <span class="sidebar-section-title">Percorso guidato</span>
+    <ul class="sidebar-nav">
+      <li data-lesson="m2-1">
+        <a href="../../../../modulo2/lezione-2-1.html"><span class="lesson-num">2.1</span><span class="lesson-title">Dalla rete locale al canale fisico</span><span class="lesson-check" aria-hidden="true"></span></a>
+      </li>
+      <li data-lesson="m2-2">
+        <a href="../../../../modulo2/lezione-2-2.html"><span class="lesson-num">2.2</span><span class="lesson-title">Accesso remoto e interconnessione WAN</span><span class="lesson-check" aria-hidden="true"></span></a>
+      </li>
+      <li data-lesson="m2-3">
+        <a href="lezione-2-3.html"><span class="lesson-num">2.3</span><span class="lesson-title">Accesso in rame e in fibra</span><span class="lesson-check" aria-hidden="true"></span></a>
+      </li>
+      <li data-lesson="m2-4">
+        <a href="lezione-2-4.html"><span class="lesson-num">2.4</span><span class="lesson-title">Protocolli di linea</span><span class="lesson-check" aria-hidden="true"></span></a>
+      </li>
+      <li data-lesson="m2-5">
+        <a href="lezione-2-5.html"><span class="lesson-num">2.5</span><span class="lesson-title">Primo routing</span><span class="lesson-check" aria-hidden="true"></span></a>
+      </li>
+    </ul>
+    <span class="sidebar-section-title">Pratica e verifiche</span>
+    <ul class="sidebar-nav">
+      <li class="active">
+        <a href="lab-routing.html" aria-current="page"><span class="lesson-num" aria-hidden="true">🔬</span><span class="lesson-title">Laboratorio di routing</span></a>
+      </li>
+      <li>
+        <a href="allenamento.html"><span class="lesson-num" aria-hidden="true">🎯</span><span class="lesson-title">Test di allenamento</span></a>
+      </li>
+      <li>
+        <a href="esercizi.html"><span class="lesson-num" aria-hidden="true">🧮</span><span class="lesson-title">Esercizi numerici</span></a>
+      </li>
+      <li>
+        <a href="../../../../modulo2/verifica.html"><span class="lesson-num" aria-hidden="true">📋</span><span class="lesson-title">Simulazione di verifica</span></a>
+      </li>
+    </ul>
+    <div class="sidebar-progress" data-module-progress="m2" data-total="5">
+      <div class="progress-label"><span>Lezioni completate</span><span><span data-progress-done>0</span>/5</span></div>
+      <div class="progress-bar" aria-hidden="true"><div class="progress-fill" style="width:0%"></div></div>
+    </div>
+  </nav>
+  <main class="main-content wan-study">
+  <div class="content-wrap">
+    <header class="wan-hero wan-hero-illustrated">
+  <div><p class="wan-kicker">Laboratorio · Modulo 2</p><h1 class="lesson-title-h1">Porta il pacchetto a destinazione</h1><p class="lesson-subtitle">Decidi la rotta prima del router. Poi prova una destinazione a tua scelta e osserva quali righe corrispondono.</p></div>
+  <img src="../../../../assets/img/indice-nodi-wan.svg" alt="" width="200" height="252">
+</header>
+    <section class="slide wan-chapter" aria-labelledby="lab-challenge">
+      <h2 id="lab-challenge">Prima prevedi l’uscita</h2>
+      <p class="wan-lead">Completa tre prove con la tabella qui sotto. Puoi ritentare e usare l’indizio quando una risposta non passa.</p>
+      <div class="wan-demo" data-wan-demo="routing"></div>
+    </section>
+    <section class="slide wan-chapter" data-wan-lab aria-labelledby="lab-simulator">
+      <h2 id="lab-simulator">Banco prova IPv4</h2>
+      <p class="wan-lead">Scrivi l’indirizzo di destinazione e confronta le rotte compatibili. La tabella indica quale prevale per lunghezza del prefisso.</p>
+      <ol class="wan-flow"><li><strong>LAN</strong><span>rete 192.168.10.0/24</span></li><li><strong>WAN A</strong><span>vicino 172.16.0.2</span></li><li><strong>WAN B</strong><span>vicino 172.16.1.2</span></li></ol>
+      <form novalidate>
+        <div class="wan-lab-controls">
+          <label for="wan-destination">Indirizzo di destinazione
+            <input id="wan-destination" type="text" value="10.20.30.8" inputmode="url" autocomplete="off" spellcheck="false" maxlength="15" aria-describedby="wan-route-message">
+          </label>
+          <button class="btn btn-primary">Cerca rotta</button>
+          <label><input type="checkbox" id="wan-default-route" checked> Rotta predefinita attiva</label>
+        </div>
+        <div class="wan-demo-actions" aria-label="Destinazioni di prova">
+          <button class="btn btn-ghost" data-wan-ip="192.168.10.42" type="button">Rete locale</button>
+          <button class="btn btn-ghost" data-wan-ip="10.20.30.8" type="button">Due prefissi</button>
+          <button class="btn btn-ghost" data-wan-ip="10.20.80.8" type="button">Solo /16</button>
+          <button class="btn btn-ghost" data-wan-ip="203.0.113.8" type="button">Fuori elenco</button>
+        </div>
+      </form>
+      <dl class="wan-route-outcome"><div><dt>Rotta scelta</dt><dd>—</dd></div><div><dt>Prossimo salto</dt><dd>—</dd></div><div><dt>Uscita</dt><dd>—</dd></div></dl>
+      <p class="wan-route-status" id="wan-route-message" role="status"></p>
+      <div class="wan-table-wrap">
+        <table class="osi-table">
+          <thead><tr><th scope="col">Prefisso</th><th scope="col">Prossimo salto</th><th scope="col">Uscita</th><th scope="col">Esito</th></tr></thead>
+          <tbody><tr><th scope="row">192.168.10.0/24</th><td>Direttamente collegata</td><td>LAN</td><td>—</td></tr>
+          <tr><th scope="row">10.20.0.0/16</th><td>172.16.0.2</td><td>WAN A</td><td>—</td></tr>
+          <tr><th scope="row">10.20.30.0/24</th><td>172.16.1.2</td><td>WAN B</td><td>—</td></tr>
+          <tr><th scope="row">0.0.0.0/0</th><td>172.16.0.2</td><td>WAN A</td><td>—</td></tr></tbody>
+        </table>
+      </div>
+      <noscript><p>Attiva JavaScript per calcolare la rotta a partire dalla tabella.</p></noscript>
+    </section>
+    <section class="slide wan-chapter">
+      <h2>Consegna in tre passaggi</h2>
+      <ol><li>Verifica la destinazione <code>10.20.30.8</code> e annota tutte le rotte compatibili.</li><li>Cambia il terzo ottetto in <code>80</code>. Indica quale corrispondenza sparisce e quale ora vince.</li><li>Prova <code>203.0.113.8</code> due volte, con la predefinita attiva e disattivata. Spiega la differenza.</li></ol>
+      <details class="wan-reveal"><summary>Confronta le soluzioni</summary><ol><li>Sono compatibili /24, /16 e /0. Vince /24, via WAN B.</li><li>Sparisce il /24 di <code>10.20.30.0</code>. Vince /16, via WAN A.</li><li>Con /0 attiva il pacchetto esce via WAN A. Senza /0 non ha una rotta e viene scartato.</li></ol></details>
+    </section>
+    <section class="slide wan-chapter" id="impianto-sensori">
+      <h2>Progetta una rete di raccolta dati</h2>
+      <p>Un consorzio raccoglie misure da 13 concentratori. I sensori parlano con il proprio concentratore su una rete radio locale senza IP. I concentratori, un apparato di gestione e l’interfaccia del router condividono la LAN dei campi. Il router raggiunge la sede tramite un ponte radio Ethernet e un secondo router.</p>
+      <ol>
+        <li>Disegna sensori, concentratori, router, ponte e server. Indica su quali tratti serve IP.</li>
+        <li>Definisci un messaggio che identifichi sensore e concentratore, istante e due misure. Indica ordine, unità, lunghezza e codifica dei valori. Calcola i bit utili.</li>
+        <li>Suddividi <code>10.40.0.0/24</code> in reti separate per campo, sede e transito. Prevedi almeno cinque posti liberi in campo, ospita in sede un server, due postazioni e il router. I due apparati del ponte lavorano come un collegamento Ethernet trasparente. Spiega dove assegneresti gli eventuali indirizzi di gestione del ponte.</li>
+      </ol>
+      <details class="wan-reveal">
+        <summary>Confronta una soluzione possibile</summary>
+        <p>La rete senza IP termina ai concentratori. Da lì i messaggi attraversano la LAN di campo, il router, la tratta Ethernet del ponte, il router di sede e la LAN del server.</p>
+        <p>In ordine: ID concentratore e ID sensore da 1 byte ciascuno, istante come secondi da una data concordata in 4 byte senza segno, temperatura in decimi di °C con segno e umidità in decimi di punto percentuale senza segno, entrambe da 2 byte. Si concorda il byte più significativo per primo. Totale 10 byte, pari a 80 bit utili.</p>
+        <ul>
+          <li>Campo <code>10.40.0.0/27</code>. Router <code>.1</code>, concentratori <code>.2–.14</code>, gestione <code>.15</code>. Restano 15 indirizzi host liberi.</li>
+          <li>Sede <code>10.40.0.32/29</code>. Router <code>.33</code>, server <code>.34</code>, postazioni <code>.35</code> e <code>.36</code>.</li>
+          <li>Transito <code>10.40.0.40/29</code>. Router <code>.41</code> e <code>.42</code>. Se i due apparati del ponte espongono la gestione su questa rete, assegna <code>.43</code> e <code>.44</code> e limita l’accesso alla gestione.</li>
+        </ul>
+        <p>Ogni router deve conoscere la rete remota. I dispositivi delle LAN usano il router della propria rete come uscita.</p>
+      </details>
+    </section>
+    <nav class="lesson-nav-btns" aria-label="Percorso del modulo">
+      <a href="lezione-2-5.html" class="btn btn-ghost">← Primo routing</a><a href="../../../../modulo2/index.html" class="btn btn-ghost">Indice del modulo</a><a href="allenamento.html" class="btn btn-primary">Test di allenamento →</a>
+    </nav>
+  </div>
+</main>
+</div>
+
+<script src="../../../../assets/js/app.js"></script>
+<script src="../../../../assets/js/modulo2.js"></script>
+</body>
+</html>

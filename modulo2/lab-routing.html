@@ -119,6 +119,26 @@
       <ol><li>Verifica la destinazione <code>10.20.30.8</code> e annota tutte le rotte compatibili.</li><li>Cambia il terzo ottetto in <code>80</code>. Indica quale corrispondenza sparisce e quale ora vince.</li><li>Prova <code>203.0.113.8</code> due volte, con la predefinita attiva e disattivata. Spiega la differenza.</li></ol>
       <details class="wan-reveal"><summary>Confronta le soluzioni</summary><ol><li>Sono compatibili /24, /16 e /0. Vince /24, via WAN B.</li><li>Sparisce il /24 di <code>10.20.30.0</code>. Vince /16, via WAN A.</li><li>Con /0 attiva il pacchetto esce via WAN A. Senza /0 non ha una rotta e viene scartato.</li></ol></details>
     </section>
+    <section class="slide wan-chapter" id="impianto-sensori">
+      <h2>Progetta una rete di raccolta dati</h2>
+      <p>Un consorzio raccoglie misure da 13 concentratori. I sensori parlano con il proprio concentratore su una rete radio locale senza IP. I concentratori, un apparato di gestione e l’interfaccia del router condividono la LAN dei campi. Il router raggiunge la sede tramite un ponte radio Ethernet e un secondo router.</p>
+      <ol>
+        <li>Disegna sensori, concentratori, router, ponte e server. Indica su quali tratti serve IP.</li>
+        <li>Definisci un messaggio che identifichi sensore e concentratore, istante e due misure. Indica ordine, unità, lunghezza e codifica dei valori. Calcola i bit utili.</li>
+        <li>Suddividi <code>10.40.0.0/24</code> in reti separate per campo, sede e transito. Prevedi almeno cinque posti liberi in campo, ospita in sede un server, due postazioni e il router. I due apparati del ponte lavorano come un collegamento Ethernet trasparente. Spiega dove assegneresti gli eventuali indirizzi di gestione del ponte.</li>
+      </ol>
+      <details class="wan-reveal">
+        <summary>Confronta una soluzione possibile</summary>
+        <p>La rete senza IP termina ai concentratori. Da lì i messaggi attraversano la LAN di campo, il router, la tratta Ethernet del ponte, il router di sede e la LAN del server.</p>
+        <p>In ordine: ID concentratore e ID sensore da 1 byte ciascuno, istante come secondi da una data concordata in 4 byte senza segno, temperatura in decimi di °C con segno e umidità in decimi di punto percentuale senza segno, entrambe da 2 byte. Si concorda il byte più significativo per primo. Totale 10 byte, pari a 80 bit utili.</p>
+        <ul>
+          <li>Campo <code>10.40.0.0/27</code>. Router <code>.1</code>, concentratori <code>.2–.14</code>, gestione <code>.15</code>. Restano 15 indirizzi host liberi.</li>
+          <li>Sede <code>10.40.0.32/29</code>. Router <code>.33</code>, server <code>.34</code>, postazioni <code>.35</code> e <code>.36</code>.</li>
+          <li>Transito <code>10.40.0.40/29</code>. Router <code>.41</code> e <code>.42</code>. Se i due apparati del ponte espongono la gestione su questa rete, assegna <code>.43</code> e <code>.44</code> e limita l’accesso alla gestione.</li>
+        </ul>
+        <p>Ogni router deve conoscere la rete remota. I dispositivi delle LAN usano il router della propria rete come uscita.</p>
+      </details>
+    </section>
     <nav class="lesson-nav-btns" aria-label="Percorso del modulo">
       <a href="lezione-2-5.html" class="btn btn-ghost">← Primo routing</a><a href="index.html" class="btn btn-ghost">Indice del modulo</a><a href="allenamento.html" class="btn btn-primary">Test di allenamento →</a>
     </nav>

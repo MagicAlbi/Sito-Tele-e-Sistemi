@@ -145,6 +145,17 @@
       </section>
       <hr>
 
+      <section class="slide wan-lesson-section" id="routing-dinamico">
+        <h2>Due modi per aggiornare le rotte</h2>
+        <p class="wan-lead">Quando cade un collegamento, i router devono trovare un nuovo percorso.</p>
+        <p>Con <strong>distance vector</strong>, i router comunicano ai vicini le destinazioni raggiungibili e la distanza stimata. Il vicino valuta la strada passando da chi ha inviato l’annuncio. In RIP la distanza si misura in salti.</p>
+        <p>Con <strong>link state</strong>, i router diffondono descrizioni dei collegamenti, con stato e costo. In OSPF i router della stessa area ricostruiscono una mappa comune e calcolano da sé il percorso a costo minore.</p>
+        <details class="wan-reveal"><summary>Segui lo stesso guasto nei due casi</summary><p>Da A si raggiunge C direttamente o passando per B. Se A–C cade e A–B–C rimane disponibile, con RIP A può usare la rotta annunciata da B dopo l’aggiornamento. Con OSPF A ricalcola il percorso dalla mappa aggiornata. In entrambi i casi il nuovo prossimo salto è B.</p></details>
+        <p>Per assegnare gli indirizzi su una LAN IPv4, conta tutti gli apparati della rete, comprese le interfacce dei router. Una /28 offre 14 indirizzi utilizzabili. Con 13 concentratori, un router e un apparato di gestione ne occorrono già 15. Una /27 ne offre 30, con 15 liberi.</p>
+        <p><a href="lab-routing.html#impianto-sensori">Disegna la rete e assegna gli indirizzi nel laboratorio</a>.</p>
+        <p><a href="https://www.rfc-editor.org/rfc/rfc2453">RFC 2453 · RIP</a> · <a href="https://www.rfc-editor.org/rfc/rfc2328">RFC 2328 · OSPF</a></p>
+      </section>
+
       <section class="slide wan-lesson-section" id="checkpoint" data-num="07">
         <h2>7. Checkpoint</h2><p class="wan-lead">Cinque decisioni. Leggi il riscontro dopo ogni risposta e riprova quando vuoi.</p>
         <div class="quiz-wrap" id="quizContainer" data-lesson-quiz></div>
@@ -255,6 +266,26 @@
       </div>
     </div>
   </section>
+  <section class="presenter-slide lim-slide" tabindex="-1" inert>
+    <div class="lim-stage">
+      <div>
+        <h2>Due modi per aggiornare le rotte</h2>
+        <p>Si guasta A–C. Resta possibile la strada A–B–C.</p><p>Che cosa riceve A con ciascun metodo?</p>
+      </div>
+      <div class="lim-visual"><details class="wan-reveal"><summary>Verifica</summary><p>RIP: da B riceve una distanza per raggiungere C. OSPF: riceve informazioni sui collegamenti e aggiorna la mappa. Il nuovo prossimo salto è B.</p></details></div>
+    </div>
+  </section>
+
+  <section class="presenter-slide lim-slide" tabindex="-1" inert>
+    <div class="lim-stage">
+      <div>
+        <h2>Quanti indirizzi servono?</h2>
+        <p>13 concentratori, 1 router, 1 apparato di gestione sulla stessa LAN. In quale blocco entrano?</p>
+      </div>
+      <div class="lim-visual"><details class="wan-reveal"><summary>Verifica</summary><p>Una /28 offre 14 indirizzi utilizzabili. Con una /27 ne hai 30 e ne restano 15 disponibili.</p></details></div>
+    </div>
+  </section>
+
   <section class="presenter-slide lim-slide lim-challenge" tabindex="-1" inert>
     <div class="lim-stage">
       <div>

@@ -130,8 +130,81 @@
     return { title, tone, lesson, equations, symbols, use, lessonLabel: 'Lezione 2.' + lesson.charAt(lesson.indexOf('.html') - 1) };
   }
 
+
+  function opticalLink(title, length, joins, budget) {
+    const loss = length * 0.35 + joins * 0.15 + 2 * 0.5;
+    const margin = budget - loss;
+    return {
+      title,
+      context: 'Una fibra monomodale collega due sedi. Il fornitore dei moduli dichiara il budget ottico a questa velocità.',
+      task: 'Calcola le perdite totali e il margine disponibile.',
+      facts: [['Lunghezza', length + ' km'], ['Fibra', '0,35 dB/km'],
+        ['Giunti', joins + ' da 0,15 dB'], ['Connessioni', '2 da 0,5 dB'], ['Budget ottico', budget + ' dB']],
+      answers: [
+        answer('Perdite totali', 'dB', loss, 2, [error(length * 0.35, 'Aggiungi giunti e connessioni.')]),
+        answer('Margine residuo', 'dB', margin, 2)
+      ],
+      steps: [
+        step('Conta tutte le perdite', 'Somma fibra, giunti e connessioni.',
+          length + ' × 0,35 + ' + joins + ' × 0,15 + 2 × 0,5 = ' + round(loss) + ' dB'),
+        step('Confronta con il budget', 'Il margine va confrontato con la riserva di progetto. Per scegliere i moduli controlla anche portata e capacità.',
+          budget + ' − ' + round(loss) + ' = ' + round(margin) + ' dB')
+      ]
+    };
+  }
+
+  function sensorMessage(title, measures, extra) {
+    const messageBytes = 1 + 4 + measures * 2;
+    const totalBits = (messageBytes + extra) * 8;
+    return {
+      title,
+      context: 'Una centralina invia identificativo, istante della misura e un gruppo di valori in un messaggio a lunghezza fissa.',
+      task: 'Calcola i bit del messaggio e quelli complessivi della trama nel modello assegnato.',
+      facts: [['Identificativo', '1 byte'], ['Istante', '4 byte'],
+        ['Misure', measures + ' da 2 byte'], ['Campi aggiunti dalla trama', extra + ' byte']],
+      answers: [
+        answer('Bit del messaggio', 'bit', messageBytes * 8, 0, [error(messageBytes, 'Converti i byte in bit.')]),
+        answer('Bit complessivi di trama', 'bit', totalBits, 0, [error(messageBytes * 8, 'Conta anche i campi aggiunti dalla trama.')])
+      ],
+      steps: [
+        step('Conta i campi utili', 'Somma prima i byte dei campi, poi moltiplica per 8.',
+          '(1 + 4 + ' + measures + ' × 2) × 8 = ' + messageBytes * 8 + ' bit'),
+        step('Aggiungi i campi della trama', 'Applica il formato semplificato assegnato.',
+          '(' + messageBytes + ' + ' + extra + ') × 8 = ' + totalBits + ' bit')
+      ]
+    };
+  }
+
+  function fieldSubnet(title, gateways, growth) {
+    const required = gateways + 2 + growth;
+    const hostBits = Math.ceil(Math.log2(required + 2));
+    const prefix = 32 - hostBits;
+    const available = 2 ** hostBits - 2;
+    return {
+      title,
+      context: 'Una LAN IPv4 deve ospitare concentratori, l’interfaccia del router, un apparato di gestione e una riserva.',
+      task: 'Indica il prefisso del blocco più piccolo adeguato e quanti indirizzi utilizzabili rimangono non assegnati ora.',
+      facts: [['Concentratori', String(gateways)], ['Router e gestione', '1 indirizzo ciascuno'], ['Riserva minima', growth + ' indirizzi']],
+      answers: [
+        answer('Prefisso, senza barra', '', prefix, 0),
+        answer('Indirizzi disponibili dopo le assegnazioni attuali', '', available - gateways - 2, 0)
+      ],
+      steps: [
+        step('Conta gli apparati e la riserva', 'Conta router e gestione oltre ai concentratori.',
+          gateways + ' + 2 + ' + growth + ' = ' + required + ' indirizzi utilizzabili'),
+        step('Scegli il blocco', 'Riserva indirizzo di rete e broadcast.',
+          '2^' + hostBits + ' − 2 = ' + available + ' indirizzi, prefisso /' + prefix),
+        step('Conta gli indirizzi ancora liberi', 'Gli indirizzi tenuti come riserva sono ancora liberi.',
+          available + ' − ' + (gateways + 2) + ' = ' + (available - gateways - 2) + ' indirizzi')
+      ]
+    };
+  }
+
   window.numericalExercises = {
     reference: [
+      reference('Bilancio ottico', 'link', 'lezione-2-3.html#bilancio-fibra', ['Margine = budget ottico − perdite'], 'Conta fibra, giunti e connessioni.', 'Verifica anche portata e velocità utile.'),
+      reference('Messaggio di misure', 'space', 'lezione-2-4.html#messaggio-sensori', ['Bit = byte × 8'], 'Distingui byte del messaggio e byte totali in trama.', 'Somma i campi separatamente.'),
+      reference('Indirizzi IPv4 utilizzabili', 'time', 'lezione-2-5.html#routing-dinamico', ['Indirizzi utilizzabili = 2^(32 − p) − 2'], 'p è il prefisso di una LAN IPv4 tradizionale.', 'Conta ogni apparato IP e la riserva richiesta.'),
       reference('Seriale 8N1', 'speed', 'lezione-2-1.html#calcolo', ['B = N × 10', 't = B ÷ R'], 'N è il numero di byte, B i bit sulla linea e R la velocità in bit/s.', 'Conta start, 8 dati e stop per ogni carattere.'),
       reference('Capacità E1', 'space', 'lezione-2-2.html#capacita', ['R = n × 8 × 8.000 bit/s', '1 kbit/s = 1.000 bit/s'], 'n è il numero di intervalli per trama usati nel calcolo.', 'Usa 32 intervalli per il lordo e gli intervalli assegnati per la quota utile.'),
       reference('Velocità utile e tempo', 'time', 'lezione-2-2.html#capacita', ['Rᵤ = Rₙ × η', 'D = MB × 8', 't = D ÷ Rᵤ'], 'η è la quota utile fra 0 e 1. D si misura in Mbit, Rᵤ e Rₙ in Mbit/s.', 'Stima il tempo quando la velocità utile è costante.'),
@@ -140,6 +213,15 @@
       reference('Blocchi IPv4', 'time', 'lezione-2-5.html#prefissi', ['Dimensione = 2^(32 − p)', 'Fine del blocco = inizio + dimensione − 1'], 'p è il prefisso. Per /25–/30 i blocchi ricadono tutti nell’ultimo ottetto.', 'Trova inizio e fine del blocco della sottorete.')
     ],
     types: [
+      { title: 'Fibra fra due sedi · perdite e margine', tone: 'link', exercises: [
+        opticalLink('Sede del Parco', 6, 2, 12), opticalLink('Sede del Mulino', 8, 3, 10)
+      ] },
+      { title: 'Sensori · bit utili e bit in trama', tone: 'space', exercises: [
+        sensorMessage('Misure del frutteto', 2, 7), sensorMessage('Misure della serra', 4, 8)
+      ] },
+      { title: 'LAN dei concentratori · prefisso e riserva', tone: 'time', exercises: [
+        fieldSubnet('Concentratori del campo Nord', 13, 5), fieldSubnet('Concentratori di tre serre', 26, 6)
+      ] },
       { title: 'Seriale 8N1 · bit e durata', tone: 'speed', exercises: [
         serial('Console di Aurora',480,9600), serial('Rapporto di Brina',288,4800), serial('Avvio apparato',1152,19200),
         serial('Profilo di collaudo',576,9600), serial('Stato delle porte',1440,28800), serial('Esportazione eventi',768,19200),

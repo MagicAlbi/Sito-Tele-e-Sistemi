@@ -1665,6 +1665,47 @@ const domandeAllenamento = [
         explanation: "La tabella sconsiglia WPA con TKIP. Inoltre il dispositivo descritto non supporta quella modalità."
       }
     ]
+  },
+  // Preparazione alla seconda prova
+  {
+    prompt: "In cortile il segnale migliora spostando il ricevitore di poco. La potenza trasmessa è costante. Quale spiegazione è coerente?",
+    source: { href: "lezione-1-5.html#fading", label: "Ripassa il passaggio della lezione" },
+    options: [
+      { text: "Il contributo delle onde diretta e riflessa cambia.", correct: true, explanation: "La nuova posizione cambia il modo in cui le onde si sommano." },
+      { text: "Il trasmettitore aumenta la potenza.", explanation: "La potenza trasmessa è dichiarata costante." },
+      { text: "Il cavo si accorcia.", explanation: "Lo spostamento del ricevitore riguarda il percorso radio dell’esempio." },
+      { text: "La soglia del ricevitore cambia.", explanation: "La soglia è una caratteristica del ricevitore nelle condizioni date." }
+    ]
+  },
+  {
+    prompt: "Due antenne sono in punti separati. In un punto il segnale cala molto, nell’altro arriva bene. Che misura può aiutare?",
+    source: { href: "lezione-1-5.html#fading", label: "Ripassa il passaggio della lezione" },
+    options: [
+      { text: "Usare la ricezione offerta dalla seconda antenna.", correct: true, explanation: "In posizioni diverse le riflessioni possono produrre cali diversi." },
+      { text: "Spostare entrambe le antenne nel punto del calo.", explanation: "Quel punto è già risultato sfavorevole." },
+      { text: "Accorciare il messaggio.", explanation: "Ridurre i dati da inviare non cambia il livello ricevuto in quel punto." },
+      { text: "Aggiungere un ostacolo alla linea diretta.", explanation: "Un nuovo ostacolo può aggiungere attenuazione e richiede una verifica." }
+    ]
+  },
+  {
+    prompt: "Il margine stimato è 8 dB prima di conteggiare due cavi da 2 dB e 1 dB. Quanto resta?",
+    source: { href: "lezione-1-6.html#ponte-aperto", label: "Ripassa il passaggio della lezione" },
+    options: [
+      { text: "5 dB", correct: true, explanation: "Le perdite dei cavi si sommano e si sottraggono al margine." },
+      { text: "8 dB", explanation: "I cavi aggiungono 3 dB di perdita." },
+      { text: "11 dB", explanation: "La perdita dei cavi va sottratta." },
+      { text: "7 dB", explanation: "Conta entrambi i cavi." }
+    ]
+  },
+  {
+    prompt: "Un collegamento all’aperto passa da 8 dB di margine a una condizione con 10 dB di perdita in più. Qual è l’esito?",
+    source: { href: "lezione-1-6.html#ponte-aperto", label: "Ripassa il passaggio della lezione" },
+    options: [
+      { text: "Il segnale è 2 dB sotto soglia.", correct: true, explanation: "Il margine diventa 8 − 10 = −2 dB." },
+      { text: "Rimangono 2 dB di riserva.", explanation: "Il segno del margine è negativo." },
+      { text: "Il margine resta a 8 dB.", explanation: "Sottrai la perdita aggiuntiva." },
+      { text: "Il margine sale a 18 dB.", explanation: "Una perdita riduce il margine." }
+    ]
   }
 ];
 

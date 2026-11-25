@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="it" data-theme="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Esercizi numerici · Wireless LAN | Telecomunicazioni 5A</title>
+  <link rel="stylesheet" href="../../../../assets/css/style.css">
+  <link rel="stylesheet" href="../../../../assets/css/esercizi-numerici.css">
+  <script src="../../../../assets/js/app.js" defer></script>
+  <script src="dati-esercizi.js" defer></script>
+  <script src="../../../../assets/js/esercizi-numerici.js" defer></script>
+</head>
+<body>
+  <div class="app-layout">
+    <header class="site-header">
+      <a href="../../../../index.html" class="logo-link">
+        <div class="logo-icon" aria-hidden="true">⚡</div>
+        <div class="logo-text">
+          <span class="logo-title text-gradient">Telecomunicazioni 5A</span>
+          <span class="logo-sub">IIS J.C. Maxwell</span>
+        </div>
+      </a>
+      <nav class="header-breadcrumb" aria-label="Percorso">
+        <a href="../../../../modulo1/index.html">Modulo 1 · Wireless LAN</a>
+        <span aria-hidden="true">›</span>
+        <span class="current">Esercizi numerici</span>
+      </nav>
+      <div class="header-actions">
+        <button type="button" class="btn btn-icon btn-ghost" data-theme-toggle aria-label="Cambia tema"></button>
+      </div>
+    </header>
+
+    <main class="main-content numerical-exercises" id="numerical-exercises">
+      <div class="exercise-art" aria-hidden="true">
+        <img class="exercise-art-start" src="../../../../assets/img/esercizi-wlan-segnale.svg" alt="" width="180" height="250">
+        <img class="exercise-art-end" src="../../../../assets/img/esercizi-wlan-tempo.svg" alt="" width="180" height="250">
+      </div>
+      <div class="content-wrap">
+        <header class="lesson-hero">
+          <div class="lesson-hero-content">
+            <div class="lesson-meta">
+              <span class="lesson-badge lesson-badge-module">Modulo 1 · Wireless LAN</span>
+            </div>
+            <h1 class="lesson-title-h1">Esercizi numerici</h1>
+            <p class="lesson-subtitle">Consulta il formulario, scegli una tipologia e svolgi i due esercizi su carta.</p>
+          </div>
+        </header>
+        <noscript><p>Attiva JavaScript per svolgere e correggere gli esercizi.</p></noscript>
+        <section class="exercise-reference" aria-labelledby="exercise-reference-title" hidden>
+          <h2 id="exercise-reference-title">Formulario</h2>
+          <p>Mbps significa megabit al secondo, MB megabyte. GHz e MHz indicano gigahertz e megahertz. I dB (decibel) esprimono rapporti, i dBm potenze riferite a un milliwatt e i dBi guadagni rispetto a un’antenna ideale che irradia ugualmente in tutte le direzioni.</p>
+          <div id="exercise-formulas" class="exercise-formulas"></div>
+        </section>
+        <section class="exercise-picker" aria-labelledby="exercise-picker-title" hidden>
+          <h2 id="exercise-picker-title">Mettiti alla prova</h2>
+          <div class="exercise-picker-controls">
+            <div>
+              <label for="exercise-type">Tipologia di esercizio</label>
+              <select id="exercise-type"></select>
+            </div>
+            <button type="button" class="btn btn-primary" id="exercise-start">Estrai due esercizi</button>
+          </div>
+        </section>
+        <form id="exercise-form" novalidate hidden>
+          <p class="exercise-entry-note">Inserisci solo i numeri. Per i decimali puoi usare la virgola o il punto.</p>
+          <div id="exercise-pair"></div>
+          <div class="exercise-actions">
+            <button type="submit" class="btn btn-primary">Correggi i due esercizi</button>
+            <p id="exercise-summary" role="status" tabindex="-1"></p>
+          </div>
+        </form>
+        <a class="btn btn-ghost" href="../../../../modulo1/index.html">← Torna al Modulo 1</a>
+      </div>
+    </main>
+  </div>
+</body>
+</html>

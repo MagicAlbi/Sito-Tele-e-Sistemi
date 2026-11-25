@@ -160,6 +160,15 @@
       </section>
       <hr>
 
+      <section class="slide wan-lesson-section" id="messaggio-sensori">
+        <h2>Progettare un messaggio di misure</h2>
+        <p class="wan-lead">Definisci prima i dati che il destinatario deve capire. Poi calcola quanti bit servono a trasportarli.</p>
+        <p>Un esempio con campi di lunghezza fissa usa 1 byte per l’identificativo della centralina, 4 per l’istante della misura e 2 per ciascuna delle due misure. Stabilisci anche l’ordine dei byte e il significato dei valori. Per esempio, esprimi la temperatura in decimi di grado con segno e dichiara da quale istante si contano i secondi.</p>
+        <p>Il messaggio è il contenuto utile per l’applicazione. La trama sul collegamento aggiunge i suoi campi, come delimitatori e controllo degli errori. I 7 byte dell’esempio seguente sono un dato ipotetico già fornito per la trama, indipendente dal formato del messaggio.</p>
+        <details class="wan-reveal"><summary>Conta i bit con e senza i campi di controllo</summary><p>Messaggio: 1 + 4 + 2 + 2 = 9 byte, cioè 72 bit. Con altri 7 byte la trama è di 16 byte, cioè 128 bit, nel modello senza ulteriori aggiunte.</p></details>
+        <p><a href="lab-routing.html#impianto-sensori">Applica il formato al caso dei concentratori</a>.</p>
+      </section>
+
       <section class="slide wan-lesson-section" id="checkpoint" data-num="07">
         <h2>7. Checkpoint</h2><p class="wan-lead">Cinque decisioni. Leggi il riscontro dopo ogni risposta e riprova quando vuoi.</p>
         <div class="quiz-wrap" id="quizContainer" data-lesson-quiz></div>
@@ -268,6 +277,16 @@
       </div>
     </div>
   </section>
+  <section class="presenter-slide lim-slide" tabindex="-1" inert>
+    <div class="lim-stage">
+      <div>
+        <h2>Progettare un messaggio di misure</h2>
+        <p>ID 1 byte · istante 4 byte · due misure da 2 byte. La trama aggiunge 7 byte.</p><p>Che cosa deve sapere il ricevitore e quanti bit viaggiano?</p>
+      </div>
+      <div class="lim-visual"><details class="wan-reveal"><summary>Verifica</summary><p>Ordine, unità e codifica dei campi. 72 bit di messaggio, 128 bit nella trama del modello.</p></details></div>
+    </div>
+  </section>
+
   <section class="presenter-slide lim-slide lim-challenge" tabindex="-1" inert>
     <div class="lim-stage">
       <div>

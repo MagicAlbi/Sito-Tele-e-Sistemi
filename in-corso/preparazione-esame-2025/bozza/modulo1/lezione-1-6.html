@@ -1,0 +1,547 @@
+<!DOCTYPE html>
+<html lang="it" data-theme="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>M1.6 · Progettazione WLAN, Link Budget & Sicurezza WPA3 | Telecomunicazioni 5A</title>
+  <link rel="stylesheet" href="../../../../assets/css/style.css">
+  <style>
+    :root { --m-color: var(--m1); }
+    .budget-calc-card {
+      background: var(--surface-2); border: 1px solid var(--border);
+      border-radius: var(--r-xl); padding: 1.5rem; margin: 1.5rem 0;
+    }
+  </style>
+  <link rel="stylesheet" href="../../../../assets/css/modulo1.css">
+  <link rel="stylesheet" href="../../../../assets/css/introduzione-lezioni.css">
+  <link rel="stylesheet" href="../../../../assets/css/esperimenti.css">
+  <link rel="stylesheet" href="../../../../assets/css/annotazioni.css">
+  <link rel="stylesheet" href="../../../../assets/css/presentazioni-modulo1.css">
+</head>
+<body class="module-one" data-lesson-id="m1-6">
+
+<div class="app-layout">
+
+  <!-- HEADER -->
+  <header class="site-header">
+    <a href="../../../../index.html" class="logo-link">
+      <div class="logo-icon">⚡</div>
+      <div class="logo-text">
+        <span class="logo-title text-gradient">Telecomunicazioni 5A</span>
+        <span class="logo-sub">IIS J.C. Maxwell</span>
+      </div>
+    </a>
+
+    <nav class="header-breadcrumb">
+      <a href="../../../../index.html">Home</a>
+      <span>›</span>
+      <a href="../../../../modulo1/index.html">Modulo 1</a>
+      <span>›</span>
+      <span class="current">Lezione 1.6 — Progettazione & Sicurezza</span>
+    </nav>
+
+    <div class="header-actions">
+      <button class="btn btn-present" data-present aria-label="Modalità presentazione">
+        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg>
+        Presenta in Classe
+      </button>
+      <button class="btn btn-icon btn-ghost" data-theme-toggle aria-label="Cambia tema"></button>
+      <button class="btn btn-icon btn-ghost btn-hamburger" aria-label="Menu">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+      </button>
+    </div>
+  </header>
+
+  <!-- SIDEBAR -->
+  <nav class="sidebar">
+    <div class="sidebar-module-badge">
+      <div class="module-dot" style="background:var(--m1); box-shadow: 0 0 10px var(--m1);"></div>
+      <span class="module-label" style="color:var(--m1)">Modulo 1 · WLAN</span>
+    </div>
+
+    <span class="sidebar-section-title">Percorso Guidato</span>
+    <ul class="sidebar-nav">
+      <li data-lesson="m1-1">
+        <a href="../../../../modulo1/lezione-1-1.html">
+          <span class="lesson-num">1.1</span>
+          <span class="lesson-title">Introduzione alle WLAN</span>
+          <span class="lesson-check"></span>
+        </a>
+      </li>
+      <li data-lesson="m1-2">
+        <a href="../../../../modulo1/lezione-1-2.html">
+          <span class="lesson-num">1.2</span>
+          <span class="lesson-title">Standard IEEE 802.11</span>
+          <span class="lesson-check"></span>
+        </a>
+      </li>
+      <li data-lesson="m1-3">
+        <a href="../../../../modulo1/lezione-1-3.html">
+          <span class="lesson-num">1.3</span>
+          <span class="lesson-title">Canali Radio & Spettro</span>
+          <span class="lesson-check"></span>
+        </a>
+      </li>
+      <li data-lesson="m1-4">
+        <a href="../../../../modulo1/lezione-1-4.html">
+          <span class="lesson-num">1.4</span>
+          <span class="lesson-title">CSMA/CA & Collisioni</span>
+          <span class="lesson-check"></span>
+        </a>
+      </li>
+      <li data-lesson="m1-5">
+        <a href="lezione-1-5.html">
+          <span class="lesson-num">1.5</span>
+          <span class="lesson-title">Strato Fisico & Modulazioni</span>
+          <span class="lesson-check"></span>
+        </a>
+      </li>
+      <li class="active" data-lesson="m1-6">
+        <a href="lezione-1-6.html">
+          <span class="lesson-num">1.6</span>
+          <span class="lesson-title">Progettazione & Site Survey</span>
+          <span class="lesson-check"></span>
+        </a>
+      </li>
+    </ul>
+
+    <span class="sidebar-section-title">Pratica & Verifiche</span>
+    <ul class="sidebar-nav">
+      <li>
+        <a href="../../../../modulo1/lab-copertura.html">
+          <span class="lesson-num">🔬</span>
+          <span class="lesson-title">Simulatore Copertura RF</span>
+        </a>
+      </li>
+      <li><a href="allenamento.html"><span class="lesson-num">🎯</span><span class="lesson-title">Quiz di allenamento</span></a></li>
+      <li><a href="esercizi.html"><span class="lesson-num">🧮</span><span class="lesson-title">Esercizi numerici</span></a></li>
+      <li>
+        <a href="../../../../modulo1/verifica.html">
+          <span class="lesson-num">📋</span>
+          <span class="lesson-title">Compito & Verifica M1</span>
+        </a>
+      </li>
+    </ul>
+
+    <div class="sidebar-progress" data-module-progress="m1" data-total="6">
+      <div class="progress-label">
+        <span>Progresso Modulo</span>
+        <span><span data-progress-done>0</span>/6 (<span data-progress-pct>0</span>%)</span>
+      </div>
+      <div class="progress-bar">
+        <div class="progress-fill" style="width:0%"></div>
+      </div>
+    </div>
+  </nav>
+
+  <!-- CONTENUTO PRINCIPALE -->
+  <main class="main-content" data-lesson-annotations="m1-6">
+    <div class="content-wrap">
+
+      <!-- HERO LEZIONE -->
+      <header class="lesson-intro-hero">
+        <div>
+          <div class="lesson-intro-meta">
+            <p class="lesson-intro-topic">Lezione 1.6 · Copertura e sicurezza</p>
+            <span class="lesson-time">
+              <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+              ~45 min studio interattivo
+            </span>
+          </div>
+          <h1 class="lesson-title-h1">Progettazione di reti locali senza fili: copertura e sicurezza</h1>
+          <p class="lesson-subtitle">
+            Come si calcola la copertura radio in un edificio a più piani? E come si sono evolute le protezioni Wi-Fi, dalla cifratura WEP (Wired Equivalent Privacy) a WPA2 e WPA3, seconda e terza generazione di Wi-Fi Protected Access?
+          </p>
+        </div>
+        <img src="../../../../assets/img/quiz-wlan-rete.svg" alt="" width="200" height="252">
+      </header>
+
+      <div class="lesson-prereq lesson-intro-prereq">
+        <span class="lesson-prereq-icon" aria-hidden="true">🧠</span>
+        <div>
+          <strong>Calcoli richiesti nelle prove scritte:</strong>
+          Unità logaritmiche: decibel (dB) per rapporti, dBm per potenze riferite a un milliwatt, dBi per il guadagno d’antenna rispetto a un’antenna isotropica, cioè che irradia ugualmente in ogni direzione. Attenuazione in spazio libero e crittografia asimmetrica/simmetrica.
+        </div>
+      </div>
+
+      <!-- RIASSUNTO IN EVIDENZA -->
+      <section class="lesson-summary" aria-labelledby="obiettivo">
+        <h2 id="obiettivo">In questa lezione</h2>
+        <ul>
+          <li><span aria-hidden="true">🧮</span><p><strong>Bilancio del segnale.</strong> Combinerai potenza, guadagni d’antenna e perdite per stimare il livello ricevuto e confrontarlo con la soglia scelta per la copertura.</p></li>
+          <li><span aria-hidden="true">📍</span><p><strong>Dalla stima al sopralluogo.</strong> Vedrai perché conviene misurare il segnale nelle stanze e nei corridoi prima di decidere dove sistemare i punti di accesso.</p></li>
+          <li><span aria-hidden="true">🔒</span><p><strong>Protezione della rete.</strong> Confronterai WEP, WPA2 e WPA3 per capire come si sono evolute la protezione del collegamento e la verifica dell’identità.</p></li>
+        </ul>
+      </section>
+
+      <!-- ======================================
+           SLIDE 1 — IL LINK BUDGET (CALCOLATORE)
+           ====================================== -->
+      <section class="slide reveal" id="slide-1" data-num="01">
+        <h2>1. Il Bilancio di Collegamento (Link Budget)</h2>
+
+        <p>
+          Il <strong>Link Budget</strong> è la contabilità matematica della potenza radio. La potenza con cui il segnale giunge al ricevitore (P<sub>rx</sub>) deve superare la <strong>sensibilità di soglia</strong> del chip Wi-Fi (S<sub>rx</sub>), altrimenti il segnale scompare nel rumore termico di fondo:
+        </p>
+
+        <div style="background:var(--surface); border:1px solid var(--border-2); border-radius:var(--r-md); padding:1rem 1.25rem; font-family:var(--font-mono); font-size:0.95rem; color:var(--primary); margin:1rem 0;">
+          P<sub>rx</sub> (dBm) = P<sub>tx</sub> + G<sub>tx</sub> - L<sub>FS</sub> - L<sub>ostacoli</sub> + G<sub>rx</sub>
+        </div>
+
+        <!-- SIMULATORE LINK BUDGET -->
+        <p>Nella formula, tx indica la trasmissione, rx la ricezione e FS (Free Space) lo spazio libero. Nello schema, AP (Access Point) indica il punto di accesso. Il simulatore indica anche il rapporto tra segnale e rumore (SNR, Signal-to-Noise Ratio).</p>
+        <div class="lab-panel" data-sim="budget"></div>
+      </section>
+
+      <hr>
+
+      <!-- ======================================
+           SLIDE 2 — EVOLUZIONE DELLA SICUREZZA
+           ====================================== -->
+      <section class="slide reveal" id="slide-2" data-num="02">
+        <h2>2. L'Evoluzione della Sicurezza: WEP, WPA2 e WPA3</h2>
+
+        <p>
+          Dato che le onde radio attraversano le finestre e i muri della scuola, <strong>chiunque si trovi nel parcheggio può catturare ogni singolo frame</strong>. Senza una robusta crittografia, chiunque potrebbe leggere password, chat e credenziali in chiaro.
+        </p>
+
+        <!-- CURIOSITA' HACKER SULLA MORTE DEL WEP -->
+        <div class="box-curiosity">
+          <div class="box-curiosity-title">
+            <span>💀</span>
+            <span>La Morte del WEP: Come Si Bucava un Wi-Fi in 60 Secondi</span>
+          </div>
+          <div class="box-curiosity-content">
+            <p>
+              Il primo protocollo di protezione, il <strong>WEP (Wired Equivalent Privacy)</strong> del 1999, è uno dei più grandi fallimenti crittografici della storia informatica.
+            </p>
+            <p>
+              Usava RC4 (Rivest Cipher 4), un algoritmo che cifra i dati come flusso, abbinato a un <strong>vettore di inizializzazione (IV, Initialization Vector) di soli 24 bit</strong> trasmesso in chiaro. In una rete trafficata, dopo aver scambiato circa 5.000 pacchetti radio, gli IV inevitabilmente si ripetevano (paradosso del compleanno).
+            </p>
+            <p style="margin-bottom:0">
+              Con un computer portatile e una scheda wireless impostata in <em>Monitor Mode</em>, software leggendari come <code>aircrack-ng</code> raccoglievano qualche migliaio di frame per derivare matematicamente la password segreta del router in meno di 2 minuti di orologio! Il WEP è stato bandito nel 2004: se trovi un router ancora protetto con WEP, è considerabile a tutti gli effetti una rete aperta senza password.
+            </p>
+          </div>
+        </div>
+
+        <h3>Confronto Sicurezza: Da WPA2 a WPA3</h3>
+        <div class="table-scroll" role="region" aria-label="Tabella scorrevole" tabindex="0"><table class="osi-table">
+          <thead>
+            <tr>
+              <th>Protocollo</th>
+              <th>Algoritmo Cifratura</th>
+              <th>Vulnerabilità Note</th>
+              <th>Giudizio Attuale</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><strong>WEP</strong></td>
+              <td>RC4 (IV 24 bit)</td>
+              <td>Ripetizione chiavi deboli, bucabile in 60 secondi</td>
+              <td><span style="color:var(--error); font-weight:700;">OBSOLETO / VIETATO</span></td>
+            </tr>
+            <tr>
+              <td><strong>WPA (v1)</strong></td>
+              <td>TKIP (Temporal Key Integrity Protocol), protezione dei dati con chiavi temporanee</td>
+              <td>Patch tampone per WEP, attacchi di iniezione pacchetti</td>
+              <td><span style="color:var(--warning); font-weight:700;">SCONSIGLIATO</span></td>
+            </tr>
+            <tr>
+              <td><strong>WPA2-Personal</strong></td>
+              <td>AES-CCMP (128 bit): cifratura con AES (Advanced Encryption Standard) e controllo di integrità dei messaggi tramite CCMP (Counter Mode with Cipher Block Chaining Message Authentication Code Protocol), protocollo che usa la cifratura in modalità contatore e un codice di autenticazione dei messaggi</td>
+              <td>Attacco a dizionario offline catturando il 4-way handshake, attacco KRACK (Key Reinstallation Attack, reinstallazione di una chiave)</td>
+              <td><span style="color:var(--primary); font-weight:700;">ACCETTABILE (con password complessa)</span></td>
+            </tr>
+            <tr style="background:rgba(52,211,153,0.08)">
+              <td><strong style="color:var(--success)">WPA3-Personal</strong></td>
+              <td>AES-GCM (128/192 bit): modalità GCM (Galois/Counter Mode) per cifrare e verificare l’integrità dei dati</td>
+              <td>Protocollo Dragonfly (SAE): immune ad attacchi offline a dizionario!</td>
+              <td><span style="color:var(--success); font-weight:700;">MASSIMA SICUREZZA ATTUALE</span></td>
+            </tr>
+          </tbody>
+        </table></div>
+
+        <!-- CURIOSITA' SUL TASTO WPS -->
+        <div class="box-curiosity">
+          <div class="box-curiosity-title">
+            <span>⚠️</span>
+            <span>Il tasto per collegare i dispositivi al Wi-Fi</span>
+          </div>
+          <div class="box-curiosity-content">
+            <p>
+              Hai presente il pulsantino <strong>WPS (Wi-Fi Protected Setup)</strong> sul retro dei modem per connettere la stampante senza digitare la password? Molti modem consentivano l'autenticazione tramite un <strong>PIN a 8 cifre</strong> (Personal Identification Number, codice di identificazione).
+            </p>
+            <p style="margin-bottom:0">
+              Errore di progettazione fatale: il router verificava separatamente le prime 4 cifre (10.000 combinazioni) e poi le ultime 4 (in realtà solo 3 cifre + 1 di checksum: appena 1.000 combinazioni!). Uno script automatico (come <em>Reaver</em>) provava le 11.000 combinazioni totali in appena 4-6 ore, rivelando la password WPA2 complessa di 30 caratteri del proprietario! WPA3 ha rimosso definitivamente questo protocollo bacato.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <hr>
+
+      <!-- ======================================
+           SLIDE 3 — CHECKPOINT AUTOVALUTAZIONE
+           ====================================== -->
+      <section class="slide reveal" id="ponte-aperto">
+        <h2>Dal Wi-Fi a un collegamento all’aperto</h2>
+        <p>Per collegare due edifici, conta anche quanto segnale si perde nei cavi che portano alle antenne.</p>
+        <p>Somma alla potenza trasmessa i guadagni delle due antenne. Sottrai la perdita del percorso e quelle dei cavi ai due capi. Il margine è la potenza ricevuta meno la sensibilità, cioè il minimo livello richiesto dal ricevitore.</p>
+        <p>Supponi 18 dBm in uscita, antenne da 10 dBi ciascuna, perdita di spazio libero di 105 dB e perdite nei due cavi di 2 e 1 dB. La soglia è −78 dBm.</p>
+        <details><summary>Calcola potenza e margine</summary><p>Potenza ricevuta: 18 + 10 + 10 − 105 − 2 − 1 = −70 dBm. Margine: −70 − (−78) = 8 dB. Se un ostacolo aggiunge 10 dB di perdita, il margine scende a −2 dB.</p></details>
+        <p>Prima di scegliere dove montare le antenne, controlla il profilo fra le due estremità. Un ostacolo vicino alla linea diretta può peggiorare il collegamento. Nello studio dei ponti radio riprenderemo questo controllo con la zona di Fresnel.</p>
+      </section>
+
+      <section class="slide reveal" id="slide-3" data-num="03">
+        <h2>3. Checkpoint di Autovalutazione</h2>
+        <p>
+          Metti alla prova le tue conoscenze di Link Budget e sicurezza crittografica:
+        </p>
+
+        <div class="quiz-wrap">
+          <div id="quizContainer" data-lesson-quiz>
+            <!-- Rendered by QuizEngine -->
+          </div>
+        </div>
+      </section>
+
+      <!-- COMPLETAMENTO & NAVIGAZIONE -->
+      <p class="sources">Riferimento per l’esperimento: <a href="https://www.itu.int/rec/R-REC-P.525/" target="_blank" rel="noopener noreferrer">Unione internazionale delle telecomunicazioni, settore radiocomunicazioni (ITU-R) · P.525, attenuazione in spazio libero</a>.</p>
+      <div class="mark-done-wrap reveal lesson-completion">
+        <button type="button" class="mark-done-btn" disabled>
+          Termina il quiz per completare la lezione
+        </button>
+      </div>
+
+    </div>
+  </main>
+</div>
+
+<template data-presentation data-presentation-title="Copertura e sicurezza delle reti">
+  <section class="presenter-slide lim-slide" tabindex="-1" inert>
+    <div class="lim-stage">
+      <div>
+        <h2>Il segnale deve arrivare sopra la soglia</h2>
+        <p>Il <strong>bilancio di collegamento</strong> stima quanta potenza arriva al ricevitore. Si parte dalla potenza trasmessa, si aggiungono i guadagni e si sottraggono le perdite.</p>
+        <p>Il ricevitore ha bisogno di un livello minimo per leggere i dati. Il <strong>margine</strong> indica quanto il segnale ricevuto sta sopra o sotto quella soglia.</p>
+        <p class="lim-terms">
+          <span><strong>dBm</strong> · Decibel riferiti a un milliwatt, unità per il livello di potenza.</span>
+          <span><strong>dB</strong> · Decibel, unità per una differenza o un rapporto di livelli.</span>
+        </p>
+      </div>
+      <div class="lim-visual">
+        <ul class="lim-diagram" role="list">
+          <li><strong>Potenza ricevuta.</strong> Potenza trasmessa + guadagni − perdite.</li>
+          <li><strong>Margine.</strong> Potenza ricevuta − soglia del ricevitore.</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+  <section class="presenter-slide lim-slide" tabindex="-1" inert>
+    <div class="lim-stage">
+      <div>
+        <h2>Esempio: un margine di 2 decibel</h2>
+        <p>Il punto di accesso trasmette a <strong>+20 dBm</strong>. Trascuriamo i guadagni delle antenne e ipotizziamo <strong>85 dB</strong> di perdite.</p>
+        <p>Con una soglia di progetto di <strong>−67 dBm</strong>, il risultato è sopra soglia di poco. Un ostacolo in più può consumare tutto il margine.</p>
+        <p class="lim-terms">
+          <span><strong>dBm</strong> · Decibel riferiti a un milliwatt, per i livelli di potenza.</span>
+          <span><strong>dB</strong> · Decibel, per perdite e margine.</span>
+        </p>
+      </div>
+      <div class="lim-visual">
+        <ul class="lim-diagram" role="list">
+          <li><strong>Potenza ricevuta.</strong> 20 − 85 = −65 dBm.</li>
+          <li><strong>Margine.</strong> −65 − (−67) = 2 dB.</li>
+          <li><strong>Sfida lampo · Altri 4 dB di perdita.</strong> Risposta: il margine scende a −2 dB, quindi il segnale finisce sotto la soglia scelta.</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+  <section class="presenter-slide lim-slide" tabindex="-1" inert>
+    <div class="lim-stage">
+      <div>
+        <h2>Un sopralluogo dice dove il segnale manca</h2>
+        <p>Il <strong>site survey</strong> è il sopralluogo radio. Misuri il segnale in diversi punti e riporti i valori sulla pianta, insieme alle zone di interferenza o copertura debole.</p>
+        <p>Per una chiamata via Internet conta anche il passaggio tra celle. Qui −67 dBm è un obiettivo di progetto d’esempio. La qualità dipende anche da rumore e continuità della copertura.</p>
+        <p class="lim-terms">
+          <span><strong>RSSI</strong> · Received Signal Strength Indicator, indicatore del livello del segnale ricevuto.</span>
+          <span><strong>dBm</strong> · Decibel riferiti a un milliwatt, unità dei valori di potenza nell’esempio.</span>
+        </p>
+      </div>
+      <div class="lim-visual">
+        <ul class="lim-diagram" role="list">
+          <li><strong>Aula · RSSI −58 dBm.</strong> Sopra l’obiettivo dell’esempio.</li>
+          <li><strong>Corridoio · RSSI −67 dBm.</strong> Proprio sull’obiettivo.</li>
+          <li><strong>Stanza in fondo · RSSI −75 dBm.</strong> Sotto l’obiettivo: zona da verificare sul posto.</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+  <section class="presenter-slide lim-slide lim-curiosity" tabindex="-1" inert>
+    <div class="lim-stage">
+      <div>
+        <p class="lim-curiosity-label">Curiosità</p>
+        <h2>La radio attraversa i confini dell’aula</h2>
+        <p>Il segnale può arrivare anche in corridoio o fuori dalla stanza. La <strong>cifratura</strong> protegge il contenuto rendendolo incomprensibile a chi non ha la chiave.</p>
+        <p><strong>Prima di rispondere:</strong> il nome di una protezione basta per fidarsi? Il nome WEP prometteva una riservatezza paragonabile a quella di una rete cablata. Nella pratica, valori iniziali troppo corti potevano ripetersi e indebolire il sistema.</p>
+        <p class="lim-terms">
+          <span><strong>WEP</strong> · Wired Equivalent Privacy, vecchio sistema di sicurezza Wi-Fi.</span>
+          <span><strong>IV</strong> · Initialization Vector, valore iniziale usato nella cifratura.</span>
+        </p>
+      </div>
+      <div class="lim-visual">
+        <ul class="lim-diagram" role="list">
+          <li><strong>Il dettaglio che conta.</strong> L’IV del WEP era di soli 24 bit.</li>
+          <li><strong>La conseguenza.</strong> Quando i valori si ripetevano, il traffico offriva meno protezione. WEP è obsoleto.</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+  <section class="presenter-slide lim-slide" tabindex="-1" inert>
+    <div class="lim-stage">
+      <div>
+        <h2>Dalla password alla protezione della rete</h2>
+        <p><strong>WPA2-Personal</strong> protegge il traffico radio. La robustezza della password conta: una password prevedibile può essere indovinata.</p>
+        <p><strong>WPA3-Personal</strong> usa un diverso scambio di autenticazione, chiamato <strong>SAE</strong>. Rende più difficile provare molte password senza interagire con la rete.</p>
+        <p class="lim-terms">
+          <span><strong>WPA</strong> · Wi-Fi Protected Access, famiglia di sistemi di sicurezza Wi-Fi. I numeri indicano la generazione.</span>
+          <span><strong>SAE</strong> · Simultaneous Authentication of Equals, lo scambio di autenticazione di WPA3-Personal.</span>
+        </p>
+      </div>
+      <div class="lim-visual">
+        <ul class="lim-diagram" role="list">
+          <li><strong>WPA2-Personal.</strong> Le password prevedibili indeboliscono la protezione.</li>
+          <li><strong>WPA3-Personal.</strong> SAE rende più resistenti ai tentativi fatti lontano dalla rete.</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+  <section class="presenter-slide lim-slide lim-curiosity" tabindex="-1" inert>
+    <div class="lim-stage">
+      <div>
+        <p class="lim-curiosity-label">Curiosità</p>
+        <h2>Il pulsante per collegare la stampante</h2>
+        <p><strong>Indovinello.</strong> Come si collegava una stampante al Wi-Fi senza scrivere tutta la password?</p>
+        <p>Il <strong>WPS</strong> è nato per facilitare il collegamento di dispositivi come le stampanti. Alcuni apparecchi offrivano, oltre al pulsante, un codice numerico.</p>
+        <p>In vecchie implementazioni il <strong>PIN</strong> veniva verificato in parti separate. Questo riduceva la sicurezza che ci si aspettava dalla sua lunghezza.</p>
+        <p class="lim-terms">
+          <span><strong>WPS</strong> · Wi-Fi Protected Setup, configurazione semplificata del collegamento Wi-Fi.</span>
+          <span><strong>PIN</strong> · Personal Identification Number, il codice numerico usato per configurare il collegamento.</span>
+        </p>
+      </div>
+      <div class="lim-visual">
+        <ul class="lim-diagram" role="list">
+          <li><strong>Pulsante.</strong> Si avvia l’abbinamento direttamente dal dispositivo.</li>
+          <li><strong>Vecchia modalità con PIN.</strong> La verifica in parti separate indeboliva la protezione del codice.</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+  <section class="presenter-slide lim-slide" tabindex="-1" inert>
+    <div class="lim-stage">
+      <div>
+        <h2>Dal Wi-Fi a un collegamento all’aperto</h2>
+        <p>Due antenne da 10 dBi, 18 dBm in uscita, 105 dB sul percorso. I cavi perdono 2 e 1 dB. La soglia è −78 dBm.</p><p>Quale margine resta? Che cosa accade con altri 10 dB di perdita?</p>
+      </div>
+      <div class="lim-visual"><details><summary>Verifica</summary><p>Arrivano −70 dBm. Il margine è 8 dB e scende a −2 dB se si aggiunge l’ostacolo.</p></details></div>
+    </div>
+  </section>
+
+  <section class="presenter-slide lim-slide lim-challenge" tabindex="-1" inert>
+    <div class="lim-stage">
+      <div>
+        <h2>Sfida alla classe</h2>
+        <p><strong>Dove proviamo la chiamata?</strong> Per una videochiamata la scuola vuole provare un obiettivo di segnale di −67 dBm. Misura −62 dBm nell’aula A e −74 dBm nell’aula B.</p>
+        <p class="lim-example"><strong>60 secondi a squadre.</strong> Calcolate il margine di entrambe le aule sottraendo la soglia al valore misurato. Dite dove partireste con la prova. Un punto per i margini, uno per la scelta motivata.</p>
+      </div>
+      <div class="lim-visual">
+        <button type="button" class="btn btn-primary lim-reveal" data-presentation-reveal aria-expanded="false" aria-controls="lim-soluzione-1-6">Mostra soluzione</button>
+        <div class="lim-solution" id="lim-soluzione-1-6" hidden>
+          <h3>Soluzione guidata</h3>
+          <ol><li>Aula A: −62 − (−67) = <strong>+5 dB</strong>. Il segnale è sopra la soglia.</li><li>Aula B: −74 − (−67) = <strong>−7 dB</strong>. Il segnale è sotto la soglia.</li><li>Partiamo dall’<strong>aula A</strong>. Poi proviamo la chiamata: il livello di segnale, da solo, non misura la qualità effettiva.</li></ol>
+        </div>
+      </div>
+    </div>
+  </section>
+  <section class="presenter-slide lim-slide lim-recap" tabindex="-1" inert>
+    <div class="lim-stage lim-stage-summary">
+      <h2>Da ricordare</h2>
+      <ul class="lim-summary" role="list">
+        <li><strong>Margine del segnale</strong>Sottrai la soglia di progetto al valore misurato. Un margine positivo indica che sei sopra la soglia.</li>
+        <li><strong>Copertura sul posto</strong>Misura nelle zone da servire e prova il servizio nelle condizioni d’uso.</li>
+        <li><strong>Sicurezza Wi-Fi</strong>Scegli WPA3 quando gli apparati lo supportano e usa una password robusta.</li>
+      </ul>
+    </div>
+  </section>
+</template>
+
+<script src="../../../../assets/js/app.js"></script>
+<script src="../../../../assets/js/annotazioni.js" defer></script>
+<script src="../../../../assets/js/modulo1.js"></script>
+<script>
+/* Calcolatore Link Budget */
+document.addEventListener('DOMContentLoaded', () => {
+const quizQuestions = [
+    {
+      question: "Per quale motivo la crittografia WEP è considerata totalmente insicura e vietata?",
+      answers: [
+        { text: "L'Initialization Vector (IV) di soli 24 bit si ripete velocemente, permettendo la derivazione matematica della chiave in pochi minuti", correct: true },
+        { text: "Perché usava algoritmi quantistici non approvati dall'Unione Europea", correct: false },
+        { text: "Perché la chiave doveva essere cambiata ogni 5 secondi a mano", correct: false },
+        { text: "Perché funziona solo con schede di rete a fibra ottica", correct: false }
+      ],
+      explain_correct: "Esatto! Lo spazio ristretto dell'IV a 24 bit e i difetti del cifrario RC4 rendono WEP triviale da forzare in 60 secondi con strumenti come aircrack-ng.",
+      explain_wrong: "Il WEP usa IV a 24 bit trasmessi in chiaro abbinati a RC4: la ripetizione dei vettori di inizializzazione consente a un attaccante di calcolare matematicamente la chiave statica."
+    },
+    {
+      question: "Quale importante miglioramento introduce WPA3 rispetto a WPA2 per gli utenti privati (Personal)?",
+      answers: [
+        { text: "L'eliminazione completa delle password", correct: false },
+        { text: "Il protocollo Dragonfly (SAE - Simultaneous Authentication of Equals), che impedisce attacchi offline a dizionario anche con password deboli", correct: true },
+        { text: "L'obbligo di mostrare la carta d'identità per connettersi", correct: false },
+        { text: "La riduzione della potenza dell'antenna", correct: false }
+      ],
+      explain_correct: "Corretto! Con WPA2 catturando l'handshake potevi provare milioni di password al secondo offline; con WPA3 Dragonfly ogni tentativo richiede un'interazione viva con il router!",
+      explain_wrong: "WPA3 adotta l'autenticazione Dragonfly (SAE): anche se la password è una parola semplice, un malintenzionato non può più catturare l'handshake e tentare miliardi di combinazioni offline."
+    },
+    {
+      question: "In un calcolo di Link Budget, se la potenza trasmessa è +20 dBm e l'attenuazione totale è 85 dB (antenne a 0 dBi), qual è la potenza ricevuta?",
+      answers: [
+        { text: "-65 dBm (+20 - 85)", correct: true },
+        { text: "+105 dBm (+20 + 85)", correct: false },
+        { text: "0 dBm", correct: false },
+        { text: "-105 dBm", correct: false }
+      ],
+      explain_correct: "Perfetto! P<sub>rx</sub> = P<sub>tx</sub> - Loss = +20 dBm - 85 dB = -65 dBm. Un ottimo valore di segnale!",
+      explain_wrong: "I calcoli in decibel si risolvono con semplici somme e sottrazioni: +20 dBm - 85 dB = -65 dBm."
+    },
+    {
+      question: "Quale livello di segnale RSSI è considerato la soglia standard per garantire chiamate via rete IP (VoIP, Voice over Internet Protocol) e roaming senza interruzioni?",
+      answers: [
+        { text: "-30 dBm", correct: false },
+        { text: "Circa -67 dBm", correct: true },
+        { text: "-95 dBm", correct: false },
+        { text: "0 dBm", correct: false }
+      ],
+      explain_correct: "Bravissimo! Negli standard di progettazione Wi-Fi aziendali e scolastici (Cisco, Aruba), -67 dBm è la soglia minima richiesta al bordo della cella per roaming e voce.",
+      explain_wrong: "Lo standard industriale per un buon roaming (VoIP, streaming continuo) impone una copertura con potenza di ricezione non inferiore a -67 dBm."
+    },
+    {
+      question: "Perché l'uso del PIN WPS a 8 cifre è stato una grave falla di sicurezza?",
+      answers: [
+        { text: "Perché il PIN veniva verificato spezzato in due metà (4 + 4 cifre), riducendo le combinazioni da 100 milioni a sole 11.000 forzabili in poche ore", correct: true },
+        { text: "Perché il PIN doveva essere scritto con un pennarello sul muro", correct: false },
+        { text: "Perché funzionava solo con numeri pari", correct: false },
+        { text: "Perché causava il cortocircuito del trasformatore del router", correct: false }
+      ],
+      explain_correct: "Grandioso! Un madornale errore di progettazione: verificando prima le prime 4 cifre e poi le ultime 4, un attacco a forza bruta impiegava pochissime ore!",
+      explain_wrong: "Il WPS divideva il PIN in due tronconi: l'attaccante scopriva prima se la prima metà era esatta (10.000 tentativi) e poi la seconda (1.000 tentativi), polverizzando la sicurezza."
+    }
+  ];
+
+  QuizEngine.init('quizContainer', quizQuestions);
+});
+</script>
+</body>
+</html>

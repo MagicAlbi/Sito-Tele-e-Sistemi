@@ -131,8 +131,45 @@
 
   const speedLesson = 'lezione-1-2.html#slide-2';
   const radioLesson = 'lezione-1-6.html#slide-1';
+
+  function outdoorLink(title, space, obstacle, threshold) {
+    const cable = 3;
+    const received = 18 + 10 + 10 - space - cable;
+    const margin = received - obstacle - threshold;
+    return {
+      title,
+      context: 'Due edifici sono collegati via radio. Per prima cosa valuta il percorso senza ostacoli. Poi considera la perdita aggiuntiva indicata.',
+      task: 'Calcola la potenza ricevuta senza ostacoli e il margine dopo la perdita aggiuntiva.',
+      facts: [
+        ['Potenza trasmessa', '18 dBm'], ['Guadagni delle antenne', '10 dBi per antenna'],
+        ['Perdita dei cavi', '2 dB in trasmissione e 1 dB in ricezione'],
+        ['Perdita in spazio libero', `${space} dB`], ['Perdita aggiuntiva', `${obstacle} dB`],
+        ['Soglia', `${fixed(threshold, 0)} dBm`]
+      ],
+      answers: [
+        { label: 'Potenza ricevuta senza ostacoli', unit: 'dBm', value: received, decimals: 0, signed: true,
+          errors: [{ value: received + cable, hint: 'Sottrai anche le perdite dei due cavi.' }] },
+        { label: 'Margine dopo la perdita aggiuntiva', unit: 'dB', value: margin, decimals: 0, signed: true,
+          errors: [{ value: received - threshold, hint: 'Sottrai la perdita aggiuntiva prima di confrontare con la soglia.' }] }
+      ],
+      steps: [
+        { title: 'Calcola la potenza ricevuta', text: 'Somma i guadagni e sottrai la perdita in spazio libero e nei cavi.',
+          equations: [`18 + 10 + 10 − ${space} − 2 − 1 = ${fixed(received, 0)} dBm`] },
+        { title: 'Verifica il margine con l’ostacolo', text: 'Sottrai la perdita aggiuntiva, poi la soglia.',
+          equations: [`${fixed(received, 0)} − ${obstacle} − (${fixed(threshold, 0)}) = ${fixed(margin, 0)} dB`] }
+      ],
+      conclusion: margin < 0 ? 'Il segnale stimato scende sotto soglia.' : 'Il segnale stimato resta sopra soglia.'
+    };
+  }
+
   window.numericalExercises = {
     reference: [
+      {
+        title: 'Collegamento radio all’aperto', tone: 'link', lesson: 'lezione-1-6.html#ponte-aperto', lessonLabel: 'Lezione 1.6',
+        equations: ['Pᵣₓ = Pₜₓ + Gₜₓ + Gᵣₓ − Lₛ − L꜀ − Lₒ', marginLaw],
+        symbols: 'L꜀ è la somma delle perdite nei cavi. Lₒ è la perdita aggiuntiva dovuta a ostacoli.',
+        use: 'Sottrai entrambe le perdite prima di confrontare la potenza ricevuta con la soglia.'
+      },
       {
         title: 'Velocità utile', tone: 'speed', lesson: speedLesson, lessonLabel: 'Lezione 1.2',
         equations: [speedLaw],
@@ -159,6 +196,13 @@
       }
     ],
     types: [
+      {
+        title: 'Collegamento radio all’aperto · cavi e ostacoli', tone: 'link',
+        exercises: [
+          outdoorLink('Depositi oltre il piazzale', 105, 10, -78),
+          outdoorLink('Due laboratori in cortile', 108, 5, -82)
+        ]
+      },
       {
         title: 'Velocità utile e tempo di trasferimento', tone: 'speed',
         exercises: [
