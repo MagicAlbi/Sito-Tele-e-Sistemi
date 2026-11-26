@@ -7,21 +7,9 @@
 - Su una copia di una lezione, salvare sottolineature, evidenziazioni e note di prova. Cambiare la lunghezza di una frase prima di un passaggio annotato, poi ripetere la prova con una frase dopo. Riaprire la pagina e verificare che tutte le annotazioni siano ancora visibili sul testo giusto e che le note conservino il loro contenuto.
 - Modificare direttamente un passaggio annotato. È accettabile che vada persa l’annotazione di quel passaggio. Quelle sul resto della pagina devono restare visibili e associate al testo giusto.
 
-## Risposte a comparsa nelle presentazioni dei moduli 1 e 2
-
-**Approvato e trasferito nei file del sito · 25 novembre 2026.** Risposte al clic, sfide per tutta la classe senza timer, squadre o punti e spiegazione del MAC privato nella lezione 1.1. Resta il caricamento. [Scheda di lavoro](domande-presentazioni-1-2/LAVORO.md).
-
 ## Preparazione alla seconda prova di Telecomunicazioni
 
 **Mappa preparata · 25 novembre 2026.** Le parti obbligatorie delle tre prove del 2025 guidano gli approfondimenti. La nota sulle competenze di Sistemi e Reti e TPSIT è in bozza per la revisione del docente. [Apri la scheda di lavoro](preparazione-esame-2025/LAVORO.md).
-
-## Presentazioni alla classe del Modulo 1
-
-**Approvate in locale · 25 novembre 2026.** Le sei lezioni hanno curiosità con grafica dedicata e una sfida con soluzione guidata. La regola per le prossime presentazioni è nelle istruzioni del progetto. [Anteprima locale](modulo1-presentazioni/anteprima.html).
-
-## Presentazioni alla classe del Modulo 2
-
-**Pronto per la pubblicazione · 25 novembre 2026.** Dopo il via del docente, le cinque presentazioni per la LIM e i pulsanti della home sono stati trasferiti e verificati nei file del sito. Il caricamento spetta al docente. [Apri la scheda di lavoro](modulo2-presentazioni/LAVORO.md).
 
 ## Profili degli alunni e sito per tre materie
 
@@ -29,7 +17,7 @@
 
 ## Verifiche di fine modulo
 
-**In progettazione · 25 novembre 2026.** Prima verifica sul Wi-Fi con 20 domande chiuse, due aperte e due esercizi. Raccolte le richieste su accesso, autorizzazioni, salvataggio, timer e correzione. [Scheda di lavoro](verifiche-fine-modulo/LAVORO.md) · [Fase 13 del piano](../piani/telecomunicazioni-5a/fasi/13/FASE.md).
+**In progettazione · aggiornato il 26 novembre 2026.** Prima verifica sul Wi-Fi con 20 domande chiuse, due aperte sorteggiate per alunno tra la 2, la 5, la 6 e la 7 della banca e due esercizi. Pronto il PDF per il docente con risposte e criteri. Il punto di ripresa per l’implementazione è nella scheda di lavoro. [Scheda di lavoro](verifiche-fine-modulo/LAVORO.md) · [Fase 13 del piano](../piani/telecomunicazioni-5a/fasi/13/FASE.md).
 
 ## Riassunto personale da note ed evidenziazioni
 

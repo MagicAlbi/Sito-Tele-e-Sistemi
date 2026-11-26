@@ -1,6 +1,6 @@
 # Passaggio di consegne
 
-Il [piano](piani/telecomunicazioni-5a/PIANO.md#priorità) indica stato e prossimo passo. Per una bozza da riprendere, apri il suo `LAVORO.md` in `in-corso/`.
+Il [piano](piani/telecomunicazioni-5a/PIANO.md#priorità) indica stato e prossimo passo. Per una bozza da riprendere, apri il suo `LAVORO.md` in `in-corso/`. Per le prossime presentazioni alla classe, segui la struttura dei Moduli 1 e 2 indicata nei [criteri comuni](piani/telecomunicazioni-5a/fasi/12/FASE.md#criteri-comuni).
 
 - **Preparazione alla seconda prova** Gli approfondimenti approvati dei Moduli 1 e 2 sono verificati nei file locali e pronti per il salvataggio da parte del docente. La [scheda di lavoro](in-corso/preparazione-esame-2025/LAVORO.md) rimanda agli approfondimenti previsti nei moduli successivi e alla nota per gli studenti, ancora in bozza.
 

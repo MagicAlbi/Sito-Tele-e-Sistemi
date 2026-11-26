@@ -1,12 +1,12 @@
 # Domande aperte ed esercizi · Modulo 1 Wi-Fi
 
-Bozza per scegliere due domande aperte comuni a tutti e provare il formato degli esercizi. Le indicazioni di correzione sono per il docente.
+Banca di dieci domande aperte ed esempi di esercizi. Le indicazioni di correzione sono per il docente.
 
 ## Dieci domande aperte tra cui scegliere
 
 ### 1. Dal cavo al Wi-Fi
 
-Un portatile passa dal cavo al Wi-Fi e continua a comunicare con lo stesso server. Spiega quali livelli sono coinvolti dal cambio, che cosa cambia nei primi due livelli e che ruolo ha il punto di accesso nel collegamento alla rete cablata.
+Un portatile passa dal cavo al Wi-Fi e continua a comunicare con lo stesso server. Indica quali livelli del modello ISO/OSI sono coinvolti nel passaggio e spiega che cosa cambia a ciascuno di questi livelli. Spiega anche quale ruolo ha il punto di accesso nel collegamento alla rete cablata.
 
 **Per la correzione.** Mezzo radio e segnale, frame e accesso al mezzo, collegamento con Ethernet, distinzione dai livelli superiori. [Lezione 1.1](../../modulo1/lezione-1-1.html#slide-1)
 
@@ -64,7 +64,7 @@ Il Wi-Fi scolastico si riceve anche dal cortile. Spiega come interverresti sulla
 
 **Per la correzione.** Sopralluogo e posizione dei punti di accesso, autenticazione e cifratura, superamento di WEP, scelta e compatibilità della protezione. [Lezione 1.6](../../modulo1/lezione-1-6.html#slide-2)
 
-**Preferite da rileggere.** Il docente è orientato alle domande 6 e 7. Insieme trattano accesso al mezzo e trasmissione, lasciando il bilancio alla parte numerica. Conservare tutte e dieci le domande per poterle riprendere.
+**Sorteggio per la verifica Wi-Fi.** Al primo avvio ogni alunno riceve due domande distinte estratte a caso tra la 2, la 5, la 6 e la 7. Alla ripresa ritrova la stessa coppia nello stesso ordine. Tutte e dieci le domande sono valide e restano disponibili per usi futuri.
 
 ## Esercizi con caselle per i risultati
 
