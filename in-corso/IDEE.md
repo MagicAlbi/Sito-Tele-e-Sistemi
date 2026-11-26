@@ -23,6 +23,11 @@
 
 **Archivio verifiche · 26 novembre 2026.** Scegliere anno scolastico, classe e modulo. Proporre l’anno in corso e permettere la consultazione degli anni precedenti. Consultazione e stampa non cambiano lo stato della verifica. Apertura e recuperi agiscono solo sulla verifica selezionata. Il docente ha scelto lo stesso formato della verifica Wi-Fi per il Modulo 2, da preparare a partire dalla simulazione WAN. [Anteprima navigabile con dati fittizi](verifiche-fine-modulo/anteprima-archivio.html).
 
+**Da concludere · 26 novembre 2026.**
+
+- **Voto finale.** Nella scheda di correzione aggiungere una casella con la sola etichetta «Voto finale». Il docente inserisce a mano il voto in decimi, senza conversione automatica del punteggio.
+- **Risultati numerici dei Moduli 1 e 2.** Nella banca degli esercizi prevedere, per ciascun risultato, un intervallo di valori accettati quando basta un’approssimazione. Richiedere il valore esatto solo quando serve.
+
 ## Riassunto personale da note ed evidenziazioni
 
 **Da discutere · 24 novembre 2026.** Valutare come aiutare ogni studente a ricavare un riassunto per ripassare, partendo dalle note che ha scritto e dai passaggi che ha evidenziato nelle lezioni.
