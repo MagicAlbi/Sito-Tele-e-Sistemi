@@ -9,7 +9,15 @@ const salvataggio = document.querySelector('#salvataggio');
 const riprendi = document.querySelector('#riprendi');
 const consegna = document.querySelector('#consegna');
 const timer = document.querySelector('#tempo');
-let codice = '';
+const identita = document.querySelector('#identita');
+const inizia = document.querySelector('#inizia');
+const verificaDisponibile = document.querySelector('#verifica-disponibile');
+const cambia = document.querySelector('#cambia');
+const copiaProva = document.querySelector('#copia-prova');
+const avviso = document.querySelector('#avviso-consegna');
+const formatoData = new Intl.DateTimeFormat('it-IT', { timeZone: 'Europe/Rome' });
+let idAlunno = '';
+let idEdizione = '';
 let prova;
 let scadenza;
 let sospesa = false;
@@ -18,6 +26,7 @@ let aperturaInCorso = false;
 let sincronizzaAncora = false;
 let consegnaRichiesta = false;
 let attesaSalvataggio;
+let notificaCopiaInCorso = false;
 
 function testo(valore) {
   return String(valore).replace(/[&<>"]/g, carattere =>
@@ -25,10 +34,16 @@ function testo(valore) {
 }
 
 function copiaLocale(dati) {
-  const chiave = 'verifica-wifi-demo:' + codice;
+  const chiave = 'verifica-wifi-demo:' + idAlunno + ':' + idEdizione;
   try {
-    if (dati === undefined) return JSON.parse(localStorage.getItem(chiave));
-    if (dati === null) localStorage.removeItem(chiave);
+    const precedente = 'verifica-wifi-demo:' + idAlunno;
+    const vecchiaEdizione = idEdizione.includes(':');
+    if (dati === undefined) return JSON.parse(localStorage.getItem(chiave) ??
+      (vecchiaEdizione ? localStorage.getItem(precedente) : null));
+    if (dati === null) {
+      localStorage.removeItem(chiave);
+      if (vecchiaEdizione) localStorage.removeItem(precedente);
+    }
     else localStorage.setItem(chiave, JSON.stringify(dati));
     return true;
   } catch {
@@ -41,7 +56,9 @@ function tempoResiduo() {
 }
 
 function bozzaLocale() {
-  return copiaLocale({ revisione: prova.revisione, risposte: prova.risposte, residuo: tempoResiduo() });
+  return copiaLocale({
+    revisione: prova.revisione, risposte: prova.risposte, residuo: tempoResiduo(), consegnaRichiesta
+  });
 }
 
 function mostraTempo() {
@@ -58,9 +75,49 @@ async function api(percorso, dati) {
     method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(dati)
   });
   const risposta = await fetch('/api/' + percorso, opzioni);
-  const risultato = await risposta.json();
-  if (!risposta.ok) throw Object.assign(new Error(risultato.errore), { status: risposta.status });
+  const risultato = await risposta.json().catch(() => ({}));
+  if (!risposta.ok) {
+    throw Object.assign(new Error(risultato.errore || 'Il servizio ha restituito un errore (' + risposta.status + ').'),
+      { status: risposta.status });
+  }
   return risultato;
+}
+
+function chiaveNotificaCopia(edizione = '') {
+  return 'verifica-wifi-copia:' + idAlunno + ':' + edizione;
+}
+
+async function notificaCopia() {
+  if (!idAlunno || notificaCopiaInCorso) return;
+  notificaCopiaInCorso = true;
+  try {
+    const prefisso = chiaveNotificaCopia();
+    const notifiche = Object.keys(localStorage).filter(chiave => chiave.startsWith(prefisso));
+    for (const chiave of notifiche) {
+      await api('copia', { id: chiave.slice(prefisso.length), recupero: localStorage.getItem(chiave) });
+      localStorage.removeItem(chiave);
+    }
+  } catch {
+    // Lascia l'avviso in attesa finché il servizio torna raggiungibile.
+  } finally {
+    notificaCopiaInCorso = false;
+  }
+}
+
+function motivo(errore) {
+  if (errore.status) return errore.message;
+  if (errore.name === 'TimeoutError') return 'Il servizio non ha risposto in tempo.';
+  return navigator.onLine ? 'Il servizio non è raggiungibile.' : 'Connessione di rete assente.';
+}
+
+function mostraAvvisoConsegna(messaggio) {
+  avviso.textContent = messaggio;
+  avviso.hidden = !messaggio;
+}
+
+function avvisoConsegna(messaggio) {
+  mostraAvvisoConsegna('Consegna non confermata. ' + messaggio +
+    ' Puoi riprovare da qui o salvare la copia cifrata da consegnare al docente.');
 }
 
 function sospendi(messaggio) {
@@ -68,22 +125,35 @@ function sospendi(messaggio) {
   prova.residuo = tempoResiduo();
   sospesa = true;
   compilazione.disabled = true;
-  consegna.disabled = true;
+  consegna.disabled = consegnaRichiesta;
   riprendi.hidden = false;
+  riprendi.textContent = consegnaRichiesta ? 'Riprova a consegnare' : 'Riprendi prova';
   salvataggio.textContent = bozzaLocale() ? 'Da sincronizzare' : 'Salvataggio locale non disponibile';
   stato.textContent = messaggio;
   mostraTempo();
 }
 
+function mostraRecupero(messaggio) {
+  copiaProva.hidden = false;
+  riprendi.hidden = false;
+  riprendi.textContent = 'Riprova a consegnare';
+  consegna.disabled = true;
+  avvisoConsegna(messaggio);
+}
+
 function mostraConsegnata() {
   sospesa = true;
   compilazione.disabled = true;
+  compilazione.replaceChildren();
   consegna.disabled = true;
+  consegna.hidden = true;
+  timer.hidden = true;
   riprendi.hidden = true;
   copiaLocale(null);
+  mostraAvvisoConsegna('');
+  copiaProva.hidden = true;
   salvataggio.textContent = 'Consegnata';
   stato.textContent = 'Verifica consegnata. Le risposte sono state salvate.';
-  mostraTempo();
 }
 
 function disegnaProva() {
@@ -131,35 +201,45 @@ async function apri() {
   riprendi.disabled = true;
   stato.textContent = 'Apertura della prova…';
   try {
-    const ricevuta = await api('avvia', { codice });
+    const ricevuta = await api('avvia', { id: idEdizione });
     const copia = copiaLocale();
+    if (prova && !ricevuta.consegnata && copia?.consegnaRichiesta && copia.revisione !== ricevuta.revisione) {
+      mostraAvvisoConsegna('Consegna non confermata. Nell’archivio c’è una versione più recente. Scarica questa copia cifrata e avvisa il docente.');
+      return;
+    }
     let daSalvare = false;
     if (!ricevuta.consegnata && copia && copia.revisione === ricevuta.revisione) {
       ricevuta.risposte = copia.risposte;
       ricevuta.residuo = Math.min(ricevuta.residuo, copia.residuo);
+      consegnaRichiesta ||= Boolean(copia.consegnaRichiesta);
       daSalvare = true;
     }
     prova = ricevuta;
-    try { sessionStorage.setItem('verifica-wifi-demo', codice); } catch {}
+    identita.hidden = true;
     accesso.hidden = true;
+    const { nome, cognome, classe, data } = prova.anagrafica;
+    document.querySelector('#dati-prova').textContent = [nome + ' ' + cognome, classe, formatoData.format(new Date(data))].join(' · ');
     form.hidden = false;
     document.querySelector('#barra').hidden = false;
-    disegnaProva();
     if (prova.consegnata) {
       mostraConsegnata();
       return;
     }
+    disegnaProva();
     sospesa = false;
     scadenza = performance.now() + prova.residuo;
     compilazione.disabled = false;
     consegna.disabled = false;
+    consegna.hidden = false;
+    timer.hidden = false;
     riprendi.hidden = true;
     stato.textContent = '';
     salvataggio.textContent = daSalvare ? 'Da sincronizzare' : 'Salvato';
     mostraTempo();
     if (daSalvare || consegnaRichiesta) void salva();
   } catch (errore) {
-    stato.textContent = errore.status ? errore.message : 'Connessione di rete assente. Avvisa il docente.';
+    if (consegnaRichiesta) avvisoConsegna(motivo(errore));
+    else stato.textContent = motivo(errore) + ' Avvisa il docente.';
   } finally {
     aperturaInCorso = false;
     riprendi.disabled = false;
@@ -180,10 +260,11 @@ async function salva() {
   if (finalizza) {
     compilazione.disabled = true;
     consegna.disabled = true;
+    bozzaLocale();
   }
   try {
     const ricevuta = await api(finalizza ? 'consegna' : 'salva', {
-      codice, residuo, revisione: prova.revisione, risposte: prova.risposte
+      id: idEdizione, residuo, revisione: prova.revisione, risposte: prova.risposte
     });
     prova.revisione = ricevuta.revisione;
     prova.consegnata = ricevuta.consegnata;
@@ -198,18 +279,110 @@ async function salva() {
       salvataggio.textContent = 'Salvato';
     }
   } catch (errore) {
-    sospendi(errore.status ? errore.message : 'Connessione di rete assente. Avvisa il docente.');
+    if (finalizza) {
+      consegnaRichiesta = true;
+      sospendi('');
+      mostraRecupero(motivo(errore));
+    } else {
+      sospendi(motivo(errore) + ' Avvisa il docente.');
+    }
   } finally {
     salvataggioInCorso = false;
     if (sincronizzaAncora) void salva();
   }
 }
 
-accesso.addEventListener('submit', evento => {
+function mostraAccesso(alunno) {
+  idAlunno = alunno.id ?? '';
+  const edizioni = alunno.edizioni ?? [];
+  let precedente;
+  try { precedente = sessionStorage.getItem('edizione-verifica:' + idAlunno); } catch {}
+  verificaDisponibile.replaceChildren(...edizioni.map(voce => new Option(
+    'Wi-Fi · ' + (voce.creata.includes('T') ? new Date(voce.creata).toLocaleString('it-IT', { timeZone: 'Europe/Rome' }) :
+      formatoData.format(new Date(voce.creata))) + (voce.consegnata ? ' · Ricevuta' : ''), voce.id
+  )));
+  if (edizioni.some(voce => voce.id === precedente)) verificaDisponibile.value = precedente;
+  idEdizione = verificaDisponibile.value;
+  inizia.textContent = idEdizione ? 'Avvia o riprendi verifica' : 'Aggiorna verifiche disponibili';
+  accesso.hidden = Boolean(idAlunno);
+  identita.hidden = !idAlunno;
+  document.querySelector('#alunno').textContent = idAlunno ? 'Accesso effettuato come ' + alunno.nome + '.' : '';
+  void notificaCopia();
+}
+
+accesso.addEventListener('submit', async evento => {
   evento.preventDefault();
-  if (aperturaInCorso) return;
-  codice = inputCodice.value.trim().toUpperCase();
-  void apri();
+  const pulsante = accesso.querySelector('button');
+  pulsante.disabled = true;
+  try {
+    mostraAccesso(await api('accesso', { codice: inputCodice.value.trim().toUpperCase() }));
+    stato.textContent = '';
+  } catch (errore) {
+    stato.textContent = errore.message;
+  } finally {
+    pulsante.disabled = false;
+  }
+});
+cambia.addEventListener('click', () => {
+  mostraAccesso({});
+  inputCodice.value = '';
+  stato.textContent = '';
+  inputCodice.focus();
+});
+inizia.addEventListener('click', async () => {
+  idEdizione = verificaDisponibile.value;
+  if (idEdizione) {
+    try { sessionStorage.setItem('edizione-verifica:' + idAlunno, idEdizione); } catch {}
+    void apri();
+  } else {
+    try {
+      mostraAccesso(await api('sessione'));
+      if (!idEdizione) stato.textContent = 'Al momento non hai verifiche disponibili.';
+    } catch (errore) {
+      stato.textContent = motivo(errore);
+    }
+  }
+});
+const base64 = dati => btoa(String.fromCharCode(...new Uint8Array(dati)));
+
+async function preparaCopia(prova) {
+  const pubblica = Uint8Array.from(atob(prova.chiaveCopia), carattere => carattere.charCodeAt(0));
+  const chiaveArchivio = await crypto.subtle.importKey(
+    'spki', pubblica, { name: 'RSA-OAEP', hash: 'SHA-256' }, false, ['wrapKey']
+  );
+  const chiave = await crypto.subtle.generateKey({ name: 'AES-GCM', length: 256 }, true, ['encrypt']);
+  const iv = crypto.getRandomValues(new Uint8Array(12));
+  const contenuto = new TextEncoder().encode(JSON.stringify({ recupero: prova.recupero, risposte: prova.risposte }));
+  const [dati, chiaveProtetta] = await Promise.all([
+    crypto.subtle.encrypt({ name: 'AES-GCM', iv }, chiave, contenuto),
+    crypto.subtle.wrapKey('raw', chiave, chiaveArchivio, 'RSA-OAEP')
+  ]);
+  return JSON.stringify({ versione: 1, iv: base64(iv), chiave: base64(chiaveProtetta), dati: base64(dati) });
+}
+
+copiaProva.addEventListener('click', async () => {
+  if (!prova || prova.consegnata || !consegnaRichiesta || copiaProva.hidden) return;
+  copiaProva.disabled = true;
+  try {
+    const copia = await preparaCopia(prova);
+    if (prova.consegnata || copiaProva.hidden) return;
+    const url = URL.createObjectURL(new Blob([copia], { type: 'application/octet-stream' }));
+    const link = document.createElement('a');
+    link.href = url;
+    link.download = 'Verifica-copia-di-emergenza.verifica';
+    link.click();
+    setTimeout(() => URL.revokeObjectURL(url), 1000);
+    try {
+      localStorage.setItem(chiaveNotificaCopia(idEdizione), prova.recupero);
+      void notificaCopia();
+    } catch {
+      void api('copia', { id: idEdizione, recupero: prova.recupero }).catch(() => {});
+    }
+  } catch {
+    mostraAvvisoConsegna('Impossibile preparare la copia cifrata. Lascia aperta la pagina e avvisa il docente.');
+  } finally {
+    copiaProva.disabled = false;
+  }
 });
 riprendi.addEventListener('click', () => void apri());
 form.addEventListener('input', evento => {
@@ -223,13 +396,19 @@ form.addEventListener('input', evento => {
 });
 form.addEventListener('submit', evento => {
   evento.preventDefault();
-  if (!prova || sospesa || prova.consegnata || !confirm('Vuoi consegnare la verifica?')) return;
+  if (!prova || consegnaRichiesta || prova.consegnata || !confirm('Vuoi consegnare la verifica?')) return;
   consegnaRichiesta = true;
   compilazione.disabled = true;
   consegna.disabled = true;
-  void salva();
+  if (sospesa) {
+    bozzaLocale();
+    mostraRecupero(navigator.onLine ? 'Il servizio non è raggiungibile.' : 'Connessione di rete assente.');
+  } else {
+    void salva();
+  }
 });
 window.addEventListener('offline', () => sospendi('Connessione di rete assente. Avvisa il docente.'));
+window.addEventListener('online', () => void notificaCopia());
 setInterval(() => {
   if (!prova || sospesa || prova.consegnata) return;
   mostraTempo();
@@ -239,14 +418,12 @@ setInterval(() => {
   }
 }, 250);
 setInterval(salva, 30000);
+setInterval(notificaCopia, 5000);
 setInterval(async () => {
   if (!prova || sospesa || prova.consegnata || salvataggioInCorso) return;
   try { await api('salute'); } catch { sospendi('Connessione di rete assente. Avvisa il docente.'); }
 }, 5000);
-try {
-  codice = sessionStorage.getItem('verifica-wifi-demo') ?? '';
-  if (codice) {
-    inputCodice.value = codice;
-    void apri();
-  }
-} catch {}
+api('sessione').then(async alunno => {
+  mostraAccesso(alunno);
+  if (idEdizione && copiaLocale()) await apri();
+}).catch(() => { stato.textContent = 'Connessione di rete assente. Avvisa il docente.'; });

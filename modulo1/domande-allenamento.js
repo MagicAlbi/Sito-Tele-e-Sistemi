@@ -1706,6 +1706,271 @@ const domandeAllenamento = [
       { text: "Il margine resta a 8 dB.", explanation: "Sottrai la perdita aggiuntiva." },
       { text: "Il margine sale a 18 dB.", explanation: "Una perdita riduce il margine." }
     ]
+  },
+  // Quattro domande aggiuntive per ciascuna lezione
+  {
+    id: "n01",
+    prompt: "La scuola sostituisce un tratto Ethernet con un collegamento Wi-Fi. Che cosa cambia a livello fisico?",
+    source: { href: "lezione-1-1.html#slide-1", label: "Ripassa · Il livello fisico" },
+    options: [
+      { text: "Il mezzo trasmissivo e il modo in cui si rappresenta il segnale", correct: true, explanation: "Il livello fisico riguarda il segnale e il mezzo, in questo caso le onde radio." },
+      { text: "Il formato dell’indirizzo IP della postazione", explanation: "Gli indirizzi IP appartengono al livello di rete." },
+      { text: "Il modo in cui il router sceglie la rete di destinazione", explanation: "La scelta della destinazione riguarda il livello di rete." },
+      { text: "Il protocollo usato per richiedere una pagina web", explanation: "Le richieste web appartengono al livello applicativo." }
+    ]
+  },
+  {
+    id: "n02",
+    prompt: "Due access point indipendenti di edifici diversi mostrano entrambi «Ospiti». Basta quell’indizio per concludere che fanno parte della stessa rete ESS?",
+    source: { href: "lezione-1-1.html#slide-2", label: "Ripassa · BSS ed ESS" },
+    options: [
+      { text: "Sì, se sono entrambi sulla stessa banda", explanation: "Reti indipendenti possono usare la stessa banda." },
+      { text: "Sì, se hanno la stessa potenza", explanation: "La potenza non indica a quale rete appartiene una cella." },
+      { text: "No, il nome da solo non dice se le celle appartengono alla stessa rete", correct: true, explanation: "Lo stesso SSID può essere usato da reti indipendenti." },
+      { text: "No, perché in una ESS ogni cella deve avere un nome di rete diverso", explanation: "Le celle di un ESS possono condividere il nome di rete." }
+    ]
+  },
+  {
+    id: "n03",
+    prompt: "Il Wi-Fi «Laboratorio» compare nell’elenco di due dispositivi. L’access point risulta associato soltanto al primo. Che cosa può dire il tecnico riguardo al secondo?",
+    source: { href: "lezione-1-1.html#slide-3", label: "Ripassa · La scoperta e l’associazione" },
+    options: [
+      { text: "Ha già ottenuto un indirizzo IP attraverso quella cella", explanation: "Vedere la rete non dimostra che il dispositivo abbia ricevuto un indirizzo IP." },
+      { text: "Ha concluso l’associazione perché vede il nome", explanation: "L’associazione richiede uno scambio ulteriore con il punto di accesso." },
+      { text: "È associato a quella cella se vede lo stesso SSID del primo", explanation: "Lo stesso nome può essere rilevato anche da un dispositivo non associato." },
+      { text: "Ha rilevato la rete, mentre la rilevazione da sola non dimostra l’associazione", correct: true, explanation: "Ricevere gli annunci della rete e risultare associati sono passaggi distinti." }
+    ]
+  },
+  {
+    id: "n04",
+    prompt: "Un gruppo vuole fornire ai terminali Wi-Fi accesso a un server collegato via cavo alla rete del laboratorio. Quale elemento serve nello schema in modalità infrastruttura?",
+    source: { href: "lezione-1-1.html#slide-2", label: "Ripassa · Le topologie WLAN" },
+    options: [
+      { text: "Un’altra scheda Wi-Fi sul server, al posto della scheda Ethernet", explanation: "Il server può continuare a usare Ethernet." },
+      { text: "Un access point collegato alla rete cablata", correct: true, explanation: "L’access point collega la cella Wi-Fi alla rete cablata." },
+      { text: "Un indirizzo IP uguale per tutti i terminali", explanation: "Assegnare lo stesso indirizzo IP ai terminali creerebbe un conflitto." },
+      { text: "Un terminale che trasmetta periodicamente il nome del gruppo", explanation: "Annunciare il nome non collega la WLAN alla rete cablata." }
+    ]
+  },
+  {
+    id: "n05",
+    prompt: "Quale confronto è più adatto per capire se il collo di bottiglia è il Wi-Fi di un’aula oppure la connessione Internet della scuola?",
+    source: { href: "lezione-1-2.html#slide-2", label: "Ripassa · Velocità teorica e reale" },
+    options: [
+      { text: "Due speed test via Wi-Fi verso siti diversi", explanation: "Entrambe le misure attraversano Internet e includono la tratta esterna." },
+      { text: "Due trasferimenti da telefono in aule diverse", explanation: "Cambiando aula cambia anche il collegamento radio." },
+      { text: "Un trasferimento verso un server locale e uno verso Internet, dalla stessa postazione", correct: true, explanation: "La prova locale evita la tratta Internet, così si può confrontare l’effetto della tratta esterna." },
+      { text: "Una lettura della velocità nominale e del numero di dispositivi registrati", explanation: "I valori nominali non misurano il rendimento effettivo delle due tratte." }
+    ]
+  },
+  {
+    id: "n06",
+    prompt: "Quale situazione rende particolarmente utile suddividere il canale tra utenti nello stesso intervallo, come fa OFDMA?",
+    source: { href: "lezione-1-2.html#slide-3", label: "Ripassa · OFDMA" },
+    options: [
+      { text: "Un solo computer invia un archivio e tutti gli altri sono inattivi", explanation: "Con un solo terminale attivo non serve ripartire il canale fra utenti." },
+      { text: "Molti terminali inviano piccoli messaggi nello stesso periodo", correct: true, explanation: "Assegnare gruppi di sottoportanti a utenti diversi è utile con più piccoli flussi contemporanei." },
+      { text: "Due terminali cablati scaricano lo stesso video", explanation: "Il traffico interamente cablato non usa il canale Wi-Fi." },
+      { text: "Un portatile deve scegliere quale rete memorizzare", explanation: "Memorizzare una rete non richiede di servire più utenti nello stesso intervallo." }
+    ]
+  },
+  {
+    id: "n07",
+    prompt: "Un sensore invia brevi misure a orari concordati e può dormire tra un invio e l’altro. Quale funzione della tabella risponde a questa esigenza?",
+    source: { href: "lezione-1-2.html#slide-1", label: "Ripassa · Le funzioni degli standard Wi-Fi" },
+    options: [
+      { text: "Target Wake Time", correct: true, explanation: "Target Wake Time permette di concordare i periodi di attività del dispositivo." },
+      { text: "Multi-Link Operation", explanation: "Multi-Link Operation riguarda l’uso di più collegamenti radio." },
+      { text: "Selezione dinamica della frequenza", explanation: "La selezione dinamica riguarda la scelta della frequenza." },
+      { text: "Beamforming", explanation: "Il beamforming dirige meglio il segnale verso il ricevitore." }
+    ]
+  },
+  {
+    id: "n08",
+    prompt: "La velocità utile misurata rimane costante. Perché l’indicazione «collegamento nominale più veloce» da sola non permette di prevedere un trasferimento più breve?",
+    source: { href: "lezione-1-2.html#slide-2", label: "Ripassa · La velocità effettiva" },
+    options: [
+      { text: "Perché un trasferimento locale dipende sempre dal provider Internet", explanation: "Un trasferimento verso un server locale può restare nella rete della scuola." },
+      { text: "Perché la dimensione del file va divisa per il numero di antenne", explanation: "Il numero di antenne non cambia la dimensione del file." },
+      { text: "Perché il tempo dipende soltanto dalla frequenza radio", explanation: "La frequenza radio, da sola, non determina il flusso effettivo di dati." },
+      { text: "Perché per lo stesso file conta la velocità effettiva con cui passano i dati", correct: true, explanation: "A parità di file, il tempo dipende dal flusso utile misurato." }
+    ]
+  },
+  {
+    id: "n09",
+    prompt: "Nel modello nominale due canali da 40 MHz hanno i centri a 30 MHz di distanza. Che cosa si ricava?",
+    source: { href: "lezione-1-3.html#slide-1", label: "Ripassa · La sovrapposizione dei canali" },
+    options: [
+      { text: "Non si sovrappongono", explanation: "La distanza tra i centri è inferiore alla larghezza del canale." },
+      { text: "Si sovrappongono di 10 MHz", correct: true, explanation: "Ogni blocco si estende di 20 MHz dal centro verso l’altro. La parte comune è 40 − 30 MHz." },
+      { text: "Si sovrappongono di 20 MHz", explanation: "Venti megahertz sono la semilarghezza di un blocco, non la larghezza della zona comune." },
+      { text: "Si sovrappongono di 30 MHz", explanation: "Trenta megahertz sono la distanza tra i centri." }
+    ]
+  },
+  {
+    id: "n10",
+    prompt: "Nel modello due canali da 20 MHz su 2,4 GHz hanno i centri distanti quattro passi da 5 MHz. Quale affermazione descrive i due blocchi nominali?",
+    source: { href: "lezione-1-3.html#slide-1", label: "Ripassa · I canali a 2,4 GHz" },
+    options: [
+      { text: "Si sovrappongono per 5 MHz", explanation: "La distanza tra i centri è pari alla larghezza del canale." },
+      { text: "Lasciano 5 MHz di spazio tra loro", explanation: "Ci sarebbe uno spazio libero se la distanza tra i centri superasse 20 MHz." },
+      { text: "Hanno lo stesso centro", explanation: "I centri sono separati di quattro passi." },
+      { text: "I bordi si toccano, senza una larghezza comune", correct: true, explanation: "Quattro passi sono 20 MHz, pari alla larghezza di un blocco." }
+    ]
+  },
+  {
+    id: "n11",
+    prompt: "Un punto di accesso passa a un canale di frequenza centrale quasi uguale ma con banda più larga. Quale verifica diventa importante per le reti vicine?",
+    source: { href: "lezione-1-3.html#slide-1", label: "Ripassa · La larghezza dei canali" },
+    options: [
+      { text: "Misurare se hanno cambiato nome", explanation: "Il nome non indica lo spettro occupato." },
+      { text: "Contare quante di loro usano indirizzi IP privati", explanation: "Gli indirizzi IP non determinano le frequenze radio utilizzate." },
+      { text: "Controllare se i bordi del nuovo canale invadono altre porzioni di spettro occupate", correct: true, explanation: "Anche con centro simile, un canale più largo raggiunge frequenze più lontane dal centro." },
+      { text: "Controllare se il router ha cambiato l’indirizzo di rete", explanation: "L’indirizzo del router non indica i bordi del canale radio." }
+    ]
+  },
+  {
+    id: "n12",
+    prompt: "Due access point usano lo stesso canale e si sentono. Un terzo è su un canale sufficientemente separato. Quale differenza ci si aspetta nel modello della lezione?",
+    source: { href: "lezione-1-3.html#slide-1", label: "Ripassa · La scelta del canale" },
+    options: [
+      { text: "I primi due condividono il tempo d’aria, mentre il terzo non compete sul loro canale", correct: true, explanation: "La condivisione del tempo d’aria riguarda le trasmissioni sullo stesso canale udibile." },
+      { text: "I primi due formano automaticamente una sola rete", explanation: "Usare lo stesso canale non basta a formare un’unica rete." },
+      { text: "Il terzo deve aspettare entrambi perché usa la stessa banda", explanation: "Due canali sufficientemente separati possono appartenere alla stessa banda." },
+      { text: "Il terzo deve avere un SSID diverso per poter trasmettere", explanation: "Il nome di rete non determina quando il canale è disponibile." }
+    ]
+  },
+  {
+    id: "n13",
+    prompt: "Una stazione ha ancora due intervalli di attesa quando un’altra inizia a trasmettere. Che cosa fa il suo contatore di backoff nel modello della lezione?",
+    source: { href: "lezione-1-4.html#slide-1", label: "Ripassa · L’attesa casuale" },
+    options: [
+      { text: "Arriva a zero mentre il canale è occupato", explanation: "Il contatore si aggiorna negli intervalli liberi." },
+      { text: "Torna sempre al valore estratto all’inizio", explanation: "Il valore residuo viene conservato durante l’occupazione del canale." },
+      { text: "Si azzera per permettere di inviare appena torna il silenzio", explanation: "Azzerarlo salterebbe gli intervalli di attesa che restano." },
+      { text: "Si ferma e riprende dai due intervalli rimasti quando il canale torna disponibile", correct: true, explanation: "Il contatore scende soltanto negli intervalli liberi previsti dal protocollo." }
+    ]
+  },
+  {
+    id: "n14",
+    prompt: "A e B si sentono e attendono di inviare. A vince il sorteggio e comincia a trasmettere. Quale osservazione indica che l’ascolto del canale sta funzionando?",
+    source: { href: "lezione-1-4.html#slide-1", label: "Ripassa · L’ascolto del canale" },
+    options: [
+      { text: "B rimanda l’invio mentre sente la trasmissione di A", correct: true, explanation: "Una stazione che sente il mezzo occupato rinvia l’accesso." },
+      { text: "B inizia comunque a trasmettere dopo il primo intervallo occupato", explanation: "B deve rinviare l’invio mentre sente il canale occupato." },
+      { text: "B manda un ACK anche se non era il destinatario", explanation: "La conferma è inviata dal destinatario del frame." },
+      { text: "A cambia canale appena B termina la sua attesa", explanation: "Il meccanismo descritto regola l’accesso al canale corrente." }
+    ]
+  },
+  {
+    id: "n15",
+    prompt: "In una prova con frame molto brevi e senza nodi nascosti, quale costo introdurrebbe usare sempre RTS/CTS?",
+    source: { href: "lezione-1-4.html#slide-2", label: "Ripassa · RTS e CTS" },
+    options: [
+      { text: "Aumenterebbe la distanza fisica tra i terminali", explanation: "I messaggi di controllo non cambiano la posizione dei terminali." },
+      { text: "Spenderebbe tempo d’aria anche per i messaggi di controllo", correct: true, explanation: "Lo scambio RTS/CTS richiede tempo oltre alla trasmissione dei dati." },
+      { text: "Dimezzerebbe la frequenza centrale del canale", explanation: "Lo scambio ha luogo sul canale già usato dalla rete." },
+      { text: "Richiederebbe un secondo access point per ogni terminale", explanation: "RTS e CTS non richiedono un access point aggiuntivo per ogni terminale." }
+    ]
+  },
+  {
+    id: "n16",
+    prompt: "Una traccia mostra il frame ricevuto correttamente dall’access point e l’ACK inviato, ma il mittente non riceve l’ACK. Che comportamento può osservare il tecnico?",
+    source: { href: "lezione-1-4.html#slide-1", label: "Ripassa · La conferma di ricezione" },
+    options: [
+      { text: "Il mittente registra sempre l’operazione come completata", explanation: "Senza conferma, il mittente non sa se il frame è arrivato." },
+      { text: "Il mittente cambia obbligatoriamente rete", explanation: "Una conferma mancata può portare a un nuovo tentativo nella stessa rete." },
+      { text: "Il mittente può ritentare anche se l’access point aveva ricevuto il frame", correct: true, explanation: "Il mittente usa l’ACK come conferma. Se gli manca, può ritentare." },
+      { text: "L’access point deve cambiare indirizzo per mandare un nuovo ACK", explanation: "L’indirizzo del punto di accesso non deve cambiare per confermare una ricezione." }
+    ]
+  },
+  {
+    id: "n17",
+    prompt: "Un’immagine mostra molte sottoportanti in un solo canale. Un compagno conclude che servano altrettante antenne. Quale risposta distingue correttamente OFDM e MIMO?",
+    source: { href: "lezione-1-5.html#slide-1", label: "Ripassa · MIMO e i flussi spaziali" },
+    options: [
+      { text: "Le sottoportanti dividono le risorse in frequenza. Più antenne possono invece consentire più flussi spaziali", correct: true, explanation: "Sottoportanti in frequenza e flussi spaziali sono due concetti diversi." },
+      { text: "Ogni sottoportante richiede una propria antenna ricevente", explanation: "Una singola antenna può ricevere un segnale con più sottoportanti." },
+      { text: "In OFDM ogni antenna deve usare un canale separato", explanation: "OFDM suddivide un canale in sottoportanti." },
+      { text: "Il numero di sottoportanti indica direttamente quanti flussi spaziali riceve il terminale", explanation: "I flussi spaziali dipendono dalle antenne e dal canale radio." }
+    ]
+  },
+  {
+    id: "n18",
+    prompt: "Un access point usa più antenne e continua a inviare gli stessi dati su un solo flusso. Dopo un intervento il segnale migliora nella direzione del ricevitore. Quale meccanismo si accorda con il risultato?",
+    source: { href: "lezione-1-5.html#slide-1", label: "Ripassa · Il beamforming" },
+    options: [
+      { text: "Aumento del numero dei flussi spaziali verso il ricevitore", explanation: "La traccia specifica che il numero di flussi resta uno." },
+      { text: "Divisione delle sottoportanti fra nuovi utenti", explanation: "Dividere le sottoportanti tra utenti non spiega il miglioramento in una direzione." },
+      { text: "Regolazione delle fasi dei segnali delle antenne con il beamforming", correct: true, explanation: "Il beamforming può migliorare il segnale in una direzione anche con un solo flusso." },
+      { text: "Uso di un nuovo SSID per ciascuna antenna", explanation: "Il nome della rete non modifica la somma dei segnali radio." }
+    ]
+  },
+  {
+    id: "n19",
+    prompt: "A parità di numero di simboli al secondo e di codifica, quale coppia indica i bit per simbolo per 16-QAM e 256-QAM, rispettivamente?",
+    source: { href: "lezione-1-5.html#slide-2", label: "Ripassa · Le modulazioni QAM" },
+    options: [
+      { text: "2 e 4", explanation: "Per rappresentare 16 stati servono già quattro bit." },
+      { text: "4 e 8", correct: true, explanation: "Quattro bit identificano 16 stati, otto bit ne identificano 256." },
+      { text: "8 e 16", explanation: "Con otto bit si rappresentano già 256 stati." },
+      { text: "16 e 256", explanation: "Sedici e 256 sono numeri di stati della modulazione." }
+    ]
+  },
+  {
+    id: "n20",
+    prompt: "A parità di potenza trasmessa, spostando il ricevitore di poco il segnale cala invece di crescere. Che cosa può succedere tra il percorso diretto e uno riflesso?",
+    source: { href: "lezione-1-5.html#fading", label: "Ripassa · Il fading" },
+    options: [
+      { text: "I due percorsi devono aver cambiato frequenza centrale", explanation: "Anche alla stessa frequenza il cambio di posizione può modificare le fasi relative." },
+      { text: "Il percorso riflesso impone un secondo indirizzo IP", explanation: "Una riflessione non cambia l’indirizzamento IP." },
+      { text: "Il percorso diretto annulla qualsiasi riflessione", explanation: "I contributi diretto e riflesso si sommano al ricevitore." },
+      { text: "I segnali possono arrivare con fasi che li fanno sommare in modo meno favorevole", correct: true, explanation: "Il contributo delle riflessioni può rinforzare o indebolire il segnale." }
+    ]
+  },
+  {
+    id: "n21",
+    prompt: "La potenza ricevuta è −69 dBm e la soglia è −67 dBm. Un intervento migliora il segnale di 4 dB. Qual è il nuovo margine rispetto alla soglia?",
+    source: { href: "lezione-1-6.html#slide-1", label: "Ripassa · Il margine di collegamento" },
+    options: [
+      { text: "−6 dB", explanation: "Quattro decibel di miglioramento vanno aggiunti al margine iniziale di −2 dB." },
+      { text: "+2 dB", correct: true, explanation: "Il segnale sale a −65 dBm, quindi supera la soglia di 2 dB." },
+      { text: "+4 dB", explanation: "Questo valore indica il miglioramento, non il margine risultante." },
+      { text: "+6 dB", explanation: "Il margine iniziale era negativo, quindi 4 dB di guadagno bastano a portarlo a +2 dB." }
+    ]
+  },
+  {
+    id: "n22",
+    prompt: "Le mappe mostrano una potenza ricevuta simile in due aule. Una ha però un fondo di rumore più alto e più ritrasmissioni. Quale misura aiuta a spiegare la differenza?",
+    source: { href: "lezione-1-6.html#slide-1", label: "Ripassa · Segnale e rumore" },
+    options: [
+      { text: "Il nome di rete", explanation: "Il nome della rete non misura il rumore radio." },
+      { text: "La lunghezza della password", explanation: "La password non misura le condizioni del canale radio." },
+      { text: "L’indirizzo del router", explanation: "L’indirizzo del router non descrive la qualità del segnale." },
+      { text: "Il rapporto segnale-rumore", correct: true, explanation: "A parità di segnale, più rumore riduce il rapporto segnale-rumore." }
+    ]
+  },
+  {
+    id: "n23",
+    prompt: "La scuola sposta un access point verso l’interno. I terminali autorizzati continuano a funzionare bene e dal cortile il segnale è più debole. Che cosa resta necessario per proteggere le comunicazioni Wi-Fi?",
+    source: { href: "lezione-1-6.html#slide-2", label: "Ripassa · La sicurezza Wi-Fi" },
+    options: [
+      { text: "Una protezione della rete con autenticazione e cifratura", correct: true, explanation: "Una copertura più contenuta limita la portata, mentre autenticazione e cifratura proteggono gli accessi e le comunicazioni." },
+      { text: "Una potenza di trasmissione maggiore verso il cortile", explanation: "Aumentare il segnale verso il cortile non protegge le comunicazioni." },
+      { text: "Un nome di rete uguale a quello di tutti gli edifici vicini", explanation: "Assegnare un nome uguale non autentica gli utenti e non cifra i dati." },
+      { text: "Un canale largo il doppio", explanation: "La larghezza di canale riguarda lo spettro e la capacità di trasmissione." }
+    ]
+  },
+  {
+    id: "n24",
+    prompt: "Per la modalità A si ricevono −70 dBm e la soglia è −75 dBm. Per la modalità B si ricevono −65 dBm e la soglia è −67 dBm. Quale modalità ha il margine maggiore?",
+    source: { href: "lezione-1-6.html#slide-1", label: "Ripassa · Il margine di collegamento" },
+    options: [
+      { text: "B, perché il segnale è più forte", explanation: "Il segnale va confrontato con la soglia della modalità corrispondente." },
+      { text: "B, perché la sua soglia è più alta", explanation: "Per B la differenza fra −65 e −67 dBm è 2 dB." },
+      { text: "A, perché il suo margine è 5 dB contro 2 dB", correct: true, explanation: "Il margine si calcola confrontando ciascun segnale con la soglia della sua modalità." },
+      { text: "Le due modalità hanno lo stesso margine", explanation: "Per A il confronto dà 5 dB e per B dà 2 dB." }
+    ]
   }
 ];
 

@@ -24,6 +24,7 @@
 .prova [hidden] { display: none; }
 .prova-barra time { font-size: 1.25rem; font-weight: 750; font-variant-numeric: tabular-nums; color: var(--verifica-accento); }
 #salvataggio { display: block; font-size: .88em; color: var(--text-muted); }
+.prova-avviso { flex-basis: 100%; margin: 0; font-weight: 650; }
 .prova-opzioni { display: grid; gap: .4rem; }
 .prova-opzione {
   display: flex; align-items: baseline; gap: .55rem; padding: .45rem .6rem;

@@ -1,9 +1,28 @@
 .scheda { max-width: 960px; margin: 0 auto; padding: 2.5rem clamp(1rem, 4vw, 2.5rem); }
 .scheda h2 { color: var(--verifica-accento); }
 .scheda-comandi { display: flex; gap: 1rem; flex-wrap: wrap; align-items: center; margin-top: 1rem; }
+.scheda-filtri { display: flex; flex-wrap: wrap; gap: .75rem 1rem; align-items: start; }
+.scheda-campo { display: grid; gap: .35rem; min-width: 9.5rem; font-weight: 650; }
+.scheda-campo output, .scheda-campo select {
+  padding: .3rem .55rem; min-block-size: 2.25rem; line-height: 1.5;
+}
+.scheda-campo output {
+  background: var(--surface); border: 1px solid var(--border-2); border-radius: var(--r-sm);
+}
 .scheda [hidden], .scheda-comandi:empty { display: none; }
-#accesso-docente { display: flex; align-items: center; flex-wrap: wrap; gap: .6rem; }
-.scheda #accesso-docente[hidden] { display: none; }
+.docente-accesso { max-width: 28rem; margin: 1.5rem auto; }
+.docente-accesso button { margin-top: .85rem; }
+#esito-accesso { margin: .75rem 0 0; }
+#esito-accesso:empty { display: none; }
+.docente-ingresso { grid-template-columns: repeat(2, minmax(0, 1fr)); margin-top: 1.5rem; }
+.docente-verifiche { --m-color: var(--m1); }
+.docente-codici { --m-color: var(--m2); }
+.docente-ingresso .module-card-header { align-items: center; }
+.docente-ingresso h2 { margin: 0; color: var(--text); }
+.docente-ingresso p { color: var(--text-muted); margin: 0; }
+@media screen and (max-width: 560px) {
+  .docente-ingresso { grid-template-columns: minmax(0, 1fr); }
+}
 .scheda select, .scheda input {
   background: var(--surface); color: var(--text); border: 1px solid var(--border-2);
   border-radius: var(--r-sm); font: inherit; padding: .25rem .5rem;
@@ -98,7 +117,8 @@
   .scheda-comandi, .scheda-griglia input { display: none; }
   .scheda-solo-stampa { display: inline; }
   .scheda-blocco { border-radius: 0; padding: 3mm; margin: 2.5mm 0; }
-  .scheda-blocco, .scheda-riquadro { break-inside: avoid; }
+  .scheda-chiusa, .scheda-riepilogo, .scheda-riquadro { break-inside: avoid; }
+  .scheda-risposta { break-inside: auto; }
   .scheda-chiusa { padding: 2mm 3mm; border-top-width: 2px; }
   .scheda-numero, .scheda-lettera { width: 4.5mm; height: 4.5mm; }
   .scheda-numero { background: white; }
@@ -110,4 +130,34 @@
   .scheda-pallino, .scheda-lettera { print-color-adjust: exact; }
   .scheda h2, .scheda h3, .scheda h4 { break-after: avoid; }
   .scheda-totale { break-before: avoid; }
+}
+
+#configura fieldset { margin: 1rem 0; padding: .75rem; border: 1px solid var(--border); }
+#minuti { width: 7rem; }
+#elenco-alunni .presenza-alunno {
+  display: grid; grid-template-columns: minmax(8.5rem, 1fr) 8rem minmax(10rem, 2fr);
+  align-items: center; gap: .4rem .65rem;
+  padding: .45rem 0; border-bottom: 1px solid var(--border);
+}
+#elenco-alunni label { font-weight: 650; }
+#archivio-docente #elenco-archivio { align-items: flex-start; }
+#codici-alunni table { margin-top: 1rem; }
+.scheda nav button[aria-pressed="true"] { background: var(--verifica-selezione); border-color: var(--verifica-accento); }
+@media screen and (max-width: 550px) {
+  #elenco-alunni .presenza-alunno { grid-template-columns: minmax(0, 1fr) minmax(6rem, 8rem); }
+  #elenco-alunni [data-stato-alunno] { grid-column: 1 / -1; }
+}
+#elenco-alunni [data-stato-alunno] { color: var(--text-muted); }
+.scheda-spunta-consegna { color: #217b4f; font-size: 1.2rem; line-height: 1; font-weight: 750; }
+[data-theme="dark"] .scheda-spunta-consegna { color: #7bdda6; }
+#stampa-classe { display: none; }
+@media print {
+  #configurazione, #archivio-docente, #codici-alunni, #menu-docente, #accesso-docente { display: none; }
+  .stampa-tutte .verifica-hero,
+  .stampa-tutte #consegna { display: none; }
+  .stampa-tutte #stampa-classe { display: block; }
+  #stampa-classe > article + article { break-before: page; }
+  .scheda .scheda-titolo-stampa {
+    font-size: 18pt; padding-bottom: 2mm; border-bottom: 2px solid var(--primary-dark);
+  }
 }

@@ -1,0 +1,99 @@
+<!doctype html>
+<html lang="it" data-theme="light">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Verifiche di fine modulo · Anteprima docente</title>
+  <link rel="stylesheet" href="../../assets/css/style.css">
+  <link rel="stylesheet" href="../../assets/css/introduzione-lezioni.css">
+  <link rel="stylesheet" href="verifica-tema.css">
+  <link rel="stylesheet" href="scheda-docente.css">
+  <link rel="stylesheet" href="anteprima-archivio.css">
+  <script defer src="verifica-tema.js"></script>
+  <script defer src="anteprima-archivio.js"></script>
+</head>
+<body>
+  <main class="scheda module-one">
+    <header class="lesson-intro-hero verifica-hero">
+      <div>
+        <div class="lesson-intro-meta"><p class="lesson-intro-topic">Area docente · Anteprima con dati fittizi</p></div>
+        <h1 class="lesson-title-h1">Verifiche di fine modulo</h1>
+      </div>
+      <img src="../../assets/img/indice-rete-radio.svg" alt="">
+      <button type="button" class="btn btn-icon btn-ghost verifica-tema" data-verifica-tema aria-label="Cambia tema"></button>
+    </header>
+    <nav class="scheda-comandi" aria-label="Verifiche">
+      <a class="btn btn-ghost" href="#nuova-verifica">Nuova verifica</a>
+      <a class="btn btn-ghost" href="#archivio">Archivio</a>
+    </nav>
+    <section id="nuova-verifica" class="scheda-blocco">
+      <h2>Nuova verifica</h2>
+      <form id="nuova">
+        <div class="scheda-filtri">
+          <div class="scheda-campo">
+            <label for="nuovo-anno">Anno scolastico</label>
+            <select id="nuovo-anno"></select>
+          </div>
+          <div class="scheda-campo">
+            <label for="nuova-classe">Classe</label>
+            <select id="nuova-classe" required><option value="">Scegli una classe</option></select>
+          </div>
+          <div class="scheda-campo">
+            <label for="nuovo-modulo">Modulo</label>
+            <select id="nuovo-modulo" required><option value="">Scegli un modulo</option></select>
+          </div>
+        </div>
+        <div id="stato-nuova" class="archivio-esito" role="status">
+          Scegli classe e modulo per vedere se esiste già una verifica.
+        </div>
+        <div class="scheda-comandi" id="comandi-nuova" hidden>
+          <div class="scheda-campo">
+            <label for="durata-esempio">Durata (minuti)</label>
+            <input id="durata-esempio" type="number" min="1" step="1" value="45" required>
+          </div>
+          <button class="btn btn-primary" type="submit" id="prepara-esempio">Crea verifica</button>
+        </div>
+        <p id="esito-creazione" class="anteprima-esito-creazione" role="status"></p>
+      </form>
+    </section>
+    <section id="archivio" class="scheda-blocco" hidden>
+      <h2>Archivio verifiche</h2>
+      <p>Verifiche svolte almeno una volta.</p>
+      <div class="scheda-filtri">
+        <div class="scheda-campo">
+          <label for="filtro-anno">Anno scolastico</label>
+          <select id="filtro-anno"></select>
+        </div>
+        <div class="scheda-campo">
+          <label for="filtro-classe">Classe</label>
+          <select id="filtro-classe"><option value="">Tutte le classi</option></select>
+        </div>
+        <div class="scheda-campo">
+          <label for="filtro-modulo">Modulo</label>
+          <select id="filtro-modulo"><option value="">Tutti i moduli</option></select>
+        </div>
+      </div>
+      <div id="risultati-archivio" class="archivio-elenco" aria-live="polite"></div>
+    </section>
+    <section id="verifica-finita" class="scheda-blocco" hidden>
+      <h2 id="titolo-verifica"></h2>
+      <p id="dati-verifica" class="archivio-contesto"></p>
+      <p id="totali-verifica" class="archivio-esito"></p>
+      <div class="scheda-comandi">
+        <button id="stampa-archivio" class="btn btn-ghost" type="button">Ristampa tutte le consegne</button>
+      </div>
+      <div class="archivio-tabella" tabindex="0" role="region" aria-label="Stato degli alunni">
+        <table class="scheda-tabella">
+          <thead><tr><th scope="col">Alunno</th><th scope="col">Stato</th><th scope="col">Ora o nota</th><th scope="col">Elaborato</th></tr></thead>
+          <tbody id="esiti-verifica"></tbody>
+        </table>
+      </div>
+      <section id="elaborato-archivio" hidden>
+        <div id="documento-archivio"></div>
+        <button id="stampa-elaborato" class="btn btn-primary" type="button">Ristampa elaborato</button>
+      </section>
+    </section>
+    <div id="stampa-anteprima"></div>
+  </main>
+</body>
+</html>

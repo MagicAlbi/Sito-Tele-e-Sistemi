@@ -26,10 +26,31 @@ const esempi = [
 const selettore = document.querySelector('#esempio');
 const consegna = document.querySelector('#consegna');
 const accessoDocente = document.querySelector('#accesso-docente');
+const passwordDocente = document.querySelector('#password-docente-demo');
+const esitoAccesso = document.querySelector('#esito-accesso');
+const battutaDocente = document.querySelector('#battuta-docente');
 const statoDocente = document.querySelector('#stato-docente');
 const stampa = document.querySelector('#stampa');
 const valutazioni = new Map();
 let consegneVisibili = new Map();
+const configurazione = document.querySelector('#configurazione');
+const classe = document.querySelector('#classe');
+const configura = document.querySelector('#configura');
+const minuti = document.querySelector('#minuti');
+const elencoAlunni = document.querySelector('#elenco-alunni');
+const apriVerifica = document.querySelector('#apri-verifica');
+const chiudiVerifica = document.querySelector('#chiudi-verifica');
+const salvaImpostazioni = configura.querySelector('[value="salva"]');
+const statoVerifica = document.querySelector('#stato-verifica');
+const importaCopia = document.querySelector('#importa-copia');
+const fileCopia = document.querySelector('#file-copia');
+const statoImportazione = document.querySelector('#stato-importazione');
+const oraCopia = new Intl.DateTimeFormat('it-IT', { dateStyle: 'short', timeStyle: 'short', timeZone: 'Europe/Rome' });
+const stampaTutte = document.querySelector('#stampa-tutte');
+const stampaClasse = document.querySelector('#stampa-classe');
+const dataItaliana = new Intl.DateTimeFormat('it-IT', { timeZone: 'Europe/Rome' });
+let richiestaClasse = 0;
+let salvaConfigurazione = false;
 const formato = new Intl.NumberFormat('it-IT', { maximumFractionDigits: 2 });
 
 function mescola(elementi) {
@@ -201,10 +222,10 @@ function riepilogo() {
   return '<section class="scheda-blocco scheda-articolata scheda-riepilogo"><h2>Calcolo del totale</h2>' +
     '<table class="scheda-tabella"><thead><tr><th scope="col">Sezione</th>' +
     '<th scope="col">Punti assegnati</th><th scope="col">Punti massimi</th></tr></thead><tbody>' +
-    '<tr><th scope="row">Domande chiuse</th><td id="totale-chiuse"></td><td>20</td></tr>' +
-    '<tr><th scope="row">Domande aperte</th><td id="totale-aperte">—</td><td>20</td></tr>' +
-    '<tr><th scope="row">Esercizi</th><td id="totale-esercizi">—</td><td>10</td></tr></tbody>' +
-    '<tfoot><tr><th scope="row">Totale della verifica</th><td id="totale-verifica" aria-live="polite">—</td>' +
+    '<tr><th scope="row">Domande chiuse</th><td data-totale="chiuse"></td><td>20</td></tr>' +
+    '<tr><th scope="row">Domande aperte</th><td data-totale="aperte">—</td><td>20</td></tr>' +
+    '<tr><th scope="row">Esercizi</th><td data-totale="esercizi">—</td><td>10</td></tr></tbody>' +
+    '<tfoot><tr><th scope="row">Totale della verifica</th><td data-totale="verifica" aria-live="polite">—</td>' +
     '<td>50</td></tr></tfoot></table></section>';
 }
 
@@ -214,17 +235,17 @@ function sommaCampi(campi) {
   return valori.reduce((somma, campo) => somma + campo.valueAsNumber, 0);
 }
 
-function aggiornaTotali() {
-  const chiuseCorrette = Number(consegna.querySelector('[data-chiuse]').dataset.chiuse);
-  const aperte = sommaCampi(consegna.querySelectorAll('[data-punti="aperte"]'));
-  const esercizi = sommaCampi(consegna.querySelectorAll('[data-punti="esercizi"]'));
-  consegna.querySelector('#totale-chiuse').textContent = chiuseCorrette;
-  consegna.querySelector('#totale-aperte').textContent = aperte === null ? '—' : formato.format(aperte);
-  consegna.querySelector('#totale-esercizi').textContent = esercizi === null ? '—' : formato.format(esercizi);
-  consegna.querySelector('#totale-verifica').textContent = aperte === null || esercizi === null ?
+function aggiornaTotali(scheda) {
+  const chiuseCorrette = Number(scheda.querySelector('[data-chiuse]').dataset.chiuse);
+  const aperte = sommaCampi(scheda.querySelectorAll('[data-punti="aperte"]'));
+  const esercizi = sommaCampi(scheda.querySelectorAll('[data-punti="esercizi"]'));
+  scheda.querySelector('[data-totale="chiuse"]').textContent = chiuseCorrette;
+  scheda.querySelector('[data-totale="aperte"]').textContent = aperte === null ? '—' : formato.format(aperte);
+  scheda.querySelector('[data-totale="esercizi"]').textContent = esercizi === null ? '—' : formato.format(esercizi);
+  scheda.querySelector('[data-totale="verifica"]').textContent = aperte === null || esercizi === null ?
     '—' : formato.format(chiuseCorrette + aperte + esercizi);
-  for (const cella of consegna.querySelectorAll('[data-subtotale]')) {
-    const punti = sommaCampi(consegna.querySelectorAll('input[name^="' + cella.dataset.subtotale + '-"]'));
+  for (const cella of scheda.querySelectorAll('[data-subtotale]')) {
+    const punti = sommaCampi(scheda.querySelectorAll('input[name^="' + cella.dataset.subtotale + '-"]'));
     cella.textContent = punti === null ? '—' : formato.format(punti);
   }
 }
@@ -234,75 +255,404 @@ function aggiornaStampa(campo) {
   campo.nextElementSibling.textContent = campo.validity.valid && campo.value !== '' ? valore : '_____';
 }
 
-function mostraConsegna() {
-  const codice = selettore.value;
-  const assegnata = consegneVisibili.get(codice);
-  stampa.disabled = !assegnata;
-  if (!assegnata) {
-    consegna.replaceChildren();
-    return;
-  }
-  if (!valutazioni.has(codice)) valutazioni.set(codice, {});
-  const voti = valutazioni.get(codice);
-  consegna.innerHTML = '<section aria-label="Dati della prova"><p><strong>' +
-    testo(codice) + '</strong> · Punteggio massimo 50</p></section>' +
+function compilaScheda(scheda, assegnata) {
+  const id = assegnata.codice;
+  if (!valutazioni.has(id)) valutazioni.set(id, {});
+  const voti = valutazioni.get(id);
+  scheda.innerHTML = '<section aria-label="Dati della prova"><p><strong>' +
+    testo(assegnata.intestazione ?? id) + '</strong> · Punteggio massimo 50</p></section>' +
     sezioneChiuse(assegnata.chiuse) + sezioneAperte(assegnata.aperte) + sezioneEsercizi(assegnata) + riepilogo();
-  for (const campo of consegna.querySelectorAll('input')) {
+  for (const campo of scheda.querySelectorAll('input')) {
     campo.value = voti[campo.name] ?? '';
     aggiornaStampa(campo);
   }
-  aggiornaTotali();
+  aggiornaTotali(scheda);
+}
+
+function mostraConsegna() {
+  const assegnata = consegneVisibili.get(selettore.value);
+  stampa.disabled = !assegnata;
+  stampa.hidden = !assegnata;
+  if (assegnata) compilaScheda(consegna, assegnata);
+  else consegna.replaceChildren();
 }
 
 function elencaConsegne(elenco) {
   const precedente = selettore.value;
+  const prima = [...consegneVisibili.keys()];
   consegneVisibili = new Map(elenco.map(voce => [voce.codice, voce]));
-  selettore.replaceChildren(...elenco.map(({ codice }) => new Option(codice, codice)));
+  if (prima.length === elenco.length && elenco.every((voce, indice) => voce.codice === prima[indice])) return;
+  selettore.replaceChildren(...elenco.map(voce => new Option(voce.etichetta ?? voce.codice, voce.codice)));
   if (consegneVisibili.has(precedente)) selettore.value = precedente;
   document.querySelector('#scelta-consegna').hidden = elenco.length === 0;
+  stampaTutte.disabled = elenco.length === 0;
   mostraConsegna();
+}
+
+async function apiDocente(percorso, dati) {
+  const opzioni = { signal: AbortSignal.timeout(5000), cache: 'no-store' };
+  if (dati) Object.assign(opzioni, {
+    method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(dati)
+  });
+  const risposta = await fetch('/api/docente/' + percorso, opzioni);
+  const risultato = await risposta.json();
+  if (!risposta.ok) throw new Error(risultato.errore);
+  return risultato;
+}
+
+const menuDocente = document.querySelector('#menu-docente');
+const tornaDocente = document.querySelector('#torna-docente');
+const menuVerifiche = document.querySelector('#menu-verifiche');
+const annoNuovo = document.querySelector('#anno-scolastico');
+const archivio = document.querySelector('#archivio-docente');
+const annoArchivio = document.querySelector('#archivio-anno');
+const classeArchivio = document.querySelector('#archivio-classe');
+const moduloArchivio = document.querySelector('#archivio-modulo');
+const elencoArchivio = document.querySelector('#elenco-archivio');
+const codici = document.querySelector('#codici-alunni');
+const classeCodici = document.querySelector('#classe-codici');
+const elencoCodici = document.querySelector('#elenco-codici');
+const titoloConfigurazione = document.querySelector('#titolo-configurazione');
+const contestoEdizione = document.querySelector('#contesto-edizione');
+const filtriNuova = document.querySelector('#filtri-nuova');
+const avvisoEdizioni = document.querySelector('#avviso-edizioni');
+const edizioniPrecedenti = document.querySelector('#edizioni-precedenti');
+const dataOraItaliana = new Intl.DateTimeFormat('it-IT', { dateStyle: 'short', timeStyle: 'medium', timeZone: 'Europe/Rome' });
+let navigazione = 'inizio';
+let autenticato = false;
+let edizione = null;
+let anniConClassi = [];
+let storico = [];
+let codiciDemo = [];
+let creazionePendente;
+
+function opzioni(selettore, valori, primo = null) {
+  const scelta = selettore.value;
+  selettore.replaceChildren(...(primo ? [new Option(primo, '')] : []), ...valori.map(voce => new Option(voce, voce)));
+  if (valori.includes(scelta)) selettore.value = scelta;
+}
+
+function pulsanteEdizione(voce) {
+  const pulsante = document.createElement('button');
+  pulsante.type = 'button';
+  pulsante.className = 'btn btn-ghost';
+  const data = voce.data ? 'Prima somministrazione ' + dataItaliana.format(new Date(voce.data)) : 'Mai avviata';
+  const creazione = voce.creata.includes('T') ? dataOraItaliana.format(new Date(voce.creata)) : dataItaliana.format(new Date(voce.creata));
+  pulsante.textContent = [voce.classe, data, 'Creata ' + creazione, voce.stato === 'aperta' ? 'Aperta' : 'Chiusa'].join(' · ');
+  pulsante.addEventListener('click', () => {
+    edizione = voce.id;
+    configura.hidden = true;
+    elencaConsegne([]);
+    void aggiornaClasse('classe', true);
+  });
+  return pulsante;
+}
+
+function disegnaArchivio() {
+  const visibili = storico.filter(voce => voce.anno === annoArchivio.value &&
+    (!classeArchivio.value || classeArchivio.value === voce.classe) &&
+    (!moduloArchivio.value || moduloArchivio.value === voce.modulo));
+  elencoArchivio.replaceChildren(...visibili.map(pulsanteEdizione));
+  if (!visibili.length) elencoArchivio.textContent = 'Nessuna verifica svolta per questi filtri.';
+}
+
+function disegnaCodici() {
+  elencoCodici.replaceChildren(...codiciDemo.filter(voce => voce.classe === classeCodici.value).map(voce => {
+    const riga = document.createElement('tr');
+    riga.insertCell().textContent = voce.cognome + ' ' + voce.nome;
+    riga.insertCell().textContent = voce.codice;
+    return riga;
+  }));
+}
+
+async function mostraVista(vista) {
+  navigazione = vista;
+  richiestaClasse++;
+  creazionePendente = null;
+  edizione = null;
+  const verifiche = vista === 'nuova' || vista === 'archivio';
+  menuDocente.hidden = vista !== 'inizio';
+  tornaDocente.hidden = vista === 'inizio';
+  menuVerifiche.hidden = !verifiche;
+  codici.hidden = vista !== 'codici';
+  archivio.hidden = vista !== 'archivio';
+  configurazione.hidden = vista !== 'nuova';
+  configura.hidden = true;
+  contestoEdizione.hidden = true;
+  importaCopia.hidden = true;
+  stampaTutte.hidden = true;
+  statoDocente.textContent = '';
+  statoImportazione.textContent = '';
+  elencaConsegne([]);
+  for (const pulsante of menuVerifiche.querySelectorAll('button')) {
+    pulsante.setAttribute('aria-pressed', String(pulsante.value === vista));
+  }
+  try {
+    if (vista === 'archivio') {
+      const dati = await apiDocente('archivio', {});
+      if (navigazione !== vista) return;
+      storico = dati.verifiche;
+      opzioni(annoArchivio, dati.anni);
+      opzioni(classeArchivio, dati.classi, 'Tutte le classi');
+      moduloArchivio.replaceChildren(new Option('Tutti i moduli', ''), new Option('Modulo 1 · Wi-Fi', 'wifi'));
+      disegnaArchivio();
+    } else if (vista === 'codici') {
+      const dati = await apiDocente('codici', {});
+      if (navigazione !== vista) return;
+      codiciDemo = dati.alunni;
+      disegnaCodici();
+    } else if (vista === 'nuova') {
+      disegnaIntestazione(null);
+      if (classe.value) void aggiornaClasse('classe', true);
+    }
+  } catch (errore) {
+    if (navigazione === vista) statoDocente.textContent = errore.message;
+  }
+}
+
+function mostraAccesso(dati) {
+  autenticato = dati.attiva;
+  accessoDocente.hidden = dati.attiva;
+  battutaDocente.hidden = !dati.attiva;
+  anniConClassi = dati.anniConClassi;
+  opzioni(annoNuovo, anniConClassi.map(voce => voce.anno));
+  annoNuovo.value = dati.annoScolastico;
+  const classiCorrenti = anniConClassi.find(voce => voce.anno === annoNuovo.value).classi;
+  opzioni(classe, classiCorrenti, 'Scegli una classe');
+  opzioni(classeCodici, classiCorrenti);
+  if (dati.attiva) navigaDocente();
+}
+
+function navigaDocente() {
+  if (!autenticato) return;
+  const vista = { '#verifiche': 'nuova', '#codici': 'codici' }[location.hash] ?? 'inizio';
+  void mostraVista(vista);
+}
+
+function disegnaIntestazione(voce) {
+  configurazione.hidden = false;
+  titoloConfigurazione.textContent = voce ? 'Verifica Wi-Fi · ' + voce.classe : 'Nuova verifica';
+  filtriNuova.hidden = Boolean(voce);
+  contestoEdizione.hidden = !voce;
+  contestoEdizione.textContent = voce ? voce.anno + ' · ' +
+    (voce.data ? 'Prima somministrazione ' + dataItaliana.format(new Date(voce.data)) : 'Mai avviata') : '';
+  avvisoEdizioni.textContent = '';
+  edizioniPrecedenti.replaceChildren();
+}
+
+function disegnaConfigurazione(dati) {
+  disegnaIntestazione(dati.edizione);
+  configura.hidden = false;
+  minuti.value = dati.minuti;
+  minuti.readOnly = Boolean(dati.edizione);
+  salvaImpostazioni.hidden = !dati.edizione;
+  if (dati.precedenti?.length) {
+    avvisoEdizioni.textContent = (dati.precedenti.length === 1 ?
+      'Per questa classe e questo modulo c’è già una verifica.' :
+      'Per questa classe e questo modulo ci sono già ' + dati.precedenti.length + ' verifiche.') + ' Puoi crearne un’altra.';
+    edizioniPrecedenti.replaceChildren(...dati.precedenti.map(pulsanteEdizione));
+  }
+  elencoAlunni.replaceChildren(...dati.alunni.map(alunno => {
+    const riga = document.createElement('div');
+    riga.className = 'presenza-alunno';
+    const nome = document.createElement('label');
+    nome.htmlFor = 'presenza-' + alunno.id;
+    nome.textContent = alunno.cognome + ' ' + alunno.nome;
+    const presenza = document.createElement('select');
+    presenza.id = nome.htmlFor;
+    presenza.name = alunno.id;
+    presenza.setAttribute('aria-label', 'Presenza di ' + nome.textContent);
+    presenza.append(new Option('Non segnato', ''), new Option('Presente', 'presente'), new Option('Assente', 'assente'));
+    presenza.value = alunno.presenza;
+    const spunta = document.createElement('span');
+    spunta.className = 'scheda-spunta-consegna';
+    spunta.textContent = '✓';
+    spunta.setAttribute('aria-hidden', 'true');
+    spunta.dataset.consegnaAlunno = alunno.id;
+    const stato = document.createElement('span');
+    stato.dataset.statoAlunno = alunno.id;
+    nome.append(' ', spunta);
+    riga.append(nome, presenza, stato);
+    return riga;
+  }));
+}
+
+async function aggiornaClasse(percorso = 'classe', aggiornaControlli = false, azione) {
+  if (!classe.value && !edizione) return;
+  const richiesta = ++richiestaClasse;
+  const corpo = edizione ? { id: edizione } : { classe: classe.value, anno: annoNuovo.value, modulo: 'wifi' };
+  if (percorso === 'configura') {
+    corpo.azione = azione;
+    corpo.minuti = minuti.valueAsNumber;
+    corpo.presenze = Object.fromEntries([...elencoAlunni.querySelectorAll('select')].filter(voce => voce.value)
+      .map(voce => [voce.name, voce.value]));
+    if (azione === 'crea') {
+      creazionePendente ??= crypto.randomUUID();
+      corpo.operazione = creazionePendente;
+    }
+  }
+  try {
+    const dati = await apiDocente(percorso, corpo);
+    if (richiesta !== richiestaClasse) return;
+    if (azione === 'crea') creazionePendente = null;
+    if (dati.edizione) edizione = dati.edizione.id;
+    if (aggiornaControlli) disegnaConfigurazione(dati);
+    apriVerifica.hidden = dati.stato === 'aperta';
+    apriVerifica.value = dati.edizione ? 'apri' : 'crea';
+    apriVerifica.textContent = dati.edizione ? 'Riapri verifica' : 'Crea e apri verifica';
+    chiudiVerifica.hidden = dati.stato !== 'aperta';
+    const messaggio = {
+      nuova: 'La verifica si crea quando dai il via.',
+      aperta: 'Verifica aperta. Gli alunni segnati come presenti possono iniziare.',
+      chiusa: 'Verifica chiusa ai nuovi avvii. Chi ha già iniziato può finire e consegnare.'
+    }[dati.stato];
+    if (statoVerifica.textContent !== messaggio) statoVerifica.textContent = messaggio;
+    for (const alunno of dati.alunni) {
+      const stato = elencoAlunni.querySelector('[data-stato-alunno="' + alunno.id + '"]');
+      const spunta = elencoAlunni.querySelector('[data-consegna-alunno="' + alunno.id + '"]');
+      if (spunta) spunta.hidden = alunno.stato !== 'Consegnata';
+      const avanzamento = alunno.completati + '/6 completati' +
+        (alunno.mancanti.length ? ' (mancano ' + alunno.mancanti.join(', ') + ')' : '');
+      const avvio = alunno.avvio && alunno.stato !== 'Consegnata' ? ' · Avviata il ' + dataItaliana.format(new Date(alunno.avvio)) : '';
+      const copia = alunno.copiaScaricata ? ' · Scaricamento copia avviato (' + oraCopia.format(new Date(alunno.copiaScaricata)) + ')' : '';
+      const nota = avanzamento + (dati.edizione ? ' · ' + alunno.stato + avvio + copia : '');
+      if (stato && stato.textContent !== nota) stato.textContent = nota;
+    }
+    elencaConsegne(dati.consegne.map(prova => {
+      const { nome, cognome, classe, data, annoScolastico } = prova.anagrafica;
+      return {
+        codice: prova.id, etichetta: cognome + ' ' + nome + (prova.origine === 'recupero' ? ' · Recuperata da file' : ''),
+        intestazione: [nome + ' ' + cognome, classe, annoScolastico, 'Avvio: ' + dataItaliana.format(new Date(data)),
+          prova.origine === 'recupero' ? 'Recuperata da file' : null].filter(Boolean).join(' · '),
+        chiuse: prova.chiuse.map(domanda => ({ ...domanda, scelta: prova.risposte.chiuse[domanda.id] ?? -1 })),
+        aperte: prova.aperte.map(domanda => ({ ...domanda, risposta: prova.risposte.aperte[domanda.id] })),
+        ...prova.esercizi,
+        risultati: ['velocita', 'tempo', 'potenza', 'margine'].map(campo => prova.risposte.esercizi[campo] ?? '')
+      };
+    }));
+
+    const conteggio = dati.edizione ? 'Consegne ricevute: ' + dati.consegne.length +
+      ' · Assenti: ' + dati.alunni.filter(alunno => alunno.presenza === 'assente').length : '';
+    if (statoDocente.textContent !== conteggio) statoDocente.textContent = conteggio;
+    if (dati.edizione?.data) contestoEdizione.textContent = dati.edizione.anno + ' · Prima somministrazione ' +
+      dataItaliana.format(new Date(dati.edizione.data));
+    importaCopia.hidden = !dati.edizione;
+    stampaTutte.hidden = !dati.edizione;
+  } catch (errore) {
+    if (richiesta === richiestaClasse) statoDocente.textContent = errore.message;
+  }
 }
 
 accessoDocente.addEventListener('submit', async evento => {
   evento.preventDefault();
-  const codice = document.querySelector('#codice-docente').value.trim().toUpperCase();
   const pulsante = accessoDocente.querySelector('button');
   pulsante.disabled = true;
+  esitoAccesso.textContent = '';
   try {
-    const risposta = await fetch('/api/docente', {
-      method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ codice }),
-      signal: AbortSignal.timeout(5000)
-    });
-    const dati = await risposta.json();
-    if (!risposta.ok) throw new Error(dati.errore);
-    elencaConsegne(dati.map(prova => ({
-      codice: prova.codice,
-      chiuse: prova.chiuse.map(domanda => ({ ...domanda, scelta: prova.risposte.chiuse[domanda.id] ?? -1 })),
-      aperte: prova.aperte.map(domanda => ({ ...domanda, risposta: prova.risposte.aperte[domanda.id] })),
-      ...prova.esercizi,
-      risultati: ['velocita', 'tempo', 'potenza', 'margine'].map(campo => prova.risposte.esercizi[campo] ?? '')
-    })));
-    statoDocente.textContent = dati.length ? '' : 'Nessuna verifica consegnata.';
+    const dati = await apiDocente('accesso', { password: passwordDocente.value });
+    passwordDocente.value = '';
+    if (location.hash) history.replaceState(null, '', location.pathname + location.search);
+    mostraAccesso(dati);
+    document.querySelector('h1').focus();
   } catch (errore) {
-    elencaConsegne([]);
-    statoDocente.textContent = errore.message;
+    passwordDocente.value = '';
+    esitoAccesso.textContent = errore.message;
+    passwordDocente.focus();
   } finally {
     pulsante.disabled = false;
   }
 });
-
+window.addEventListener('hashchange', navigaDocente);
+for (const pulsante of menuVerifiche.querySelectorAll('button')) {
+  pulsante.addEventListener('click', () => void mostraVista(pulsante.value));
+}
+for (const filtro of [annoArchivio, classeArchivio, moduloArchivio]) filtro.addEventListener('change', disegnaArchivio);
+classeCodici.addEventListener('change', disegnaCodici);
+function cambiaClasse() {
+  richiestaClasse++;
+  creazionePendente = null;
+  edizione = null;
+  configura.hidden = true;
+  disegnaIntestazione(null);
+  if (classe.value) void aggiornaClasse('classe', true);
+}
+classe.addEventListener('change', cambiaClasse);
+annoNuovo.addEventListener('change', () => {
+  opzioni(classe, anniConClassi.find(voce => voce.anno === annoNuovo.value).classi, 'Scegli una classe');
+  cambiaClasse();
+});
+fileCopia.addEventListener('change', async () => {
+  const file = fileCopia.files[0];
+  const aperta = edizione;
+  if (!file || !aperta) return;
+  fileCopia.disabled = true;
+  try {
+    if (file.size > 47000) throw new Error('Il file è troppo grande per essere una copia della verifica.');
+    let copia;
+    try { copia = JSON.parse(await file.text()); }
+    catch { throw new Error('Scegli il file .verifica scaricato dalla pagina della prova.'); }
+    const esito = await apiDocente('recupero', { id: aperta, copia });
+    if (edizione !== aperta) return;
+    await aggiornaClasse();
+    if (consegneVisibili.has(esito.id)) {
+      selettore.value = esito.id;
+      mostraConsegna();
+    }
+    statoImportazione.textContent = esito.giaRicevuta ? 'Questa prova era già in archivio. È stata aperta la copia salvata.' :
+      'Verifica recuperata e salvata nell’archivio. Ora puoi stamparla.';
+  } catch (errore) {
+    if (edizione === aperta) statoImportazione.textContent = errore.message;
+  } finally {
+    fileCopia.disabled = false;
+    fileCopia.value = '';
+  }
+});
+configura.addEventListener('submit', async evento => {
+  evento.preventDefault();
+  if (salvaConfigurazione) return;
+  const pulsante = evento.submitter ?? apriVerifica;
+  salvaConfigurazione = true;
+  classe.disabled = true;
+  pulsante.disabled = true;
+  try { await aggiornaClasse('configura', true, pulsante.value); }
+  finally {
+    salvaConfigurazione = false;
+    classe.disabled = false;
+    pulsante.disabled = false;
+  }
+});
+stampaTutte.addEventListener('click', () => {
+  stampaClasse.replaceChildren(...[...consegneVisibili.values()].map(assegnata => {
+    const scheda = document.createElement('article');
+    compilaScheda(scheda, assegnata);
+    const titolo = document.createElement('h2');
+    titolo.className = 'scheda-titolo-stampa';
+    titolo.textContent = 'Verifica Wi-Fi · Scheda di correzione';
+    scheda.firstElementChild.prepend(titolo);
+    return scheda;
+  }));
+  document.body.classList.add('stampa-tutte');
+  window.print();
+});
+window.addEventListener('afterprint', () => {
+  document.body.classList.remove('stampa-tutte');
+  stampaClasse.replaceChildren();
+});
 consegna.addEventListener('input', evento => {
   const campo = evento.target;
   if (!campo.matches('input')) return;
   valutazioni.get(selettore.value)[campo.name] = campo.value;
   aggiornaStampa(campo);
-  aggiornaTotali();
+  aggiornaTotali(consegna);
 });
 selettore.addEventListener('change', mostraConsegna);
 stampa.addEventListener('click', () => window.print());
 if (typeof domandeAllenamento !== 'undefined') {
   elencaConsegne(consegneDiEsempio());
 } else {
-  accessoDocente.hidden = false;
-  elencaConsegne([]);
+  document.querySelector('#scelta-consegna').hidden = true;
+  apiDocente('sessione').then(mostraAccesso).catch(errore => { statoDocente.textContent = errore.message; });
+  setInterval(() => {
+    if (edizione && !salvaConfigurazione && !configura.hidden) void aggiornaClasse();
+  }, 3000);
 }

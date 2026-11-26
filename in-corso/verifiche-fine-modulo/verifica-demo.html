@@ -28,17 +28,27 @@
       <label for="codice">Codice di prova</label>
       <div class="prova-azioni">
         <input id="codice" type="text" autocomplete="off" autocapitalize="characters" required>
-        <button type="submit" class="btn btn-primary">Avvia o riprendi</button>
+        <button type="submit" class="btn btn-primary">Accedi alla bozza</button>
       </div>
-      <p class="prova-aiuto">Bozza con dati inventati. Codici di prova WIFI-101, WIFI-102 e WIFI-103.</p>
+      <p class="prova-aiuto">Bozza con dati inventati. Codici da WIFI-101 a WIFI-105 per l’anno in corso, WIFI-201 e WIFI-202 per il precedente.</p>
     </form>
+    <div id="identita" class="prova-card" hidden>
+      <p id="alunno"></p>
+      <label for="verifica-disponibile">Verifica</label>
+      <select id="verifica-disponibile"></select>
+      <button id="inizia" type="button" class="btn btn-primary">Avvia o riprendi verifica</button>
+      <button id="cambia" type="button" class="btn btn-ghost">Cambia profilo demo</button>
+    </div>
     <div id="stato" class="prova-stato" role="status"></div>
     <div id="barra" class="prova-barra" hidden>
       <span id="salvataggio" role="status"></span>
       <time id="tempo" aria-label="Tempo residuo"></time>
       <button id="riprendi" type="button" class="btn btn-primary" hidden>Riprendi prova</button>
+      <button id="copia-prova" class="btn btn-ghost" type="button" hidden>Scarica copia cifrata</button>
+      <p id="avviso-consegna" class="prova-avviso" role="status" hidden></p>
     </div>
     <form id="verifica" hidden>
+      <p id="dati-prova" class="prova-aiuto"></p>
       <fieldset id="compilazione"></fieldset>
       <button id="consegna" type="submit" class="btn btn-primary">Consegna verifica</button>
     </form>

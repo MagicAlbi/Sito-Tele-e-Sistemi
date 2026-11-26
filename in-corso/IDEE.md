@@ -21,6 +21,8 @@
 
 **Da completare · 26 novembre 2026.** Prima verifica sul Wi-Fi con 20 domande chiuse, due aperte sorteggiate per alunno tra la 2, la 5, la 6 e la 7 della banca e due esercizi. Pronto il PDF per il docente con risposte e criteri. Il punto di ripresa per l’implementazione è nella scheda di lavoro. [Scheda di lavoro](verifiche-fine-modulo/LAVORO.md) · [Fase 13 del piano](../piani/telecomunicazioni-5a/fasi/13/FASE.md).
 
+**Archivio verifiche · 26 novembre 2026.** Scegliere anno scolastico, classe e modulo. Proporre l’anno in corso e permettere la consultazione degli anni precedenti. Consultazione e stampa non cambiano lo stato della verifica. Apertura e recuperi agiscono solo sulla verifica selezionata. Il docente ha scelto lo stesso formato della verifica Wi-Fi per il Modulo 2, da preparare a partire dalla simulazione WAN. [Anteprima navigabile con dati fittizi](verifiche-fine-modulo/anteprima-archivio.html).
+
 ## Riassunto personale da note ed evidenziazioni
 
 **Da discutere · 24 novembre 2026.** Valutare come aiutare ogni studente a ricavare un riassunto per ripassare, partendo dalle note che ha scritto e dai passaggi che ha evidenziato nelle lezioni.

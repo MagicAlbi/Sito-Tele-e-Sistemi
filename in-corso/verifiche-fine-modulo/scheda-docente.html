@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Scheda di correzione · Verifica Wi-Fi</title>
+  <title>Area docente · Telecomunicazioni 5A</title>
   <link rel="stylesheet" href="../../assets/css/style.css">
   <link rel="stylesheet" href="../../assets/css/introduzione-lezioni.css">
   <link rel="stylesheet" href="verifica-tema.css">
@@ -23,23 +23,114 @@
   <main class="scheda module-one">
     <header class="lesson-intro-hero verifica-hero">
       <div>
-        <div class="lesson-intro-meta"><p class="lesson-intro-topic">Area docente · Modulo 1 Wi-Fi</p></div>
-        <h1 class="lesson-title-h1">Scheda di correzione</h1>
-        <p class="lesson-subtitle">Il Wi-Fi prende in tutta l’aula. Il prof prende un altro caffè.</p>
+        <div class="lesson-intro-meta"><p class="lesson-intro-topic">Telecomunicazioni 5A · Bozza locale</p></div>
+        <h1 class="lesson-title-h1" tabindex="-1">Area docente</h1>
+        <p id="battuta-docente" class="lesson-subtitle" hidden>Il Wi-Fi prende in tutta l’aula. Il prof prende un altro caffè.</p>
       </div>
       <img src="../../assets/img/indice-rete-radio.svg" alt="">
       <button type="button" class="btn btn-icon btn-ghost verifica-tema" data-verifica-tema aria-label="Cambia tema"></button>
     </header>
-    <div class="scheda-comandi">
-      <form id="accesso-docente" hidden>
-        <label>Codice docente di prova <input type="password" id="codice-docente" required></label>
-        <button type="submit" class="btn btn-primary">Carica consegne</button>
+    <form id="accesso-docente" class="scheda-blocco docente-accesso" hidden>
+      <h2>Accedi all’Area docente</h2>
+      <div class="scheda-campo">
+        <label for="password-docente-demo">Password docente demo</label>
+        <input id="password-docente-demo" type="password" required autocomplete="off" aria-describedby="aiuto-password">
+      </div>
+      <p class="scheda-nota" id="aiuto-password">Password per l’anteprima <code>DOCENTE-DEMO</code></p>
+      <button type="submit" class="btn btn-primary">Accedi</button>
+      <p id="esito-accesso" role="status"></p>
+    </form>
+    <nav id="menu-docente" class="modules-grid docente-ingresso" aria-label="Sezioni dell’Area docente" hidden>
+      <a class="module-card docente-verifiche" href="#verifiche">
+        <div class="module-card-header">
+          <span class="module-number" aria-hidden="true">✓</span>
+          <h2>Verifiche</h2>
+        </div>
+        <p>Crea una verifica, consulta l’archivio e ristampa le consegne.</p>
+        <div class="module-card-footer"><span class="module-start-btn">Apri verifiche →</span></div>
+      </a>
+      <a class="module-card docente-codici" href="#codici">
+        <div class="module-card-header">
+          <span class="module-number" aria-hidden="true">#</span>
+          <h2>Codici alunni</h2>
+        </div>
+        <p>Consulta i codici personali per classe.</p>
+        <div class="module-card-footer"><span class="module-start-btn">Apri codici alunni →</span></div>
+      </a>
+    </nav>
+    <nav id="torna-docente" class="scheda-comandi" aria-label="Torna alla pagina iniziale" hidden>
+      <a class="btn btn-ghost" href="#area-docente">← Area docente</a>
+    </nav>
+    <nav id="menu-verifiche" class="scheda-comandi" aria-label="Verifiche" hidden>
+      <button type="button" class="btn btn-ghost" value="nuova">Nuova verifica</button>
+      <button type="button" class="btn btn-ghost" value="archivio">Archivio</button>
+    </nav>
+    <section id="codici-alunni" hidden>
+      <h2>Codici alunni</h2>
+      <label for="classe-codici">Classe</label>
+      <select id="classe-codici"></select>
+      <table class="scheda-tabella">
+        <thead><tr><th scope="col">Alunno</th><th scope="col">Codice dimostrativo</th></tr></thead>
+        <tbody id="elenco-codici"></tbody>
+      </table>
+    </section>
+    <section id="archivio-docente" hidden>
+      <h2>Archivio verifiche</h2>
+      <div class="scheda-filtri">
+        <div class="scheda-campo"><label for="archivio-anno">Anno scolastico</label><select id="archivio-anno"></select></div>
+        <div class="scheda-campo"><label for="archivio-classe">Classe</label><select id="archivio-classe"></select></div>
+        <div class="scheda-campo"><label for="archivio-modulo">Modulo</label><select id="archivio-modulo"></select></div>
+      </div>
+      <div id="elenco-archivio" class="scheda-comandi" aria-live="polite"></div>
+    </section>
+    <section id="configurazione" hidden>
+      <h2 id="titolo-configurazione">Nuova verifica</h2>
+      <p id="contesto-edizione" hidden></p>
+      <div id="filtri-nuova" class="scheda-filtri">
+        <div class="scheda-campo">
+          <label for="anno-scolastico">Anno scolastico</label>
+          <select id="anno-scolastico"></select>
+        </div>
+        <div class="scheda-campo">
+          <label for="classe">Classe</label>
+          <select id="classe"><option value="">Scegli una classe</option></select>
+        </div>
+        <div class="scheda-campo">
+          <label for="modulo-verifica">Modulo</label>
+          <select id="modulo-verifica"><option value="wifi">Modulo 1 · Wi-Fi</option></select>
+        </div>
+      </div>
+      <p id="avviso-edizioni" role="status"></p>
+      <div id="edizioni-precedenti" class="scheda-comandi"></div>
+      <form id="configura" class="scheda-blocco" hidden>
+        <label for="minuti">Durata (minuti)</label>
+        <input id="minuti" type="number" min="1" step="1" required>
+        <fieldset>
+          <legend>Presenze e autorizzazioni</legend>
+          <p id="istruzioni-presenze">Scegli Presente per autorizzare l’ingresso. Scegli Assente per registrare l’assenza.</p>
+          <div id="elenco-alunni"></div>
+        </fieldset>
+        <p id="stato-verifica" role="status"></p>
+        <div class="scheda-comandi">
+          <button type="submit" class="btn btn-ghost" value="salva" hidden>Aggiorna presenze</button>
+          <button type="submit" class="btn btn-primary" id="apri-verifica" value="crea">Crea e apri verifica</button>
+          <button type="submit" class="btn btn-ghost" id="chiudi-verifica" value="chiudi" formnovalidate hidden>Chiudi verifica</button>
+        </div>
       </form>
+    </section>
+    <div class="scheda-comandi">
+      <label id="importa-copia" hidden>Importa copia di emergenza
+        <input id="file-copia" type="file" accept=".verifica">
+      </label>
       <label id="scelta-consegna">Consegna <select id="esempio"></select></label>
-      <button class="btn btn-primary" id="stampa" type="button" disabled>Stampa / Salva in PDF</button>
+      <button class="btn btn-ghost" id="stampa-tutte" type="button" disabled hidden>Stampa tutte le consegne</button>
+      <button class="btn btn-primary" id="stampa" type="button" disabled hidden>Stampa / Salva in PDF</button>
     </div>
     <p id="stato-docente" class="scheda-comandi" role="status"></p>
+    <p id="stato-importazione" class="scheda-comandi" role="status"></p>
     <div id="consegna"></div>
+    <div id="stampa-classe"></div>
+    <p id="torna-home" class="scheda-comandi"><a href="/index.html">← Home di Telecomunicazioni 5A</a></p>
   </main>
 </body>
 </html>
