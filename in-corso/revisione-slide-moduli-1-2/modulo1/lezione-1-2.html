@@ -1,0 +1,683 @@
+<!DOCTYPE html>
+<html lang="it" data-theme="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>M1.2 · Standard IEEE 802.11 & Wi-Fi 4/5/6/7 | Telecomunicazioni 5A</title>
+  <link rel="stylesheet" href="../../../assets/css/style.css">
+  <style>
+    :root { --m-color: var(--m1); }
+    .speed-meter-box {
+      background: var(--surface-2); border: 1px solid var(--border);
+      border-radius: var(--r-xl); padding: 1.5rem; margin: 1.5rem 0;
+    }
+    .speed-result-grid {
+      display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin-top: 1.25rem;
+    }
+    .speed-stat-card {
+      background: var(--surface); border: 1px solid var(--border-2);
+      border-radius: var(--r-lg); padding: 1rem; text-align: center;
+    }
+    .speed-stat-val { font-size: 1.8rem; font-weight: 800; font-family: var(--font-mono); color: var(--primary); }
+    .speed-stat-lbl { font-size: 0.78rem; color: var(--text-muted); text-transform: uppercase; margin-top: 0.2rem; }
+  </style>
+  <link rel="stylesheet" href="../../../assets/css/modulo1.css">
+  <link rel="stylesheet" href="../../../assets/css/introduzione-lezioni.css">
+  <link rel="stylesheet" href="../../../assets/css/esperimenti.css">
+  <link rel="stylesheet" href="../../../assets/css/annotazioni.css">
+  <link rel="stylesheet" href="../../../assets/css/presentazioni-modulo1.css">
+  <link rel="stylesheet" href="../presentazioni.css">
+</head>
+<body class="module-one" data-lesson-id="m1-2">
+
+<div class="app-layout">
+
+  <!-- HEADER -->
+  <header class="site-header">
+    <a href="../../../index.html" class="logo-link">
+      <div class="logo-icon">⚡</div>
+      <div class="logo-text">
+        <span class="logo-title text-gradient">Telecomunicazioni 5A</span>
+        <span class="logo-sub">IIS J.C. Maxwell</span>
+      </div>
+    </a>
+
+    <nav class="header-breadcrumb">
+      <a href="../../../index.html">Home</a>
+      <span>›</span>
+      <a href="../../../modulo1/index.html">Modulo 1</a>
+      <span>›</span>
+      <span class="current">Lezione 1.2 — Standard 802.11</span>
+    </nav>
+
+    <div class="header-actions">
+      <button class="btn btn-present" data-present aria-label="Modalità presentazione">
+        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg>
+        Presenta in Classe
+      </button>
+      <button class="btn btn-icon btn-ghost" data-theme-toggle aria-label="Cambia tema"></button>
+      <button class="btn btn-icon btn-ghost btn-hamburger" aria-label="Menu">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+      </button>
+    </div>
+  </header>
+
+  <!-- SIDEBAR -->
+  <nav class="sidebar">
+    <div class="sidebar-module-badge">
+      <div class="module-dot" style="background:var(--m1); box-shadow: 0 0 10px var(--m1);"></div>
+      <span class="module-label" style="color:var(--m1)">Modulo 1 · WLAN</span>
+    </div>
+
+    <span class="sidebar-section-title">Percorso Guidato</span>
+    <ul class="sidebar-nav">
+      <li data-lesson="m1-1">
+        <a href="lezione-1-1.html">
+          <span class="lesson-num">1.1</span>
+          <span class="lesson-title">Introduzione alle WLAN</span>
+          <span class="lesson-check"></span>
+        </a>
+      </li>
+      <li class="active" data-lesson="m1-2">
+        <a href="lezione-1-2.html">
+          <span class="lesson-num">1.2</span>
+          <span class="lesson-title">Standard IEEE 802.11</span>
+          <span class="lesson-check"></span>
+        </a>
+      </li>
+      <li data-lesson="m1-3">
+        <a href="lezione-1-3.html">
+          <span class="lesson-num">1.3</span>
+          <span class="lesson-title">Canali Radio & Spettro</span>
+          <span class="lesson-check"></span>
+        </a>
+      </li>
+      <li data-lesson="m1-4">
+        <a href="lezione-1-4.html">
+          <span class="lesson-num">1.4</span>
+          <span class="lesson-title">CSMA/CA & Collisioni</span>
+          <span class="lesson-check"></span>
+        </a>
+      </li>
+      <li data-lesson="m1-5">
+        <a href="lezione-1-5.html">
+          <span class="lesson-num">1.5</span>
+          <span class="lesson-title">Strato Fisico & Modulazioni</span>
+          <span class="lesson-check"></span>
+        </a>
+      </li>
+      <li data-lesson="m1-6">
+        <a href="lezione-1-6.html">
+          <span class="lesson-num">1.6</span>
+          <span class="lesson-title">Progettazione & Site Survey</span>
+          <span class="lesson-check"></span>
+        </a>
+      </li>
+    </ul>
+
+    <span class="sidebar-section-title">Pratica & Verifiche</span>
+    <ul class="sidebar-nav">
+      <li>
+        <a href="../../../modulo1/lab-copertura.html">
+          <span class="lesson-num">🔬</span>
+          <span class="lesson-title">Simulatore Copertura RF</span>
+        </a>
+      </li>
+      <li><a href="../../../modulo1/allenamento.html"><span class="lesson-num">🎯</span><span class="lesson-title">Quiz di allenamento</span></a></li>
+      <li><a href="../../../modulo1/esercizi.html"><span class="lesson-num">🧮</span><span class="lesson-title">Esercizi numerici</span></a></li>
+      <li>
+        <a href="../../../modulo1/verifica.html">
+          <span class="lesson-num">📋</span>
+          <span class="lesson-title">Compito & Verifica M1</span>
+        </a>
+      </li>
+    </ul>
+
+    <div class="sidebar-progress" data-module-progress="m1" data-total="6">
+      <div class="progress-label">
+        <span>Progresso Modulo</span>
+        <span><span data-progress-done>0</span>/6 (<span data-progress-pct>0</span>%)</span>
+      </div>
+      <div class="progress-bar">
+        <div class="progress-fill" style="width:0%"></div>
+      </div>
+    </div>
+  </nav>
+
+  <!-- CONTENUTO PRINCIPALE -->
+  <main class="main-content" data-lesson-annotations="m1-2">
+    <div class="content-wrap">
+
+      <!-- HERO LEZIONE -->
+      <header class="lesson-intro-hero">
+        <div>
+          <div class="lesson-intro-meta">
+            <p class="lesson-intro-topic">Lezione 1.2 · Standard Wi-Fi e velocità</p>
+            <span class="lesson-time">
+              <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+              ~35 min studio interattivo
+            </span>
+          </div>
+          <h1 class="lesson-title-h1">L’evoluzione degli standard 802.11 fino al Wi-Fi 7</h1>
+          <p class="lesson-subtitle">
+            L’IEEE (Institute of Electrical and Electronics Engineers) pubblica gli standard 802.11. Le lettere b, g, n, ac e ax distinguono alcune revisioni. Perché la Wi-Fi Alliance ha inventato i numeri "Wi-Fi 4, 5, 6, 7"? E soprattutto: perché la velocità scritta sulla scatola del router non corrisponde MAI a quello che vedi su Speedtest?
+          </p>
+        </div>
+        <img src="../../../assets/img/esercizi-wlan-tempo.svg" alt="" width="200" height="252">
+      </header>
+
+      <div class="lesson-prereq lesson-intro-prereq">
+        <span class="lesson-prereq-icon" aria-hidden="true">🧠</span>
+        <div>
+          <strong>Concetti collegati:</strong>
+          Larghezza di banda in frequenza (MHz, megahertz, e GHz, gigahertz), multiplazione a divisione di frequenza, antenne multiple (MIMO, Multiple Input Multiple Output) e velocità di trasferimento dati (bps, bit al secondo; Mbps, megabit al secondo; Gbps, gigabit al secondo).
+        </div>
+      </div>
+
+      <!-- RIASSUNTO IN EVIDENZA -->
+      <section class="lesson-summary" aria-labelledby="obiettivo">
+        <h2 id="obiettivo">In questa lezione</h2>
+        <ul>
+          <li><span aria-hidden="true">📶</span><p><strong>Generazioni del Wi-Fi.</strong> Confronterai gli standard 802.11 fino al Wi-Fi 7 per capire come cambiano larghezza dei canali, flussi di dati e quantità di bit trasmessi.</p></li>
+          <li><span aria-hidden="true">🧮</span><p><strong>Dalla velocità nominale a quella utile.</strong> Con il simulatore stimerai quanta capacità resta per il tuo file dopo l’attesa sul canale e i messaggi di controllo.</p></li>
+          <li><span aria-hidden="true">▶️</span><p><strong>Il canale condiviso.</strong> Vedrai come il Wi-Fi 6 può assegnare a diversi dispositivi porzioni dello stesso canale.</p></li>
+        </ul>
+      </section>
+
+      <!-- ======================================
+           SLIDE 1 — CRONOLOGIA DEGLI STANDARD
+           ====================================== -->
+      <section class="slide reveal" id="slide-1" data-num="01">
+        <h2>1. Tabella Evolutiva: Dall'Inizio al Futuro</h2>
+
+        <p>
+          Il comitato <strong>IEEE 802.11</strong> ha sviluppato vari emendamenti identificati da lettere alfabetiche. Nel 2018, la <em>Wi-Fi Alliance</em> ha deciso di semplificare la vita al pubblico adottando una nomenclatura numerica progressiva:
+        </p>
+
+        <div class="table-scroll" role="region" aria-label="Tabella scorrevole" tabindex="0"><table class="osi-table">
+          <thead>
+            <tr>
+              <th>Nome Commerciale</th>
+              <th>Standard IEEE</th>
+              <th>Anno</th>
+              <th>Bande Spettro</th>
+              <th>Max Rate Nominale</th>
+              <th>Tecnologia Chiave</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Legacy</td>
+              <td><code>802.11b</code></td>
+              <td>1999</td>
+              <td>2.4 GHz</td>
+              <td>11 Mbps</td>
+              <td>DSSS (Direct Sequence Spread Spectrum, distribuzione del segnale su una banda più ampia) e CCK (Complementary Code Keying, codifica per aumentare la velocità di 802.11b)</td>
+            </tr>
+            <tr>
+              <td>Legacy</td>
+              <td><code>802.11a</code> / <code>802.11g</code></td>
+              <td>1999/2003</td>
+              <td>5 GHz / 2.4 GHz</td>
+              <td>54 Mbps</td>
+              <td>OFDM (Orthogonal Frequency Division Multiplexing, trasmissione su più sottoportanti ortogonali)</td>
+            </tr>
+            <tr style="background:rgba(56,189,248,0.06)">
+              <td><strong style="color:var(--primary)">Wi-Fi 4</strong></td>
+              <td><code>802.11n</code></td>
+              <td>2009</td>
+              <td>2.4 & 5 GHz</td>
+              <td>600 Mbps</td>
+              <td>MIMO (Multiple Input Multiple Output), canali a 40 MHz</td>
+            </tr>
+            <tr style="background:rgba(167,139,250,0.06)">
+              <td><strong style="color:var(--secondary)">Wi-Fi 5</strong></td>
+              <td><code>802.11ac</code></td>
+              <td>2013</td>
+              <td>Solo 5 GHz</td>
+              <td>3.46 Gbps (Wave 2)</td>
+              <td>Canali a 80/160 MHz, 256-QAM (Quadrature Amplitude Modulation, modulazione di ampiezza e fase) e MU-MIMO (Multi-User MIMO, flussi verso più dispositivi)</td>
+            </tr>
+            <tr style="background:rgba(52,211,153,0.06)">
+              <td><strong style="color:var(--success)">Wi-Fi 6 / 6E</strong></td>
+              <td><code>802.11ax</code></td>
+              <td>2019/2021</td>
+              <td>2.4, 5 & 6 GHz</td>
+              <td>9.6 Gbps</td>
+              <td>OFDMA (Orthogonal Frequency Division Multiple Access, condivisione del canale tra più dispositivi), 1024-QAM e Target Wake Time, che programma i risvegli dei dispositivi connessi (IoT, Internet of Things)</td>
+            </tr>
+            <tr style="background:rgba(251,191,36,0.06)">
+              <td><strong style="color:var(--warning)">Wi-Fi 7</strong></td>
+              <td><code>802.11be</code></td>
+              <td>2024</td>
+              <td>2.4, 5 & 6 GHz</td>
+              <td>46 Gbps</td>
+              <td>Canali a 320 MHz, 4096-QAM, Multi-Link Operation (MLO, uso di più collegamenti radio)</td>
+            </tr>
+          </tbody>
+        </table></div>
+
+        <!-- BOX CURIOSITA' HACKER/MARKETING -->
+        <div class="box-curiosity">
+          <div class="box-curiosity-title">
+            <span>💡</span>
+            <span>Perché hanno copiato i nomi del 4G e 5G?</span>
+          </div>
+          <div class="box-curiosity-content">
+            <p>
+              Prova a entrare in un negozio di elettronica e chiedere a un cliente medio se preferisce un router <em>802.11ac</em> o uno <em>802.11ax</em>: ti guarderà come se parlassi aramaico antico!
+            </p>
+            <p style="margin-bottom:0">
+              Nel 2018 la Wi-Fi Alliance si è accorta che tutti sapevano che "il 5G è meglio del 4G", mentre nessuno capiva se l'emendamento <em>"ac"</em> venisse prima o dopo di <em>"n"</em>. Così hanno riscritto la storia a ritroso: l'802.11n è diventato <strong>Wi-Fi 4</strong>, l'802.11ac è diventato <strong>Wi-Fi 5</strong>, e il nuovo 802.11ax è stato battezzato <strong>Wi-Fi 6</strong>. Un capolavoro di marketing per rendere immediatamente comprensibile l'upgrade!
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <hr>
+
+      <!-- ======================================
+           SLIDE 2 — CALCOLATORE REAL VS NOMINALE
+           ====================================== -->
+      <section class="slide reveal" id="slide-2" data-num="02">
+        <h2>2. Simulatore Interattivo: Velocità Teorica vs Speedtest Reale</h2>
+
+        <p>
+          Perché quando fai uno Speedtest non raggiungi mai la velocità scritta sulla scatola del router? Il Wi-Fi è un protocollo con un pesante <strong>overhead di protocollo</strong>: intestazioni del controllo di accesso al mezzo (MAC), contese del canale con ascolto e prevenzione delle collisioni (CSMA/CA), intervalli di guardia, conferme di ricezione (ACK) e gestione degli errori riducono drasticamente la resa.
+        </p>
+
+        <div class="speed-meter-box">
+          <div class="interactive-title">
+            <span class="badge-live">Live Calculator</span>
+            <span>Calcolatore di Throughput e Tempo di Download</span>
+          </div>
+
+          <div style="display:grid; grid-template-columns: 1fr 1fr; gap:1.25rem;">
+            <div class="tech-slider-group">
+              <div class="tech-slider-header">
+                <span>Standard Wi-Fi</span>
+                <span class="val" id="dispStandard">Wi-Fi 6 (802.11ax)</span>
+              </div>
+              <select id="selStandard" style="background:var(--surface); color:var(--text); border:1px solid var(--border-2); padding:0.5rem; border-radius:var(--r-sm); font-family:var(--font-mono); font-size:0.85rem;" onchange="SpeedSim.calc()">
+                <option value="11n">Wi-Fi 4 (802.11n - 40MHz)</option>
+                <option value="11ac">Wi-Fi 5 (802.11ac - 80MHz)</option>
+                <option value="11ax" selected>Wi-Fi 6 (802.11ax - 80MHz)</option>
+                <option value="11be">Wi-Fi 7 (802.11be - 160MHz)</option>
+              </select>
+            </div>
+
+            <div class="tech-slider-group">
+              <div class="tech-slider-header">
+                <span>Antenne Terminale (MIMO Streams)</span>
+                <span class="val" id="dispMimo">2x2 (Tipico Smartphone)</span>
+              </div>
+              <select id="selMimo" style="background:var(--surface); color:var(--text); border:1px solid var(--border-2); padding:0.5rem; border-radius:var(--r-sm); font-family:var(--font-mono); font-size:0.85rem;" onchange="SpeedSim.calc()">
+                <option value="1">1x1 (1 Antenna - IoT / Telefoni Economici)</option>
+                <option value="2" selected>2x2 (2 Antenne - iPhone / Samsung Galaxy)</option>
+                <option value="4">4x4 (4 Antenne - Computer da gioco / router)</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="tech-slider-group" style="margin-top:1rem;">
+            <div class="tech-slider-header">
+              <span>Dimensione del file in gigabyte (GB)</span>
+              <span class="val" id="dispFileSize" aria-label="Dimensione del file in gigabyte (GB)">30 GB</span>
+            </div>
+            <input type="range" class="tech-slider" id="rangeFileSize" min="1" max="100" value="30" oninput="SpeedSim.calc()">
+          </div>
+
+          <div class="speed-result-grid">
+            <div class="speed-stat-card">
+              <div class="speed-stat-val" id="resNominal">1201 Mbps</div>
+              <div class="speed-stat-lbl">Velocità Nominale (Scatola Router)</div>
+            </div>
+            <div class="speed-stat-card" style="border-color:var(--primary)">
+              <div class="speed-stat-val" id="resReal" style="color:var(--success)">~660 Mbps</div>
+              <div class="speed-stat-lbl">Velocità Reale Effettiva (Speedtest)</div>
+            </div>
+          </div>
+
+          <div class="box box-info" style="margin-top:1.25rem; margin-bottom:0;">
+            <div class="box-label">⏱️ Tempo Stimato di Download Effettivo</div>
+            <p id="resDownloadTime" style="margin:0; font-weight:600; font-size:1.05rem; color:var(--text)">
+              Circa <strong>6 minuti e 4 secondi</strong> per scaricare 30 GB.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <hr>
+
+      <!-- ======================================
+           SLIDE 3 — VIDEO DIDATTICO & HEDY LAMARR
+           ====================================== -->
+      <section class="slide reveal" id="slide-3" data-num="03">
+        <h2>3. Guarda & Comprendi: Come Funziona il Wi-Fi 6</h2>
+
+        <p>Questa animazione mostra l’innovazione cardine di 802.11ax: l’<strong>OFDMA</strong>. Il punto di accesso (AP, Access Point) può servire più dispositivi. Il canale può essere suddiviso in gruppi di sottoportanti, chiamati RU (Resource Unit, unità di risorse), assegnati a più dispositivi nello stesso intervallo.</p>
+
+        <!-- VIDEO EMBED RESPONSIVE -->
+        <div class="lab-panel" id="esperimento-ofdma" data-sim="ofdma"></div>
+
+        <!-- CURIOSITA' HEDY LAMARR -->
+        <div class="box-curiosity" style="margin-top:2rem;">
+          <div class="box-curiosity-title">
+            <span>🎬</span>
+            <span>Hedy Lamarr: La Diva di Hollywood che Inventò il Salto di Frequenza</span>
+          </div>
+          <div class="box-curiosity-content">
+            <p>
+              Nel 1942, una delle attrici più famose e affascinanti di Hollywood, <strong>Hedy Lamarr</strong>, insieme al compositore d'avanguardia George Antheil, brevettò un <em>"Sistema di Comunicazione Segreta"</em>.
+            </p>
+            <p style="margin-bottom:0">
+              L'idea geniale: per evitare che i sottomarini nazisti intercettassero o disturbassero i segnali radio che guidavano i siluri americani, il segnale doveva cambiare continuamente frequenza radio a intervalli regolari (ispirandosi ai rulli perforati dei pianoforti meccanici!). Questa tecnica, chiamata <strong>Frequency-Hopping Spread Spectrum (FHSS)</strong>, fu la pietra miliare su cui poggiano oggi sia il <strong>Bluetooth</strong> che i primi standard <strong>Wi-Fi 802.11</strong>. Una scienziata e attrice geniale a cui dobbiamo la nostra connessione wireless quotidiana!
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <hr>
+
+      <!-- ======================================
+           SLIDE 4 — CHECKPOINT AUTOVALUTAZIONE
+           ====================================== -->
+      <section class="slide reveal" id="slide-4" data-num="04">
+        <h2>4. Checkpoint di Autovalutazione</h2>
+        <p>
+          Verifica di aver padroneggiato le differenze tra generazioni Wi-Fi prima di addentrarci nello spettro delle frequenze nella Lezione 1.3:
+        </p>
+
+        <div class="quiz-wrap">
+          <div id="quizContainer" data-lesson-quiz>
+            <!-- Rendered by QuizEngine -->
+          </div>
+        </div>
+      </section>
+
+      <!-- COMPLETAMENTO & NAVIGAZIONE -->
+      <p class="sources">Riferimento per l’esperimento: <a href="https://documentation.meraki.com/Wireless/Design_and_Configure/Architecture_and_Best_Practices/Wi-Fi_6_%28802.11ax%29_Technical_Guide" target="_blank" rel="noopener noreferrer">Cisco Meraki · OFDMA e Resource Unit</a>.</p>
+      <div class="mark-done-wrap reveal lesson-completion">
+        <button type="button" class="mark-done-btn" data-next-lesson="lezione-1-3.html" disabled>
+          Termina il quiz per completare la lezione
+        </button>
+      </div>
+
+    </div>
+  </main>
+</div>
+
+<template data-presentation data-presentation-title="Come si è evoluto il Wi-Fi">
+  <section class="presenter-slide lim-slide" tabindex="-1" inert>
+    <div class="lim-stage">
+      <div>
+        <h2>Dal numero della scatola allo standard</h2>
+        <p>La famiglia <strong>802.11</strong> stabilisce come funzionano le reti Wi-Fi. Per riconoscere le generazioni si usano nomi come Wi-Fi 4, 5, 6 e 7.</p>
+        <p>Le sigle <code>n</code> e <code>ac</code> indicano gli standard. I numeri 4 e 5 aiutano a riconoscere l’ordine delle generazioni.</p>
+      </div>
+      <div class="lim-visual">
+        <ul class="lim-diagram" role="list">
+          <li><strong>Wi-Fi 4 · 802.11n.</strong> Più flussi radio e canali più larghi.</li>
+          <li><strong>Wi-Fi 5 · 802.11ac.</strong> Canali ancora più larghi nella banda dei 5 gigahertz.</li>
+          <li><strong>Wi-Fi 6 e 7.</strong> Più strumenti per servire più dispositivi e sfruttare le bande disponibili.</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+  <section class="presenter-slide lim-slide" tabindex="-1" inert>
+    <div class="lim-stage">
+      <div>
+        <h2>Le prime reti Wi-Fi</h2>
+        <p>Nelle prime generazioni si facevano scelte diverse tra banda radio, velocità e portata.</p>
+        <p>Lo standard <strong>802.11b</strong> usava la banda dei 2,4 gigahertz e arrivava a 11 megabit al secondo nominali.</p>
+      </div>
+      <div class="lim-visual">
+        <ul class="lim-diagram" role="list">
+          <li><strong>802.11b · 2,4 gigahertz.</strong> Una delle prime reti Wi-Fi a diffondersi.</li>
+          <li><strong>802.11a · 5 gigahertz.</strong> Usava una banda diversa e arrivava a 54 megabit al secondo nominali.</li>
+          <li><strong>802.11g · 2,4 gigahertz.</strong> Portò i 54 megabit al secondo nominali nella stessa banda usata da 802.11b.</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+  <section class="presenter-slide lim-slide" tabindex="-1" inert>
+    <div class="lim-stage">
+      <div>
+        <h2>Wi-Fi 4 e 5: più flussi e più spazio</h2>
+        <p>Con Wi-Fi 4 si possono inviare <strong>più flussi di dati</strong> nello stesso momento, se i dispositivi riescono a distinguerli. I canali possono arrivare a 40 megahertz.</p>
+        <p>Wi-Fi 5 opera nella banda dei <strong>5 gigahertz</strong> e permette di usare canali ancora più larghi.</p>
+        <p class="lim-terms">
+          <span><strong>MIMO</strong> · Multiple Input Multiple Output, più antenne in trasmissione e ricezione per gestire più flussi.</span>
+        </p>
+      </div>
+      <div class="lim-visual">
+        <ul class="lim-diagram" role="list">
+          <li><strong>Wi-Fi 4.</strong> Il MIMO può far viaggiare due flussi sullo stesso canale.</li>
+          <li><strong>Wi-Fi 5.</strong> I 5 gigahertz offrono spazio per canali più larghi, dove disponibili.</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+  <section class="presenter-slide lim-slide" tabindex="-1" inert>
+    <div class="lim-stage">
+      <div>
+        <h2>Wi-Fi 6 serve più dispositivi insieme</h2>
+        <p>Con l’<strong>OFDMA</strong> il punto di accesso divide il canale in gruppi di frequenze e li assegna a dispositivi diversi nello stesso intervallo.</p>
+        <p>È utile in aula: chi deve inviare pochi dati può usare la propria parte del canale.</p>
+        <p class="lim-terms">
+          <span><strong>OFDMA</strong> · Orthogonal Frequency Division Multiple Access, accesso di più dispositivi a parti dello stesso canale.</span>
+        </p>
+      </div>
+      <figure class="lim-visual">
+        <figcaption>Un intervallo di trasmissione</figcaption>
+        <div class="lim-allocation" role="list">
+          <span role="listitem">Telefono</span>
+          <span role="listitem">Portatile</span>
+          <span role="listitem">Tablet</span>
+        </div>
+        <p class="lim-topology-note">Ogni dispositivo usa un gruppo di frequenze diverso.</p>
+      </figure>
+    </div>
+  </section>
+  <section class="presenter-slide lim-slide" tabindex="-1" inert>
+    <div class="lim-stage">
+      <div>
+        <h2>Wi-Fi 6E aggiunge una banda, il 7 più collegamenti</h2>
+        <p><strong>Wi-Fi 6E</strong> estende il Wi-Fi 6 alla banda dei 6 gigahertz. Serve che sia supportata sia dal punto di accesso sia dal dispositivo.</p>
+        <p><strong>Wi-Fi 7</strong> può coordinare più collegamenti e usare canali più larghi dove lo spettro lo permette. Le prestazioni dipendono anche dagli apparati e dalle condizioni radio.</p>
+      </div>
+      <div class="lim-visual">
+        <p class="lim-example">Un portatile Wi-Fi 6 senza supporto ai 6 gigahertz vede una rete attiva solo su quella banda?</p>
+        <button type="button" class="btn btn-primary" data-presentation-reveal aria-expanded="false" aria-controls="lim-rapida-1-2">Mostra soluzione</button>
+        <div class="lim-solution" id="lim-rapida-1-2" hidden><p>No. Per usare quella banda la radio del portatile deve supportarla.</p></div>
+      </div>
+    </div>
+  </section>
+  <section class="presenter-slide lim-slide" tabindex="-1" inert>
+    <div class="lim-stage">
+      <div>
+        <h2>Perché lo speed test mostra un numero più basso</h2>
+        <p>La velocità nominale misura il collegamento radio in certe condizioni. Parte del tempo serve ad aspettare il turno, inviare messaggi di servizio e ritrasmettere dati.</p>
+        <p class="lim-formula"><strong>Stima.</strong> Velocità utile = velocità nominale × rendimento.</p>
+        <p>Il risultato dello speed test dipende anche dalla linea Internet e dal traffico. L’esempio usa un rendimento ipotetico del <strong>55%</strong>.</p>
+      </div>
+      <div class="lim-visual">
+        <ul class="lim-diagram" role="list">
+          <li><strong>600 megabit al secondo.</strong> Velocità nominale dell’esempio.</li>
+          <li><strong>600 × 0,55 = 330.</strong> Megabit al secondo di dati utili nell’ipotesi scelta.</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+  <section class="presenter-slide lim-slide lim-exercise" tabindex="-1" inert>
+    <div class="lim-stage">
+      <div>
+        <p class="lim-type">Esercizio lampo</p>
+        <h2>Dal valore nominale ai dati utili</h2>
+        <p>In una stima semplificata, velocità utile = velocità nominale × rendimento. La radio indica 200 Mbit/s e stimiamo un rendimento del 50%.</p>
+        <p class="lim-example">Quale velocità utile ottieni?</p>
+        <button type="button" class="btn btn-primary" data-presentation-reveal aria-expanded="false" aria-controls="lim-lampo-1-2">Mostra soluzione</button>
+      </div>
+      <div class="lim-visual lim-solution" id="lim-lampo-1-2" hidden><h3>Soluzione guidata</h3><p>200 × 0,50 = <strong>100 Mbit/s</strong>.</p></div>
+    </div>
+  </section>
+  <section class="presenter-slide lim-slide lim-curiosity" tabindex="-1" inert>
+    <div class="lim-stage">
+      <div>
+        <p class="lim-curiosity-label">Curiosità</p>
+        <h2>Hedy Lamarr e un brevetto radio</h2>
+        <p>Nel <strong>1942</strong> l’attrice Hedy Lamarr e il compositore George Antheil brevettarono un sistema radio per rendere il segnale più difficile da disturbare.</p>
+                <p class="lim-terms"><a href="https://sova.si.edu/record/nmah.ac.1590" target="_blank" rel="noopener noreferrer">Archivio Smithsonian</a> · <a href="https://patents.google.com/patent/US2292387A/en" target="_blank" rel="noopener noreferrer">Brevetto del 1942</a></p>
+      </div>
+      <div>
+        <div id="lim-curiosita-1-2"><figure class="lim-visual">
+        <figcaption>Due rulli, gli stessi salti</figcaption>
+        <p>Trasmettitore e ricevitore cambiavano frequenza insieme. Il brevetto proponeva rulli perforati come quelli delle <strong>pianole</strong> per tenerli sincronizzati.</p>
+        <table class="lim-roll">
+          <thead><tr><th scope="col">Frequenza</th><th scope="col">Ora</th><th scope="col">Dopo</th></tr></thead>
+          <tbody><tr><th scope="row">Chi invia</th><td>A</td><td>C</td></tr><tr><th scope="row">Chi ascolta</th><td>A</td><td>C</td></tr></tbody>
+        </table>
+        <p class="lim-terms">I rulli danno lo stesso ordine a entrambi. Schema semplificato.</p>
+      </figure></div></div>
+    </div>
+  </section>
+  <section class="presenter-slide lim-slide lim-challenge" tabindex="-1" inert>
+    <div class="lim-stage">
+      <div>
+        <h2>Sfida alla classe</h2>
+        <p><strong>Tre messaggi da consegnare.</strong> Un punto di accesso Wi-Fi 6 ha un piccolo messaggio per ciascuno dei tre dispositivi compatibili: portatile A, telefono B e tablet C. Nel caso monoutente li servirebbe uno alla volta.</p>
+        <p class="lim-example">Immaginate la prima trasmissione con OFDMA. Chi può ricevere in quel momento? Come si divide il canale? Proviamo a disegnarlo alla lavagna.</p>
+        <button type="button" class="btn btn-primary lim-reveal" data-presentation-reveal aria-expanded="false" aria-controls="lim-soluzione-1-2">Mostra soluzione</button>
+      </div>
+      <div class="lim-visual lim-answer-panel">
+        <div class="lim-solution" id="lim-soluzione-1-2" hidden>
+          <h3>Soluzione guidata</h3>
+          <ol><li>Nello scenario, <strong>A, B e C possono ricevere nella stessa trasmissione</strong>.</li><li>Dividete il canale in tre porzioni di frequenza e assegnatene una a testa. Le porzioni possono essere attive insieme: sono frequenze, non turni.</li></ol>
+        </div>
+      </div>
+    </div>
+  </section>
+  <section class="presenter-slide lim-slide lim-recap" tabindex="-1" inert>
+    <div class="lim-stage lim-stage-summary">
+      <h2>Da ricordare</h2>
+      <ul class="lim-summary" role="list">
+        <li><strong>Generazioni Wi-Fi</strong>Nomi come Wi-Fi 4 e 5 aiutano a riconoscere le generazioni degli standard 802.11.</li>
+        <li><strong>Velocità utile</strong>Controlli, attese e condivisione del canale riducono la velocità disponibile per i dati.</li>
+        <li><strong>OFDMA</strong>Più dispositivi compatibili ricevono insieme su porzioni diverse dello stesso canale.</li>
+      </ul>
+    </div>
+  </section>
+</template>
+
+<script src="../../../assets/js/app.js"></script>
+<script src="../../../assets/js/annotazioni.js" defer></script>
+<script src="../../../assets/js/modulo1.js"></script>
+<script>
+/* Calcolatore Throughput */
+const SpeedSim = (() => {
+  const rates = {
+    // Standard -> Array per flussi MIMO [1x1, 2x2, 4x4]
+    '11n':  { nominal: [150, 300, 600], efficiency: 0.50, name: 'Wi-Fi 4 (802.11n)' },
+    '11ac': { nominal: [433, 867, 1733], efficiency: 0.52, name: 'Wi-Fi 5 (802.11ac)' },
+    '11ax': { nominal: [600, 1201, 2402], efficiency: 0.58, name: 'Wi-Fi 6 (802.11ax)' },
+    '11be': { nominal: [1441, 2882, 5764], efficiency: 0.65, name: 'Wi-Fi 7 (802.11be)' }
+  };
+
+  function calc() {
+    const std = document.getElementById('selStandard').value;
+    const mimo = parseInt(document.getElementById('selMimo').value);
+    const fileSizeGB = parseFloat(document.getElementById('rangeFileSize').value);
+
+    const mimoIdx = mimo === 4 ? 2 : (mimo === 2 ? 1 : 0);
+    const data = rates[std];
+
+    const nominal = data.nominal[mimoIdx];
+    const real = Math.round(nominal * data.efficiency);
+
+    document.getElementById('dispFileSize').innerText = `${fileSizeGB} GB`;
+    document.getElementById('resNominal').innerText = `${nominal} Mbps`;
+    document.getElementById('resReal').innerText = `~${real} Mbps`;
+
+    // Calcolo tempo: 1 Byte = 8 bit
+    const totalBits = fileSizeGB * 1024 * 8; // Megabits
+    const totalSecs = Math.round(totalBits / real);
+    const mins = Math.floor(totalSecs / 60);
+    const secs = totalSecs % 60;
+
+    let timeStr = "";
+    if (mins > 0) timeStr += `${mins} min e `;
+    timeStr += `${secs} sec`;
+
+    document.getElementById('resDownloadTime').innerHTML = 
+      `Circa <strong>${timeStr}</strong> per scaricare ${fileSizeGB} GB di dati su Speedtest reale.`;
+  }
+
+  return { calc };
+})();
+
+document.addEventListener('DOMContentLoaded', () => {
+  SpeedSim.calc();
+
+  const quizQuestions = [
+    {
+      question: "Quale combinazione di tecnologie ha reso possibile il salto di velocità introdotto da Wi-Fi 4 (802.11n)?",
+      answers: [
+        { text: "L'uso esclusivo della banda a 60 GHz", correct: false },
+        { text: "L'introduzione della tecnologia MIMO e l'estensione del canale a 40 MHz", correct: true },
+        { text: "L'eliminazione dei controlli di sicurezza WPA (Wi-Fi Protected Access)", correct: false },
+        { text: "Il passaggio dalla modulazione digitale a quella analogica FM (modulazione di frequenza)", correct: false }
+      ],
+      explain_correct: "Esatto! 802.11n è stato rivoluzionario perché ha introdotto il MIMO (più flussi radio paralleli con più antenne) e canali da 40MHz.",
+      explain_wrong: "Wi-Fi 4 (802.11n) ha raggiunto i 600 Mbps grazie all'accoppiamento di canali (channel bonding a 40 MHz) e al MIMO (fino a 4 antenne simultanee)."
+    },
+    {
+      question: "Su quale frequenza lavora in via esclusiva il Wi-Fi 5 (802.11ac)?",
+      answers: [
+        { text: "Solo su frequenza 2.4 GHz", correct: false },
+        { text: "Solo su frequenza 5 GHz", correct: true },
+        { text: "Sia a 2.4 GHz che a 5 GHz indifferentemente", correct: false },
+        { text: "Sulle frequenze audio a 20 kHz (kilohertz)", correct: false }
+      ],
+      explain_correct: "Corretto! Lo standard 802.11ac è stato progettato per operare ESCLUSIVAMENTE sulla banda a 5 GHz, meno congestionata e più ampia.",
+      explain_wrong: "Attenzione: 802.11ac NON opera a 2.4 GHz! Se un router Wi-Fi 5 trasmette a 2.4 GHz, per quella banda usa il vecchio standard 802.11n."
+    },
+    {
+      question: "Per quale motivo la velocità effettiva di download (throughput reale) è pari a circa il 50-60% della velocità nominale Wi-Fi?",
+      answers: [
+        { text: "Perché l'operatore telefonico dimezza sempre la banda a scopo di risparmio", correct: false },
+        { text: "Per via dell'overhead di protocollo: intestazioni, tempi di backoff CSMA/CA, frame ACK e ritrasmissioni", correct: true },
+        { text: "Perché le schede madri dei computer non leggono più di 100 Mbps", correct: false },
+        { text: "Per colpa della polvere che entra nelle antenne del router", correct: false }
+      ],
+      explain_correct: "Bravissimo! Il Wi-Fi deve condividere l'aria: attese per evitare collisioni, invio di ACK per ogni pacchetto e crittografia riducono il throughput netto dei dati utili.",
+      explain_wrong: "La differenza tra velocità grezza dello strato fisico (PHY, Physical Layer) e dati utili applicativi (goodput) è dovuta all'overhead dei protocolli di Livello 2 e all'accesso condiviso CSMA/CA."
+    },
+    {
+      question: "Che cos'è l'OFDMA introdotto con il Wi-Fi 6 (802.11ax)?",
+      answers: [
+        { text: "Una tecnologia che suddivide il canale in sotto-canali (Resource Units) per trasmettere a più utenti nello stesso istante", correct: true },
+        { text: "Un nuovo cavo ottico da collegare allo smartphone", correct: false },
+        { text: "Un sistema per spegnere il Wi-Fi durante le ore notturne", correct: false },
+        { text: "Un tipo di antenna satellitare montata sui tetti", correct: false }
+      ],
+      explain_correct: "Fantastico! OFDMA divide il canale in sottoportanti dedicate a client diversi: addio code e lag anche in aule scolastiche strapiene di smartphone!",
+      explain_wrong: "OFDMA (Orthogonal Frequency Division Multiple Access) è la killer feature di Wi-Fi 6: permette a un solo frame radio di trasportare dati per più client contemporaneamente."
+    },
+    {
+      question: "Quale banda radio aggiuntiva è stata introdotta specificamente con lo standard Wi-Fi 6E?",
+      answers: [
+        { text: "La banda dei 900 MHz", correct: false },
+        { text: "La banda dei 6 GHz (senza interferenze storiche da vecchi dispositivi)", correct: true },
+        { text: "La banda delle onde corte (HF, High Frequency)", correct: false },
+        { text: "La frequenza dei raggi X", correct: false }
+      ],
+      explain_correct: "Perfetto! La 'E' di Wi-Fi 6E sta per 'Extended' e apre l'autostrada pulita della banda a 6 GHz (5.925 - 7.125 GHz) libera da vecchi apparati legacy.",
+      explain_wrong: "Wi-Fi 6E estende il Wi-Fi 6 sulla nuovissima e pulitissima banda a 6 GHz, garantendo canali da 160 MHz liberi da qualsiasi congestione precedente."
+    }
+  ];
+
+  QuizEngine.init('quizContainer', quizQuestions);
+});
+</script>
+</body>
+</html>

@@ -68,22 +68,34 @@ Il Wi-Fi scolastico si riceve anche dal cortile. Spiega come interverresti sulla
 
 ## Esercizi con caselle per i risultati
 
-Sul sito compaiono il testo e le caselle dei risultati, con unità già scritte e supporto per virgola e punto decimale. Lo svolgimento sul foglio permette al docente di valutare i passaggi. La correzione automatica usa valori esatti per i calcoli che li richiedono e una tolleranza per i risultati approssimati. Come base da provare, il 3% di scarto intorno a 25,64 accetta sia 24,9 sia 25,3. La tolleranza si concorda per ciascun risultato.
+Per ogni alunno si sorteggia un esercizio di trasferimento e uno di copertura, ciascuno tra due tracce. Sul sito compaiono i dati estratti e le caselle dei risultati con le unità. L’alunno usa la virgola o il punto decimale e svolge i calcoli sul foglio. Il tempo di trasferimento accetta uno scarto del ±3% dal risultato prima dell’arrotondamento. Velocità utile, potenza ricevuta e margine richiedono il valore esatto.
 
-### Esercizio A · Trasferimento di un file
+### Esercizio 1 · Trasferimento di un file
 
-Una postazione del laboratorio trasferisce sulla rete locale un video da **450 MB**. La velocità nominale Wi-Fi è **240 Mbit/s** e quella utile è il **65%** della nominale. Assumi che la velocità utile resti costante e usa **1 MB = 8 Mbit**. Calcola la velocità utile e il tempo di trasferimento.
+Una postazione del laboratorio trasferisce un video sulla rete locale. Assumi che la velocità utile resti costante e usa **1 MB = 8 Mbit**. Calcola la velocità utile e il tempo di trasferimento.
 
-| Campo sul sito | Unità accanto al campo | Per il docente |
+| Traccia | Dimensione del video | Velocità nominale Wi-Fi | Percentuale utile |
+| --- | --- | --- | --- |
+| 1 | 450 MB | 240 Mbit/s | 65% |
+| 2 | 480 MB | 250 Mbit/s | 68% |
+
+| Passaggio della correzione | Traccia 1 | Traccia 2 |
 | --- | --- | --- |
-| Velocità utile | Mbit/s | 156 |
-| Tempo di trasferimento | s | 23,08, arrotondato a due decimali |
+| Velocità utile | 240 × 0,65 = **156 Mbit/s** | 250 × 0,68 = **170 Mbit/s** |
+| Conversione della dimensione | 450 × 8 = 3 600 Mbit | 480 × 8 = 3 840 Mbit |
+| Tempo di trasferimento | 3 600 ÷ 156 ≈ **23,08 s** | 3 840 ÷ 170 ≈ **22,59 s** |
 
-### Esercizio B · Copertura oltre una parete
+### Esercizio 2 · Copertura oltre una parete
 
-Un access point trasmette a **17 dBm**. L’antenna trasmittente guadagna **3 dBi** e quella ricevente **2 dBi**. Sul percorso ci sono **75 dB** di perdita, più **12 dB** per una parete. La soglia richiesta è **−67 dBm**. Calcola la potenza ricevuta e il margine rispetto alla soglia.
+Un access point trasmette verso un terminale. Sul percorso c’è una parete che introduce una perdita aggiuntiva. Calcola la potenza ricevuta e il margine rispetto alla soglia.
 
-| Campo sul sito | Unità accanto al campo | Per il docente |
+| Traccia | Potenza trasmessa | Guadagno trasmittente | Guadagno ricevente | Perdita sul percorso | Perdita della parete | Soglia |
+| --- | --- | --- | --- | --- | --- | --- |
+| 1 | 17 dBm | 3 dBi | 2 dBi | 75 dB | 12 dB | −67 dBm |
+| 2 | 18 dBm | 4 dBi | 2 dBi | 77 dB | 13 dB | −69 dBm |
+
+| Passaggio della correzione | Traccia 1 | Traccia 2 |
 | --- | --- | --- |
-| Potenza ricevuta | dBm | −65 |
-| Margine | dB | +2 |
+| Perdita totale | 75 + 12 = 87 dB | 77 + 13 = 90 dB |
+| Potenza ricevuta | 17 + 3 + 2 − 87 = **−65 dBm** | 18 + 4 + 2 − 90 = **−66 dBm** |
+| Margine rispetto alla soglia | −65 − (−67) = **+2 dB** | −66 − (−69) = **+3 dB** |

@@ -1,0 +1,37 @@
+.prova { max-width: 860px; margin: auto; padding: 2rem clamp(1rem, 4vw, 2.5rem) 3rem; }
+.prova h2 { color: var(--verifica-accento); font-weight: 750; }
+.prova section { margin: 1.75rem 0; }
+.prova h2 { margin-bottom: .7rem; }
+.prova fieldset { border: 0; min-width: 0; }
+.prova fieldset.prova-card { border: 1px solid var(--border-2); border-top: 3px solid #4389b5; }
+.prova-card { margin: 0 0 .8rem; padding: 1rem; background: var(--surface); border: 1px solid var(--border-2); border-radius: var(--r-md); }
+.prova label, .prova-prompt { font-weight: 650; }
+.prova-prompt { margin-bottom: .65rem; }
+.prova input:not([type="radio"]), .prova textarea {
+  background: var(--surface); color: var(--text); border: 1px solid var(--border-2);
+  border-radius: var(--r-sm); font: inherit; padding: .45rem .6rem; max-width: 100%;
+}
+.prova textarea { display: block; width: 100%; resize: vertical; }
+.prova-aiuto { font-size: .92em; color: var(--text-muted); margin: .65rem 0 0; }
+.prova-azioni { display: flex; flex-wrap: wrap; gap: .6rem; margin-top: .5rem; }
+.prova-stato { font-weight: 650; }
+.prova-stato:not(:empty) { margin: .75rem 0; }
+.prova-barra {
+  display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap;
+  gap: .6rem; position: sticky; top: 0; z-index: 2; padding: .65rem .9rem;
+  background: var(--surface); border: 1px solid var(--border-2); border-radius: 0 0 var(--r-md) var(--r-md);
+}
+.prova [hidden] { display: none; }
+.prova-barra time { font-size: 1.25rem; font-weight: 750; font-variant-numeric: tabular-nums; color: var(--verifica-accento); }
+#salvataggio { display: block; font-size: .88em; color: var(--text-muted); }
+.prova-opzioni { display: grid; gap: .4rem; }
+.prova-opzione {
+  display: flex; align-items: baseline; gap: .55rem; padding: .45rem .6rem;
+  border: 1px solid var(--border); border-radius: var(--r-sm); background: var(--surface-2);
+}
+.prova-opzione:has(input:checked) { border-color: #4389b5; background: var(--verifica-selezione); }
+.prova-opzione input { accent-color: var(--verifica-accento); }
+.prova-opzione span:first-of-type { min-width: 1rem; color: var(--verifica-accento); }
+.prova-risultati { display: flex; gap: .8rem; flex-wrap: wrap; }
+.prova-risultati label { display: grid; gap: .3rem; }
+.prova-risultati input { width: 9rem; }

@@ -1,0 +1,7 @@
+# Presentazioni alla classe · Criteri per i prossimi moduli
+
+- In ogni sottomodulo inserisci almeno una slide **Curiosità**, riconoscibile dalla grafica dedicata. Racconta da subito il fatto e il motivo per cui è interessante. Verifica il fatto e collega la fonte quando serve. Aggiungi una domanda solo quando aiuta gli studenti a ragionare. Dai prima il contesto e gli indizi necessari, poi fai comparire la risposta su richiesta.
+- Introduci le formule fondamentali nel punto in cui servono. Spiega i termini e le unità, mostra un esempio quando serve e proponi subito un **Esercizio lampo** con pochi dati e un calcolo breve. Se il tema non richiede calcoli, usa una rapida applicazione della regola appena vista.
+- Proponi una sola **Sfida alla classe** per sottomodulo. Usa uno scenario concreto, dati sufficienti e una domanda di ragionamento, previsione o scelta da motivare insieme, senza timer, squadre o punti. Se serve un calcolo, usalo per prendere o motivare una decisione.
+- Usa le **dimostrazioni** per osservare un fenomeno, un video o un simulatore. Specifica che cosa osservare o cambiare e prevedi a parte un momento in cui gli studenti applicano ciò che hanno visto.
+- Colloca il pulsante subito dopo la domanda o dopo la consegna, nella stessa colonna. La risposta o la soluzione guidata parte nascosta. Chiudi con **Da ricordare**. Prova la leggibilità in proiezione, anche a soluzione aperta, e l’uso da tastiera.

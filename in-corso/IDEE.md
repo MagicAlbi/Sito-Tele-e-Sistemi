@@ -17,7 +17,9 @@
 
 ## Verifiche di fine modulo
 
-**In progettazione · aggiornato il 26 novembre 2026.** Prima verifica sul Wi-Fi con 20 domande chiuse, due aperte sorteggiate per alunno tra la 2, la 5, la 6 e la 7 della banca e due esercizi. Pronto il PDF per il docente con risposte e criteri. Il punto di ripresa per l’implementazione è nella scheda di lavoro. [Scheda di lavoro](verifiche-fine-modulo/LAVORO.md) · [Fase 13 del piano](../piani/telecomunicazioni-5a/fasi/13/FASE.md).
+**Ordine delle opzioni · 26 novembre 2026.** Regola comune per tutti i moduli: opzioni mescolate a ogni avvio in allenamenti, verifiche e simulazioni. I quiz di fine sottomodulo possono avere ordine fisso, con risposte giuste in posizioni diverse. Verificati in locale gli aggiornamenti della verifica Wi-Fi e della simulazione WAN.
+
+**Da completare · 26 novembre 2026.** Prima verifica sul Wi-Fi con 20 domande chiuse, due aperte sorteggiate per alunno tra la 2, la 5, la 6 e la 7 della banca e due esercizi. Pronto il PDF per il docente con risposte e criteri. Il punto di ripresa per l’implementazione è nella scheda di lavoro. [Scheda di lavoro](verifiche-fine-modulo/LAVORO.md) · [Fase 13 del piano](../piani/telecomunicazioni-5a/fasi/13/FASE.md).
 
 ## Riassunto personale da note ed evidenziazioni
 
@@ -26,3 +28,11 @@
 ## Schede di approfondimento e ripasso
 
 **Da esplorare · 25 novembre 2026.** Creare una sezione del sito da ampliare nel tempo con schede brevi da consultare quando serve un ripasso. La prima scheda distingue dB, dBm e dBi. Con un esempio Wi-Fi mostra perché −67 dBm indica una potenza inferiore al riferimento di 1 mW, come si esprime in dB il margine rispetto alla soglia e perché può essere negativo. Spiega il dBi come guadagno dell’antenna rispetto a un’antenna ideale che irradia allo stesso modo in tutte le direzioni. Idea separata dalla verifica di fine modulo.
+
+## Uscita automatica dall’Area docente
+
+**Pubblicata · 26 novembre 2026.** La sessione scade dopo 10 minuti di inattività. [Scheda di lavoro](logout-area-docente/LAVORO.md).
+
+## Presentazioni dei moduli 1 e 2
+
+**Da completare · 26 novembre 2026.** Alla ripresa, discutere insieme se affiancare alle formule delle pagine di studio un esempio svolto e un breve «Prova tu». Poi rivedere la bozza delle slide e i criteri per i prossimi moduli. [Scheda di lavoro](revisione-slide-moduli-1-2/LAVORO.md).

@@ -1,0 +1,113 @@
+.scheda { max-width: 960px; margin: 0 auto; padding: 2.5rem clamp(1rem, 4vw, 2.5rem); }
+.scheda h2 { color: var(--verifica-accento); }
+.scheda-comandi { display: flex; gap: 1rem; flex-wrap: wrap; align-items: center; margin-top: 1rem; }
+.scheda [hidden], .scheda-comandi:empty { display: none; }
+#accesso-docente { display: flex; align-items: center; flex-wrap: wrap; gap: .6rem; }
+.scheda #accesso-docente[hidden] { display: none; }
+.scheda select, .scheda input {
+  background: var(--surface); color: var(--text); border: 1px solid var(--border-2);
+  border-radius: var(--r-sm); font: inherit; padding: .25rem .5rem;
+}
+.scheda section { margin-top: 2rem; }
+.scheda h2, .scheda h3, .scheda h4 { margin: 0; }
+.scheda h2 { margin-bottom: .75rem; }
+.scheda h3 { font-size: 1.12rem; line-height: 1.4; }
+.scheda h4 { font-size: 1rem; color: var(--verifica-accento); margin-bottom: .5rem; }
+.scheda-blocco {
+  background: var(--surface); border: 1px solid var(--border-2);
+  border-radius: var(--r-lg); padding: 1.2rem; margin: 1rem 0;
+}
+.scheda-chiusa, .scheda-articolata { border-top: 4px solid #4389b5; }
+.scheda-chiusa.giusta { border-top-color: #217b4f; }
+.scheda-chiusa.errata { border-top-color: #b63142; }
+.scheda-chiusa h3 { display: flex; gap: .75rem; align-items: flex-start; }
+.scheda-numero, .scheda-lettera {
+  display: grid; place-items: center; flex: none;
+  border-radius: var(--r-sm); font-weight: 750; width: 1.8rem; height: 1.8rem;
+  background: var(--surface-3); color: var(--verifica-accento);
+}
+.scheda-lettera { border: 1px solid #a9cbe5; background: var(--verifica-selezione); }
+.scheda-opzione.giusta .scheda-lettera { border-color: #a0c9ae; background: #e1f2e6; color: #205939; }
+.scheda-opzione.errata .scheda-lettera { border-color: #dfa2ad; background: #fbe6e9; color: #952d3c; }
+.scheda-opzioni { list-style: none; padding: 0; margin: .8rem 0 0; display: grid; gap: .45rem; }
+.scheda-opzione {
+  display: grid; grid-template-columns: auto 1fr 1rem; gap: .65rem; align-items: center;
+  border: 1px solid var(--border); border-radius: var(--r-md); padding: .45rem .65rem;
+  background: var(--surface-2); line-height: 1.4;
+}
+.scheda-opzione.giusta { background: #eff9f1; border-color: #aacfb8; }
+.scheda-opzione.errata { background: #fff2f3; border-color: #e4b0b7; }
+.scheda-pallino { display: inline-block; width: .8rem; height: .8rem; border-radius: 50%; }
+.scheda-pallino.giusta { background: #217b4f; }
+.scheda-pallino.errata { background: #b63142; }
+.scheda-legenda { display: flex; flex-wrap: wrap; gap: .4rem 1.3rem; font-size: .9em; }
+.scheda-legenda span { display: inline-flex; align-items: center; gap: .4rem; }
+.scheda-etichetta, .scheda-nota { color: var(--text-muted); font-size: .9em; margin-top: .65rem; }
+.scheda-totale { font-weight: 750; margin-top: .7rem; }
+.scheda-articolata { padding: clamp(1rem, 4vw, 1.6rem); }
+.scheda-articolata h3 { font-size: 1.25rem; color: var(--verifica-accento); }
+.scheda-riquadro {
+  margin-top: 1.15rem; padding: .95rem 1rem;
+  border: 1px solid var(--border); border-radius: var(--r-md);
+}
+.scheda-consegna { background: var(--surface-2); }
+.scheda-consegna p { font-weight: 620; }
+.scheda-risposta { border-left: 4px solid #4389b5; background: #f1f7fc; }
+.scheda-passaggi { padding-left: 1.4rem; }
+.scheda-passaggi li + li { margin-top: .75rem; }
+.scheda-passaggi li p { margin: 0; line-height: 1.4; }
+.scheda-formula { color: var(--verifica-accento); font-size: 1.08em; font-weight: 700; }
+.scheda-passaggi .scheda-formula-parole { margin-top: .1rem; font-weight: 650; }
+.scheda-passaggi .scheda-calcolo { margin-top: .55rem; }
+.scheda-tabella { width: 100%; border-collapse: collapse; font-size: .92em; overflow-wrap: anywhere; }
+.scheda-tabella th, .scheda-tabella td {
+  padding: .55rem .65rem; border: 1px solid var(--border-2); text-align: left; vertical-align: top;
+}
+.scheda-tabella thead, .scheda-tabella tfoot { background: var(--surface-2); }
+.scheda-tabella thead, .scheda-tabella tfoot { color: var(--verifica-accento); font-weight: 750; }
+.scheda-griglia input { width: min(4rem, 100%); }
+.scheda-griglia .scheda-giudizio { width: min(9rem, 100%); }
+.scheda-griglia th:not(:first-child), .scheda-griglia td { min-width: 6rem; }
+.scheda-solo-stampa { display: none; }
+@media screen {
+  [data-theme="dark"] .scheda-risposta { background: #172d47; }
+  [data-theme="dark"] .scheda-opzione.giusta { background: #163527; border-color: #397d5b; }
+  [data-theme="dark"] .scheda-opzione.errata { background: #3b2029; border-color: #915261; }
+  [data-theme="dark"] .scheda-lettera { border-color: #396385; }
+  [data-theme="dark"] .scheda-pallino.giusta { background: #7bdda6; }
+  [data-theme="dark"] .scheda-pallino.errata { background: #ff8997; }
+}
+@media screen and (max-width: 520px) {
+  .scheda-blocco, .scheda-riquadro { padding: .7rem; }
+  .scheda-tabella th, .scheda-tabella td { padding: .25rem; }
+  .scheda-griglia th:not(:first-child), .scheda-griglia td { min-width: 0; }
+}
+@page { size: A4; margin: 12mm 14mm; }
+@media print {
+  html, body, .scheda-blocco { background: white; color: black; }
+  body { font-size: 10pt; line-height: 1.35; transition: none; }
+  .scheda {
+    --surface: #ffffff; --surface-2: #f4f7fb; --surface-3: #edf2f9;
+    --text: #0d1b2e; --text-muted: #4a6580; --border: #d8e3f0; --border-2: #c5d6ea;
+    max-width: none; padding: 0; color: #0d1b2e;
+  }
+  .scheda h1 { font-size: 20pt; }
+  .scheda h2 { font-size: 14pt; }
+  .scheda h3 { font-size: 11pt; }
+  .scheda h4 { font-size: 10pt; }
+  .scheda-comandi, .scheda-griglia input { display: none; }
+  .scheda-solo-stampa { display: inline; }
+  .scheda-blocco { border-radius: 0; padding: 3mm; margin: 2.5mm 0; }
+  .scheda-blocco, .scheda-riquadro { break-inside: avoid; }
+  .scheda-chiusa { padding: 2mm 3mm; border-top-width: 2px; }
+  .scheda-numero, .scheda-lettera { width: 4.5mm; height: 4.5mm; }
+  .scheda-numero { background: white; }
+  .scheda-opzione, .scheda-consegna, .scheda-risposta, .scheda-tabella thead, .scheda-tabella tfoot { background: white; }
+  .scheda-opzione { padding: .4mm 2mm; }
+  .scheda-opzioni { gap: 1mm; margin-top: 2mm; }
+  .scheda-riquadro { margin-top: 3mm; padding: 2.5mm; }
+  .scheda-tabella th, .scheda-tabella td { padding: 1.5mm 2mm; }
+  .scheda-pallino, .scheda-lettera { print-color-adjust: exact; }
+  .scheda h2, .scheda h3, .scheda h4 { break-after: avoid; }
+  .scheda-totale { break-before: avoid; }
+}

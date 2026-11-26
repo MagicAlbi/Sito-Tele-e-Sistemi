@@ -1,0 +1,449 @@
+<!doctype html>
+<html lang="it" data-theme="dark">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Accesso in rame e in fibra | Telecomunicazioni 5A</title>
+  <link rel="stylesheet" href="../../../assets/css/style.css">
+  <link rel="stylesheet" href="../../../assets/css/modulo2.css">
+  <link rel="stylesheet" href="../../../assets/css/presentazioni-modulo1.css">
+  <link rel="stylesheet" href="../../../assets/css/accesso-fibra.css">
+  <link rel="stylesheet" href="../presentazioni.css">
+</head>
+<body class="module-two" data-lesson-id="m2-3">
+<div class="app-layout">
+  <header class="site-header">
+    <a href="../../../index.html" class="logo-link">
+      <span class="logo-icon" aria-hidden="true">⚡</span>
+      <span class="logo-text"><span class="logo-title text-gradient">Telecomunicazioni 5A</span><span class="logo-sub">IIS J.C. Maxwell</span></span>
+    </a>
+    <nav class="header-breadcrumb" aria-label="Percorso">
+      <a href="../../../index.html">Home</a><span aria-hidden="true">›</span>
+      <a href="../../../modulo2/index.html">Modulo 2</a><span aria-hidden="true">›</span>
+      <span class="current" aria-current="page">Lezione 2.3</span>
+    </nav>
+    <div class="header-actions">
+      <button type="button" class="btn btn-present" data-present>Presenta <span class="wan-present-lim">sulla LIM</span></button>
+      <button type="button" class="btn btn-icon btn-ghost" data-theme-toggle aria-label="Cambia tema"></button>
+      <button type="button" class="btn btn-icon btn-ghost btn-hamburger" aria-label="Percorso del modulo" aria-controls="wan-sidebar">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="M3 6h18M3 12h18M3 18h18"/></svg>
+      </button>
+    </div>
+  </header>
+  <nav class="sidebar" id="wan-sidebar" aria-label="Percorso del Modulo 2">
+    <div class="sidebar-module-badge">
+      <span class="module-dot" aria-hidden="true"></span>
+      <a class="module-label" href="../../../modulo2/index.html">Modulo 2 · Reti WAN</a>
+    </div>
+    <span class="sidebar-section-title">Percorso guidato</span>
+    <ul class="sidebar-nav">
+      <li data-lesson="m2-1">
+        <a href="lezione-2-1.html"><span class="lesson-num">2.1</span><span class="lesson-title">Dalla rete locale al canale fisico</span><span class="lesson-check" aria-hidden="true"></span></a>
+      </li>
+      <li data-lesson="m2-2">
+        <a href="lezione-2-2.html"><span class="lesson-num">2.2</span><span class="lesson-title">Accesso remoto e interconnessione WAN</span><span class="lesson-check" aria-hidden="true"></span></a>
+      </li>
+      <li data-lesson="m2-3" class="active">
+        <a href="lezione-2-3.html" aria-current="page"><span class="lesson-num">2.3</span><span class="lesson-title">Accesso in rame e in fibra</span><span class="lesson-check" aria-hidden="true"></span></a>
+      </li>
+      <li data-lesson="m2-4">
+        <a href="lezione-2-4.html"><span class="lesson-num">2.4</span><span class="lesson-title">Protocolli di linea</span><span class="lesson-check" aria-hidden="true"></span></a>
+      </li>
+      <li data-lesson="m2-5">
+        <a href="lezione-2-5.html"><span class="lesson-num">2.5</span><span class="lesson-title">Primo routing</span><span class="lesson-check" aria-hidden="true"></span></a>
+      </li>
+    </ul>
+    <span class="sidebar-section-title">Pratica e verifiche</span>
+    <ul class="sidebar-nav">
+      <li>
+        <a href="../../../modulo2/lab-routing.html"><span class="lesson-num" aria-hidden="true">🔬</span><span class="lesson-title">Laboratorio di routing</span></a>
+      </li>
+      <li>
+        <a href="../../../modulo2/allenamento.html"><span class="lesson-num" aria-hidden="true">🎯</span><span class="lesson-title">Test di allenamento</span></a>
+      </li>
+      <li>
+        <a href="../../../modulo2/esercizi.html"><span class="lesson-num" aria-hidden="true">🧮</span><span class="lesson-title">Esercizi numerici</span></a>
+      </li>
+      <li>
+        <a href="../../../modulo2/verifica.html"><span class="lesson-num" aria-hidden="true">📋</span><span class="lesson-title">Simulazione di verifica</span></a>
+      </li>
+    </ul>
+    <div class="sidebar-progress" data-module-progress="m2" data-total="5">
+      <div class="progress-label"><span>Lezioni completate</span><span><span data-progress-done>0</span>/5</span></div>
+      <div class="progress-bar" aria-hidden="true"><div class="progress-fill" style="width:0%"></div></div>
+    </div>
+  </nav>
+  <main class="main-content wan-study wan-lesson">
+    <div class="content-wrap">
+      <header class="lesson-intro-hero">
+        <div>
+          <div class="lesson-intro-meta">
+            <p class="lesson-intro-topic">Lezione 2.3 · xDSL · FTTC · FTTH</p>
+          </div>
+          <h1 class="lesson-title-h1">Accesso in rame e in fibra</h1>
+          <p class="lesson-subtitle">Dalla centrale a casa una connessione può attraversare fibra ottica, rame o entrambi. Segui il percorso nel video 3D e impara a riconoscere il tipo di accesso dal cavo che arriva all’abitazione.</p>
+        </div>
+        <img src="../../../assets/img/indice-fibra-ottica.svg" alt="" width="200" height="252">
+      </header>
+      <div class="lesson-prereq lesson-intro-prereq">
+        <span class="lesson-prereq-icon" aria-hidden="true">🧠</span>
+        <div><strong>Nozioni di base.</strong> Rame e fibra sono mezzi fisici diversi. La velocità della linea d’accesso e quella del Wi-Fi domestico dipendono da tratti diversi del collegamento. Download è la ricezione, upload è l’invio.</div>
+      </div>
+      <section class="lesson-summary" aria-labelledby="obiettivo">
+        <h2 id="obiettivo">In questa lezione</h2>
+        <ul>
+          <li><span aria-hidden="true">▶️</span><p><strong>Tre percorsi verso casa.</strong> Confronterai ADSL, FTTC e FTTH seguendo il cavo dalla centrale. Nel video 3D individuerai l’armadio in cui, in FTTC, la fibra lascia posto al doppino di rame.</p></li>
+          <li><span aria-hidden="true">🔬</span><p><strong>Riconoscere un impianto.</strong> Vedrai come distanza e disturbi fra coppie di rame influiscono sulla linea. Nella missione classificherai gli impianti e sceglierai una prova per capire dove si trova un rallentamento.</p></li>
+          <li><span aria-hidden="true">🧮</span><p><strong>Un ramo ottico condiviso.</strong> Riconoscerai gli apparati della rete ottica passiva e calcolerai la quota teorica per abitazione in un esempio di divisione in parti uguali.</p></li>
+        </ul>
+      </section>
+      <section class="slide wan-lesson-section" id="percorsi" data-num="01">
+        <header><h2>1. Tre indirizzi, tre percorsi</h2><p class="wan-lead">Per riconoscere l’accesso, segui il mezzo fra l’operatore e l’abitazione.</p></header>
+        <figure class="wan-visual"><svg class="wan-drawing" viewBox="0 0 520 226" role="img" aria-label="In ADSL il doppino parte dalla centrale. In FTTC il doppino parte dall’armadio. In FTTH la fibra arriva a casa."><text class="muted" x="100" y="28" font-size="16">Centrale</text><text class="muted" x="269" y="28" font-size="16">Armadio</text><text class="muted" x="442" y="28" font-size="16">Casa</text><path class="guide" d="M129 44V198M300 44V198M456 44V198"/><text class="ink" x="18" y="75" font-size="18">ADSL</text><text class="ink" x="18" y="127" font-size="18">FTTC</text><text class="ink" x="18" y="179" font-size="18">FTTH</text><path class="copper" d="M129 70H456"/><path class="return" d="M129 122H300"/><path class="copper" d="M301 122H456"/><path class="return" d="M129 174H456"/><circle class="teal" cx="300" cy="122" r="6"/><text class="teal" x="143" y="215" font-size="16">Fibra</text><text class="ink" x="338" y="215" font-size="16">Doppino</text><path class="return" d="M111 209H135"/><path class="copper" d="M304 209H330"/></svg><figcaption>La fibra è indicata in verde. Il doppino è indicato in arancione.</figcaption></figure>
+        <div class="wan-copy"><p>Con <strong>ADSL da centrale</strong> il tratto d’accesso usa il doppino fino al modem. Con <strong>FTTC</strong> (fibra fino all’armadio), un apparato attivo nell’armadio riceve il segnale dalla fibra e lo invia sul doppino attraverso VDSL2. Con <strong>FTTH</strong> (fibra fino a casa) la fibra raggiunge la presa ottica. Il terminale ottico può essere integrato nel router o collegato ad esso via Ethernet.</p><p>La presenza del Wi-Fi o di un cavo Ethernet in casa è compatibile con tutte e tre le soluzioni. Osserva dove termina la fibra rispetto alla presa d’utente.</p></div>
+      </section>
+      <hr>
+
+      <section class="slide wan-lesson-section" id="video-rame-fibra" data-num="02">
+        <header><h2>2. Dalla centrale a casa</h2><p class="wan-lead">Individua dove la fibra lascia posto al doppino e segui il tragitto FTTH nella panoramica finale.</p></header>
+        <div class="access-film">
+          <video controls playsinline preload="metadata" poster="../../../assets/media/accesso-rame-fibra-poster.webp" aria-label="Video narrato Dalla centrale a casa">
+            <source src="../../../assets/media/accesso-rame-fibra.mp4" type="video/mp4">
+            <p><a href="../../../assets/media/accesso-rame-fibra.mp4">Apri il video Dalla centrale a casa</a></p>
+          </video>
+          <p class="access-film-credit">Voce generata con intelligenza artificiale.</p>
+          <details>
+            <summary>Leggi la spiegazione del video</summary>
+            <ol>
+              <li>Dalla centrale dell’operatore parte la fibra ottica, indicata in azzurro. La telecamera segue il collegamento verso il quartiere su un percorso schematico.</li>
+              <li>In FTTC un apparato nell’armadio stradale riceve i dati dalla fibra e li ritrasmette come segnali elettrici. La linea arancione indica il doppino di rame che raggiunge il modem VDSL2 a casa.</li>
+              <li>La panoramica finale confronta l’FTTC con l’FTTH, dove la fibra raggiunge la presa ottica dell’abitazione.</li>
+            </ol>
+          </details>
+        </div>
+      </section>
+      <hr>
+
+      <section class="slide wan-lesson-section" id="rame" data-num="03">
+        <header><h2>3. Perché sul rame la distanza conta</h2><p class="wan-lead">Lo stesso doppino può comportarsi diversamente lungo due percorsi.</p></header>
+        <ol class="wan-flow"><li><strong>Distanza maggiore</strong><span>più attenuazione a parità di condizioni</span></li><li><strong>Doppini vicini</strong><span>possibile diafonia</span></li><li><strong>Vectoring</strong><span>riduce parte della diafonia</span></li></ol>
+        <div class="wan-copy"><p><strong>xDSL</strong> indica una famiglia di tecnologie che trasportano dati sul doppino telefonico. ADSL è asimmetrica: la capacità in download è superiore a quella in upload. Nella prima generazione su linea analogica le frequenze per i dati arrivano a circa 1,1 MHz. La voce tradizionale può usare la banda più bassa. VDSL2 può usare una banda più ampia, soprattutto quando il tratto di rame è breve.</p><p>Il segnale si <strong>attenua</strong> lungo il cavo. La <strong>diafonia</strong> è il disturbo prodotto da segnali che viaggiano su coppie vicine. Dove è attivo, il <strong>vectoring</strong> coordina linee VDSL2 compatibili per ridurla. Distanza, qualità del cavo e interferenze influiscono sul collegamento. Dai soli metri non puoi ricavare con precisione la velocità reale.</p></div>
+      </section>
+      <hr>
+
+      <section class="slide wan-lesson-section" id="pon" data-num="04">
+        <header><h2>4. Una fibra a monte, più abitazioni</h2><p class="wan-lead">Una rete ottica passiva distribuisce il segnale lungo più rami.</p></header>
+        <figure class="wan-visual"><svg class="wan-drawing" viewBox="0 0 520 226" role="img" aria-label="Un OLT alimenta otticamente due rami che lo splitter passivo distribuisce verso due ONT."><path class="return" d="M131 116H190M327 116H358L388 58M358 116L388 171"/><g><rect class="segment" x="20" y="80" width="112" height="70" rx="10"/><text class="teal" x="76" y="112" text-anchor="middle" font-size="21">OLT</text><text class="muted" x="76" y="135" text-anchor="middle" font-size="15">Centrale</text></g><g><rect class="segment" x="190" y="80" width="137" height="70" rx="10"/><text class="violet" x="258.5" y="112" text-anchor="middle" font-size="21">Splitter</text><text class="muted" x="258.5" y="135" text-anchor="middle" font-size="15">Passivo</text></g><g><rect class="segment" x="389" y="23" width="112" height="70" rx="10"/><text class="teal" x="445" y="55" text-anchor="middle" font-size="21">ONT</text><text class="muted" x="445" y="78" text-anchor="middle" font-size="15">Casa A</text></g><g><rect class="segment" x="389" y="136" width="112" height="70" rx="10"/><text class="teal" x="445" y="168" text-anchor="middle" font-size="21">ONT</text><text class="muted" x="445" y="191" text-anchor="middle" font-size="15">Casa B</text></g></svg><figcaption>Il tratto a monte dello splitter è condiviso.</figcaption></figure>
+        <div class="wan-copy"><p>L’<strong>OLT</strong> è l’apparato attivo presso l’operatore. Lo <strong>splitter</strong> suddivide otticamente il segnale fra le fibre dirette alle abitazioni senza alimentazione elettrica. L’<strong>ONT</strong>, il terminale ottico dell’utente, è alimentato e presenta un’interfaccia per la rete domestica.</p><p>Un profilo <strong>GPON</strong> comune usa circa 2,5 Gbit/s in download e 1,25 Gbit/s in upload. <strong>XGS-PON</strong> usa circa 10 Gbit/s in entrambe le direzioni. Sono capacità nominali del ramo condiviso. La velocità a casa dipende anche dal traffico, dal profilo commerciale e dagli apparati.</p></div>
+        <aside class="box-curiosity" aria-labelledby="curiosita-pon">
+          <h3 class="box-curiosity-title" id="curiosita-pon"><span aria-hidden="true">💡</span> Perché la fibra di casa può fermarsi durante un blackout?</h3>
+          <div class="box-curiosity-content">
+            <p>Lo splitter lungo la rete può distribuire luce senza una propria alimentazione. A casa, però, il terminale ottico (ONT) e il router hanno bisogno di corrente. Se manca l’elettricità, la connessione domestica può fermarsi anche quando la fibra è intatta. Una fonte di alimentazione di riserva può tenere accesi gli apparati per un periodo limitato.</p>
+            <p class="wan-curiosity-source"><a href="https://www.openreach.com/help-and-support/problems-and-appointments/checks-for-fibre-network-termination-points">Openreach · Controlli del terminale ottico</a></p>
+          </div>
+        </aside>
+      </section>
+      <hr>
+
+      <section class="slide wan-lesson-section" id="diagnosi" data-num="05">
+        <header><h2>5. Leggi un impianto dall’ingresso</h2><p class="wan-lead">Prendi una decisione a partire dagli apparati e dal cavo.</p></header>
+        <ol class="wan-flow"><li><strong>Cavo d’accesso → apparato d’ingresso → classificazione</strong></li></ol>
+        <div class="wan-copy"><p><strong>Casa Alba.</strong> Arriva un doppino dall’armadio, dove termina la fibra. Il modem aggancia VDSL2. L’accesso è FTTC.</p><p><strong>Casa Brina.</strong> Arriva una fibra a una presa ottica. L’ONT è collegato via Ethernet al router. L’accesso è FTTH. Se un solo portatile è lento tramite Wi-Fi, confronta una misura via cavo prima di attribuire il problema alla rete d’accesso.</p><p><strong>Casa Cedro.</strong> Il doppino parte dalla centrale e termina sul modem ADSL. Un armadio passivo di percorso, se presente, non rende l’accesso FTTC.</p></div>
+      </section>
+      <hr>
+
+      <section class="slide wan-lesson-section" id="condivisione" data-num="06">
+        <header><h2>6. Quanto spetta a ciascuno?</h2><p class="wan-lead">Usa un modello ideale per distinguere capacità condivisa e velocità individuale.</p></header>
+        <ol class="wan-flow"><li><strong>8 utenti → 300 Mbit/s ciascuno</strong></li><li><strong>16 utenti → 150 Mbit/s ciascuno</strong></li></ol>
+        <div class="wan-copy"><p>Supponi che 8 utenti scarichino allo stesso tempo su un ramo da <strong>2.400 Mbit/s utili</strong> e che la capacità sia divisa in parti uguali. La quota teorica è 2.400 ÷ 8 = <strong>300 Mbit/s</strong> per utente. Con 16 utenti il modello dà <strong>150 Mbit/s</strong>.</p><p>Il calcolo è valido con domanda uguale, uso simultaneo e divisione uniforme. Una PON reale assegna capacità in base al traffico e alla configurazione. Il risultato è una stima del modello scolastico.</p></div>
+      </section>
+      <hr>
+
+      <section class="slide wan-lesson-section" id="prova" data-num="07">
+        <h2>7. Identifica l’impianto</h2>
+        <div class="wan-demo" data-wan-demo="accesso"></div>
+        <noscript><p>Attiva JavaScript per usare la simulazione.</p></noscript>
+        <details class="wan-reveal"><summary>Una fibra raggiunge la presa ottica. Fra ONT e router c’è un cavo Ethernet. Come classifichi l’accesso?</summary><p>FTTH. L’Ethernet è a valle del terminale ottico, dentro l’abitazione.</p></details>
+      </section>
+      <hr>
+
+      <section class="slide wan-lesson-section" id="bilancio-fibra">
+        <h2>Collegare due sedi in fibra</h2>
+        <p class="wan-lead">Per scegliere fibra e apparati verifica sia le perdite ottiche sia la velocità richiesta.</p>
+        <p>Per un collegamento di 6 km su tre tratte, ipotizza fibra monomodale, 0,35 dB/km, due giunti da 0,15 dB e due connessioni da 0,5 dB. Conta ogni collegamento intermedio secondo lo schema reale e usa valori compatibili con la lunghezza d’onda dei moduli.</p>
+        <p>Il trasmettitore garantisce almeno −6 dBm e il ricevitore richiede almeno −18 dBm. La rete richiede 0,8 Gbit/s utili. Per l’esempio, le schede dei moduli compatibili dichiarano 10 km di portata e il sistema garantisce 0,9 Gbit/s utili.</p>
+        <details class="wan-reveal"><summary>Confronta perdite e velocità</summary><p>Budget disponibile: −6 − (−18) = 12 dB. Perdita stimata: 6 × 0,35 + 2 × 0,15 + 2 × 0,5 = 3,4 dB. Restano 8,6 dB da confrontare con il margine richiesto. I 0,9 Gbit/s utili soddisfano la richiesta. Per apparati reali controlla anche portata alla velocità scelta, tipo di fibra e potenza massima ammessa in ricezione.</p></details>
+      </section>
+
+      <section class="slide wan-lesson-section" id="checkpoint" data-num="08">
+        <h2>8. Checkpoint</h2><p class="wan-lead">Cinque decisioni. Leggi il riscontro dopo ogni risposta e riprova quando vuoi.</p>
+        <div class="quiz-wrap" id="quizContainer" data-lesson-quiz></div>
+        <p><a href="../../../modulo2/allenamento.html">Vai al test di allenamento →</a></p>
+      </section>
+      <details class="wan-sources"><summary>Riferimenti tecnici</summary><ul><li><a href="https://www.itu.int/epublications/es/publication/itu-t-gstp-bain-2025-03-broadband-access-and-in-premises-networks">ITU-T sulle reti di accesso</a></li></ul></details>
+      <div class="mark-done-wrap">
+        <button type="button" class="mark-done-btn">Termina il quiz per completare la lezione</button>
+        <nav class="lesson-nav-btns" aria-label="Lezioni del modulo">
+          <a href="lezione-2-2.html" class="btn btn-ghost">← Lezione 2.2</a>
+          <a href="../../../modulo2/index.html" class="btn btn-ghost">Indice del modulo</a>
+          <a href="lezione-2-4.html" class="btn btn-primary">Lezione 2.4 →</a>
+        </nav>
+      </div>
+    </div>
+  </main>
+</div>
+<template data-presentation data-presentation-title="Accesso in rame e in fibra">
+  <section class="presenter-slide lim-slide lim-opening" tabindex="-1" inert>
+    <div class="lim-stage">
+      <div>
+        <p class="lim-type">Lezione 2.3</p>
+        <h2>Fino a dove arriva la fibra?</h2>
+        <p>Per riconoscere l’accesso a Internet, segui la linea dell’operatore dalla centrale fino all’abitazione. In alcuni impianti il mezzo cambia nell’armadio in strada.</p>
+        <p>Il punto in cui finisce la fibra permette di distinguere un accesso <strong>FTTC</strong> da uno <strong>FTTH</strong>.</p>
+      </div>
+      <div class="lim-visual"><ol class="lim-diagram"><li><strong>Centrale</strong><span> · partenza</span></li><li><strong>Armadio</strong><span> · possibile cambio di mezzo</span></li><li><strong>Abitazione</strong><span> · punto terminale</span></li></ol></div>
+    </div>
+  </section>
+  <section class="presenter-slide lim-slide lim-with-video" tabindex="-1" inert>
+    <div class="lim-stage">
+      <div>
+        <p class="lim-type">Video</p>
+        <h2>Dalla centrale a casa</h2>
+        <p>Nel video l’azzurro rappresenta la fibra e l’arancione il doppino di rame, formato da due fili intrecciati.</p>
+        <p class="lim-example"><strong>Consegna.</strong> Per ogni percorso indica dove finisce la fibra e quale mezzo entra in casa. Usa lo schema successivo per controllare.</p>
+      </div>
+      <div class="lim-visual"><div class="wan-lim-video"><video controls playsinline preload="none" poster="../../../assets/media/accesso-rame-fibra-poster.webp" aria-label="Video narrato Dalla centrale a casa">
+            <source src="../../../assets/media/accesso-rame-fibra.mp4" type="video/mp4">
+            <p><a href="../../../assets/media/accesso-rame-fibra.mp4">Apri il video Dalla centrale a casa</a></p>
+          </video></div></div>
+    </div>
+  </section>
+  <section class="presenter-slide lim-slide" tabindex="-1" inert>
+    <div class="lim-stage">
+      <div>
+        <h2>Tre accessi sullo stesso schema</h2>
+        <p>Nell’<strong>ADSL</strong> il doppino arriva dalla centrale. Nella <strong>FTTC</strong> la fibra arriva all’armadio in strada e l’ultimo tratto è in rame.</p>
+        <p>Nella <strong>FTTH</strong> la fibra arriva fino all’abitazione. Lo schema mostra il punto in cui cambia il mezzo nei tre casi.</p>
+      </div>
+      <figure class="lim-visual wan-visual"><svg class="wan-drawing" viewBox="0 0 520 226" role="img" aria-label="In ADSL il doppino parte dalla centrale. In FTTC il doppino parte dall’armadio. In FTTH la fibra arriva a casa."><text class="muted" x="100" y="28" font-size="16">Centrale</text><text class="muted" x="269" y="28" font-size="16">Armadio</text><text class="muted" x="442" y="28" font-size="16">Casa</text><path class="guide" d="M129 44V198M300 44V198M456 44V198"/><text class="ink" x="18" y="75" font-size="18">ADSL</text><text class="ink" x="18" y="127" font-size="18">FTTC</text><text class="ink" x="18" y="179" font-size="18">FTTH</text><path class="copper" d="M129 70H456"/><path class="return" d="M129 122H300"/><path class="copper" d="M301 122H456"/><path class="return" d="M129 174H456"/><circle class="teal" cx="300" cy="122" r="6"/><text class="teal" x="143" y="215" font-size="16">Fibra</text><text class="ink" x="338" y="215" font-size="16">Doppino</text><path class="return" d="M111 209H135"/><path class="copper" d="M304 209H330"/></svg></figure>
+    </div>
+  </section>
+  <section class="presenter-slide lim-slide" tabindex="-1" inert>
+    <div class="lim-stage">
+      <div>
+        <h2>Sul doppino</h2>
+        <p>Sul doppino il segnale si indebolisce lungo il percorso. Questo effetto si chiama <strong>attenuazione</strong>. Le coppie vicine nello stesso cavo possono anche disturbarsi a vicenda.</p>
+        <p>Questo disturbo si chiama <strong>diafonia</strong>. Il <strong>vectoring</strong> coordina le linee compatibili per ridurre il disturbo reciproco.</p>
+      </div>
+      <div class="lim-visual"><ol class="lim-diagram"><li><strong>Attenuazione</strong><span> · il segnale si indebolisce</span></li><li><strong>Diafonia</strong><span> · interferenza tra coppie</span></li><li><strong>Vectoring</strong><span> · coordina linee compatibili</span></li></ol></div>
+    </div>
+  </section>
+  <section class="presenter-slide lim-slide" tabindex="-1" inert>
+    <div class="lim-stage">
+      <div>
+        <h2>La rete ottica passiva</h2>
+        <p>In una rete ottica passiva, <strong>PON</strong>, l’apparato dell’operatore è l’<strong>OLT</strong>. Lo <strong>splitter</strong> divide il segnale luminoso fra più fibre senza alimentazione propria.</p>
+        <p>A casa l’<strong>ONT</strong> termina il collegamento ottico e, nell’esempio, lo collega al router tramite Ethernet.</p>
+      </div>
+      <figure class="lim-visual wan-visual"><svg class="wan-drawing" viewBox="0 0 520 226" role="img" aria-label="Un OLT alimenta otticamente due rami che lo splitter passivo distribuisce verso due ONT."><path class="return" d="M131 116H190M327 116H358L388 58M358 116L388 171"/><g><rect class="segment" x="20" y="80" width="112" height="70" rx="10"/><text class="teal" x="76" y="112" text-anchor="middle" font-size="21">OLT</text><text class="muted" x="76" y="135" text-anchor="middle" font-size="15">Centrale</text></g><g><rect class="segment" x="190" y="80" width="137" height="70" rx="10"/><text class="violet" x="258.5" y="112" text-anchor="middle" font-size="21">Splitter</text><text class="muted" x="258.5" y="135" text-anchor="middle" font-size="15">Passivo</text></g><g><rect class="segment" x="389" y="23" width="112" height="70" rx="10"/><text class="teal" x="445" y="55" text-anchor="middle" font-size="21">ONT</text><text class="muted" x="445" y="78" text-anchor="middle" font-size="15">Casa A</text></g><g><rect class="segment" x="389" y="136" width="112" height="70" rx="10"/><text class="teal" x="445" y="168" text-anchor="middle" font-size="21">ONT</text><text class="muted" x="445" y="191" text-anchor="middle" font-size="15">Casa B</text></g></svg></figure>
+    </div>
+  </section>
+  <section class="presenter-slide lim-slide" tabindex="-1" inert>
+    <div class="lim-stage">
+      <div>
+        <h2>La capacità del ramo</h2>
+        <p>Leggi le coppie di valori come <strong>download verso casa / upload verso l’operatore</strong>. Il GPON dell’esempio ha velocità nominali diverse nelle due direzioni.</p>
+        <p class="lim-formula"><strong>In parti uguali.</strong> Quota = capacità utile ÷ utenti attivi.</p>
+        <p>XGS-PON ha circa 10 Gbit/s in entrambe le direzioni. Sono capacità nominali del ramo condiviso fra le abitazioni collegate.</p>
+      </div>
+      <div class="lim-visual"><ol class="lim-diagram"><li><strong>GPON comune</strong><span> · circa 2,5 / 1,25 Gbit/s</span></li><li><strong>XGS-PON</strong><span> · circa 10 / 10 Gbit/s</span></li><li><strong>Capacità condivisa fra le utenze del ramo</strong></li></ol></div>
+    </div>
+  </section>
+  <section class="presenter-slide lim-slide lim-exercise" tabindex="-1" inert>
+    <div class="lim-stage">
+      <div>
+        <p class="lim-type">Esercizio lampo</p>
+        <h2>La quota di ciascun utente</h2>
+        <p>In un modello semplificato, 2.400 Mbit/s utili in download si dividono in parti uguali fra gli utenti attivi.</p>
+        <p class="lim-example"><strong>Consegna.</strong> Calcola la quota con 8 utenti e poi con 16. Spiega come cambia quando raddoppiano gli utenti.</p>
+        <button type="button" class="btn btn-primary" data-wan-reveal aria-expanded="false" aria-controls="lim-exercise-3-1">Mostra soluzione</button>
+      </div>
+      <div class="lim-visual lim-answer-panel">
+        <div class="lim-solution" id="lim-exercise-3-1" hidden><h3>Soluzione guidata</h3><p>Con 8 utenti fai <strong>2.400 ÷ 8 = 300 Mbit/s</strong> a testa. Con 16 fai <strong>2.400 ÷ 16 = 150 Mbit/s</strong>. Nel modello, raddoppiare gli utenti dimezza la quota.</p></div></div>
+    </div>
+  </section>
+  <section class="presenter-slide lim-slide lim-curiosity" tabindex="-1" inert>
+    <div class="lim-stage">
+      <div>
+        <p class="lim-curiosity-label">Curiosità</p>
+        <h2>La fibra durante un blackout</h2>
+        <p class="lim-example">La fibra è intatta ma in casa manca la corrente.</p>
+        <p class="lim-terms">Fonte · <a target="_blank" rel="noopener noreferrer" href="https://www.openreach.com/help-and-support/problems-and-appointments/checks-for-fibre-network-termination-points">Openreach · Controlli del terminale ottico</a></p>
+      </div>
+      <div class="lim-visual">
+        
+        <div class="lim-solution" id="lim-curiosita-2-3"><p>In casa <strong>ONT e router</strong> hanno bisogno di corrente. Lo splitter distribuisce la luce senza alimentazione. Una batteria può tenere accesi gli apparati di casa per un tempo limitato.</p></div>
+      </div>
+    </div>
+  </section>
+  <section class="presenter-slide lim-slide lim-exercise" tabindex="-1" inert>
+    <div class="lim-stage">
+      <div>
+        <p class="lim-type">Esercizio lampo</p>
+        <h2>Collegare due sedi in fibra</h2>
+        <p>6 km × 0,35 dB/km. Due giunti da 0,15 dB. Due connessioni da 0,5 dB. Budget ottico di 12 dB.</p><p class="lim-formula"><strong>Riserva.</strong> Budget ottico − (lunghezza × attenuazione al km + perdite di giunti e connessioni).</p>
+        <p>Quanta riserva rimane?</p>
+        <button type="button" class="btn btn-primary" data-presentation-reveal aria-expanded="false" aria-controls="lim-verifica-2-3-1">Mostra soluzione</button>
+      </div>
+      <div class="lim-visual lim-answer-panel">
+        <div class="lim-solution" id="lim-verifica-2-3-1" hidden><p>Perdita 3,4 dB. Riserva 8,6 dB. Verifica a parte portata degli apparati e velocità utile.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="presenter-slide lim-slide lim-challenge" tabindex="-1" inert>
+    <div class="lim-stage">
+      <div>
+        <h2>Sfida alla classe</h2>
+        <p>La fibra dell’operatore arriva alla presa ottica dentro casa. La presa è collegata all’ONT e da lì un cavo Ethernet raggiunge il router.</p>
+        <p class="lim-example">Quale accesso è fra ADSL, FTTC e FTTH? Dove termina la fibra e quale tratto percorre il cavo Ethernet?</p>
+        <button type="button" class="btn btn-primary" data-wan-reveal aria-expanded="false" aria-controls="lim-solution-3">Mostra soluzione</button>
+      </div>
+      <div class="lim-visual lim-answer-panel">
+        <div class="lim-solution" id="lim-solution-3" hidden><h3>Soluzione guidata</h3><p>L’accesso è <strong>FTTH</strong> perché la fibra dell’operatore arriva alla presa ottica dentro casa. L’ONT termina il collegamento ottico. Ethernet collega l’ONT al router sul tratto interno.</p></div></div>
+    </div>
+  </section>
+  <section class="presenter-slide lim-slide lim-recap" tabindex="-1" inert>
+    <div class="lim-stage lim-stage-summary">
+      <h2>Da ricordare</h2>
+      <ul class="lim-summary" role="list">
+        <li><strong>Dove finisce la fibra</strong>Nella FTTC finisce all’armadio e il doppino arriva a casa. Nella FTTH arriva all’abitazione.</li>
+        <li><strong>Che cosa succede sul rame</strong>La distanza indebolisce il segnale. La diafonia è il disturbo fra coppie vicine.</li>
+        <li><strong>Come funziona una PON</strong>Lo splitter distribuisce la luce. Gli utenti sullo stesso ramo condividono la capacità.</li>
+      </ul>
+    </div>
+  </section>
+</template>
+<script src="../../../assets/js/app.js"></script>
+<script src="../../../assets/js/modulo2.js"></script>
+<script>
+  QuizEngine.init('quizContainer', [
+    {
+      "question": "Dall’armadio alla presa arrivano due fili in rame. A monte dell’armadio c’è fibra. Quale accesso descrive?",
+      "answers": [
+        {
+          "text": "FTTH",
+          "correct": false
+        },
+        {
+          "text": "FTTC",
+          "correct": true
+        },
+        {
+          "text": "ADSL da centrale",
+          "correct": false
+        },
+        {
+          "text": "PON fino a casa",
+          "correct": false
+        }
+      ],
+      "explain_correct": "La fibra termina all’armadio.",
+      "explain_wrong": "FTTC. La fibra termina all’armadio."
+    },
+    {
+      "question": "A parità di condizioni, che effetto ha un doppino più lungo?",
+      "answers": [
+        {
+          "text": "La tratta diventa ottica",
+          "correct": false
+        },
+        {
+          "text": "Il segnale si amplifica da solo",
+          "correct": false
+        },
+        {
+          "text": "La diafonia scompare",
+          "correct": false
+        },
+        {
+          "text": "Il segnale si attenua di più",
+          "correct": true
+        }
+      ],
+      "explain_correct": "L’attenuazione cresce lungo il tratto.",
+      "explain_wrong": "Il segnale si attenua di più. L’attenuazione cresce lungo il tratto."
+    },
+    {
+      "question": "Quale elemento della PON è passivo?",
+      "answers": [
+        {
+          "text": "Splitter ottico",
+          "correct": true
+        },
+        {
+          "text": "Router domestico",
+          "correct": false
+        },
+        {
+          "text": "OLT",
+          "correct": false
+        },
+        {
+          "text": "ONT",
+          "correct": false
+        }
+      ],
+      "explain_correct": "Distribuisce il segnale senza alimentazione.",
+      "explain_wrong": "Splitter ottico. Distribuisce il segnale senza alimentazione."
+    },
+    {
+      "question": "L’ONT è collegato via Ethernet al router. Che cosa deduci sulla tratta prima della presa ottica?",
+      "answers": [
+        {
+          "text": "La presa diventa passiva e senza fibra",
+          "correct": false
+        },
+        {
+          "text": "Diventa ADSL",
+          "correct": false
+        },
+        {
+          "text": "Rimane FTTH",
+          "correct": true
+        },
+        {
+          "text": "Diventa FTTC",
+          "correct": false
+        }
+      ],
+      "explain_correct": "L’Ethernet arriva dopo il terminale ottico.",
+      "explain_wrong": "Rimane FTTH. L’Ethernet arriva dopo il terminale ottico."
+    },
+    {
+      "question": "In un modello equo, sei utenti dividono 2.400 Mbit/s utili. Quanto spetta a ciascuno?",
+      "answers": [
+        {
+          "text": "2.400 Mbit/s",
+          "correct": false
+        },
+        {
+          "text": "14.400 Mbit/s",
+          "correct": false
+        },
+        {
+          "text": "384 Mbit/s",
+          "correct": false
+        },
+        {
+          "text": "400 Mbit/s",
+          "correct": true
+        }
+      ],
+      "explain_correct": "2.400 diviso 6 dà 400.",
+      "explain_wrong": "400 Mbit/s. 2.400 diviso 6 dà 400."
+    }
+  ]);
+</script>
+</body>
+</html>

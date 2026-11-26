@@ -1,0 +1,47 @@
+<!doctype html>
+<html lang="it" data-theme="light">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Verifica Wi-Fi · Modulo 1</title>
+  <link rel="stylesheet" href="/style.css">
+  <link rel="stylesheet" href="/assets/css/introduzione-lezioni.css">
+  <link rel="stylesheet" href="/verifica-tema.css">
+  <link rel="stylesheet" href="/verifica-demo.css">
+  <script defer src="/verifica-tema.js"></script>
+  <script defer src="/verifica-demo.js"></script>
+</head>
+<body>
+  <img class="verifica-lato sinistra" src="/assets/img/quiz-wlan-rete.svg" alt="">
+  <img class="verifica-lato destra" src="/assets/img/quiz-wlan-scambio.svg" alt="">
+  <main class="prova module-one">
+    <header class="lesson-intro-hero verifica-hero">
+      <div>
+        <div class="lesson-intro-meta"><p class="lesson-intro-topic">Telecomunicazioni 5A · Modulo 1</p></div>
+        <h1 class="lesson-title-h1">Verifica Wi-Fi</h1>
+        <p class="lesson-subtitle">Se ti blocchi, passa alla prossima. Il router, al tuo posto, avrebbe già chiesto di essere spento e riacceso.</p>
+      </div>
+      <img src="/assets/img/indice-rete-radio.svg" alt="">
+      <button type="button" class="btn btn-icon btn-ghost verifica-tema" data-verifica-tema aria-label="Cambia tema"></button>
+    </header>
+    <form id="accesso" class="prova-card">
+      <label for="codice">Codice di prova</label>
+      <div class="prova-azioni">
+        <input id="codice" type="text" autocomplete="off" autocapitalize="characters" required>
+        <button type="submit" class="btn btn-primary">Avvia o riprendi</button>
+      </div>
+      <p class="prova-aiuto">Bozza con dati inventati. Codici di prova WIFI-101, WIFI-102 e WIFI-103.</p>
+    </form>
+    <div id="stato" class="prova-stato" role="status"></div>
+    <div id="barra" class="prova-barra" hidden>
+      <span id="salvataggio" role="status"></span>
+      <time id="tempo" aria-label="Tempo residuo"></time>
+      <button id="riprendi" type="button" class="btn btn-primary" hidden>Riprendi prova</button>
+    </div>
+    <form id="verifica" hidden>
+      <fieldset id="compilazione"></fieldset>
+      <button id="consegna" type="submit" class="btn btn-primary">Consegna verifica</button>
+    </form>
+  </main>
+</body>
+</html>

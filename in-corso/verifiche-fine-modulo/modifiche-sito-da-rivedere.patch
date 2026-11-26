@@ -1,0 +1,144 @@
+diff --git a/AGENTS.md b/AGENTS.md
+index f245f00..92d228b 100644
+--- a/AGENTS.md
++++ b/AGENTS.md
+@@ -4,6 +4,7 @@
+ - Lavora nella radice Git. Mantieni HTML, CSS e JavaScript nativi, [tema blu](assets/css/style.css), colori dei moduli e API di [app.js](assets/js/app.js). Usa link relativi compatibili con `/Sito-Tele-e-Sistemi/`. Limita le modifiche ai moduli richiesti. Usa materiali brevi, esempi realistici, simulatori utili e riscontro immediato.
+ - Per lavori su più sessioni usa `piani-a-fasi`: approvazione del piano, una sessione per fase, prerequisiti verificati. Registra esito e prossimo passo nella scheda, aggiorna stato, priorità, dipendenze e stime (modello incluso) quando cambiano. Segna «fatta» dopo verifiche e approvazione. Per interventi di una sessione aggiorna il piano solo se cambia lo stato.
+ - Se cambiano i contenuti, riallinea quiz, banca, verifica ed esercizi al materiale degli alunni. Riprova domande, opzioni, riscontri, link, formule e soluzioni. Esegui i calcoli e registra l’esito. Quando pertinenti, prova JavaScript, browser e stampa. Per nuove lezioni e laboratori applica i [criteri comuni](piani/telecomunicazioni-5a/fasi/12/FASE.md#criteri-comuni). Per i documenti controlla percorsi, comandi e coerenza.
++- **Ordine delle opzioni in tutti i moduli.** Negli allenamenti e nelle verifiche, comprese le simulazioni, mescola a caso le opzioni quando inizia un nuovo tentativo. Nella verifica conserva l’ordine effettivo per la ripresa e per la scheda docente. Nei quiz di fine sottomodulo l’ordine può essere fisso. In tutti i casi distribuisci la risposta giusta su posizioni diverse tra le domande, senza schemi prevedibili, e controlla che la correzione segua l’opzione anche dopo il mescolamento.
+ - **Presentazioni alla classe** In ogni sottomodulo inserisci almeno una slide con l’etichetta visibile «Curiosità», un fatto pertinente e una domanda, previsione o altra interazione che coinvolga la classe. Verifica i fatti e collega la fonte quando serve. Contraddistingui l’intera slide delle curiosità con una grafica dedicata, riconoscibile a colpo d’occhio e coerente con i riquadri delle lezioni. Proponi una sola «Sfida alla classe» per sottomodulo, con grafica riconoscibile, scenario, dati e consegna chiara. Coinvolgi tutta la classe con una domanda di ragionamento, una previsione o una scelta da motivare, senza timer, squadre o punti. Tieni nascoste le risposte alle domande e la «Soluzione guidata» di sfide ed esercizi finché il docente attiva «Mostra soluzione». Chiudi con una slide «Da ricordare» che riepiloga i concetti principali. Inserisci schemi, immagini o simulatori quando aiutano a capire un passaggio. Adatta i materiali del sito alla proiezione, con una composizione dedicata e grafici e comandi leggibili da lontano. Prova interazioni, leggibilità da proiezione e uso da tastiera.
+ - Avvia ogni nuovo lavoro sul sito in `in-corso/<attività>/`, anche per una modifica breve. Prepara e prova lì le bozze, con un `LAVORO.md` che indica file, base, controlli e prossimo passo. Attendi l’approvazione esplicita del docente sulla bozza prima di portare le sole modifiche approvate nei file destinati alla pubblicazione. Preserva il lavoro già presente.
+ - Usa `magicalbi-session-sync` (`sito-tele`) e verifica lo stato Git locale. Prima di **Salva su GitHub** o **Termina sessione**, controlla che la parte del sito contenga solo modifiche approvate. Dopo **Sincronizza**, riparti da `LAVORO.md`. Il docente salva e conferma la pubblicazione.
+diff --git a/assets/js/app.js b/assets/js/app.js
+index a937def..5d60d8c 100644
+--- a/assets/js/app.js
++++ b/assets/js/app.js
+@@ -579,7 +579,28 @@ const PresentationMode = (() => {
+ /* ---- Quiz Engine (Interactive & Game-like) ---- */
+ const QuizEngine = (() => {
+ 
+-  function init(containerId, questions) {
++  function shuffle(items) {
++    const ordered = [...items];
++    for (let index = ordered.length - 1; index > 0; index--) {
++      const other = Math.floor(Math.random() * (index + 1));
++      [ordered[index], ordered[other]] = [ordered[other], ordered[index]];
++    }
++    return ordered;
++  }
++
++  function shuffleOptions(groups, isCorrect) {
++    const size = groups[0]?.length || 0;
++    const positions = shuffle(Array.from({ length: size }, (_, index) => index));
++    const placements = shuffle(groups.map((_, index) => positions[index % size]));
++    return groups.map((group, index) => {
++      const correct = group.find(option => isCorrect(option, index));
++      const options = shuffle(group.filter(option => option !== correct));
++      if (correct !== undefined) options.splice(placements[index], 0, correct);
++      return options;
++    });
++  }
++
++  function init(containerId, questions, { randomizeOptions = false } = {}) {
+     const container = document.getElementById(containerId);
+     if (!container || !questions?.length) return;
+ 
+@@ -589,6 +610,17 @@ const QuizEngine = (() => {
+     const total = questions.length;
+     const lessonId = document.body.dataset.lessonId;
+     const studyQuiz = /^m1-[1-6]$/.test(lessonId || '');
++    let attempt = questions;
++
++    function startAttempt() {
++      if (randomizeOptions) {
++        const groups = shuffleOptions(questions.map(question => question.answers), option => option.correct);
++        attempt = questions.map((question, index) => ({ ...question, answers: groups[index] }));
++      }
++      score = 0;
++      current = 0;
++      render();
++    }
+ 
+     function showLatest() {
+       const label = container.querySelector('[data-last-study-score]');
+@@ -601,7 +633,7 @@ const QuizEngine = (() => {
+ 
+     function render() {
+       if (current >= total) { showScore(); return; }
+-      const q = questions[current];
++      const q = attempt[current];
+       answered = false;
+ 
+       container.innerHTML = `
+@@ -696,13 +728,13 @@ const QuizEngine = (() => {
+           </div>
+         </div>
+       `;
+-      document.getElementById('retryQuiz').addEventListener('click', () => { score = 0; current = 0; render(); });
++      document.getElementById('retryQuiz').addEventListener('click', startAttempt);
+     }
+ 
+-    render();
++    startAttempt();
+   }
+ 
+-  return { init };
++  return { init, shuffleOptions };
+ })();
+ 
+ /* ---- Init globale ---- */
+diff --git a/assets/js/verifica-modulo2.js b/assets/js/verifica-modulo2.js
+index 3ae6be7..1ba6cf9 100644
+--- a/assets/js/verifica-modulo2.js
++++ b/assets/js/verifica-modulo2.js
+@@ -2,13 +2,26 @@
+   const form = document.getElementById('wan-exam-form');
+   const result = document.getElementById('wan-exam-result');
+   const solutions = document.querySelector('.wan-exam-solutions');
++  const questions = [...form.querySelectorAll('[data-correct]')];
++  const groups = questions.map(question => [...question.querySelectorAll('label')]);
++  const ordered = QuizEngine.shuffleOptions(groups, (label, index) =>
++    label.querySelector('input').value === questions[index].dataset.correct);
++
++  questions.forEach((question, index) => {
++    const feedback = question.querySelector('.wan-exam-feedback');
++    ordered[index].forEach((label, position) => {
++      const text = label.querySelector('span');
++      text.textContent = 'ABC'[position] + '. ' + text.textContent.replace(/^[A-C]\.\s*/, '');
++      question.insertBefore(label, feedback);
++    });
++  });
+   document.querySelector('[data-wan-print]').addEventListener('click', () => window.print());
+ 
+   form.addEventListener('submit', (event) => {
+     event.preventDefault();
+     let score = 0;
+     let empty = 0;
+-    for (const question of form.querySelectorAll('[data-correct]')) {
++    for (const question of questions) {
+       const answer = question.querySelector('input:checked');
+       const correct = answer?.value === question.dataset.correct;
+       if (correct) score++;
+diff --git a/modulo1/verifica.html b/modulo1/verifica.html
+index 7a2cd44..780542e 100644
+--- a/modulo1/verifica.html
++++ b/modulo1/verifica.html
+@@ -422,7 +422,7 @@ document.addEventListener('DOMContentLoaded', () => {
+     }
+   ];
+ 
+-  QuizEngine.init('examQuizContainer', examQuestions);
++  QuizEngine.init('examQuizContainer', examQuestions, { randomizeOptions: true });
+ });
+ </script>
+ </body>
+diff --git a/piani/telecomunicazioni-5a/fasi/13/FASE.md b/piani/telecomunicazioni-5a/fasi/13/FASE.md
+index bb7357d..52cc464 100644
+--- a/piani/telecomunicazioni-5a/fasi/13/FASE.md
++++ b/piani/telecomunicazioni-5a/fasi/13/FASE.md
+@@ -21,3 +21,4 @@ Aggiorna l’esito nel file di fase e lo stato nella tabella del piano. Per il s
+ - **Esito**
+   - **25 novembre 2026.** Progettazione avviata sul Modulo 1. La [scheda di lavoro](../../../../in-corso/verifiche-fine-modulo/LAVORO.md) raccoglie le 24 domande aggiuntive per arrivare a 100, dieci proposte di domande aperte, due esempi di esercizi, le decisioni su accesso e salvataggio e la stima dell’archivio Cloudflare. Prossimo passo: scelta del formato degli esercizi e delle due domande aperte.
+   - **26 novembre 2026.** Definito il sorteggio per il Wi-Fi: due domande aperte distinte tra la 2, la 5, la 6 e la 7 per ogni alunno. Alla ripresa si mantiene la coppia assegnata. Pronto il PDF per il docente con le dieci risposte modello e le relative griglie di correzione. La scheda di lavoro indica da dove partire per la bozza e quali decisioni restano aperte.
++  - **26 novembre 2026 · Bozza Wi-Fi.** Provati in locale sorteggio di un esercizio per tipologia, salvataggio, ripresa da due sessioni Chrome separate, lettura delle consegne da parte del docente e stampa chiara da entrambi i temi. [Avvio ed esito dei controlli](../../../../in-corso/verifiche-fine-modulo/LAVORO.md#bozza-funzionante-del-modulo-1). Restano aperti il modello comune per gli altri moduli e il collegamento online con accesso e archivio.

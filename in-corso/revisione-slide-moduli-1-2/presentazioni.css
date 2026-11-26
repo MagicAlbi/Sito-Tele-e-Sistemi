@@ -1,0 +1,17 @@
+.lim-slide .lim-formula {
+  color: var(--text);
+  font-size: clamp(1.12rem, 1.48vw, 1.6rem);
+}
+.lim-slide .lim-type {
+  color: var(--lim-violet);
+  font-weight: 700;
+}
+.lim-slide :is([data-presentation-reveal], [data-wan-reveal]) {
+  margin-block-start: 0.45rem;
+}
+.lim-slide .lim-answer-panel:not(:has(> :not([hidden]))) {
+  visibility: hidden;
+}
+.lim-slide .lim-solution[hidden] {
+  display: none;
+}

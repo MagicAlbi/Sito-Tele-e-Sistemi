@@ -1,0 +1,45 @@
+<!doctype html>
+<html lang="it" data-theme="light">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Scheda di correzione · Verifica Wi-Fi</title>
+  <link rel="stylesheet" href="../../assets/css/style.css">
+  <link rel="stylesheet" href="../../assets/css/introduzione-lezioni.css">
+  <link rel="stylesheet" href="verifica-tema.css">
+  <link rel="stylesheet" href="scheda-docente.css">
+  <script defer src="verifica-tema.js"></script>
+  <!-- SOLO FILE LOCALE -->
+  <!-- La banca richiama init quando viene caricata. Questa pagina visualizza soltanto le domande. -->
+  <script>const QuizAllenamento = { init() {} };</script>
+  <script defer src="../../modulo1/domande-allenamento.js"></script>
+  <script defer src="aperte-docente.js"></script>
+  <!-- FINE SOLO FILE LOCALE -->
+  <script defer src="scheda-docente.js"></script>
+</head>
+<body>
+  <img class="verifica-lato sinistra" src="../../assets/img/esercizi-wlan-tempo.svg" alt="">
+  <img class="verifica-lato destra" src="../../assets/img/esercizi-wlan-segnale.svg" alt="">
+  <main class="scheda module-one">
+    <header class="lesson-intro-hero verifica-hero">
+      <div>
+        <div class="lesson-intro-meta"><p class="lesson-intro-topic">Area docente · Modulo 1 Wi-Fi</p></div>
+        <h1 class="lesson-title-h1">Scheda di correzione</h1>
+        <p class="lesson-subtitle">Il Wi-Fi prende in tutta l’aula. Il prof prende un altro caffè.</p>
+      </div>
+      <img src="../../assets/img/indice-rete-radio.svg" alt="">
+      <button type="button" class="btn btn-icon btn-ghost verifica-tema" data-verifica-tema aria-label="Cambia tema"></button>
+    </header>
+    <div class="scheda-comandi">
+      <form id="accesso-docente" hidden>
+        <label>Codice docente di prova <input type="password" id="codice-docente" required></label>
+        <button type="submit" class="btn btn-primary">Carica consegne</button>
+      </form>
+      <label id="scelta-consegna">Consegna <select id="esempio"></select></label>
+      <button class="btn btn-primary" id="stampa" type="button" disabled>Stampa / Salva in PDF</button>
+    </div>
+    <p id="stato-docente" class="scheda-comandi" role="status"></p>
+    <div id="consegna"></div>
+  </main>
+</body>
+</html>

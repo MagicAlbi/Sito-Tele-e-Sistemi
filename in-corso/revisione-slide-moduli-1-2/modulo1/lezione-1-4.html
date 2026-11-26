@@ -1,0 +1,564 @@
+<!DOCTYPE html>
+<html lang="it" data-theme="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>M1.4 · CSMA/CA & Il Problema del Nodo Nascosto | Telecomunicazioni 5A</title>
+  <link rel="stylesheet" href="../../../assets/css/style.css">
+  <style>
+    :root { --m-color: var(--m1); }
+    .hidden-node-canvas-wrap {
+      background: var(--surface-2); border: 1px solid var(--border);
+      border-radius: var(--r-xl); padding: 1.5rem; margin: 1.5rem 0;
+    }
+    .node-range-circle {
+      fill-opacity: 0.08; stroke-dasharray: 4 4; stroke-width: 1.5;
+    }
+    .packet-bubble {
+      font-size: 11px; font-weight: 700; font-family: var(--font-mono);
+      padding: 2px 6px; border-radius: 4px;
+    }
+    @keyframes collidePulse {
+      0% { r: 10; opacity: 1; fill: #ef4444; }
+      100% { r: 50; opacity: 0; fill: #ef4444; }
+    }
+    .boom-effect { animation: collidePulse 0.8s ease-out infinite; }
+
+  </style>
+  <link rel="stylesheet" href="../../../assets/css/modulo1.css">
+  <link rel="stylesheet" href="../../../assets/css/introduzione-lezioni.css">
+  <link rel="stylesheet" href="../../../assets/css/esperimenti.css">
+  <link rel="stylesheet" href="../../../assets/css/annotazioni.css">
+  <link rel="stylesheet" href="../../../assets/css/presentazioni-modulo1.css">
+  <link rel="stylesheet" href="../presentazioni.css">
+</head>
+<body class="module-one" data-lesson-id="m1-4">
+
+<div class="app-layout">
+
+  <!-- HEADER -->
+  <header class="site-header">
+    <a href="../../../index.html" class="logo-link">
+      <div class="logo-icon">⚡</div>
+      <div class="logo-text">
+        <span class="logo-title text-gradient">Telecomunicazioni 5A</span>
+        <span class="logo-sub">IIS J.C. Maxwell</span>
+      </div>
+    </a>
+
+    <nav class="header-breadcrumb">
+      <a href="../../../index.html">Home</a>
+      <span>›</span>
+      <a href="../../../modulo1/index.html">Modulo 1</a>
+      <span>›</span>
+      <span class="current">Lezione 1.4 — CSMA/CA</span>
+    </nav>
+
+    <div class="header-actions">
+      <button class="btn btn-present" data-present aria-label="Modalità presentazione">
+        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg>
+        Presenta in Classe
+      </button>
+      <button class="btn btn-icon btn-ghost" data-theme-toggle aria-label="Cambia tema"></button>
+      <button class="btn btn-icon btn-ghost btn-hamburger" aria-label="Menu">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+      </button>
+    </div>
+  </header>
+
+  <!-- SIDEBAR -->
+  <nav class="sidebar">
+    <div class="sidebar-module-badge">
+      <div class="module-dot" style="background:var(--m1); box-shadow: 0 0 10px var(--m1);"></div>
+      <span class="module-label" style="color:var(--m1)">Modulo 1 · WLAN</span>
+    </div>
+
+    <span class="sidebar-section-title">Percorso Guidato</span>
+    <ul class="sidebar-nav">
+      <li data-lesson="m1-1">
+        <a href="lezione-1-1.html">
+          <span class="lesson-num">1.1</span>
+          <span class="lesson-title">Introduzione alle WLAN</span>
+          <span class="lesson-check"></span>
+        </a>
+      </li>
+      <li data-lesson="m1-2">
+        <a href="lezione-1-2.html">
+          <span class="lesson-num">1.2</span>
+          <span class="lesson-title">Standard IEEE 802.11</span>
+          <span class="lesson-check"></span>
+        </a>
+      </li>
+      <li data-lesson="m1-3">
+        <a href="lezione-1-3.html">
+          <span class="lesson-num">1.3</span>
+          <span class="lesson-title">Canali Radio & Spettro</span>
+          <span class="lesson-check"></span>
+        </a>
+      </li>
+      <li class="active" data-lesson="m1-4">
+        <a href="lezione-1-4.html">
+          <span class="lesson-num">1.4</span>
+          <span class="lesson-title">CSMA/CA & Collisioni</span>
+          <span class="lesson-check"></span>
+        </a>
+      </li>
+      <li data-lesson="m1-5">
+        <a href="lezione-1-5.html">
+          <span class="lesson-num">1.5</span>
+          <span class="lesson-title">Strato Fisico & Modulazioni</span>
+          <span class="lesson-check"></span>
+        </a>
+      </li>
+      <li data-lesson="m1-6">
+        <a href="lezione-1-6.html">
+          <span class="lesson-num">1.6</span>
+          <span class="lesson-title">Progettazione & Site Survey</span>
+          <span class="lesson-check"></span>
+        </a>
+      </li>
+    </ul>
+
+    <span class="sidebar-section-title">Pratica & Verifiche</span>
+    <ul class="sidebar-nav">
+      <li>
+        <a href="../../../modulo1/lab-copertura.html">
+          <span class="lesson-num">🔬</span>
+          <span class="lesson-title">Simulatore Copertura RF</span>
+        </a>
+      </li>
+      <li><a href="../../../modulo1/allenamento.html"><span class="lesson-num">🎯</span><span class="lesson-title">Quiz di allenamento</span></a></li>
+      <li><a href="../../../modulo1/esercizi.html"><span class="lesson-num">🧮</span><span class="lesson-title">Esercizi numerici</span></a></li>
+      <li>
+        <a href="../../../modulo1/verifica.html">
+          <span class="lesson-num">📋</span>
+          <span class="lesson-title">Compito & Verifica M1</span>
+        </a>
+      </li>
+    </ul>
+
+    <div class="sidebar-progress" data-module-progress="m1" data-total="6">
+      <div class="progress-label">
+        <span>Progresso Modulo</span>
+        <span><span data-progress-done>0</span>/6 (<span data-progress-pct>0</span>%)</span>
+      </div>
+      <div class="progress-bar">
+        <div class="progress-fill" style="width:0%"></div>
+      </div>
+    </div>
+  </nav>
+
+  <!-- CONTENUTO PRINCIPALE -->
+  <main class="main-content" data-lesson-annotations="m1-4">
+    <div class="content-wrap">
+
+      <!-- HERO LEZIONE -->
+      <header class="lesson-intro-hero">
+        <div>
+          <div class="lesson-intro-meta">
+            <p class="lesson-intro-topic">Lezione 1.4 · Accesso al canale e nodo nascosto</p>
+            <span class="lesson-time">
+              <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+              ~40 min studio interattivo
+            </span>
+          </div>
+          <h1 class="lesson-title-h1">Accesso al Mezzo Radio: CSMA/CA e il Dilemma del Nodo Nascosto</h1>
+          <p class="lesson-subtitle">
+            Il Wi-Fi usa CSMA/CA (Carrier Sense Multiple Access with Collision Avoidance): i dispositivi ascoltano il canale e aspettano prima di trasmettere per ridurre le collisioni. Per riservare il canale possono scambiarsi una richiesta di invio (RTS, Request to Send) e un via libera (CTS, Clear to Send).
+          </p>
+        </div>
+        <img src="../../../assets/img/quiz-wlan-rete.svg" alt="" width="200" height="252">
+      </header>
+
+      <div class="lesson-prereq lesson-intro-prereq">
+        <span class="lesson-prereq-icon" aria-hidden="true">🧠</span>
+        <div>
+          <strong>Confronto con Sistemi e Reti:</strong>
+          In Ethernet cablato si usava CSMA/CD (Carrier Sense Multiple Access with Collision Detection), accesso condiviso con ascolto e rilevamento delle collisioni sul cavo. Nel wireless questo principio fisico decade: scopriamo perché.
+        </div>
+      </div>
+
+      <!-- RIASSUNTO IN EVIDENZA -->
+      <section class="lesson-summary" aria-labelledby="obiettivo">
+        <h2 id="obiettivo">In questa lezione</h2>
+        <ul>
+          <li><span aria-hidden="true">⏱️</span><p><strong>Prima di inviare.</strong> Seguirai l’ordine delle operazioni nel Wi-Fi: ascolto del canale, attesa casuale, invio e conferma di ricezione.</p></li>
+          <li><span aria-hidden="true">🔬</span><p><strong>Due dispositivi che non si sentono.</strong> Osserverai come due nodi possano interferire presso lo stesso punto di accesso. Proverai il dialogo RTS/CTS per riservare il canale.</p></li>
+          <li><span aria-hidden="true">📶</span><p><strong>Il tempo sul canale.</strong> Vedrai perché una trasmissione lenta può occupare più a lungo il mezzo condiviso e rallentare gli altri dispositivi.</p></li>
+        </ul>
+      </section>
+
+      <!-- ======================================
+           SLIDE 1 — PERCHÉ CSMA/CD FALLISCE NEL WIRELESS
+           ====================================== -->
+      <section class="slide reveal" id="slide-1" data-num="01">
+        <h2>1. Perché Non Possiamo Rilevare Collisioni via Radio?</h2>
+
+        <p>
+          Immagina di trovarti a un concerto metal e urlare a squarciagola con un megafono contro il muro: riusciresti a sentire il sussurro di un amico che parla da 20 metri di distanza nello stesso secondo? Assolutamente no.
+        </p>
+
+        <p>
+          In una scheda radio Wi-Fi accade esattamente la stessa cosa:
+        </p>
+        <ul>
+          <li>La potenza di trasmissione locale del tuo cellulare è di circa <strong>+15 / +20 dBm</strong> (decibel riferiti a un milliwatt), cioè circa <strong>30-100 mW</strong> (milliwatt).</li>
+          <li>Il segnale che ricevi da un'altra stazione remota è attenuato a circa <strong>-70 / -85 dBm (pochi picowatt!)</strong>.</li>
+        </ul>
+        <p>
+          La differenza è di oltre <strong>un milione di volte</strong>! Quando l'antenna locale trasmette, è "sorda" a qualsiasi segnale esterno. Per questo il Wi-Fi non può usare <em>Detection</em> (rilevare lo scontro), ma deve investire tutto sulla <strong>Prevention / Avoidance</strong> (evitare accuratamente di trasmettere insieme).
+        </p>
+
+        <div class="box box-info">
+          <div class="box-label">📐 Le pause prima di trasmettere o rispondere</div>
+          <p style="margin:0">
+            Prima di trasmettere un frame dati, ogni stazione deve sentire l'etere libero per un tempo fisso chiamato <strong>DIFS (DCF Interframe Space)</strong>. DCF (Distributed Coordination Function) è il metodo con cui i dispositivi si contendono il canale. La pausa breve prima di una risposta si chiama SIFS (Short Interframe Space). Se l'etere è libero, non parte subito! Estrae un numero casuale da una finestra di contesa (<strong>Backoff Timer</strong>) e fa il conto alla rovescia. Chi finisce per primo il timer vince l'etere. Se due stazioni estraggono lo stesso numero e collidono, non ricevendo l'<strong>ACK</strong> raddoppiano la finestra di attesa (Backoff Esponenziale).
+          </p>
+        </div>
+      </section>
+
+      <hr>
+
+      <!-- ======================================
+           SLIDE 2 — IL PROBLEMA DEL NODO NASCOSTO (INTERATTIVO)
+           ====================================== -->
+      <section class="slide reveal" id="slide-2" data-num="02">
+        <h2>2. Il Problema del Nodo Nascosto (Hidden Node Problem)</h2>
+
+        <p>
+          C'è un'insidia ancora peggiore: supponi che due smartphone, indicati come stazioni Wi-Fi (STA, Station) <strong>STA-A</strong> e <strong>STA-C</strong>, siano collegati allo stesso punto di accesso centrale (AP, Access Point) <strong>AP-B</strong>, ma siano posti ai due lati opposti di un grande corridoio o separati da un grosso muro portante.
+        </p>
+        <p>
+          STA-A vuole trasmettere e ascolta l'etere: <em>"Silenzio perfetto, vado!"</em>. Nello stesso identico momento STA-C ascolta l'etere: non sente STA-A (perché è troppo lontano), crede che l'aria sia libera e trasmette anche lui! <strong>Entrambi i pacchetti arrivano all'AP-B nello stesso microsecondo: COLLISIONE TOTALE!</strong>
+        </p>
+
+        <!-- SIMULATORE NODO NASCOSTO -->
+        <div class="lab-panel" data-sim="hidden"></div>
+
+        <h3>La Soluzione Elegante: RTS / CTS (Request to Send / Clear to Send)</h3>
+        <p>
+          Per superare il problema del nodo nascosto, l'802.11 introduce una riserva preventiva dell'etere:
+        </p>
+        <ol>
+          <li><strong>Host A</strong> invia un piccolo frame di controllo <code>RTS</code> (Request to Send) all'Access Point, dichiarando: <em>"Voglio trasmettere per 1.5 millisecondi"</em>.</li>
+          <li>L'Access Point risponde in broadcast con un <code>CTS</code> (Clear to Send): <em>"Autorizzato! L'etere è riservato per 1.5 millisecondi"</em>.</li>
+          <li>Poiché il CTS dell'Access Point è potente e copre tutta la stanza, <strong>anche Host C lo riceve!</strong> Host C legge il valore di tempo e imposta il proprio <strong>NAV (Network Allocation Vector)</strong>, congelando qualsiasi trasmissione radio fino al termine dello scambio di Host A.</li>
+          <li>Host A invia i dati reali in totale tranquillità. L'AP chiude con un <code>ACK</code>.</li>
+        </ol>
+      </section>
+
+      <hr>
+
+      <!-- ======================================
+           SLIDE 3 — CURIOSITÀ REAL-LIFE
+           ====================================== -->
+      <section class="slide reveal" id="slide-3" data-num="03">
+        <h2>3. Perché il Wi-Fi a Scuola Diventa Lentissimo con Tanti Utenti?</h2>
+
+        <div class="box-curiosity">
+          <div class="box-curiosity-title">
+            <span>🐌</span>
+            <span>La Maledizione del "Peggiore della Classe": L'Airtime Fairness</span>
+          </div>
+          <div class="box-curiosity-content">
+            <p>
+              Immagina un'aula con 25 studenti connessi allo stesso Access Point con una linea Internet da 1 Gigabit in fibra. Perché a volte non si apre nemmeno la pagina di Google?
+            </p>
+            <p>
+              La colpa è di come funziona il CSMA/CA di base: l'Access Point concede l'accesso all'etere a turno <strong>in base al numero di pacchetti, non in base al tempo di occupazione dell'aria</strong>!
+            </p>
+            <p style="margin-bottom:0">
+              Se uno studente siede all'ultimo banco dietro a un armadio di ferro con una tacca di segnale (-85 dBm), la sua scheda Wi-Fi scala sulla modulazione più lenta e protetta (per esempio BPSK, Binary Phase Shift Keying, a due fasi, anziché 64-QAM, Quadrature Amplitude Modulation, con 64 combinazioni di ampiezza e fase). Nell’esempio passa da 54 a 1 megabit al secondo (Mbps). Per trasmettere una foto da 5 megabyte (MB), quel telefono <strong>occuperà l'etere radio per oltre 40 secondi consecutivi</strong>, obbligando tutti gli altri 24 compagni di classe (che hanno segnale perfetto) ad aspettare in silenzio il proprio turno! I router enterprise risolvono questo paradosso con l'<strong>Airtime Fairness</strong>: danno a ciascun utente la stessa frazione di millisecondi d'aria, impedendo ai dispositivi lenti di sequestrare la banda a tutta l'aula.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <hr>
+
+      <!-- ======================================
+           SLIDE 4 — CHECKPOINT AUTOVALUTAZIONE
+           ====================================== -->
+      <section class="slide reveal" id="slide-4" data-num="04">
+        <h2>4. Checkpoint di Autovalutazione</h2>
+        <p>
+          Verifica di aver compreso la gestione delle collisioni e il protocollo di contesa per il controllo di accesso al mezzo (MAC, Media Access Control):
+        </p>
+
+        <div class="quiz-wrap">
+          <div id="quizContainer" data-lesson-quiz>
+            <!-- Rendered by QuizEngine -->
+          </div>
+        </div>
+      </section>
+
+      <!-- COMPLETAMENTO & NAVIGAZIONE -->
+      <p class="sources">Riferimento per l’esperimento: <a href="https://inet.omnetpp.org/docs/showcases/wireless/hiddennode/doc/" target="_blank" rel="noopener noreferrer">INET · Nodo nascosto e RTS/CTS</a>.</p>
+      <div class="mark-done-wrap reveal lesson-completion">
+        <button type="button" class="mark-done-btn" data-next-lesson="lezione-1-5.html" disabled>
+          Termina il quiz per completare la lezione
+        </button>
+      </div>
+
+    </div>
+  </main>
+</div>
+
+<template data-presentation data-presentation-title="Accesso al canale radio">
+  <section class="presenter-slide lim-slide lim-curiosity" tabindex="-1" inert>
+    <div class="lim-stage">
+      <div>
+        <p class="lim-curiosity-label">Curiosità</p>
+        <h2>Il Wi-Fi condivide il canale radio</h2>
+        <p>Telefoni e computer usano lo stesso canale per parlare con il <strong>punto di accesso (AP)</strong>. Se inviano insieme, i segnali possono sovrapporsi: è una <strong>collisione</strong>.</p>
+        <p class="lim-example">Anche con la fibra veloce e tutte le tacche, il Wi-Fi può rallentare: quando il canale radio è occupato, il telefono aspetta il proprio turno.</p>
+        <p class="lim-terms"><strong>AP</strong> · Access Point, punto di accesso Wi-Fi.</p>
+      </div>
+      <div class="lim-visual lim-art">
+        <img src="../../../assets/img/indice-rete-radio.svg" width="200" height="252" alt="Punto di accesso Wi-Fi con un telefono e un computer collegati">
+      </div>
+    </div>
+  </section>
+  <section class="presenter-slide lim-slide" tabindex="-1" inert>
+    <div class="lim-stage">
+      <div>
+        <h2>Prima di inviare, il Wi-Fi ascolta</h2>
+        <p>La radio è <strong>half-duplex</strong>. Mentre trasmette, il suo segnale copre quelli più deboli degli altri dispositivi.</p>
+        <p>Per ridurre le collisioni il Wi-Fi usa il <strong>CSMA/CA</strong>, che regola l’ascolto e l’attesa prima dell’invio.</p>
+        <p class="lim-terms">
+          <span><strong>CSMA/CA</strong> · Carrier Sense Multiple Access with Collision Avoidance. Si ascolta il canale prima di usarlo.</span>
+          <span><strong>DIFS</strong> · DCF Interframe Space, la pausa a canale libero.</span>
+          <span><strong>DCF</strong> · Distributed Coordination Function, il metodo in cui i dispositivi si contendono il canale.</span>
+        </p>
+      </div>
+      <div class="lim-visual">
+        <ol class="lim-diagram" role="list">
+          <li><strong>1. Ascolta.</strong> Il canale deve restare libero per una breve pausa fissa, il DIFS.</li>
+          <li><strong>2. Sorteggia.</strong> Il backoff è il tempo di attesa casuale.</li>
+          <li><strong>3. Trasmette.</strong> Il conto alla rovescia avanza a canale libero. A zero parte l’invio.</li>
+        </ol>
+      </div>
+    </div>
+  </section>
+  <section class="presenter-slide lim-slide" tabindex="-1" inert>
+    <div class="lim-stage">
+      <div>
+        <h2>L’attesa casuale separa le partenze</h2>
+        <p>Due telefoni si sentono. Dopo la pausa fissa, <strong>A sorteggia 2 intervalli</strong> e <strong>C ne sorteggia 5</strong>.</p>
+        <p>Dopo 2 intervalli liberi A trasmette. C sente A e mette in pausa il suo conteggio.</p>
+        <p class="lim-example">Dopo il ritorno del canale libero e la pausa fissa, C riparte da 5 o da 3?</p>
+        <button type="button" class="btn btn-primary" data-presentation-reveal aria-expanded="false" aria-controls="lim-rapida-1-4">Mostra soluzione</button>
+      </div>
+      <div>
+        <div id="lim-rapida-1-4" hidden><figure class="lim-visual">
+        <figcaption>Quando A inizia a trasmettere</figcaption>
+        <div class="lim-timing">
+          <p><strong>A</strong> · 2 − 2 = 0, trasmette</p>
+          <div class="lim-slots" aria-hidden="true">
+            <span class="lim-elapsed"></span><span class="lim-elapsed"></span>
+          </div>
+        </div>
+        <div class="lim-timing">
+          <p><strong>C</strong> · 5 − 2 = 3: conserva i 2 intervalli già contati</p>
+          <div class="lim-slots" aria-hidden="true">
+            <span class="lim-elapsed"></span><span class="lim-elapsed"></span>
+            <span class="lim-waiting"></span><span class="lim-waiting"></span><span class="lim-waiting"></span>
+          </div>
+        </div>
+      </figure></div></div>
+    </div>
+  </section>
+  <section class="presenter-slide lim-slide" tabindex="-1" inert>
+    <div class="lim-stage">
+      <div>
+        <h2>L’ACK conferma la ricezione</h2>
+        <p>Quando i dati arrivano leggibili, il punto di accesso attende una breve pausa, il <strong>SIFS</strong>, e risponde con un <strong>ACK</strong>, il messaggio di conferma.</p>
+        <p>Se due telefoni sorteggiano la stessa attesa, possono partire insieme. Una collisione può rendere illeggibili i dati.</p>
+        <p class="lim-terms">
+          <span><strong>SIFS</strong> · Short Interframe Space, la pausa breve prima della risposta.</span>
+          <span><strong>ACK</strong> · Acknowledgment, conferma di ricezione.</span>
+        </p>
+      </div>
+      <div class="lim-visual">
+        <ul class="lim-diagram" role="list">
+          <li><strong>ACK ricevuto.</strong> Il mittente sa che i dati sono arrivati.</li>
+          <li><strong>ACK assente.</strong> Il mittente può ritentare, sorteggiando da più valori per ridurre la probabilità di un’altra partenza simultanea.</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+  <section class="presenter-slide lim-slide" tabindex="-1" inert>
+    <div class="lim-stage">
+      <div>
+        <h2>Il nodo nascosto sfugge all’ascolto</h2>
+        <p>Una parete separa i telefoni <strong>A</strong> e <strong>C</strong>. Entrambi raggiungono il punto di accesso, ma il segnale dell’uno è troppo debole per essere rilevato dall’altro.</p>
+        <p>A trasmette. Dalla propria posizione, C sente il canale libero e può iniziare a sua volta.</p>
+        <p class="lim-terms"><strong>AP</strong> · Access Point, punto di accesso Wi-Fi.</p>
+      </div>
+      <figure class="lim-visual">
+        <img class="lim-topology-art" src="../../../assets/img/quiz-wlan-rete.svg" width="190" height="238" alt="">
+        <div class="lim-topology" aria-hidden="true">
+          <b>Tel. A</b><span>→</span><b>AP</b><span>←</span><b>Tel. C</b>
+        </div>
+        <figcaption class="lim-topology-note"><strong>Collisione all’AP.</strong> I due segnali arrivano insieme al punto di accesso.</figcaption>
+      </figure>
+    </div>
+  </section>
+  <section class="presenter-slide lim-slide" tabindex="-1" inert>
+    <div class="lim-stage">
+      <div>
+        <h2>RTS e CTS riservano il canale</h2>
+        <p>Una parete divide A e C. Solo il punto di accesso riesce a parlare con entrambi.</p>
+        <p>Dal <strong>CTS</strong>, C ricava quanto aspettare e imposta il <strong>NAV</strong>. Aspetta anche se il canale gli sembra libero.</p>
+        <p class="lim-example">Se C non riceve il CTS, può ancora partire.</p>
+        <p class="lim-terms">
+          <span><strong>RTS</strong> · Request to Send, richiesta di invio.</span>
+          <span><strong>CTS</strong> · Clear to Send, via libera all’invio.</span>
+          <span><strong>NAV</strong> · Network Allocation Vector, timer della riserva.</span>
+          <span><strong>ACK</strong> · Acknowledgment, conferma di ricezione.</span>
+        </p>
+      </div>
+      <div class="lim-visual">
+        <ol class="lim-diagram" role="list">
+          <li class="lim-step"><strong>RTS</strong><span>A chiede di inviare e indica la durata prevista.</span></li>
+          <li class="lim-step"><strong>CTS</strong><span>Il punto di accesso dà il via libera ad A. Anche C lo sente.</span></li>
+          <li class="lim-step"><strong>DATA</strong><span>A invia i dati mentre C aspetta.</span></li>
+          <li class="lim-step"><strong>ACK</strong><span>Il punto di accesso conferma ad A la ricezione.</span></li>
+        </ol>
+      </div>
+    </div>
+  </section>
+  <section class="presenter-slide lim-slide lim-curiosity" tabindex="-1" inert>
+    <div class="lim-stage">
+      <div>
+        <p class="lim-curiosity-label">Curiosità</p>
+        <h2>Un invio più lento occupa il canale più a lungo</h2>
+        <p>Con un segnale debole il telefono può rallentare. Per inviare gli stessi dati occupa il canale per più <strong>tempo d’aria</strong>.</p>
+        <p class="lim-formula"><strong>Tempo di invio.</strong> Dati (Mbit) ÷ velocità (Mbit/s).</p>
+        <p>Con l’<strong>Airtime Fairness</strong>, il punto di accesso può bilanciare le quote di tempo. Nella stessa quota, il dispositivo veloce può inviare più dati.</p>
+        <p class="lim-terms"><strong>Mb/s</strong> · Megabit al secondo, l’unità di velocità usata nell’esempio.</p>
+      </div>
+      <div>
+        <div id="lim-curiosita-1-4-tempo"><figure class="lim-visual">
+        <figcaption>Tempo per inviare 12 megabit</figcaption>
+        <div class="lim-timing">
+          <p>A <strong>6 Mb/s</strong> servono 2 secondi</p>
+          <div class="lim-meter" aria-hidden="true"><span style="--bar-size: 100%"></span></div>
+        </div>
+        <div class="lim-timing">
+          <p>A <strong>24 Mb/s</strong> basta mezzo secondo</p>
+          <div class="lim-meter" aria-hidden="true"><span style="--bar-size: 25%"></span></div>
+        </div>
+        <p class="lim-topology-note">Il calcolo conta solo l’invio dei dati. Attese e messaggi di servizio si aggiungono.</p>
+      </figure></div></div>
+    </div>
+  </section>
+  <section class="presenter-slide lim-slide lim-exercise" tabindex="-1" inert>
+    <div class="lim-stage">
+      <div>
+        <p class="lim-type">Esercizio lampo</p>
+        <h2>Calcola il tempo d’aria</h2>
+        <p>Per stimare il solo tempo di invio, dividi i dati in Mbit per la velocità in Mbit/s. Un telefono invia 18 Mbit a 9 Mbit/s.</p>
+        <p class="lim-example">Per quanto tempo trasmette, trascurando attese e messaggi di servizio?</p>
+        <button type="button" class="btn btn-primary" data-presentation-reveal aria-expanded="false" aria-controls="lim-lampo-1-4">Mostra soluzione</button>
+      </div>
+      <div class="lim-visual lim-solution" id="lim-lampo-1-4" hidden><h3>Soluzione guidata</h3><p>18 ÷ 9 = <strong>2 s</strong>.</p></div>
+    </div>
+  </section>
+  <section class="presenter-slide lim-slide lim-challenge" tabindex="-1" inert>
+    <div class="lim-stage">
+      <div>
+        <h2>Sfida alla classe</h2>
+        <p><strong>Mistero in corridoio.</strong> A e C sentono il punto di accesso, ma non si sentono fra loro a causa dei muri. Entrambi trovano il canale libero e iniziano a inviare nello stesso istante.</p>
+        <p class="lim-example">Dove si sovrappongono i segnali? Se A chiedesse il permesso per primo, quale risposta direbbe a C di aspettare? Ricostruiamo insieme lo scambio.</p>
+        <button type="button" class="btn btn-primary lim-reveal" data-presentation-reveal aria-expanded="false" aria-controls="lim-soluzione-1-4">Mostra soluzione</button>
+      </div>
+      <div class="lim-visual lim-answer-panel">
+        <div class="lim-solution" id="lim-soluzione-1-4" hidden>
+          <h3>Soluzione guidata</h3>
+          <ol><li>I segnali si sovrappongono <strong>al punto di accesso</strong>, che riceve entrambi. A e C non si sentono direttamente.</li><li>Se A invia prima una richiesta RTS e il punto di accesso risponde <strong>CTS</strong>, C può sentire quel permesso, leggere il tempo di riserva e aspettare.</li></ol>
+        </div>
+      </div>
+    </div>
+  </section>
+  <section class="presenter-slide lim-slide lim-recap" tabindex="-1" inert>
+    <div class="lim-stage lim-stage-summary">
+      <h2>Da ricordare</h2>
+      <ul class="lim-summary" role="list">
+        <li><strong>Prima dell’invio</strong>Il Wi-Fi ascolta il canale e può aspettare un tempo casuale. La conferma segnala che i dati sono arrivati.</li>
+        <li><strong>Nodo nascosto</strong>Due dispositivi possono collidere al punto di accesso. Un permesso CTS può far aspettare chi lo riceve.</li>
+        <li><strong>Tempo d’aria</strong>A parità di dati, una trasmissione più lenta occupa il canale più a lungo.</li>
+      </ul>
+    </div>
+  </section>
+</template>
+
+<script src="../../../assets/js/app.js"></script>
+<script src="../../../assets/js/annotazioni.js" defer></script>
+<script src="../../../assets/js/modulo1.js"></script>
+<script>
+/* Logica simulazione nodo nascosto */
+document.addEventListener('DOMContentLoaded', () => {
+  const quizQuestions = [
+    {
+      question: "Per quale motivo fisico fondamentale le schede Wi-Fi non possono usare il meccanismo CSMA/CD di Ethernet?",
+      answers: [
+        { text: "Perché le schede radio Wi-Fi sono Half-Duplex: la forte potenza di trasmissione acceca il proprio ricevitore", correct: true },
+        { text: "Perché la velocità della luce nell'aria è inferiore a quella nel rame", correct: false },
+        { text: "Perché il protocollo IP (Internet Protocol) vieta il rilevamento delle collisioni", correct: false },
+        { text: "Perché l'Access Point spegne l'alimentazione durante la trasmissione", correct: false }
+      ],
+      explain_correct: "Esatto! La potenza del trasmettitore locale supera di milioni di volte il debole segnale che giunge da una stazione remota: è fisicamente impossibile sentire un'altra stazione mentre si trasmette.",
+      explain_wrong: "Nel mezzo radio la disparità di potenza tra trasmissione locale e ricezione remota rende impossibile accorgersi di collisioni durante la trasmissione (Half-Duplex)."
+    },
+    {
+      question: "In che cosa consiste il problema del 'Nodo Nascosto' (Hidden Node Problem)?",
+      answers: [
+        { text: "In un hacker che si connette nascondendo il proprio indirizzo MAC", correct: false },
+        { text: "Due stazioni distanti non si sentono a vicenda, ma entrambe trasmettono allo stesso AP provocando collisioni", correct: true },
+        { text: "In un cavo di rete tagliato dietro a una parete in cartongesso", correct: false },
+        { text: "In un Access Point con l'antenna svitata", correct: false }
+      ],
+      explain_correct: "Perfetto! Le stazioni A e C non sono nel rispettivo raggio radio, quindi credono che il canale sia libero: quando parlano insieme distruggono i frame all'AP.",
+      explain_wrong: "Il problema del nodo nascosto si verifica quando due client sono fuori dal rispettivo raggio di copertura ma associati allo stesso AP: credendosi soli, trasmettono simultaneamente causando collisioni."
+    },
+    {
+      question: "Quale sequenza di frame risolve il problema del nodo nascosto nell'802.11?",
+      answers: [
+        { text: "PING -> PONG -> ECHO", correct: false },
+        { text: "SYN (richiesta di sincronizzazione) -> SYN-ACK (sincronizzazione con conferma) -> ACK", correct: false },
+        { text: "RTS (Request to Send) -> CTS (Clear to Send) -> DATA -> ACK", correct: true },
+        { text: "BEACON (annuncio) -> PROBE (ricerca) -> ASSOC (associazione)", correct: false }
+      ],
+      explain_correct: "Grandioso! L'handshake a 4 vie RTS/CTS riserva virtualmente il canale: il CTS dell'AP informa tutti i nodi nascosti di congelarsi (NAV attivo) durante lo scambio.",
+      explain_wrong: "La sequenza corretta per la riserva preventiva del mezzo radio è: RTS dal client, CTS dall'AP (che zittisce i nodi nascosti), trasmissione dei dati DATA e conferma finale ACK."
+    },
+    {
+      question: "Che cos'è il NAV (Network Allocation Vector)?",
+      answers: [
+        { text: "Un timer software che indica per quanti microsecondi il mezzo radio rimarrà occupato da un'altra stazione", correct: true },
+        { text: "Il sistema di posizionamento satellitare (GPS, Global Positioning System) integrato nelle antenne direzionali", correct: false },
+        { text: "La velocità massima della scheda di rete", correct: false },
+        { text: "Un comando per navigare su Internet in incognito", correct: false }
+      ],
+      explain_correct: "Corretto! Il NAV è il meccanismo di 'Carrier Sensing Virtuale': leggendo la durata dichiarata nei frame, la stazione sa esattamente fino a quando deve rimanere in silenzio.",
+      explain_wrong: "Il NAV è il timer di Carrier Sensing Virtuale: una stazione legge la durata dichiarata nell'intestazione dei frame altrui e imposta il proprio conto alla rovescia di silenzio."
+    },
+    {
+      question: "Perché nei sistemi Wi-Fi è obbligatorio che il ricevente invii un frame di ACK per ogni pacchetto dati ricevuto correttamente?",
+      answers: [
+        { text: "Perché non potendo rilevare le collisioni durante l'invio, l'ACK è l'unico modo per il mittente di sapere che il frame è arrivato sano", correct: true },
+        { text: "Per calcolare il costo in bolletta della connessione", correct: false },
+        { text: "Per impedire il download di file torrent", correct: false },
+        { text: "Perché è richiesto dal provider telefonico per attivare la fibra", correct: false }
+      ],
+      explain_correct: "Bravissimo! Senza Collision Detection, chi trasmette non ha alcuna certezza: solo la ricezione dell'ACK conferma il successo. Se l'ACK non torna, la stazione ritrasmette.",
+      explain_wrong: "Poiché il mittente non può accorgersi se c'è stata una collisione nell'aria (Collision Avoidance, non Detection), l'ACK positivo è l'unica garanzia di avvenuta consegna."
+    }
+  ];
+
+  QuizEngine.init('quizContainer', quizQuestions);
+});
+</script>
+</body>
+</html>

@@ -1,0 +1,37 @@
+:root {
+  --verifica-accento: #145482;
+  --verifica-selezione: #e4f2fd;
+}
+.verifica-hero .lesson-intro-meta { padding-inline-end: 2.25rem; }
+.verifica-hero .verifica-tema {
+  position: absolute; top: .85rem; right: .85rem; z-index: 1;
+  background: var(--surface); color: var(--verifica-accento);
+  border: 1px solid var(--hero-line);
+}
+.verifica-lato { display: none; }
+
+@media screen {
+  [data-theme="dark"] {
+    --verifica-accento: #9dd7fa;
+    --verifica-selezione: #1a3552;
+  }
+}
+@media screen and (min-width: 1180px) {
+  .verifica-lato {
+    display: block; position: fixed; top: clamp(8rem, 24vh, 14rem);
+    width: clamp(100px, calc((100vw - 990px) / 2 - 20px), 240px);
+    height: auto; pointer-events: none; opacity: .8;
+  }
+  .verifica-lato.sinistra { right: calc(50% + 490px); }
+  .verifica-lato.destra { left: calc(50% + 490px); }
+}
+@media print {
+  .verifica-lato, .verifica-tema { display: none !important; }
+  .verifica-hero {
+    display: block; padding: 0 0 1rem; margin-bottom: 0;
+    border: 0; border-bottom: 2px solid var(--primary-dark);
+    border-radius: 0; background: white; box-shadow: none;
+  }
+  .verifica-hero::before, .lesson-intro-hero.verifica-hero > img { display: none; }
+  .verifica-hero .lesson-intro-topic { color: var(--verifica-accento); }
+}
