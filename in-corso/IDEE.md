@@ -2,7 +2,7 @@
 
 ## Testata e tema dell’Area docente
 
-**Approvato e applicato in locale · 27 novembre 2026.** Titolo «Telecomunicazioni», antenna con onde radio nel riquadro sfumato, sole e luna del sito e tema docente impostato all’apertura. Restano da pubblicare il sito e il servizio docente. [Scheda di lavoro](tema-docente-e-testata/LAVORO.md).
+**Pubblicato e verificato · 27 novembre 2026.** Titolo «Telecomunicazioni», antenna con onde radio nel riquadro sfumato, sole e luna del sito e tema docente impostato all’apertura. Verificati il login e il pannello con un accesso reale. [Scheda di lavoro](tema-docente-e-testata/LAVORO.md).
 
 ## Profili degli alunni e sito per tre materie
 

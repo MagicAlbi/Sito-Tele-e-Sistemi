@@ -2,7 +2,7 @@
 
 Il [piano](piani/telecomunicazioni-5a/PIANO.md#priorità) indica stato e prossimo passo. Per una bozza da riprendere, apri il suo `LAVORO.md` in `in-corso/`. Per le prossime presentazioni alla classe, segui la struttura dei Moduli 1 e 2 indicata nei [criteri comuni](piani/telecomunicazioni-5a/fasi/12/FASE.md#criteri-comuni).
 
-- **Testata e tema dell’Area docente** Il docente ha approvato il titolo «Telecomunicazioni», l’antenna e il tema dell’Area docente all’apertura. Le modifiche sono nei file locali del sito. Il servizio con le nuove icone e il tema iniziale è pronto per Cloudflare. [Scheda di lavoro](in-corso/tema-docente-e-testata/LAVORO.md).
+- **Testata e tema dell’Area docente** Il titolo «Telecomunicazioni» e l’antenna sono online. Su Cloudflare sono pubblicati e verificati il tema all’apertura e le icone uguali a quelle del sito, sia al login sia nel pannello delle verifiche dopo l’accesso. [Scheda di lavoro](in-corso/tema-docente-e-testata/LAVORO.md).
 
 - **Preparazione alla seconda prova** Le tre tracce del 2025 sono il riferimento fondamentale del corso. Gli approfondimenti assegnati ai Moduli 1 e 2 sono già integrati e verificati. Per ogni modulo successivo Codex riparte dalla [mappa interna](in-corso/preparazione-esame-2025/MAPPA.md), integra gli argomenti nelle attività e aggiorna la copertura dei quesiti.
 
