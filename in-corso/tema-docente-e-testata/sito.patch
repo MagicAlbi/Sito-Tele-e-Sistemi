@@ -1,0 +1,386 @@
+diff --git a/index.html b/index.html
+index 534eb7b..9375e45 100644
+--- a/index.html
++++ b/index.html
+@@ -16,9 +16,9 @@
+   <!-- HEADER TECNOLOGICO -->
+   <header class="site-header">
+     <a href="index.html" class="logo-link">
+-      <div class="logo-icon">⚡</div>
++      <div class="logo-icon"><svg aria-hidden="true" width="21" height="21" viewBox="0 0 24 24" fill="none" stroke="#10213a" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="10" r="1.8"/><path d="M8.5 6.5a5 5 0 0 0 0 7m7-7a5 5 0 0 1 0 7M5.5 3.5a9 9 0 0 0 0 13m13-13a9 9 0 0 1 0 13M11.3 12l-3.2 8h7.8l-3.2-8"/></svg></div>
+       <div class="logo-text">
+-        <span class="logo-title text-gradient">Telecomunicazioni 5A</span>
++        <span class="logo-title text-gradient">Telecomunicazioni</span>
+         <span class="logo-sub">IIS J.C. Maxwell · Articolazione Telecomunicazioni</span>
+       </div>
+     </a>
+@@ -259,7 +259,7 @@
+       </div>
+ 
+       <footer style="margin-top:2rem; text-align:right; font-size:0.85rem;">
+-        <a href="https://tele5a-docente.alberto-pignato.workers.dev/docente/">Area docente</a>
++        <a href="https://tele5a-docente.alberto-pignato.workers.dev/docente/" data-teacher-link>Area docente</a>
+       </footer>
+ 
+     </div><!-- /content-wrap -->
+diff --git a/modulo1/allenamento.html b/modulo1/allenamento.html
+index d2d4e01..0aac243 100644
+--- a/modulo1/allenamento.html
++++ b/modulo1/allenamento.html
+@@ -14,9 +14,9 @@
+   <div class="app-layout">
+     <header class="site-header">
+       <a href="../index.html" class="logo-link">
+-        <div class="logo-icon" aria-hidden="true">⚡</div>
++        <div class="logo-icon" aria-hidden="true"><svg aria-hidden="true" width="21" height="21" viewBox="0 0 24 24" fill="none" stroke="#10213a" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="10" r="1.8"/><path d="M8.5 6.5a5 5 0 0 0 0 7m7-7a5 5 0 0 1 0 7M5.5 3.5a9 9 0 0 0 0 13m13-13a9 9 0 0 1 0 13M11.3 12l-3.2 8h7.8l-3.2-8"/></svg></div>
+         <div class="logo-text">
+-          <span class="logo-title text-gradient">Telecomunicazioni 5A</span>
++          <span class="logo-title text-gradient">Telecomunicazioni</span>
+           <span class="logo-sub">IIS J.C. Maxwell</span>
+         </div>
+       </a>
+diff --git a/modulo1/anteprima-beamforming-3d.html b/modulo1/anteprima-beamforming-3d.html
+index 8aec22d..028040a 100644
+--- a/modulo1/anteprima-beamforming-3d.html
++++ b/modulo1/anteprima-beamforming-3d.html
+@@ -18,9 +18,9 @@
+   <!-- HEADER -->
+   <header class="site-header">
+     <a href="../index.html" class="logo-link">
+-      <div class="logo-icon">⚡</div>
++      <div class="logo-icon"><svg aria-hidden="true" width="21" height="21" viewBox="0 0 24 24" fill="none" stroke="#10213a" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="10" r="1.8"/><path d="M8.5 6.5a5 5 0 0 0 0 7m7-7a5 5 0 0 1 0 7M5.5 3.5a9 9 0 0 0 0 13m13-13a9 9 0 0 1 0 13M11.3 12l-3.2 8h7.8l-3.2-8"/></svg></div>
+       <div class="logo-text">
+-        <span class="logo-title text-gradient">Telecomunicazioni 5A</span>
++        <span class="logo-title text-gradient">Telecomunicazioni</span>
+         <span class="logo-sub">IIS J.C. Maxwell</span>
+       </div>
+     </a>
+diff --git a/modulo1/esercizi.html b/modulo1/esercizi.html
+index 2d5e8fc..bdc81f2 100644
+--- a/modulo1/esercizi.html
++++ b/modulo1/esercizi.html
+@@ -14,9 +14,9 @@
+   <div class="app-layout">
+     <header class="site-header">
+       <a href="../index.html" class="logo-link">
+-        <div class="logo-icon" aria-hidden="true">⚡</div>
++        <div class="logo-icon" aria-hidden="true"><svg aria-hidden="true" width="21" height="21" viewBox="0 0 24 24" fill="none" stroke="#10213a" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="10" r="1.8"/><path d="M8.5 6.5a5 5 0 0 0 0 7m7-7a5 5 0 0 1 0 7M5.5 3.5a9 9 0 0 0 0 13m13-13a9 9 0 0 1 0 13M11.3 12l-3.2 8h7.8l-3.2-8"/></svg></div>
+         <div class="logo-text">
+-          <span class="logo-title text-gradient">Telecomunicazioni 5A</span>
++          <span class="logo-title text-gradient">Telecomunicazioni</span>
+           <span class="logo-sub">IIS J.C. Maxwell</span>
+         </div>
+       </a>
+diff --git a/modulo1/index.html b/modulo1/index.html
+index 013fb5e..1bf3683 100644
+--- a/modulo1/index.html
++++ b/modulo1/index.html
+@@ -16,9 +16,9 @@
+   <!-- HEADER -->
+   <header class="site-header">
+     <a href="../index.html" class="logo-link">
+-      <div class="logo-icon">⚡</div>
++      <div class="logo-icon"><svg aria-hidden="true" width="21" height="21" viewBox="0 0 24 24" fill="none" stroke="#10213a" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="10" r="1.8"/><path d="M8.5 6.5a5 5 0 0 0 0 7m7-7a5 5 0 0 1 0 7M5.5 3.5a9 9 0 0 0 0 13m13-13a9 9 0 0 1 0 13M11.3 12l-3.2 8h7.8l-3.2-8"/></svg></div>
+       <div class="logo-text">
+-        <span class="logo-title text-gradient">Telecomunicazioni 5A</span>
++        <span class="logo-title text-gradient">Telecomunicazioni</span>
+         <span class="logo-sub">IIS J.C. Maxwell</span>
+       </div>
+     </a>
+diff --git a/modulo1/lab-copertura.html b/modulo1/lab-copertura.html
+index f08f7c0..eda2f0b 100644
+--- a/modulo1/lab-copertura.html
++++ b/modulo1/lab-copertura.html
+@@ -16,9 +16,9 @@
+   <!-- HEADER -->
+   <header class="site-header">
+     <a href="../index.html" class="logo-link">
+-      <div class="logo-icon">⚡</div>
++      <div class="logo-icon"><svg aria-hidden="true" width="21" height="21" viewBox="0 0 24 24" fill="none" stroke="#10213a" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="10" r="1.8"/><path d="M8.5 6.5a5 5 0 0 0 0 7m7-7a5 5 0 0 1 0 7M5.5 3.5a9 9 0 0 0 0 13m13-13a9 9 0 0 1 0 13M11.3 12l-3.2 8h7.8l-3.2-8"/></svg></div>
+       <div class="logo-text">
+-        <span class="logo-title text-gradient">Telecomunicazioni 5A</span>
++        <span class="logo-title text-gradient">Telecomunicazioni</span>
+         <span class="logo-sub">IIS J.C. Maxwell</span>
+       </div>
+     </a>
+diff --git a/modulo1/lezione-1-1.html b/modulo1/lezione-1-1.html
+index c0d2ea7..b11f491 100644
+--- a/modulo1/lezione-1-1.html
++++ b/modulo1/lezione-1-1.html
+@@ -71,9 +71,9 @@
+   <!-- HEADER -->
+   <header class="site-header">
+     <a href="../index.html" class="logo-link">
+-      <div class="logo-icon">⚡</div>
++      <div class="logo-icon"><svg aria-hidden="true" width="21" height="21" viewBox="0 0 24 24" fill="none" stroke="#10213a" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="10" r="1.8"/><path d="M8.5 6.5a5 5 0 0 0 0 7m7-7a5 5 0 0 1 0 7M5.5 3.5a9 9 0 0 0 0 13m13-13a9 9 0 0 1 0 13M11.3 12l-3.2 8h7.8l-3.2-8"/></svg></div>
+       <div class="logo-text">
+-        <span class="logo-title text-gradient">Telecomunicazioni 5A</span>
++        <span class="logo-title text-gradient">Telecomunicazioni</span>
+         <span class="logo-sub">IIS J.C. Maxwell</span>
+       </div>
+     </a>
+diff --git a/modulo1/lezione-1-2.html b/modulo1/lezione-1-2.html
+index 46849fa..01c970a 100644
+--- a/modulo1/lezione-1-2.html
++++ b/modulo1/lezione-1-2.html
+@@ -34,9 +34,9 @@
+   <!-- HEADER -->
+   <header class="site-header">
+     <a href="../index.html" class="logo-link">
+-      <div class="logo-icon">⚡</div>
++      <div class="logo-icon"><svg aria-hidden="true" width="21" height="21" viewBox="0 0 24 24" fill="none" stroke="#10213a" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="10" r="1.8"/><path d="M8.5 6.5a5 5 0 0 0 0 7m7-7a5 5 0 0 1 0 7M5.5 3.5a9 9 0 0 0 0 13m13-13a9 9 0 0 1 0 13M11.3 12l-3.2 8h7.8l-3.2-8"/></svg></div>
+       <div class="logo-text">
+-        <span class="logo-title text-gradient">Telecomunicazioni 5A</span>
++        <span class="logo-title text-gradient">Telecomunicazioni</span>
+         <span class="logo-sub">IIS J.C. Maxwell</span>
+       </div>
+     </a>
+diff --git a/modulo1/lezione-1-3.html b/modulo1/lezione-1-3.html
+index e03d7bc..47e95e9 100644
+--- a/modulo1/lezione-1-3.html
++++ b/modulo1/lezione-1-3.html
+@@ -36,9 +36,9 @@
+   <!-- HEADER -->
+   <header class="site-header">
+     <a href="../index.html" class="logo-link">
+-      <div class="logo-icon">⚡</div>
++      <div class="logo-icon"><svg aria-hidden="true" width="21" height="21" viewBox="0 0 24 24" fill="none" stroke="#10213a" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="10" r="1.8"/><path d="M8.5 6.5a5 5 0 0 0 0 7m7-7a5 5 0 0 1 0 7M5.5 3.5a9 9 0 0 0 0 13m13-13a9 9 0 0 1 0 13M11.3 12l-3.2 8h7.8l-3.2-8"/></svg></div>
+       <div class="logo-text">
+-        <span class="logo-title text-gradient">Telecomunicazioni 5A</span>
++        <span class="logo-title text-gradient">Telecomunicazioni</span>
+         <span class="logo-sub">IIS J.C. Maxwell</span>
+       </div>
+     </a>
+diff --git a/modulo1/lezione-1-4.html b/modulo1/lezione-1-4.html
+index 075a49c..b0a99a8 100644
+--- a/modulo1/lezione-1-4.html
++++ b/modulo1/lezione-1-4.html
+@@ -38,9 +38,9 @@
+   <!-- HEADER -->
+   <header class="site-header">
+     <a href="../index.html" class="logo-link">
+-      <div class="logo-icon">⚡</div>
++      <div class="logo-icon"><svg aria-hidden="true" width="21" height="21" viewBox="0 0 24 24" fill="none" stroke="#10213a" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="10" r="1.8"/><path d="M8.5 6.5a5 5 0 0 0 0 7m7-7a5 5 0 0 1 0 7M5.5 3.5a9 9 0 0 0 0 13m13-13a9 9 0 0 1 0 13M11.3 12l-3.2 8h7.8l-3.2-8"/></svg></div>
+       <div class="logo-text">
+-        <span class="logo-title text-gradient">Telecomunicazioni 5A</span>
++        <span class="logo-title text-gradient">Telecomunicazioni</span>
+         <span class="logo-sub">IIS J.C. Maxwell</span>
+       </div>
+     </a>
+diff --git a/modulo1/lezione-1-5.html b/modulo1/lezione-1-5.html
+index 5493c36..da315c2 100644
+--- a/modulo1/lezione-1-5.html
++++ b/modulo1/lezione-1-5.html
+@@ -26,9 +26,9 @@
+   <!-- HEADER -->
+   <header class="site-header">
+     <a href="../index.html" class="logo-link">
+-      <div class="logo-icon">⚡</div>
++      <div class="logo-icon"><svg aria-hidden="true" width="21" height="21" viewBox="0 0 24 24" fill="none" stroke="#10213a" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="10" r="1.8"/><path d="M8.5 6.5a5 5 0 0 0 0 7m7-7a5 5 0 0 1 0 7M5.5 3.5a9 9 0 0 0 0 13m13-13a9 9 0 0 1 0 13M11.3 12l-3.2 8h7.8l-3.2-8"/></svg></div>
+       <div class="logo-text">
+-        <span class="logo-title text-gradient">Telecomunicazioni 5A</span>
++        <span class="logo-title text-gradient">Telecomunicazioni</span>
+         <span class="logo-sub">IIS J.C. Maxwell</span>
+       </div>
+     </a>
+diff --git a/modulo1/lezione-1-6.html b/modulo1/lezione-1-6.html
+index 4281662..c117b24 100644
+--- a/modulo1/lezione-1-6.html
++++ b/modulo1/lezione-1-6.html
+@@ -25,9 +25,9 @@
+   <!-- HEADER -->
+   <header class="site-header">
+     <a href="../index.html" class="logo-link">
+-      <div class="logo-icon">⚡</div>
++      <div class="logo-icon"><svg aria-hidden="true" width="21" height="21" viewBox="0 0 24 24" fill="none" stroke="#10213a" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="10" r="1.8"/><path d="M8.5 6.5a5 5 0 0 0 0 7m7-7a5 5 0 0 1 0 7M5.5 3.5a9 9 0 0 0 0 13m13-13a9 9 0 0 1 0 13M11.3 12l-3.2 8h7.8l-3.2-8"/></svg></div>
+       <div class="logo-text">
+-        <span class="logo-title text-gradient">Telecomunicazioni 5A</span>
++        <span class="logo-title text-gradient">Telecomunicazioni</span>
+         <span class="logo-sub">IIS J.C. Maxwell</span>
+       </div>
+     </a>
+diff --git a/modulo1/verifica.html b/modulo1/verifica.html
+index a163dac..51fd425 100644
+--- a/modulo1/verifica.html
++++ b/modulo1/verifica.html
+@@ -63,9 +63,9 @@
+   <!-- HEADER -->
+   <header class="site-header">
+     <a href="../index.html" class="logo-link">
+-      <div class="logo-icon">⚡</div>
++      <div class="logo-icon"><svg aria-hidden="true" width="21" height="21" viewBox="0 0 24 24" fill="none" stroke="#10213a" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="10" r="1.8"/><path d="M8.5 6.5a5 5 0 0 0 0 7m7-7a5 5 0 0 1 0 7M5.5 3.5a9 9 0 0 0 0 13m13-13a9 9 0 0 1 0 13M11.3 12l-3.2 8h7.8l-3.2-8"/></svg></div>
+       <div class="logo-text">
+-        <span class="logo-title text-gradient">Telecomunicazioni 5A</span>
++        <span class="logo-title text-gradient">Telecomunicazioni</span>
+         <span class="logo-sub">IIS J.C. Maxwell</span>
+       </div>
+     </a>
+diff --git a/modulo2/allenamento.html b/modulo2/allenamento.html
+index ad49183..7a126bd 100644
+--- a/modulo2/allenamento.html
++++ b/modulo2/allenamento.html
+@@ -15,9 +15,9 @@
+   <div class="app-layout">
+     <header class="site-header">
+       <a href="../index.html" class="logo-link">
+-        <div class="logo-icon" aria-hidden="true">⚡</div>
++        <div class="logo-icon" aria-hidden="true"><svg aria-hidden="true" width="21" height="21" viewBox="0 0 24 24" fill="none" stroke="#10213a" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="10" r="1.8"/><path d="M8.5 6.5a5 5 0 0 0 0 7m7-7a5 5 0 0 1 0 7M5.5 3.5a9 9 0 0 0 0 13m13-13a9 9 0 0 1 0 13M11.3 12l-3.2 8h7.8l-3.2-8"/></svg></div>
+         <div class="logo-text">
+-          <span class="logo-title text-gradient">Telecomunicazioni 5A</span>
++          <span class="logo-title text-gradient">Telecomunicazioni</span>
+           <span class="logo-sub">IIS J.C. Maxwell</span>
+         </div>
+       </a>
+diff --git a/modulo2/esercizi.html b/modulo2/esercizi.html
+index e1de38b..75549b8 100644
+--- a/modulo2/esercizi.html
++++ b/modulo2/esercizi.html
+@@ -15,9 +15,9 @@
+   <div class="app-layout">
+     <header class="site-header">
+       <a href="../index.html" class="logo-link">
+-        <div class="logo-icon" aria-hidden="true">⚡</div>
++        <div class="logo-icon" aria-hidden="true"><svg aria-hidden="true" width="21" height="21" viewBox="0 0 24 24" fill="none" stroke="#10213a" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="10" r="1.8"/><path d="M8.5 6.5a5 5 0 0 0 0 7m7-7a5 5 0 0 1 0 7M5.5 3.5a9 9 0 0 0 0 13m13-13a9 9 0 0 1 0 13M11.3 12l-3.2 8h7.8l-3.2-8"/></svg></div>
+         <div class="logo-text">
+-          <span class="logo-title text-gradient">Telecomunicazioni 5A</span>
++          <span class="logo-title text-gradient">Telecomunicazioni</span>
+           <span class="logo-sub">IIS J.C. Maxwell</span>
+         </div>
+       </a>
+diff --git a/modulo2/index.html b/modulo2/index.html
+index 4748f4d..3ec998d 100644
+--- a/modulo2/index.html
++++ b/modulo2/index.html
+@@ -12,8 +12,8 @@
+ <div class="app-layout">
+   <header class="site-header">
+     <a href="../index.html" class="logo-link">
+-      <span class="logo-icon" aria-hidden="true">⚡</span>
+-      <span class="logo-text"><span class="logo-title text-gradient">Telecomunicazioni 5A</span><span class="logo-sub">IIS J.C. Maxwell</span></span>
++      <span class="logo-icon" aria-hidden="true"><svg aria-hidden="true" width="21" height="21" viewBox="0 0 24 24" fill="none" stroke="#10213a" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="10" r="1.8"/><path d="M8.5 6.5a5 5 0 0 0 0 7m7-7a5 5 0 0 1 0 7M5.5 3.5a9 9 0 0 0 0 13m13-13a9 9 0 0 1 0 13M11.3 12l-3.2 8h7.8l-3.2-8"/></svg></span>
++      <span class="logo-text"><span class="logo-title text-gradient">Telecomunicazioni</span><span class="logo-sub">IIS J.C. Maxwell</span></span>
+     </a>
+     <nav class="header-breadcrumb" aria-label="Percorso">
+       <a href="../index.html">Home</a><span aria-hidden="true">›</span>
+diff --git a/modulo2/lab-routing.html b/modulo2/lab-routing.html
+index b2359f9..2ab6158 100644
+--- a/modulo2/lab-routing.html
++++ b/modulo2/lab-routing.html
+@@ -12,8 +12,8 @@
+ <div class="app-layout">
+   <header class="site-header">
+     <a href="../index.html" class="logo-link">
+-      <span class="logo-icon" aria-hidden="true">⚡</span>
+-      <span class="logo-text"><span class="logo-title text-gradient">Telecomunicazioni 5A</span><span class="logo-sub">IIS J.C. Maxwell</span></span>
++      <span class="logo-icon" aria-hidden="true"><svg aria-hidden="true" width="21" height="21" viewBox="0 0 24 24" fill="none" stroke="#10213a" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="10" r="1.8"/><path d="M8.5 6.5a5 5 0 0 0 0 7m7-7a5 5 0 0 1 0 7M5.5 3.5a9 9 0 0 0 0 13m13-13a9 9 0 0 1 0 13M11.3 12l-3.2 8h7.8l-3.2-8"/></svg></span>
++      <span class="logo-text"><span class="logo-title text-gradient">Telecomunicazioni</span><span class="logo-sub">IIS J.C. Maxwell</span></span>
+     </a>
+     <nav class="header-breadcrumb" aria-label="Percorso">
+       <a href="../index.html">Home</a><span aria-hidden="true">›</span>
+diff --git a/modulo2/lezione-2-1.html b/modulo2/lezione-2-1.html
+index 052a75a..eb3752a 100644
+--- a/modulo2/lezione-2-1.html
++++ b/modulo2/lezione-2-1.html
+@@ -12,8 +12,8 @@
+ <div class="app-layout">
+   <header class="site-header">
+     <a href="../index.html" class="logo-link">
+-      <span class="logo-icon" aria-hidden="true">⚡</span>
+-      <span class="logo-text"><span class="logo-title text-gradient">Telecomunicazioni 5A</span><span class="logo-sub">IIS J.C. Maxwell</span></span>
++      <span class="logo-icon" aria-hidden="true"><svg aria-hidden="true" width="21" height="21" viewBox="0 0 24 24" fill="none" stroke="#10213a" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="10" r="1.8"/><path d="M8.5 6.5a5 5 0 0 0 0 7m7-7a5 5 0 0 1 0 7M5.5 3.5a9 9 0 0 0 0 13m13-13a9 9 0 0 1 0 13M11.3 12l-3.2 8h7.8l-3.2-8"/></svg></span>
++      <span class="logo-text"><span class="logo-title text-gradient">Telecomunicazioni</span><span class="logo-sub">IIS J.C. Maxwell</span></span>
+     </a>
+     <nav class="header-breadcrumb" aria-label="Percorso">
+       <a href="../index.html">Home</a><span aria-hidden="true">›</span>
+diff --git a/modulo2/lezione-2-2.html b/modulo2/lezione-2-2.html
+index e700cf3..7ed1588 100644
+--- a/modulo2/lezione-2-2.html
++++ b/modulo2/lezione-2-2.html
+@@ -13,8 +13,8 @@
+ <div class="app-layout">
+   <header class="site-header">
+     <a href="../index.html" class="logo-link">
+-      <span class="logo-icon" aria-hidden="true">⚡</span>
+-      <span class="logo-text"><span class="logo-title text-gradient">Telecomunicazioni 5A</span><span class="logo-sub">IIS J.C. Maxwell</span></span>
++      <span class="logo-icon" aria-hidden="true"><svg aria-hidden="true" width="21" height="21" viewBox="0 0 24 24" fill="none" stroke="#10213a" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="10" r="1.8"/><path d="M8.5 6.5a5 5 0 0 0 0 7m7-7a5 5 0 0 1 0 7M5.5 3.5a9 9 0 0 0 0 13m13-13a9 9 0 0 1 0 13M11.3 12l-3.2 8h7.8l-3.2-8"/></svg></span>
++      <span class="logo-text"><span class="logo-title text-gradient">Telecomunicazioni</span><span class="logo-sub">IIS J.C. Maxwell</span></span>
+     </a>
+     <nav class="header-breadcrumb" aria-label="Percorso">
+       <a href="../index.html">Home</a><span aria-hidden="true">›</span>
+diff --git a/modulo2/lezione-2-3.html b/modulo2/lezione-2-3.html
+index 0a56360..a1ab45b 100644
+--- a/modulo2/lezione-2-3.html
++++ b/modulo2/lezione-2-3.html
+@@ -13,8 +13,8 @@
+ <div class="app-layout">
+   <header class="site-header">
+     <a href="../index.html" class="logo-link">
+-      <span class="logo-icon" aria-hidden="true">⚡</span>
+-      <span class="logo-text"><span class="logo-title text-gradient">Telecomunicazioni 5A</span><span class="logo-sub">IIS J.C. Maxwell</span></span>
++      <span class="logo-icon" aria-hidden="true"><svg aria-hidden="true" width="21" height="21" viewBox="0 0 24 24" fill="none" stroke="#10213a" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="10" r="1.8"/><path d="M8.5 6.5a5 5 0 0 0 0 7m7-7a5 5 0 0 1 0 7M5.5 3.5a9 9 0 0 0 0 13m13-13a9 9 0 0 1 0 13M11.3 12l-3.2 8h7.8l-3.2-8"/></svg></span>
++      <span class="logo-text"><span class="logo-title text-gradient">Telecomunicazioni</span><span class="logo-sub">IIS J.C. Maxwell</span></span>
+     </a>
+     <nav class="header-breadcrumb" aria-label="Percorso">
+       <a href="../index.html">Home</a><span aria-hidden="true">›</span>
+diff --git a/modulo2/lezione-2-4.html b/modulo2/lezione-2-4.html
+index f3ec143..b8ffb8f 100644
+--- a/modulo2/lezione-2-4.html
++++ b/modulo2/lezione-2-4.html
+@@ -12,8 +12,8 @@
+ <div class="app-layout">
+   <header class="site-header">
+     <a href="../index.html" class="logo-link">
+-      <span class="logo-icon" aria-hidden="true">⚡</span>
+-      <span class="logo-text"><span class="logo-title text-gradient">Telecomunicazioni 5A</span><span class="logo-sub">IIS J.C. Maxwell</span></span>
++      <span class="logo-icon" aria-hidden="true"><svg aria-hidden="true" width="21" height="21" viewBox="0 0 24 24" fill="none" stroke="#10213a" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="10" r="1.8"/><path d="M8.5 6.5a5 5 0 0 0 0 7m7-7a5 5 0 0 1 0 7M5.5 3.5a9 9 0 0 0 0 13m13-13a9 9 0 0 1 0 13M11.3 12l-3.2 8h7.8l-3.2-8"/></svg></span>
++      <span class="logo-text"><span class="logo-title text-gradient">Telecomunicazioni</span><span class="logo-sub">IIS J.C. Maxwell</span></span>
+     </a>
+     <nav class="header-breadcrumb" aria-label="Percorso">
+       <a href="../index.html">Home</a><span aria-hidden="true">›</span>
+diff --git a/modulo2/lezione-2-5.html b/modulo2/lezione-2-5.html
+index b31e912..3c6257c 100644
+--- a/modulo2/lezione-2-5.html
++++ b/modulo2/lezione-2-5.html
+@@ -12,8 +12,8 @@
+ <div class="app-layout">
+   <header class="site-header">
+     <a href="../index.html" class="logo-link">
+-      <span class="logo-icon" aria-hidden="true">⚡</span>
+-      <span class="logo-text"><span class="logo-title text-gradient">Telecomunicazioni 5A</span><span class="logo-sub">IIS J.C. Maxwell</span></span>
++      <span class="logo-icon" aria-hidden="true"><svg aria-hidden="true" width="21" height="21" viewBox="0 0 24 24" fill="none" stroke="#10213a" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="10" r="1.8"/><path d="M8.5 6.5a5 5 0 0 0 0 7m7-7a5 5 0 0 1 0 7M5.5 3.5a9 9 0 0 0 0 13m13-13a9 9 0 0 1 0 13M11.3 12l-3.2 8h7.8l-3.2-8"/></svg></span>
++      <span class="logo-text"><span class="logo-title text-gradient">Telecomunicazioni</span><span class="logo-sub">IIS J.C. Maxwell</span></span>
+     </a>
+     <nav class="header-breadcrumb" aria-label="Percorso">
+       <a href="../index.html">Home</a><span aria-hidden="true">›</span>
+diff --git a/modulo2/verifica.html b/modulo2/verifica.html
+index cfe8775..69b6d71 100644
+--- a/modulo2/verifica.html
++++ b/modulo2/verifica.html
+@@ -12,8 +12,8 @@
+ <div class="app-layout">
+   <header class="site-header">
+     <a href="../index.html" class="logo-link">
+-      <span class="logo-icon" aria-hidden="true">⚡</span>
+-      <span class="logo-text"><span class="logo-title text-gradient">Telecomunicazioni 5A</span><span class="logo-sub">IIS J.C. Maxwell</span></span>
++      <span class="logo-icon" aria-hidden="true"><svg aria-hidden="true" width="21" height="21" viewBox="0 0 24 24" fill="none" stroke="#10213a" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="10" r="1.8"/><path d="M8.5 6.5a5 5 0 0 0 0 7m7-7a5 5 0 0 1 0 7M5.5 3.5a9 9 0 0 0 0 13m13-13a9 9 0 0 1 0 13M11.3 12l-3.2 8h7.8l-3.2-8"/></svg></span>
++      <span class="logo-text"><span class="logo-title text-gradient">Telecomunicazioni</span><span class="logo-sub">IIS J.C. Maxwell</span></span>
+     </a>
+     <nav class="header-breadcrumb" aria-label="Percorso">
+       <a href="../index.html">Home</a><span aria-hidden="true">›</span>
+diff --git a/assets/js/app.js b/assets/js/app.js
+index a937def..f12a770 100644
+--- a/assets/js/app.js
++++ b/assets/js/app.js
+@@ -17,6 +17,12 @@ const ThemeManager = (() => {
+   function set(theme) {
+     root.setAttribute('data-theme', theme);
+     localStorage.setItem(KEY, theme);
++    const teacherLink = document.querySelector('[data-teacher-link]');
++    if (teacherLink) {
++      const teacherUrl = new URL(teacherLink.href);
++      teacherUrl.searchParams.set('tema', theme);
++      teacherLink.href = teacherUrl.href;
++    }
+     document.querySelectorAll('[data-theme-toggle]').forEach(btn => {
+       btn.setAttribute('aria-label', theme === 'dark' ? 'Passa al tema chiaro' : 'Passa al tema scuro');
+       btn.innerHTML = theme === 'dark' ? iconSun() : iconMoon();

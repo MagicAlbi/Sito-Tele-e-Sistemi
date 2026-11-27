@@ -17,6 +17,12 @@ const ThemeManager = (() => {
   function set(theme) {
     root.setAttribute('data-theme', theme);
     localStorage.setItem(KEY, theme);
+    const teacherLink = document.querySelector('[data-teacher-link]');
+    if (teacherLink) {
+      const teacherUrl = new URL(teacherLink.href);
+      teacherUrl.searchParams.set('tema', theme);
+      teacherLink.href = teacherUrl.href;
+    }
     document.querySelectorAll('[data-theme-toggle]').forEach(btn => {
       btn.setAttribute('aria-label', theme === 'dark' ? 'Passa al tema chiaro' : 'Passa al tema scuro');
       btn.innerHTML = theme === 'dark' ? iconSun() : iconMoon();
