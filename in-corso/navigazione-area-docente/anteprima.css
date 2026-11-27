@@ -1,0 +1,33 @@
+.anteprima-docente { max-width: 1000px; padding-block-start: clamp(1.2rem, 4vw, 2.5rem); }
+.percorso { margin-block-end: .85rem; }
+.percorso ol { display: flex; flex-wrap: wrap; align-items: center; gap: .3rem .65rem; padding: 0; list-style: none; }
+.percorso li { display: flex; align-items: center; gap: .65rem; color: var(--text-muted); font-size: .875rem; }
+.percorso a { color: var(--verifica-accento); text-decoration: underline; text-underline-offset: .2em; }
+.percorso [aria-current="page"] { color: var(--text); font-weight: 650; }
+.anteprima-docente :is(a, button, select, [tabindex="0"]):focus-visible { outline: 2px solid var(--verifica-accento); outline-offset: 3px; }
+.intestazione-docente { padding-inline-end: 2rem; }
+.intestazione-docente h1 { margin: 0; }
+.intestazione-docente .contesto-classe { margin-block-start: .5rem; }
+.anteprima-docente [data-icona-tema] { flex: none; }
+[data-theme="dark"] [data-icona-tema="light"], [data-theme="light"] [data-icona-tema="dark"] { display: none; }
+.sezioni-verifiche { display: flex; flex-wrap: wrap; gap: .4rem; }
+.sezioni-verifiche [aria-current="page"] {
+  color: var(--verifica-accento); background: var(--surface-3); border-color: var(--border-2);
+}
+.anteprima-docente .scheda-blocco[data-vista], .anteprima-docente #dettaglio-classe { margin-block-start: 1rem; }
+.descrizione-codici { border-inline-start: 3px solid var(--m1); }
+.elenco-classi { grid-template-columns: repeat(auto-fit, minmax(min(100%, 15rem), 1fr)); }
+.elenco-classi .module-card { padding: 1.15rem; }
+.elenco-classi p, .prove-archivio span { color: var(--text-muted); font-size: .9rem; }
+.filtro-archivio { max-width: 17rem; }
+.prove-archivio { list-style: none; padding: 0; margin: 1rem 0 0; }
+.prove-archivio li { display: grid; gap: .2rem; padding-block: .65rem; border-block-end: 1px solid var(--border); }
+.tabella-classe { overflow-x: auto; }
+.tabella-classe table { min-width: 26rem; }
+.nota-anteprima { margin-block-start: 1.5rem; color: var(--text-muted); font-size: .8rem; }
+@media (max-width: 620px) {
+  .intestazione-docente { padding-inline-end: 2.65rem; }
+  .percorso li, .percorso ol { column-gap: .45rem; }
+  .tabella-classe table { min-width: 0; }
+  .tabella-classe :is(th, td) { padding: .4rem .35rem; }
+}

@@ -16,6 +16,7 @@
 
 - **Formato scelto.** Mostrare testo e caselle dei risultati numerici con le unità già scritte. Accettare virgola e punto decimale. Lo svolgimento è sul foglio e lo corregge il docente.
 - **Correzione numerica.** Applicare il ±3% al tempo di trasferimento, calcolato prima dell’arrotondamento. Velocità utile, potenza ricevuta e margine richiedono il valore esatto. [I due esercizi](APERTE-ED-ESERCIZI.md#esercizi-con-caselle-per-i-risultati) valgono 5 punti ciascuno.
+- **Ripresa per la verifica WAN e le successive.** Alla preparazione delle tracce, indica per ogni risultato se vale il ±3% sul valore prima dell’arrotondamento o se serve il valore esatto. Riporta lo stesso criterio nella correzione. Base del controllo del 28 novembre 2026: `39a1c83`. Provati online negli esercizi di ripasso Wi-Fi e WAN un tempo entro il ±3%, uno oltre soglia e una velocità che richiedeva il valore esatto. La prova Wi-Fi riservata ha mostrato la richiesta del codice personale. La simulazione WAN online propone domande a scelta e casi da motivare. Prossimo passo: preparare le tracce numeriche WAN secondo il [criterio comune](../../piani/telecomunicazioni-5a/fasi/12/FASE.md#criteri-comuni).
 - **Sorteggio degli esercizi.** Per ogni alunno estrarre una traccia di trasferimento e una di copertura. Ogni tipologia ha due tracce con gli stessi passaggi e dati diversi. Salvare i dati estratti con la prova e riportarli nella scheda docente. [Tracce e soluzioni](APERTE-ED-ESERCIZI.md#esercizi-con-caselle-per-i-risultati).
 
 ## Salvataggio, ripresa e correzione

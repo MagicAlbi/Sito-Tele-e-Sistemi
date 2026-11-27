@@ -4,6 +4,10 @@
 
 **Pubblicato e verificato · 27 novembre 2026.** Titolo «Telecomunicazioni», antenna con onde radio nel riquadro sfumato, sole e luna del sito e tema docente impostato all’apertura. Verificati il login e il pannello con un accesso reale. [Scheda di lavoro](tema-docente-e-testata/LAVORO.md).
 
+**Pubblicato e verificato · 27 novembre 2026.** La schermata dopo l’accesso mostra il titolo «Area docente». Il collegamento «← Home» apre la home del sito. [Scheda di lavoro](testi-area-docente/LAVORO.md).
+
+**Pubblicato e verificato · 28 novembre 2026.** Percorso in alto con Home e sezioni cliccabili, testate coerenti nelle verifiche e nei codici, pulsante Esci solo nella pagina iniziale docente. Provati i percorsi online e il ritorno dal dettaglio di una classe. [Scheda di lavoro](navigazione-area-docente/LAVORO.md).
+
 ## Profili degli alunni e sito per tre materie
 
 **Da esplorare · 24 novembre 2026.** Un profilo per alunno anche al cambio di classe o se ripete l’anno. Storico dei progressi per materia e anno scolastico. Sito con tre materie per anno di corso. Da chiarire quali materie e anni includere e come mostrare lo storico in caso di ripetizione.
@@ -16,13 +20,7 @@
 
 **Archivio verifiche · 26 novembre 2026.** Scegliere anno scolastico, classe e modulo. Proporre l’anno in corso e permettere la consultazione degli anni precedenti. Consultazione e stampa non cambiano lo stato della verifica. Apertura e recuperi agiscono solo sulla verifica selezionata. Il docente ha scelto lo stesso formato della verifica Wi-Fi per il Modulo 2, da preparare a partire dalla simulazione WAN. [Anteprima navigabile con dati fittizi](verifiche-fine-modulo/anteprima-archivio.html).
 
-**Da concludere · 26 novembre 2026.**
-
-- **Risultati numerici dei Moduli 1 e 2.** Nella banca degli esercizi prevedere, per ciascun risultato, un intervallo di valori accettati quando basta un’approssimazione. Richiedere il valore esatto solo quando serve.
-
 ## Esercizi di allenamento
-
-**Tolleranze applicate in locale · 27 novembre 2026.** Nei Moduli 1 e 2 le risposte approssimate ammettono il ±3%. Per le altre risposte è richiesto il valore esatto, anche quando contiene decimali. [Scheda di lavoro](tolleranze-esercizi-allenamento/LAVORO.md).
 
 **Da rivedere con calma · Modulo 2.** Il docente vuole rivedere le tracce della sezione [Esercizi](../modulo2/esercizi.html), che comprende 66 esercizi in 9 categorie.
 

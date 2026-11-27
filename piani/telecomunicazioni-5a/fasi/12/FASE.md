@@ -26,6 +26,7 @@ Aggiorna l’esito nel file di fase e lo stato nella tabella del piano. Per il s
 
 - **Lezioni** Sintesi iniziale, esempio o esercizio, quiz breve con riscontro e presentazione avviabile, utilizzabile e richiudibile da tastiera. Verifica in browser ed esegui i calcoli. Dopo la fase 16, abilita le annotazioni e prova che una nota resti associata alla lezione dopo la ricarica.
 - **Laboratori** Prova navigazione e almeno un caso con esito atteso. Usa dati di fantasia.
+- **Risultati numerici nelle verifiche e nelle banche del ripasso** Per ogni risultato indica il criterio nella banca e applicalo nella correzione. Se il risultato ammette un’approssimazione, accetta uno scarto fino al ±3% rispetto al valore calcolato prima dell’arrotondamento, estremi inclusi. Se la consegna prevede il valore esatto, richiedilo anche quando contiene decimali. Prova un valore agli estremi dell’intervallo, uno appena fuori e uno leggermente diverso dal valore esatto.
 - **Indici** Mantieni attivo il collegamento al Modulo 2 dalla home e completa le destinazioni dei Moduli 3–5 con i rispettivi moduli. Per le sezioni finali, usa i criteri della [fase 20](../20/FASE.md).
 
 ## Controlli aperti nel Modulo 1

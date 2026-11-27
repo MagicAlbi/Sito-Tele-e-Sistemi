@@ -1,0 +1,103 @@
+<!doctype html>
+<html lang="it" data-theme="dark">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Area docente · Anteprima</title>
+  <script>
+    try {
+      if (localStorage.getItem('tele5a-anteprima-navigazione-tema') === 'light') {
+        document.documentElement.dataset.theme = 'light';
+      }
+    } catch {}
+  </script>
+  <link rel="stylesheet" href="../../assets/css/style.css">
+  <link rel="stylesheet" href="../../assets/css/introduzione-lezioni.css">
+  <link rel="stylesheet" href="../verifiche-fine-modulo/verifica-tema.css">
+  <link rel="stylesheet" href="../verifiche-fine-modulo/scheda-docente.css">
+  <link rel="stylesheet" href="anteprima.css">
+  <script defer src="anteprima.js"></script>
+</head>
+<body>
+  <main class="scheda module-one anteprima-docente">
+    <nav class="percorso" aria-label="Percorso di navigazione"><ol id="percorso"></ol></nav>
+    <header class="lesson-intro-hero verifica-hero">
+      <div class="intestazione-docente">
+        <h1 class="lesson-title-h1" tabindex="-1" id="titolo">Area docente</h1>
+        <p class="lesson-subtitle contesto-classe" id="contesto" hidden></p>
+      </div>
+      <img src="../../assets/img/indice-rete-radio.svg" alt="">
+      <button type="button" class="btn btn-icon btn-ghost verifica-tema" id="tema" aria-label="Passa al tema chiaro">
+        <svg data-icona-tema="dark" aria-hidden="true" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
+        <svg data-icona-tema="light" aria-hidden="true" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+      </button>
+    </header>
+
+    <div id="menu-docente" data-vista="area-docente">
+      <nav class="modules-grid docente-ingresso" aria-label="Sezioni dell’Area docente">
+        <a class="module-card docente-verifiche" href="#verifiche">
+          <div class="module-card-header"><span class="module-number" aria-hidden="true">✓</span><h2>Verifiche</h2></div>
+          <p>Crea una verifica, consulta l’archivio e ristampa le consegne.</p>
+          <div class="module-card-footer"><span class="module-start-btn">Apri verifiche →</span></div>
+        </a>
+        <a class="module-card docente-codici" href="#codici-alunni">
+          <div class="module-card-header"><span class="module-number" aria-hidden="true">#</span><h2>Codici alunni</h2></div>
+          <p>Consulta i codici personali per classe.</p>
+          <div class="module-card-footer"><span class="module-start-btn">Apri codici alunni →</span></div>
+        </a>
+      </nav>
+      <div class="scheda-comandi"><a class="btn btn-ghost" href="#accesso">Esci</a></div>
+    </div>
+
+    <nav class="sezioni-verifiche" id="menu-verifiche" aria-label="Sezioni delle verifiche" hidden>
+      <a class="btn btn-ghost" href="#verifiche">Nuova verifica</a>
+      <a class="btn btn-ghost" href="#archivio">Archivio</a>
+    </nav>
+
+    <section class="scheda-blocco" data-vista="verifiche" aria-labelledby="titolo-configurazione" hidden>
+      <h2 id="titolo-configurazione">Nuova verifica</h2>
+      <div class="scheda-filtri">
+        <div class="scheda-campo"><label for="nuova-anno">Anno scolastico</label><select id="nuova-anno"><option>2026–2027</option></select></div>
+        <div class="scheda-campo"><label for="nuova-classe">Classe</label><select id="nuova-classe"><option value="">Scegli una classe</option><option>Quinta A Tele</option><option>Quinta B Tele</option></select></div>
+        <div class="scheda-campo"><label for="nuova-modulo">Modulo</label><select id="nuova-modulo"><option>Modulo 1 · Wi-Fi</option></select></div>
+      </div>
+      <p id="stato-nuova" class="scheda-nota">Scegli una classe per vedere il riepilogo.</p>
+    </section>
+
+    <section class="scheda-blocco" data-vista="archivio" aria-labelledby="titolo-archivio" hidden>
+      <h2 id="titolo-archivio">Archivio</h2>
+      <div class="scheda-campo filtro-archivio"><label for="archivio-classe">Classe</label>
+        <select id="archivio-classe"><option value="">Tutte le classi</option><option>Quinta A Tele</option><option>Quinta B Tele</option></select>
+      </div>
+      <ul class="prove-archivio" id="prove-archivio">
+        <li data-classe="Quinta A Tele"><strong>Modulo 1 · Wi-Fi</strong><span>Quinta A Tele · 11 novembre 2026</span></li>
+        <li data-classe="Quinta B Tele"><strong>Modulo 1 · Wi-Fi</strong><span>Quinta B Tele · 18 novembre 2026</span></li>
+      </ul>
+    </section>
+
+    <div data-vista="codici-alunni" hidden>
+      <div class="scheda-blocco descrizione-codici">Gestisci classi, codici e avanzamento.</div>
+      <section aria-labelledby="titolo-classi">
+        <h2 id="titolo-classi">Classi</h2>
+        <div class="modules-grid elenco-classi" id="elenco-classi"></div>
+      </section>
+    </div>
+
+    <section class="scheda-blocco" id="dettaglio-classe" aria-labelledby="titolo-elenco" hidden>
+      <h2 id="titolo-elenco">Elenco alunni</h2>
+      <div class="tabella-classe" tabindex="0" role="region" aria-label="Elenco e avanzamento">
+        <table class="scheda-tabella">
+          <thead><tr><th scope="col">Alunno</th><th scope="col">Codice dimostrativo</th><th scope="col">Avanzamento</th></tr></thead>
+          <tbody id="alunni"></tbody>
+        </table>
+      </div>
+    </section>
+
+    <div data-vista="accesso" class="scheda-blocco" hidden>
+      <p>Sei uscito dall’anteprima.</p>
+      <div class="scheda-comandi"><a class="btn btn-primary" href="#area-docente">Rientra nella bozza</a></div>
+    </div>
+    <footer class="nota-anteprima">Anteprima locale · dati fittizi</footer>
+  </main>
+</body>
+</html>
