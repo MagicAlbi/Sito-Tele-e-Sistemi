@@ -1,10 +1,10 @@
 # Preparazione alla seconda prova 2025
 
 - **Base.** Piano Telecomunicazioni 5A, lezioni ed esercizi dei moduli 1 e 2 e programmazioni locali. Le tracce sono archiviate in `Materiali/Tracce esame Telecomunicazioni 2025/`. Le tre programmazioni TPSIT annuali sono nella radice `Materiali/` accanto alle altre.
-- **File.** [Mappa quesito per quesito](MAPPA.md), [nota per gli studenti](nota-sito.html) e rimandi dal [piano](../../piani/telecomunicazioni-5a/PIANO.md), dalla [scaletta didattica](../../piani/telecomunicazioni-5a/fasi/01/FASE.md) e dal [registro idee](../IDEE.md).
-- **Controlli.** Coprire tutti i punti A–D e i quattro quesiti a scelta per ogni sessione. Far precedere i punti obbligatori. Collegare ogni punto a una lezione, un laboratorio o un ripasso. Distinguere i richiami alle programmazioni di Sistemi e Reti e TPSIT. Verificare le copie, i collegamenti e l’esclusione della nota dalla pubblicazione.
-- **Esito del 25 novembre 2026.** Verificati 12 punti obbligatori e 12 quesiti a scelta, rimandi locali, foglio di stile della nota ed esclusione di `in-corso/` in `_config.yml`. Le tre tracce e le tre programmazioni TPSIT archiviate coincidono con gli originali. Restano la revisione del docente, il controllo del calendario e la prova della nota nel suo contesto definitivo.
-- **Prossimo passo.** Il docente può salvare le modifiche dei moduli con MagicAlbi Sync. La nota per gli studenti resta da rivedere e destinare alla sezione della 5A per l’esame. Confermare con i colleghi ciò che viene svolto in classe e verificare il tempo dei laboratori prima di sviluppare i moduli successivi.
+- **File.** [Mappa interna quesito per quesito](MAPPA.md), [piano](../../piani/telecomunicazioni-5a/PIANO.md) e [scaletta didattica](../../piani/telecomunicazioni-5a/fasi/01/FASE.md).
+- **Controlli.** Collegare ogni punto obbligatorio e ogni quesito a scelta a una lezione, un laboratorio o un ripasso. Distinguere i richiami di Sistemi e Reti e TPSIT. Verificare i collegamenti e l’effettiva copertura nei materiali.
+- **Esito del 25 novembre 2026.** Censiti nella mappa i 12 punti obbligatori e i 12 quesiti a scelta. Le tre tracce e le tre programmazioni TPSIT archiviate coincidono con gli originali.
+- **Prossimo passo.** Durante lo sviluppo dei moduli successivi Codex integra gli argomenti nelle lezioni, nei laboratori e negli esercizi, aggiorna la mappa con i materiali effettivi e verifica la copertura prima delle simulazioni.
 
 ## Bozze dei moduli 1 e 2
 

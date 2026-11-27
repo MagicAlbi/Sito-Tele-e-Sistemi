@@ -32,6 +32,12 @@
     return Math.abs(value - expected) <= tolerance + roundingError;
   }
 
+  function matchesAnswer(value, { value: expected, tolerance = 0 }) {
+    if (tolerance === 0) return value === expected;
+    const margin = Math.abs(expected) * tolerance;
+    return value >= expected - margin && value <= expected + margin;
+  }
+
   function renderFacts(facts, className) {
     const list = element('dl', undefined, className);
     for (const [label, value] of facts) {
@@ -77,7 +83,10 @@
       const unit = element('span', answer.unit, 'exercise-unit');
       unit.id = `${input.id}-unit`;
       label.htmlFor = input.id;
-      const precision = answer.decimals === 0 ? 'Numero intero.' : `Arrotonda a ${answer.decimals} decimali.`;
+      const exactNote = answer.decimals === 0 ? 'Numero intero.' : 'Valore esatto.';
+      const precision = answer.tolerance
+        ? `Arrotonda a ${answer.decimals} decimali. Tolleranza ±${answer.tolerance * 100}%.`
+        : exactNote;
       const note = element('p', precision, 'exercise-note');
       const feedback = element('p', '', 'exercise-feedback');
       note.id = `${input.id}-precision`;
@@ -174,7 +183,7 @@
     let correct = 0;
     for (const { input, answer, feedback, guide, value } of results) {
       feedback.hidden = false;
-      const isCorrect = matches(value, answer.value, answer.decimals);
+      const isCorrect = matchesAnswer(value, answer);
       input.setAttribute('aria-invalid', String(!isCorrect));
       feedback.dataset.status = isCorrect ? 'correct' : 'error';
       if (isCorrect) {

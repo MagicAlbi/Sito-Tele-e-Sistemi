@@ -1,16 +1,5 @@
 # Idee · Tele e Sistemi
 
-## Sottolineature, evidenziazioni e note dopo modifiche al Modulo 1
-
-**Da verificare · 26 novembre 2026.** Controllare come il sito ritrova i passaggi a cui sono collegate le annotazioni già salvate, per esempio se usa la posizione dei caratteri nella pagina.
-
-- Su una copia di una lezione, salvare sottolineature, evidenziazioni e note di prova. Cambiare la lunghezza di una frase prima di un passaggio annotato, poi ripetere la prova con una frase dopo. Riaprire la pagina e verificare che tutte le annotazioni siano ancora visibili sul testo giusto e che le note conservino il loro contenuto.
-- Modificare direttamente un passaggio annotato. È accettabile che vada persa l’annotazione di quel passaggio. Quelle sul resto della pagina devono restare visibili e associate al testo giusto.
-
-## Preparazione alla seconda prova di Telecomunicazioni
-
-**Mappa preparata · 25 novembre 2026.** Le parti obbligatorie delle tre prove del 2025 guidano gli approfondimenti. La nota sulle competenze di Sistemi e Reti e TPSIT è in bozza per la revisione del docente. [Apri la scheda di lavoro](preparazione-esame-2025/LAVORO.md).
-
 ## Profili degli alunni e sito per tre materie
 
 **Da esplorare · 24 novembre 2026.** Un profilo per alunno anche al cambio di classe o se ripete l’anno. Storico dei progressi per materia e anno scolastico. Sito con tre materie per anno di corso. Da chiarire quali materie e anni includere e come mostrare lo storico in caso di ripetizione.
@@ -25,8 +14,13 @@
 
 **Da concludere · 26 novembre 2026.**
 
-- **Voto finale.** Nella scheda di correzione aggiungere una casella con la sola etichetta «Voto finale». Il docente inserisce a mano il voto in decimi, senza conversione automatica del punteggio.
 - **Risultati numerici dei Moduli 1 e 2.** Nella banca degli esercizi prevedere, per ciascun risultato, un intervallo di valori accettati quando basta un’approssimazione. Richiedere il valore esatto solo quando serve.
+
+## Esercizi di allenamento
+
+**Tolleranze applicate in locale · 27 novembre 2026.** Nei Moduli 1 e 2 le risposte approssimate ammettono il ±3%. Per le altre risposte è richiesto il valore esatto, anche quando contiene decimali. [Scheda di lavoro](tolleranze-esercizi-allenamento/LAVORO.md).
+
+**Da rivedere con calma · Modulo 2.** Il docente vuole rivedere le tracce della sezione [Esercizi](../modulo2/esercizi.html), che comprende 66 esercizi in 9 categorie.
 
 ## Riassunto personale da note ed evidenziazioni
 

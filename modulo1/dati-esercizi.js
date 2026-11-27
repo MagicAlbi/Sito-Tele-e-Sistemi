@@ -24,7 +24,7 @@
       ],
       answers: [
         { label: 'Velocità utile', unit: 'Mbps', value: effective, decimals: 2, errors: [{ value: nominal, hint: percentHint }] },
-        { label: 'Tempo di trasferimento', unit: 's', value: time, decimals: 2, errors: [
+        { label: 'Tempo di trasferimento', unit: 's', value: time, decimals: 2, tolerance: 0.03, errors: [
           { value: size / effective, hint: conversionHint },
           { value: megabits / nominal, hint: percentHint }
         ] }
@@ -60,7 +60,7 @@
       task: 'Calcola la perdita di propagazione in spazio libero.',
       facts: [['Distanza tra le antenne', `${distance} m`], ['Frequenza', `${format(frequency)} GHz`]],
       answers: [{
-        label: 'Perdita in spazio libero', unit: 'dB', value: loss, decimals: 2,
+        label: 'Perdita in spazio libero', unit: 'dB', value: loss, decimals: 2, tolerance: 0.03,
         errors: [{ value: loss - 60, hint: 'Verifica se hai convertito la frequenza da GHz a MHz prima di sostituirla.' }]
       }],
       steps: [

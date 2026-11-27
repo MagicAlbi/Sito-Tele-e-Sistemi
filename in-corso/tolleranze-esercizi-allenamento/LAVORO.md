@@ -1,0 +1,9 @@
+# Tolleranze negli esercizi di allenamento
+
+- **Base** `649de51`. La [scheda di correzione della verifica Wi-Fi](../verifiche-fine-modulo/scheda-docente.js) applica una tolleranza del ±3% al tempo di trasferimento e richiede il valore esatto per velocità utile, potenza ricevuta e margine.
+- **Bozza** Il [file delle modifiche](modifiche.patch) aggiorna il correttore condiviso e le banche `modulo1/dati-esercizi.js` e `modulo2/dati-esercizi.js`. La precisione di visualizzazione è distinta dal criterio di correzione, così anche un risultato decimale può essere richiesto esatto.
+- **Criteri** ±3% per durate, perdita di propagazione calcolata con i logaritmi, quote PON e percentuali di efficienza della trama. Valore esatto per velocità utile ricavata dalla percentuale nominale, potenze, margini, perdite della fibra calcolate dai valori assegnati, conteggi, capacità E1 e indirizzi.
+- **Controlli** Verificati tutti i 151 risultati (19 nel Modulo 1 e 132 nel Modulo 2). Le 56 risposte con tolleranza accettano i due estremi del ±3% e rifiutano ±3,01%. Le 95 risposte esatte rifiutano anche scostamenti di 0,0001. Tutti i valori mostrati nello svolgimento sono accettati. Verificata l’applicabilità delle modifiche alla base locale.
+- **Chrome** Provati i quattro tipi di esercizio del Modulo 1 e i nove del Modulo 2 dalle rispettive pagine «Esercizi». Verificati l’inserimento con la virgola e il riscontro per risposte accettate e rifiutate.
+- **Applicazione · 27 novembre 2026.** Approvata dal docente e trasferita ai tre file del sito. Ripetuto il controllo di tutti i 151 risultati sui file destinati agli studenti. Nel [registro delle idee](../IDEE.md#esercizi-di-allenamento) è annotata la futura revisione del Modulo 2.
+- **Prossimo passo** Il docente può usare **Salva su GitHub** in MagicAlbi Sync per pubblicare l’aggiornamento.

@@ -23,7 +23,7 @@ Aggiorna l’esito nel file di fase e lo stato nella tabella del piano. Per il s
 
 #### Approfondimenti per la seconda prova
 
-Usare la [mappa quesito per quesito](../../../../in-corso/preparazione-esame-2025/MAPPA.md). Le tre parti obbligatorie guidano la revisione dei laboratori. Usare la 3.6 per il dimensionamento dei ponti radio, il Modulo 4 per la raccolta dati da sensori e la 5.4 per il sistema DAB completo. La mappa indica anche i rinforzi delle lezioni 1.5–1.6 e 2.3–2.5 e gli argomenti da coordinare con le altre materie. Monte ore e calendario da verificare prima di cambiare le attività previste.
+Le tre tracce del 2025 guidano l’intero corso. Quando sviluppa i moduli, Codex usa la [mappa interna quesito per quesito](../../../../in-corso/preparazione-esame-2025/MAPPA.md) per integrare gli argomenti e verificarne la copertura. La 3.6 sviluppa il dimensionamento dei ponti radio, il Modulo 4 la raccolta dati da sensori e la 5.4 il sistema DAB completo. Codex inserisce nei materiali i richiami utili a Sistemi e Reti e TPSIT e adatta le attività alle ore disponibili.
 
 #### Wi-Fi nella prima settimana
 

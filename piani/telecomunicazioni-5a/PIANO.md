@@ -2,11 +2,11 @@
 
 Completare AM/FM e i Moduli 1–5 entro il 31 marzo 2027. Da aprile, preparazione all’esame con ripasso delle antenne. [Calendario, fonti e PDF](fasi/01/FASE.md).
 
-Il traguardo di fine anno è svolgere tutte le parti obbligatorie delle tre prove di Telecomunicazioni 2025 e saper rispondere ad almeno due quesiti a scelta per ciascuna. Usare la [mappa quesito per quesito](../../in-corso/preparazione-esame-2025/MAPPA.md) quando si sviluppano o si rivedono lezioni, laboratori e verifiche. Nelle simulazioni si usa il manuale tecnico.
+Le tre prove di Telecomunicazioni del 2025 (ordinaria, suppletiva e straordinaria) sono il riferimento fondamentale del corso. A fine anno gli alunni devono saper svolgere ciascuna prova con il manuale tecnico, affrontando tutti i punti obbligatori e motivando le risposte ad almeno due quesiti a scelta.
 
 ## Priorità
 
-- **Seconda prova** Dare precedenza a ponti radio e portata, reti di raccolta dati e stazione DAB. Gli approfondimenti dei Moduli 1 e 2 sono approvati e verificati [nei file locali del sito](../../in-corso/preparazione-esame-2025/LAVORO.md#bozze-dei-moduli-1-e-2). Prima di sviluppare i moduli successivi, consultare le [aggiunte per ciascuna lezione e per le simulazioni di aprile](../../in-corso/preparazione-esame-2025/MAPPA.md#da-aggiungere-nei-moduli-successivi-e-ad-aprile). Coordinare i richiami di Sistemi e Reti e TPSIT prima di fissare tempi e attività.
+- **Seconda prova** Durante lo sviluppo di ogni modulo, Codex usa la [mappa interna quesito per quesito](../../in-corso/preparazione-esame-2025/MAPPA.md) per integrare gli argomenti nelle lezioni, nei laboratori e negli esercizi a cui si collegano. Gli approfondimenti assegnati ai Moduli 1 e 2 sono [già integrati](../../in-corso/preparazione-esame-2025/MAPPA.md#verifica-dei-moduli-1-e-2). Codex aggiorna la copertura a fine modulo e, prima delle simulazioni, verifica che i materiali esercitino tutti i punti obbligatori e tutti i quesiti a scelta, colmando le lacune.
 - **Wi-Fi** [Esercizi da pubblicare](fasi/22/FASE.md), poi [banca](fasi/23/FASE.md) e [controllo finale](fasi/24/FASE.md). Quiz delle lezioni [approvati](fasi/35/FASE.md).
 - **WAN** Modulo 2 completo in locale. Prossimo passo, revisione dei [materiali](../../modulo2/index.html) e prova sulla [LIM della classe](fasi/02/FASE.md). Moduli 3–5 sospesi.
 - **In parallelo** [Annotazioni](fasi/15/FASE.md), [approvazione prova di accesso](fasi/17/FASE.md) prima del [collegamento al Modulo 1](fasi/18/FASE.md), [progettazione verifiche](fasi/13/FASE.md) indipendente. [Area docente online](fasi/34/FASE.md) dopo la prova online.

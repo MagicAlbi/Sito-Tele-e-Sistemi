@@ -2,7 +2,7 @@
 
 Il [piano](piani/telecomunicazioni-5a/PIANO.md#priorità) indica stato e prossimo passo. Per una bozza da riprendere, apri il suo `LAVORO.md` in `in-corso/`. Per le prossime presentazioni alla classe, segui la struttura dei Moduli 1 e 2 indicata nei [criteri comuni](piani/telecomunicazioni-5a/fasi/12/FASE.md#criteri-comuni).
 
-- **Preparazione alla seconda prova** Gli approfondimenti approvati dei Moduli 1 e 2 sono verificati nei file locali e pronti per il salvataggio da parte del docente. La [scheda di lavoro](in-corso/preparazione-esame-2025/LAVORO.md) rimanda agli approfondimenti previsti nei moduli successivi e alla nota per gli studenti, ancora in bozza.
+- **Preparazione alla seconda prova** Le tre tracce del 2025 sono il riferimento fondamentale del corso. Gli approfondimenti assegnati ai Moduli 1 e 2 sono già integrati e verificati. Per ogni modulo successivo Codex riparte dalla [mappa interna](in-corso/preparazione-esame-2025/MAPPA.md), integra gli argomenti nelle attività e aggiorna la copertura dei quesiti.
 
 - **Wi-Fi** [Materiali](modulo1/index.html) e [controlli aperti](piani/telecomunicazioni-5a/fasi/12/FASE.md).
 - **Domande nelle presentazioni dei Moduli 1 e 2** Il docente ha approvato le risposte a comparsa, le sfide per tutta la classe e il chiarimento sul MAC privato nella lezione 1.1 e nel quiz. Le modifiche sono nei file del sito, sono state provate in Chrome e sono pronte per il salvataggio. La bozza delle verifiche resta fuori dal sito perché è in `in-corso/`. [Scheda di lavoro](in-corso/domande-presentazioni-1-2/LAVORO.md).

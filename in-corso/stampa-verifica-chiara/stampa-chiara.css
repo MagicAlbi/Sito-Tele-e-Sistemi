@@ -1,0 +1,226 @@
+.scheda-titolo-stampa { display: none; }
+
+@media screen {
+  .scheda-schemi-stampa { display: none; }
+  .scheda :is([data-totale], [data-subtotale], .scheda-punti-non-previsti):empty::before { content: "—"; }
+}
+
+.scheda-sezione > .scheda-totale {
+  width: fit-content;
+  max-width: 100%;
+  margin: 0 0 .7rem;
+  padding: .35em .75em;
+  border: 1px solid var(--border-2);
+  border-radius: var(--r-md);
+  color: var(--verifica-accento);
+  background: var(--verifica-selezione);
+  font-size: 1em;
+  line-height: 1.35;
+}
+
+@media print {
+  html, body {
+    background: #fff;
+    color-scheme: light;
+  }
+
+  .scheda {
+    color: var(--text);
+    print-color-adjust: exact;
+  }
+
+  .scheda .verifica-hero { display: none; }
+
+  :is(#consegna, #stampa-classe > article) > section[aria-label] {
+    position: relative;
+    margin: 0 0 5mm;
+    padding: 4mm 23mm 4mm 5mm;
+    background: var(--surface-2);
+    border: 1px solid var(--border-2);
+    border-radius: var(--r-lg);
+    break-inside: avoid;
+  }
+
+  :is(#consegna, #stampa-classe > article) > section[aria-label]::after {
+    content: "";
+    position: absolute;
+    inset-block-start: 2mm;
+    inset-inline-end: 3mm;
+    height: calc(100% - 4mm);
+    aspect-ratio: 1;
+    background: #fff;
+    border: 1px solid var(--border-2);
+    border-radius: 2mm;
+  }
+
+  .scheda .scheda-titolo-stampa {
+    display: block;
+    margin: 0 0 1.5mm;
+    padding: 0;
+    border: 0;
+    font-size: 18pt;
+    line-height: 1.2;
+  }
+
+  #consegna > section,
+  #stampa-classe > article > section {
+    margin-top: 5mm;
+  }
+
+  .scheda-sezione + .scheda-sezione {
+    break-before: page;
+  }
+
+  .scheda-sezione > h2 {
+    margin: 0 0 3mm;
+    padding: 2.5mm 3.5mm;
+    background: var(--verifica-selezione);
+    border: 1px solid var(--border-2);
+    border-left: 3px solid #4389b5;
+    border-radius: var(--r-md);
+    font-size: 14pt;
+    line-height: 1.25;
+  }
+
+  .scheda-blocco {
+    color: var(--text);
+    background: var(--surface);
+    border-radius: var(--r-lg);
+    margin: 3mm 0;
+  }
+
+  .scheda-chiusa {
+    border-top-width: 3px;
+    padding: 2.5mm 3mm;
+  }
+
+  .scheda-chiusa h3 { gap: 2mm; }
+  .scheda-numero { background: var(--surface-3); }
+  .scheda-opzione { background: var(--surface-2); }
+  .scheda-opzione.giusta { background: #eff9f1; }
+  .scheda-opzione.errata { background: #fff2f3; }
+  .scheda-omissione {
+    display: block;
+    width: fit-content;
+    padding: .15em .55em;
+    border: 1px solid #e6cf96;
+    border-radius: var(--r-sm);
+    background: #fff5df;
+    color: #6f4d0a;
+    font-weight: 650;
+  }
+
+  .scheda-sezione > .scheda-totale {
+    margin-bottom: 2.5mm;
+    break-after: avoid;
+  }
+
+  .scheda-articolata { padding: 3mm; }
+  .scheda-sezione > .scheda-articolata { break-inside: avoid; }
+  .scheda-articolata h3 { font-size: 12pt; }
+  .scheda-articolata > .scheda-riquadro {
+    margin-top: 2.5mm;
+    padding: 2.3mm 2.8mm;
+  }
+  .scheda-passaggi li + li { margin-top: 2mm; }
+  .scheda-passaggi .scheda-calcolo { margin-top: 1.1mm; }
+  .scheda-consegna { background: var(--surface-2); }
+  .scheda-risposta { background: #f1f7fc; }
+  .scheda-legenda { color: var(--text-muted); }
+
+  .scheda-tabella {
+    border: 1px solid var(--border-2);
+    border-collapse: separate;
+    border-spacing: 0;
+    border-radius: var(--r-md);
+    overflow: hidden;
+  }
+
+  .scheda-tabella :is(th, td) {
+    border: 0;
+    vertical-align: middle;
+  }
+
+  .scheda-tabella :is(tbody, tfoot) > tr {
+    background: linear-gradient(transparent, var(--border-2), transparent) top / 100% 2px no-repeat;
+  }
+
+  .scheda-griglia tr > :nth-child(2),
+  .scheda-riepilogo .scheda-tabella tr > :not(:first-child) {
+    text-align: center;
+  }
+
+  .scheda-tabella thead, .scheda-tabella tfoot { background: var(--surface-2); }
+  .scheda-tabella tr { break-inside: avoid; }
+
+  .scheda-griglia input[type="number"] + .scheda-solo-stampa,
+  .scheda :is([data-totale], [data-subtotale]):empty::before {
+    display: grid;
+    place-items: center;
+    width: min(24mm, 100%);
+    min-height: 7mm;
+    padding: 0 1mm;
+    border: 1px solid var(--border-2);
+    border-radius: var(--r-sm);
+    background: var(--surface);
+    line-height: 1.15;
+  }
+
+  /* In PDF il centro dei separatori cade più in basso del bordo invisibile della riga. */
+  .scheda-griglia input[type="number"] + .scheda-solo-stampa,
+  .scheda [data-subtotale]:empty::before {
+    transform: translateY(.3mm);
+  }
+
+  .scheda :is([data-totale], [data-subtotale]):empty::before { content: ""; }
+  .scheda .scheda-riepilogo [data-totale]:empty::before {
+    margin-inline: auto;
+    transform: translateY(.18mm);
+  }
+
+  .scheda-griglia thead th:last-child { width: 27%; }
+  .scheda-griglia th, .scheda-griglia td { padding-block: 1mm; }
+  .scheda-schemi-schermo { display: none; }
+
+  .scheda-griglia .scheda-schemi-stampa td {
+    padding-block: 1mm 2.33mm;
+  }
+
+  .scheda-schemi-stampa strong {
+    display: block;
+    line-height: 1.15;
+  }
+
+  .scheda-schemi-stampa .scheda-spazio-schemi {
+    display: block;
+    margin-top: 1.7mm;
+    min-height: 19mm;
+    padding: 1mm 2mm;
+    border: 1px solid var(--border-2);
+    border-radius: var(--r-sm);
+    background: var(--surface);
+    white-space: pre-wrap;
+    transform: translateY(.07mm);
+  }
+
+  :is(#consegna, #stampa-classe > article) > .scheda-riepilogo {
+    margin: 2mm 0 0;
+    padding: 2mm 3mm;
+  }
+
+  .scheda-sezione:has(+ .scheda-riepilogo) > .scheda-articolata:last-child {
+    margin-bottom: 1.5mm;
+  }
+
+  .scheda-sezione:has(+ .scheda-riepilogo) > .scheda-articolata:last-child > .scheda-riquadro {
+    margin-top: 2mm;
+    padding-block: 2mm;
+  }
+
+  .scheda-riepilogo h2 { margin-bottom: 2mm; }
+  .scheda-riepilogo .scheda-tabella :is(th, td) { padding-block: .45mm; }
+  .scheda-riepilogo .scheda-tabella tbody tr,
+  .scheda-sezione:has(+ .scheda-riepilogo) .scheda-griglia :is(tbody, tfoot) > tr {
+    height: 24pt;
+  }
+}

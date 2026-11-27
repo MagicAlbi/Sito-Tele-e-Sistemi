@@ -1,6 +1,6 @@
 # Esame di Stato · Telecomunicazioni 2025
 
-Obiettivo di fine anno. Svolgere tutti i punti obbligatori delle tre tracce e saper scegliere e argomentare almeno due risposte della seconda parte in ciascuna sessione. Tutti i quesiti sono censiti qui. Nelle simulazioni si usa il manuale tecnico e si dichiara da dove vengono dati, formule e ipotesi. Allenare anche le risposte sintetiche entro il limite di 20 righe indicato nelle tracce, esclusi schemi, grafici e tabelle.
+Questa mappa interna guida lo sviluppo dei moduli. Le tre tracce del 2025 sono il riferimento fondamentale. A fine corso gli alunni devono saper svolgere tutti i punti obbligatori e motivare almeno due risposte della seconda parte per ciascuna prova. Il percorso copre anche gli argomenti degli altri quesiti a scelta. Nelle simulazioni si usa il manuale tecnico e si dichiara da dove vengono dati, formule e ipotesi. Allenare anche le risposte sintetiche entro il limite di 20 righe indicato nelle tracce, esclusi schemi, grafici e tabelle.
 
 I PDF originali sono in `Materiali/Tracce esame Telecomunicazioni 2025/`, accanto alla cartella `sito/`. Nella stessa radice `Materiali/` sono conservate le programmazioni di Telecomunicazioni, Sistemi e Reti e TPSIT. Gli abbinamenti alle altre discipline si basano su argomenti in programma. Lo svolgimento effettivo in classe è da verificare con il docente.
 
@@ -42,16 +42,16 @@ La colonna «Preparazione» propone da quali quesiti partire per avere almeno du
 
 ## Verifica dei moduli 1 e 2
 
-Gli approfondimenti sono nelle [bozze per la revisione](LAVORO.md#bozze-dei-moduli-1-e-2).
+Gli approfondimenti assegnati ai Moduli 1 e 2 sono già nei file del sito. La [scheda di lavoro](LAVORO.md#bozze-dei-moduli-1-e-2) registra i controlli.
 
-| Materiale attuale | Approfondimento da preparare |
+| Materiale integrato | Approfondimento coperto |
 | --- | --- |
-| [1.5 · Strato fisico e antenne](../../modulo1/lezione-1-5.html) tratta diagrammi di radiazione, riflessioni, antenne multiple e modulazioni. | Collegare le riflessioni al fading con un esempio e un rimedio motivato. |
-| [1.6 · Copertura e sicurezza](../../modulo1/lezione-1-6.html) e [esercizi Wi-Fi](../../modulo1/esercizi.html) trattano potenza ricevuta e margine in ambiente Wi-Fi. | Aggiungere un esercizio breve all’aperto con perdita dei cavi e soglia del ricevitore. Sviluppare scelta delle antenne, orizzonte e Fresnel nella 3.6. |
-| [2.3 · Accesso in rame e fibra](../../modulo2/lezione-2-3.html) presenta accessi ottici e architetture. | Aggiungere un collegamento fra sedi da dimensionare, con perdite di fibra, giunti e connettori, margine e capacità. |
-| [2.4 · HDLC e PPP](../../modulo2/lezione-2-4.html) mostra delimitazione, dati e controllo di una trama. | Far scegliere i campi di un messaggio di sensori e stimare quanti bit richiede. Usare poi la trama AIS nel Modulo 3 per calcolare l’occupazione del canale. |
-| [2.5 · Routing](../../modulo2/lezione-2-5.html) distingue percorsi connessi, statici e dinamici e cita OSPF. Gli [esercizi WAN](../../modulo2/esercizi.html) includono sottoreti. | Aggiungere il confronto distance vector/link state e un piano IP ragionato per un impianto completo, coordinato con Sistemi e Reti. |
-| [Laboratorio WAN](../../modulo2/lab-routing.html) fa seguire il percorso di un pacchetto. | Aggiungere uno scenario unico con sensori, concentratori e sede. Far produrre schema, formato dei dati e piano IP. Riprendere visualizzazione e monitoraggio con Sistemi e Reti 5A. |
+| [1.5 · Strato fisico e antenne](../../modulo1/lezione-1-5.html#fading) | Riflessioni, fading e rimedi. |
+| [1.6 · Copertura e sicurezza](../../modulo1/lezione-1-6.html#ponte-aperto) | Bilancio di un collegamento all’aperto con perdite dei cavi e margine rispetto alla soglia. |
+| [2.3 · Accesso in rame e fibra](../../modulo2/lezione-2-3.html#bilancio-fibra) | Collegamento in fibra fra sedi con perdite, margine e capacità. |
+| [2.4 · HDLC e PPP](../../modulo2/lezione-2-4.html#messaggio-sensori) | Campi e lunghezza di un messaggio di sensori. |
+| [2.5 · Routing](../../modulo2/lezione-2-5.html#routing-dinamico) | Confronto fra distance vector e link state. |
+| [Laboratorio WAN](../../modulo2/lab-routing.html#impianto-sensori) | Schema della rete, formato dei messaggi e piano IP per un impianto con 13 concentratori. |
 
 ## Da aggiungere nei moduli successivi e ad aprile
 
@@ -66,4 +66,4 @@ Gli approfondimenti sono nelle [bozze per la revisione](LAVORO.md#bozze-dei-modu
 | 5.4 · DAB in Telecomunicazioni | Ampliare il confronto FM/DAB, il raggruppamento delle emittenti e le reti a frequenza unica. Far disegnare la stazione completa dal multiplexer al ponte Ethernet e ai pannelli. Calcolare perdita dei cavi, divisione e perdita del divisore, potenza in ingresso al pannello e irradiata equivalente. Riutilizzare il ponte a 17,1 GHz della 3.6. Disegnare la rete IP di gestione con un richiamo al monitoraggio in Sistemi e Reti. | Suppletiva 4, Straordinaria A–D. |
 | Ripasso antenne e simulazioni di aprile | Riprendere Fresnel, orizzonte, antenne e margine con profili realistici. Nell’ordinaria esercitare come mostrare i dati AIS ai soci in sede e da remoto. Fare tre simulazioni con tutti i punti obbligatori e due quesiti scelti per prova, usando manuale, schemi e ipotesi dichiarate. Dopo, proporre le eventuali estensioni su campionamento passa-banda, adattamento con stub, errore QAM ed esposizione ai campi. | Tutte le sessioni. |
 
-Per ogni aggiunta approvata riallineare lezioni, presentazioni, banca, esercizi e verifica del modulo. Prima di fissare tempi, controllare il calendario e ciò che è già svolto nelle altre materie.
+Mentre sviluppa ciascun modulo, Codex integra gli argomenti della tabella nelle attività e registra qui i collegamenti ai materiali verificati. Per ogni aggiunta approvata riallinea lezioni, presentazioni, banca, esercizi e verifica. Prima delle simulazioni, controlla tutte e tre le tracce punto per punto e completa i materiali mancanti, comprese le estensioni dei quesiti a scelta.

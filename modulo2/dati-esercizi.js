@@ -4,6 +4,7 @@
   });
   const round = value => number(value, 2);
   const answer = (label, unit, value, decimals, errors = []) => ({ label, unit, value, decimals, errors });
+  const approximate = (label, unit, value, errors) => ({ ...answer(label, unit, value, 2, errors), tolerance: 0.03 });
   const error = (value, hint) => ({ value, hint });
   const step = (title, text, ...equations) => ({ title, text, equations });
 
@@ -17,7 +18,7 @@
       facts: [['Lunghezza del blocco', bytes + ' byte'], ['Velocità di linea', rate + ' bit/s']],
       answers: [
         answer('Bit sulla linea', 'bit', bits, 0, [error(bytes * 8, 'Aggiungi start e stop a ogni carattere.')]),
-        answer('Durata', 's', duration, 2, [error(bytes * 8 / rate, 'Nel tempo rientrano anche i bit di start e stop.')])
+        approximate('Durata', 's', duration, [error(bytes * 8 / rate, 'Nel tempo rientrano anche i bit di start e stop.')])
       ],
       steps: [
         step('Calcola i bit per carattere', 'In 8N1 si usano un bit di start e uno di stop per ogni byte.', '1 + 8 + 1 = 10 bit'),
@@ -57,7 +58,7 @@
       facts: [['Velocità nominale', nominal + ' Mbit/s'], ['Quota utile', percent + '%'], ['Dimensione del file', bytes + ' MB']],
       answers: [
         answer('Velocità utile', 'Mbit/s', useful, 2, [error(nominal, 'Applica la quota utile alla capacità nominale.')]),
-        answer('Durata', 's', duration, 2, [error(bytes / useful, 'Converti il file in Mbit prima di dividere.'), error(megabits / nominal, 'Dividi per la velocità utile, non per quella nominale.')])
+        approximate('Durata', 's', duration, [error(bytes / useful, 'Converti il file in Mbit prima di dividere.'), error(megabits / nominal, 'Dividi per la velocità utile, non per quella nominale.')])
       ],
       steps: [
         step('Calcola la capacità utile', 'Trasforma la percentuale in frazione decimale e moltiplica.', nominal + ' × ' + number(percent / 100) + ' = ' + number(useful) + ' Mbit/s'),
@@ -76,8 +77,8 @@
       task: 'Calcola la capacità teorica per utente prima e dopo i nuovi arrivi.',
       facts: [['Capacità utile totale', capacity + ' Mbit/s'], ['Utenti iniziali', String(users)], ['Utenti aggiunti', String(extra)]],
       answers: [
-        answer('Prima degli arrivi', 'Mbit/s', initial, 2, [error(capacity, 'Questa è la capacità totale del ramo.')]),
-        answer('Dopo gli arrivi', 'Mbit/s', final, 2, [error(capacity / extra, 'Somma nuovi e vecchi utenti nel divisore.')])
+        approximate('Prima degli arrivi', 'Mbit/s', initial, [error(capacity, 'Questa è la capacità totale del ramo.')]),
+        approximate('Dopo gli arrivi', 'Mbit/s', final, [error(capacity / extra, 'Somma nuovi e vecchi utenti nel divisore.')])
       ],
       steps: [
         step('Quota iniziale', 'Dividi la capacità utile per gli utenti attivi all’inizio.', capacity + ' ÷ ' + users + ' ≈ ' + round(initial) + ' Mbit/s'),
@@ -97,7 +98,7 @@
       facts: [['Informazione', payload + ' byte'], ['Altri campi', header + ' byte']],
       answers: [
         answer('Dimensione della trama', 'byte', total, 0, [error(payload, 'Il totale comprende i campi di servizio.')]),
-        answer('Quota utile', '%', share, 2, [error(header / total * 100, 'Questa è la percentuale dei campi di servizio.'), error(payload / total, 'Hai trovato la frazione. Moltiplicala per 100.')])
+        approximate('Quota utile', '%', share, [error(header / total * 100, 'Questa è la percentuale dei campi di servizio.'), error(payload / total, 'Hai trovato la frazione. Moltiplicala per 100.')])
       ],
       steps: [
         step('Conta tutti i byte', 'Somma dati utili e campi di servizio.', payload + ' + ' + header + ' = ' + total + ' byte'),
@@ -132,8 +133,9 @@
 
 
   function opticalLink(title, length, joins, budget) {
-    const loss = length * 0.35 + joins * 0.15 + 2 * 0.5;
-    const margin = budget - loss;
+    const lossHundredths = length * 35 + joins * 15 + 2 * 50;
+    const loss = lossHundredths / 100;
+    const margin = (budget * 100 - lossHundredths) / 100;
     return {
       title,
       context: 'Una fibra monomodale collega due sedi. Il fornitore dei moduli dichiara il budget ottico a questa velocità.',

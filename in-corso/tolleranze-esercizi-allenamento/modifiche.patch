@@ -1,0 +1,122 @@
+diff --git a/assets/js/esercizi-numerici.js b/assets/js/esercizi-numerici.js
+index 2473a8e..4f4baa5 100644
+--- a/assets/js/esercizi-numerici.js
++++ b/assets/js/esercizi-numerici.js
+@@ -32,6 +32,12 @@
+     return Math.abs(value - expected) <= tolerance + roundingError;
+   }
+ 
++  function matchesAnswer(value, { value: expected, tolerance = 0 }) {
++    if (tolerance === 0) return value === expected;
++    const margin = Math.abs(expected) * tolerance;
++    return value >= expected - margin && value <= expected + margin;
++  }
++
+   function renderFacts(facts, className) {
+     const list = element('dl', undefined, className);
+     for (const [label, value] of facts) {
+@@ -77,7 +83,10 @@
+       const unit = element('span', answer.unit, 'exercise-unit');
+       unit.id = `${input.id}-unit`;
+       label.htmlFor = input.id;
+-      const precision = answer.decimals === 0 ? 'Numero intero.' : `Arrotonda a ${answer.decimals} decimali.`;
++      const exactNote = answer.decimals === 0 ? 'Numero intero.' : 'Valore esatto.';
++      const precision = answer.tolerance
++        ? `Arrotonda a ${answer.decimals} decimali. Tolleranza ±${answer.tolerance * 100}%.`
++        : exactNote;
+       const note = element('p', precision, 'exercise-note');
+       const feedback = element('p', '', 'exercise-feedback');
+       note.id = `${input.id}-precision`;
+@@ -174,7 +183,7 @@
+     let correct = 0;
+     for (const { input, answer, feedback, guide, value } of results) {
+       feedback.hidden = false;
+-      const isCorrect = matches(value, answer.value, answer.decimals);
++      const isCorrect = matchesAnswer(value, answer);
+       input.setAttribute('aria-invalid', String(!isCorrect));
+       feedback.dataset.status = isCorrect ? 'correct' : 'error';
+       if (isCorrect) {
+diff --git a/modulo1/dati-esercizi.js b/modulo1/dati-esercizi.js
+index 2470d3d..881828c 100644
+--- a/modulo1/dati-esercizi.js
++++ b/modulo1/dati-esercizi.js
+@@ -24,7 +24,7 @@
+       ],
+       answers: [
+         { label: 'Velocità utile', unit: 'Mbps', value: effective, decimals: 2, errors: [{ value: nominal, hint: percentHint }] },
+-        { label: 'Tempo di trasferimento', unit: 's', value: time, decimals: 2, errors: [
++        { label: 'Tempo di trasferimento', unit: 's', value: time, decimals: 2, tolerance: 0.03, errors: [
+           { value: size / effective, hint: conversionHint },
+           { value: megabits / nominal, hint: percentHint }
+         ] }
+@@ -60,7 +60,7 @@
+       task: 'Calcola la perdita di propagazione in spazio libero.',
+       facts: [['Distanza tra le antenne', `${distance} m`], ['Frequenza', `${format(frequency)} GHz`]],
+       answers: [{
+-        label: 'Perdita in spazio libero', unit: 'dB', value: loss, decimals: 2,
++        label: 'Perdita in spazio libero', unit: 'dB', value: loss, decimals: 2, tolerance: 0.03,
+         errors: [{ value: loss - 60, hint: 'Verifica se hai convertito la frequenza da GHz a MHz prima di sostituirla.' }]
+       }],
+       steps: [
+diff --git a/modulo2/dati-esercizi.js b/modulo2/dati-esercizi.js
+index b041692..4d5ae35 100644
+--- a/modulo2/dati-esercizi.js
++++ b/modulo2/dati-esercizi.js
+@@ -4,6 +4,7 @@
+   });
+   const round = value => number(value, 2);
+   const answer = (label, unit, value, decimals, errors = []) => ({ label, unit, value, decimals, errors });
++  const approximate = (label, unit, value, errors) => ({ ...answer(label, unit, value, 2, errors), tolerance: 0.03 });
+   const error = (value, hint) => ({ value, hint });
+   const step = (title, text, ...equations) => ({ title, text, equations });
+ 
+@@ -17,7 +18,7 @@
+       facts: [['Lunghezza del blocco', bytes + ' byte'], ['Velocità di linea', rate + ' bit/s']],
+       answers: [
+         answer('Bit sulla linea', 'bit', bits, 0, [error(bytes * 8, 'Aggiungi start e stop a ogni carattere.')]),
+-        answer('Durata', 's', duration, 2, [error(bytes * 8 / rate, 'Nel tempo rientrano anche i bit di start e stop.')])
++        approximate('Durata', 's', duration, [error(bytes * 8 / rate, 'Nel tempo rientrano anche i bit di start e stop.')])
+       ],
+       steps: [
+         step('Calcola i bit per carattere', 'In 8N1 si usano un bit di start e uno di stop per ogni byte.', '1 + 8 + 1 = 10 bit'),
+@@ -57,7 +58,7 @@
+       facts: [['Velocità nominale', nominal + ' Mbit/s'], ['Quota utile', percent + '%'], ['Dimensione del file', bytes + ' MB']],
+       answers: [
+         answer('Velocità utile', 'Mbit/s', useful, 2, [error(nominal, 'Applica la quota utile alla capacità nominale.')]),
+-        answer('Durata', 's', duration, 2, [error(bytes / useful, 'Converti il file in Mbit prima di dividere.'), error(megabits / nominal, 'Dividi per la velocità utile, non per quella nominale.')])
++        approximate('Durata', 's', duration, [error(bytes / useful, 'Converti il file in Mbit prima di dividere.'), error(megabits / nominal, 'Dividi per la velocità utile, non per quella nominale.')])
+       ],
+       steps: [
+         step('Calcola la capacità utile', 'Trasforma la percentuale in frazione decimale e moltiplica.', nominal + ' × ' + number(percent / 100) + ' = ' + number(useful) + ' Mbit/s'),
+@@ -76,8 +77,8 @@
+       task: 'Calcola la capacità teorica per utente prima e dopo i nuovi arrivi.',
+       facts: [['Capacità utile totale', capacity + ' Mbit/s'], ['Utenti iniziali', String(users)], ['Utenti aggiunti', String(extra)]],
+       answers: [
+-        answer('Prima degli arrivi', 'Mbit/s', initial, 2, [error(capacity, 'Questa è la capacità totale del ramo.')]),
+-        answer('Dopo gli arrivi', 'Mbit/s', final, 2, [error(capacity / extra, 'Somma nuovi e vecchi utenti nel divisore.')])
++        approximate('Prima degli arrivi', 'Mbit/s', initial, [error(capacity, 'Questa è la capacità totale del ramo.')]),
++        approximate('Dopo gli arrivi', 'Mbit/s', final, [error(capacity / extra, 'Somma nuovi e vecchi utenti nel divisore.')])
+       ],
+       steps: [
+         step('Quota iniziale', 'Dividi la capacità utile per gli utenti attivi all’inizio.', capacity + ' ÷ ' + users + ' ≈ ' + round(initial) + ' Mbit/s'),
+@@ -97,7 +98,7 @@
+       facts: [['Informazione', payload + ' byte'], ['Altri campi', header + ' byte']],
+       answers: [
+         answer('Dimensione della trama', 'byte', total, 0, [error(payload, 'Il totale comprende i campi di servizio.')]),
+-        answer('Quota utile', '%', share, 2, [error(header / total * 100, 'Questa è la percentuale dei campi di servizio.'), error(payload / total, 'Hai trovato la frazione. Moltiplicala per 100.')])
++        approximate('Quota utile', '%', share, [error(header / total * 100, 'Questa è la percentuale dei campi di servizio.'), error(payload / total, 'Hai trovato la frazione. Moltiplicala per 100.')])
+       ],
+       steps: [
+         step('Conta tutti i byte', 'Somma dati utili e campi di servizio.', payload + ' + ' + header + ' = ' + total + ' byte'),
+@@ -132,8 +133,9 @@
+ 
+ 
+   function opticalLink(title, length, joins, budget) {
+-    const loss = length * 0.35 + joins * 0.15 + 2 * 0.5;
+-    const margin = budget - loss;
++    const lossHundredths = length * 35 + joins * 15 + 2 * 50;
++    const loss = lossHundredths / 100;
++    const margin = (budget * 100 - lossHundredths) / 100;
+     return {
+       title,
+       context: 'Una fibra monomodale collega due sedi. Il fornitore dei moduli dichiara il budget ottico a questa velocità.',
